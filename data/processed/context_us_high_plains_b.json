@@ -1,0 +1,206 @@
+{
+  "farm_id": "us_high_plains_b",
+  "label": "illustrative; validate locally",
+  "soil": {
+    "map_unit": {
+      "value": "Richfield silt loam, 0 to 1 percent slopes",
+      "unit": "name",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "component": {
+      "value": "Richfield",
+      "unit": "name",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "component_share_pct": {
+      "value": 93.0,
+      "unit": "%",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "hydrologic_group": {
+      "value": "C",
+      "unit": "USDA hydrologic soil group",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "drainage": {
+      "value": "Well drained",
+      "unit": "USDA drainage class",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "organic_matter_pct": {
+      "value": 1.607,
+      "unit": "% mass, 0\u201330 cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "available_water_mm_0_30": {
+      "value": 60.2,
+      "unit": "mm in 0\u201330 cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "clay_pct": {
+      "value": 27.8,
+      "unit": "% mass, 0\u201330 cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "sand_pct": {
+      "value": 19.667,
+      "unit": "% mass, 0\u201330 cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "silt_pct": {
+      "value": 52.533,
+      "unit": "% mass, 0\u201330 cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "texture_class": {
+      "value": "SIL",
+      "unit": "representative surface texture code",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "restrictive_layer": {
+      "value": null,
+      "unit": "kind",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions. No restrictive layer was listed for this component.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    },
+    "restrictive_depth_cm": {
+      "value": null,
+      "unit": "cm",
+      "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+      "resolution": "SSURGO map unit, dominant major component",
+      "uncertainty_note": "Mapped representative component and horizons. Field sampling is needed for parcel conditions. No restrictive layer was listed for this component.",
+      "evidence_refs": [
+        "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "data/raw/p3/manifest.json#us_high_plains_b_ssurgo"
+      ]
+    }
+  },
+  "terrain": {
+    "elevation_m": {
+      "value": 882.0,
+      "unit": "m",
+      "source": "https://www.opentopodata.org/datasets/srtm/",
+      "resolution": "3 arc-seconds (~90 m)",
+      "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+      "evidence_refs": [
+        "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+        "data/raw/p3/manifest.json#us_high_plains_b_srtm"
+      ]
+    },
+    "mean_slope_pct": {
+      "value": 4.851,
+      "unit": "% rise",
+      "source": "https://www.opentopodata.org/datasets/srtm/",
+      "resolution": "5-point cross on ~90 m grid",
+      "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+      "evidence_refs": [
+        "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+        "data/raw/p3/manifest.json#us_high_plains_b_srtm"
+      ]
+    },
+    "slope_class": {
+      "value": "moderate",
+      "unit": "class",
+      "source": "assumption, validate locally",
+      "resolution": "5-point cross on ~90 m grid",
+      "uncertainty_note": "Illustrative classes: gentle <2%, moderate 2\u2013<5%, steep \u22655%.",
+      "evidence_refs": [
+        "https://www.opentopodata.org/datasets/srtm/",
+        "data/raw/p3/manifest.json#us_high_plains_b_srtm"
+      ]
+    }
+  },
+  "groundwater": {
+    "regional_context": {
+      "value": "The High Plains aquifer supplies irrigated agriculture in western Kansas.",
+      "unit": "text",
+      "source": "https://kgs.ku.edu/sites/kgs/files/files/PICpdfs/PIC18HighPlainsAquifer2023revision.pdf",
+      "resolution": "region",
+      "uncertainty_note": "Groundwater trend and availability at this field are unverified.",
+      "evidence_refs": [
+        "data/raw/p3/manifest.json#us_high_plains_b_usgs_ogc"
+      ]
+    }
+  },
+  "validation_flags": [
+    "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+    "CDL point classes are not a verified farm management record",
+    "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally",
+    "The coarse SRTM slope is higher than the SSURGO map-unit slope class. Validate local slope."
+  ],
+  "limitations": [
+    "Satellites do not directly measure soil nitrogen or organic carbon.",
+    "SoilGrids is a model prediction. POWER soil wetness is modelled."
+  ]
+}

@@ -1,0 +1,2631 @@
+{
+  "us_high_plains_b_srtm": {
+    "request": {
+      "method": "GET",
+      "url": "https://api.opentopodata.org/v1/srtm90m",
+      "params": {
+        "locations": "37.94000000,-100.67000000|37.94083333,-100.67000000|37.93916667,-100.67000000|37.94000000,-100.66894335|37.94000000,-100.67105665"
+      },
+      "data": null
+    },
+    "signature": "6acc04a847fbb15124a7d5aa7e52fb4ad90f28b748da6d564eae0be9df0ed2ff",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:16.078933+00:00",
+        "http_status": 200,
+        "url": "https://api.opentopodata.org/v1/srtm90m?locations=37.94000000%2C-100.67000000%7C37.94083333%2C-100.67000000%7C37.93916667%2C-100.67000000%7C37.94000000%2C-100.66894335%7C37.94000000%2C-100.67105665",
+        "body": "us_high_plains_b_srtm.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "us_high_plains_b_srtm.1.json"
+  },
+  "us_high_plains_b_ssurgo": {
+    "request": {
+      "method": "POST",
+      "url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+      "params": null,
+      "data": {
+        "query": "\nWITH ranked AS (\n    SELECT mu.mukey, mu.muname, c.cokey, c.compname, c.comppct_r, c.hydgrp, c.drainagecl,\n           ROW_NUMBER() OVER (PARTITION BY mu.mukey ORDER BY c.comppct_r DESC, c.cokey) AS rank\n    FROM SDA_Get_Mukey_from_intersection_with_WktWgs84('POINT(-100.67 37.94)') AS hit\n    JOIN mapunit AS mu ON mu.mukey = hit.mukey\n    JOIN component AS c ON c.mukey = mu.mukey\n    WHERE c.comppct_r IS NOT NULL AND c.majcompflag = 'Yes'\n)\nSELECT c.mukey, c.muname, c.compname, c.comppct_r, c.hydgrp, c.drainagecl,\n       h.hzdept_r, h.hzdepb_r, h.om_r, h.awc_r, h.claytotal_r, h.sandtotal_r, h.silttotal_r,\n       tex.texture, restriction.reskind, restriction.resdept_r\nFROM ranked AS c\nLEFT JOIN chorizon AS h ON h.cokey = c.cokey AND h.hzdept_r < 30\nOUTER APPLY (\n    SELECT TOP 1 t.texture FROM chtexturegrp AS t\n    WHERE t.chkey = h.chkey AND t.rvindicator = 'Yes' ORDER BY t.chtgkey\n) AS tex\nOUTER APPLY (\n    SELECT TOP 1 r.reskind, r.resdept_r FROM corestrictions AS r\n    WHERE r.cokey = c.cokey AND r.resdept_r IS NOT NULL ORDER BY r.resdept_r, r.corestrictkey\n) AS restriction\nWHERE c.rank = 1\nORDER BY c.mukey, h.hzdept_r\n",
+        "format": "JSON"
+      }
+    },
+    "signature": "cf6ddd0d06bdf6621130d30c871cfedf8eebed25560b40661fe27446921f6cb1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:16.952180+00:00",
+        "http_status": 200,
+        "url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+        "body": "us_high_plains_b_ssurgo.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "us_high_plains_b_ssurgo.1.json"
+  },
+  "us_high_plains_b_usgs_ogc": {
+    "request": {
+      "method": "GET",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/field-measurements/items",
+      "params": {
+        "f": "json",
+        "parameter_code": "72019",
+        "limit": 1,
+        "bbox": "-100.72,37.89,-100.62,37.989999999999995"
+      },
+      "data": null
+    },
+    "signature": "0a040f5238b99ca3b6222fcee7c3904a50d493298d531789215209cadea62230",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:19.150918+00:00",
+        "http_status": 200,
+        "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/field-measurements/items?f=json&parameter_code=72019&limit=1&bbox=-100.72%2C37.89%2C-100.62%2C37.989999999999995",
+        "body": "us_high_plains_b_usgs_ogc.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "us_high_plains_b_usgs_ogc.1.json"
+  },
+  "telangana_a_srtm": {
+    "request": {
+      "method": "GET",
+      "url": "https://api.opentopodata.org/v1/srtm90m",
+      "params": {
+        "locations": "17.84500000,79.44500000|17.84583333,79.44500000|17.84416667,79.44500000|17.84500000,79.44587545|17.84500000,79.44412455"
+      },
+      "data": null
+    },
+    "signature": "ef0bb1b7714d0c6d77ce51dfadf709a54cc152a213e1e1e24deedb0575fecf7c",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:21.438298+00:00",
+        "http_status": 200,
+        "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.84500000%2C79.44500000%7C17.84583333%2C79.44500000%7C17.84416667%2C79.44500000%7C17.84500000%2C79.44587545%7C17.84500000%2C79.44412455",
+        "body": "telangana_a_srtm.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_srtm.1.json"
+  },
+  "telangana_a_clay_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "a74bbc514cfab50166381846d16b3ef52eafd7ece89428f2439b93e1aae7e92a",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:21.720878+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_clay_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_clay_0-5cm.1.tif"
+  },
+  "telangana_a_sand_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "8df9afc3388d2021ae115c33890e93e549f9a850254100b0dee89ad35cccc1d1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:22.973744+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_sand_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_sand_0-5cm.1.tif"
+  },
+  "telangana_a_silt_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "2eb68c2b2afe86645f1bedc47f00a8ee1ea2a73542550136241275f9a8cdb36a",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:23.256913+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_silt_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_silt_0-5cm.1.tif"
+  },
+  "telangana_a_soc_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "e44cb46c9118672722b3965b2d5bed3af3953e5f28fe66d76faaaab8763dd8d1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:23.586114+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_soc_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_soc_0-5cm.1.tif"
+  },
+  "telangana_a_phh2o_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "32eda207f74fc61079268ae264148b0e82d880978fb87a59fd93715ed5e27145",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:23.923303+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_phh2o_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_phh2o_0-5cm.1.tif"
+  },
+  "telangana_a_wv0033_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "366743f3c55cea2d1653739388eb22940143b1ed7b6e3bb1d723f18744d44b0f",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:24.189667+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv0033_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv0033_0-5cm.1.tif"
+  },
+  "telangana_a_wv1500_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "f8dcbd08af51f204d6550c9fd7100f1fd2cc7cda97e01650f3272e03e9e6277d",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:24.523027+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv1500_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv1500_0-5cm.1.tif"
+  },
+  "telangana_a_clay_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "3108ca32c21472a1ed45eee05a2263d5186ead59c9176de0bec85b0d59e4ef24",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:24.873410+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_clay_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_clay_5-15cm.1.tif"
+  },
+  "telangana_a_sand_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "515ec6ebf7fbdec70e6fa74113b708bca3869d843508f7f1c14d57105d042892",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:25.135916+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_sand_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_sand_5-15cm.1.tif"
+  },
+  "telangana_a_silt_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "d4847a7ab50e866bb74a7e35c2ef346625a1651096fcb11eb56a217f54a0bd67",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:25.488333+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_silt_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_silt_5-15cm.1.tif"
+  },
+  "telangana_a_soc_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "68fc3d50af7feb9b0edfd80366c07cc45b515cc34e240c000eb93bf921f4ed74",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:25.770785+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_soc_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_soc_5-15cm.1.tif"
+  },
+  "telangana_a_phh2o_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "4de884ff7df1d804ab7c2ce35bbd8b77bdbbb75ef8678bb5486a4544121dc0f5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:26.165673+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_phh2o_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_phh2o_5-15cm.1.tif"
+  },
+  "telangana_a_wv0033_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "2cd04ddca1072565f77ed3ffe257ec2d1297f3976a4198cb4609a1e155677ac5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:26.495473+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv0033_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv0033_5-15cm.1.tif"
+  },
+  "telangana_a_wv1500_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "47e155cdcecf5908a77c52bdbf7fead263c812625b1e6d91c54a77f70194e694",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:26.914075+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv1500_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv1500_5-15cm.1.tif"
+  },
+  "telangana_a_clay_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "d4fba40ffe12aaf3bbebdb5c64fce0ea3c28f4bac09119617f08896c5a4218a2",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:27.235426+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_clay_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_clay_15-30cm.1.tif"
+  },
+  "telangana_a_sand_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "a19c8c06ce12325e8f8d21f9b358eb07ae75b989a2f0282398fa3d6001605524",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:27.525252+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_sand_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_sand_15-30cm.1.tif"
+  },
+  "telangana_a_silt_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "7c8863dd6bed104fb4e28e808d9841635900f3c1856c0315507c1830191b23a8",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:27.833439+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_silt_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_silt_15-30cm.1.tif"
+  },
+  "telangana_a_soc_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "5c88b02ba5a3d733f66baa7b1e26e6f146623162a20e6c2666bfa6f628a6660f",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:28.095814+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_soc_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_soc_15-30cm.1.tif"
+  },
+  "telangana_a_phh2o_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "937b278c09579f7e1df486d2c5a85335ad5b29363e852ff9fbdb19858bdaddf5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:28.488333+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_phh2o_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_phh2o_15-30cm.1.tif"
+  },
+  "telangana_a_wv0033_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "1a2fcbb0bd7db1f5a96530c0f9bcd5f431e058d9cfdce7df16b081cab86b6beb",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:28.747936+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv0033_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv0033_15-30cm.1.tif"
+  },
+  "telangana_a_wv1500_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(8578714.79,8579214.79)"
+        ],
+        [
+          "SUBSET",
+          "Y(1986246.313,1986746.313)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "e30b82a666f0e04672af54a22d977c2347762dcd2581127de7cd88a58a8555f0",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:29.087544+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%288578714.79%2C8579214.79%29&SUBSET=Y%281986246.313%2C1986746.313%29",
+        "body": "telangana_a_wv1500_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "telangana_a_wv1500_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_srtm": {
+    "request": {
+      "method": "GET",
+      "url": "https://api.opentopodata.org/v1/srtm90m",
+      "params": {
+        "locations": "-1.95000000,37.64000000|-1.94916667,37.64000000|-1.95083333,37.64000000|-1.95000000,37.64083382|-1.95000000,37.63916618"
+      },
+      "data": null
+    },
+    "signature": "3a49a1bc0ad8b13f0f510b0c9c5d9039b0a3575ec5f316c9423043f82af5c317",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:29.586117+00:00",
+        "http_status": 200,
+        "url": "https://api.opentopodata.org/v1/srtm90m?locations=-1.95000000%2C37.64000000%7C-1.94916667%2C37.64000000%7C-1.95083333%2C37.64000000%7C-1.95000000%2C37.64083382%7C-1.95000000%2C37.63916618",
+        "body": "kenya_makueni_north_srtm.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_srtm.1.json"
+  },
+  "kenya_makueni_north_clay_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "57bb4354b63ce9a5ee03c1c25dc8e0515518abda717ac119ee6bb40e938a101d",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:29.853854+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_clay_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_clay_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_sand_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "1b31e54ebd7e52240d3082405a18c5109628f641e1f039823e414d92cb9f4310",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:30.111123+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_sand_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_sand_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_silt_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "ae1a088808c9002aa74d37ffb5ca8f5fb6524081ffa5aa610e1d846eee0dabe3",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:30.455201+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_silt_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_silt_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_soc_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "aea7f917e972e7d38c309ca5af9e1c40400f5d473d14d148bbcaddb204171463",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:30.758617+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_soc_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_soc_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_phh2o_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "45ae4b9cd651701703a87a708e6de83a69e8f41e9eeb6e56034ed9e3584676a4",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:31.109314+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_phh2o_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_phh2o_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_wv0033_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "811289cb6e229cb6138341395ddb4d80b70ce752f86a901a66044f749c2bf817",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:31.334345+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv0033_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv0033_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_wv1500_0-5cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_0-5cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "ac5729e8773da02aa50e6c0985383a1cc30babdf01d03f5aff147d444720d2cb",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:31.646691+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_0-5cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv1500_0-5cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv1500_0-5cm.1.tif"
+  },
+  "kenya_makueni_north_clay_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "424ec75c2477ee95d7ecef8b6d541059f550bf2857d55546dcca36d64e84d0e9",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:31.901815+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_clay_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_clay_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_sand_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "7cae1567f75d1172544a90ae7818573fdae134cf8cf56d0502895fde0a0fda82",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:32.218345+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_sand_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_sand_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_silt_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "f7e900644d2996c9eb3499ce964b66ff3aa9c5bb4e136a4ec857032428f2e9e5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:32.460674+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_silt_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_silt_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_soc_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "9cc99b0ba56d972fc42190feabbf9b337b304cb3624e2e28e65da725cc3f2c8c",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:32.770096+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_soc_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_soc_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_phh2o_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "77e98d392242c83602fd800cbbc97f7bc9aad45b26afc4970320b17973cc8fb1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:33.081992+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_phh2o_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_phh2o_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_wv0033_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "ceb567e159f56b1393951fdc2a87f6e2c883fd467671e94e6c1be2064fa3195b",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:33.309414+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv0033_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv0033_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_wv1500_5-15cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_5-15cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "aac01a0d7efce1cb6a9108e7a8aa081e59c7745cb03c6f3755c3e08f878ea45f",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:33.641069+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_5-15cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv1500_5-15cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv1500_5-15cm.1.tif"
+  },
+  "kenya_makueni_north_clay_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/clay.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "clay_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "b46d9f173a1a4bf5b0e66aba64ede613056a76753a7298c52db188a323460099",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:34.119413+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_clay_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_clay_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_sand_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/sand.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "sand_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "216f424948463bca2c9bae9251b27a3564af750c64c3296f41b52eb94fbcf7ee",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:34.404445+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_sand_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_sand_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_silt_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/silt.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "silt_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "668fed87d34fa811114786763aba08a4b705b782a366d1c6eb6c00ff9df2cc96",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:34.781174+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_silt_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_silt_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_soc_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/soc.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "soc_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "b109a9ba9437f21cb93502328981adef5f60284fe06fe83df5fb3f2cbc682019",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:35.068047+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_soc_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_soc_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_phh2o_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/phh2o.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "phh2o_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "41be67823274cbe50d34826e3b21c3bce4777fdec8f0c2ec2742c20c71d2d65d",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:35.300769+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_phh2o_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_phh2o_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_wv0033_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv0033.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv0033_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "ee858d830fa5cd6f181b0a896272d6b90b7daf5d804a9a5b3fdca3442c8f9063",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:35.633853+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv0033.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv0033_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv0033_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv0033_15-30cm.1.tif"
+  },
+  "kenya_makueni_north_wv1500_15-30cm": {
+    "request": {
+      "method": "GET",
+      "url": "https://maps.isric.org/mapserv",
+      "params": [
+        [
+          "map",
+          "/map/wv1500.map"
+        ],
+        [
+          "SERVICE",
+          "WCS"
+        ],
+        [
+          "VERSION",
+          "2.0.1"
+        ],
+        [
+          "REQUEST",
+          "GetCoverage"
+        ],
+        [
+          "COVERAGEID",
+          "wv1500_15-30cm_Q0.5"
+        ],
+        [
+          "FORMAT",
+          "GEOTIFF_INT16"
+        ],
+        [
+          "SUBSETTINGCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "OUTPUTCRS",
+          "http://www.opengis.net/def/crs/EPSG/0/152160"
+        ],
+        [
+          "SUBSET",
+          "X(4188678.473,4189178.473)"
+        ],
+        [
+          "SUBSET",
+          "Y(-217323.007,-216823.007)"
+        ]
+      ],
+      "data": null
+    },
+    "signature": "6f37ef6ec8ca03eaf72187619d12e109bb50705cb134417be7dcf3a7f7266c60",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T22:59:35.996499+00:00",
+        "http_status": 200,
+        "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fwv1500.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=wv1500_15-30cm_Q0.5&FORMAT=GEOTIFF_INT16&SUBSETTINGCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&OUTPUTCRS=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F152160&SUBSET=X%284188678.473%2C4189178.473%29&SUBSET=Y%28-217323.007%2C-216823.007%29",
+        "body": "kenya_makueni_north_wv1500_15-30cm.1.tif"
+      }
+    ],
+    "status": "complete",
+    "body": "kenya_makueni_north_wv1500_15-30cm.1.tif"
+  }
+}

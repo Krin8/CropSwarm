@@ -1,0 +1,286 @@
+{
+  "farm_id": "telangana_a",
+  "label": "illustrative; validate locally",
+  "soil": {
+    "depths": {
+      "0-5cm": {
+        "clay": {
+          "value": 26.2,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_clay_0-5cm"
+          ]
+        },
+        "sand": {
+          "value": 33.9,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_sand_0-5cm"
+          ]
+        },
+        "silt": {
+          "value": 23.8,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_silt_0-5cm"
+          ]
+        },
+        "soil_organic_carbon": {
+          "value": 9.1,
+          "unit": "g/kg",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_soc_0-5cm"
+          ]
+        },
+        "ph_water": {
+          "value": 7.2,
+          "unit": "pH",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_phh2o_0-5cm"
+          ]
+        },
+        "water_at_33_kpa": {
+          "value": 29.3,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv0033_0-5cm"
+          ]
+        },
+        "water_at_1500_kpa": {
+          "value": 16.6,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 0-5cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv1500_0-5cm"
+          ]
+        }
+      },
+      "5-15cm": {
+        "clay": {
+          "value": 29.8,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_clay_5-15cm"
+          ]
+        },
+        "sand": {
+          "value": 33.2,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_sand_5-15cm"
+          ]
+        },
+        "silt": {
+          "value": 22.3,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_silt_5-15cm"
+          ]
+        },
+        "soil_organic_carbon": {
+          "value": 8.0,
+          "unit": "g/kg",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_soc_5-15cm"
+          ]
+        },
+        "ph_water": {
+          "value": 7.2,
+          "unit": "pH",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_phh2o_5-15cm"
+          ]
+        },
+        "water_at_33_kpa": {
+          "value": 29.8,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv0033_5-15cm"
+          ]
+        },
+        "water_at_1500_kpa": {
+          "value": 16.6,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 5-15cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv1500_5-15cm"
+          ]
+        }
+      },
+      "15-30cm": {
+        "clay": {
+          "value": 31.5,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_clay_15-30cm"
+          ]
+        },
+        "sand": {
+          "value": 30.8,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_sand_15-30cm"
+          ]
+        },
+        "silt": {
+          "value": 20.5,
+          "unit": "% by mass",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_silt_15-30cm"
+          ]
+        },
+        "soil_organic_carbon": {
+          "value": 5.1,
+          "unit": "g/kg",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_soc_15-30cm"
+          ]
+        },
+        "ph_water": {
+          "value": 7.3,
+          "unit": "pH",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_phh2o_15-30cm"
+          ]
+        },
+        "water_at_33_kpa": {
+          "value": 30.0,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv0033_15-30cm"
+          ]
+        },
+        "water_at_1500_kpa": {
+          "value": 16.9,
+          "unit": "vol %",
+          "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+          "resolution": "250 m grid, 15-30cm",
+          "uncertainty_note": "SoilGrids median model prediction. Local soil sampling is needed.",
+          "evidence_refs": [
+            "data/raw/p3/manifest.json#telangana_a_wv1500_15-30cm"
+          ]
+        }
+      }
+    },
+    "available_water_mm_0_30": {
+      "value": 39.2,
+      "unit": "mm in 0\u201330 cm",
+      "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+      "resolution": "250 m grid",
+      "uncertainty_note": "Difference between predicted volumetric water retention at 33 and 1500 kPa, integrated by depth.",
+      "evidence_refs": []
+    }
+  },
+  "terrain": {
+    "elevation_m": {
+      "value": 301.0,
+      "unit": "m",
+      "source": "https://www.opentopodata.org/datasets/srtm/",
+      "resolution": "3 arc-seconds (~90 m)",
+      "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+      "evidence_refs": [
+        "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+        "data/raw/p3/manifest.json#telangana_a_srtm"
+      ]
+    },
+    "mean_slope_pct": {
+      "value": 1.078,
+      "unit": "% rise",
+      "source": "https://www.opentopodata.org/datasets/srtm/",
+      "resolution": "5-point cross on ~90 m grid",
+      "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+      "evidence_refs": [
+        "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+        "data/raw/p3/manifest.json#telangana_a_srtm"
+      ]
+    },
+    "slope_class": {
+      "value": "gentle",
+      "unit": "class",
+      "source": "assumption, validate locally",
+      "resolution": "5-point cross on ~90 m grid",
+      "uncertainty_note": "Illustrative classes: gentle <2%, moderate 2\u2013<5%, steep \u22655%.",
+      "evidence_refs": [
+        "https://www.opentopodata.org/datasets/srtm/",
+        "data/raw/p3/manifest.json#telangana_a_srtm"
+      ]
+    }
+  },
+  "groundwater": {
+    "regional_context": {
+      "value": "The Central Ground Water Board reports both rises and falls across Telangana during the 2023 monsoon.",
+      "unit": "text",
+      "source": "https://gwdata.cgwb.gov.in/download/Yearbook/Telangana_GWYB_23-24.pdf",
+      "resolution": "region",
+      "uncertainty_note": "Groundwater trend and availability at this field are unverified.",
+      "evidence_refs": []
+    }
+  },
+  "validation_flags": [
+    "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
+    "No point-specific crop identity or management record verified",
+    "2022 MODIS NDVI record incomplete"
+  ],
+  "limitations": [
+    "Satellites do not directly measure soil nitrogen or organic carbon.",
+    "SoilGrids is a model prediction. POWER soil wetness is modelled."
+  ]
+}

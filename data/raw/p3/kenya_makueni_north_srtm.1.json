@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "dataset": "srtm90m",
+      "elevation": 1025.0,
+      "location": {
+        "lat": -1.95,
+        "lng": 37.64
+      }
+    },
+    {
+      "dataset": "srtm90m",
+      "elevation": 1024.0,
+      "location": {
+        "lat": -1.94916667,
+        "lng": 37.64
+      }
+    },
+    {
+      "dataset": "srtm90m",
+      "elevation": 1020.0,
+      "location": {
+        "lat": -1.95083333,
+        "lng": 37.64
+      }
+    },
+    {
+      "dataset": "srtm90m",
+      "elevation": 1019.0,
+      "location": {
+        "lat": -1.95,
+        "lng": 37.64083382
+      }
+    },
+    {
+      "dataset": "srtm90m",
+      "elevation": 1030.0,
+      "location": {
+        "lat": -1.95,
+        "lng": 37.63916618
+      }
+    }
+  ],
+  "status": "OK"
+}
