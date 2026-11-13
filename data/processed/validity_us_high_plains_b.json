@@ -1,0 +1,664 @@
+{
+  "farm_id": "us_high_plains_b",
+  "verdict": "pass with flags",
+  "flags": [
+    "CDL and MODIS describe different footprints. A verified field management history is unavailable."
+  ],
+  "neighborhood": {
+    "2019": {
+      "center": {
+        "code": 61,
+        "category": "Fallow/Idle Cropland"
+      },
+      "category_counts": {
+        "Fallow/Idle Cropland": 9
+      },
+      "samples": [
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2019,
+            "x": -406399.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2019,
+            "x": -406369.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2019,
+            "x": -406339.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2019,
+            "x": -406399.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2019,
+            "x": -406369.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2019,
+            "x": -406339.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2019,
+            "x": -406399.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2019,
+            "x": -406369.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2019,
+            "x": -406339.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        }
+      ],
+      "status": "complete"
+    },
+    "2020": {
+      "center": {
+        "code": 24,
+        "category": "Winter Wheat"
+      },
+      "category_counts": {
+        "Winter Wheat": 9
+      },
+      "samples": [
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2020,
+            "x": -406399.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2020,
+            "x": -406369.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2020,
+            "x": -406339.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2020,
+            "x": -406399.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2020,
+            "x": -406369.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2020,
+            "x": -406339.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2020,
+            "x": -406399.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2020,
+            "x": -406369.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2020,
+            "x": -406339.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        }
+      ],
+      "status": "complete"
+    },
+    "2021": {
+      "center": {
+        "code": 4,
+        "category": "Sorghum"
+      },
+      "category_counts": {
+        "Sorghum": 9
+      },
+      "samples": [
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2021,
+            "x": -406399.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2021,
+            "x": -406369.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2021,
+            "x": -406339.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2021,
+            "x": -406399.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2021,
+            "x": -406369.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2021,
+            "x": -406339.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2021,
+            "x": -406399.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2021,
+            "x": -406369.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2021,
+            "x": -406339.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 4,
+            "category": "Sorghum"
+          }
+        }
+      ],
+      "status": "complete"
+    },
+    "2022": {
+      "center": {
+        "code": 61,
+        "category": "Fallow/Idle Cropland"
+      },
+      "category_counts": {
+        "Fallow/Idle Cropland": 9
+      },
+      "samples": [
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2022,
+            "x": -406399.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2022,
+            "x": -406369.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2022,
+            "x": -406339.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2022,
+            "x": -406399.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2022,
+            "x": -406369.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2022,
+            "x": -406339.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2022,
+            "x": -406399.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2022,
+            "x": -406369.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2022,
+            "x": -406339.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 61,
+            "category": "Fallow/Idle Cropland"
+          }
+        }
+      ],
+      "status": "complete"
+    },
+    "2023": {
+      "center": {
+        "code": 24,
+        "category": "Winter Wheat"
+      },
+      "category_counts": {
+        "Winter Wheat": 9
+      },
+      "samples": [
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2023,
+            "x": -406399.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2023,
+            "x": -406369.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 1,
+          "request_params": {
+            "year": 2023,
+            "x": -406339.56,
+            "y": 1666116.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2023,
+            "x": -406399.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2023,
+            "x": -406369.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": 0,
+          "request_params": {
+            "year": 2023,
+            "x": -406339.56,
+            "y": 1666086.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": -1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2023,
+            "x": -406399.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 0,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2023,
+            "x": -406369.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        },
+        {
+          "dx_pixels": 1,
+          "dy_pixels": -1,
+          "request_params": {
+            "year": 2023,
+            "x": -406339.56,
+            "y": 1666056.611
+          },
+          "observation": {
+            "code": 24,
+            "category": "Winter Wheat"
+          }
+        }
+      ],
+      "status": "complete"
+    }
+  },
+  "resolution_m": 30,
+  "center_matches_entire_sample_every_year": true,
+  "spring_ndvi_2019_peaks": [
+    "2019-04-07"
+  ],
+  "interpretation_2019": "All nine CDL pixels are fallow/idle in 2019. The MODIS spring peak is greenness evidence and cannot identify planting or rule out weeds, volunteers or neighboring cover.",
+  "sources": [
+    "USDA NASS Cropland Data Layer | https://www.nass.usda.gov/Research_and_Science/Cropland/metadata/meta.php",
+    "NASA Terra MOD13Q1 | https://lpdaac.usgs.gov/documents/621/MOD13_User_Guide_V61.pdf"
+  ]
+}

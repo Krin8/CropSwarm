@@ -1,0 +1,138 @@
+[
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2019001",
+      "endDate": "A2019145",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:19.135642+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2019001_A2019145_7105e4e8245b.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2019161",
+      "endDate": "A2019305",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:19.135766+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2019161_A2019305_dbaf140d4f2b.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2019321",
+      "endDate": "A2019353",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:19.136291+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2019321_A2019353_0065a40b3678.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2020001",
+      "endDate": "A2020145",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:19.136512+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2020001_A2020145_1dfc308a32f0.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2020161",
+      "endDate": "A2020305",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:26.343715+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2020161_A2020305_99a32fea6582.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2020321",
+      "endDate": "A2020353",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:38.438171+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2020321_A2020353_64cd2a03e71d.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2021001",
+      "endDate": "A2021145",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:38.588432+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2021001_A2021145_dd649cfb6e32.json"
+  },
+  {
+    "farm_id": "kenya_katumani",
+    "source": "NASA Terra MODIS MOD13Q1 via ORNL DAAC",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset",
+    "params": {
+      "latitude": -1.5880555555555558,
+      "longitude": 37.238055555555555,
+      "startDate": "A2021161",
+      "endDate": "A2021305",
+      "kmAboveBelow": 0,
+      "kmLeftRight": 0
+    },
+    "timestamp": "2026-11-13T23:06:38.727286+00:00",
+    "status": 200,
+    "coverage": "complete",
+    "raw_file": "kenya_katumani/modis_A2021161_A2021305_55df928816ae.json"
+  }
+]

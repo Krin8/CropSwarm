@@ -1,0 +1,927 @@
+{
+  "cdl_2019_-1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406399.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "c0f8527304eba31cd8d117e28fa50720c6b318c0c813fdd44f4c3aae71d2d000",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:19.897512+00:00",
+        "http_status": null,
+        "error": "HTTPSConnectionPool(host='nassgeodata.gmu.edu', port=443): Read timed out. (read timeout=8)"
+      },
+      {
+        "timestamp_utc": "2026-11-13T23:06:30.300604+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406399.56&y=1666116.611",
+        "body": "cdl_2019_-1_1.2.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_-1_1.2.xml"
+  },
+  "cdl_2019_0_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406369.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "2dc4d4070cce534dbbefbc58af0cea8a083dc3dc80b6bb89777e5553f38cfa1d",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:31.855142+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406369.56&y=1666116.611",
+        "body": "cdl_2019_0_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_0_1.1.xml"
+  },
+  "cdl_2019_1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406339.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "26bf3f81a08e1b3cc847d6a0886cf5c694a886b044751989ba92d984cf742d34",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:32.281612+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406339.56&y=1666116.611",
+        "body": "cdl_2019_1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_1_1.1.xml"
+  },
+  "cdl_2019_-1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406399.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "e94f524dba132f6cdcf24256626c86ad4ec961ddcc5e8a629bef99bc18d4d2f4",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:33.724277+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406399.56&y=1666086.611",
+        "body": "cdl_2019_-1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_-1_0.1.xml"
+  },
+  "cdl_2019_1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406339.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "0b16ef57fd8afb9ea879191310e25e6d93e3949e1509e59d23c2e6bd8c6e5679",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:34.207457+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406339.56&y=1666086.611",
+        "body": "cdl_2019_1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_1_0.1.xml"
+  },
+  "cdl_2019_-1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406399.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "125e1cb069865f33063d9ac7a5729fb02bf2fc2bf4e0d02c4ace1bbcdb55528f",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:34.729734+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406399.56&y=1666056.611",
+        "body": "cdl_2019_-1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_-1_-1.1.xml"
+  },
+  "cdl_2019_0_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406369.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "c075ee272560832e44966cd776173ead492eb4e4f48827172cc8ecb0982241db",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:35.164362+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406369.56&y=1666056.611",
+        "body": "cdl_2019_0_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_0_-1.1.xml"
+  },
+  "cdl_2019_1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2019,
+        "x": -406339.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "ba33da0762d0c6cbb6d78df64f77ffa34d7b18ebc955d45b0cc2c7ca10678078",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:35.680545+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2019&x=-406339.56&y=1666056.611",
+        "body": "cdl_2019_1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2019_1_-1.1.xml"
+  },
+  "cdl_2020_-1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406399.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "08f88f5493e35116576dc8f9eefac21586763da8215e3b905cd65012b9e2e540",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:36.190366+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406399.56&y=1666116.611",
+        "body": "cdl_2020_-1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_-1_1.1.xml"
+  },
+  "cdl_2020_0_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406369.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "c0148f0dbed3129abe7209462dd2b0c3ed30d33e3eeba516011113d5acc3b6ae",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:36.683644+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406369.56&y=1666116.611",
+        "body": "cdl_2020_0_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_0_1.1.xml"
+  },
+  "cdl_2020_1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406339.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "21524fbfa7780c1f92bba9663875e23a8b5af7fd01eedaeaf21e24a8af5baad7",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:37.194259+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406339.56&y=1666116.611",
+        "body": "cdl_2020_1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_1_1.1.xml"
+  },
+  "cdl_2020_-1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406399.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "0018feff9945da84d70b0d24f2974795a80aa32a3f5b870bc32e118e7465e5ae",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:37.732378+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406399.56&y=1666086.611",
+        "body": "cdl_2020_-1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_-1_0.1.xml"
+  },
+  "cdl_2020_1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406339.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "9dca721d246605b86c097a16cff4f4d791126712c52daede1eb270d04ca393ed",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:38.243504+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406339.56&y=1666086.611",
+        "body": "cdl_2020_1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_1_0.1.xml"
+  },
+  "cdl_2020_-1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406399.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "f0a3e51a3beb6f4fa9d37a3d1752a59cd15d2071f62f2f7223f75d16bb3d88fd",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:38.724036+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406399.56&y=1666056.611",
+        "body": "cdl_2020_-1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_-1_-1.1.xml"
+  },
+  "cdl_2020_0_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406369.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "d2c5e0bbf19b2324a56a8dcbbc11a4992f95d40ad4bcfd3b55c0bfc92ec12858",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:39.233462+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406369.56&y=1666056.611",
+        "body": "cdl_2020_0_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_0_-1.1.xml"
+  },
+  "cdl_2020_1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2020,
+        "x": -406339.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "97f7d861ca2b7f5fb8576a2ec8510de77318bff412b8c4900348cf163ceed653",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:39.735221+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2020&x=-406339.56&y=1666056.611",
+        "body": "cdl_2020_1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2020_1_-1.1.xml"
+  },
+  "cdl_2021_-1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406399.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "b90abe9691a56da84c2337b598112f40649761598895393ff301ccf580bd96ef",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:40.273021+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406399.56&y=1666116.611",
+        "body": "cdl_2021_-1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_-1_1.1.xml"
+  },
+  "cdl_2021_0_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406369.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "fe3e53557828aafa38df3ad81385dd7fda0a1ec808df407b58e9d07f892f341d",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:40.779010+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406369.56&y=1666116.611",
+        "body": "cdl_2021_0_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_0_1.1.xml"
+  },
+  "cdl_2021_1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406339.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "d6364ea6b2253f8b922138675a8f078509eb7997234809d46db7911cb80da154",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:41.293263+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406339.56&y=1666116.611",
+        "body": "cdl_2021_1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_1_1.1.xml"
+  },
+  "cdl_2021_-1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406399.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "e868148688a55b2c49b2bf4e52aeee95c95f4063f7fe74505295fe8ab5cb6d86",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:41.802838+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406399.56&y=1666086.611",
+        "body": "cdl_2021_-1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_-1_0.1.xml"
+  },
+  "cdl_2021_1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406339.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "86cf273978f761fcf9a88c887cbb9344b97c9ae0cd0f87a395da44cd7b90e294",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:42.306521+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406339.56&y=1666086.611",
+        "body": "cdl_2021_1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_1_0.1.xml"
+  },
+  "cdl_2021_-1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406399.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "ac9216b21322b9937d176435a34672acb9cf13b8a62701473ffb02ee7cbd7798",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:42.815904+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406399.56&y=1666056.611",
+        "body": "cdl_2021_-1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_-1_-1.1.xml"
+  },
+  "cdl_2021_0_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406369.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "397602c1049613a844d6f29b8840759397c97374a18c633eb51223b92d5f2bd1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:43.289980+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406369.56&y=1666056.611",
+        "body": "cdl_2021_0_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_0_-1.1.xml"
+  },
+  "cdl_2021_1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2021,
+        "x": -406339.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "a5721c51fbc822c609f9f10f43994f3b13917e90907588cfb1012c7c3e88f159",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:43.799211+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2021&x=-406339.56&y=1666056.611",
+        "body": "cdl_2021_1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2021_1_-1.1.xml"
+  },
+  "cdl_2022_-1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406399.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "6ddc564dc0e60b59bdf788b7083af08503a21f56687daa40c09a4e6c7a41a65f",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:44.310799+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406399.56&y=1666116.611",
+        "body": "cdl_2022_-1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_-1_1.1.xml"
+  },
+  "cdl_2022_0_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406369.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "9d0f86cbdeea3c75fdeccfae8d0f65bcf20be2bbd11c948df840aa6f8e6dc828",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:44.809239+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406369.56&y=1666116.611",
+        "body": "cdl_2022_0_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_0_1.1.xml"
+  },
+  "cdl_2022_1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406339.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "04a67b195c16517d7f3954e58960d19185fdf6372803f724af4ed4bce8b8c0d5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:45.321077+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406339.56&y=1666116.611",
+        "body": "cdl_2022_1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_1_1.1.xml"
+  },
+  "cdl_2022_-1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406399.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "23665d8273529e4587326f6156c5ebb68f0bdfd75cf64b21a9f78dbd534e4b8a",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:45.836481+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406399.56&y=1666086.611",
+        "body": "cdl_2022_-1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_-1_0.1.xml"
+  },
+  "cdl_2022_1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406339.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "98ca5082e1b36c6a2ba639b5762bce85b4328bccff1a10d5c278a3a336d71556",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:46.326758+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406339.56&y=1666086.611",
+        "body": "cdl_2022_1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_1_0.1.xml"
+  },
+  "cdl_2022_-1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406399.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "9de269e715b5b102ea61d0e7332b56f58c6458c27a55d199333c65890b4538c5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:46.817339+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406399.56&y=1666056.611",
+        "body": "cdl_2022_-1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_-1_-1.1.xml"
+  },
+  "cdl_2022_0_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406369.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "a3f1802415022bac5e32a78e2098a53c2f9fdb7b2199ea3b4ea7e83793b8bf4a",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:47.334846+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406369.56&y=1666056.611",
+        "body": "cdl_2022_0_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_0_-1.1.xml"
+  },
+  "cdl_2022_1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2022,
+        "x": -406339.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "66f3213933758200c8cbcf67d7bfa72b54e74247eac09f60ec605a205d14ce45",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:47.836529+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-406339.56&y=1666056.611",
+        "body": "cdl_2022_1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2022_1_-1.1.xml"
+  },
+  "cdl_2023_-1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406399.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "c4ce1f919ba5d222f742b1804646c034fb62daa07ccf61262b9993f865202c0c",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:48.361414+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406399.56&y=1666116.611",
+        "body": "cdl_2023_-1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_-1_1.1.xml"
+  },
+  "cdl_2023_0_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406369.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "8d87a4f12d27c43d5f416f190ea0d830ffa57499d2440e7869daf4aa92e5e55e",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:48.887161+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406369.56&y=1666116.611",
+        "body": "cdl_2023_0_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_0_1.1.xml"
+  },
+  "cdl_2023_1_1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406339.56,
+        "y": 1666116.611
+      },
+      "data": null
+    },
+    "signature": "1bcdbfa672a2d3f6ee965387a403378e82bd771cb3841ba7de9464705af6f9c5",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:49.407951+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406339.56&y=1666116.611",
+        "body": "cdl_2023_1_1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_1_1.1.xml"
+  },
+  "cdl_2023_-1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406399.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "052e61e2511913f98e1e6316e7f93f83d03fd37e4ff9b18066a19f5d152554d8",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:49.936036+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406399.56&y=1666086.611",
+        "body": "cdl_2023_-1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_-1_0.1.xml"
+  },
+  "cdl_2023_1_0": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406339.56,
+        "y": 1666086.611
+      },
+      "data": null
+    },
+    "signature": "1270d023af5a78bbca595b42783c7b6fc2f4fe61e144325f8f806e42e6a4a503",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:50.455678+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406339.56&y=1666086.611",
+        "body": "cdl_2023_1_0.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_1_0.1.xml"
+  },
+  "cdl_2023_-1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406399.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "3bac48f20f6e6aacbbcaeec4bb309d5c3cab8f48b78dcc47f1aed5ada8a492e7",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:50.985554+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406399.56&y=1666056.611",
+        "body": "cdl_2023_-1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_-1_-1.1.xml"
+  },
+  "cdl_2023_0_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406369.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "a14a216e505d9455e8201eafc227643ebfe863501af3466c4582c17bd4ac5298",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:51.505016+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406369.56&y=1666056.611",
+        "body": "cdl_2023_0_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_0_-1.1.xml"
+  },
+  "cdl_2023_1_-1": {
+    "request": {
+      "method": "GET",
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+      "params": {
+        "year": 2023,
+        "x": -406339.56,
+        "y": 1666056.611
+      },
+      "data": null
+    },
+    "signature": "5527d4408694e977bd6b4147ad661eb4be45eb5383b029eeca4abb39de37e517",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:52.031481+00:00",
+        "http_status": 200,
+        "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2023&x=-406339.56&y=1666056.611",
+        "body": "cdl_2023_1_-1.1.xml"
+      }
+    ],
+    "status": "complete",
+    "body": "cdl_2023_1_-1.1.xml"
+  }
+}

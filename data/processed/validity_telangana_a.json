@@ -1,0 +1,177 @@
+{
+  "farm_id": "telangana_a",
+  "verdict": "pass with flags",
+  "evidence": {
+    "annual": {
+      "2019": {
+        "good_composites": 9,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": []
+      },
+      "2020": {
+        "good_composites": 8,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": []
+      },
+      "2021": {
+        "good_composites": 6,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": []
+      },
+      "2022": {
+        "good_composites": 6,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": []
+      },
+      "2023": {
+        "good_composites": 10,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": []
+      }
+    },
+    "marginal_qa_sensitivity": {
+      "2019": {
+        "good_composites": 16,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2019-02-18"
+          ],
+          "0.12": [
+            "2019-02-18"
+          ],
+          "0.16": []
+        },
+        "peak_count": 1,
+        "bare_composites": []
+      },
+      "2020": {
+        "good_composites": 16,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2020-03-05"
+          ],
+          "0.12": [
+            "2020-03-05"
+          ],
+          "0.16": [
+            "2020-03-05"
+          ]
+        },
+        "peak_count": 1,
+        "bare_composites": []
+      },
+      "2021": {
+        "good_composites": 18,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2021-03-06"
+          ],
+          "0.12": [
+            "2021-03-06"
+          ],
+          "0.16": [
+            "2021-03-06"
+          ]
+        },
+        "peak_count": 1,
+        "bare_composites": []
+      },
+      "2022": {
+        "good_composites": 18,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2022-03-06"
+          ],
+          "0.12": [
+            "2022-03-06"
+          ],
+          "0.16": [
+            "2022-03-06"
+          ]
+        },
+        "peak_count": 1,
+        "bare_composites": []
+      },
+      "2023": {
+        "good_composites": 19,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2023-03-22"
+          ],
+          "0.12": [
+            "2023-03-22"
+          ],
+          "0.16": [
+            "2023-03-22"
+          ]
+        },
+        "peak_count": 1,
+        "bare_composites": []
+      }
+    },
+    "ndvi_2022_gap_filled": true,
+    "two_peak_years": 0,
+    "prior_land_cover": {
+      "center_class": 12,
+      "class_counts": {
+        "12": 1
+      },
+      "pixel_count": 1,
+      "grid_rows": 1,
+      "grid_columns": 1,
+      "qualifies": true
+    }
+  },
+  "flags": [
+    "Quality-screened NDVI does not consistently verify two crop seasons."
+  ],
+  "sources": [
+    "NASA Terra MOD13Q1 | https://lpdaac.usgs.gov/documents/621/MOD13_User_Guide_V61.pdf",
+    "NASA MODIS MCD12Q1 IGBP | https://modis-land.gsfc.nasa.gov/pdf/MCD12Q1_C6_Userguide04042018.pdf"
+  ]
+}

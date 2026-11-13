@@ -1,0 +1,170 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "verdict": "pass with flags",
+  "flags": [
+    "cropland unverified"
+  ],
+  "coordinate_decision": "kenya_makueni_north",
+  "retained": true,
+  "current": {
+    "annual": {
+      "2019": {
+        "good_composites": 14,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": [],
+        "long_rain_peaks": [],
+        "short_rain_peaks": [],
+        "two_rain_aligned_peaks": false
+      },
+      "2020": {
+        "good_composites": 13,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": [],
+        "long_rain_peaks": [],
+        "short_rain_peaks": [],
+        "two_rain_aligned_peaks": false
+      },
+      "2021": {
+        "good_composites": 16,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [
+            "2021-12-19"
+          ],
+          "0.12": [
+            "2021-12-19"
+          ],
+          "0.16": [
+            "2021-12-19"
+          ]
+        },
+        "peak_count": 1,
+        "bare_composites": [],
+        "long_rain_peaks": [],
+        "short_rain_peaks": [
+          "2021-12-29"
+        ],
+        "two_rain_aligned_peaks": false
+      },
+      "2022": {
+        "good_composites": 14,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": [],
+        "long_rain_peaks": [],
+        "short_rain_peaks": [],
+        "two_rain_aligned_peaks": false
+      },
+      "2023": {
+        "good_composites": 17,
+        "received_composites": 23,
+        "status": "complete",
+        "peaks": {
+          "0.08": [],
+          "0.12": [],
+          "0.16": []
+        },
+        "peak_count": 0,
+        "bare_composites": [],
+        "long_rain_peaks": [],
+        "short_rain_peaks": [],
+        "two_rain_aligned_peaks": false
+      }
+    },
+    "land_cover": {
+      "center_class": 10,
+      "class_counts": {
+        "10": 25
+      },
+      "pixel_count": 25,
+      "grid_rows": 5,
+      "grid_columns": 5,
+      "qualifies": false
+    },
+    "qualifying_years": 0,
+    "passes": false
+  },
+  "alternatives": {
+    "kenya_katumani": {
+      "farm_id": "kenya_katumani",
+      "name": "Katumani, Machakos",
+      "lat": -1.5880555555555558,
+      "lon": 37.238055555555555,
+      "source": "https://kalroerepository.kalro.org/server/api/core/bitstreams/d25bba84-bf16-4d64-99dc-60aa7283e3ec/content",
+      "land_cover": {
+        "center_class": 10,
+        "class_counts": {
+          "10": 25
+        },
+        "pixel_count": 25,
+        "grid_rows": 5,
+        "grid_columns": 5,
+        "qualifies": false
+      },
+      "passes": false,
+      "status": "rejected by land-cover gate",
+      "ndvi_check": "not completed after land-cover rejection"
+    },
+    "kenya_kampi_ya_mawe": {
+      "farm_id": "kenya_kampi_ya_mawe",
+      "name": "Kampi ya Mawe, Makueni",
+      "lat": -1.8483333333333334,
+      "lon": 37.658055555555556,
+      "source": "https://kalroerepository.kalro.org/server/api/core/bitstreams/d25bba84-bf16-4d64-99dc-60aa7283e3ec/content",
+      "land_cover": {
+        "center_class": 10,
+        "class_counts": {
+          "10": 25
+        },
+        "pixel_count": 25,
+        "grid_rows": 5,
+        "grid_columns": 5,
+        "qualifies": false
+      },
+      "passes": false,
+      "status": "rejected by land-cover gate",
+      "ndvi_check": "not completed after land-cover rejection"
+    }
+  },
+  "sources": [
+    "NASA Terra MOD13Q1 | https://lpdaac.usgs.gov/documents/621/MOD13_User_Guide_V61.pdf",
+    "NASA MODIS MCD12Q1 IGBP | https://modis-land.gsfc.nasa.gov/pdf/MCD12Q1_C6_Userguide04042018.pdf",
+    "NASA POWER April and November rainfall peaks | data/raw/p2_evidence/kenya_power.json"
+  ],
+  "rule": "Two clear rain-aligned peaks in at least three of five years and cropland or mosaic at the center and a majority of nearby pixels.",
+  "method_assumptions": {
+    "source": "assumption, validate locally",
+    "long_rain_peak_months": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "short_rain_peak_months": [
+      11,
+      12
+    ],
+    "ndvi_prominence": 0.12
+  }
+}

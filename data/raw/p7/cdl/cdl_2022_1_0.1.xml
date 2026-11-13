@@ -1,0 +1,1 @@
+<ns1:GetCDLValueResponse xmlns:ns1="http://cropscape.csiss.gmu.edu/CDLService/"><Result>{x: -406339.56, y: 1666086.611, value: 61, category: "Fallow/Idle Cropland", color: "#BFBF7A"}</Result></ns1:GetCDLValueResponse>

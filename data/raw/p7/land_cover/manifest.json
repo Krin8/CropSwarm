@@ -1,0 +1,146 @@
+{
+  "mcd12q1_kenya_makueni_north_2023": {
+    "request": {
+      "method": "GET",
+      "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset",
+      "params": {
+        "latitude": -1.95,
+        "longitude": 37.64,
+        "startDate": "A2023001",
+        "endDate": "A2023001",
+        "kmAboveBelow": 0.5,
+        "kmLeftRight": 0.5
+      },
+      "data": null
+    },
+    "signature": "2b129fc34602ac4456dd977add132024ef8c628b789230cecce77b7b21b75b8b",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:12.139869+00:00",
+        "http_status": 400,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.95&longitude=37.64&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5",
+        "body": "mcd12q1_kenya_makueni_north_2023.1.json",
+        "error": "400 Client Error: Bad Request for url: https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.95&longitude=37.64&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5"
+      },
+      {
+        "timestamp_utc": "2026-11-13T23:06:14.414957+00:00",
+        "http_status": 400,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.95&longitude=37.64&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5",
+        "body": "mcd12q1_kenya_makueni_north_2023.2.json",
+        "error": "400 Client Error: Bad Request for url: https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.95&longitude=37.64&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5"
+      }
+    ],
+    "status": "incomplete"
+  },
+  "mcd12q1_kenya_katumani_2023": {
+    "request": {
+      "method": "GET",
+      "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset",
+      "params": {
+        "latitude": -1.5880555555555558,
+        "longitude": 37.238055555555555,
+        "startDate": "A2023001",
+        "endDate": "A2023001",
+        "kmAboveBelow": 0.5,
+        "kmLeftRight": 0.5
+      },
+      "data": null
+    },
+    "signature": "fc3350dc53702ba37becb2425905fd68dc7b91e2868a6cd82cedc17bfc98272c",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:15.734154+00:00",
+        "http_status": 400,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.5880555555555558&longitude=37.238055555555555&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5",
+        "body": "mcd12q1_kenya_katumani_2023.1.json",
+        "error": "400 Client Error: Bad Request for url: https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.5880555555555558&longitude=37.238055555555555&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5"
+      },
+      {
+        "timestamp_utc": "2026-11-13T23:06:17.976092+00:00",
+        "http_status": 400,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.5880555555555558&longitude=37.238055555555555&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5",
+        "body": "mcd12q1_kenya_katumani_2023.2.json",
+        "error": "400 Client Error: Bad Request for url: https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.5880555555555558&longitude=37.238055555555555&startDate=A2023001&endDate=A2023001&kmAboveBelow=0.5&kmLeftRight=0.5"
+      }
+    ],
+    "status": "incomplete"
+  },
+  "mcd12q1_kenya_makueni_north_2023_1km": {
+    "request": {
+      "method": "GET",
+      "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset",
+      "params": {
+        "latitude": -1.95,
+        "longitude": 37.64,
+        "startDate": "A2023001",
+        "endDate": "A2023001",
+        "kmAboveBelow": 1,
+        "kmLeftRight": 1
+      },
+      "data": null
+    },
+    "signature": "e9e9a0c95587d7d4ae3cdf5d2de5f3dc4b3d780f11f30ee77166e43f33dab7d1",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:06:56.148540+00:00",
+        "http_status": 200,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.95&longitude=37.64&startDate=A2023001&endDate=A2023001&kmAboveBelow=1&kmLeftRight=1",
+        "body": "mcd12q1_kenya_makueni_north_2023_1km.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "mcd12q1_kenya_makueni_north_2023_1km.1.json"
+  },
+  "mcd12q1_kenya_katumani_2023_1km": {
+    "request": {
+      "method": "GET",
+      "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset",
+      "params": {
+        "latitude": -1.5880555555555558,
+        "longitude": 37.238055555555555,
+        "startDate": "A2023001",
+        "endDate": "A2023001",
+        "kmAboveBelow": 1,
+        "kmLeftRight": 1
+      },
+      "data": null
+    },
+    "signature": "acc654cdbcfecc99250ed2dd213c96e0c7c7eae8b4aba2c0e7c65dc9832762e6",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:07:02.035454+00:00",
+        "http_status": 200,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.5880555555555558&longitude=37.238055555555555&startDate=A2023001&endDate=A2023001&kmAboveBelow=1&kmLeftRight=1",
+        "body": "mcd12q1_kenya_katumani_2023_1km.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "mcd12q1_kenya_katumani_2023_1km.1.json"
+  },
+  "mcd12q1_kenya_kampi_ya_mawe_2023_1km": {
+    "request": {
+      "method": "GET",
+      "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset",
+      "params": {
+        "latitude": -1.8483333333333334,
+        "longitude": 37.658055555555556,
+        "startDate": "A2023001",
+        "endDate": "A2023001",
+        "kmAboveBelow": 1,
+        "kmLeftRight": 1
+      },
+      "data": null
+    },
+    "signature": "94fbc8bfd212cb3de2da898c50df4b43bb5ac34000ba92e89f6ff027d242ac63",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:07:03.711303+00:00",
+        "http_status": 200,
+        "url": "https://modis.ornl.gov/rst/api/v1/MCD12Q1/subset?latitude=-1.8483333333333334&longitude=37.658055555555556&startDate=A2023001&endDate=A2023001&kmAboveBelow=1&kmLeftRight=1",
+        "body": "mcd12q1_kenya_kampi_ya_mawe_2023_1km.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "mcd12q1_kenya_kampi_ya_mawe_2023_1km.1.json"
+  }
+}
