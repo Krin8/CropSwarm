@@ -1,0 +1,645 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "label": "illustrative; validate locally",
+  "assessment": "NASA POWER supplies 12,784 calendar days for this site. The longest observed dry spell was 116 days using the local-validation rainfall threshold. The annual rainfall coefficient of variation was 0.24. MODIS supplied 144 quality-screened vegetation composites for this assessment. The mean absolute difference between the two daily rainfall products was 2.2 mm.",
+  "metrics": {
+    "temperature_trend": {
+      "value": {
+        "status": "complete",
+        "years": 35,
+        "linear_per_decade": 0.24396502321266858,
+        "theil_sen_per_decade": 0.2705661601417357,
+        "theil_sen_95_interval": [
+          0.17205479452055022,
+          0.3849520783602684
+        ],
+        "mann_kendall_p": 1.9145407059386778e-05,
+        "mann_kendall_significant_0_05": true
+      },
+      "unit": "\u00b0C/decade",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "precipitation_trend": {
+      "value": {
+        "status": "complete",
+        "years": 35,
+        "linear_per_decade": 10.19436974789916,
+        "theil_sen_per_decade": 5.875000000000057,
+        "theil_sen_95_interval": [
+          -39.90000000000009,
+          63.8
+        ],
+        "mann_kendall_p": 0.765527570552786,
+        "mann_kendall_significant_0_05": false
+      },
+      "unit": "mm/decade of annual total",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "rainfall_cv": {
+      "value": 0.23609644452552006,
+      "unit": "ratio",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "longest_observed_dry_spell": {
+      "value": 116,
+      "unit": "days",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "days_above_crop_heat_threshold": {
+      "value": {
+        "winter_wheat": {
+          "threshold_c": 30.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 4826
+        },
+        "sorghum": {
+          "threshold_c": 38.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 0
+        },
+        "paddy": {
+          "threshold_c": 35.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 26
+        },
+        "maize": {
+          "threshold_c": 35.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 26
+        },
+        "common_bean": {
+          "threshold_c": 32.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 1313
+        },
+        "soybean": {
+          "threshold_c": 35.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 26
+        },
+        "chickpea": {
+          "threshold_c": 32.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 1313
+        },
+        "pigeonpea": {
+          "threshold_c": 38.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 0
+        },
+        "green_gram": {
+          "threshold_c": 36.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 1
+        },
+        "pearl_millet": {
+          "threshold_c": 40.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 0
+        },
+        "sunflower": {
+          "threshold_c": 36.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 1
+        },
+        "cowpea": {
+          "threshold_c": 30.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 4826
+        },
+        "cereal_rye_cover": {
+          "threshold_c": 30.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 4826
+        },
+        "field_pea": {
+          "threshold_c": 30.0,
+          "threshold_source": "data/crops.csv",
+          "observed_days": 12784,
+          "days_above": 4826
+        }
+      },
+      "unit": "days",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "frost_free_windows": {
+      "value": {},
+      "unit": "days and calendar dates",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "seasonal_soil_wetness_anomaly": {
+      "value": {
+        "long_rains": [
+          {
+            "year": 1991,
+            "anomaly": -0.014878881987577475
+          },
+          {
+            "year": 1992,
+            "anomaly": 0.001860248447204893
+          },
+          {
+            "year": 1993,
+            "anomaly": -0.022596273291925373
+          },
+          {
+            "year": 1994,
+            "anomaly": -0.013031055900621147
+          },
+          {
+            "year": 1995,
+            "anomaly": 0.026751552795031053
+          },
+          {
+            "year": 1996,
+            "anomaly": 0.00022981366459629005
+          },
+          {
+            "year": 1997,
+            "anomaly": 0.019468944099378938
+          },
+          {
+            "year": 1998,
+            "anomaly": 0.08957763975155275
+          },
+          {
+            "year": 1999,
+            "anomaly": -0.019770186335403617
+          },
+          {
+            "year": 2000,
+            "anomaly": -0.055096273291925624
+          },
+          {
+            "year": 2001,
+            "anomaly": -0.02324844720496899
+          },
+          {
+            "year": 2002,
+            "anomaly": 0.001860248447204893
+          },
+          {
+            "year": 2003,
+            "anomaly": 0.015664596273291975
+          },
+          {
+            "year": 2004,
+            "anomaly": -0.02911801242236034
+          },
+          {
+            "year": 2005,
+            "anomaly": -0.03259627329192549
+          },
+          {
+            "year": 2006,
+            "anomaly": 0.03272981366459626
+          },
+          {
+            "year": 2007,
+            "anomaly": -0.024226708074533976
+          },
+          {
+            "year": 2008,
+            "anomaly": -0.022270186335403674
+          },
+          {
+            "year": 2009,
+            "anomaly": -0.04390062111801252
+          },
+          {
+            "year": 2010,
+            "anomaly": -0.01172670807453402
+          },
+          {
+            "year": 2011,
+            "anomaly": -0.042052795031055745
+          },
+          {
+            "year": 2012,
+            "anomaly": 0.00881677018633542
+          },
+          {
+            "year": 2013,
+            "anomaly": 0.023164596273291926
+          },
+          {
+            "year": 2014,
+            "anomaly": -0.019770186335403728
+          },
+          {
+            "year": 2015,
+            "anomaly": -0.027813664596273102
+          },
+          {
+            "year": 2016,
+            "anomaly": -0.01357453416149057
+          },
+          {
+            "year": 2017,
+            "anomaly": -0.012487577639751501
+          },
+          {
+            "year": 2018,
+            "anomaly": 0.1726211180124223
+          },
+          {
+            "year": 2019,
+            "anomaly": -0.047596273291925395
+          },
+          {
+            "year": 2020,
+            "anomaly": 0.07457763975155285
+          },
+          {
+            "year": 2021,
+            "anomaly": -0.024444099378882145
+          },
+          {
+            "year": 2022,
+            "anomaly": -0.03857453416149059
+          },
+          {
+            "year": 2023,
+            "anomaly": 0.02186024844720491
+          },
+          {
+            "year": 2024,
+            "anomaly": 0.043599378881987616
+          },
+          {
+            "year": 2025,
+            "anomaly": 0.005990683229813776
+          }
+        ],
+        "short_rains": [
+          {
+            "year": 1991,
+            "anomaly": -0.04724590163934428
+          },
+          {
+            "year": 1992,
+            "anomaly": 0.0025901639344261262
+          },
+          {
+            "year": 1993,
+            "anomaly": -0.028393442622950738
+          },
+          {
+            "year": 1994,
+            "anomaly": 0.05865573770491794
+          },
+          {
+            "year": 1995,
+            "anomaly": 0.0017704918032785955
+          },
+          {
+            "year": 1996,
+            "anomaly": -0.019540983606557427
+          },
+          {
+            "year": 1997,
+            "anomaly": 0.14931147540983603
+          },
+          {
+            "year": 1998,
+            "anomaly": -0.05462295081967228
+          },
+          {
+            "year": 1999,
+            "anomaly": 0.017836065573770488
+          },
+          {
+            "year": 2000,
+            "anomaly": -0.011180327868852591
+          },
+          {
+            "year": 2001,
+            "anomaly": 0.018655737704917907
+          },
+          {
+            "year": 2002,
+            "anomaly": 0.0273442622950818
+          },
+          {
+            "year": 2003,
+            "anomaly": -0.029377049180327908
+          },
+          {
+            "year": 2004,
+            "anomaly": -0.04790163934426217
+          },
+          {
+            "year": 2005,
+            "anomaly": -0.06216393442622947
+          },
+          {
+            "year": 2006,
+            "anomaly": 0.07472131147540984
+          },
+          {
+            "year": 2007,
+            "anomaly": -0.02822950819672132
+          },
+          {
+            "year": 2008,
+            "anomaly": -0.03888524590163944
+          },
+          {
+            "year": 2009,
+            "anomaly": -0.02708196721311462
+          },
+          {
+            "year": 2010,
+            "anomaly": -0.04872131147540992
+          },
+          {
+            "year": 2011,
+            "anomaly": 0.021770491803278613
+          },
+          {
+            "year": 2012,
+            "anomaly": -0.022655737704918133
+          },
+          {
+            "year": 2013,
+            "anomaly": -0.0006885245901638859
+          },
+          {
+            "year": 2014,
+            "anomaly": -0.027573770491803207
+          },
+          {
+            "year": 2015,
+            "anomaly": 0.025049180327868736
+          },
+          {
+            "year": 2016,
+            "anomaly": -0.02003278688524579
+          },
+          {
+            "year": 2017,
+            "anomaly": -0.012491803278688596
+          },
+          {
+            "year": 2018,
+            "anomaly": -0.024131147540983555
+          },
+          {
+            "year": 2019,
+            "anomaly": 0.11799999999999988
+          },
+          {
+            "year": 2020,
+            "anomaly": 0.013409836065573666
+          },
+          {
+            "year": 2021,
+            "anomaly": -0.0336393442622952
+          },
+          {
+            "year": 2022,
+            "anomaly": -0.04642622950819675
+          },
+          {
+            "year": 2023,
+            "anomaly": 0.1384918032786886
+          },
+          {
+            "year": 2024,
+            "anomaly": 0.0007868852459016473
+          },
+          {
+            "year": 2025,
+            "anomaly": -0.03740983606557369
+          }
+        ]
+      },
+      "unit": "relative soil wetness",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "precipitation_data_agreement": {
+      "value": {
+        "days": 9497,
+        "bias": 0.2614857323365274,
+        "mae": 2.1623217858271033,
+        "correlation": 0.4536538087244673
+      },
+      "unit": "daily mm, Pearson r and matched days",
+      "source": "NASA POWER PRECTOTCORR and IMERG_PRECTOT (UTC)"
+    },
+    "annual_climate_regimes": {
+      "value": {
+        "1991": "dry_hot",
+        "1992": "normal",
+        "1993": "normal",
+        "1994": "normal",
+        "1995": "normal",
+        "1996": "normal",
+        "1997": "wet",
+        "1998": "wet",
+        "1999": "normal",
+        "2000": "dry_hot",
+        "2001": "normal",
+        "2002": "normal",
+        "2003": "dry_hot",
+        "2004": "dry_hot",
+        "2005": "dry_hot",
+        "2006": "wet",
+        "2007": "normal",
+        "2008": "dry_hot",
+        "2009": "dry_hot",
+        "2010": "dry_hot",
+        "2011": "dry_hot",
+        "2012": "dry_hot",
+        "2013": "dry_hot",
+        "2014": "dry_hot",
+        "2015": "dry_hot",
+        "2016": "dry_hot",
+        "2017": "dry_hot",
+        "2018": "wet",
+        "2019": "dry_hot",
+        "2020": "wet",
+        "2021": "dry_hot",
+        "2022": "dry_hot",
+        "2023": "wet",
+        "2024": "dry_hot",
+        "2025": "dry_hot"
+      },
+      "unit": "class",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    "ndvi_peaks": {
+      "value": {
+        "2015": {
+          "good_composites": 14,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2016": {
+          "good_composites": 13,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2017": {
+          "good_composites": 17,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2018": {
+          "good_composites": 11,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2019": {
+          "good_composites": 14,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2020": {
+          "good_composites": 13,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2021": {
+          "good_composites": 16,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [
+              "2021-12-19"
+            ],
+            "0.12": [
+              "2021-12-19"
+            ],
+            "0.16": [
+              "2021-12-19"
+            ]
+          },
+          "peak_count": 1,
+          "bare_composites": []
+        },
+        "2022": {
+          "good_composites": 14,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2023": {
+          "good_composites": 17,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        },
+        "2024": {
+          "good_composites": 15,
+          "received_composites": 23,
+          "status": "complete",
+          "peaks": {
+            "0.08": [],
+            "0.12": [],
+            "0.16": []
+          },
+          "peak_count": 0,
+          "bare_composites": []
+        }
+      },
+      "unit": "counts and composite dates",
+      "source": "NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1"
+    },
+    "monthly_precipitation": {
+      "value": {
+        "1": 44.35,
+        "2": 30.3,
+        "3": 62.0,
+        "4": 101.93,
+        "5": 61.14,
+        "6": 15.22,
+        "7": 12.09,
+        "8": 14.72,
+        "9": 12.78,
+        "10": 46.54,
+        "11": 103.16,
+        "12": 76.88
+      },
+      "unit": "mm/month",
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    }
+  },
+  "validation_flags": [
+    "MCD12Q1 class 10 (grassland) conflicts with intended cropland use; cropland at exact point unverified",
+    "NASA POWER rainfall is regional gridded evidence, not a field rain gauge",
+    "Two crop seasons and crop identities remain unverified at point"
+  ],
+  "limitations": [
+    "POWER soil wetness is modelled. Rainfall and vegetation are gridded products.",
+    "Satellites do not directly measure soil nitrogen or organic carbon.",
+    "Rank trend significance assumes independent annual values. It is illustrative."
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "label": "illustrative; validate locally",
+  "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+  "season_windows": {
+    "long_rains": {
+      "onset_month": 3,
+      "cessation_month": 5,
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "historical": [
+        {
+          "year": 1991,
+          "days": 92,
+          "precip_mm": 220.57999999999996,
+          "temperature_c": 22.402173913043477,
+          "peak_daily_rain_mm": 18.46,
+          "max_temperature_c": 34.68,
+          "soil_wetness": 0.5316304347826089,
+          "soil_wetness_anomaly": -0.014878881987577475
+        },
+        {
+          "year": 1992,
+          "days": 92,
+          "precip_mm": 250.50999999999993,
+          "temperature_c": 22.252173913043478,
+          "peak_daily_rain_mm": 21.72,
+          "max_temperature_c": 34.97,
+          "soil_wetness": 0.5483695652173912,
+          "soil_wetness_anomaly": 0.001860248447204893
+        },
+        {
+          "year": 1993,
+          "days": 92,
+          "precip_mm": 168.22,
+          "temperature_c": 22.062826086956523,
+          "peak_daily_rain_mm": 10.4,
+          "max_temperature_c": 32.02,
+          "soil_wetness": 0.523913043478261,
+          "soil_wetness_anomaly": -0.022596273291925373
+        },
+        {
+          "year": 1994,
+          "days": 92,
+          "precip_mm": 215.69,
+          "temperature_c": 21.95608695652174,
+          "peak_daily_rain_mm": 19.43,
+          "max_temperature_c": 32.63,
+          "soil_wetness": 0.5334782608695652,
+          "soil_wetness_anomaly": -0.013031055900621147
+        },
+        {
+          "year": 1995,
+          "days": 92,
+          "precip_mm": 307.17,
+          "temperature_c": 21.58554347826087,
+          "peak_daily_rain_mm": 19.84,
+          "max_temperature_c": 31.28,
+          "soil_wetness": 0.5732608695652174,
+          "soil_wetness_anomaly": 0.026751552795031053
+        },
+        {
+          "year": 1996,
+          "days": 92,
+          "precip_mm": 219.17000000000002,
+          "temperature_c": 21.768260869565214,
+          "peak_daily_rain_mm": 13.41,
+          "max_temperature_c": 31.92,
+          "soil_wetness": 0.5467391304347826,
+          "soil_wetness_anomaly": 0.00022981366459629005
+        },
+        {
+          "year": 1997,
+          "days": 92,
+          "precip_mm": 291.2699999999999,
+          "temperature_c": 21.706195652173914,
+          "peak_daily_rain_mm": 19.92,
+          "max_temperature_c": 34.43,
+          "soil_wetness": 0.5659782608695653,
+          "soil_wetness_anomaly": 0.019468944099378938
+        },
+        {
+          "year": 1998,
+          "days": 92,
+          "precip_mm": 330.84000000000003,
+          "temperature_c": 21.824239130434783,
+          "peak_daily_rain_mm": 20.07,
+          "max_temperature_c": 31.67,
+          "soil_wetness": 0.6360869565217391,
+          "soil_wetness_anomaly": 0.08957763975155275
+        },
+        {
+          "year": 1999,
+          "days": 92,
+          "precip_mm": 178.33999999999997,
+          "temperature_c": 21.998804347826084,
+          "peak_daily_rain_mm": 16.85,
+          "max_temperature_c": 34.04,
+          "soil_wetness": 0.5267391304347827,
+          "soil_wetness_anomaly": -0.019770186335403617
+        },
+        {
+          "year": 2000,
+          "days": 92,
+          "precip_mm": 95.2,
+          "temperature_c": 22.704673913043482,
+          "peak_daily_rain_mm": 7.36,
+          "max_temperature_c": 34.69,
+          "soil_wetness": 0.4914130434782607,
+          "soil_wetness_anomaly": -0.055096273291925624
+        },
+        {
+          "year": 2001,
+          "days": 92,
+          "precip_mm": 176.13000000000002,
+          "temperature_c": 22.29826086956522,
+          "peak_daily_rain_mm": 13.01,
+          "max_temperature_c": 33.27,
+          "soil_wetness": 0.5232608695652173,
+          "soil_wetness_anomaly": -0.02324844720496899
+        },
+        {
+          "year": 2002,
+          "days": 92,
+          "precip_mm": 254.13000000000002,
+          "temperature_c": 22.12804347826087,
+          "peak_daily_rain_mm": 11.76,
+          "max_temperature_c": 33.06,
+          "soil_wetness": 0.5483695652173912,
+          "soil_wetness_anomaly": 0.001860248447204893
+        },
+        {
+          "year": 2003,
+          "days": 92,
+          "precip_mm": 313.36999999999995,
+          "temperature_c": 22.5845652173913,
+          "peak_daily_rain_mm": 19.62,
+          "max_temperature_c": 35.03,
+          "soil_wetness": 0.5621739130434783,
+          "soil_wetness_anomaly": 0.015664596273291975
+        },
+        {
+          "year": 2004,
+          "days": 92,
+          "precip_mm": 151.34,
+          "temperature_c": 22.63923913043478,
+          "peak_daily_rain_mm": 25.03,
+          "max_temperature_c": 34.99,
+          "soil_wetness": 0.517391304347826,
+          "soil_wetness_anomaly": -0.02911801242236034
+        },
+        {
+          "year": 2005,
+          "days": 92,
+          "precip_mm": 184.51,
+          "temperature_c": 22.94619565217392,
+          "peak_daily_rain_mm": 19.87,
+          "max_temperature_c": 34.78,
+          "soil_wetness": 0.5139130434782608,
+          "soil_wetness_anomaly": -0.03259627329192549
+        },
+        {
+          "year": 2006,
+          "days": 92,
+          "precip_mm": 307.25,
+          "temperature_c": 21.73945652173913,
+          "peak_daily_rain_mm": 26.51,
+          "max_temperature_c": 32.29,
+          "soil_wetness": 0.5792391304347826,
+          "soil_wetness_anomaly": 0.03272981366459626
+        },
+        {
+          "year": 2007,
+          "days": 92,
+          "precip_mm": 179.84,
+          "temperature_c": 22.4475,
+          "peak_daily_rain_mm": 11.13,
+          "max_temperature_c": 33.27,
+          "soil_wetness": 0.5222826086956524,
+          "soil_wetness_anomaly": -0.024226708074533976
+        },
+        {
+          "year": 2008,
+          "days": 92,
+          "precip_mm": 178.99,
+          "temperature_c": 21.957065217391307,
+          "peak_daily_rain_mm": 11.85,
+          "max_temperature_c": 33.14,
+          "soil_wetness": 0.5242391304347827,
+          "soil_wetness_anomaly": -0.022270186335403674
+        },
+        {
+          "year": 2009,
+          "days": 92,
+          "precip_mm": 138.13,
+          "temperature_c": 22.856086956521743,
+          "peak_daily_rain_mm": 6.1,
+          "max_temperature_c": 34.88,
+          "soil_wetness": 0.5026086956521738,
+          "soil_wetness_anomaly": -0.04390062111801252
+        },
+        {
+          "year": 2010,
+          "days": 92,
+          "precip_mm": 214.54999999999998,
+          "temperature_c": 22.447934782608694,
+          "peak_daily_rain_mm": 10.27,
+          "max_temperature_c": 33.11,
+          "soil_wetness": 0.5347826086956523,
+          "soil_wetness_anomaly": -0.01172670807453402
+        },
+        {
+          "year": 2011,
+          "days": 92,
+          "precip_mm": 134.4,
+          "temperature_c": 22.73847826086956,
+          "peak_daily_rain_mm": 10.36,
+          "max_temperature_c": 33.47,
+          "soil_wetness": 0.5044565217391306,
+          "soil_wetness_anomaly": -0.042052795031055745
+        },
+        {
+          "year": 2012,
+          "days": 92,
+          "precip_mm": 255.98999999999998,
+          "temperature_c": 22.254565217391306,
+          "peak_daily_rain_mm": 30.8,
+          "max_temperature_c": 35.52,
+          "soil_wetness": 0.5553260869565217,
+          "soil_wetness_anomaly": 0.00881677018633542
+        },
+        {
+          "year": 2013,
+          "days": 92,
+          "precip_mm": 261.49,
+          "temperature_c": 21.988152173913047,
+          "peak_daily_rain_mm": 31.98,
+          "max_temperature_c": 33.84,
+          "soil_wetness": 0.5696739130434783,
+          "soil_wetness_anomaly": 0.023164596273291926
+        },
+        {
+          "year": 2014,
+          "days": 92,
+          "precip_mm": 165.19,
+          "temperature_c": 22.316413043478263,
+          "peak_daily_rain_mm": 16.06,
+          "max_temperature_c": 32.44,
+          "soil_wetness": 0.5267391304347826,
+          "soil_wetness_anomaly": -0.019770186335403728
+        },
+        {
+          "year": 2015,
+          "days": 92,
+          "precip_mm": 166.61999999999998,
+          "temperature_c": 22.582826086956526,
+          "peak_daily_rain_mm": 14.18,
+          "max_temperature_c": 33.58,
+          "soil_wetness": 0.5186956521739132,
+          "soil_wetness_anomaly": -0.027813664596273102
+        },
+        {
+          "year": 2016,
+          "days": 92,
+          "precip_mm": 186.22,
+          "temperature_c": 23.01380434782609,
+          "peak_daily_rain_mm": 24.75,
+          "max_temperature_c": 35.58,
+          "soil_wetness": 0.5329347826086958,
+          "soil_wetness_anomaly": -0.01357453416149057
+        },
+        {
+          "year": 2017,
+          "days": 92,
+          "precip_mm": 217.71,
+          "temperature_c": 22.85978260869565,
+          "peak_daily_rain_mm": 35.55,
+          "max_temperature_c": 35.62,
+          "soil_wetness": 0.5340217391304348,
+          "soil_wetness_anomaly": -0.012487577639751501
+        },
+        {
+          "year": 2018,
+          "days": 92,
+          "precip_mm": 548.6,
+          "temperature_c": 20.567826086956526,
+          "peak_daily_rain_mm": 29.25,
+          "max_temperature_c": 31.38,
+          "soil_wetness": 0.7191304347826086,
+          "soil_wetness_anomaly": 0.1726211180124223
+        },
+        {
+          "year": 2019,
+          "days": 92,
+          "precip_mm": 111.28,
+          "temperature_c": 23.790326086956522,
+          "peak_daily_rain_mm": 19.59,
+          "max_temperature_c": 35.79,
+          "soil_wetness": 0.49891304347826093,
+          "soil_wetness_anomaly": -0.047596273291925395
+        },
+        {
+          "year": 2020,
+          "days": 92,
+          "precip_mm": 331.68000000000006,
+          "temperature_c": 21.625978260869566,
+          "peak_daily_rain_mm": 24.49,
+          "max_temperature_c": 32.46,
+          "soil_wetness": 0.6210869565217392,
+          "soil_wetness_anomaly": 0.07457763975155285
+        },
+        {
+          "year": 2021,
+          "days": 92,
+          "precip_mm": 180.04999999999998,
+          "temperature_c": 22.396195652173912,
+          "peak_daily_rain_mm": 17.45,
+          "max_temperature_c": 33.23,
+          "soil_wetness": 0.5220652173913042,
+          "soil_wetness_anomaly": -0.024444099378882145
+        },
+        {
+          "year": 2022,
+          "days": 92,
+          "precip_mm": 125.49,
+          "temperature_c": 23.055760869565223,
+          "peak_daily_rain_mm": 17.72,
+          "max_temperature_c": 34.43,
+          "soil_wetness": 0.5079347826086957,
+          "soil_wetness_anomaly": -0.03857453416149059
+        },
+        {
+          "year": 2023,
+          "days": 92,
+          "precip_mm": 285.9099999999999,
+          "temperature_c": 22.090869565217393,
+          "peak_daily_rain_mm": 52.21,
+          "max_temperature_c": 33.84,
+          "soil_wetness": 0.5683695652173912,
+          "soil_wetness_anomaly": 0.02186024844720491
+        },
+        {
+          "year": 2024,
+          "days": 92,
+          "precip_mm": 284.34000000000003,
+          "temperature_c": 22.401630434782607,
+          "peak_daily_rain_mm": 41.01,
+          "max_temperature_c": 33.58,
+          "soil_wetness": 0.5901086956521739,
+          "soil_wetness_anomaly": 0.043599378881987616
+        },
+        {
+          "year": 2025,
+          "days": 92,
+          "precip_mm": 247.45,
+          "temperature_c": 22.736630434782608,
+          "peak_daily_rain_mm": 18.15,
+          "max_temperature_c": 34.24,
+          "soil_wetness": 0.5525000000000001,
+          "soil_wetness_anomaly": 0.005990683229813776
+        }
+      ]
+    },
+    "short_rains": {
+      "onset_month": 11,
+      "cessation_month": 12,
+      "source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "historical": [
+        {
+          "year": 1991,
+          "days": 61,
+          "precip_mm": 131.23000000000005,
+          "temperature_c": 21.872295081967213,
+          "peak_daily_rain_mm": 12.29,
+          "max_temperature_c": 31.48,
+          "soil_wetness": 0.5098360655737705,
+          "soil_wetness_anomaly": -0.04724590163934428
+        },
+        {
+          "year": 1992,
+          "days": 61,
+          "precip_mm": 182.73,
+          "temperature_c": 20.9627868852459,
+          "peak_daily_rain_mm": 11.1,
+          "max_temperature_c": 29.4,
+          "soil_wetness": 0.5596721311475409,
+          "soil_wetness_anomaly": 0.0025901639344261262
+        },
+        {
+          "year": 1993,
+          "days": 61,
+          "precip_mm": 130.56,
+          "temperature_c": 21.790983606557376,
+          "peak_daily_rain_mm": 9.19,
+          "max_temperature_c": 31.7,
+          "soil_wetness": 0.528688524590164,
+          "soil_wetness_anomaly": -0.028393442622950738
+        },
+        {
+          "year": 1994,
+          "days": 61,
+          "precip_mm": 272.75,
+          "temperature_c": 20.731311475409836,
+          "peak_daily_rain_mm": 14.71,
+          "max_temperature_c": 29.08,
+          "soil_wetness": 0.6157377049180327,
+          "soil_wetness_anomaly": 0.05865573770491794
+        },
+        {
+          "year": 1995,
+          "days": 61,
+          "precip_mm": 144.78999999999994,
+          "temperature_c": 21.01557377049181,
+          "peak_daily_rain_mm": 9.48,
+          "max_temperature_c": 30.28,
+          "soil_wetness": 0.5588524590163934,
+          "soil_wetness_anomaly": 0.0017704918032785955
+        },
+        {
+          "year": 1996,
+          "days": 61,
+          "precip_mm": 147.26,
+          "temperature_c": 21.268196721311476,
+          "peak_daily_rain_mm": 15.86,
+          "max_temperature_c": 31.72,
+          "soil_wetness": 0.5375409836065573,
+          "soil_wetness_anomaly": -0.019540983606557427
+        },
+        {
+          "year": 1997,
+          "days": 61,
+          "precip_mm": 359.78000000000003,
+          "temperature_c": 20.52770491803279,
+          "peak_daily_rain_mm": 16.83,
+          "max_temperature_c": 28.61,
+          "soil_wetness": 0.7063934426229508,
+          "soil_wetness_anomaly": 0.14931147540983603
+        },
+        {
+          "year": 1998,
+          "days": 61,
+          "precip_mm": 81.97000000000001,
+          "temperature_c": 22.150163934426228,
+          "peak_daily_rain_mm": 6.34,
+          "max_temperature_c": 31.62,
+          "soil_wetness": 0.5024590163934425,
+          "soil_wetness_anomaly": -0.05462295081967228
+        },
+        {
+          "year": 1999,
+          "days": 61,
+          "precip_mm": 230.22,
+          "temperature_c": 20.98754098360656,
+          "peak_daily_rain_mm": 23.04,
+          "max_temperature_c": 32.14,
+          "soil_wetness": 0.5749180327868852,
+          "soil_wetness_anomaly": 0.017836065573770488
+        },
+        {
+          "year": 2000,
+          "days": 61,
+          "precip_mm": 175.07,
+          "temperature_c": 21.720655737704917,
+          "peak_daily_rain_mm": 18.53,
+          "max_temperature_c": 30.78,
+          "soil_wetness": 0.5459016393442622,
+          "soil_wetness_anomaly": -0.011180327868852591
+        },
+        {
+          "year": 2001,
+          "days": 61,
+          "precip_mm": 211.93000000000004,
+          "temperature_c": 21.278196721311478,
+          "peak_daily_rain_mm": 18.77,
+          "max_temperature_c": 30.26,
+          "soil_wetness": 0.5757377049180327,
+          "soil_wetness_anomaly": 0.018655737704917907
+        },
+        {
+          "year": 2002,
+          "days": 61,
+          "precip_mm": 213.46,
+          "temperature_c": 21.695245901639343,
+          "peak_daily_rain_mm": 15.45,
+          "max_temperature_c": 30.53,
+          "soil_wetness": 0.5844262295081966,
+          "soil_wetness_anomaly": 0.0273442622950818
+        },
+        {
+          "year": 2003,
+          "days": 61,
+          "precip_mm": 106.79,
+          "temperature_c": 22.015409836065572,
+          "peak_daily_rain_mm": 5.96,
+          "max_temperature_c": 31.74,
+          "soil_wetness": 0.5277049180327869,
+          "soil_wetness_anomaly": -0.029377049180327908
+        },
+        {
+          "year": 2004,
+          "days": 61,
+          "precip_mm": 124.38,
+          "temperature_c": 22.407377049180333,
+          "peak_daily_rain_mm": 8.54,
+          "max_temperature_c": 32.51,
+          "soil_wetness": 0.5091803278688526,
+          "soil_wetness_anomaly": -0.04790163934426217
+        },
+        {
+          "year": 2005,
+          "days": 61,
+          "precip_mm": 57.349999999999994,
+          "temperature_c": 22.589344262295082,
+          "peak_daily_rain_mm": 4.49,
+          "max_temperature_c": 32.83,
+          "soil_wetness": 0.4949180327868853,
+          "soil_wetness_anomaly": -0.06216393442622947
+        },
+        {
+          "year": 2006,
+          "days": 61,
+          "precip_mm": 393.86999999999995,
+          "temperature_c": 21.23,
+          "peak_daily_rain_mm": 32.38,
+          "max_temperature_c": 30.79,
+          "soil_wetness": 0.6318032786885246,
+          "soil_wetness_anomaly": 0.07472131147540984
+        },
+        {
+          "year": 2007,
+          "days": 61,
+          "precip_mm": 138.14000000000004,
+          "temperature_c": 21.757704918032786,
+          "peak_daily_rain_mm": 12.24,
+          "max_temperature_c": 31.86,
+          "soil_wetness": 0.5288524590163934,
+          "soil_wetness_anomaly": -0.02822950819672132
+        },
+        {
+          "year": 2008,
+          "days": 61,
+          "precip_mm": 97.69999999999999,
+          "temperature_c": 22.508524590163933,
+          "peak_daily_rain_mm": 17.15,
+          "max_temperature_c": 32.58,
+          "soil_wetness": 0.5181967213114753,
+          "soil_wetness_anomaly": -0.03888524590163944
+        },
+        {
+          "year": 2009,
+          "days": 61,
+          "precip_mm": 161.41,
+          "temperature_c": 22.212950819672127,
+          "peak_daily_rain_mm": 13.15,
+          "max_temperature_c": 31.21,
+          "soil_wetness": 0.5300000000000001,
+          "soil_wetness_anomaly": -0.02708196721311462
+        },
+        {
+          "year": 2010,
+          "days": 61,
+          "precip_mm": 107.19000000000001,
+          "temperature_c": 22.25295081967213,
+          "peak_daily_rain_mm": 10.63,
+          "max_temperature_c": 32.43,
+          "soil_wetness": 0.5083606557377048,
+          "soil_wetness_anomaly": -0.04872131147540992
+        },
+        {
+          "year": 2011,
+          "days": 61,
+          "precip_mm": 169.12999999999997,
+          "temperature_c": 21.609180327868852,
+          "peak_daily_rain_mm": 17.26,
+          "max_temperature_c": 31.61,
+          "soil_wetness": 0.5788524590163934,
+          "soil_wetness_anomaly": 0.021770491803278613
+        },
+        {
+          "year": 2012,
+          "days": 61,
+          "precip_mm": 179.03,
+          "temperature_c": 22.208196721311477,
+          "peak_daily_rain_mm": 14.24,
+          "max_temperature_c": 31.8,
+          "soil_wetness": 0.5344262295081966,
+          "soil_wetness_anomaly": -0.022655737704918133
+        },
+        {
+          "year": 2013,
+          "days": 61,
+          "precip_mm": 209.06000000000003,
+          "temperature_c": 21.724426229508193,
+          "peak_daily_rain_mm": 15.49,
+          "max_temperature_c": 32.27,
+          "soil_wetness": 0.5563934426229509,
+          "soil_wetness_anomaly": -0.0006885245901638859
+        },
+        {
+          "year": 2014,
+          "days": 61,
+          "precip_mm": 143.24,
+          "temperature_c": 22.245245901639347,
+          "peak_daily_rain_mm": 20.48,
+          "max_temperature_c": 32.02,
+          "soil_wetness": 0.5295081967213116,
+          "soil_wetness_anomaly": -0.027573770491803207
+        },
+        {
+          "year": 2015,
+          "days": 61,
+          "precip_mm": 251.20000000000002,
+          "temperature_c": 22.13213114754098,
+          "peak_daily_rain_mm": 32.94,
+          "max_temperature_c": 31.67,
+          "soil_wetness": 0.5821311475409835,
+          "soil_wetness_anomaly": 0.025049180327868736
+        },
+        {
+          "year": 2016,
+          "days": 61,
+          "precip_mm": 149.28,
+          "temperature_c": 22.214590163934428,
+          "peak_daily_rain_mm": 11.85,
+          "max_temperature_c": 31.91,
+          "soil_wetness": 0.537049180327869,
+          "soil_wetness_anomaly": -0.02003278688524579
+        },
+        {
+          "year": 2017,
+          "days": 61,
+          "precip_mm": 143.28999999999996,
+          "temperature_c": 22.009836065573772,
+          "peak_daily_rain_mm": 14.38,
+          "max_temperature_c": 31.83,
+          "soil_wetness": 0.5445901639344262,
+          "soil_wetness_anomaly": -0.012491803278688596
+        },
+        {
+          "year": 2018,
+          "days": 61,
+          "precip_mm": 141.66,
+          "temperature_c": 22.426721311475408,
+          "peak_daily_rain_mm": 16.29,
+          "max_temperature_c": 32.0,
+          "soil_wetness": 0.5329508196721312,
+          "soil_wetness_anomaly": -0.024131147540983555
+        },
+        {
+          "year": 2019,
+          "days": 61,
+          "precip_mm": 274.39,
+          "temperature_c": 21.325573770491804,
+          "peak_daily_rain_mm": 13.21,
+          "max_temperature_c": 29.63,
+          "soil_wetness": 0.6750819672131146,
+          "soil_wetness_anomaly": 0.11799999999999988
+        },
+        {
+          "year": 2020,
+          "days": 61,
+          "precip_mm": 193.57999999999996,
+          "temperature_c": 21.97754098360656,
+          "peak_daily_rain_mm": 23.88,
+          "max_temperature_c": 31.5,
+          "soil_wetness": 0.5704918032786884,
+          "soil_wetness_anomaly": 0.013409836065573666
+        },
+        {
+          "year": 2021,
+          "days": 61,
+          "precip_mm": 168.88,
+          "temperature_c": 22.38983606557377,
+          "peak_daily_rain_mm": 22.49,
+          "max_temperature_c": 33.25,
+          "soil_wetness": 0.5234426229508196,
+          "soil_wetness_anomaly": -0.0336393442622952
+        },
+        {
+          "year": 2022,
+          "days": 61,
+          "precip_mm": 103.04,
+          "temperature_c": 22.313278688524584,
+          "peak_daily_rain_mm": 14.79,
+          "max_temperature_c": 31.31,
+          "soil_wetness": 0.510655737704918,
+          "soil_wetness_anomaly": -0.04642622950819675
+        },
+        {
+          "year": 2023,
+          "days": 61,
+          "precip_mm": 347.15999999999997,
+          "temperature_c": 21.215901639344263,
+          "peak_daily_rain_mm": 77.57,
+          "max_temperature_c": 30.81,
+          "soil_wetness": 0.6955737704918034,
+          "soil_wetness_anomaly": 0.1384918032786886
+        },
+        {
+          "year": 2024,
+          "days": 61,
+          "precip_mm": 210.74999999999997,
+          "temperature_c": 22.72213114754098,
+          "peak_daily_rain_mm": 32.74,
+          "max_temperature_c": 33.77,
+          "soil_wetness": 0.5578688524590164,
+          "soil_wetness_anomaly": 0.0007868852459016473
+        },
+        {
+          "year": 2025,
+          "days": 61,
+          "precip_mm": 149.34,
+          "temperature_c": 22.783606557377055,
+          "peak_daily_rain_mm": 42.74,
+          "max_temperature_c": 31.73,
+          "soil_wetness": 0.5196721311475411,
+          "soil_wetness_anomaly": -0.03740983606557369
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "slot": 0,
+      "eligible_labels": [
+        "long_rains"
+      ]
+    },
+    {
+      "slot": 1,
+      "eligible_labels": [
+        "short_rains"
+      ]
+    }
+  ],
+  "rainfall_windows": [
+    {
+      "onset_month": 3,
+      "cessation_month": 5
+    },
+    {
+      "onset_month": 11,
+      "cessation_month": 12
+    }
+  ],
+  "derived_seasons_per_year": 2,
+  "assumed_seasons_per_year": 2,
+  "agreement": true,
+  "ndvi_peak_months": [
+    12
+  ],
+  "uncertainty_note": "Monthly windows are approximate. Vegetation peaks can reflect crops or other cover. Kansas cool-season timing is an assumption. Telangana's secondary window uses a monthly NDVI climatology peak and remains tentative."
+}
