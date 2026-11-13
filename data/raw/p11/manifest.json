@@ -1,0 +1,21 @@
+{
+  "natural_earth_land": {
+    "request": {
+      "method": "GET",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson",
+      "params": null,
+      "data": null
+    },
+    "signature": "cd4002bc9bf68e6d23f4e0ab18f314a4d8fc4676585bcc49bae32ac1ef5f8b97",
+    "attempts": [
+      {
+        "timestamp_utc": "2026-11-13T23:13:23.023980+00:00",
+        "http_status": 200,
+        "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson",
+        "body": "natural_earth_land.1.json"
+      }
+    ],
+    "status": "complete",
+    "body": "natural_earth_land.1.json"
+  }
+}

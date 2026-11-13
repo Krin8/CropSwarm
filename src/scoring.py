@@ -97,17 +97,19 @@ def historical_metrics(windows, crop, storage, slope, supply, policy, *, water_f
                             np.full(len(deficit), crop["relative_income_index"])])
 
 
-def preload(farm, *, root=ROOT, processed=None):
+def preload(farm, *, root=ROOT, processed=None, crops=None, policy=None, storage_override=None):
     out = Path(processed) if processed else root / "data/processed"
     context = json.loads((out / f"context_{farm['farm_id']}.json").read_text())
     seasons = json.loads((out / f"seasons_{farm['farm_id']}.json").read_text())
     if len(seasons["slots"]) != farm["seasons_per_year"]:
         raise ValueError(f"Season-slot disagreement for {farm['farm_id']}")
     climate = pd.read_parquet(out / f"climate_{farm['farm_id']}.parquet").set_index("date")
-    crops = load_crops(root / "data/crops.csv", farms=[farm])
-    policy = json.loads((root / "config/scoring.json").read_text())
+    if crops is None:
+        crops = load_crops(root / "data/crops.csv", farms=[farm])
+    if policy is None:
+        policy = json.loads((root / "config/scoring.json").read_text())
     water_capacity = context["soil"]["available_water_mm_0_30"]
-    storage = water_capacity["value"]
+    storage = water_capacity["value"] if storage_override is None else storage_override
     slope = context["terrain"]["mean_slope_pct"]["value"]
     if storage is None or slope is None:
         raise ValueError(f"Missing soil-water capacity or slope for {farm['farm_id']}")
@@ -144,7 +146,8 @@ def preload(farm, *, root=ROOT, processed=None):
     family = np.array([families.index(crop["disease_family"]) for crop in crops.values()])
     bare = np.array([crop["season_length_days"] == 0 for crop in crops.values()])
     bounds = (-float(demand.max()), float(credits.max()))
-    return Model(farm, crops, labels, policy, days, storage, slope, water_capacity["source"], ids, planting_windows,
+    soil_source = water_capacity["source"] if storage_override is None else "Farmer input · assumption, validate locally"
+    return Model(farm, crops, labels, policy, days, storage, slope, soil_source, ids, planting_windows,
                  suitability, histories, additions, credits, demand, family, bare, bounds,
                  slope * float(climate.PRECTOTCORR.max()))
 
