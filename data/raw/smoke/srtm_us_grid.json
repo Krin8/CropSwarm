@@ -1,0 +1,94 @@
+{
+  "name": "srtm_us_grid",
+  "checked_at_utc": "2026-11-13T19:13:52.442290+00:00",
+  "attempts": [
+    {
+      "url": "https://api.opentopodata.org/v1/srtm90m?locations=37.96919%2C-100.87081%7C37.96919%2C-100.87000%7C37.96919%2C-100.86919%7C37.97000%2C-100.87081%7C37.97000%2C-100.87000%7C37.97000%2C-100.86919%7C37.97081%2C-100.87081%7C37.97081%2C-100.87000%7C37.97081%2C-100.86919",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 0.324,
+      "response_keys": [
+        "results",
+        "status"
+      ],
+      "body": {
+        "results": [
+          {
+            "dataset": "srtm90m",
+            "elevation": 869.0,
+            "location": {
+              "lat": 37.96919,
+              "lng": -100.87081
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 873.0,
+            "location": {
+              "lat": 37.96919,
+              "lng": -100.87
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 872.0,
+            "location": {
+              "lat": 37.96919,
+              "lng": -100.86919
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 870.0,
+            "location": {
+              "lat": 37.97,
+              "lng": -100.87081
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 869.0,
+            "location": {
+              "lat": 37.97,
+              "lng": -100.87
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 873.0,
+            "location": {
+              "lat": 37.97,
+              "lng": -100.86919
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 873.0,
+            "location": {
+              "lat": 37.97081,
+              "lng": -100.87081
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 872.0,
+            "location": {
+              "lat": 37.97081,
+              "lng": -100.87
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 872.0,
+            "location": {
+              "lat": 37.97081,
+              "lng": -100.86919
+            }
+          }
+        ],
+        "status": "OK"
+      }
+    }
+  ],
+  "status": "PASS"
+}

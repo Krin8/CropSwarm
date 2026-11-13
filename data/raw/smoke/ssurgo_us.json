@@ -1,0 +1,24 @@
+{
+  "name": "ssurgo_us",
+  "checked_at_utc": "2026-11-13T19:13:53.234240+00:00",
+  "attempts": [
+    {
+      "url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+      "method": "POST",
+      "http_status": 200,
+      "latency_s": 1.496,
+      "response_keys": [
+        "Table"
+      ],
+      "body": {
+        "Table": [
+          [
+            "1152313",
+            "Las clay loam, deep, occasionally flooded"
+          ]
+        ]
+      }
+    }
+  ],
+  "status": "PASS"
+}

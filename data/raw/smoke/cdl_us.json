@@ -1,0 +1,15 @@
+{
+  "name": "cdl_us",
+  "checked_at_utc": "2026-11-13T19:13:54.731703+00:00",
+  "attempts": [
+    {
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-100.87&y=37.97",
+      "method": "GET",
+      "http_status": 500,
+      "latency_s": 2.429,
+      "response_keys": [],
+      "body": "<faultstring>Error: Failed to get value.</faultstring>"
+    }
+  ],
+  "status": "FAIL"
+}

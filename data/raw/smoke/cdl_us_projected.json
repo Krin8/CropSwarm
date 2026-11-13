@@ -1,0 +1,23 @@
+{
+  "name": "cdl_us_projected",
+  "checked_at_utc": "2026-11-13T19:17:53.352617+00:00",
+  "attempts": [
+    {
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-423585.797&y=1670318.167",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 2.569,
+      "response_keys": [],
+      "body": "<ns1:GetCDLValueResponse xmlns:ns1=\"http://cropscape.csiss.gmu.edu/CDLService/\"><Result>{x: -423585.797, y: 1670318.167, value: 124, category: \"Developed/High Intensity\", color: \"#9C9C9C\"}</Result></ns1:GetCDLValueResponse>"
+    },
+    {
+      "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-423585.797&y=1670318.167",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 1.533,
+      "response_keys": [],
+      "body": "<ns1:GetCDLValueResponse xmlns:ns1=\"http://cropscape.csiss.gmu.edu/CDLService/\"><Result>{x: -423585.797, y: 1670318.167, value: 124, category: \"Developed/High Intensity\", color: \"#9C9C9C\"}</Result></ns1:GetCDLValueResponse>"
+    }
+  ],
+  "status": "PASS"
+}

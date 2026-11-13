@@ -1,0 +1,28 @@
+{
+  "name": "soilgrids_india",
+  "checked_at_utc": "2026-11-13T19:18:52.350966+00:00",
+  "attempts": [
+    {
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=79.59&lat=17.98&property=%5B%27clay%27%2C+%27sand%27%2C+%27soc%27%5D&depth=%5B%270-5cm%27%2C+%275-15cm%27%2C+%2715-30cm%27%5D&value=mean",
+      "method": "GET",
+      "http_status": null,
+      "latency_s": 30.383,
+      "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=30)"
+    },
+    {
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=79.59&lat=17.98&property=%5B%27clay%27%2C+%27sand%27%2C+%27soc%27%5D&depth=%5B%270-5cm%27%2C+%275-15cm%27%2C+%2715-30cm%27%5D&value=mean",
+      "method": "GET",
+      "http_status": null,
+      "latency_s": 30.364,
+      "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=30)"
+    },
+    {
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=79.59&lat=17.98&property=clay&property=sand&property=soc&depth=0-5cm&depth=5-15cm&depth=15-30cm&value=mean",
+      "method": "GET",
+      "http_status": null,
+      "latency_s": 30.322,
+      "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=30)"
+    }
+  ],
+  "status": "FAIL"
+}

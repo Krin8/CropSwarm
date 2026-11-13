@@ -1,0 +1,15 @@
+{
+  "name": "modis_us",
+  "checked_at_utc": "2026-11-13T19:08:21.504722+00:00",
+  "attempts": [
+    {
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023001&endDate=A2023365&kmAboveBelow=0&kmLeftRight=0",
+      "method": "GET",
+      "http_status": 400,
+      "latency_s": 3.268,
+      "response_keys": [],
+      "body": "Subset time period A2023001 to A2023365 exceeds maximum subset tiles support of 10."
+    }
+  ],
+  "status": "FAIL"
+}

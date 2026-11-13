@@ -1,0 +1,30 @@
+{
+  "name": "srtm_india_point",
+  "checked_at_utc": "2026-11-13T19:13:52.766977+00:00",
+  "attempts": [
+    {
+      "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.98%2C79.59",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 0.24,
+      "response_keys": [
+        "results",
+        "status"
+      ],
+      "body": {
+        "results": [
+          {
+            "dataset": "srtm90m",
+            "elevation": 259.0,
+            "location": {
+              "lat": 17.98,
+              "lng": 79.59
+            }
+          }
+        ],
+        "status": "OK"
+      }
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,398 @@
+{
+  "name": "modis_us_3",
+  "checked_at_utc": "2026-11-13T19:11:26.998825+00:00",
+  "attempts": [
+    {
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023321&endDate=A2023353&kmAboveBelow=0&kmLeftRight=0",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 5.636,
+      "response_keys": [
+        "xllcorner",
+        "yllcorner",
+        "cellsize",
+        "nrows",
+        "ncols",
+        "band",
+        "latitude",
+        "longitude",
+        "header",
+        "subset"
+      ],
+      "body": {
+        "xllcorner": "-8842323.23",
+        "yllcorner": "4221937.13",
+        "cellsize": 231.656358264,
+        "nrows": 1,
+        "ncols": 1,
+        "band": "all",
+        "latitude": 37.97,
+        "longitude": -100.87,
+        "header": "https://modisrest.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023321&endDate=A2023353&kmAboveBelow=0&kmLeftRight=0",
+        "subset": [
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_blue_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              812
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_MIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              1757
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_NIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              2187
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_pixel_reliability",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              0
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_red_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              1520
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_relative_azimuth_angle",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              -5696
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_sun_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              6199
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_view_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              2250
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_VI_Quality",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              2120
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_NDVI",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              1799
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_EVI",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              1095
+            ]
+          },
+          {
+            "modis_date": "A2023321",
+            "calendar_date": "2023-11-17",
+            "band": "250m_16_days_composite_day_of_the_year",
+            "tile": "h10v05",
+            "proc_date": "2023340004422",
+            "data": [
+              325
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_blue_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              815
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_MIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              1489
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_NIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              1709
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_pixel_reliability",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              0
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_red_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              1140
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_relative_azimuth_angle",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              12169
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_sun_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              6343
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_view_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              3959
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_VI_Quality",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              2120
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_NDVI",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              1997
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_EVI",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              1143
+            ]
+          },
+          {
+            "modis_date": "A2023337",
+            "calendar_date": "2023-12-03",
+            "band": "250m_16_days_composite_day_of_the_year",
+            "tile": "h10v05",
+            "proc_date": "2023354004307",
+            "data": [
+              350
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_blue_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              597
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_MIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              1443
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_NIR_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              1753
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_pixel_reliability",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              0
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_red_reflectance",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              1242
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_relative_azimuth_angle",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              12197
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_sun_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              6521
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_view_zenith_angle",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              755
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_VI_Quality",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              2120
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_NDVI",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              1706
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_EVI",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              867
+            ]
+          },
+          {
+            "modis_date": "A2023353",
+            "calendar_date": "2023-12-19",
+            "band": "250m_16_days_composite_day_of_the_year",
+            "tile": "h10v05",
+            "proc_date": "2024005132538",
+            "data": [
+              364
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "status": "PASS"
+}

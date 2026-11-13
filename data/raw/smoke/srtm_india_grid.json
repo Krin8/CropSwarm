@@ -1,0 +1,108 @@
+{
+  "name": "srtm_india_grid",
+  "checked_at_utc": "2026-11-13T19:17:02.109097+00:00",
+  "attempts": [
+    {
+      "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.97919%2C79.58919%7C17.97919%2C79.59000%7C17.97919%2C79.59081%7C17.98000%2C79.58919%7C17.98000%2C79.59000%7C17.98000%2C79.59081%7C17.98081%2C79.58919%7C17.98081%2C79.59000%7C17.98081%2C79.59081",
+      "method": "GET",
+      "http_status": 429,
+      "latency_s": 0.226,
+      "response_keys": [
+        "error",
+        "status"
+      ],
+      "body": {
+        "error": "Per-second rate limit exceded for the free hosted API. Consider adding a delay between requests or combining multiple locations in a single request. If you'd like unlimited paid managed hosting, send a message to andrew@opentopodata.org.",
+        "status": "INVALID_REQUEST"
+      }
+    },
+    {
+      "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.97919%2C79.58919%7C17.97919%2C79.59000%7C17.97919%2C79.59081%7C17.98000%2C79.58919%7C17.98000%2C79.59000%7C17.98000%2C79.59081%7C17.98081%2C79.58919%7C17.98081%2C79.59000%7C17.98081%2C79.59081",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 0.758,
+      "response_keys": [
+        "results",
+        "status"
+      ],
+      "body": {
+        "results": [
+          {
+            "dataset": "srtm90m",
+            "elevation": 263.0,
+            "location": {
+              "lat": 17.97919,
+              "lng": 79.58919
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 260.0,
+            "location": {
+              "lat": 17.97919,
+              "lng": 79.59
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 260.0,
+            "location": {
+              "lat": 17.97919,
+              "lng": 79.59081
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 261.0,
+            "location": {
+              "lat": 17.98,
+              "lng": 79.58919
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 259.0,
+            "location": {
+              "lat": 17.98,
+              "lng": 79.59
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 260.0,
+            "location": {
+              "lat": 17.98,
+              "lng": 79.59081
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 260.0,
+            "location": {
+              "lat": 17.98081,
+              "lng": 79.58919
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 261.0,
+            "location": {
+              "lat": 17.98081,
+              "lng": 79.59
+            }
+          },
+          {
+            "dataset": "srtm90m",
+            "elevation": 262.0,
+            "location": {
+              "lat": 17.98081,
+              "lng": 79.59081
+            }
+          }
+        ],
+        "status": "OK"
+      }
+    }
+  ],
+  "status": "PASS"
+}

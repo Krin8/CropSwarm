@@ -1,0 +1,692 @@
+[
+  {
+    "source": "appeears_docs",
+    "status": "PASS",
+    "url": "https://appeears.earthdatacloud.nasa.gov/api/",
+    "http_status": 200,
+    "latency_s": 1.405,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "cdl_us",
+    "status": "FAIL",
+    "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-100.87&y=37.97",
+    "http_status": 500,
+    "latency_s": 2.429,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "cdl_us_projected",
+    "status": "PASS",
+    "url": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue?year=2022&x=-423585.797&y=1670318.167",
+    "http_status": 200,
+    "latency_s": 1.533,
+    "response_keys": [],
+    "units": "categorical CDL class code",
+    "fill_missing": null,
+    "sample_row": "<ns1:GetCDLValueResponse xmlns:ns1=\"http://cropscape.csiss.gmu.edu/CDLService/\"><Result>{x: -423585.797, y: 1670318.167, value: 124, category: \"Developed/High Intensity\", color: \"#9C9C9C\"}</Result></ns1:GetCDLValueResponse>"
+  },
+  {
+    "source": "modis_bands",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/bands",
+    "http_status": 200,
+    "latency_s": 1.19,
+    "response_keys": [
+      "bands"
+    ],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "modis_india",
+    "status": "FAIL",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=17.98&longitude=79.59&startDate=A2023001&endDate=A2023365&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 400,
+    "latency_s": 2.073,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "modis_india_1",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=17.98&longitude=79.59&startDate=A2023001&endDate=A2023145&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 18.658,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023001",
+      "NDVI_raw": 4347
+    }
+  },
+  {
+    "source": "modis_india_2",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=17.98&longitude=79.59&startDate=A2023161&endDate=A2023305&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 16.832,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023161",
+      "NDVI_raw": 5396
+    }
+  },
+  {
+    "source": "modis_india_3",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=17.98&longitude=79.59&startDate=A2023321&endDate=A2023353&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 12.104,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023321",
+      "NDVI_raw": 4513
+    }
+  },
+  {
+    "source": "modis_us",
+    "status": "FAIL",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023001&endDate=A2023365&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 400,
+    "latency_s": 3.268,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "modis_us_1",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023001&endDate=A2023145&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 19.489,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023001",
+      "NDVI_raw": 1652
+    }
+  },
+  {
+    "source": "modis_us_2",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023161&endDate=A2023305&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 17.968,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023161",
+      "NDVI_raw": 2872
+    }
+  },
+  {
+    "source": "modis_us_3",
+    "status": "PASS",
+    "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=37.97&longitude=-100.87&startDate=A2023321&endDate=A2023353&kmAboveBelow=0&kmLeftRight=0",
+    "http_status": 200,
+    "latency_s": 5.636,
+    "response_keys": [
+      "xllcorner",
+      "yllcorner",
+      "cellsize",
+      "nrows",
+      "ncols",
+      "band",
+      "latitude",
+      "longitude",
+      "header",
+      "subset"
+    ],
+    "units": {
+      "NDVI": "NDVI ratio - No units",
+      "scale_factor": "0.0001"
+    },
+    "fill_missing": {
+      "fill_value": "-3000",
+      "count": 0
+    },
+    "sample_row": {
+      "date": "A2023321",
+      "NDVI_raw": 1799
+    }
+  },
+  {
+    "source": "nwis_us",
+    "status": "FAIL",
+    "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&siteType=GW&bBox=-100.97%2C37.87%2C-100.77%2C38.07",
+    "http_status": 200,
+    "latency_s": 1.669,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "nwis_us_levels",
+    "status": "FAIL",
+    "url": "https://waterdata.usgs.gov/blog/api-decom-fall-2025/#gwlevels",
+    "http_status": 403,
+    "latency_s": 3.856,
+    "response_keys": [],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "power_india",
+    "status": "PASS",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CGWETROOT%2CALLSKY_SFC_SW_DWN%2CRH2M&community=AG&longitude=79.59&latitude=17.98&start=20230101&end=20231231&format=JSON",
+    "http_status": 200,
+    "latency_s": 1.62,
+    "response_keys": [
+      "type",
+      "geometry",
+      "properties",
+      "header",
+      "messages",
+      "parameters",
+      "times"
+    ],
+    "units": {
+      "T2M": "C",
+      "T2M_MAX": "C",
+      "T2M_MIN": "C",
+      "PRECTOTCORR": "mm/day",
+      "GWETROOT": "1",
+      "ALLSKY_SFC_SW_DWN": "MJ/m^2/day",
+      "RH2M": "%"
+    },
+    "fill_missing": {
+      "fill_value": -999.0,
+      "counts": {
+        "T2M": 0,
+        "T2M_MAX": 0,
+        "T2M_MIN": 0,
+        "PRECTOTCORR": 0,
+        "GWETROOT": 0,
+        "ALLSKY_SFC_SW_DWN": 0,
+        "RH2M": 0
+      }
+    },
+    "sample_row": {
+      "date": "20230101",
+      "T2M": 23.38,
+      "T2M_MAX": 30.1,
+      "T2M_MIN": 17.87,
+      "PRECTOTCORR": 0.0,
+      "GWETROOT": 0.54,
+      "ALLSKY_SFC_SW_DWN": 14.22,
+      "RH2M": 65.51
+    }
+  },
+  {
+    "source": "power_parameters",
+    "status": "PASS",
+    "url": "https://power.larc.nasa.gov/api/system/manager/parameters?community=AG&temporal=daily",
+    "http_status": 200,
+    "latency_s": 1.337,
+    "response_keys": [
+      "AIRMASS",
+      "ALLSKY_KT",
+      "ALLSKY_NKT",
+      "ALLSKY_SFC_LW_DWN",
+      "ALLSKY_SFC_LW_UP",
+      "ALLSKY_SFC_PAR_DIFF",
+      "ALLSKY_SFC_PAR_DIRH",
+      "ALLSKY_SFC_PAR_TOT",
+      "ALLSKY_SFC_SW_DIFF",
+      "ALLSKY_SFC_SW_DIRH",
+      "ALLSKY_SFC_SW_DNI",
+      "ALLSKY_SFC_SW_DWN",
+      "ALLSKY_SFC_SW_UP",
+      "ALLSKY_SFC_UVA",
+      "ALLSKY_SFC_UVB",
+      "ALLSKY_SFC_UV_INDEX",
+      "ALLSKY_SRF_ALB",
+      "AOD_55",
+      "AOD_55_ADJ",
+      "AOD_84",
+      "CDD0",
+      "CDD10",
+      "CDD18_3",
+      "CLOUD_AMT",
+      "CLOUD_AMT_DAY",
+      "CLOUD_AMT_NIGHT",
+      "CLOUD_BT",
+      "CLOUD_BT_MAX",
+      "CLOUD_BT_MIN",
+      "CLOUD_OD",
+      "CLOUD_TT",
+      "CLOUD_TT_MAX",
+      "CLOUD_TT_MIN",
+      "CLRSKY_DAYS",
+      "CLRSKY_KT",
+      "CLRSKY_NKT",
+      "CLRSKY_SFC_LW_DWN",
+      "CLRSKY_SFC_LW_UP",
+      "CLRSKY_SFC_PAR_DIFF",
+      "CLRSKY_SFC_PAR_DIRH",
+      "CLRSKY_SFC_PAR_TOT",
+      "CLRSKY_SFC_SW_DIFF",
+      "CLRSKY_SFC_SW_DIRH",
+      "CLRSKY_SFC_SW_DNI",
+      "CLRSKY_SFC_SW_DWN",
+      "CLRSKY_SFC_SW_UP",
+      "CLRSKY_SRF_ALB",
+      "DISPH",
+      "EVLAND",
+      "EVPTRNS",
+      "FROST_DAYS",
+      "FRSEAICE",
+      "FRSNO",
+      "GDD10",
+      "GDD13_3",
+      "GDD15_6",
+      "GDD4_4",
+      "GDD7_2",
+      "GWETPROF",
+      "GWETROOT",
+      "GWETTOP",
+      "GWM_HEIGHT",
+      "GWM_HEIGHT_ANOMALY",
+      "HDD0",
+      "HDD10",
+      "HDD18_3",
+      "IMERG_PRECLIQUID_PROB",
+      "IMERG_PRECTOT",
+      "IMERG_PRECTOT_COUNT",
+      "LWLAND",
+      "MIDDAY_INSOL",
+      "ORIGINAL_ALLSKY_SFC_LW_DWN",
+      "ORIGINAL_ALLSKY_SFC_SW_DIFF",
+      "ORIGINAL_ALLSKY_SFC_SW_DIRH",
+      "ORIGINAL_ALLSKY_SFC_SW_DWN",
+      "ORIGINAL_CLRSKY_SFC_LW_DWN",
+      "ORIGINAL_CLRSKY_SFC_SW_DWN",
+      "PBLTOP",
+      "PRECSNO",
+      "PRECSNOLAND",
+      "PRECTOT",
+      "PRECTOTCORR",
+      "PRMC",
+      "PRMC_PRCNTL",
+      "PS",
+      "PSC",
+      "PSH",
+      "PW",
+      "QV10M",
+      "QV2M",
+      "RH2M",
+      "RHOA",
+      "RZMC",
+      "RZMC_PRCNTL",
+      "SFMC",
+      "SLP",
+      "SNODP",
+      "SRF_ALB_ADJ",
+      "SWLAND",
+      "SZA",
+      "T10M",
+      "T10M_MAX",
+      "T10M_MIN",
+      "T10M_RANGE",
+      "T2M",
+      "T2MDEW",
+      "T2MWET",
+      "T2M_MAX",
+      "T2M_MIN",
+      "T2M_RANGE",
+      "TO3",
+      "TOA_SW_DNI",
+      "TOA_SW_DWN",
+      "TQV",
+      "TROPPB",
+      "TROPQ",
+      "TROPT",
+      "TS",
+      "TSOIL1",
+      "TSOIL2",
+      "TSOIL3",
+      "TSOIL4",
+      "TSOIL5",
+      "TSOIL6",
+      "TSURF",
+      "TS_ADJ",
+      "TS_MAX",
+      "TS_MIN",
+      "TS_RANGE",
+      "U10M",
+      "U2M",
+      "U50M",
+      "V10M",
+      "V2M",
+      "V50M",
+      "WD10M",
+      "WD2M",
+      "WD50M",
+      "WS10M",
+      "WS10M_MAX",
+      "WS10M_MIN",
+      "WS10M_RANGE",
+      "WS2M",
+      "WS2M_MAX",
+      "WS2M_MIN",
+      "WS2M_RANGE",
+      "WS50M",
+      "WS50M_MAX",
+      "WS50M_MIN",
+      "WS50M_RANGE",
+      "WSC",
+      "Z0M"
+    ],
+    "units": null,
+    "fill_missing": null,
+    "sample_row": null
+  },
+  {
+    "source": "power_us",
+    "status": "PASS",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CGWETROOT%2CALLSKY_SFC_SW_DWN%2CRH2M&community=AG&longitude=-100.87&latitude=37.97&start=20230101&end=20231231&format=JSON",
+    "http_status": 200,
+    "latency_s": 2.561,
+    "response_keys": [
+      "type",
+      "geometry",
+      "properties",
+      "header",
+      "messages",
+      "parameters",
+      "times"
+    ],
+    "units": {
+      "T2M": "C",
+      "T2M_MAX": "C",
+      "T2M_MIN": "C",
+      "PRECTOTCORR": "mm/day",
+      "GWETROOT": "1",
+      "ALLSKY_SFC_SW_DWN": "MJ/m^2/day",
+      "RH2M": "%"
+    },
+    "fill_missing": {
+      "fill_value": -999.0,
+      "counts": {
+        "T2M": 0,
+        "T2M_MAX": 0,
+        "T2M_MIN": 0,
+        "PRECTOTCORR": 0,
+        "GWETROOT": 0,
+        "ALLSKY_SFC_SW_DWN": 0,
+        "RH2M": 0
+      }
+    },
+    "sample_row": {
+      "date": "20230101",
+      "T2M": 2.09,
+      "T2M_MAX": 6.13,
+      "T2M_MIN": -1.21,
+      "PRECTOTCORR": 0.0,
+      "GWETROOT": 0.25,
+      "ALLSKY_SFC_SW_DWN": 4.55,
+      "RH2M": 80.12
+    }
+  },
+  {
+    "source": "soilgrids_india",
+    "status": "FAIL",
+    "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=79.59&lat=17.98&property=clay&property=sand&property=soc&depth=0-5cm&depth=5-15cm&depth=15-30cm&value=mean",
+    "http_status": null,
+    "latency_s": 30.322,
+    "response_keys": [],
+    "units": {
+      "clay": "g/kg -> % divide by 10",
+      "sand": "g/kg -> % divide by 10",
+      "soc": "dg/kg -> g/kg divide by 10"
+    },
+    "fill_missing": "unavailable: REST failed; WCS capabilities have no pixel data",
+    "sample_row": null
+  },
+  {
+    "source": "soilgrids_us",
+    "status": "FAIL",
+    "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-100.87&lat=37.97&property=clay&property=sand&property=soc&depth=0-5cm&depth=5-15cm&depth=15-30cm&value=mean",
+    "http_status": null,
+    "latency_s": 30.449,
+    "response_keys": [],
+    "units": {
+      "clay": "g/kg -> % divide by 10",
+      "sand": "g/kg -> % divide by 10",
+      "soc": "dg/kg -> g/kg divide by 10"
+    },
+    "fill_missing": "unavailable: REST failed; WCS capabilities have no pixel data",
+    "sample_row": null
+  },
+  {
+    "source": "soilgrids_wcs_clay",
+    "status": "PASS",
+    "url": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.0&REQUEST=GetCapabilities",
+    "http_status": 200,
+    "latency_s": 2.07,
+    "response_keys": [],
+    "units": {
+      "clay": "g/kg -> % divide by 10",
+      "sand": "g/kg -> % divide by 10",
+      "soc": "dg/kg -> g/kg divide by 10"
+    },
+    "fill_missing": "unavailable: REST failed; WCS capabilities have no pixel data",
+    "sample_row": null
+  },
+  {
+    "source": "srtm_india_grid",
+    "status": "PASS",
+    "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.97919%2C79.58919%7C17.97919%2C79.59000%7C17.97919%2C79.59081%7C17.98000%2C79.58919%7C17.98000%2C79.59000%7C17.98000%2C79.59081%7C17.98081%2C79.58919%7C17.98081%2C79.59000%7C17.98081%2C79.59081",
+    "http_status": 200,
+    "latency_s": 0.758,
+    "response_keys": [
+      "results",
+      "status"
+    ],
+    "units": "meters elevation",
+    "fill_missing": {
+      "null_elevations": 0
+    },
+    "sample_row": {
+      "dataset": "srtm90m",
+      "elevation": 263.0,
+      "location": {
+        "lat": 17.97919,
+        "lng": 79.58919
+      }
+    }
+  },
+  {
+    "source": "srtm_india_point",
+    "status": "PASS",
+    "url": "https://api.opentopodata.org/v1/srtm90m?locations=17.98%2C79.59",
+    "http_status": 200,
+    "latency_s": 0.24,
+    "response_keys": [
+      "results",
+      "status"
+    ],
+    "units": "meters elevation",
+    "fill_missing": {
+      "null_elevations": 0
+    },
+    "sample_row": {
+      "dataset": "srtm90m",
+      "elevation": 259.0,
+      "location": {
+        "lat": 17.98,
+        "lng": 79.59
+      }
+    }
+  },
+  {
+    "source": "srtm_us_grid",
+    "status": "PASS",
+    "url": "https://api.opentopodata.org/v1/srtm90m?locations=37.96919%2C-100.87081%7C37.96919%2C-100.87000%7C37.96919%2C-100.86919%7C37.97000%2C-100.87081%7C37.97000%2C-100.87000%7C37.97000%2C-100.86919%7C37.97081%2C-100.87081%7C37.97081%2C-100.87000%7C37.97081%2C-100.86919",
+    "http_status": 200,
+    "latency_s": 0.324,
+    "response_keys": [
+      "results",
+      "status"
+    ],
+    "units": "meters elevation",
+    "fill_missing": {
+      "null_elevations": 0
+    },
+    "sample_row": {
+      "dataset": "srtm90m",
+      "elevation": 869.0,
+      "location": {
+        "lat": 37.96919,
+        "lng": -100.87081
+      }
+    }
+  },
+  {
+    "source": "srtm_us_point",
+    "status": "PASS",
+    "url": "https://api.opentopodata.org/v1/srtm90m?locations=37.97%2C-100.87",
+    "http_status": 200,
+    "latency_s": 0.636,
+    "response_keys": [
+      "results",
+      "status"
+    ],
+    "units": "meters elevation",
+    "fill_missing": {
+      "null_elevations": 0
+    },
+    "sample_row": {
+      "dataset": "srtm90m",
+      "elevation": 869.0,
+      "location": {
+        "lat": 37.97,
+        "lng": -100.87
+      }
+    }
+  },
+  {
+    "source": "ssurgo_us",
+    "status": "PASS",
+    "url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+    "http_status": 200,
+    "latency_s": 1.496,
+    "response_keys": [
+      "Table"
+    ],
+    "units": {
+      "mukey": "identifier",
+      "muname": "text"
+    },
+    "fill_missing": null,
+    "sample_row": [
+      "1152313",
+      "Las clay loam, deep, occasionally flooded"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "name": "srtm_us_point",
+  "checked_at_utc": "2026-11-13T19:13:51.804928+00:00",
+  "attempts": [
+    {
+      "url": "https://api.opentopodata.org/v1/srtm90m?locations=37.97%2C-100.87",
+      "method": "GET",
+      "http_status": 200,
+      "latency_s": 0.636,
+      "response_keys": [
+        "results",
+        "status"
+      ],
+      "body": {
+        "results": [
+          {
+            "dataset": "srtm90m",
+            "elevation": 869.0,
+            "location": {
+              "lat": 37.97,
+              "lng": -100.87
+            }
+          }
+        ],
+        "status": "OK"
+      }
+    }
+  ],
+  "status": "PASS"
+}
