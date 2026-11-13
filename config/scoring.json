@@ -1,0 +1,8 @@
+{
+  "source": "assumption, validate locally",
+  "calendar_extension_days": 45,
+  "max_median_unmet_water_fraction": 0.8,
+  "max_hot_day_fraction": 0.1,
+  "bare_slot_risk_share": 0.5,
+  "same_family_risk_share": 0.5
+}
