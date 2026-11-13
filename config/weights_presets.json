@@ -1,0 +1,9 @@
+{
+  "label": "design choice, not empirical",
+  "presets": {
+    "water_saver": {"water": 0.35, "nitrogen": 0.15, "erosion": 0.10, "climate_fit": 0.15, "income": 0.10, "risk": 0.15},
+    "soil_builder": {"water": 0.10, "nitrogen": 0.30, "erosion": 0.25, "climate_fit": 0.10, "income": 0.10, "risk": 0.15},
+    "income": {"water": 0.10, "nitrogen": 0.10, "erosion": 0.05, "climate_fit": 0.15, "income": 0.45, "risk": 0.15},
+    "balanced": {"water": 0.17, "nitrogen": 0.17, "erosion": 0.17, "climate_fit": 0.17, "income": 0.16, "risk": 0.16}
+  }
+}

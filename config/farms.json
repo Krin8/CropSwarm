@@ -1,0 +1,65 @@
+[
+  {
+    "farm_id": "us_high_plains_b",
+    "name": "US High Plains B",
+    "lat": 37.94,
+    "lon": -100.67,
+    "region": "Near Garden City, Kansas, US",
+    "tier": 2,
+    "label": "illustrative representative farm",
+    "coordinate_source": "user-selected in P2 Phase B; approximate test point, validate locally",
+    "irrigation": {"supply_fraction": 0.0, "basis": "assumption, validate locally"},
+    "baseline_rotation_cycle": [["fallow"], ["winter_wheat"], ["sorghum"]],
+    "baseline_source": "USDA NASS CDL 2019-2023 point history in data/raw/p2_evidence/p2_wheat_cdl.json; Kansas State Research and Extension https://bookstore.ksre.ksu.edu/pubs/rotations-and-cultural-practices_MF2908.pdf; not a verified management record",
+    "seasons_per_year": 1,
+    "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+    "validation_flags": [
+      "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+      "CDL point classes are not a verified farm management record",
+      "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally"
+    ],
+    "evidence_refs": ["data/raw/p2_evidence/p2_evidence.json", "data/raw/p2_evidence/p2_wheat_cdl.json"]
+  },
+  {
+    "farm_id": "telangana_a",
+    "name": "Telangana A",
+    "lat": 17.845,
+    "lon": 79.445,
+    "region": "Telangana, India",
+    "tier": 1,
+    "label": "illustrative representative farm",
+    "coordinate_source": "user-selected in P2 Phase B; approximate test point, validate locally",
+    "irrigation": {"supply_fraction": 0.6, "basis": "assumption, validate locally"},
+    "baseline_rotation_cycle": [["paddy", "paddy"]],
+    "baseline_source": "assumption, validate locally; no point-specific crop history verified",
+    "seasons_per_year": 2,
+    "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+    "validation_flags": [
+      "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
+      "No point-specific crop identity or management record verified",
+      "2022 MODIS NDVI record incomplete"
+    ],
+    "evidence_refs": ["data/raw/p2_evidence/p2_evidence.json"]
+  },
+  {
+    "farm_id": "kenya_makueni_north",
+    "name": "Makueni North Candidate",
+    "lat": -1.95,
+    "lon": 37.64,
+    "region": "Semi-arid eastern Kenya",
+    "tier": 1,
+    "label": "illustrative representative farm",
+    "coordinate_source": "candidate selected by P2 Phase B rainfall comparison; approximate point, validate locally",
+    "irrigation": {"supply_fraction": 0.0, "basis": "assumption, validate locally"},
+    "baseline_rotation_cycle": [["maize", "common_bean"]],
+    "baseline_source": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+    "seasons_per_year": 2,
+    "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+    "validation_flags": [
+      "MCD12Q1 class 10 (grassland) conflicts with intended cropland use; cropland at exact point unverified",
+      "NASA POWER rainfall is regional gridded evidence, not a field rain gauge",
+      "Two crop seasons and crop identities remain unverified at point"
+    ],
+    "evidence_refs": ["data/raw/p2_evidence/kenya_power.json"]
+  }
+]
