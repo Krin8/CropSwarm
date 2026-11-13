@@ -1,0 +1,576 @@
+{
+  "farm_id": "telangana_a",
+  "label": "illustrative; validate locally",
+  "horizon_years": 3,
+  "three_year_feasible_count": 633998,
+  "feasible_count": 633998,
+  "exact_runtime_seconds": 0.1761270830174908,
+  "verification": {
+    "water_saver": {
+      "exact_score": 0.8015436421206531,
+      "runs": 30,
+      "optimum_hits": 28,
+      "best_gap": 1.1102230246251565e-16,
+      "worst_gap": 0.00822200130143691,
+      "runtime_seconds": 0.1843630840012338,
+      "per_seed_scores": [
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.7933216408192162,
+        0.801543642120653,
+        0.801543642120653,
+        0.7933216408192162,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653,
+        0.801543642120653
+      ]
+    },
+    "soil_builder": {
+      "exact_score": 0.770346322462403,
+      "runs": 30,
+      "optimum_hits": 28,
+      "best_gap": 0,
+      "worst_gap": 0.004285539881266676,
+      "runtime_seconds": 0.1819304579985328,
+      "per_seed_scores": [
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.7660607825811363,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403,
+        0.7660607825811363,
+        0.770346322462403,
+        0.770346322462403,
+        0.770346322462403
+      ]
+    },
+    "income": {
+      "exact_score": 0.67297875858833,
+      "runs": 30,
+      "optimum_hits": 23,
+      "best_gap": 0,
+      "worst_gap": 0.015529612005137916,
+      "runtime_seconds": 0.18157324998173863,
+      "per_seed_scores": [
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.6724059669726539,
+        0.6724059669726538,
+        0.6700545637744093,
+        0.67297875858833,
+        0.6724059669726539,
+        0.6724059669726539,
+        0.67297875858833,
+        0.67297875858833,
+        0.6724059669726539,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.6574491465831921,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833,
+        0.67297875858833
+      ]
+    },
+    "balanced": {
+      "exact_score": 0.7418562683807485,
+      "runs": 30,
+      "optimum_hits": 29,
+      "best_gap": 0,
+      "worst_gap": 0.008114787680516655,
+      "runtime_seconds": 0.1800504160055425,
+      "per_seed_scores": [
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7418562683807485,
+        0.7337414807002318,
+        0.7418562683807485,
+        0.7418562683807485
+      ]
+    }
+  },
+  "strategies": [
+    {
+      "strategy_id": "baseline",
+      "priority": null,
+      "crop_ids": [
+        [
+          "paddy",
+          "paddy"
+        ],
+        [
+          "paddy",
+          "paddy"
+        ],
+        [
+          "paddy",
+          "paddy"
+        ]
+      ],
+      "crop_names": [
+        "Paddy rice",
+        "Paddy rice",
+        "Paddy rice",
+        "Paddy rice",
+        "Paddy rice",
+        "Paddy rice"
+      ],
+      "metrics": {
+        "water": {
+          "value": 129.60263837535027,
+          "unit": "mm unmet per slot",
+          "score": 0.7746041071733039,
+          "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+        },
+        "nitrogen": {
+          "value": -110.0,
+          "unit": "kg N/ha per slot",
+          "score": 0.06493506493506493,
+          "source": "Crop catalog \u00b7 local assumptions",
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+        },
+        "erosion": {
+          "value": 16.396223055882356,
+          "unit": "slope \u00d7 rainfall proxy",
+          "score": 0.8615271812475901,
+          "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+        },
+        "climate_fit": {
+          "value": 0.0857142857142857,
+          "unit": "historical share",
+          "score": 0.0857142857142857,
+          "source": "NASA POWER \u00b7 crop catalog",
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+        },
+        "income": {
+          "value": 0.7800000000000002,
+          "unit": "relative index",
+          "score": 0.7800000000000002,
+          "source": "Crop catalog \u00b7 illustrative economic assumptions",
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+        },
+        "risk": {
+          "value": 0.5,
+          "unit": "relative penalty",
+          "score": 0.5,
+          "source": "Crop catalog \u00b7 disease family and cover assumptions",
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+        }
+      },
+      "flags": {
+        "identical_consecutive_crop": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "objectives": {
+        "water_saver": 0.5328615582328179,
+        "soil_builder": 0.473894154081176,
+        "income": 0.5658874191303593,
+        "balanced": 0.5085527086419417
+      },
+      "why": "Existing rotation supplied for comparison."
+    },
+    {
+      "strategy_id": "water_saver",
+      "priority": "water_saver",
+      "crop_ids": [
+        [
+          "pigeonpea",
+          "fallow"
+        ],
+        [
+          "pigeonpea",
+          "fallow"
+        ],
+        [
+          "pigeonpea",
+          "fallow"
+        ]
+      ],
+      "crop_names": [
+        "Pigeonpea",
+        "Bare fallow",
+        "Pigeonpea",
+        "Bare fallow",
+        "Pigeonpea",
+        "Bare fallow"
+      ],
+      "metrics": {
+        "water": {
+          "value": 12.863558620689654,
+          "unit": "mm unmet per slot",
+          "score": 0.9742728827586207,
+          "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+        },
+        "nitrogen": {
+          "value": 7.5,
+          "unit": "kg N/ha per slot",
+          "score": 0.827922077922078,
+          "source": "Crop catalog \u00b7 local assumptions",
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+        },
+        "erosion": {
+          "value": 20.041529924705884,
+          "unit": "slope \u00d7 rainfall proxy",
+          "score": 0.8307410718110988,
+          "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+        },
+        "climate_fit": {
+          "value": 0.7285714285714286,
+          "unit": "historical share",
+          "score": 0.7285714285714286,
+          "source": "NASA POWER \u00b7 crop catalog",
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+        },
+        "income": {
+          "value": 0.315,
+          "unit": "relative index",
+          "score": 0.315,
+          "source": "Crop catalog \u00b7 illustrative economic assumptions",
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+        },
+        "risk": {
+          "value": 0.25,
+          "unit": "relative penalty",
+          "score": 0.75,
+          "source": "Crop catalog \u00b7 disease family and cover assumptions",
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+        }
+      },
+      "flags": {},
+      "objectives": {
+        "water_saver": 0.801543642120653,
+        "soil_builder": 0.770346322462403,
+        "income": 0.5852922639443392,
+        "balanced": 0.7418562683807485
+      },
+      "why": "Selected by ant colony for the water saver priorities.",
+      "selection_method": "ant colony"
+    },
+    {
+      "strategy_id": "soil_builder",
+      "priority": "soil_builder",
+      "crop_ids": [
+        [
+          "pigeonpea",
+          "fallow"
+        ],
+        [
+          "pigeonpea",
+          "fallow"
+        ],
+        [
+          "soybean",
+          "fallow"
+        ]
+      ],
+      "crop_names": [
+        "Pigeonpea",
+        "Bare fallow",
+        "Pigeonpea",
+        "Bare fallow",
+        "Soybean",
+        "Bare fallow"
+      ],
+      "metrics": {
+        "water": {
+          "value": 15.042787228607919,
+          "unit": "mm unmet per slot",
+          "score": 0.9716014902770836,
+          "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+        },
+        "nitrogen": {
+          "value": 8.166666666666666,
+          "unit": "kg N/ha per slot",
+          "score": 0.8322510822510822,
+          "source": "Crop catalog \u00b7 local assumptions",
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+        },
+        "erosion": {
+          "value": 20.41725707137255,
+          "unit": "slope \u00d7 rainfall proxy",
+          "score": 0.8275679021790799,
+          "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+        },
+        "climate_fit": {
+          "value": 0.6666666666666666,
+          "unit": "historical share",
+          "score": 0.6666666666666666,
+          "source": "NASA POWER \u00b7 crop catalog",
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+        },
+        "income": {
+          "value": 0.3316666666666667,
+          "unit": "relative index",
+          "score": 0.3316666666666667,
+          "source": "Crop catalog \u00b7 illustrative economic assumptions",
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+        },
+        "risk": {
+          "value": 0.25,
+          "unit": "relative penalty",
+          "score": 0.75,
+          "source": "Crop catalog \u00b7 disease family and cover assumptions",
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+        }
+      },
+      "flags": {},
+      "objectives": {
+        "water_saver": 0.7933216408192162,
+        "soil_builder": 0.7660607825811363,
+        "income": 0.5835136523617706,
+        "balanced": 0.7337414807002318
+      },
+      "why": "Selected by ant colony for the soil builder priorities.",
+      "selection_method": "ant colony"
+    },
+    {
+      "strategy_id": "income",
+      "priority": "income",
+      "crop_ids": [
+        [
+          "pigeonpea",
+          "maize"
+        ],
+        [
+          "pigeonpea",
+          "maize"
+        ],
+        [
+          "pigeonpea",
+          "maize"
+        ]
+      ],
+      "crop_names": [
+        "Pigeonpea",
+        "Grain maize",
+        "Pigeonpea",
+        "Grain maize",
+        "Pigeonpea",
+        "Grain maize"
+      ],
+      "metrics": {
+        "water": {
+          "value": 105.35032332657215,
+          "unit": "mm unmet per slot",
+          "score": 0.7892993533468557,
+          "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+        },
+        "nitrogen": {
+          "value": -52.5,
+          "unit": "kg N/ha per slot",
+          "score": 0.4383116883116883,
+          "source": "Crop catalog \u00b7 local assumptions",
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+        },
+        "erosion": {
+          "value": 13.778040792352941,
+          "unit": "slope \u00d7 rainfall proxy",
+          "score": 0.8836388027352238,
+          "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+        },
+        "climate_fit": {
+          "value": 0.22857142857142856,
+          "unit": "historical share",
+          "score": 0.22857142857142856,
+          "source": "NASA POWER \u00b7 crop catalog",
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+        },
+        "income": {
+          "value": 0.7150000000000002,
+          "unit": "relative index",
+          "score": 0.7150000000000002,
+          "source": "Crop catalog \u00b7 illustrative economic assumptions",
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+        },
+        "risk": {
+          "value": 0.0,
+          "unit": "relative penalty",
+          "score": 1.0,
+          "source": "Crop catalog \u00b7 disease family and cover assumptions",
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+        }
+      },
+      "flags": {},
+      "objectives": {
+        "water_saver": 0.6861511214773894,
+        "soil_builder": 0.6756902853691409,
+        "income": 0.67297875858833,
+        "balanced": 0.6721696164040835
+      },
+      "why": "Selected by ant colony for the income priorities.",
+      "selection_method": "ant colony"
+    },
+    {
+      "strategy_id": "balanced",
+      "priority": "balanced",
+      "crop_ids": [
+        [
+          "pigeonpea",
+          "fallow"
+        ],
+        [
+          "soybean",
+          "fallow"
+        ],
+        [
+          "pigeonpea",
+          "fallow"
+        ]
+      ],
+      "crop_names": [
+        "Pigeonpea",
+        "Bare fallow",
+        "Soybean",
+        "Bare fallow",
+        "Pigeonpea",
+        "Bare fallow"
+      ],
+      "metrics": {
+        "water": {
+          "value": 15.042787228607919,
+          "unit": "mm unmet per slot",
+          "score": 0.9716014902770836,
+          "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+        },
+        "nitrogen": {
+          "value": 8.166666666666666,
+          "unit": "kg N/ha per slot",
+          "score": 0.8322510822510822,
+          "source": "Crop catalog \u00b7 local assumptions",
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+        },
+        "erosion": {
+          "value": 20.41725707137255,
+          "unit": "slope \u00d7 rainfall proxy",
+          "score": 0.8275679021790799,
+          "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+        },
+        "climate_fit": {
+          "value": 0.6666666666666666,
+          "unit": "historical share",
+          "score": 0.6666666666666666,
+          "source": "NASA POWER \u00b7 crop catalog",
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+        },
+        "income": {
+          "value": 0.3316666666666667,
+          "unit": "relative index",
+          "score": 0.3316666666666667,
+          "source": "Crop catalog \u00b7 illustrative economic assumptions",
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+        },
+        "risk": {
+          "value": 0.25,
+          "unit": "relative penalty",
+          "score": 0.75,
+          "source": "Crop catalog \u00b7 disease family and cover assumptions",
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+        }
+      },
+      "flags": {},
+      "objectives": {
+        "water_saver": 0.7933216408192162,
+        "soil_builder": 0.7660607825811363,
+        "income": 0.5835136523617706,
+        "balanced": 0.7337414807002318
+      },
+      "why": "Selected by ant colony for the balanced priorities.",
+      "selection_method": "ant colony"
+    }
+  ],
+  "parameter_source": "config/optimizer.json"
+}
