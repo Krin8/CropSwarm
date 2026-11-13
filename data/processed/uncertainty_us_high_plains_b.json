@@ -1,0 +1,1091 @@
+{
+  "farm_id": "us_high_plains_b",
+  "label": "illustrative; validate locally",
+  "draws": 500,
+  "seed": 2026,
+  "parameter_source": "config/uncertainty.json",
+  "climate_source": "NASA POWER historical years and seeded climate regimes",
+  "limitations": [
+    "Wins and regret compare the displayed strategies. Tied wins divide credit.",
+    "Scenario ranges are conditional on illustrative parameter spreads and chosen strategies."
+  ],
+  "unknowns": [
+    "Satellites do not directly measure soil nitrogen or organic carbon. Verify these with soil samples.",
+    "NASA POWER soil wetness is a model product.",
+    "Irrigation share, baseline management, prices and pest pressure need local evidence.",
+    "Crop income is a relative index. Market prices and yield can change.",
+    "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+    "CDL point classes are not a verified farm management record",
+    "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally"
+  ],
+  "scenarios": {
+    "historical": {
+      "supply_fraction": 0.0,
+      "temperature_change_c": 0,
+      "rainfall_factor": 1,
+      "strategies": {
+        "baseline": {
+          "metrics": {
+            "water": {
+              "p10": 131.4465,
+              "p50": 179.632,
+              "p90": 224.5702,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -60.2885,
+              "p50": -54.9412,
+              "p90": -49.5887,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 57.8925,
+              "p50": 82.7555,
+              "p90": 113.4303,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.6667,
+              "p50": 0.6667,
+              "p90": 1.0,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3704,
+              "p50": 0.4104,
+              "p90": 0.4511,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.3333,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.8,
+            "soil_builder": 0.0,
+            "income": 1.2,
+            "balanced": 0.2
+          },
+          "mean_regret": {
+            "water_saver": 0.07049,
+            "soil_builder": 0.10676,
+            "income": 0.09326,
+            "balanced": 0.06537
+          }
+        },
+        "water_saver": {
+          "metrics": {
+            "water": {
+              "p10": 113.8438,
+              "p50": 159.8301,
+              "p90": 216.3125,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.7083,
+              "p50": 85.9036,
+              "p90": 120.9627,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 36.4,
+            "soil_builder": 23.2,
+            "income": 8.8,
+            "balanced": 38.3
+          },
+          "mean_regret": {
+            "water_saver": 0.01897,
+            "soil_builder": 0.0224,
+            "income": 0.05369,
+            "balanced": 0.01644
+          }
+        },
+        "soil_builder": {
+          "metrics": {
+            "water": {
+              "p10": 94.19,
+              "p50": 134.8815,
+              "p90": 175.0933,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": 4.5975,
+              "p50": 6.2782,
+              "p90": 8.0206,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 50.8003,
+              "p50": 78.2732,
+              "p90": 114.3124,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.2074,
+              "p50": 0.2424,
+              "p90": 0.2771,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 26.8,
+            "soil_builder": 52.0,
+            "income": 0.0,
+            "balanced": 19.4
+          },
+          "mean_regret": {
+            "water_saver": 0.05408,
+            "soil_builder": 0.01009,
+            "income": 0.1526,
+            "balanced": 0.05258
+          }
+        },
+        "income": {
+          "metrics": {
+            "water": {
+              "p10": 200.449,
+              "p50": 267.5949,
+              "p90": 328.5675,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -45.1448,
+              "p50": -40.3121,
+              "p90": -35.7236,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 43.9902,
+              "p50": 58.6772,
+              "p90": 93.2484,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.0,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.6036,
+              "p50": 0.6515,
+              "p90": 0.7052,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.0,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.2,
+            "soil_builder": 2.0,
+            "income": 90.0,
+            "balanced": 9.4
+          },
+          "mean_regret": {
+            "water_saver": 0.09028,
+            "soil_builder": 0.05101,
+            "income": 0.00148,
+            "balanced": 0.04708
+          }
+        },
+        "balanced": {
+          "metrics": {
+            "water": {
+              "p10": 115.5283,
+              "p50": 160.3748,
+              "p90": 215.0843,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.3581,
+              "p50": 86.0037,
+              "p90": 122.3566,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 35.8,
+            "soil_builder": 22.8,
+            "income": 0.0,
+            "balanced": 32.7
+          },
+          "mean_regret": {
+            "water_saver": 0.01903,
+            "soil_builder": 0.02248,
+            "income": 0.05364,
+            "balanced": 0.01646
+          }
+        }
+      }
+    },
+    "warmer_drier": {
+      "supply_fraction": 0.0,
+      "temperature_change_c": 2,
+      "rainfall_factor": 0.9,
+      "strategies": {
+        "baseline": {
+          "metrics": {
+            "water": {
+              "p10": 144.0692,
+              "p50": 191.2741,
+              "p90": 236.2377,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -60.2885,
+              "p50": -54.9412,
+              "p90": -49.5887,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 52.1033,
+              "p50": 74.4799,
+              "p90": 102.0873,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3704,
+              "p50": 0.4104,
+              "p90": 0.4511,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.3333,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 1.2,
+            "soil_builder": 0.0,
+            "income": 1.4,
+            "balanced": 0.0
+          },
+          "mean_regret": {
+            "water_saver": 0.08973,
+            "soil_builder": 0.12403,
+            "income": 0.09683,
+            "balanced": 0.08659
+          }
+        },
+        "water_saver": {
+          "metrics": {
+            "water": {
+              "p10": 129.5987,
+              "p50": 173.6389,
+              "p90": 229.5554,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 54.6375,
+              "p50": 77.3132,
+              "p90": 108.8665,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 33.8,
+            "soil_builder": 16.4,
+            "income": 15.6,
+            "balanced": 35.6
+          },
+          "mean_regret": {
+            "water_saver": 0.02683,
+            "soil_builder": 0.0313,
+            "income": 0.04471,
+            "balanced": 0.02362
+          }
+        },
+        "soil_builder": {
+          "metrics": {
+            "water": {
+              "p10": 104.7286,
+              "p50": 146.2371,
+              "p90": 185.3446,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": 4.5975,
+              "p50": 6.2782,
+              "p90": 8.0206,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 45.7203,
+              "p50": 70.4459,
+              "p90": 102.8812,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.2074,
+              "p50": 0.2424,
+              "p90": 0.2771,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 31.8,
+            "soil_builder": 68.8,
+            "income": 0.0,
+            "balanced": 26.6
+          },
+          "mean_regret": {
+            "water_saver": 0.0406,
+            "soil_builder": 0.0056,
+            "income": 0.12327,
+            "balanced": 0.03662
+          }
+        },
+        "income": {
+          "metrics": {
+            "water": {
+              "p10": 225.4704,
+              "p50": 290.8436,
+              "p90": 349.4996,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -45.1448,
+              "p50": -40.3121,
+              "p90": -35.7236,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 39.5912,
+              "p50": 52.8095,
+              "p90": 83.9236,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.3333,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.6036,
+              "p50": 0.6515,
+              "p90": 0.7052,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.0,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.0,
+            "soil_builder": 0.0,
+            "income": 83.0,
+            "balanced": 1.0
+          },
+          "mean_regret": {
+            "water_saver": 0.11158,
+            "soil_builder": 0.06787,
+            "income": 0.00223,
+            "balanced": 0.06661
+          }
+        },
+        "balanced": {
+          "metrics": {
+            "water": {
+              "p10": 131.4772,
+              "p50": 174.6412,
+              "p90": 228.6658,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 54.3223,
+              "p50": 77.4033,
+              "p90": 110.1209,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 33.2,
+            "soil_builder": 14.8,
+            "income": 0.0,
+            "balanced": 36.8
+          },
+          "mean_regret": {
+            "water_saver": 0.02767,
+            "soil_builder": 0.0319,
+            "income": 0.04546,
+            "balanced": 0.02453
+          }
+        }
+      }
+    },
+    "less_irrigation": {
+      "supply_fraction": 0,
+      "temperature_change_c": 0,
+      "rainfall_factor": 1,
+      "strategies": {
+        "baseline": {
+          "metrics": {
+            "water": {
+              "p10": 131.4465,
+              "p50": 179.632,
+              "p90": 224.5702,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -60.2885,
+              "p50": -54.9412,
+              "p90": -49.5887,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 57.8925,
+              "p50": 82.7555,
+              "p90": 113.4303,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.6667,
+              "p50": 0.6667,
+              "p90": 1.0,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3704,
+              "p50": 0.4104,
+              "p90": 0.4511,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.3333,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.8,
+            "soil_builder": 0.0,
+            "income": 1.2,
+            "balanced": 0.2
+          },
+          "mean_regret": {
+            "water_saver": 0.07049,
+            "soil_builder": 0.10676,
+            "income": 0.09326,
+            "balanced": 0.06537
+          }
+        },
+        "water_saver": {
+          "metrics": {
+            "water": {
+              "p10": 113.8438,
+              "p50": 159.8301,
+              "p90": 216.3125,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.7083,
+              "p50": 85.9036,
+              "p90": 120.9627,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 36.4,
+            "soil_builder": 23.2,
+            "income": 8.8,
+            "balanced": 38.3
+          },
+          "mean_regret": {
+            "water_saver": 0.01897,
+            "soil_builder": 0.0224,
+            "income": 0.05369,
+            "balanced": 0.01644
+          }
+        },
+        "soil_builder": {
+          "metrics": {
+            "water": {
+              "p10": 94.19,
+              "p50": 134.8815,
+              "p90": 175.0933,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": 4.5975,
+              "p50": 6.2782,
+              "p90": 8.0206,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 50.8003,
+              "p50": 78.2732,
+              "p90": 114.3124,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.2074,
+              "p50": 0.2424,
+              "p90": 0.2771,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 26.8,
+            "soil_builder": 52.0,
+            "income": 0.0,
+            "balanced": 19.4
+          },
+          "mean_regret": {
+            "water_saver": 0.05408,
+            "soil_builder": 0.01009,
+            "income": 0.1526,
+            "balanced": 0.05258
+          }
+        },
+        "income": {
+          "metrics": {
+            "water": {
+              "p10": 200.449,
+              "p50": 267.5949,
+              "p90": 328.5675,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -45.1448,
+              "p50": -40.3121,
+              "p90": -35.7236,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 43.9902,
+              "p50": 58.6772,
+              "p90": 93.2484,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.0,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.6036,
+              "p50": 0.6515,
+              "p90": 0.7052,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.0,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.2,
+            "soil_builder": 2.0,
+            "income": 90.0,
+            "balanced": 9.4
+          },
+          "mean_regret": {
+            "water_saver": 0.09028,
+            "soil_builder": 0.05101,
+            "income": 0.00148,
+            "balanced": 0.04708
+          }
+        },
+        "balanced": {
+          "metrics": {
+            "water": {
+              "p10": 115.5283,
+              "p50": 160.3748,
+              "p90": 215.0843,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.3581,
+              "p50": 86.0037,
+              "p90": 122.3566,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 35.8,
+            "soil_builder": 22.8,
+            "income": 0.0,
+            "balanced": 32.7
+          },
+          "mean_regret": {
+            "water_saver": 0.01903,
+            "soil_builder": 0.02248,
+            "income": 0.05364,
+            "balanced": 0.01646
+          }
+        }
+      }
+    },
+    "more_irrigation": {
+      "supply_fraction": 0.25,
+      "temperature_change_c": 0,
+      "rainfall_factor": 1,
+      "strategies": {
+        "baseline": {
+          "metrics": {
+            "water": {
+              "p10": 98.5849,
+              "p50": 134.724,
+              "p90": 168.4276,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -60.2885,
+              "p50": -54.9412,
+              "p90": -49.5887,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 57.8925,
+              "p50": 82.7555,
+              "p90": 113.4303,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.6667,
+              "p50": 0.6667,
+              "p90": 1.0,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3704,
+              "p50": 0.4104,
+              "p90": 0.4511,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.3333,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 0.2,
+            "soil_builder": 0.0,
+            "income": 1.2,
+            "balanced": 0.2
+          },
+          "mean_regret": {
+            "water_saver": 0.06537,
+            "soil_builder": 0.10588,
+            "income": 0.09619,
+            "balanced": 0.06373
+          }
+        },
+        "water_saver": {
+          "metrics": {
+            "water": {
+              "p10": 85.3828,
+              "p50": 119.8726,
+              "p90": 162.2344,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.7083,
+              "p50": 85.9036,
+              "p90": 120.9627,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 36.0,
+            "soil_builder": 22.2,
+            "income": 7.4,
+            "balanced": 38.7
+          },
+          "mean_regret": {
+            "water_saver": 0.01715,
+            "soil_builder": 0.02246,
+            "income": 0.05757,
+            "balanced": 0.0164
+          }
+        },
+        "soil_builder": {
+          "metrics": {
+            "water": {
+              "p10": 70.6425,
+              "p50": 101.1611,
+              "p90": 131.3199,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": 4.5975,
+              "p50": 6.2782,
+              "p90": 8.0206,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 50.8003,
+              "p50": 78.2732,
+              "p90": 114.3124,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.2074,
+              "p50": 0.2424,
+              "p90": 0.2771,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 27.8,
+            "soil_builder": 55.4,
+            "income": 0.0,
+            "balanced": 18.8
+          },
+          "mean_regret": {
+            "water_saver": 0.04768,
+            "soil_builder": 0.00884,
+            "income": 0.15517,
+            "balanced": 0.05032
+          }
+        },
+        "income": {
+          "metrics": {
+            "water": {
+              "p10": 150.3367,
+              "p50": 200.6962,
+              "p90": 246.4256,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -45.1448,
+              "p50": -40.3121,
+              "p90": -35.7236,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 43.9902,
+              "p50": 58.6772,
+              "p90": 93.2484,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.0,
+              "p50": 0.3333,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.6036,
+              "p50": 0.6515,
+              "p90": 0.7052,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.0,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 1.0,
+            "soil_builder": 2.4,
+            "income": 91.4,
+            "balanced": 10.6
+          },
+          "mean_regret": {
+            "water_saver": 0.07336,
+            "soil_builder": 0.04675,
+            "income": 0.00104,
+            "balanced": 0.03971
+          }
+        },
+        "balanced": {
+          "metrics": {
+            "water": {
+              "p10": 86.6462,
+              "p50": 120.2811,
+              "p90": 161.3132,
+              "unit": "mm unmet per slot"
+            },
+            "nitrogen": {
+              "p10": -22.4765,
+              "p50": -18.7311,
+              "p90": -14.9049,
+              "unit": "kg N/ha per slot"
+            },
+            "erosion": {
+              "p10": 60.3581,
+              "p50": 86.0037,
+              "p90": 122.3566,
+              "unit": "slope \u00d7 rainfall proxy"
+            },
+            "climate_fit": {
+              "p10": 0.3333,
+              "p50": 0.6667,
+              "p90": 0.6667,
+              "unit": "historical share"
+            },
+            "income": {
+              "p10": 0.3913,
+              "p50": 0.4372,
+              "p90": 0.479,
+              "unit": "relative index"
+            },
+            "risk": {
+              "p10": 0.1667,
+              "p50": 0.1667,
+              "p90": 0.1667,
+              "unit": "relative penalty"
+            }
+          },
+          "wins_pct": {
+            "water_saver": 35.0,
+            "soil_builder": 20.0,
+            "income": 0.0,
+            "balanced": 31.7
+          },
+          "mean_regret": {
+            "water_saver": 0.01717,
+            "soil_builder": 0.02253,
+            "income": 0.05751,
+            "balanced": 0.01641
+          }
+        }
+      }
+    }
+  }
+}

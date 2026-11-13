@@ -1,0 +1,9 @@
+{
+  "source": "assumption, validate locally",
+  "seed": 2026,
+  "draws": 500,
+  "parameter_range_fraction": 0.18,
+  "scenario_temperature_change_c": 2,
+  "scenario_rainfall_factor": 0.9,
+  "supply_fraction_offset": 0.25
+}
