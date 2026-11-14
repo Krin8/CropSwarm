@@ -11,7 +11,7 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 
 The app has no runtime dependency on `data/raw/`, `data/cache/`, `ndvi_*.csv`, `coverage_p4.json`, the source crop CSV or the precompute configuration files. The offline back-test rebuild (`python -m src.backtest`) does read the committed Kansas CDL raw sample, crop CSV, climate and NDVI processed files. Keep the committed archives and fixtures when running the full test suite or rebuilding processed data. Install the pinned requirements in a fresh Python 3.12 virtual environment, then run `python -m pytest -q` and `python -m streamlit run app/main.py` from the checkout.
 
-The screenshot script starts its own loopback-only Streamlit server, blocks external HTTP resources in the browser, and opens a separate session per farm. The uncertainty panels use the existing rotation under the warmer and drier scenario. With Google Chrome installed:
+The screenshot script starts its own loopback-only Streamlit server, blocks external HTTP resources in the browser, and opens a separate session per farm. The uncertainty panels use the existing rotation under historical-weather draws. With Google Chrome installed:
 
 ```sh
 python -m pip install -r requirements-screenshots.txt

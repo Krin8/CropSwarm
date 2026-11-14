@@ -353,13 +353,23 @@ def app():
                                     "Source": info["source"], "How it works": info["explanation"]})
                 st.dataframe(pd.DataFrame(details), hide_index=True)
                 with st.expander("Evidence grade shares and input sources"):
+                    grade_rows = []
                     for metric, info in entry["metrics"].items():
                         evidence = info["evidence"]
-                        shares = ", ".join(f"{grade.replace('_', ' ')} {share:.0%}"
-                                           for grade, share in evidence["shares"].items() if share > 0)
-                        st.write(f"{title(metric)} · {evidence['label'].upper()} · {shares}")
-                        st.caption("; ".join(f"{item['input']}: {item['grade']} · {item['source']}"
-                                             for item in evidence["inputs"]))
+                        grade_rows.append({"Metric": title(metric), "Label": evidence["label"].upper(),
+                                           **{grade.replace("_", " ").title(): f"{share:.0%}"
+                                              for grade, share in evidence["shares"].items()}})
+                    st.dataframe(pd.DataFrame(grade_rows), hide_index=True)
+                    selected_metric = st.selectbox("Inspect input sources", METRICS, format_func=title,
+                                                   key=f"evidence_metric_{farm_id}_{key}")
+                    source_rows = {}
+                    for item in entry["metrics"][selected_metric]["evidence"]["inputs"]:
+                        lookup = (item["input"], item["grade"], item["source"])
+                        source_rows[lookup] = source_rows.get(lookup, 0) + item["weight"]
+                    st.dataframe(pd.DataFrame([{"Input": field, "Grade": grade, "Dependency share": f"{share:.0%}",
+                                                "Source": source}
+                                               for (field, grade, source), share in source_rows.items()]),
+                                 hide_index=True)
             st.caption("Information gap · The soil, crop and farm assumptions below apply to this strategy.")
 
     if result["verification"]:
