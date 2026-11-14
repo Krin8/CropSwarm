@@ -135,6 +135,8 @@ def compute(farm, windows, climate, ndvi, *, years=LONG_MODIS_YEARS, reference_y
                          "sources": {"weather": POWER_SOURCE, "vegetation": MODIS_SOURCE}}
     return {"farm_id": farm["farm_id"], "years": list(years), "coverage": coverage, "seasons": seasons,
             "label": "illustrative; validate locally",
+            "units": {"rainfall_mm": "mm", "rainfall_anomaly_mm": "mm", "rainfall_deficit_mm": "mm",
+                      "heat_days": "days", "integrated_ndvi_days": "NDVI × days", "peak_ndvi": "NDVI ratio"},
             "design": {"reference_years": list(reference_years), "heat_quantile": HEAT_QUANTILE,
                        "min_qa_composites": MIN_GOOD_COMPOSITES, "min_qa_day_share": MIN_GOOD_DAY_SHARE,
                        "strong_abs_rho": STRONG_RHO, "bootstrap_seed": SEED, "bootstrap_draws": BOOTSTRAP_DRAWS,
@@ -147,13 +149,14 @@ def build(root=ROOT):
     for farm in farms:
         farm_id = farm["farm_id"]
         windows = json.loads((processed / f"seasons_{farm_id}.json").read_text())["season_windows"]
-        if farm_id == "telangana_a":
-            windows["post_monsoon"]["p19_notes"] = ["Tentative second season inferred from MODIS NDVI."]
-        if farm_id == "us_high_plains_b":
-            windows["cool"]["p19_notes"] = ["Cool-season calendar is an assumption, validate locally."]
-        if farm_id == "kenya_makueni_north":
-            for window in windows.values():
-                window["p19_notes"] = ["Cropland at this point is unverified."]
+        flags = farm["validation_flags"]
+        for name, window in windows.items():
+            notes = [flag for flag in flags if "cropland" in flag.lower() and "unverified" in flag.lower()]
+            if "assumption" in window["source"].lower():
+                notes.append("Calendar is an assumption, validate locally.")
+            if name == "post_monsoon" and any("second crop season remains tentative" in flag.lower() for flag in flags):
+                notes.append("Tentative second season inferred from MODIS NDVI.")
+            window["p19_notes"] = notes
         result = compute(farm, windows, pd.read_parquet(processed / f"climate_{farm_id}.parquet"),
                          pd.read_csv(processed / f"ndvi_long_{farm_id}.csv"))
         atomic_write(processed / f"nasa_consistency_{farm_id}.json",

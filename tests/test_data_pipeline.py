@@ -1,10 +1,12 @@
 from pathlib import Path
+from shutil import copyfile
 from unittest.mock import Mock
 
 import pandas as pd
 import pytest
 import requests
 
+from src import data_pipeline
 from src.data_pipeline import (
     BAND_NAMES, IMERG, MODIS, POWER, UTC_RAIN, Chunk, band_metadata, cache_hit,
     fetch_chunk, modis_data, power_data, read_json, write_json,
@@ -86,3 +88,28 @@ def test_power_fill_and_utc_rain_stay_separate(tmp_path):
     assert rows.iloc[0][IMERG] == 4
     assert pd.isna(rows.iloc[1][IMERG])
     assert units[IMERG] == units[UTC_RAIN] == "mm/day"
+
+
+def test_long_record_fetches_only_modis_and_preserves_p4_outputs(tmp_path, monkeypatch):
+    for name in ("config/farms.json", "data/raw/smoke/modis_bands.json"):
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        copyfile(ROOT / name, target)
+    processed = tmp_path / "data/processed"
+    processed.mkdir(parents=True)
+    p4_file = processed / "ndvi_us_high_plains_b.csv"
+    p4_file.write_text("original P4 data")
+    received = []
+
+    def mock_fetch(job, raw):
+        received.append(job)
+        return "incomplete"
+
+    monkeypatch.setattr(data_pipeline, "LONG_MODIS_YEARS", (2001, 2024))
+    monkeypatch.setattr(data_pipeline, "fetch_chunk", mock_fetch)
+    data_pipeline.run_long_modis(tmp_path, fetch=True, workers=1)
+    assert len(received) == 18
+    assert {job.url for job in received} == {MODIS}
+    assert {job.params["startDate"][1:5] for job in received} == {"2001", "2024"}
+    assert p4_file.read_text() == "original P4 data"
+    assert len(list(processed.glob("ndvi_long_*.csv"))) == 3
