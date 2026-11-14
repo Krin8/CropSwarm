@@ -18,6 +18,7 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert not app.exception
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
+    assert any("Climate stress test" in row.value for row in app.subheader)
     assert any("What we cannot know" in row.value for row in app.subheader)
     if site == "kenya_makueni_north":
         assert any("cropland unverified" in row.value for row in app.warning)

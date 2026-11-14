@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
+import plotly.express as px
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +34,45 @@ def load(farm_id, prefix):
 
 def title(name):
     return name.replace("_", " ").capitalize()
+
+
+def stress_map(data, preset):
+    selected = data["presets"][preset]
+    rain = data["rainfall_changes_pct"]
+    temperatures = data["temperature_changes_c"]
+    ids = list(dict.fromkeys(cell["winner_id"] for cell in selected["cells"]))
+    palette = px.colors.qualitative.Safe
+    colors = [palette[index % len(palette)] for index in range(len(ids))]
+    n = len(ids)
+    scale = [point for i, color in enumerate(colors)
+             for point in ((i / n, color), ((i + 1) / n, color))]
+    by_cell = {(cell["temperature_change_c"], cell["rainfall_change_pct"]): cell
+               for cell in selected["cells"]}
+    z, labels, hover = [], [], []
+    for temp in temperatures:
+        zrow, labelrow, hoverrow = [], [], []
+        for change in rain:
+            cell = by_cell[temp, change]
+            identifier = cell["winner_id"]
+            sequence = data["rotation_catalog"][identifier]["crop_ids"]
+            zrow.append(ids.index(identifier))
+            labelrow.append(f"S{ids.index(identifier) + 1}")
+            hoverrow.append(" / ".join(" → ".join(year) for year in sequence))
+        z.append(zrow)
+        labels.append(labelrow)
+        hover.append(hoverrow)
+    figure = go.Figure(go.Heatmap(z=z, x=rain, y=temperatures, zmin=-.5, zmax=n-.5,
+                                  colorscale=scale, showscale=False, xgap=2, ygap=2,
+                                  text=labels, texttemplate="%{text}", customdata=hover,
+                                  hovertemplate="Rainfall change %{x:+}%<br>Temperature +%{y:g} °C<br>"
+                                                "Top rotation: %{customdata}<extra></extra>"))
+    figure.update_layout(height=350, margin=dict(t=15, r=15, b=50, l=65),
+                         xaxis_title="Uniform rainfall change (%)",
+                         yaxis_title="Uniform temperature change (°C)")
+    legend = [{"Map label": f"S{index + 1}", "Top rotation":
+               " / ".join(" → ".join(year) for year in data["rotation_catalog"][identifier]["crop_ids"])}
+              for index, identifier in enumerate(ids)]
+    return figure, legend
 
 
 def farm_map(farms, selected):
@@ -192,6 +232,19 @@ def app():
         values = list(presets[preset].values())
     weight = np.array(values) / sum(values)
     st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
+
+    with st.container(key="climate_stress_test"):
+        st.subheader("Climate stress test")
+        stress = load(farm_id, "stress_test")
+        figure, legend = stress_map(stress, preset)
+        st.plotly_chart(figure, key=f"stress_{farm_id}_{preset}", config={"displayModeBar": False})
+        st.caption(f"Winner map for {title(preset).lower()} · exact search over feasible rotations at every cell · "
+                   "NASA POWER cached historical weather and illustrative crop inputs.")
+        st.dataframe(pd.DataFrame(legend), hide_index=True)
+        st.write(stress["presets"][preset]["tipping_point"]["sentence"])
+        st.caption(stress["caveat"])
+        st.caption("Grid: +0 to +3 °C by 0.5 °C; rainfall −30% to +10% by 10% · design choice, not empirical. "
+                   "The map uses reference farm inputs even when you edit the comparison below.")
 
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")

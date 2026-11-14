@@ -1,0 +1,1872 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "label": "illustrative; validate locally",
+  "climate_source": "NASA POWER cached historical daily climate; uniform illustrative shifts",
+  "grid_source": "design choice, not empirical; validate locally",
+  "temperature_changes_c": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0
+  ],
+  "rainfall_changes_pct": [
+    -30,
+    -20,
+    -10,
+    0,
+    10
+  ],
+  "distance_rule": "Euclidean distance in grid steps from 0 C and 0% rainfall; ties prefer smaller temperature change, then smaller absolute rainfall change",
+  "tie_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation",
+  "seed": 42,
+  "seed_source": "design choice, not empirical; validate locally",
+  "horizon_years": 3,
+  "rotation_catalog": {
+    "rotation_7b607e5d7b52": {
+      "crop_ids": [
+        [
+          "fallow",
+          "cowpea"
+        ],
+        [
+          "fallow",
+          "cowpea"
+        ],
+        [
+          "fallow",
+          "cowpea"
+        ]
+      ],
+      "crop_names": [
+        "Bare fallow",
+        "Cowpea",
+        "Bare fallow",
+        "Cowpea",
+        "Bare fallow",
+        "Cowpea"
+      ]
+    },
+    "rotation_1ac72790f6cf": {
+      "crop_ids": [
+        [
+          "green_gram",
+          "fallow"
+        ],
+        [
+          "green_gram",
+          "fallow"
+        ],
+        [
+          "green_gram",
+          "fallow"
+        ]
+      ],
+      "crop_names": [
+        "Green gram (mung bean)",
+        "Bare fallow",
+        "Green gram (mung bean)",
+        "Bare fallow",
+        "Green gram (mung bean)",
+        "Bare fallow"
+      ]
+    },
+    "rotation_7dd222928710": {
+      "crop_ids": [
+        [
+          "maize",
+          "green_gram"
+        ],
+        [
+          "maize",
+          "green_gram"
+        ],
+        [
+          "maize",
+          "green_gram"
+        ]
+      ],
+      "crop_names": [
+        "Grain maize",
+        "Green gram (mung bean)",
+        "Grain maize",
+        "Green gram (mung bean)",
+        "Grain maize",
+        "Green gram (mung bean)"
+      ]
+    },
+    "rotation_e3f4ef427caa": {
+      "crop_ids": [
+        [
+          "maize",
+          "common_bean"
+        ],
+        [
+          "maize",
+          "common_bean"
+        ],
+        [
+          "maize",
+          "common_bean"
+        ]
+      ],
+      "crop_names": [
+        "Grain maize",
+        "Common bean",
+        "Grain maize",
+        "Common bean",
+        "Grain maize",
+        "Common bean"
+      ]
+    },
+    "rotation_5601275c21cd": {
+      "crop_ids": [
+        [
+          "green_gram",
+          "pearl_millet"
+        ],
+        [
+          "green_gram",
+          "pearl_millet"
+        ],
+        [
+          "green_gram",
+          "pearl_millet"
+        ]
+      ],
+      "crop_names": [
+        "Green gram (mung bean)",
+        "Pearl millet",
+        "Green gram (mung bean)",
+        "Pearl millet",
+        "Green gram (mung bean)",
+        "Pearl millet"
+      ]
+    },
+    "rotation_fe2b898f8fd5": {
+      "crop_ids": [
+        [
+          "pearl_millet",
+          "green_gram"
+        ],
+        [
+          "pearl_millet",
+          "green_gram"
+        ],
+        [
+          "pearl_millet",
+          "green_gram"
+        ]
+      ],
+      "crop_names": [
+        "Pearl millet",
+        "Green gram (mung bean)",
+        "Pearl millet",
+        "Green gram (mung bean)",
+        "Pearl millet",
+        "Green gram (mung bean)"
+      ]
+    },
+    "rotation_224ab43fcba2": {
+      "crop_ids": [
+        [
+          "sunflower",
+          "green_gram"
+        ],
+        [
+          "sunflower",
+          "green_gram"
+        ],
+        [
+          "sunflower",
+          "green_gram"
+        ]
+      ],
+      "crop_names": [
+        "Sunflower",
+        "Green gram (mung bean)",
+        "Sunflower",
+        "Green gram (mung bean)",
+        "Sunflower",
+        "Green gram (mung bean)"
+      ]
+    },
+    "rotation_068178b21199": {
+      "crop_ids": [
+        [
+          "fallow",
+          "green_gram"
+        ],
+        [
+          "fallow",
+          "green_gram"
+        ],
+        [
+          "fallow",
+          "green_gram"
+        ]
+      ],
+      "crop_names": [
+        "Bare fallow",
+        "Green gram (mung bean)",
+        "Bare fallow",
+        "Green gram (mung bean)",
+        "Bare fallow",
+        "Green gram (mung bean)"
+      ]
+    },
+    "rotation_ff7bdd98ba71": {
+      "crop_ids": [
+        [
+          "sorghum",
+          "green_gram"
+        ],
+        [
+          "sorghum",
+          "green_gram"
+        ],
+        [
+          "sorghum",
+          "green_gram"
+        ]
+      ],
+      "crop_names": [
+        "Grain sorghum",
+        "Green gram (mung bean)",
+        "Grain sorghum",
+        "Green gram (mung bean)",
+        "Grain sorghum",
+        "Green gram (mung bean)"
+      ]
+    },
+    "baseline": {
+      "crop_ids": [
+        [
+          "maize",
+          "common_bean"
+        ],
+        [
+          "maize",
+          "common_bean"
+        ],
+        [
+          "maize",
+          "common_bean"
+        ]
+      ],
+      "crop_names": [
+        "Grain maize",
+        "Common bean",
+        "Grain maize",
+        "Common bean",
+        "Grain maize",
+        "Common bean"
+      ]
+    }
+  },
+  "presets": {
+    "water_saver": {
+      "cells": [
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7b607e5d7b52",
+          "baseline_score": 0.5446638883934711,
+          "exact_optimum_score": 0.7050914526486777,
+          "exact_optimum_id": "rotation_7b607e5d7b52",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5795145012346499,
+          "exact_optimum_score": 0.716268357182983,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6062563611241478,
+          "exact_optimum_score": 0.7328720952940592,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6247377632475395,
+          "exact_optimum_score": 0.7467280962622784,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6552794813408189,
+          "exact_optimum_score": 0.7556659162781165,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7b607e5d7b52",
+          "baseline_score": 0.5446638883934711,
+          "exact_optimum_score": 0.7028855702957365,
+          "exact_optimum_id": "rotation_7b607e5d7b52",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5773086188817087,
+          "exact_optimum_score": 0.716268357182983,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6018445964182655,
+          "exact_optimum_score": 0.7328720952940592,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.620325998541657,
+          "exact_optimum_score": 0.7467280962622784,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6486618342819954,
+          "exact_optimum_score": 0.7556659162781165,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5380462413346476,
+          "exact_optimum_score": 0.7012269162147639,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5640733247640616,
+          "exact_optimum_score": 0.716268357182983,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5886093023006185,
+          "exact_optimum_score": 0.7328720952940592,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6048848220710688,
+          "exact_optimum_score": 0.7467280962622784,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6332206578114072,
+          "exact_optimum_score": 0.7556659162781165,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5358403589817065,
+          "exact_optimum_score": 0.7012269162147639,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5618674424111204,
+          "exact_optimum_score": 0.7141255000401258,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5864034199476773,
+          "exact_optimum_score": 0.730729238151202,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6005360825752706,
+          "exact_optimum_score": 0.7445852391194213,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6288719183156088,
+          "exact_optimum_score": 0.7535230591352594,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5314916194859081,
+          "exact_optimum_score": 0.7012269162147639,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5553758457724649,
+          "exact_optimum_score": 0.7141255000401258,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5755630838132235,
+          "exact_optimum_score": 0.730729238151202,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5896957464408168,
+          "exact_optimum_score": 0.7445852391194213,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6180315821811551,
+          "exact_optimum_score": 0.7535230591352594,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5271428799901098,
+          "exact_optimum_score": 0.6984354098829028,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5488842491338095,
+          "exact_optimum_score": 0.7093925612310841,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5690714871745681,
+          "exact_optimum_score": 0.7244097478733831,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5832041498021613,
+          "exact_optimum_score": 0.7410170090254861,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6093971283996424,
+          "exact_optimum_score": 0.7524060917462165,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5183823757884292,
+          "exact_optimum_score": 0.6984354098829028,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5358380306464146,
+          "exact_optimum_score": 0.7093925612310841,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.553882411544316,
+          "exact_optimum_score": 0.7244097478733831,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5680150741719092,
+          "exact_optimum_score": 0.7410170090254861,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5899223384836761,
+          "exact_optimum_score": 0.7524060917462165,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        }
+      ],
+      "tipping_point": {
+        "found": true,
+        "reference_winner_id": "rotation_1ac72790f6cf",
+        "cell": {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7b607e5d7b52"
+        },
+        "sentence": "The top strategy first changes at +0 \u00b0C and -30% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from green_gram then fallow (repeated annually) to fallow then cowpea (repeated annually)."
+      },
+      "reference_winner_id": "rotation_1ac72790f6cf"
+    },
+    "soil_builder": {
+      "cells": [
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.637813262944303,
+          "exact_optimum_score": 0.7422352710563898,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6528589856407371,
+          "exact_optimum_score": 0.7456643830007472,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6630909229800284,
+          "exact_optimum_score": 0.7503561920879619,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6684897403333252,
+          "exact_optimum_score": 0.7558022369316822,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6822323214331207,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.637813262944303,
+          "exact_optimum_score": 0.7422352710563898,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.651388397405443,
+          "exact_optimum_score": 0.7456643830007472,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6601497465094401,
+          "exact_optimum_score": 0.7503561920879619,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.665548563862737,
+          "exact_optimum_score": 0.7558022369316822,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6778205567272384,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6334014982384206,
+          "exact_optimum_score": 0.7422352710563898,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6425648679936783,
+          "exact_optimum_score": 0.7456643830007472,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6513262170976755,
+          "exact_optimum_score": 0.7503561920879619,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6552544462156782,
+          "exact_optimum_score": 0.7558022369316822,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6675264390801796,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6319309100031265,
+          "exact_optimum_score": 0.7422352710563898,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6410942797583842,
+          "exact_optimum_score": 0.7442358115721759,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6498556288623814,
+          "exact_optimum_score": 0.7489276206593904,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6523552865518126,
+          "exact_optimum_score": 0.7543736655031108,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6646272794163139,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6290317503392611,
+          "exact_optimum_score": 0.7422352710563898,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6367665486659472,
+          "exact_optimum_score": 0.7442358115721759,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6426287381060788,
+          "exact_optimum_score": 0.7489276206593904,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6451283957955101,
+          "exact_optimum_score": 0.7543736655031108,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6574003886600115,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6261325906753954,
+          "exact_optimum_score": 0.7400934828177734,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6324388175735102,
+          "exact_optimum_score": 0.7406441592274426,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6383010070136419,
+          "exact_optimum_score": 0.7446419063736762,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6408006647030732,
+          "exact_optimum_score": 0.75335802607425,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.651644086139003,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6202922545409417,
+          "exact_optimum_score": 0.7400934828177734,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6237413385819135,
+          "exact_optimum_score": 0.7406441592274426,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6281749565934738,
+          "exact_optimum_score": 0.744035517990053,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.630674614282905,
+          "exact_optimum_score": 0.75335802607425,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6386608928616921,
+          "exact_optimum_score": 0.7613807722263656,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        }
+      ],
+      "tipping_point": {
+        "found": true,
+        "reference_winner_id": "rotation_5601275c21cd",
+        "cell": {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_1ac72790f6cf"
+        },
+        "sentence": "The top strategy first changes at +0 \u00b0C and -10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from green_gram then pearl_millet (repeated annually) to green_gram then fallow (repeated annually)."
+      },
+      "reference_winner_id": "rotation_5601275c21cd"
+    },
+    "income": {
+      "cells": [
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6445109705226525,
+          "exact_optimum_score": 0.6483756706772729,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "baseline",
+          "baseline_score": 0.6681960088602587,
+          "exact_optimum_score": 0.6681960088602587,
+          "exact_optimum_id": "rotation_e3f4ef427caa",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6848823878911421,
+          "exact_optimum_score": 0.6886991384068849,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6945717813898127,
+          "exact_optimum_score": 0.7073988152969009,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.7168906529206962,
+          "exact_optimum_score": 0.7341753787975612,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6445109705226525,
+          "exact_optimum_score": 0.6483756706772729,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6659901265073175,
+          "exact_optimum_score": 0.6675310235336755,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6804706231852597,
+          "exact_optimum_score": 0.6886991384068849,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6901600166839303,
+          "exact_optimum_score": 0.7073988152969009,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.7102730058618727,
+          "exact_optimum_score": 0.7341753787975612,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.637893323463829,
+          "exact_optimum_score": 0.6483756706772729,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6527548323896704,
+          "exact_optimum_score": 0.6675310235336755,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6672353290676127,
+          "exact_optimum_score": 0.6886991384068849,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6747188402133422,
+          "exact_optimum_score": 0.7073988152969009,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6948318293912844,
+          "exact_optimum_score": 0.7341753787975612,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6356874411108878,
+          "exact_optimum_score": 0.6483756706772729,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6505489500367292,
+          "exact_optimum_score": 0.6675310235336755,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6650294467146716,
+          "exact_optimum_score": 0.6886991384068849,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6703701007175438,
+          "exact_optimum_score": 0.7052559581540437,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6904830898954861,
+          "exact_optimum_score": 0.732032521654704,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6313387016150895,
+          "exact_optimum_score": 0.6462328135344158,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6440573533980738,
+          "exact_optimum_score": 0.6632453092479612,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6541891105802178,
+          "exact_optimum_score": 0.6822705669783136,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_224ab43fcba2",
+          "baseline_score": 0.65952976458309,
+          "exact_optimum_score": 0.7043315260362022,
+          "exact_optimum_id": "rotation_224ab43fcba2",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6796427537610323,
+          "exact_optimum_score": 0.7256039502261326,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6269899621192911,
+          "exact_optimum_score": 0.6440899563915586,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6375657567594184,
+          "exact_optimum_score": 0.658959594962247,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_ff7bdd98ba71",
+          "baseline_score": 0.6476975139415623,
+          "exact_optimum_score": 0.6789720531873424,
+          "exact_optimum_id": "rotation_ff7bdd98ba71",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_224ab43fcba2",
+          "baseline_score": 0.6530381679444346,
+          "exact_optimum_score": 0.7021886688933451,
+          "exact_optimum_id": "rotation_224ab43fcba2",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6710082999795197,
+          "exact_optimum_score": 0.7191753787975612,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_7dd222928710",
+          "baseline_score": 0.6182294579176104,
+          "exact_optimum_score": 0.6419470992487015,
+          "exact_optimum_id": "rotation_7dd222928710",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6245195382720234,
+          "exact_optimum_score": 0.6582511771724742,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_ff7bdd98ba71",
+          "baseline_score": 0.6325084383113102,
+          "exact_optimum_score": 0.6789720531873424,
+          "exact_optimum_id": "rotation_ff7bdd98ba71",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_224ab43fcba2",
+          "baseline_score": 0.6378490923141824,
+          "exact_optimum_score": 0.6957600974647736,
+          "exact_optimum_id": "rotation_224ab43fcba2",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_ff7bdd98ba71",
+          "baseline_score": 0.6515335100635533,
+          "exact_optimum_score": 0.7075690474102183,
+          "exact_optimum_id": "rotation_ff7bdd98ba71",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        }
+      ],
+      "tipping_point": {
+        "found": true,
+        "reference_winner_id": "rotation_7dd222928710",
+        "cell": {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "baseline"
+        },
+        "sentence": "The top strategy first changes at +0 \u00b0C and -20% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from maize then green_gram (repeated annually) to maize then common_bean (repeated annually)."
+      },
+      "reference_winner_id": "rotation_7dd222928710"
+    },
+    "balanced": {
+      "cells": [
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6112381144274508,
+          "exact_optimum_score": 0.6952187640586049,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6395273990253116,
+          "exact_optimum_score": 0.7058087327521966,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6596332485160297,
+          "exact_optimum_score": 0.7199903984948303,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6715227940305573,
+          "exact_optimum_score": 0.7394869643689552,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6975967379141326,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6112381144274508,
+          "exact_optimum_score": 0.6952187640586049,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6370273990253117,
+          "exact_optimum_score": 0.7058087327521966,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6546332485160297,
+          "exact_optimum_score": 0.7199903984948303,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6665227940305574,
+          "exact_optimum_score": 0.7394869643689552,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 0.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6900967379141325,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6037381144274507,
+          "exact_optimum_score": 0.6952187640586049,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6220273990253117,
+          "exact_optimum_score": 0.7058087327521966,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6396332485160297,
+          "exact_optimum_score": 0.7199903984948303,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6490227940305573,
+          "exact_optimum_score": 0.7394869643689552,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6725967379141325,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6012381144274508,
+          "exact_optimum_score": 0.6952187640586049,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6195273990253116,
+          "exact_optimum_score": 0.7033801613236251,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6371332485160297,
+          "exact_optimum_score": 0.7175618270662589,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6440942226019859,
+          "exact_optimum_score": 0.7370583929403838,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6676681664855612,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.5963095429988794,
+          "exact_optimum_score": 0.6952187640586049,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_1ac72790f6cf",
+          "baseline_score": 0.6121702561681688,
+          "exact_optimum_score": 0.7033801613236251,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6248475342303155,
+          "exact_optimum_score": 0.7175618270662589,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_5601275c21cd",
+          "baseline_score": 0.6318085083162717,
+          "exact_optimum_score": 0.7370583929403838,
+          "exact_optimum_id": "rotation_5601275c21cd",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6553824521998468,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.591380971570308,
+          "exact_optimum_score": 0.6926003937706315,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.6048131133110259,
+          "exact_optimum_score": 0.6984431177292065,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6174903913731726,
+          "exact_optimum_score": 0.7150574581103991,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6244513654591288,
+          "exact_optimum_score": 0.7349556127954251,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 2.5,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6455967379141325,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -30,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5814524001417365,
+          "exact_optimum_score": 0.6926003937706315,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -20,
+          "winner_id": "rotation_068178b21199",
+          "baseline_score": 0.5900273990253116,
+          "exact_optimum_score": 0.6984431177292065,
+          "exact_optimum_id": "rotation_068178b21199",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": -10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.6002761056588868,
+          "exact_optimum_score": 0.7150574581103991,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.607237079744843,
+          "exact_optimum_score": 0.7349556127954251,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        },
+        {
+          "temperature_change_c": 3.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5",
+          "baseline_score": 0.623525309342704,
+          "exact_optimum_score": 0.7516769001788637,
+          "exact_optimum_id": "rotation_fe2b898f8fd5",
+          "feasible_count": 50658,
+          "baseline_flags": {},
+          "status": "complete"
+        }
+      ],
+      "tipping_point": {
+        "found": true,
+        "reference_winner_id": "rotation_5601275c21cd",
+        "cell": {
+          "temperature_change_c": 0.0,
+          "rainfall_change_pct": 10,
+          "winner_id": "rotation_fe2b898f8fd5"
+        },
+        "sentence": "The top strategy first changes at +0 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from green_gram then pearl_millet (repeated annually) to pearl_millet then green_gram (repeated annually)."
+      },
+      "reference_winner_id": "rotation_5601275c21cd"
+    }
+  },
+  "caveat": "Uniform shifts to cached historical daily weather are a sensitivity stress test, not a climate projection. Crop calendars and soil storage stay fixed. Crop and irrigation inputs are illustrative; validate locally."
+}

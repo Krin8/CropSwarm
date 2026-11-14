@@ -5,7 +5,7 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 | When used | Files |
 |---|---|
 | Initial layout and farm picker | `app_settings.json` and `world_land.json` |
-| Selected farm | `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
+| Selected farm | `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json`, `stress_test_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
 | Strategy and scenario comparisons | `strategies_<farm_id>.json` and `uncertainty_<farm_id>.json` |
 | Applying edited inputs | `seasons_<farm_id>.json` and `climate_<farm_id>.parquet` |
 

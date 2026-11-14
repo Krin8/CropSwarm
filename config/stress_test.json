@@ -1,0 +1,8 @@
+{
+  "source": "design choice, not empirical; validate locally",
+  "temperature_changes_c": [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0],
+  "rainfall_changes_pct": [-30, -20, -10, 0, 10],
+  "seed": 42,
+  "distance_rule": "Euclidean distance in grid steps from 0 C and 0% rainfall; ties prefer smaller temperature change, then smaller absolute rainfall change",
+  "tie_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation"
+}

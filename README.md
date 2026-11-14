@@ -39,7 +39,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Submission summary](docs/submission_summary.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Climate stress test](docs/stress_test.md) · [Submission summary](docs/submission_summary.md)
 
 ## Architecture
 
