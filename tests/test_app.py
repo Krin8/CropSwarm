@@ -112,8 +112,14 @@ def test_learned_county_yield_panel_compares_models_and_baselines():
 
 def test_learned_yield_panel_preserves_p25_and_shows_practice_and_spatial_checks():
     app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert app.selectbox(key="climate_yield_split").value == "leave_one_district_out"
+    assert any("USDA district holdout" in row.value and "Random forest 9.034" in row.value
+               and "Linear trend 10.758" in row.value for row in app.markdown)
     table = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
-    assert table.set_index("Model")["RMSE (bu/acre)"]["County mean"].startswith("10.819 ")
+    assert table.set_index("Model")["RMSE (bu/acre)"]["County mean"].startswith("11.202 ")
+    app.selectbox(key="climate_yield_split").set_value("leave_one_year_out").run()
+    year_table = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
+    assert year_table.set_index("Model")["RMSE (bu/acre)"]["County mean"].startswith("10.819 ")
     for cohort, n in (("pooled", "3,215"), ("non_irrigated", "2,005"), ("all_practices", "1,210")):
         app.selectbox(key="climate_yield_cohort").set_value(cohort).run()
         app.selectbox(key="climate_yield_split").set_value("leave_one_district_out").run()
@@ -130,16 +136,18 @@ def test_robust_pick_shows_all_objectives_and_changes_with_preset():
     next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
     assert not app.exception
     assert any(row.value == "Robust pick under assumption changes (P28b)" for row in app.subheader)
-    rows = next(table.value for table in app.dataframe if "Price of robustness" in table.value.columns)
-    assert list(rows["Pick"]) == ["Nominal best", "Expected score", "Feasible-only worst 10% mean", "Minimax regret"]
+    rows = next(table.value for table in app.dataframe if "Nominal score cost" in table.value.columns)
+    assert list(rows["Pick"]) == ["Nominal score leader", "Expected score", "Feasible-only worst 10% mean", "Minimax regret"]
     assert set(rows["Evidence"]) == {"LOW"}
     assert set(rows["Across draw counts"]) <= {"Reference", "Same pick", "Pick changes"}
     assert any("Original zero-score CVaR rule at 512 draws" in row.value for row in app.caption)
     app.selectbox(key="robust_draw_count").set_value(128).run()
     assert not app.exception
     assert any("Original zero-score CVaR rule at 128 draws" in row.value for row in app.caption)
-    finalists = next(table.value for table in app.dataframe if "Gap to objective best" in table.value.columns)
-    assert len(finalists) == 9
+    finalists = next(table.value for table in app.dataframe if "Gap to optimum" in table.value.columns)
+    assert len(finalists) == 9 and list(finalists["Place"]).count("Runner-up") == 3
+    assert any("expected score 8 of 12, conditional CVaR 6 of 12, minimax regret 2 of 12" in line.value
+               for line in app.caption)
 
 
 def test_robust_pick_shows_original_and_held_out_telangana_swarm_results():
@@ -160,3 +168,21 @@ def test_download_brief_tracks_farm_and_named_preset():
     assert any("Farm decision brief · Telangana A · Income preset" in item.value for item in app.caption)
     labels = {item.proto.label for item in app.get("download_button")}
     assert "Download brief (HTML)" in labels
+
+
+
+def test_robust_pick_flags_rare_feasibility_for_nominal_pick_and_finalists():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
+    assert not app.exception
+    warning = "rarely feasible; not a practical recommendation"
+    rows = next(table.value for table in app.dataframe if "Nominal score cost" in table.value.columns)
+    rare = rows[rows["Feasibility flag"] == warning]
+    assert set(rare["Pick"]) == {"Nominal score leader", "Feasible-only worst 10% mean"}
+    assert "108/512 (21.1%)" in set(rare["Feasible draws"])
+    finalists = next(table.value for table in app.dataframe if "Gap to optimum" in table.value.columns)
+    assert all((int(row["Feasible draws"].split("/")[0]) < 256) == (row["Feasibility flag"] == warning)
+               for _, row in finalists.iterrows())
+    assert any("has a near-tie with its runner-up" in row.value for row in app.info)
+    assert any("preliminary" in row.value and "Picks changed across draw counts" in row.value for row in app.markdown)

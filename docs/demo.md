@@ -10,9 +10,11 @@
 | 1:05–1:30 | Compare rotations | “CropSwarm compares the configured baseline with four distinct alternatives for the reference farm. Each shows how it trades off water, nitrogen, erosion, climate fit, income and risk. Open one to see its evidence.” |
 | 1:30–1:55 | Warmer and drier | “The percentiles show a range of modeled outcomes. Wins show each strategy’s share of the top scores across draws under the selected preset. Tied strategies split the credit.” |
 | 1:55–2:15 | Telangana, then Makueni | “Telangana's second season is tentative, and repeated paddy keeps its rotation warning. Makueni's cropland status is unverified.” |
-| 2:15–2:30 | Optimizer check | “We checked ant colony search against exact enumeration. The best of five searches reached the optimum in all 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
+| 2:15–2:30 | Optimizer check | “We checked nominal scores against exact enumeration. The highest score from five independent ant-colony runs matched the exact score in all 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
 
-For a longer demo, open [What to check first](sensitivity.md) after choosing a priority preset. Show one of its ranked local checks and its evidence grade. The priority reflects sensitivity under the tested model ranges. In [Robust pick](robust_optimization.md#p28b-feasible-tail-and-draw-count-check), compare the nominal winner with the minimum-regret rotation, point out the feasible share, and switch draw counts to show whether the pick changes. Open [Opportunity windows](opportunity_windows.md) to show that Kansas has recurring low greenness at the reference cutoff. Winter-wheat dormancy is plausible, the field's availability is unknown, and no crop passes the fit screen at that cutoff.
+For a longer demo, open [What to check first](sensitivity.md) after choosing a priority preset. Show one of its ranked local checks and its evidence grade. The priority reflects sensitivity under the tested model ranges. In the preliminary [P28b Robust pick panel for assumption changes](robust_optimization.md#p28b-feasible-tail-and-draw-count-check), show the feasible share and the runner-up. Across 128, 256 and 512 draws, the same rotation appeared in 8 of 12 farm–preset combinations for expected score, 6 of 12 for conditional CVaR and 2 of 12 for minimax regret. Open [Opportunity windows](opportunity_windows.md) to show that Kansas has recurring low greenness at the reference cutoff. Winter-wheat dormancy is plausible, the field's availability is unknown, and no crop passes the fit screen at that cutoff.
+
+In the learned check, headline the pooled USDA district holdout. Kansas winter-wheat RMSE was 11.202 bu/acre for county mean, 10.758 for linear trend, 9.562 for ridge and 9.034 for random forest. Describe the result as a weather–yield association in Kansas county averages. Crop rotation quality is outside this evaluation. [P27 district results](ml_model.md#results-by-subset-and-split)
 
 ## Slide outline
 
@@ -22,3 +24,5 @@ For a longer demo, open [What to check first](sensitivity.md) after choosing a p
 4. Compare the baseline with four alternatives. Show one benefit, one trade-off and one evidence source.
 5. Explain the scenario percentiles and wins, then show the Makueni flag.
 6. Close with exact optimizer verification and the evidence the farmer needs for a local decision.
+
+[Slide-ready numbers and qualifications](p30_audit.md#slide-headlines)

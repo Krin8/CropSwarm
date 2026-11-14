@@ -79,6 +79,17 @@ def correlation_counts(farm_ids):
 
 
 def learned_yield_panel():
+    district_key = "leave_one_district_out"
+    pooled = cached("climate_yield_validity_pooled.json")
+    district = pooled["schemes"][district_key]
+    names = {"county_mean": "County mean", "linear_trend": "Linear trend",
+             "ridge": "Ridge", "random_forest": "Random forest"}
+    rmse = " · ".join(f"{label} {district['performance'][model]['rmse_bu_ac']['value']:.3f}"
+                      for model, label in names.items())
+    st.write(f"**Kansas winter wheat · USDA district holdout · RMSE (bu/acre)**  \n{rmse}")
+    st.caption(f"Pooled evaluation of {district['n']:,} county-years in {district['outer_folds']} USDA districts. "
+               "The models describe weather–yield associations in Kansas county averages. "
+               "Rotation quality still needs field evidence.")
     with st.expander("Learned climate-yield check"):
         study = cached("climate_yield_model.json")
         data = study["dataset"]
@@ -92,16 +103,14 @@ def learned_yield_panel():
                    "all_practices": "All-practice fallback only"}
         cohort = st.selectbox("Yield rows to evaluate", tuple(cohorts), format_func=cohorts.get,
                               key="climate_yield_cohort")
-        validity = cached(f"climate_yield_validity_{cohort}.json")
+        validity = pooled if cohort == "pooled" else cached(f"climate_yield_validity_{cohort}.json")
         st.caption(f"{cohorts[cohort]} · {validity['n']:,} county-years · {validity['counties']} counties · "
                    f"{validity['first_year']}–{validity['last_year']}. The practice subsets cover different years "
                    "and are evaluated separately.")
         labels = {"leave_one_year_out": "Hold out one year", "leave_one_county_out": "Hold out one county",
                   "leave_one_district_out": "Hold out one USDA reporting district"}
-        names = {"county_mean": "County mean", "linear_trend": "Linear trend",
-                 "ridge": "Ridge", "random_forest": "Random forest"}
-        scheme = st.selectbox("Cross-validation split", tuple(labels), format_func=labels.get,
-                              key="climate_yield_split")
+        scheme = st.selectbox("Cross-validation split", tuple(labels), index=tuple(labels).index(district_key),
+                              format_func=labels.get, key="climate_yield_split")
         results = (study["schemes"][scheme] if cohort == "pooled" and scheme in study["schemes"]
                    else validity["schemes"][scheme])
         st.caption(f"{results['outer_folds']} held-out folds · {results['n']:,} predictions per model · "
@@ -129,7 +138,7 @@ def learned_yield_panel():
             low, high = stat["bootstrap_95"]
             changes.append(f"{names[model]} {stat['value']:+.2f} [{low:+.2f}, {high:+.2f}]")
         st.caption("Paired RMSE change versus the linear trend (bu/acre) · " + " · ".join(changes))
-        if scheme == "leave_one_district_out":
+        if scheme == district_key:
             st.caption(f"Each fold holds out one entire USDA reporting district. With {results['outer_folds']} "
                        "spatial blocks, the intervals are descriptive. Nearby counties can straddle district borders.")
         model = st.selectbox("Inspect a learned model", tuple(results["interpretation"]), format_func=names.get,
@@ -399,10 +408,11 @@ def edited_results(farm, settings, edits, result, assessment, difference_thresho
     return updated, simulate(model, updated, assessment, presets, settings["uncertainty"])
 
 
-def robust_pick_panel(farm, preset):
+def robust_pick_panel(farm, preset, farm_ids):
     data = load(farm["farm_id"], "robust_stability")
     by_preset = data["presets"][preset]
-    labels = {"expected": "Expected score", "conditional_cvar": "Feasible-only worst 10% mean",
+    labels = {"expected": "Expected score",
+              "conditional_cvar": f"Feasible-only worst {data['tail_fraction']:.0%} mean",
               "minimax_regret": "Minimax regret"}
 
     def cycle(pick):
@@ -414,6 +424,21 @@ def robust_pick_panel(farm, preset):
     def fmt(value):
         return f"{value:.4f}" if value is not None else "—"
 
+    rare_warning = "rarely feasible; not a practical recommendation"
+
+    def feasibility(pick):
+        return f"{pick['feasible_draws']}/{n} ({pick['feasible_share']:.1%})"
+
+    def feasibility_flag(pick):
+        return rare_warning if pick["feasible_share"] < .5 else ""
+
+    all_presets = [entry for farm_id in farm_ids
+                   for entry in load(farm_id, "robust_stability")["presets"].values()]
+    same_counts = {objective: sum(entry["stability"][objective]["same_pick"] for entry in all_presets)
+                   for objective in labels}
+    summary_labels = ("expected score", "conditional CVaR", "minimax regret")
+    count_summary = ", ".join(f"{label} {same_counts[key]} of {len(all_presets)}"
+                              for key, label in zip(labels, summary_labels, strict=True))
     with st.container(key="robust_pick"):
         st.subheader("Robust pick under assumption changes (P28b)")
         st.caption(f"{farm['name']} · {title(preset)} · exact search of {data['candidate_count']:,} nominally feasible rotations")
@@ -421,16 +446,20 @@ def robust_pick_panel(farm, preset):
         n = st.selectbox("Assumption draws", counts, index=len(counts) - 1, key="robust_draw_count")
         current = by_preset["draw_counts"][str(n)]
         nominal = current["nominal"]
-        st.write("Robustness here refers to the assumption ranges we chose. Field validation is still needed.")
+        st.write("These risk-aware picks are preliminary and depend on the sampled assumption ranges. "
+                 "Picks changed across draw counts.")
+        st.caption(f"Across {', '.join(map(str, counts))} draws, farm–preset combinations that kept the "
+                   f"same rotation · {count_summary}.")
 
         def table_row(name, pick, status, repeat=None, near_tie=False, objective_value=None):
             return {"Pick": name, "Rotation by year": cycle(pick), "Evidence": pick["evidence_label"].upper(),
-                    "Feasible draws": f"{pick['feasible_draws']}/{n} ({pick['feasible_share']:.0%})", "Across draw counts": status,
-                    "Near-tie": "Yes" if near_tie else "—",
+                    "Feasible draws": feasibility(pick), "Across draw counts": status,
+                    "Near-tie": "Yes" if near_tie else "—", "Objective value": fmt(objective_value),
+                    "Nominal score cost": fmt(pick["nominal_cost"]),
                     "Finalist bootstrap wins": f"{repeat:.0%}" if repeat is not None else "—",
-                    "Objective value": fmt(objective_value), "Price of robustness": fmt(pick["nominal_cost"])}
+                    "Feasibility flag": feasibility_flag(pick)}
 
-        rows = [table_row("Nominal best", nominal, "Reference", objective_value=nominal["nominal_score"])]
+        rows = [table_row("Nominal score leader", nominal, "Reference", objective_value=nominal["nominal_score"])]
         for key, result in current["objectives"].items():
             if result["top"]:
                 stability = by_preset["stability"][key]
@@ -438,22 +467,32 @@ def robust_pick_panel(farm, preset):
                 wins = stability["bootstrap"][str(n)]["pick_win_share"]
                 pick = result["top"][0]
                 rows.append(table_row(labels[key], pick, status, wins, result["near_tie"], pick[key]))
+        flagged = [row["Pick"] for row in rows if row["Feasibility flag"]]
+        if flagged:
+            st.warning(f"{', '.join(flagged)} · {rare_warning}.")
         st.dataframe(pd.DataFrame(rows), hide_index=True)
-        st.caption("Lower maximum regret is better. CVaR averages the worst 10% of feasible draws. A rotation can score well on that tail and be "
-                   "infeasible often. Expected score and regret still use zero when a hard rule fails. "
-                   "Bootstrap win shares compare the union of the top three rotations at each draw count.")
+        st.caption("Feasibility describes the share of modeled draws that passed the hard rules. "
+                   "The under-half warning is a display cutoff.")
+        st.caption(f"Lower maximum regret is better. CVaR averages the worst {data['tail_fraction']:.0%} of feasible "
+                   "scores. Expected score and regret use zero when a hard rule fails. Bootstrap win shares compare "
+                   "the union of the three finalists at each draw count.")
         with st.expander("Top three by objective and metric evidence"):
             finalists = []
             for key, result in current["objectives"].items():
                 for rank, pick in enumerate(result["top"], 1):
-                    finalists.append({"Objective": labels[key], "Rank": rank, "Rotation by year": cycle(pick),
-                                      "Objective value": fmt(pick[key]),
-                                      "Gap to objective best": f"{pick['gap_to_best']:.8f}",
-                                      "Evidence": pick["evidence_label"].upper(),
-                                      "Feasible share": f"{pick['feasible_share']:.0%}"})
+                    finalists.append({"Objective": labels[key], "Place": ("Pick", "Runner-up", "Third")[rank - 1],
+                                      "Rotation by year": cycle(pick), "Feasible draws": feasibility(pick),
+                                      "Gap to optimum": f"{pick['gap_to_best']:.8f}",
+                                      "Objective value": fmt(pick[key]), "Evidence": pick["evidence_label"].upper(),
+                                      "Feasibility flag": feasibility_flag(pick)})
                 if result["near_tie"]:
-                    st.info(f"{labels[key]} has a near-tie with its runner-up.")
+                    st.info(f"{labels[key]} has a near-tie with its runner-up "
+                            f"({result['runner_up_gap']:.8f} weighted points apart).")
             st.dataframe(pd.DataFrame(finalists), hide_index=True)
+            flagged_finalists = [f"{row['Objective']} ({row['Place'].lower()})" for row in finalists
+                                 if row["Feasibility flag"] and row["Place"] != "Pick"]
+            if flagged_finalists:
+                st.caption(f"{', '.join(flagged_finalists)} · {rare_warning}.")
             for key, result in current["objectives"].items():
                 if result["top"]:
                     evidence = result["top"][0]["metric_evidence"]
@@ -461,8 +500,8 @@ def robust_pick_panel(farm, preset):
                                                                 for metric, level in evidence.items()))
             st.caption(f"Near-tie tolerance {data['precision_tolerance']:g} weighted points (P28 design choice).")
         old = current["unconditional_cvar"]
-        st.caption(f"Original zero-score CVaR rule at {n} draws · best {old['maximum']:.4f} · "
-                   f"candidates at the best score within tolerance: {old['ties']:,}. Climate input · cached NASA POWER.")
+        st.caption(f"Original zero-score CVaR rule at {n} draws · maximum {old['maximum']:.4f} · "
+                   f"candidates within tolerance of the maximum: {old['ties']:,}. Climate input · cached NASA POWER.")
         minimax = current["objectives"]["minimax_regret"]["top"][0]
         reduction = nominal["minimax_regret"] - minimax["minimax_regret"]
         st.write(f"The minimax pick lowers maximum regret by {reduction:.4f} points at "
@@ -543,7 +582,8 @@ def app():
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "
                        "Intervals are descriptive and unadjusted for multiple comparisons.")
         backtest = load(farm_id, "backtest")
-        st.caption("2019–2023 · CDL mapped classes in Kansas; assumed crop identities in Telangana and Makueni. "
+        st.caption(f"{backtest['years'][0]}–{backtest['years'][-1]} · CDL mapped classes in Kansas. "
+                   "Crop identities in Telangana and Makueni are assumed. "
                    "This uses the reference farm inputs, even when you edit the comparison below.")
         figure = pio.from_json((DATA / f"chart_backtest_{farm_id}.json").read_text())
         st.plotly_chart(figure, key=f"backtest_{farm_id}", config={"displayModeBar": False})
@@ -567,16 +607,19 @@ def app():
                    "USDA NASS CDL Kansas classes; illustrative crop catalog and irrigation assumptions.")
         for caveat in backtest["caveats"]:
             st.caption(caveat)
-        with st.expander("2001–2024 NASA climate and vegetation check"):
-            consistency = load(farm_id, "nasa_consistency")
+        consistency = load(farm_id, "nasa_consistency")
+        with st.expander(f"{consistency['years'][0]}–{consistency['years'][-1]} NASA climate and vegetation check"):
             st.write("Do NASA POWER rainfall and heat move with Terra MODIS greenness in the same season? "
                      "This crop-agnostic comparison describes agreement between the NASA data products. "
                      "Crop performance and rotation recommendations are outside its scope.")
             st.caption("Illustrative, validate locally. The 250 m MODIS pixel can mix fields, weeds and other cover. "
                        "The P5 season windows are approximate. Missing composites are excluded.")
-            st.caption("Rainfall anomaly compares seasonal totals with the 1991–2020 mean. "
+            design = consistency["design"]
+            years = design["reference_years"]
+            st.caption(f"Rainfall anomaly compares seasonal totals with the {years[0]}–{years[-1]} mean. "
                        "Deficit is the shortfall below that mean. Heat days exceed the local seasonal "
-                       "90th percentile of daily maxima in that period. These thresholds are design choices.")
+                       f"{design['heat_quantile'] * 100:g}th percentile of daily maxima in that period. "
+                       "These thresholds are design choices.")
             long_results = []
             for season, entry in consistency["seasons"].items():
                 for note in entry["notes"]:
@@ -664,7 +707,8 @@ def app():
                    "NASA POWER cached historical weather and illustrative crop inputs.")
         st.dataframe(pd.DataFrame(legend), hide_index=True)
         finding = diagnosis["presets"][preset]
-        margin = load(farm_id, "stress_margins")["presets"][preset]
+        margins = load(farm_id, "stress_margins")
+        margin = margins["presets"][preset]
         st.write(f"The weather-shift map labels a different top rotation in {finding['changed_cells']} of "
                  f"{finding['grid_cells']} tested climate cells compared with unchanged weather.")
         if margin["near_tie"]:
@@ -673,11 +717,14 @@ def app():
                     "without a score gain.")
         elif finding["changed_cells"] == 0:
             st.caption("The map keeps the same top-rotation label throughout the tested grid.")
-        st.caption("Near tie: top-two distinct-rotation score gap ≤0.01 normalized points at either adjacent "
-                   "cell · design choice, not empirical. Cyclic starting-year labels count as one rotation.")
+        st.caption(f"Near-tie tolerance · {margins['tolerance']['value']:g} normalized points between the top two "
+                   "distinct rotations at either adjacent cell (design choice). "
+                   "Cyclic starting-year labels count as one rotation.")
         st.caption(stress["caveat"])
-        st.caption("Grid: +0 to +3 °C by 0.5 °C; rainfall −30% to +10% by 10% · design choice, not empirical. "
-                   "The map uses reference farm inputs even when you edit the comparison below.")
+        temperatures, rainfall = stress["temperature_changes_c"], stress["rainfall_changes_pct"]
+        st.caption(f"Grid · {temperatures[0]:+g} to {temperatures[-1]:+g} °C by "
+                   f"{temperatures[1] - temperatures[0]:g} °C, rainfall {rainfall[0]:+g}% to {rainfall[-1]:+g}% "
+                   f"by {rainfall[1] - rainfall[0]:g}% (design choice). The map uses reference farm inputs.")
 
     with st.container(key="what_to_check_first"):
         st.subheader("What to check first")
@@ -712,7 +759,7 @@ def app():
                 "Joint association with winner change": row["joint_association"]["winner_changed"],
             } for row in priorities_to_check["ranking"]]), hide_index=True)
 
-    robust_pick_panel(farm, preset)
+    robust_pick_panel(farm, preset, by_id)
 
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")

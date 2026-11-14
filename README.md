@@ -16,8 +16,8 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 1. Each farm shows its configured baseline and four alternatives with distinct metric profiles, reasons, benefits, risks and information gaps.
 2. NASA POWER supplies 1991–2025 daily weather for all three sites. The long-record consistency check uses 2001–2024 Terra MODIS composites. [Coverage and results](docs/backtest.md#p19-long-record-nasa-consistency-check)
 3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
-4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
-5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times. Best of five found it in all 30 trials. [Gaps](docs/optimizer.md)
+4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three modeled years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
+5. For the nominal scoring benchmark, single-run ant colony search matched the exact optimum in 21–30 of 30 trials per farm and preset. Taking the highest score from five independent runs matched in all 360 trials. [Gaps](docs/optimizer.md)
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
 7. The baseline flags remain visible: the spring NDVI peak over Kansas CDL-mapped fallow remains unexplained, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Site caveats](docs/decisions.md)
 
@@ -41,7 +41,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Risk-aware picks and draw-count stability (P28b)](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Preliminary risk-aware picks under assumption changes (P28b)](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
 
 Under **Farm priorities**, use **Download brief** to print or share the reference shortlist for the selected farm and named preset. [All 12 HTML and PDF briefs](docs/briefs/README.md)
 
@@ -67,7 +67,9 @@ flowchart LR
 
 ## Optimizer verification
 
-All three sites fit a three-year horizon. Exact enumeration evaluated 168, 211,394 and 16,914 canonical rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best of five reached it in all 30 trials. [Verification, seeds and optimality gaps](docs/optimizer.md)
+The headline ant colony results above use nominal scores. The preliminary P28b picks use the tested assumption ranges. Across 128, 256 and 512 draws, the same rotation appeared in 8 of 12 farm–preset combinations for expected score, 6 of 12 for conditional CVaR and 2 of 12 for minimax regret. [Risk-aware exact and swarm results](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check)
+
+In the pooled USDA district holdout for Kansas winter wheat, RMSE was 11.202 bu/acre for the county-mean baseline, 10.758 for the trend baseline, 9.562 for ridge and 9.034 for random forest. The check describes weather–yield associations in Kansas county averages. Rotation quality still needs field evidence. [District and practice results](docs/ml_model.md#results-by-subset-and-split)
 
 ## Rebuild from cached evidence
 
@@ -98,4 +100,4 @@ Live requests belong in precompute commands. Use `python -m src.data_pipeline --
 
 Use the Dockerfile for a Hugging Face Docker Space or select `app/main.py` in Streamlit Community Cloud. [Deployment checks](docs/deployment.md) · [Demo script and slide outline](docs/demo.md)
 
-The processed NASA inputs are POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. GPM IMERG via POWER is used only for the rainfall agreement diagnostic on matching UTC days. SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. [Dataset roles](docs/submission_summary.md#data-actually-used) · [Final consistency audit](docs/p26_audit.md)
+The processed NASA inputs are POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. GPM IMERG via POWER is used only for the rainfall agreement diagnostic on matching UTC days. SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. [Dataset roles](docs/submission_summary.md#data-actually-used) · [Final consistency audit](docs/p30_audit.md)

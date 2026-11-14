@@ -1,6 +1,6 @@
 # Risk-aware swarm optimization (P28)
 
-The **Robust pick** panel compares the nominal winner and three risk-objective picks per farm and priority preset. Its robustness refers to the assumption ranges sampled from P22. Field validation is still needed. The historical scoring engine, its weights and constraints, P9 rankings and all earlier saved results are unchanged.
+The **Robust pick under assumption changes (P28b)** panel compares the nominal score leader and three preliminary risk-objective picks per farm and priority preset. These picks depend on the assumption ranges sampled from P22. Field validation is still needed. The historical scoring engine, its weights and constraints, P9 rankings and all earlier saved results are unchanged.
 
 ## Assumptions and search space
 
@@ -178,7 +178,7 @@ For the Telangana ACO check, replay the original 128-draw unconditional objectiv
 
 ### Exact results
 
-All three farms finished full canonical search. The original zero-score rule produced an all-candidate zero tie in Kansas and Makueni at every draw count and preset. The conditional objective breaks those global ties. Close alternatives remain, including all twelve Kansas feasible-tail comparisons. The expected-score, minimax and original-CVaR winners, objective values and tie counts match the archived P28 comparisons at overlapping draw counts.
+All three farms finished full canonical search. The original zero-score rule produced an all-candidate zero tie in Kansas and Makueni at every draw count and preset. The conditional objective breaks those global ties. Close alternatives remain, including all twelve Kansas feasible-tail comparisons. Picks changed across draw counts. The same rotation appeared in 8 of 12 farm–preset combinations for expected score, 6 of 12 for conditional CVaR and 2 of 12 for minimax regret. The expected-score, minimax and original-CVaR winners, objective values and tie counts match the archived P28 comparisons at overlapping draw counts.
 
 | Objective | Same cycle, Kansas | Telangana | Makueni | Same cycle overall | Near-ties at 128 / 256 / 512 |
 | --- | --- | --- | --- | --- | --- |
@@ -186,7 +186,7 @@ All three farms finished full canonical search. The original zero-score rule pro
 | Conditional CVaR | 2/4 | 1/4 | 3/4 | 6/12 | 8/12 / 8/12 / 8/12 |
 | Minimax regret | 1/4 | 0/4 | 1/4 | 2/12 | 4/12 / 4/12 / 6/12 |
 
-Makueni’s 512-draw income pick for conditional CVaR is feasible in 108 of 512 draws (21.1%). It is within the existing near-tie tolerance of its runner-up and takes 25.9% of the split bootstrap wins among finalists. The feasibility column matters when reading a feasible-only tail score. For all 12 Kansas preset–objective combinations at 512 draws, the runner-up is within the near-tie tolerance. These ties can make the displayed cycle look less stable across counts than its score.
+Makueni’s 512-draw income pick for conditional CVaR is feasible in 108 of 512 draws (21.1%). It is within the existing near-tie tolerance of its runner-up and takes 25.9% of the split bootstrap wins among finalists. The app flags a candidate feasible in fewer than half the selected draws as “rarely feasible; not a practical recommendation.” This display cutoff is a design choice tied to the modeled draws. For all 12 Kansas preset–objective combinations at 512 draws, the runner-up is within the near-tie tolerance. These ties can make the displayed cycle look less stable across counts than its score.
 
 ### Top three by farm, preset, draw count and objective
 

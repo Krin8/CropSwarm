@@ -98,6 +98,8 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 expect(validation.locator(".js-plotly-plot:visible").first).to_be_visible()
                 validation.get_by_text("Correlation counts across all farms", exact=True).click()
                 expect(validation.get_by_text("Intervals that touch zero", exact=False)).to_be_visible()
+                expect(validation.get_by_text("Kansas winter wheat · USDA district holdout · RMSE (bu/acre)",
+                                              exact=True)).to_be_visible()
                 validation.screenshot(path=destination / f"{farm_id}_validation.png", animations="disabled")
             if "robustness" in panels:
                 robustness = page.locator(".st-key-climate_stress_test")
@@ -109,6 +111,7 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 expect(robust).to_have_count(1)
                 expect(robust.get_by_text("Robust pick under assumption changes (P28b)", exact=True)).to_be_visible()
                 expect(robust.get_by_text("The minimax pick", exact=False)).to_be_visible()
+                expect(robust.get_by_text("Picks changed across draw counts", exact=False)).to_be_visible()
                 robust.get_by_text("Top three by objective and metric evidence", exact=True).click()
                 expect(robust.get_by_text("Near-tie tolerance", exact=False)).to_be_visible()
                 robust.screenshot(path=destination / f"{farm_id}_robust_pick.png", animations="disabled")
