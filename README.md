@@ -69,7 +69,7 @@ flowchart LR
 
 The headline ant colony results above use nominal scores. The preliminary P28b picks use the tested assumption ranges. Across 128, 256 and 512 draws, the same rotation appeared in 8 of 12 farm–preset combinations for expected score, 6 of 12 for conditional CVaR and 2 of 12 for minimax regret. [Risk-aware exact and swarm results](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check)
 
-In the pooled USDA district holdout for Kansas winter wheat, RMSE was 11.202 bu/acre for the county-mean baseline, 10.758 for the trend baseline, 9.562 for ridge and 9.034 for random forest. The check describes weather–yield associations in Kansas county averages. Rotation quality still needs field evidence. [District and practice results](docs/ml_model.md#results-by-subset-and-split)
+In the pooled USDA district holdout for Kansas winter wheat, RMSE was 11.202 bu/acre for the county-mean baseline, 10.758 for the trend baseline, 9.562 for ridge and 9.034 for random forest. The check describes weather–yield associations in Kansas county averages. Rotation quality still needs field evidence. The India replication stopped at crop selection because the kharif rice archive lacks the required irrigation evidence. [Kansas district results](docs/ml_model.md#results-by-subset-and-split) · [India archive screen](docs/ml_model.md#p31-india-replication-archive-screen)
 
 ## Rebuild from cached evidence
 

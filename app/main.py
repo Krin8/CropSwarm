@@ -165,6 +165,24 @@ def learned_yield_panel():
                    "or validate rotation recommendations.")
 
 
+def india_yield_screen_panel():
+    report = cached("climate_yield_india_screen.json")
+    candidate, = report["candidates"]
+    with st.expander("India climate-yield replication (P31)"):
+        st.write("The India check stopped at the preregistered crop-selection step.")
+        st.write(f"Kharif rice was the only archived crop. "
+                 f"{candidate['districts_meeting_yield_and_geography']} of "
+                 f"{candidate['districts_in_archive']} districts met the yield-history and map requirements "
+                 f"({candidate['first_yield_year']}–{candidate['last_yield_year']}).")
+        st.caption("The archive lacks a comparable irrigated-area share and does not document the series as "
+                   "rainfed-dominant. Historical district polygons can differ from current boundaries, and "
+                   "district yields mix management practices. Centroid weather would be a coarse proxy for "
+                   "conditions on farms across each district.")
+        st.caption("No India models were fitted. The Kansas transfer check was skipped because winter wheat "
+                   "and kharif rice use different crop seasons.")
+        st.markdown(f"[Cached ICRISAT study archive]({report['source']})")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -682,6 +700,7 @@ def app():
                 st.caption("Sources · NASA POWER daily rainfall and maximum temperature · CropSwarm crop catalog, "
                            "season windows and soil water estimate. Bootstrap intervals are descriptive.")
         learned_yield_panel()
+        india_yield_screen_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

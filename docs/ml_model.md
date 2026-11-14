@@ -134,3 +134,47 @@ Tests record exactly which fixture rows reach detrending, scaler fitting and eac
 Run `python -m src.climate_yield_validity` using the committed P25 feature file and P27 district lookup. The command writes only the new P27 reports and their held-out predictions. Use `--cohort` to rebuild a single subset. The app's **Learned climate-yield check** keeps the original P25 results under **All P25 rows**, and offers the district split and both practice subsets in the same panel.
 
 [All P25 rows, district results](../data/processed/climate_yield_validity_pooled.json) · [Non-irrigated results](../data/processed/climate_yield_validity_non_irrigated.json) · [All-practice fallback results](../data/processed/climate_yield_validity_all_practices.json)
+
+## P31 India replication archive screen
+
+P31 stopped at the crop-selection gate fixed in the [preregistered plan](p31_plan.md), commit `ad97274`. The cached [Maiti et al. archive](https://doi.org/10.5281/zenodo.10958118) identifies its only crop series as kharif monsoon rice. Its inventory contains `Data.csv` and `Shapefile.rar`. Both files match the SHA-256 values recorded independently in [P20 provenance](../data/raw/p20/provenance.json). The deposited CSV contains rice area, production, yield, a column named `RICE.SHARE.IN.TOTAL..Percent.` and weather fields. The deposit does not define that share as crop irrigation. It supplies no identified crop-specific irrigated-area numerator or rainfed designation. Rainfed dominance remains unverified.
+
+| Candidate | Yield years available | Districts in the CSV | Districts with at least 20 positive, unique yield years and a historical map match | District-years in those districts | Archived state labels in those districts | Irrigation evidence | Crop selection |
+|---|---|---:|---:|---:|---:|---|---|
+| Kharif rice | 1990–2017 | 384 | 365 | 10,105 | 20 | Irrigated share unavailable. Rainfed dominance unverified. | Ineligible under the preregistration |
+
+The crop file contains 10,279 rows with finite positive rice yields and no duplicate archival district-years. The screen joins `Sh_Dist_code` to `IPUM1993` and checks `FID_1`, state and district attributes. All 384 district identities with yields match the archived polygon attributes. The polygon geography is the archive's historical 1993 mapping. Archived state labels are the labels in its crosswalk. Each can differ from present-day geography. How underlying yields were aggregated through splits remains unverified. The series represents reported district averages with unknown irrigation mix, varieties and management.
+
+### Districts excluded by yield coverage
+
+All 19 had fewer than the required 20 years. The remaining 365 met the yield and geography screen only. No districts advanced to centroid-weather processing.
+
+| Archived state | Archived district | IPUM1993 | Valid yield years |
+|---|---|---|---:|
+| Bihar | Saharsa | `005021` | 2 |
+| Gujarat | Amreli | `007005` | 9 |
+| Gujarat | Bans Kantha | `007008` | 9 |
+| Gujarat | Bhavnagar | `007004` | 14 |
+| Gujarat | Junagadh | `007006` | 13 |
+| Haryana | Rewari | `008011` | 19 |
+| Madhya Pradesh | Indore | `013023` | 9 |
+| Madhya Pradesh | Mandsaur | `013016` | 11 |
+| Madhya Pradesh | Ujjain | `013018` | 7 |
+| Maharashtra | Buldana | `014022` | 15 |
+| Maharashtra | Jalna | `014016` | 17 |
+| Rajasthan | Jaipur | `021009` | 14 |
+| Rajasthan | Jalor | `021018` | 1 |
+| Rajasthan | Jhunjhuna | `021004` | 1 |
+| Rajasthan | Jodhpur | `021014` | 1 |
+| Rajasthan | Pali | `021016` | 12 |
+| Rajasthan | Sikar | `021010` | 1 |
+| Rajasthan | Tonk | `021012` | 15 |
+| Telangana | Hyderabad | `002016` | 4 |
+
+### Evaluation and transfer disposition
+
+No district centroids were calculated, no new POWER requests were made and no P31 models or configurations were fitted. The planned P25/P27 mean and trend baselines, ridge and random forest, five learned configurations, and year/state holdouts remain unevaluated for India. RMSE, R², Spearman, bootstrap intervals and relative performance are unavailable for this replication. Fixed centroids would have been coarse climate proxies even if a crop qualified.
+
+**Kansas-to-India transfer was skipped.** Kansas winter wheat starts in the previous October and uses its catalog winter-wheat duration. The only India archive series is kharif monsoon rice and uses a different season and crop. The existing historical Warangal rice correlations remain a separate analysis. [P20 protocol](backtest.md#p20-yield-back-test)
+
+The [saved screen](../data/processed/climate_yield_india_screen.json) lists candidate metadata, archived hashes and the status of every district. To reproduce offline from the committed [archive files](../data/raw/p31/), run `python -m src.india_yield_screen` with the pinned requirements. The screen verifies the original archive hashes and uses a compressed, hash-checked copy of its original dBASE attributes. It writes only the P31 screen. The app displays this disposition under Validation. P25/P27 results and the seasonal scoring engine retain their original files.

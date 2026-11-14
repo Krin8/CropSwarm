@@ -186,3 +186,13 @@ def test_robust_pick_flags_rare_feasibility_for_nominal_pick_and_finalists():
                for _, row in finalists.iterrows())
     assert any("has a near-tie with its runner-up" in row.value for row in app.info)
     assert any("preliminary" in row.value and "Picks changed across draw counts" in row.value for row in app.markdown)
+
+
+
+def test_india_replication_reports_screen_without_inventing_model_results():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "India climate-yield replication (P31)" for row in app.expander)
+    assert any("365 of 384 districts" in row.value for row in app.markdown)
+    assert any("No India models were fitted" in row.value for row in app.caption)
+    assert any("rainfed-dominant" in row.value for row in app.caption)
