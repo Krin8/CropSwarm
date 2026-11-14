@@ -247,6 +247,7 @@ def cross_state_yield_panel():
 
 def local_recalibration_panel():
     report = cached("climate_yield_recalibration.json")
+    county_mean = cached("climate_yield_recalibration_county_mean.json")["states"]
     states = report["states"]
     methods = report["methods"]
     with st.expander("Local yield recalibration (P37)"):
@@ -279,16 +280,28 @@ def local_recalibration_panel():
 
         metric_names = {"rmse_bu_ac": "RMSE (bu/acre)", "r2": "R²", "spearman": "Spearman ρ",
                         "rmse_delta_vs_local_trend": "Δ RMSE vs local trend"}
-        rows = [{"Local years": k, "Method": methods[key],
-                 **{label: interval_text(value.get(metric)) for metric, label in metric_names.items()}}
-                for k in report["local_years"] for key, value in state["curves"][str(k)].items()]
+        rows = []
+        for k in report["local_years"]:
+            for method, value in state["curves"][str(k)].items():
+                comparison = county_mean[state_id][str(k)][method]
+                rows.append({"Local years": k, "Method": methods[method],
+                             **{label: interval_text(value.get(metric)) for metric, label in metric_names.items()},
+                             "Δ RMSE vs county mean": interval_text(comparison["difference"]),
+                             "County-mean comparison": comparison["status"]})
         st.dataframe(pd.DataFrame(rows), hide_index=True)
+        st.caption("A trend fitted to only a few years is a weak baseline. The county mean offers a separate "
+                   "comparison. Negative paired RMSE differences favor the listed method.")
         first = state["smallest_k_beating_trend"]
         improvements = [f"{methods[key]} at {k} years" for key, k in first.items() if k is not None]
         if improvements:
             st.write("First tested history length with a paired RMSE interval below zero · " + " · ".join(improvements))
         else:
             st.write("No method beat the local trend with a paired RMSE interval below zero at a tested history length.")
+        wins = [f"{methods[method]} at {k} years" for k in report["local_years"]
+                for method, comparison in county_mean[state_id][str(k)].items()
+                if comparison["status"] == "Beats county mean"]
+        st.write("Beat the county mean with a paired RMSE interval below zero · " + " · ".join(wins) if wins
+                 else "No method beat the county mean with a paired RMSE interval below zero.")
         st.caption("Intervals resample whole USDA districts and are descriptive. This test uses district yield "
                    "history, which many farmers do not have. County-average associations do not validate rotation "
                    "recommendations.")

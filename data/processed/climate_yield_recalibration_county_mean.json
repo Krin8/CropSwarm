@@ -1,0 +1,624 @@
+{
+  "label": "illustrative, validate locally",
+  "baseline": "county_mean",
+  "local_years": [
+    0,
+    3,
+    5,
+    8,
+    12
+  ],
+  "methods": [
+    "source",
+    "source_adjusted",
+    "local_ridge",
+    "source_feature",
+    "local_trend",
+    "county_mean"
+  ],
+  "bootstrap_draws": 1000,
+  "seed": 42,
+  "states": {
+    "31": {
+      "0": {
+        "source": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "source_adjusted": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "local_ridge": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "source_feature": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "local_trend": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "county_mean": {
+          "difference": null,
+          "status": "Unavailable"
+        }
+      },
+      "3": {
+        "source": {
+          "difference": {
+            "value": 0.21064333740614316,
+            "bootstrap_95": [
+              -3.932089636204005,
+              4.921583215636928
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 75.76181650621436,
+            "bootstrap_95": [
+              36.10347554115419,
+              98.55321387682712
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": 0.4995084331260884,
+            "bootstrap_95": [
+              -1.2515547094043322,
+              2.163122529136579
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 3.00240160258989,
+            "bootstrap_95": [
+              1.714131335831294,
+              3.9655965158310376
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 79.44164874336512,
+            "bootstrap_95": [
+              41.499699388639094,
+              100.57544533134143
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "5": {
+        "source": {
+          "difference": {
+            "value": -0.20806889826883435,
+            "bootstrap_95": [
+              -4.9623761141876725,
+              5.02689667694707
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 11.088346406894246,
+            "bootstrap_95": [
+              3.631398763474536,
+              18.845173869049052
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": 0.6717443493942152,
+            "bootstrap_95": [
+              -0.4231603482663282,
+              1.8504733984196238
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 2.3417588788836756,
+            "bootstrap_95": [
+              -0.4698015342330786,
+              4.585468090345852
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 18.556202933407832,
+            "bootstrap_95": [
+              9.660556682198553,
+              27.614067603089413
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "8": {
+        "source": {
+          "difference": {
+            "value": 0.18046025455677395,
+            "bootstrap_95": [
+              -4.739398622698718,
+              5.578212066677392
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 2.1019563750770516,
+            "bootstrap_95": [
+              -3.2031797260662334,
+              7.278003761914647
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": 0.7369036813972922,
+            "bootstrap_95": [
+              -0.13764481723813954,
+              1.6949526728256024
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 0.28336575755858284,
+            "bootstrap_95": [
+              -1.31412293871487,
+              2.3853499223395027
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 3.284650263969475,
+            "bootstrap_95": [
+              0.8041098823370114,
+              5.7636257977379435
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "12": {
+        "source": {
+          "difference": {
+            "value": 1.3774112947661656,
+            "bootstrap_95": [
+              -2.8117533255796663,
+              6.0549357748124475
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": -0.9293757484951044,
+            "bootstrap_95": [
+              -2.9942418597991503,
+              1.7362890437675491
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": -0.7505135222829704,
+            "bootstrap_95": [
+              -1.2815989598252633,
+              -0.01924181057877258
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Beats county mean"
+        },
+        "source_feature": {
+          "difference": {
+            "value": -1.3134052041636846,
+            "bootstrap_95": [
+              -3.1583839464340118,
+              0.9521246488009494
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": -0.25254507053067243,
+            "bootstrap_95": [
+              -2.865569684077314,
+              2.49002650938423
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      }
+    },
+    "40": {
+      "0": {
+        "source": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "source_adjusted": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "local_ridge": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "source_feature": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "local_trend": {
+          "difference": null,
+          "status": "Unavailable"
+        },
+        "county_mean": {
+          "difference": null,
+          "status": "Unavailable"
+        }
+      },
+      "3": {
+        "source": {
+          "difference": {
+            "value": 12.796009585681919,
+            "bootstrap_95": [
+              8.520106624557306,
+              14.332809213201706
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 52.559628887525854,
+            "bootstrap_95": [
+              31.851562126435326,
+              68.0658823777423
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": -0.4588841480827561,
+            "bootstrap_95": [
+              -2.2405729251067523,
+              0.4152923311607104
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 0.39963815632172217,
+            "bootstrap_95": [
+              -2.0417539764272092,
+              1.2984485824711445
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 42.39704694939017,
+            "bootstrap_95": [
+              23.96791257948891,
+              58.16388554590378
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "5": {
+        "source": {
+          "difference": {
+            "value": 12.72959361844921,
+            "bootstrap_95": [
+              7.647531631534621,
+              14.463981022817688
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 20.00474156619822,
+            "bootstrap_95": [
+              2.797608151505101,
+              27.199261462106424
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": -0.8546217231779263,
+            "bootstrap_95": [
+              -1.3900480065243528,
+              -0.3223407613566449
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Beats county mean"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 0.40346776952480035,
+            "bootstrap_95": [
+              -1.3288335935845208,
+              2.057748189859713
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 20.91122272096664,
+            "bootstrap_95": [
+              13.063053986134298,
+              35.248956751411846
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "8": {
+        "source": {
+          "difference": {
+            "value": 12.476608968975732,
+            "bootstrap_95": [
+              7.627392003969871,
+              14.123856610776631
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": 6.871016407456419,
+            "bootstrap_95": [
+              1.0158497665119324,
+              9.930344829413784
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": -0.9207629387797862,
+            "bootstrap_95": [
+              -2.1767358226359095,
+              -0.05744967692816161
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Beats county mean"
+        },
+        "source_feature": {
+          "difference": {
+            "value": 0.18255576242986393,
+            "bootstrap_95": [
+              -2.524068570849802,
+              2.0287183928020003
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 15.85467955254624,
+            "bootstrap_95": [
+              9.044638442091266,
+              31.09793559637506
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      },
+      "12": {
+        "source": {
+          "difference": {
+            "value": 12.758911021702524,
+            "bootstrap_95": [
+              7.253684479032261,
+              14.696873779587795
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "source_adjusted": {
+          "difference": {
+            "value": -0.29946631848405847,
+            "bootstrap_95": [
+              -1.9811654617254266,
+              0.6695782904416019
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Interval includes zero"
+        },
+        "local_ridge": {
+          "difference": {
+            "value": -1.4715891111715047,
+            "bootstrap_95": [
+              -2.9893161957766017,
+              -0.5935639499683623
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Beats county mean"
+        },
+        "source_feature": {
+          "difference": {
+            "value": -1.1815313312086761,
+            "bootstrap_95": [
+              -2.799876910239923,
+              -0.512488636540791
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Beats county mean"
+        },
+        "local_trend": {
+          "difference": {
+            "value": 3.8662774520334944,
+            "bootstrap_95": [
+              2.2135075829317383,
+              6.664295554455958
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Higher RMSE"
+        },
+        "county_mean": {
+          "difference": {
+            "value": 0.0,
+            "bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "bootstrap_n": 1000
+          },
+          "status": "Reference"
+        }
+      }
+    }
+  },
+  "source": "climate_yield_recalibration_predictions.csv"
+}

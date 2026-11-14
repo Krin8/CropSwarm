@@ -96,7 +96,7 @@ def predict_local(history, tail, config):
     return predictions, selections
 
 
-def curve_summary(rows, config):
+def curve_summary(rows, config, *, baseline_method="local_trend"):
     """Pair all curves to the same test rows and district bootstrap resamples."""
     groups = list(rows[rows.k.eq(YEARS[0])].groupby("district", sort=True).indices.values())
     rng = np.random.default_rng(config["seed"])
@@ -108,14 +108,14 @@ def curve_summary(rows, config):
         bounds = np.quantile(valid, config["bootstrap_quantiles"]).tolist() if valid else None
         return {"value": point, "bootstrap_95": bounds, "bootstrap_n": len(valid)}
 
-    reference = rows.loc[rows.k.eq(0), ["fips", "year", "yield_bu_ac"]].reset_index(drop=True)
+    reference = rows.loc[rows.k.eq(0), ["fips", "year", "district", "yield_bu_ac"]].reset_index(drop=True)
     output = {}
     for k in YEARS:
         frame = rows.loc[rows.k.eq(k)].reset_index(drop=True)
         if not frame[list(reference)].equals(reference):
             raise ValueError("The common test rows differ across calibration sizes")
         actual = frame.yield_bu_ac.to_numpy()
-        baseline = frame.local_trend.to_numpy()
+        baseline = frame[baseline_method].to_numpy()
         have_baseline = np.isfinite(baseline).all()
         baseline_draws = [rmse(actual[ix], baseline[ix]) for ix in samples] if have_baseline else []
         output[str(k)] = {}
@@ -130,7 +130,7 @@ def curve_summary(rows, config):
             draws = [statistics(actual[ix], pred[ix]) for ix in samples]
             entry = {key: summarize(value, draw) for key, value, draw in zip(METRICS, point, zip(*draws), strict=True)}
             entry["status"] = "complete"
-            entry["rmse_delta_vs_local_trend"] = (
+            entry[f"rmse_delta_vs_{baseline_method}"] = (
                 summarize(point[1] - rmse(actual, baseline),
                           [value[1] - base for value, base in zip(draws, baseline_draws, strict=True)])
                 if have_baseline else None)

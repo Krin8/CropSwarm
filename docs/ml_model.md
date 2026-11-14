@@ -408,11 +408,11 @@ Each bracket is a descriptive 95% district-block bootstrap interval. Units are b
 
 ### Reading the learning curves
 
-- The three-year county trend extrapolated sharply, with RMSE of 91.612 bu/acre in Nebraska and 49.861 in Oklahoma. At 12 years those errors fell to 10.751 and 11.367. The source-only prediction is identical at every k. Its early wins show weakness of the short trend baseline. In Oklahoma the source-only model was worse than the trend at 12 years, with a paired difference of +8.893 [+1.263, +12.248] bu/acre.
+- The three-year county trend extrapolated sharply, with RMSE of 91.612 bu/acre in Nebraska and 49.861 in Oklahoma. At 12 years those errors fell to 10.751 and 11.367. A trend fitted to only a few years is a weak baseline. The source-only prediction is identical at every k. Its early wins compare against a short trend with large extrapolation errors. In Oklahoma the source-only model was worse than the trend at 12 years, with a paired difference of +8.893 [+1.263, +12.248] bu/acre.
 
 - In Nebraska at 12 years the source-feature ridge had the lowest point RMSE (9.690 bu/acre). Its paired difference from the trend was −1.061 [−2.711, +0.510]. Every Nebraska 12-year comparison with the trend included zero.
 
-- In Oklahoma at 12 years the local ridge had the lowest point RMSE (6.029 bu/acre), ahead of the source-feature ridge (6.319) and the local county mean (7.501). The local ridge's paired difference from the trend was −5.338 [−9.652, −2.907]. Source adjustment, source-feature ridge and county mean also beat the trend at that size. The preregistered comparisons are against the trend, so this analysis does not establish that including the Kansas feature improves on local ridge.
+- In Oklahoma at 12 years the local ridge had the lowest point RMSE (6.029 bu/acre), ahead of the source-feature ridge (6.319) and the local county mean (7.501). The local ridge's paired difference from the trend was −5.338 [−9.652, −2.907]. Source adjustment, source-feature ridge and county mean also beat the trend at that size. The P37 and P37b comparisons use the local trend and county mean as references. Whether adding the Kansas prediction improves on local ridge remains undetermined.
 
 - This exercise uses recorded district yield history, which many farmers do not have. Weather uses NASA POWER historic county centroids and the Kansas crop window. County yields represent many farms, varieties and management choices. These associations do not validate rotation recommendations.
 
@@ -423,3 +423,87 @@ Six methods were specified. The source forest tried two minimum leaf sizes (5 an
 The source search ran 18 inner fits and 3 outer fits over three origins. Local ridge selection ran 1,872 inner fits and 104 outer fits across both ridge variants. There were 156 method-level fixed fit instances for the residual line, county trend and mean. Counts are for fitted district and history-size combinations, not individual county regressions.
 
 Run `python -m src.local_recalibration` from the repository root to rebuild the two P37 files offline. The saved report records the exact district test and calibration years, available sample sizes, selected source and ridge configurations and the source file hashes. [Report JSON](../data/processed/climate_yield_recalibration.json) · [Held-out predictions](../data/processed/climate_yield_recalibration_predictions.csv)
+
+## P37b county-mean comparison
+
+This follow-up uses the saved P37 predictions and common test rows. No models were refitted. Differences are method RMSE minus the local county-mean RMSE in bushels per acre. The same 1,000 paired district-block bootstrap draws use seed 42 and the same 95% percentile interval. Intervals entirely below zero favor the method. An interval entirely above zero indicates higher RMSE. Intervals that cover zero leave the direction uncertain. At k = 0 the local mean is unavailable, so every comparison is unavailable.
+
+### Nebraska
+
+| Local years | Method | Δ RMSE vs county mean [95% interval] | Result |
+|---|---|---:|---|
+| 0 | Kansas source only | — | Unavailable |
+| 0 | Source + local intercept/trend | — | Unavailable |
+| 0 | Local ridge | — | Unavailable |
+| 0 | Local ridge + source feature | — | Unavailable |
+| 0 | Local trend | — | Unavailable |
+| 0 | Local county mean | — | Unavailable |
+| 3 | Kansas source only | +0.211 [-3.932, +4.922] | Interval includes zero |
+| 3 | Source + local intercept/trend | +75.762 [+36.103, +98.553] | Higher RMSE |
+| 3 | Local ridge | +0.500 [-1.252, +2.163] | Interval includes zero |
+| 3 | Local ridge + source feature | +3.002 [+1.714, +3.966] | Higher RMSE |
+| 3 | Local trend | +79.442 [+41.500, +100.575] | Higher RMSE |
+| 3 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 5 | Kansas source only | -0.208 [-4.962, +5.027] | Interval includes zero |
+| 5 | Source + local intercept/trend | +11.088 [+3.631, +18.845] | Higher RMSE |
+| 5 | Local ridge | +0.672 [-0.423, +1.850] | Interval includes zero |
+| 5 | Local ridge + source feature | +2.342 [-0.470, +4.585] | Interval includes zero |
+| 5 | Local trend | +18.556 [+9.661, +27.614] | Higher RMSE |
+| 5 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 8 | Kansas source only | +0.180 [-4.739, +5.578] | Interval includes zero |
+| 8 | Source + local intercept/trend | +2.102 [-3.203, +7.278] | Interval includes zero |
+| 8 | Local ridge | +0.737 [-0.138, +1.695] | Interval includes zero |
+| 8 | Local ridge + source feature | +0.283 [-1.314, +2.385] | Interval includes zero |
+| 8 | Local trend | +3.285 [+0.804, +5.764] | Higher RMSE |
+| 8 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 12 | Kansas source only | +1.377 [-2.812, +6.055] | Interval includes zero |
+| 12 | Source + local intercept/trend | -0.929 [-2.994, +1.736] | Interval includes zero |
+| 12 | Local ridge | -0.751 [-1.282, -0.019] | Beats county mean |
+| 12 | Local ridge + source feature | -1.313 [-3.158, +0.952] | Interval includes zero |
+| 12 | Local trend | -0.253 [-2.866, +2.490] | Interval includes zero |
+| 12 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+
+### Oklahoma
+
+| Local years | Method | Δ RMSE vs county mean [95% interval] | Result |
+|---|---|---:|---|
+| 0 | Kansas source only | — | Unavailable |
+| 0 | Source + local intercept/trend | — | Unavailable |
+| 0 | Local ridge | — | Unavailable |
+| 0 | Local ridge + source feature | — | Unavailable |
+| 0 | Local trend | — | Unavailable |
+| 0 | Local county mean | — | Unavailable |
+| 3 | Kansas source only | +12.796 [+8.520, +14.333] | Higher RMSE |
+| 3 | Source + local intercept/trend | +52.560 [+31.852, +68.066] | Higher RMSE |
+| 3 | Local ridge | -0.459 [-2.241, +0.415] | Interval includes zero |
+| 3 | Local ridge + source feature | +0.400 [-2.042, +1.298] | Interval includes zero |
+| 3 | Local trend | +42.397 [+23.968, +58.164] | Higher RMSE |
+| 3 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 5 | Kansas source only | +12.730 [+7.648, +14.464] | Higher RMSE |
+| 5 | Source + local intercept/trend | +20.005 [+2.798, +27.199] | Higher RMSE |
+| 5 | Local ridge | -0.855 [-1.390, -0.322] | Beats county mean |
+| 5 | Local ridge + source feature | +0.403 [-1.329, +2.058] | Interval includes zero |
+| 5 | Local trend | +20.911 [+13.063, +35.249] | Higher RMSE |
+| 5 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 8 | Kansas source only | +12.477 [+7.627, +14.124] | Higher RMSE |
+| 8 | Source + local intercept/trend | +6.871 [+1.016, +9.930] | Higher RMSE |
+| 8 | Local ridge | -0.921 [-2.177, -0.057] | Beats county mean |
+| 8 | Local ridge + source feature | +0.183 [-2.524, +2.029] | Interval includes zero |
+| 8 | Local trend | +15.855 [+9.045, +31.098] | Higher RMSE |
+| 8 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+| 12 | Kansas source only | +12.759 [+7.254, +14.697] | Higher RMSE |
+| 12 | Source + local intercept/trend | -0.299 [-1.981, +0.670] | Interval includes zero |
+| 12 | Local ridge | -1.472 [-2.989, -0.594] | Beats county mean |
+| 12 | Local ridge + source feature | -1.182 [-2.800, -0.512] | Beats county mean |
+| 12 | Local trend | +3.866 [+2.214, +6.664] | Higher RMSE |
+| 12 | Local county mean | +0.000 [+0.000, +0.000] | Reference |
+
+### What changed with the county-mean benchmark
+
+- **Nebraska.** Local ridge was the only method to beat the county mean with an interval excluding zero. It did so at 12 years (−0.751 [−1.282, −0.019] bu/acre). No method cleared that threshold at 3, 5 or 8 years.
+
+- **Oklahoma.** Local ridge beat the mean at 5, 8 and 12 years. Its first qualifying difference was −0.855 [−1.390, −0.322] bu/acre at 5 years. Source-feature ridge also beat the mean at 12 years (−1.182 [−2.800, −0.512]). The Kansas source-only model, source adjustment and local trend had no qualifying improvement at any tested k. The county mean is the reference.
+
+- **Three-year comparisons.** Several methods beat the three-year trend in P37, while no method beat the three-year county mean with an interval excluding zero in either state. A trend fitted to only a few years is a weak baseline. The intervals are descriptive, with eight district blocks in Nebraska and five in Oklahoma.
+
+Run `python -m src.recalibration_county_mean` to rebuild only the P37b comparison offline. [Saved P37b comparison](../data/processed/climate_yield_recalibration_county_mean.json) · [Original trend comparisons](#full-curves)

@@ -71,6 +71,8 @@ The headline ant colony results above use nominal scores. The preliminary P28b p
 
 In the pooled USDA district holdout for Kansas winter wheat, RMSE was 11.202 bu/acre for the county-mean baseline, 10.758 for the trend baseline, 9.562 for ridge and 9.034 for random forest. The check describes weather–yield associations in Kansas county averages. Rotation quality still needs field evidence. The India replication stopped at crop selection because the kharif rice archive lacks the required irrigation evidence. [Kansas district results](docs/ml_model.md#results-by-subset-and-split) · [India archive screen](docs/ml_model.md#p31-india-replication-archive-screen)
 
+The local recalibration study compares each method with both the local trend and the local county mean. A trend fitted to only a few years is a weak baseline. At three years, no method beat the county mean with a paired interval excluding zero. Local ridge first did so at five years in Oklahoma and twelve in Nebraska. [P37 and P37b results](docs/ml_model.md#p37-local-yield-recalibration)
+
 ## Rebuild from cached evidence
 
 ```sh

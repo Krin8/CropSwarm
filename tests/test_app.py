@@ -237,3 +237,10 @@ def test_local_recalibration_shows_common_tail_and_both_states():
         assert len(rows.loc[rows["Local years"].eq(k)]) == 6
     assert rows.loc[rows["Local years"].eq(0), "RMSE (bu/acre)"].eq("Unavailable").sum() == 5
     assert any("Source + local intercept/trend at 8 years" in row.value for row in app.markdown)
+    assert "Δ RMSE vs local trend" in rows
+    assert rows.loc[rows["Local years"].eq(0), "Δ RMSE vs county mean"].eq("Unavailable").all()
+    wins = rows[rows["County-mean comparison"].eq("Beats county mean")]
+    assert list(zip(wins["Local years"], wins["Method"])) == [
+        (5, "Local ridge"), (8, "Local ridge"), (12, "Local ridge"), (12, "Local ridge + source feature"),
+    ]
+    assert any("A trend fitted to only a few years is a weak baseline" in row.value for row in app.caption)
