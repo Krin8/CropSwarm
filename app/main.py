@@ -307,6 +307,53 @@ def local_recalibration_panel():
                    "recommendations.")
 
 
+def yield_interval_panel():
+    report = cached("climate_yield_intervals.json")
+    studies = {"district": "Kansas · district holdout", "year": "Kansas · harvest-year holdout",
+               "31": "Nebraska · transfer and recalibration", "40": "Oklahoma · transfer and recalibration"}
+    models = {"ridge": "Ridge", "random_forest": "Random forest"}
+    with st.expander("Calibrated yield intervals (P33)"):
+        st.caption(f"{report['interval_evaluations']:,} held-out interval evaluations. "
+                   "Intervals describe county winter-wheat yield. Weather–yield associations in county "
+                   "averages do not validate rotation recommendations.")
+        key = st.selectbox("Interval evaluation", tuple(studies), format_func=studies.get,
+                           key="yield_interval_study")
+        if key in report["kansas"]:
+            study = report["kansas"][key]
+            rows = [("Pooled", row) for row in study["pooled"]]
+            fold = st.selectbox("Inspect outer fold", [None, *(item["fold"] for item in study["folds"])],
+                                format_func=lambda x: "All folds" if x is None else str(x),
+                                key=f"yield_interval_fold_{key}")
+            if fold is not None:
+                record = next(item for item in study["folds"] if item["fold"] == fold)
+                rows = [(fold, row) for row in record["results"]]
+                st.caption(f"{record['audit']['calibration_rows']:,} calibration county-years from outer training.")
+        else:
+            study = report["transfer"][key]
+            rows = [("Kansas · P32 cohort", row) for row in study["transfer"]]
+            rows.extend((f"P37 · {k} local years", row)
+                        for k, result in study["local"].items() for row in result["pooled"])
+            st.caption("The P32 and P37 cohorts differ. On the P37 common test rows, local history changes "
+                       "the interval width. The Kansas point estimates stay fixed.")
+
+        def width(value):
+            return f"{value:.2f}" if value is not None else "Unavailable"
+
+        st.dataframe(pd.DataFrame([{
+            "Sample": label, "Model": models[row["model"]], "Nominal": f"{row['level']}%",
+            "Coverage": f"{row['coverage']:.1%}", "County-years": row["n"],
+            "Coverage 95%": "Unavailable" if row["coverage_95"] is None else
+            f"{row['coverage_95'][0]:.1%}–{row['coverage_95'][1]:.1%}",
+            "Mean width (bu/acre)": "Unbounded" if row["unbounded"] else width(row["mean_width"]),
+            "County-mean RMSE": width(row["county_mean_rmse"]),
+            "Width / mean RMSE": width(row["width_to_county_mean_rmse"]),
+            "Below nominal": "Yes" if row["undercoverage"] else "",
+        } for label, row in rows]), hide_index=True)
+        st.caption("Split-conformal intervals use held-apart calibration errors. The coverage bootstrap "
+                   "resamples whole districts or years. Spatial dependence, shared years and geographic "
+                   "shift can reduce coverage. These historical fits provide no future coverage guarantee.")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -827,6 +874,7 @@ def app():
         india_yield_screen_panel()
         cross_state_yield_panel()
         local_recalibration_panel()
+        yield_interval_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

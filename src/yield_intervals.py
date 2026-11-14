@@ -67,8 +67,8 @@ def interval_rows(frame, predictions, errors, **labels):
         for level in LEVELS:
             radius = conformal_radius(errors[model], level)
             results.append(base.assign(**labels, model=model, level=level, center=center,
-                                       radius=radius, lower=center-radius, upper=center+radius,
-                                       covered=(actual >= center-radius) & (actual <= center+radius),
+                                       radius=radius, lower=center - radius, upper=center + radius,
+                                       covered=(actual >= center - radius) & (actual <= center + radius),
                                        county_mean=predictions["county_mean"], calibration_rows=len(errors[model])))
     return pd.concat(results, ignore_index=True)
 

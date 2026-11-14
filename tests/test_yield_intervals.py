@@ -93,3 +93,22 @@ def test_frozen_calibration_scores_and_bootstrap_reproduce(county_years):
                 <= rows.loc[rows.level.eq(90), "radius"].to_numpy()).all()
     single = first[first.district.eq("0")]
     assert study.coverage_interval(single, "district", CONFIG) is None
+
+
+def test_saved_report_preserves_p37_test_rows_and_centers():
+    data = study.ROOT / "data/processed"
+    report = json.loads((data / "climate_yield_intervals.json").read_text())
+    csv = pd.read_csv(data / "climate_yield_interval_predictions.csv",
+                      dtype={"fips": str, "state": str, "district": str})
+    local = csv.loc[csv.protocol.eq("p37_recalibration")]
+    source = pd.read_csv(data / "climate_yield_recalibration_predictions.csv",
+                         dtype={"fips": str, "state": str, "district": str})
+    keys = ["state", "district", "fips", "year", "k"]
+    row_keys = local[keys].drop_duplicates().sort_values(keys).reset_index(drop=True)
+    pd.testing.assert_frame_equal(row_keys, source[keys].sort_values(keys).reset_index(drop=True))
+    comparison = ["state", "district", "fips", "year", "model", "level"]
+    reference = local.loc[local.k.eq(0)].set_index(comparison).center.sort_index()
+    for _, rows in local.groupby("k"):
+        pd.testing.assert_series_equal(reference, rows.set_index(comparison).center.sort_index())
+    assert len(csv) == report["interval_evaluations"]
+    assert not csv.duplicated(["protocol", *keys, "model", "level"]).any()

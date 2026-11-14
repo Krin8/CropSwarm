@@ -244,3 +244,29 @@ def test_local_recalibration_shows_common_tail_and_both_states():
         (5, "Local ridge"), (8, "Local ridge"), (12, "Local ridge"), (12, "Local ridge + source feature"),
     ]
     assert any("A trend fitted to only a few years is a weak baseline" in row.value for row in app.caption)
+
+
+def test_yield_interval_panel_shows_spatial_temporal_and_local_results():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Calibrated yield intervals (P33)" for row in app.expander)
+    assert any("50,852 held-out interval evaluations" in row.value for row in app.caption)
+    selector = app.selectbox(key="yield_interval_study")
+    app.selectbox(key="yield_interval_fold_district").set_value("70").run()
+    assert not app.exception
+    table = next(t.value for t in app.dataframe if "Width / mean RMSE" in t.value)
+    assert set(table["County-years"]) == {277}
+    assert table["Below nominal"].eq("Yes").all()
+
+    selector.set_value("year").run()
+    app.selectbox(key="yield_interval_fold_year").set_value("2007").run()
+    assert not app.exception
+    table = next(t.value for t in app.dataframe if "Width / mean RMSE" in t.value)
+    assert set(table["County-years"]) == {103}
+
+    app.selectbox(key="yield_interval_study").set_value("31").run()
+    assert not app.exception
+    table = next(t.value for t in app.dataframe if "Width / mean RMSE" in t.value)
+    assert len(table) == 24
+    assert table["Mean width (bu/acre)"].eq("Unbounded").any()
+    assert len(table.loc[table.Sample.eq("P37 · 12 local years")]) == 4
