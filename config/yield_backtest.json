@@ -1,0 +1,39 @@
+{
+  "start_year": 1990,
+  "end_year": 2024,
+  "method_source": "P20 analysis design, validate locally",
+  "farms": {
+    "us_high_plains_b": {
+      "geography": "Finney County, Kansas (FIPS 20055)",
+      "note": "County yields aggregate farms and varieties. The all-practice series mixes irrigation practices and is shown separately from non-irrigated yields.",
+      "source": "USDA NASS Quick Stats",
+      "source_url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+      "file": "quickstats_finney.tsv",
+      "format": "quickstats",
+      "series": [
+        {"crop": "winter_wheat", "season": "cool", "start_year_offset": -1, "practice": "Non-irrigated", "selector": "WHEAT, WINTER, NON-IRRIGATED - YIELD, MEASURED IN BU / ACRE"},
+        {"crop": "sorghum", "season": "warm", "start_year_offset": 0, "practice": "Non-irrigated", "selector": "SORGHUM, GRAIN, NON-IRRIGATED - YIELD, MEASURED IN BU / ACRE"},
+        {"crop": "winter_wheat", "season": "cool", "start_year_offset": -1, "practice": "All practices", "selector": "WHEAT, WINTER - YIELD, MEASURED IN BU / ACRE"},
+        {"crop": "sorghum", "season": "warm", "start_year_offset": 0, "practice": "All practices", "selector": "SORGHUM, GRAIN - YIELD, MEASURED IN BU / ACRE"}
+      ]
+    },
+    "telangana_a": {
+      "geography": "Historical Warangal district, joined to the study’s 1993 district map",
+      "note": "One historical district with a mixed irrigation share. The public research archive links yield to the historical polygon. Its documentation does not specify how the yield observations were harmonized across the district splits.",
+      "source": "ICRISAT kharif rice data archived by Maiti et al. (2024)",
+      "source_url": "https://doi.org/10.5281/zenodo.10958118",
+      "file": "icrisat_warangal.csv",
+      "format": "icrisat",
+      "series": [
+        {"crop": "paddy", "season": "monsoon", "start_year_offset": 0, "practice": "District aggregate", "selector": "RICE.YIELD..Kg.per.ha."}
+      ]
+    },
+    "kenya_makueni_north": {
+      "geography": "Makueni County, Kenya",
+      "note": "Skipped. KNBS verifies county-level maize and bean coverage, but its annual area and production combine seasons. A comparable seasonal yield series was not verified. Cropland at the point also remains unverified.",
+      "source": "Kenya National Bureau of Statistics, National Agriculture Production Report 2025",
+      "source_url": "https://www.knbs.or.ke/wp-content/uploads/2025/10/National-Agriculture-Production-Report-2025.pdf",
+      "series": []
+    }
+  }
+}
