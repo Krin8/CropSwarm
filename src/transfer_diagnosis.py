@@ -153,7 +153,9 @@ def build(root=ROOT):
              "oklahoma": data / "climate_yield_transfer_40_features.csv",
              "predictions": data / "climate_yield_transfer_predictions.csv"}
     kansas, oklahoma, predictions = (pd.read_csv(path, dtype=fields) for path in files.values())
-    matched = match_rows(oklahoma, predictions.loc[predictions.case.eq("20_to_40")])
+    transfer = predictions.loc[predictions.case.eq("20_to_40")]
+    # P32 encodes the direct-transfer districts in the state-qualified block column.
+    matched = match_rows(oklahoma, transfer.assign(district=transfer.district_block.str.removeprefix("40:")))
     report = assess(kansas, matched, json.loads(config_path.read_text()))
     report["input_sha256"] = {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
                               for path in (*files.values(), config_path)}

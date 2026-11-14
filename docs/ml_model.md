@@ -2552,3 +2552,215 @@ The county POWER archives contain precipitation, daily maximum temperature, mean
 Nominal interval guarantees apply only in-region and under exchangeability. A shared region alone does not establish exchangeability. Training-domain inflation, regime stratification and weather similarity are fixed sensitivity analyses. Weather-similarity weights are not known sampling likelihood ratios. County-average associations do not validate rotation recommendations. The local workflow also requires district yield history.
 
 Run `python -m src.interval_diagnosis` offline. The [summary and fold audit](../data/processed/climate_yield_interval_diagnosis.json) and [county-year method results](../data/processed/climate_yield_interval_diagnosis_rows.csv.gz) are separate from P33. A row can be joined to P33 on protocol, state, fold, k, model, level, FIPS and year. The original center plus or minus the P33b radius gives its endpoints. The county-year file distinguishes unavailable radii from infinite ones.
+
+## P38 Kansas-to-Oklahoma transfer diagnosis
+
+The [plan](p38_plan.md) was preregistered in commit `f8d9a99`. The diagnosis uses 3,215 Kansas training rows, 1,800 Oklahoma test rows and the frozen P32 Kansas ridge and random forest predictions. The Oklahoma district-held-out trend and county mean are the original saved P32 baselines. All comparisons use matching county-years. No models or thresholds were fitted to these test outcomes. Interpret explanations as hypotheses.
+
+### Weather distributions and marginal overlap
+
+The five P25 features come from the same fixed winter-wheat feature recipe and cached county-centroid NASA POWER series. Each entry gives minimum, 5th percentile, median, 95th percentile and maximum in feature units.
+
+| Feature | Kansas distribution | Oklahoma distribution |
+| --- | --- | --- |
+| Season rainfall (mm) | 95.860 / 201.064 / 449.140 / 823.800 / 1146.230 | 73.170 / 267.991 / 583.790 / 974.492 / 1292.860 |
+| Modeled water deficit (mm) | 3.341 / 60.261 / 218.221 / 381.411 / 454.140 | 0.523 / 22.767 / 138.174 / 324.003 / 476.830 |
+| Heat days | 0.000 / 1.000 / 14.000 / 35.000 / 48.000 | 0.000 / 3.000 / 21.000 / 44.000 / 63.000 |
+| Mean daily solar radiation (MJ/m²/day) | 11.378 / 12.739 / 14.268 / 15.949 / 16.885 | 11.727 / 13.350 / 14.878 / 16.735 / 18.006 |
+| Mean air temperature (°C) | 4.597 / 6.174 / 8.328 / 10.516 / 12.005 | 8.013 / 9.216 / 11.137 / 13.495 / 15.559 |
+
+| Feature | Below / above full Kansas range | Outside full range | Below / above Kansas 5th–95th | Outside central band |
+| --- | --- | --- | --- | --- |
+| Season rainfall (mm) | 1 / 5 | 6 (0.3%) | 31 / 257 | 288 (16.0%) |
+| Modeled water deficit (mm) | 2 / 1 | 3 (0.2%) | 302 / 37 | 339 (18.8%) |
+| Heat days | 0 / 39 | 39 (2.2%) | 32 / 309 | 341 (18.9%) |
+| Mean daily solar radiation (MJ/m²/day) | 0 / 74 | 74 (4.1%) | 30 / 318 | 348 (19.3%) |
+| Mean air temperature (°C) | 0 / 469 | 469 (26.1%) | 0 / 1,219 | 1,219 (67.7%) |
+| Any feature, unique rows | — | 510 (28.3%) | — | 1,439 (79.9%) |
+
+Mean temperature was outside the full Kansas range for 469 Oklahoma rows (26.1%), all above its maximum. It was above the Kansas 95th percentile for 67.7%. Across all five marginal bands, 361 Oklahoma rows (20.1%) passed. The same bands retain 2,307 of 3,215 Kansas training rows (71.8%). This is an axis-aligned screen, so passing does not establish that a feature combination was common in Kansas.
+
+### Restricting to the overlap subset
+
+| Oklahoma subset | County-years | Counties / districts | Kansas ridge | Kansas forest | Oklahoma trend | Oklahoma county mean |
+| --- | --- | --- | --- | --- | --- | --- |
+| All Oklahoma | 1,800 | 58 / 8 | 12.096 | 13.225 | 8.985 | 9.200 |
+| Inside every central band | 361 | 42 / 7 | 10.981 | 12.840 | 8.572 | 8.585 |
+| Outside at least one central band | 1,439 | 58 / 8 | 12.360 | 13.320 | 9.085 | 9.348 |
+
+RMSE and paired differences are in bu/acre. Positive differences favor the Oklahoma baseline. Brackets show descriptive 95% percentile intervals from 1,000 paired bootstrap draws of whole USDA reporting districts.
+
+| Oklahoma subset | Learner | Δ vs Oklahoma trend | Δ vs Oklahoma county mean |
+| --- | --- | --- | --- |
+| All Oklahoma | Kansas ridge | +3.111 [+1.535, +4.930] | +2.896 [+1.141, +5.014] |
+| All Oklahoma | Kansas forest | +4.240 [+2.227, +6.132] | +4.025 [+1.774, +6.285] |
+| Inside every central band | Kansas ridge | +2.408 [+0.779, +5.514] | +2.396 [+0.893, +5.169] |
+| Inside every central band | Kansas forest | +4.268 [+1.946, +8.475] | +4.255 [+2.033, +8.060] |
+| Outside at least one central band | Kansas ridge | +3.275 [+1.701, +5.035] | +3.013 [+1.038, +5.240] |
+| Outside at least one central band | Kansas forest | +4.234 [+1.918, +6.224] | +3.972 [+1.432, +6.383] |
+
+Ridge's gap to the Oklahoma trend shrank from +3.111 to +2.408 bu/acre on the overlap subset. The forest's gap changed from +4.240 to +4.268 bu/acre. Both learners still had higher RMSE than both local baselines, with intervals entirely above zero. The screen changes the rows and the baselines' RMSE too. Marginal weather differences are a plausible contributor. Removing the marginal extremes leaves a substantial transfer gap.
+
+### Where squared error falls
+
+The top groups below are ranked by total squared error. Neither learner meets the preregistered concentration rule of more than half the error in the top three years or top two districts.
+
+| Learner | Grouping | Top groups | Share of rows | Share of squared error |
+| --- | --- | --- | --- | --- |
+| Kansas ridge | Three years | 2009, 2014, 2007 | 8.1% | 20.0% |
+| Kansas ridge | Two districts | Southwest, West Central | 25.3% | 38.1% |
+| Kansas forest | Three years | 2009, 2007, 2014 | 8.1% | 19.5% |
+| Kansas forest | Two districts | Southwest, Central | 34.1% | 40.6% |
+
+The highest-RMSE year for both learners was 2009, with 38 rows and RMSE of 23.173 for ridge and 26.326 for forest. The highest-RMSE districts were Panhandle for ridge (15.294) and Southwest for forest (17.057). Both learners had higher RMSE above the Kansas radiation band than inside. Ridge also had higher RMSE above the heat-days band, while the forest had lower RMSE there. The above-temperature bin accounted for 70.5% of ridge and 73.5% of forest squared error, alongside 67.7% of rows. The feature-bin patterns vary by learner and may reflect differences in county and year composition.
+
+Positive mean error indicates overprediction. Feature bins partition all Oklahoma rows separately for each feature, so their squared-error shares should be read within that feature. Empty bins have no error estimate.
+
+<details>
+<summary>All yearly error results</summary>
+
+| Learner | Group | County-years | Share of rows | Mean error | RMSE | Share of squared error |
+| --- | --- | --- | --- | --- | --- | --- |
+| Kansas ridge | 1990 | 58 | 3.2% | 1.212 | 7.324 | 1.2% |
+| Kansas ridge | 1991 | 58 | 3.2% | 8.047 | 9.641 | 2.0% |
+| Kansas ridge | 1992 | 58 | 3.2% | 10.328 | 12.643 | 3.5% |
+| Kansas ridge | 1993 | 58 | 3.2% | 5.636 | 7.678 | 1.3% |
+| Kansas ridge | 1994 | 58 | 3.2% | 9.631 | 11.506 | 2.9% |
+| Kansas ridge | 1995 | 58 | 3.2% | 8.368 | 10.825 | 2.6% |
+| Kansas ridge | 1996 | 58 | 3.2% | 11.729 | 12.845 | 3.6% |
+| Kansas ridge | 1997 | 58 | 3.2% | 9.570 | 12.590 | 3.5% |
+| Kansas ridge | 1998 | 58 | 3.2% | 4.888 | 7.261 | 1.2% |
+| Kansas ridge | 1999 | 58 | 3.2% | 7.489 | 9.332 | 1.9% |
+| Kansas ridge | 2000 | 58 | 3.2% | 5.834 | 7.086 | 1.1% |
+| Kansas ridge | 2001 | 58 | 3.2% | 4.667 | 7.299 | 1.2% |
+| Kansas ridge | 2002 | 58 | 3.2% | 10.815 | 11.765 | 3.0% |
+| Kansas ridge | 2003 | 58 | 3.2% | 2.533 | 8.115 | 1.5% |
+| Kansas ridge | 2004 | 57 | 3.2% | 4.642 | 8.085 | 1.4% |
+| Kansas ridge | 2005 | 58 | 3.2% | 7.973 | 10.046 | 2.2% |
+| Kansas ridge | 2006 | 58 | 3.2% | 9.511 | 11.441 | 2.9% |
+| Kansas ridge | 2007 | 58 | 3.2% | 15.482 | 16.505 | 6.0% |
+| Kansas ridge | 2008 | 40 | 2.2% | 3.874 | 7.684 | 0.9% |
+| Kansas ridge | 2009 | 38 | 2.1% | 22.246 | 23.173 | 7.7% |
+| Kansas ridge | 2010 | 49 | 2.7% | 10.171 | 11.909 | 2.6% |
+| Kansas ridge | 2011 | 50 | 2.8% | 12.183 | 15.244 | 4.4% |
+| Kansas ridge | 2012 | 53 | 2.9% | 8.949 | 11.379 | 2.6% |
+| Kansas ridge | 2013 | 47 | 2.6% | 7.488 | 14.005 | 3.5% |
+| Kansas ridge | 2014 | 49 | 2.7% | 16.454 | 18.401 | 6.3% |
+| Kansas ridge | 2015 | 54 | 3.0% | 1.343 | 8.092 | 1.3% |
+| Kansas ridge | 2016 | 52 | 2.9% | 6.931 | 13.154 | 3.4% |
+| Kansas ridge | 2017 | 47 | 2.6% | 6.126 | 13.820 | 3.4% |
+| Kansas ridge | 2018 | 39 | 2.2% | 6.743 | 12.845 | 2.4% |
+| Kansas ridge | 2019 | 50 | 2.8% | 2.383 | 9.543 | 1.7% |
+| Kansas ridge | 2020 | 43 | 2.4% | 14.335 | 16.546 | 4.5% |
+| Kansas ridge | 2021 | 53 | 2.9% | 11.901 | 13.495 | 3.7% |
+| Kansas ridge | 2022 | 50 | 2.8% | 8.555 | 15.899 | 4.8% |
+| Kansas ridge | 2023 | 43 | 2.4% | 10.165 | 14.818 | 3.6% |
+| Kansas forest | 1990 | 58 | 3.2% | 9.396 | 10.675 | 2.1% |
+| Kansas forest | 1991 | 58 | 3.2% | 8.065 | 9.158 | 1.5% |
+| Kansas forest | 1992 | 58 | 3.2% | 9.438 | 13.147 | 3.2% |
+| Kansas forest | 1993 | 58 | 3.2% | 7.137 | 8.781 | 1.4% |
+| Kansas forest | 1994 | 58 | 3.2% | 10.661 | 12.475 | 2.9% |
+| Kansas forest | 1995 | 58 | 3.2% | 14.046 | 15.295 | 4.3% |
+| Kansas forest | 1996 | 58 | 3.2% | 10.057 | 11.322 | 2.4% |
+| Kansas forest | 1997 | 58 | 3.2% | 12.691 | 14.962 | 4.1% |
+| Kansas forest | 1998 | 58 | 3.2% | 3.984 | 5.704 | 0.6% |
+| Kansas forest | 1999 | 58 | 3.2% | 10.057 | 11.688 | 2.5% |
+| Kansas forest | 2000 | 58 | 3.2% | 9.682 | 10.712 | 2.1% |
+| Kansas forest | 2001 | 58 | 3.2% | 8.109 | 10.817 | 2.2% |
+| Kansas forest | 2002 | 58 | 3.2% | 10.056 | 11.300 | 2.4% |
+| Kansas forest | 2003 | 58 | 3.2% | 4.634 | 9.436 | 1.6% |
+| Kansas forest | 2004 | 57 | 3.2% | 4.420 | 5.675 | 0.6% |
+| Kansas forest | 2005 | 58 | 3.2% | 10.685 | 12.320 | 2.8% |
+| Kansas forest | 2006 | 58 | 3.2% | 10.262 | 11.173 | 2.3% |
+| Kansas forest | 2007 | 58 | 3.2% | 18.090 | 18.859 | 6.6% |
+| Kansas forest | 2008 | 40 | 2.2% | 7.044 | 9.189 | 1.1% |
+| Kansas forest | 2009 | 38 | 2.1% | 25.098 | 26.326 | 8.4% |
+| Kansas forest | 2010 | 49 | 2.7% | 12.666 | 13.886 | 3.0% |
+| Kansas forest | 2011 | 50 | 2.8% | 10.805 | 12.661 | 2.5% |
+| Kansas forest | 2012 | 53 | 2.9% | 9.232 | 10.826 | 2.0% |
+| Kansas forest | 2013 | 47 | 2.6% | 8.672 | 14.090 | 3.0% |
+| Kansas forest | 2014 | 49 | 2.7% | 15.615 | 17.213 | 4.6% |
+| Kansas forest | 2015 | 54 | 3.0% | 13.869 | 16.351 | 4.6% |
+| Kansas forest | 2016 | 52 | 2.9% | 13.525 | 15.880 | 4.2% |
+| Kansas forest | 2017 | 47 | 2.6% | 11.625 | 15.902 | 3.8% |
+| Kansas forest | 2018 | 39 | 2.2% | 6.681 | 9.850 | 1.2% |
+| Kansas forest | 2019 | 50 | 2.8% | 5.052 | 11.477 | 2.1% |
+| Kansas forest | 2020 | 43 | 2.4% | 10.432 | 13.831 | 2.6% |
+| Kansas forest | 2021 | 53 | 2.9% | 11.415 | 13.245 | 3.0% |
+| Kansas forest | 2022 | 50 | 2.8% | 11.949 | 16.077 | 4.1% |
+| Kansas forest | 2023 | 43 | 2.4% | 12.857 | 18.052 | 4.5% |
+
+</details>
+
+<details>
+<summary>All district error results</summary>
+
+| Learner | Group | County-years | Share of rows | Mean error | RMSE | Share of squared error |
+| --- | --- | --- | --- | --- | --- | --- |
+| Kansas ridge | Panhandle (10) | 154 | 8.6% | 13.651 | 15.294 | 13.7% |
+| Kansas ridge | West Central (20) | 201 | 11.2% | 13.158 | 14.751 | 16.6% |
+| Kansas ridge | Southwest (30) | 255 | 14.2% | 12.700 | 14.891 | 21.5% |
+| Kansas ridge | North Central (40) | 264 | 14.7% | 8.054 | 10.605 | 11.3% |
+| Kansas ridge | Central (50) | 358 | 19.9% | 6.897 | 9.900 | 13.3% |
+| Kansas ridge | South Central (60) | 185 | 10.3% | 5.308 | 10.290 | 7.4% |
+| Kansas ridge | Northeast (70) | 309 | 17.2% | 5.047 | 10.101 | 12.0% |
+| Kansas ridge | East Central (80) | 74 | 4.1% | -1.983 | 12.293 | 4.2% |
+| Kansas forest | Panhandle (10) | 154 | 8.6% | 12.448 | 14.226 | 9.9% |
+| Kansas forest | West Central (20) | 201 | 11.2% | 13.879 | 15.390 | 15.1% |
+| Kansas forest | Southwest (30) | 255 | 14.2% | 15.219 | 17.057 | 23.6% |
+| Kansas forest | North Central (40) | 264 | 14.7% | 9.465 | 11.769 | 11.6% |
+| Kansas forest | Central (50) | 358 | 19.9% | 9.918 | 12.253 | 17.1% |
+| Kansas forest | South Central (60) | 185 | 10.3% | 10.423 | 12.837 | 9.7% |
+| Kansas forest | Northeast (70) | 309 | 17.2% | 6.640 | 10.474 | 10.8% |
+| Kansas forest | East Central (80) | 74 | 4.1% | 1.318 | 9.837 | 2.3% |
+
+</details>
+
+<details>
+<summary>All per-feature error bins</summary>
+
+| Learner | Group | County-years | Share of rows | Mean error | RMSE | Share of squared error |
+| --- | --- | --- | --- | --- | --- | --- |
+| Kansas ridge | Season rainfall (mm) · below | 31 | 1.7% | 15.490 | 17.211 | 3.5% |
+| Kansas ridge | Season rainfall (mm) · inside | 1512 | 84.0% | 9.296 | 12.314 | 87.1% |
+| Kansas ridge | Season rainfall (mm) · above | 257 | 14.3% | 1.712 | 9.846 | 9.5% |
+| Kansas ridge | Modeled water deficit (mm) · below | 302 | 16.8% | 5.990 | 10.606 | 12.9% |
+| Kansas ridge | Modeled water deficit (mm) · inside | 1461 | 81.2% | 8.623 | 12.233 | 83.0% |
+| Kansas ridge | Modeled water deficit (mm) · above | 37 | 2.1% | 15.347 | 17.071 | 4.1% |
+| Kansas ridge | Heat days · below | 32 | 1.8% | 1.894 | 5.840 | 0.4% |
+| Kansas ridge | Heat days · inside | 1459 | 81.1% | 7.914 | 11.855 | 77.9% |
+| Kansas ridge | Heat days · above | 309 | 17.2% | 10.900 | 13.608 | 21.7% |
+| Kansas ridge | Mean daily solar radiation (MJ/m²/day) · below | 30 | 1.7% | 1.751 | 6.147 | 0.4% |
+| Kansas ridge | Mean daily solar radiation (MJ/m²/day) · inside | 1452 | 80.7% | 6.985 | 10.949 | 66.1% |
+| Kansas ridge | Mean daily solar radiation (MJ/m²/day) · above | 318 | 17.7% | 15.033 | 16.652 | 33.5% |
+| Kansas ridge | Mean air temperature (°C) · below | 0 | 0.0% | — | — | 0.0% |
+| Kansas ridge | Mean air temperature (°C) · inside | 581 | 32.3% | 8.140 | 11.563 | 29.5% |
+| Kansas ridge | Mean air temperature (°C) · above | 1219 | 67.7% | 8.405 | 12.342 | 70.5% |
+| Kansas forest | Season rainfall (mm) · below | 31 | 1.7% | 9.934 | 12.325 | 1.5% |
+| Kansas forest | Season rainfall (mm) · inside | 1512 | 84.0% | 10.963 | 13.544 | 88.1% |
+| Kansas forest | Season rainfall (mm) · above | 257 | 14.3% | 7.124 | 11.290 | 10.4% |
+| Kansas forest | Modeled water deficit (mm) · below | 302 | 16.8% | 6.128 | 9.956 | 9.5% |
+| Kansas forest | Modeled water deficit (mm) · inside | 1461 | 81.2% | 11.251 | 13.805 | 88.4% |
+| Kansas forest | Modeled water deficit (mm) · above | 37 | 2.1% | 11.521 | 13.211 | 2.1% |
+| Kansas forest | Heat days · below | 32 | 1.8% | 5.622 | 8.688 | 0.8% |
+| Kansas forest | Heat days · inside | 1459 | 81.1% | 10.671 | 13.623 | 86.0% |
+| Kansas forest | Heat days · above | 309 | 17.2% | 9.596 | 11.607 | 13.2% |
+| Kansas forest | Mean daily solar radiation (MJ/m²/day) · below | 30 | 1.7% | 6.456 | 8.134 | 0.6% |
+| Kansas forest | Mean daily solar radiation (MJ/m²/day) · inside | 1452 | 80.7% | 10.027 | 13.015 | 78.1% |
+| Kansas forest | Mean daily solar radiation (MJ/m²/day) · above | 318 | 17.7% | 12.459 | 14.503 | 21.2% |
+| Kansas forest | Mean air temperature (°C) · below | 0 | 0.0% | — | — | 0.0% |
+| Kansas forest | Mean air temperature (°C) · inside | 581 | 32.3% | 9.047 | 11.983 | 26.5% |
+| Kansas forest | Mean air temperature (°C) · above | 1219 | 67.7% | 11.041 | 13.777 | 73.5% |
+
+</details>
+
+### USDA NASS reporting context
+
+| State and cohort | Reported non-irrigated | All-practice fallback |
+| --- | --- | --- |
+| Kansas | 2,005 (62.4%) | 1,210 (37.6%) |
+| Oklahoma | 421 (23.4%) | 1,379 (76.6%) |
+
+A different reporting mix could contribute to the transfer gap. The all-practice label does not tell us what fraction was irrigated. Cultivars, soils, management, and county-centroid weather error are other untested hypotheses. This diagnosis cannot separate them. County-average associations do not validate rotation recommendations.
+
+Run `python -m src.transfer_diagnosis` to rebuild only the P38 [saved diagnostic](../data/processed/climate_yield_transfer_diagnosis.json).

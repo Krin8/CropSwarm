@@ -245,6 +245,49 @@ def cross_state_yield_panel():
                    "Yield series mix management and can include irrigated wheat where all-practice records are used.")
 
 
+def transfer_diagnosis_panel():
+    report = cached("climate_yield_transfer_diagnosis.json")
+    names = {"full": "All Oklahoma rows", "inside": "Inside all central bands", "outside": "Outside any central band"}
+    models = {"ridge": "Kansas ridge", "random_forest": "Kansas random forest",
+              "own_linear_trend": "Oklahoma trend", "own_county_mean": "Oklahoma county mean"}
+    full, central = (report["outside_ranges"][key] for key in ("full", "central"))
+    with st.expander("Kansas-to-Oklahoma transfer diagnosis (P38)"):
+        st.caption(f"On at least one weather feature, {full['outside_any_share']:.1%} of Oklahoma rows fell "
+                   f"outside the full Kansas training range and {central['outside_any_share']:.1%} fell outside "
+                   "the Kansas 5th–95th percentile bands.")
+        st.dataframe(pd.DataFrame([
+            {"Weather feature": label, "Outside full range": f"{full['features'][key]['outside_share']:.1%}",
+             "Outside central band": f"{central['features'][key]['outside_share']:.1%}"}
+            for key, label in report["features"].items()
+        ]), hide_index=True)
+        rows = []
+        for key, result in report["performance"].items():
+            for model, value in result["rmse"].items():
+                row = {"Rows": names[key], "County-years": result["n"], "Method": models[model],
+                       "RMSE (bu/acre)": f"{value:.3f}" if value is not None else "Unavailable"}
+                for baseline, label in (("own_linear_trend", "Δ vs Oklahoma trend"),
+                                        ("own_county_mean", "Δ vs Oklahoma mean")):
+                    entry = result["paired_rmse_delta"].get(model, {}).get(baseline)
+                    if entry and entry["value"] is not None:
+                        span = entry["bootstrap_95"]
+                        interval = f" [{span[0]:+.3f}, {span[1]:+.3f}]" if span else ""
+                        row[label] = f"{entry['value']:+.3f}{interval}"
+                    else:
+                        row[label] = "—"
+                rows.append(row)
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        st.caption("Paired 95% intervals resample USDA reporting districts. Positive differences indicate "
+                   "higher error for the transferred model.")
+        for key, result in report["errors"].items():
+            years, districts = result["top_years"], result["top_districts"]
+            st.write(f"{models[key]} · Three highest-error years account for {years['sse_share']:.1%} of "
+                     f"squared error. Two highest-error districts account for {districts['sse_share']:.1%}.")
+        practice = report["practice"]
+        st.caption(f"NASS non-irrigated reporting · Kansas {practice['kansas']['non_irrigated']['share']:.1%}, "
+                   f"Oklahoma {practice['oklahoma']['non_irrigated']['share']:.1%}. Reporting and weather shifts "
+                   "are hypotheses for the gap. County-average results do not validate rotation recommendations.")
+
+
 def local_recalibration_panel():
     report = cached("climate_yield_recalibration.json")
     county_mean = cached("climate_yield_recalibration_county_mean.json")["states"]
@@ -919,6 +962,7 @@ def app():
         learned_yield_panel()
         india_yield_screen_panel()
         cross_state_yield_panel()
+        transfer_diagnosis_panel()
         local_recalibration_panel()
         yield_interval_panel()
         interval_diagnosis_panel()

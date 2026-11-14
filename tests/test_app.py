@@ -291,3 +291,14 @@ def test_interval_undercoverage_panel_shows_all_methods_and_2007_blocker():
     table = next(row.value for row in app.dataframe if "Learner" in row.value and "Unbounded" in row.value)
     weighted = table[table.Method.eq("Climate-similarity weighting") & table.Nominal.eq("90%")]
     assert weighted.Unbounded.tolist() == [88, 88]
+
+
+def test_transfer_diagnosis_uses_same_rows_for_all_four_models():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Kansas-to-Oklahoma transfer diagnosis (P38)" for row in app.expander)
+    assert any("28.3% of Oklahoma rows" in row.value and "79.9%" in row.value for row in app.caption)
+    table = next(t.value for t in app.dataframe if "Δ vs Oklahoma mean" in t.value)
+    restricted = table[table.Rows.eq("Inside all central bands")]
+    assert len(restricted) == 4 and restricted["County-years"].eq(361).all()
+    assert set(restricted["RMSE (bu/acre)"]) == {"10.981", "12.840", "8.572", "8.585"}

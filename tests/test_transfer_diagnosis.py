@@ -58,3 +58,27 @@ def test_paired_bootstrap_and_exhaustive_error_groups(frames):
             assert sum(row["n"] for row in groups) == 6
             assert sum(row["sse_share"] for row in groups) == pytest.approx(1.)
     assert study.performance(ok.iloc[:1], config)["paired_rmse_delta"]["ridge"]["own_county_mean"]["bootstrap_95"] is None
+
+
+def test_saved_diagnosis_matches_p32_and_rebuilds_without_touching_inputs(tmp_path):
+    source = study.ROOT / "data/processed"
+    target = tmp_path / "data/processed"
+    target.mkdir(parents=True)
+    for name in ("climate_yield_features.csv", "climate_yield_transfer_40_features.csv",
+                 "climate_yield_transfer_predictions.csv"):
+        (target / name).symlink_to(source / name)
+    (tmp_path / "config").symlink_to(study.ROOT / "config", target_is_directory=True)
+    study.build(tmp_path)
+    name = "climate_yield_transfer_diagnosis.json"
+    report = json.loads((target / name).read_text())
+    assert report == json.loads((source / name).read_text())
+    p32 = json.loads((source / "climate_yield_transfer.json").read_text())["cases"]["20_to_40"]
+    full = report["performance"]["full"]
+    assert full["n"] == p32["n"] == 1800
+    for model in study.LEARNERS:
+        assert full["rmse"][model] == pytest.approx(p32["performance"][model]["rmse_bu_ac"]["value"])
+        for baseline in study.BASELINES:
+            prior = p32["rmse_delta_vs_own_baselines"][baseline.removeprefix("own_")][model]
+            current = full["paired_rmse_delta"][model][baseline]
+            assert current["value"] == pytest.approx(prior["value"])
+            np.testing.assert_allclose(current["bootstrap_95"], prior["bootstrap_95"], atol=1e-12)
