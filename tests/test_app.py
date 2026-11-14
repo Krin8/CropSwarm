@@ -314,3 +314,19 @@ def test_state_weather_yield_panel_shows_all_features_and_state_comparisons():
     comparison = next(row.value for row in app.dataframe if "State interactions RMSE" in row.value)
     assert comparison.Geography.tolist() == ["All states", "Kansas", "Nebraska", "Oklahoma"]
     assert comparison.iloc[0]["County-years"] == comparison.iloc[1:]["County-years"].sum()
+
+
+def test_evidence_ledger_panel_matches_the_document_generator():
+    from html import unescape
+    import re
+
+    from src.evidence_ledger import COLUMNS, build_ledger
+
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Evidence ledger" for row in app.expander)
+    ledger = next(item.value for item in app.get("html") if 'aria-label="Evidence ledger"' in item.value)
+    actual = [tuple(unescape(cell) for cell in re.findall(r"<(?:th|td)[^>]*>(.*?)</(?:th|td)>", row))
+              for row in re.findall(r"<tr>(.*?)</tr>", ledger)]
+    expected = build_ledger(lambda name: json.loads((ROOT / "data/processed" / name).read_text()))
+    assert actual == [COLUMNS, *(row.cells() for row in expected)]

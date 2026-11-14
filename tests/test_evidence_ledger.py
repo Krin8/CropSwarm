@@ -1,0 +1,80 @@
+from dataclasses import replace
+import json
+from pathlib import Path
+
+import pytest
+
+from src.evidence_ledger import COLUMNS, build_document, build_ledger, check_rows, render_markdown
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data/processed"
+
+
+def load(name):
+    return json.loads((DATA / name).read_text())
+
+
+def test_committed_ledger_rebuilds_exactly_from_processed_results():
+    assert build_document(ROOT) == (ROOT / "docs/evidence_ledger.md").read_text()
+    rows = build_ledger(load)
+    studies = ["P15", "P19", "P20", "P25", "P27", "P32", "P33", "P33b", "P37", "P37b", "P38"]
+    if (DATA / "climate_yield_state_associations.json").exists():
+        studies.append("P39")
+    assert [row.study for row in rows] == studies
+    assert all(len(row.cells()) == len(COLUMNS) for row in rows)
+    assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
+
+
+def test_rows_disclose_negative_results_and_limits():
+    rows = {row.study: row for row in build_ledger(load)}
+    assert "No Kansas correlation estimable" in rows["P15"].result
+    assert "opposite-sign estimates" in rows["P19"].result
+    assert "Makueni skipped" in rows["P20"].sample
+    assert "No finite-width local setting reached nominal" in rows["P33b"].result
+    assert "Freeze check unavailable" in rows["P33b"].result
+    assert "None at 3 years" in rows["P37b"].result
+    assert rows["P38"].direction == "does not support"
+    if "P39" in rows:
+        assert rows["P39"].direction == "mixed"
+
+
+def test_source_change_changes_generated_sample_headline_and_direction():
+    def fixture_load(name):
+        report = load(name)
+        if name == "climate_yield_model.json":
+            report["dataset"]["retained_rows"] = 11
+            report["schemes"]["leave_one_year_out"]["rmse_delta_vs_trend"]["ridge"] = {
+                "value": 0.5, "bootstrap_95": [0.1, 0.8]}
+        return report
+
+    row = next(row for row in build_ledger(fixture_load) if row.study == "P25")
+    assert "11 county-years" in row.sample
+    assert "3/4" in row.result
+    assert "+0.50 [+0.10, +0.80]" in row.result
+    assert row.direction == "mixed"
+
+
+def test_p39_is_optional_but_bad_inputs_still_fail():
+    def before_p39(name):
+        if name == "climate_yield_state_associations.json":
+            raise FileNotFoundError(name)
+        return load(name)
+
+    assert build_ledger(before_p39)[-1].study == "P38"
+
+    def bad_p39(name):
+        return {} if name == "climate_yield_state_associations.json" else load(name)
+
+    with pytest.raises(KeyError, match="held_out"):
+        build_ledger(bad_p39)
+
+
+@pytest.mark.parametrize("word", ["VALIDATED", "predicts", "Proven"])
+@pytest.mark.parametrize("field", ["question", "sample", "result", "direction", "limit", "detail"])
+def test_forbidden_wording_is_rejected_in_each_field(word, field):
+    row = build_ledger(load)[0]
+    row = replace(row, **{field: f"A result {word}."})
+    with pytest.raises(ValueError):
+        check_rows([row])
+    with pytest.raises(ValueError):
+        render_markdown([row])

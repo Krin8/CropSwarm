@@ -4,6 +4,7 @@ import copy
 import json
 import sys
 from datetime import date
+from html import escape
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_inputs, render_brief, repository_version
+from src.evidence_ledger import COLUMNS, NOTE, build_ledger
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.sensitivity import check_first
@@ -76,6 +78,40 @@ def correlation_counts(farm_ids):
                        "Intervals available": len(intervals),
                        "Intervals excluding zero": sum(low > 0 or high < 0 for low, high in intervals)})
     return counts
+
+
+def evidence_ledger_panel():
+    with st.expander("Evidence ledger"):
+        rows = build_ledger(cached)
+        st.caption(NOTE)
+        headers = "".join(f'<th scope="col">{escape(name)}</th>' for name in COLUMNS)
+        body = "".join(
+            "<tr>" + f'<th scope="row">{escape(label)}</th>'
+            + "".join(f"<td>{escape(cell)}</td>" for cell in cells) + "</tr>"
+            for label, *cells in (row.cells() for row in rows)
+        )
+        st.html(f"""
+            <style>
+              .evidence-ledger {{ overflow-x: auto; }}
+              .evidence-ledger table {{ width: 100%; min-width: 850px; table-layout: fixed;
+                                       border-collapse: collapse; font-size: 0.79rem; line-height: 1.3; }}
+              .evidence-ledger :is(th, td) {{ text-align: left; vertical-align: top;
+                                             padding: 4px 8px; overflow-wrap: break-word;
+                                             border-bottom: 1px solid var(--st-border-color, currentColor); }}
+              .evidence-ledger thead th {{ background: var(--st-secondary-background-color, transparent); }}
+              .evidence-ledger th:nth-child(1) {{ width: 17%; }}
+              .evidence-ledger th:nth-child(2) {{ width: 16%; }}
+              .evidence-ledger th:nth-child(3) {{ width: 38%; }}
+              .evidence-ledger th:nth-child(4) {{ width: 9%; }}
+              .evidence-ledger th:nth-child(5) {{ width: 20%; }}
+            </style>
+            <div class="evidence-ledger">
+              <table aria-label="Evidence ledger">
+                <thead><tr>{headers}</tr></thead>
+                <tbody>{body}</tbody>
+              </table>
+            </div>
+        """)
 
 
 def learned_yield_panel():
@@ -899,6 +935,7 @@ def app():
         st.caption("These checks compare NASA weather and vegetation data and examine consistency with county or "
                    "district yields. "
                    "Rotation recommendations still need field validation.")
+        evidence_ledger_panel()
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "
