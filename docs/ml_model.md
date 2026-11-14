@@ -178,3 +178,45 @@ No district centroids were calculated, no new POWER requests were made and no P3
 **Kansas-to-India transfer was skipped.** Kansas winter wheat starts in the previous October and uses its catalog winter-wheat duration. The only India archive series is kharif monsoon rice and uses a different season and crop. The existing historical Warangal rice correlations remain a separate analysis. [P20 protocol](backtest.md#p20-yield-back-test)
 
 The [saved screen](../data/processed/climate_yield_india_screen.json) lists candidate metadata, archived hashes and the status of every district. To reproduce offline from the committed [archive files](../data/raw/p31/), run `python -m src.india_yield_screen` with the pinned requirements. The screen verifies the original archive hashes and uses a compressed, hash-checked copy of its original dBASE attributes. It writes only the P31 screen. The app displays this disposition under Validation. P25/P27 results and the seasonal scoring engine retain their original files.
+
+## P32 cross-state winter-wheat transfer
+
+The [preregistration](p32_plan.md) was committed as `7400972` before opening the target-state data. All tests use the fixed P25/P27 winter-wheat recipe and the same model and hyperparameter grids. Kansas keeps its existing retained cohort of 103 counties and 3,215 county-years.
+
+### Target yield screen
+
+The [P32 extract](../data/raw/p32/quickstats_targets.csv) uses the cached P20 public USDA NASS bulk snapshot. The [provenance](../data/raw/p32/provenance.json) records the snapshot and extract hashes. The preferred records are the reported non-irrigated yields. Selected all-practice records fill gaps and may include irrigated wheat.
+
+| State | Source rows | Aggregate “Other counties” rows removed | All-practice rows superseded | Counties with valid yields | Counties with at least 20 yield years | Eligible USDA districts | County-years before climate screen | Non-irrigated / fallback |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Nebraska | 3,680 | 199 | 1,420 | 91 | 59 | 8 | 1,744 | 1,165 / 579 |
+| Oklahoma | 2,741 | 181 | 473 | 75 | 58 | 8 | 1,800 | 421 / 1,379 |
+
+Both yield-only cohorts span 1990–2023. The [saved inventory](../data/processed/climate_yield_transfer_yield_inventory.json) lists all 32 Nebraska and 17 Oklahoma counties excluded for fewer than 20 valid years. Yield coverage precedes the independent county geography join and the complete-weather screen.
+
+### Evaluation disposition
+
+The verified Nebraska and Oklahoma county centroid tables are absent from the available offline data. The current network scope covers NASS bulk data and resumable POWER requests. The feature build stops before sending a POWER request for either target. Final climate-paired sample sizes, RMSE, R², Spearman and bootstrap intervals are unavailable. There were zero real P32 fits or model configurations tried.
+
+| Preregistered case | Status |
+|---|---|
+| Nebraska USDA district holdout | Pending Nebraska centroid and weather inputs |
+| Oklahoma USDA district holdout | Pending Oklahoma centroid and weather inputs |
+| Kansas → Nebraska and Kansas → Oklahoma | Target features and own-state references unavailable |
+| Nebraska → Kansas and Oklahoma → Kansas | Source-state climate features unavailable |
+| Three-state blocked holdout, including all three state-specific comparisons | Final three-state cohort unavailable |
+
+The prepared evaluator reuses the P25/P27 training-fold trends, ridge scaling, model construction and inner selection. The fixed grid has ridge alpha 0.1, 1 and 10, and forest minimum leaf size 5 and 20 with 48 trees. The same paired bootstrap estimates RMSE, R² and Spearman with 95% intervals. Direct transfer estimates use the source state's averages of training-county means and trends. Each comparison also pairs the same evaluated county-years with the target-state held-out mean and trend baselines, fitted on other reporting districts. The pooled fold excludes an entire state and tunes on the remaining states' state-qualified reporting districts. Its pooled bootstrap would have three state blocks. Seeded fixtures exercise every planned case, disjoint folds and reproducibility.
+
+Centroid weather is a coarse proxy. The yield records mix management and reporting practices. The comparison describes historical weather–yield associations in county averages and does not validate rotation recommendations.
+
+### Resume from verified county coordinates
+
+With locally available verified centroid tables, save the Census HTML as `data/raw/p32/census_31_counties.html` and `data/raw/p32/census_40_counties.html`. A sourced CSV with `fips,county,lat,lon` also works with `--state`, `--centroid-file` and `--centroid-source`. Preserve the source and vintage of either input. Then run:
+
+```sh
+python -m src.cross_state_yield_data --fetch --archive
+python -m src.cross_state_yield
+```
+
+The first command resumes county POWER chunks and writes only P32 weather, feature and coverage files. The second consumes the final cohort and writes separate P32 results. Run `python -m src.cross_state_yield_data --yield-inventory` to reproduce the yield-only counts offline.

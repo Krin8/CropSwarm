@@ -196,3 +196,15 @@ def test_india_replication_reports_screen_without_inventing_model_results():
     assert any("365 of 384 districts" in row.value for row in app.markdown)
     assert any("No India models were fitted" in row.value for row in app.caption)
     assert any("rainfed-dominant" in row.value for row in app.caption)
+
+
+def test_cross_state_validation_shows_yield_screen_if_results_are_unavailable(monkeypatch):
+    from pathlib import Path
+
+    original = Path.is_file
+    monkeypatch.setattr(Path, "is_file", lambda path: path.name != "climate_yield_transfer.json" and original(path))
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Cross-state winter-wheat check (P32)" for row in app.expander)
+    assert any("59 counties, 1,744 county-years" in row.value for row in app.caption)
+    assert any("58 counties, 1,800 county-years" in row.value for row in app.caption)

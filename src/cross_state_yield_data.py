@@ -49,7 +49,8 @@ def target_districts(source, yields):
     mapping = source.assign(fips=source.STATE_ANSI + source.COUNTY_ANSI)
     columns = ["fips", "ASD_CODE", "ASD_DESC"]
     mapping = mapping.loc[mapping.fips.isin(yields.fips), columns].drop_duplicates()
-    if (mapping.ASD_CODE.eq("").any() or mapping.ASD_DESC.eq("").any()
+    if (mapping[["ASD_CODE", "ASD_DESC"]].isna().any().any()
+            or mapping.ASD_CODE.eq("").any() or mapping.ASD_DESC.eq("").any()
             or mapping.fips.duplicated().any() or len(mapping) != yields.fips.nunique()):
         raise ValueError("Unresolved county reporting district in the NASS archive")
     return mapping.rename(columns={"ASD_CODE": "district", "ASD_DESC": "district_name"})
@@ -159,12 +160,13 @@ def main():
     parser.add_argument("--extract-bulk", type=Path, help="The original P20 USDA NASS bulk gzip")
     parser.add_argument("--state", choices=tuple(TARGETS))
     parser.add_argument("--centroid-file", type=Path, help="Verified local Census table or centroid CSV for --state")
+    parser.add_argument("--centroid-source", help="Source and vintage for a supplied centroid file")
     parser.add_argument("--fetch", action="store_true")
     parser.add_argument("--archive", action="store_true")
     parser.add_argument("--yield-inventory", action="store_true", help="Report NASS coverage before the geographic join")
     args = parser.parse_args()
-    if args.centroid_file and not args.state:
-        parser.error("--centroid-file requires --state")
+    if args.centroid_file and not (args.state and args.centroid_source):
+        parser.error("--centroid-file requires --state and --centroid-source")
     config = json.loads((ROOT / "config/climate_yield.json").read_text())
     source = ARCHIVE / "quickstats_targets.csv"
     ARCHIVE.mkdir(parents=True, exist_ok=True)
@@ -194,6 +196,8 @@ def main():
         out, coverage, manifest = prepare_state(rows[rows.STATE_ANSI.eq(state)], centroids, config, window, crop,
                                                ARCHIVE / "power", ARCHIVE / "power_archive",
                                                fetch=args.fetch, save_archive=args.archive)
+        coverage["centroids"] = {"file": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                                 "source": args.centroid_source or "US Census TIGERweb county table, archived HTML"}
         atomic_write(ROOT / "data/processed" / f"climate_yield_transfer_{state}_features.csv",
                      lambda path: out.to_csv(path, index=False))
         write_json(ROOT / "data/processed" / f"climate_yield_transfer_{state}_coverage.json", coverage)

@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn.preprocessing import StandardScaler
 
 import src.climate_yield as existing
 from src.climate_yield_validity import DISTRICT_SCHEME
@@ -35,6 +36,7 @@ def state_frames():
 def test_transfer_cannot_use_held_out_state_for_trends_tuning_or_training(state_frames, monkeypatch):
     data = {state: validate(frame, state) for state, frame in state_frames.items()}
     old_tune, old_trend = existing.tune, existing.CountyTrends.__init__
+    old_scaler = StandardScaler.fit
     for sources, held_state, train, target in outer_state_splits(data):
         assert held_state not in sources
         assert set(train.fips).isdisjoint(target.fips)
@@ -51,8 +53,13 @@ def test_transfer_cannot_use_held_out_state_for_trends_tuning_or_training(state_
             assert held_state not in set(rows.state)
             return old_trend(self, rows)
 
+        def record_scaler(self, features, *args, **kwargs):
+            assert set(features[:, 0]).issubset(train[FEATURES[0]])
+            return old_scaler(self, features, *args, **kwargs)
+
         monkeypatch.setattr(existing, "tune", record_tune)
         monkeypatch.setattr(existing.CountyTrends, "__init__", record_trend)
+        monkeypatch.setattr(StandardScaler, "fit", record_scaler)
         first, params = predictions_for_transfer(train, target, SETTINGS)
         repeated, other = predictions_for_transfer(train, target.assign(yield_bu_ac=target.yield_bu_ac + 1000), SETTINGS)
         assert params == other

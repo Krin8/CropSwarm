@@ -132,11 +132,21 @@ def build(root=ROOT):
     kansas = attach_districts(kansas, mapping)
     reference = pd.read_csv(processed / "climate_yield_validity_pooled_predictions.csv", dtype={"fips": str})
     reference = reference.loc[reference.scheme.isin(DISTRICT_SCHEME)]
-    targets = {state: pd.read_csv(processed / f"climate_yield_transfer_{state}_features.csv",
-                                  dtype={"fips": str, "district": str})
-               for state in ("31", "40")}
+    target_files = {state: processed / f"climate_yield_transfer_{state}_features.csv" for state in ("31", "40")}
+    missing = [STATE_NAMES[state] for state, path in target_files.items() if not path.is_file()]
+    if missing:
+        raise FileNotFoundError(f"Build verified target weather features first: {', '.join(missing)}")
+    targets = {state: pd.read_csv(path, dtype={"fips": str, "district": str})
+               for state, path in target_files.items()}
+    frames = {"20": kansas, **targets}
     with threadpool_limits(limits=1):
-        results, predictions = evaluate({"20": kansas, **targets}, reference, config)
+        results, predictions = evaluate(frames, reference, config)
+    results["cohorts"] = {
+        key: {"county_years": len(frame), "counties": int(frame.fips.nunique()),
+              "districts": int(frame.district.nunique()), "first_year": int(frame.year.min()),
+              "last_year": int(frame.year.max()), "practice_counts": frame.practice.value_counts().to_dict()}
+        for key, frame in frames.items()
+    }
     atomic_write(processed / "climate_yield_transfer_predictions.csv", lambda path: predictions.to_csv(path, index=False))
     write_json(processed / "climate_yield_transfer.json", results)
 

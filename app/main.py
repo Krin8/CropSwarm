@@ -183,6 +183,68 @@ def india_yield_screen_panel():
         st.markdown(f"[Cached ICRISAT study archive]({report['source']})")
 
 
+def cross_state_yield_panel():
+    with st.expander("Cross-state winter-wheat check (P32)"):
+        st.caption("Weather–yield associations in county averages do not validate rotation recommendations.")
+        results_file = DATA / "climate_yield_transfer.json"
+        if not results_file.is_file():
+            inventory = cached("climate_yield_transfer_yield_inventory.json")
+            st.write("The yield screen is complete. Cross-state model results are pending verified county weather locations.")
+            for row in inventory.values():
+                st.caption(f"{row['name']} · {row['eligible_counties']} counties, "
+                           f"{row['eligible_rows']:,} county-years meet the yield-history requirement.")
+            return
+        report = cached(results_file.name)
+        states = report["states"]
+        cases = report["cases"]
+
+        def case_name(key):
+            row = cases[key]
+            if row["kind"] == "pooled":
+                return "All three states · state-blocked holdout"
+            target = states[row["test_state"]]
+            if row["kind"] == "in_state":
+                return f"{target} · reporting-district holdout"
+            sources = " + ".join(states[state] for state in row["train_states"])
+            return f"{sources} → {target}"
+
+        default = tuple(cases).index("pooled")
+        key = st.selectbox("Evaluation", tuple(cases), format_func=case_name, index=default,
+                           key="cross_state_yield_case")
+        result = cases[key]
+        st.caption(f"{result['n']:,} held-out county-years · {result['counties']} counties · "
+                   f"{report['model_count']} models and baselines · "
+                   f"{report['learned_configuration_count']} learned configurations across the two learners.")
+        model_labels = {"county_mean": "County mean", "linear_trend": "Linear trend",
+                        "ridge": "Ridge", "random_forest": "Random forest"}
+        metric_labels = {"rmse_bu_ac": "RMSE (bu/acre)", "r2": "R²", "spearman": "Spearman ρ"}
+
+        def estimate(value, signed=False):
+            point = value["value"]
+            if point is None:
+                return "Unavailable"
+            fmt = "+.3f" if signed else ".3f"
+            interval = value["bootstrap_95"]
+            suffix = f" [{interval[0]:{fmt}}, {interval[1]:{fmt}}]" if interval else ""
+            return f"{point:{fmt}}{suffix}"
+
+        st.dataframe(pd.DataFrame([{"Model": model_labels[model],
+                                    **{label: estimate(scores[name]) for name, label in metric_labels.items()}}
+                                   for model, scores in result["performance"].items()]), hide_index=True)
+        if "own_baseline_rmse" in result:
+            own = result["own_baseline_rmse"]
+            st.caption(f"Own-state held-out references on the same rows · mean {own['county_mean']:.3f} "
+                       f"and trend {own['linear_trend']:.3f} bu/acre RMSE.")
+            deltas = result["rmse_delta_vs_own_baselines"]
+            st.dataframe(pd.DataFrame([{"Model": model_labels[model],
+                                        **{f"Δ RMSE vs own {model_labels[name].lower()}": estimate(values[model], True)
+                                           for name, values in deltas.items()}}
+                                       for model in ("ridge", "random_forest")]), hide_index=True)
+        st.caption("Paired 95% bootstrap intervals are descriptive. The pooled check resamples three states. "
+                   "NASA POWER county-centroid weather and USDA NASS county yields are area-level proxies. "
+                   "Yield series mix management and can include irrigated wheat where all-practice records are used.")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -701,6 +763,7 @@ def app():
                            "season windows and soil water estimate. Bootstrap intervals are descriptive.")
         learned_yield_panel()
         india_yield_screen_panel()
+        cross_state_yield_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")
