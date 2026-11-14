@@ -1,2 +1,5 @@
 # Preserve the exact archived HTML responses, including upstream line endings.
 data/raw/p13/*.html -text -diff
+
+# Preserve the P31 archive payload byte-for-byte for its P20 source hash.
+data/raw/p31/Data.csv -text -diff
