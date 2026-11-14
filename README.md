@@ -21,13 +21,15 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
 7. The baseline flags remain visible: Kansas fallow and spring NDVI disagree, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Validity](docs/decisions.md)
 
+Evidence grades expose how each modeled metric depends on NASA, external, literature and assumed inputs. All displayed strategies currently have a **low overall evidence label** because key crop and management inputs remain assumptions. [Method and limits](docs/evidence_grades.md)
+
 ## Screenshots
 
 ![Kansas climate assessment](docs/screenshots/us_high_plains_b_climate.png)
 ![Telangana strategy comparison](docs/screenshots/telangana_a_comparison.png)
 ![Makueni scenario uncertainty](docs/screenshots/kenya_makueni_north_uncertainty.png)
 
-[All nine screenshots](docs/screenshots/README.md)
+[All eighteen screenshots](docs/screenshots/README.md)
 
 ## Run the demo
 

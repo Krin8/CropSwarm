@@ -7,6 +7,7 @@ import numpy as np
 
 from src.precompute_cache import write_json
 from src.scoring import METRICS, ROOT, baseline_indices, metric_rows, preload, score_rotations
+from src.evidence import evidence_for_strategy
 
 
 def allowed_layers(model, years):
@@ -123,13 +124,16 @@ def strategy(model, sequence, strategy_id, priority, weights):
     flags = {name: np.flatnonzero(mask[0]).tolist() for name, mask in violations.items() if mask.any()}
     source_tags = {"water": f"NASA POWER · {model.soil_source} · crop catalog and irrigation assumption"}
     metrics = metric_rows(raw[0], scores[0])
+    evidence = evidence_for_strategy(model, sequence)
     for name, source in source_tags.items():
         metrics[name]["source"] = source
+    for name in METRICS:
+        metrics[name]["evidence"] = evidence["metrics"][name]
     crop_names = [model.crops[model.ids[index]]["display_name"] for index in sequence]
     cycle = np.asarray([model.ids[index] for index in sequence]).reshape(-1, len(model.season_labels)).tolist()
     return {
         "strategy_id": strategy_id, "priority": priority, "crop_ids": cycle, "crop_names": crop_names,
-        "metrics": metrics, "flags": flags,
+        "metrics": metrics, "evidence_label": evidence["label"], "flags": flags,
         "objectives": {name: float(scores[0] @ values) for name, values in weights.items()},
         "why": "Existing rotation supplied for comparison." if priority is None else
         f"High exact-search score under the {priority.replace('_',' ')} priorities, among distinct strategies.",

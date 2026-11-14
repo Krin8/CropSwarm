@@ -280,6 +280,9 @@ def app():
     with st.container(key="strategy_comparison"):
         st.subheader("Compare rotations")
         st.caption(farm["name"])
+        st.caption("Evidence labels: high = few assumed score inputs; medium = mixed provenance; "
+                   "low = substantial assumptions or unresolved site validation. "
+                   "Shares count input fields, scoring rules and crop slots equally; they are not causal fractions of the score.")
         scenario_names = {"historical": "Historical weather", "warmer_drier": "Warmer and drier",
                           "less_irrigation": "Less irrigation", "more_irrigation": "More irrigation"}
         scenario = st.selectbox("Scenario", list(scenario_names), format_func=scenario_names.get)
@@ -316,6 +319,7 @@ def app():
         with st.expander(row["Strategy"], expanded=key == "baseline"):
             st.write(entry["why"])
             st.write(row["Rotation"])
+            st.caption(f"Overall evidence: {entry['evidence_label'].upper()} · weakest of the six metric labels")
             for pair in alternatives["pairs"]:
                 if pair["near_duplicate"] and key in (pair["first"], pair["second"]):
                     other = pair["second"] if key == pair["first"] else pair["first"]
@@ -340,11 +344,22 @@ def app():
                 details = []
                 for metric, info in entry["metrics"].items():
                     interval = stats["metrics"][metric]
-                    details.append({"Metric": title(metric), "10th / 50th / 90th percentile":
+                    evidence = info["evidence"]
+                    details.append({"Metric": title(metric), "Evidence": evidence["label"].upper(),
+                                    "Why lower": " ".join(evidence["reasons"]),
+                                    "10th / 50th / 90th percentile":
                                     f"{interval['p10']:.2f} / {interval['p50']:.2f} / {interval['p90']:.2f}",
                                     "Unit": info["unit"], "Model score": round(info["score"], 3),
                                     "Source": info["source"], "How it works": info["explanation"]})
                 st.dataframe(pd.DataFrame(details), hide_index=True)
+                with st.expander("Evidence grade shares and input sources"):
+                    for metric, info in entry["metrics"].items():
+                        evidence = info["evidence"]
+                        shares = ", ".join(f"{grade.replace('_', ' ')} {share:.0%}"
+                                           for grade, share in evidence["shares"].items() if share > 0)
+                        st.write(f"{title(metric)} · {evidence['label'].upper()} · {shares}")
+                        st.caption("; ".join(f"{item['input']}: {item['grade']} · {item['source']}"
+                                             for item in evidence["inputs"]))
             st.caption("Information gap · The soil, crop and farm assumptions below apply to this strategy.")
 
     if result["verification"]:

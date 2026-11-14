@@ -1,0 +1,20 @@
+{
+  "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+  "method_source": "design choice, not empirical; validate locally",
+  "high_max_assumption_share": 0.1,
+  "high_min_supported_share": 0.75,
+  "medium_max_assumption_share": 0.34,
+  "medium_min_supported_share": 0.5,
+  "threshold_source": "design choice, not empirical; validate locally",
+  "backtest_small_n_below": 8,
+  "backtest_source": "data/processed/backtest_<farm_id>.json; design choice, not empirical",
+  "verified_crop_source_urls": [
+    "https://www.fao.org/4/s2022e/s2022e07.htm",
+    "https://www.fao.org/4/t0733e/T0733E05.htm",
+    "https://www.kalro.org/elrp/docfiles/ELRP-Training-Manual-Final.pdf",
+    "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+    "https://www.fao.org/4/x0490e/x0490e0e.htm",
+    "https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf"
+  ],
+  "verified_source_audit": "docs/citation_audit.md"
+}

@@ -18,4 +18,4 @@ python -m pip install -r requirements-screenshots.txt
 python scripts/capture_screenshots.py --channel chrome
 ```
 
-Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all nine outputs.
+Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all eighteen outputs.

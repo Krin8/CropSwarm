@@ -1,4 +1,4 @@
-"""Capture the three comparison panels for each farm from local Streamlit."""
+"""Capture six final app panels per farm from local Streamlit."""
 
 import argparse
 import json
@@ -62,6 +62,14 @@ def capture(url, destination, channel=None):
             for panel, locator in (("climate", climate), ("comparison", comparison)):
                 expect(locator.locator(".js-plotly-plot:visible").first).to_be_visible()
                 locator.screenshot(path=destination / f"{farm_id}_{panel}.png", animations="disabled")
+            validation = page.locator(".st-key-historical_validation")
+            expect(validation.get_by_text("Validation · historical back-test")).to_be_visible()
+            expect(validation.locator(".js-plotly-plot:visible").first).to_be_visible()
+            validation.screenshot(path=destination / f"{farm_id}_validation.png", animations="disabled")
+            robustness = page.locator(".st-key-climate_stress_test")
+            expect(robustness.get_by_text("Robustness check")).to_be_visible()
+            expect(robustness.locator(".js-plotly-plot:visible").first).to_be_visible()
+            robustness.screenshot(path=destination / f"{farm_id}_robustness.png", animations="disabled")
             scenario = comparison.get_by_role("combobox", name="Scenario")
             scenario.click()
             page.get_by_role("option", name="Warmer and drier", exact=True).click()
@@ -69,6 +77,11 @@ def capture(url, destination, channel=None):
             expect(uncertainty.get_by_text(f"{name} · Existing rotation · Warmer and drier", exact=True)).to_be_visible()
             expect(uncertainty.get_by_text("Wins in", exact=False)).to_be_visible()
             uncertainty.screenshot(path=destination / f"{farm_id}_uncertainty.png", animations="disabled")
+            grade_details = uncertainty.get_by_text("Evidence grade shares and input sources")
+            expect(grade_details).to_be_visible()
+            grade_details.click()
+            expect(uncertainty.get_by_text("nasa measured", exact=False).first).to_be_visible()
+            uncertainty.screenshot(path=destination / f"{farm_id}_evidence.png", animations="disabled")
             page.close()
         browser.close()
 

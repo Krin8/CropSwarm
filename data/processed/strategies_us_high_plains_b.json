@@ -6,7 +6,7 @@
   "three_year_feasible_count": 168,
   "raw_feasible_count": 504,
   "feasible_count": 168,
-  "exact_runtime_seconds": 0.00046095901052467525,
+  "exact_runtime_seconds": 0.0010182919795624912,
   "verification": {
     "water_saver": {
       "exact_score": 0.683723229418286,
@@ -92,7 +92,7 @@
           0.683723229418286
         ]
       },
-      "runtime_seconds": 5.477631499990821,
+      "runtime_seconds": 5.32753320800839,
       "restart_count": 5,
       "trials": [
         {
@@ -661,7 +661,7 @@
           0.7157552327704902
         ]
       },
-      "runtime_seconds": 4.962762249982916,
+      "runtime_seconds": 4.836144000000786,
       "restart_count": 5,
       "trials": [
         {
@@ -1230,7 +1230,7 @@
           0.6413635397298838
         ]
       },
-      "runtime_seconds": 5.304545958002564,
+      "runtime_seconds": 5.160304874996655,
       "restart_count": 5,
       "trials": [
         {
@@ -1799,7 +1799,7 @@
           0.6781246362760627
         ]
       },
-      "runtime_seconds": 5.346147208008915,
+      "runtime_seconds": 5.237803833006183,
       "restart_count": 5,
       "trials": [
         {
@@ -2318,44 +2318,543 @@
           "unit": "mm unmet per slot",
           "score": 0.6488563474993725,
           "source": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
-          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.14285714285714285,
+              "nasa_modeled": 0,
+              "external_measured": 0.14285714285714285,
+              "literature": 0.14285714285714285,
+              "assumption": 0.5714285714285714
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "soil.available_water_mm_0_30",
+                "grade": "external_measured",
+                "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "winter_wheat",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (barley/oats/wheat 450\u2013650 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "farm.irrigation.supply_fraction",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "model.daily_water_bucket",
+                "grade": "assumption",
+                "source": "src/scoring.py daily_water_deficit; assumption, validate locally",
+                "weight": 0.14285714285714285
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "nitrogen": {
           "value": -55.0,
           "unit": "kg N/ha per slot",
           "score": 0.42207792207792205,
           "source": "Crop catalog \u00b7 local assumptions",
-          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "model.nitrogen_normalization",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; catalog-wide bounds; assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "erosion": {
           "value": 89.5162829647059,
           "unit": "slope \u00d7 rainfall proxy",
           "score": 0.8355919388425362,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
-          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0.25,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 0.5
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.25
+              },
+              {
+                "input": "SRTM.mean_slope_pct",
+                "grade": "nasa_modeled",
+                "source": "https://www.opentopodata.org/datasets/srtm/",
+                "weight": 0.25
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.erosion_proxy",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; simplified erosion proxy; assumption, validate locally",
+                "weight": 0.25
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "climate_fit": {
           "value": 0.7663865546218488,
           "unit": "historical share",
           "score": 0.7663865546218488,
           "source": "NASA POWER \u00b7 crop catalog",
-          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.027777777777777776,
+              "assumption": 0.7222222222222222
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M_MAX",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M_MAX; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "policy.max_hot_day_fraction",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.climate_screen",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; threshold screening rule; assumption, validate locally",
+                "weight": 0.08333333333333333
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "income": {
           "value": 0.40999999999999975,
           "unit": "relative index",
           "score": 0.40999999999999975,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
-          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "risk": {
           "value": 0.3333333333333333,
           "unit": "relative penalty",
           "score": 0.6666666666666667,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
-          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.06666666666666667,
+              "assumption": 0.9333333333333333
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.disease_family",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "policy.same_family_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "policy.bare_slot_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "model.risk_rule",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; family and bare-slot proxy; assumption, validate locally",
+                "weight": 0.2
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         }
       },
+      "evidence_label": "low",
       "flags": {},
       "objectives": {
         "water_saver": 0.6299285870139996,
@@ -2390,44 +2889,543 @@
           "unit": "mm unmet per slot",
           "score": 0.6873452631809568,
           "source": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
-          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.14285714285714285,
+              "nasa_modeled": 0,
+              "external_measured": 0.14285714285714285,
+              "literature": 0.19047619047619047,
+              "assumption": 0.5238095238095237
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "soil.available_water_mm_0_30",
+                "grade": "external_measured",
+                "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (soybean 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "farm.irrigation.supply_fraction",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "model.daily_water_bucket",
+                "grade": "assumption",
+                "source": "src/scoring.py daily_water_deficit; assumption, validate locally",
+                "weight": 0.14285714285714285
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "nitrogen": {
           "value": -18.666666666666668,
           "unit": "kg N/ha per slot",
           "score": 0.6580086580086579,
           "source": "Crop catalog \u00b7 local assumptions",
-          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (soybean 30 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "model.nitrogen_normalization",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; catalog-wide bounds; assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "erosion": {
           "value": 92.9569089317647,
           "unit": "slope \u00d7 rainfall proxy",
           "score": 0.8292727907984292,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
-          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0.25,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 0.5
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.25
+              },
+              {
+                "input": "SRTM.mean_slope_pct",
+                "grade": "nasa_modeled",
+                "source": "https://www.opentopodata.org/datasets/srtm/",
+                "weight": 0.25
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.erosion_proxy",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; simplified erosion proxy; assumption, validate locally",
+                "weight": 0.25
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "climate_fit": {
           "value": 0.6190476190476191,
           "unit": "historical share",
           "score": 0.6190476190476191,
           "source": "NASA POWER \u00b7 crop catalog",
-          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.05555555555555555,
+              "assumption": 0.6944444444444444
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M_MAX",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M_MAX; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "policy.max_hot_day_fraction",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.climate_screen",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; threshold screening rule; assumption, validate locally",
+                "weight": 0.08333333333333333
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "income": {
           "value": 0.4366666666666667,
           "unit": "relative index",
           "score": 0.4366666666666667,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
-          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "risk": {
           "value": 0.16666666666666666,
           "unit": "relative penalty",
           "score": 0.8333333333333334,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
-          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.13333333333333333,
+              "assumption": 0.8666666666666667
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.disease_family",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "policy.same_family_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "policy.bare_slot_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "model.risk_rule",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; family and bare-slot proxy; assumption, validate locally",
+                "weight": 0.2
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         }
       },
+      "evidence_label": "low",
       "flags": {},
       "objectives": {
         "water_saver": 0.683723229418286,
@@ -2463,44 +3461,543 @@
           "unit": "mm unmet per slot",
           "score": 0.6287684919876309,
           "source": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
-          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.14285714285714285,
+              "nasa_modeled": 0,
+              "external_measured": 0.14285714285714285,
+              "literature": 0.09523809523809523,
+              "assumption": 0.6190476190476191
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "soil.available_water_mm_0_30",
+                "grade": "external_measured",
+                "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (soybean 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "farm.irrigation.supply_fraction",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "model.daily_water_bucket",
+                "grade": "assumption",
+                "source": "src/scoring.py daily_water_deficit; assumption, validate locally",
+                "weight": 0.14285714285714285
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "nitrogen": {
           "value": 6.333333333333333,
           "unit": "kg N/ha per slot",
           "score": 0.8203463203463203,
           "source": "Crop catalog \u00b7 local assumptions",
-          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (soybean 30 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "model.nitrogen_normalization",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; catalog-wide bounds; assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "erosion": {
           "value": 81.95211105529411,
           "unit": "slope \u00d7 rainfall proxy",
           "score": 0.8494845044931729,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
-          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0.25,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 0.5
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.25
+              },
+              {
+                "input": "SRTM.mean_slope_pct",
+                "grade": "nasa_modeled",
+                "source": "https://www.opentopodata.org/datasets/srtm/",
+                "weight": 0.25
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.erosion_proxy",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; simplified erosion proxy; assumption, validate locally",
+                "weight": 0.25
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "climate_fit": {
           "value": 0.45070028011204477,
           "unit": "historical share",
           "score": 0.45070028011204477,
           "source": "NASA POWER \u00b7 crop catalog",
-          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.027777777777777776,
+              "assumption": 0.7222222222222222
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M_MAX",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M_MAX; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "policy.max_hot_day_fraction",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.climate_screen",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; threshold screening rule; assumption, validate locally",
+                "weight": 0.08333333333333333
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "income": {
           "value": 0.24333333333333343,
           "unit": "relative index",
           "score": 0.24333333333333343,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
-          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "risk": {
           "value": 0.16666666666666666,
           "unit": "relative penalty",
           "score": 0.8333333333333334,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
-          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.06666666666666667,
+              "assumption": 0.9333333333333333
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.disease_family",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "cereal_rye_cover",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "policy.same_family_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "policy.bare_slot_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "model.risk_rule",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; family and bare-slot proxy; assumption, validate locally",
+                "weight": 0.2
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         }
       },
+      "evidence_label": "low",
       "flags": {},
       "objectives": {
         "water_saver": 0.6450077460470762,
@@ -2536,44 +4033,543 @@
           "unit": "mm unmet per slot",
           "score": 0.515457485403179,
           "source": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
-          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.14285714285714285,
+              "nasa_modeled": 0,
+              "external_measured": 0.14285714285714285,
+              "literature": 0.2857142857142857,
+              "assumption": 0.42857142857142855
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "soil.available_water_mm_0_30",
+                "grade": "external_measured",
+                "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (soybean 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "sunflower",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (sunflower 600\u20131000 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sunflower",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (sunflower 125\u2013130 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "farm.irrigation.supply_fraction",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "model.daily_water_bucket",
+                "grade": "assumption",
+                "source": "src/scoring.py daily_water_deficit; assumption, validate locally",
+                "weight": 0.14285714285714285
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "nitrogen": {
           "value": -40.333333333333336,
           "unit": "kg N/ha per slot",
           "score": 0.5173160173160173,
           "source": "Crop catalog \u00b7 local assumptions",
-          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (soybean 30 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "model.nitrogen_normalization",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; catalog-wide bounds; assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "erosion": {
           "value": 64.39858656000001,
           "unit": "slope \u00d7 rainfall proxy",
           "score": 0.8817237891592845,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
-          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0.25,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 0.5
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.25
+              },
+              {
+                "input": "SRTM.mean_slope_pct",
+                "grade": "nasa_modeled",
+                "source": "https://www.opentopodata.org/datasets/srtm/",
+                "weight": 0.25
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.erosion_proxy",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; simplified erosion proxy; assumption, validate locally",
+                "weight": 0.25
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "climate_fit": {
           "value": 0.3333333333333333,
           "unit": "historical share",
           "score": 0.3333333333333333,
           "source": "NASA POWER \u00b7 crop catalog",
-          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.08333333333333333,
+              "assumption": 0.6666666666666666
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M_MAX",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M_MAX; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sunflower",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (sunflower 125\u2013130 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "policy.max_hot_day_fraction",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.climate_screen",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; threshold screening rule; assumption, validate locally",
+                "weight": 0.08333333333333333
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "income": {
           "value": 0.6533333333333332,
           "unit": "relative index",
           "score": 0.6533333333333332,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
-          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "risk": {
           "value": 0.0,
           "unit": "relative penalty",
           "score": 1.0,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
-          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.2,
+              "assumption": 0.8
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.disease_family",
+                "crop_id": "sorghum",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "sunflower",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sorghum",
+                "grade": "literature",
+                "source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "sunflower",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (sunflower 125\u2013130 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "policy.same_family_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "policy.bare_slot_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "model.risk_rule",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; family and bare-slot proxy; assumption, validate locally",
+                "weight": 0.2
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         }
       },
+      "evidence_label": "low",
       "flags": {},
       "objectives": {
         "water_saver": 0.6115132347377771,
@@ -2609,44 +4605,543 @@
           "unit": "mm unmet per slot",
           "score": 0.6615516333560663,
           "source": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
-          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+          "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.14285714285714285,
+              "nasa_modeled": 0,
+              "external_measured": 0.14285714285714285,
+              "literature": 0.14285714285714285,
+              "assumption": 0.5714285714285714
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "soil.available_water_mm_0_30",
+                "grade": "external_measured",
+                "source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "winter_wheat",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (barley/oats/wheat 450\u2013650 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.water_need_mm",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 14 (soybean 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.047619047619047616
+              },
+              {
+                "input": "farm.irrigation.supply_fraction",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.14285714285714285
+              },
+              {
+                "input": "model.daily_water_bucket",
+                "grade": "assumption",
+                "source": "src/scoring.py daily_water_deficit; assumption, validate locally",
+                "weight": 0.14285714285714285
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "nitrogen": {
           "value": -23.666666666666668,
           "unit": "kg N/ha per slot",
           "score": 0.6255411255411255,
           "source": "Crop catalog \u00b7 local assumptions",
-          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+          "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_credit_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (soybean 30 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "crop.n_demand_kg_ha",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.1111111111111111
+              },
+              {
+                "input": "model.nitrogen_normalization",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; catalog-wide bounds; assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "erosion": {
           "value": 95.19091808470587,
           "unit": "slope \u00d7 rainfall proxy",
           "score": 0.8251697482984641,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
-          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+          "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0.25,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 0.5
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.25
+              },
+              {
+                "input": "SRTM.mean_slope_pct",
+                "grade": "nasa_modeled",
+                "source": "https://www.opentopodata.org/datasets/srtm/",
+                "weight": 0.25
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.cover_score",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.erosion_proxy",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; simplified erosion proxy; assumption, validate locally",
+                "weight": 0.25
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "climate_fit": {
           "value": 0.4997198879551821,
           "unit": "historical share",
           "score": 0.4997198879551821,
           "source": "NASA POWER \u00b7 crop catalog",
-          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+          "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0.25,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.027777777777777776,
+              "assumption": 0.7222222222222222
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "POWER.PRECTOTCORR",
+                "grade": "nasa_measured",
+                "source": "NASA POWER PRECTOTCORR; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "POWER.T2M_MAX",
+                "grade": "nasa_measured",
+                "source": "NASA POWER T2M_MAX; cached daily climate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_rain_mm",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.min_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.max_temp_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.heat_tolerance_c",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.027777777777777776
+              },
+              {
+                "input": "season.calendar",
+                "grade": "assumption",
+                "source": "assumption, validate locally; P5 will derive and validate",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "policy.max_hot_day_fraction",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.08333333333333333
+              },
+              {
+                "input": "model.climate_screen",
+                "grade": "assumption",
+                "source": "src/scoring.py historical_metrics; threshold screening rule; assumption, validate locally",
+                "weight": 0.08333333333333333
+              }
+            ],
+            "reasons": [
+              "Back-test: 0 assessable directional comparisons (largest season n=2).",
+              "Kansas spring NDVI peak over CDL fallow remains unexplained."
+            ],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "income": {
           "value": 0.45999999999999996,
           "unit": "relative index",
           "score": 0.45999999999999996,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
-          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+          "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0,
+              "assumption": 1.0
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              },
+              {
+                "input": "crop.relative_income_index",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.3333333333333333
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         },
         "risk": {
           "value": 0.16666666666666666,
           "unit": "relative penalty",
           "score": 0.8333333333333334,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
-          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+          "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy.",
+          "evidence": {
+            "shares": {
+              "nasa_measured": 0,
+              "nasa_modeled": 0,
+              "external_measured": 0,
+              "literature": 0.06666666666666667,
+              "assumption": 0.9333333333333333
+            },
+            "label": "low",
+            "inputs": [
+              {
+                "input": "crop.disease_family",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.disease_family",
+                "crop_id": "soybean",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "fallow",
+                "grade": "assumption",
+                "source": "assumption, validate locally",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "winter_wheat",
+                "grade": "assumption",
+                "source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "crop.season_length_days",
+                "crop_id": "soybean",
+                "grade": "literature",
+                "source": "FAO irrigation training manual Table 6 (soybean 135\u2013150 days, representative value) https://www.fao.org/4/s2022e/s2022e07.htm",
+                "weight": 0.06666666666666667
+              },
+              {
+                "input": "policy.same_family_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "policy.bare_slot_risk_share",
+                "grade": "assumption",
+                "source": "config/scoring.json; assumption, validate locally",
+                "weight": 0.2
+              },
+              {
+                "input": "model.risk_rule",
+                "grade": "assumption",
+                "source": "src/scoring.py score_rotations; family and bare-slot proxy; assumption, validate locally",
+                "weight": 0.2
+              }
+            ],
+            "reasons": [],
+            "method": "Equal weight per direct input field or scoring rule, split equally across the crop slots used by that field. Shares describe documented dependencies, not causal fractions of the nonlinear or clipped score.",
+            "threshold_source": "design choice, not empirical; validate locally"
+          }
         }
       },
+      "evidence_label": "low",
       "flags": {},
       "objectives": {
         "water_saver": 0.6538491985289157,
