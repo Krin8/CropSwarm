@@ -48,6 +48,7 @@ POWER_LAST_YEAR = 2025
 IMERG_FIRST_YEAR = 2000
 CORE_MODIS_YEARS = range(2019, 2024)
 EXTENDED_MODIS_YEARS = range(2015, 2025)
+LONG_MODIS_YEARS = range(2001, 2025)
 
 
 @dataclass(frozen=True)
@@ -418,15 +419,41 @@ def run(root=ROOT, *, fetch=False, extended=True, workers=4):
     write_json(raw / "manifest.json", [manifest_row(job, raw) for job in all_jobs] + diagnostic_manifest(raw, all_jobs))
 
 
+def run_long_modis(root=ROOT, *, fetch=False, workers=4):
+    """Build the long record from the P4 cache, with optional MODIS-only requests."""
+    farms = load_and_validate(root / "config/farms.json", "farms")
+    raw = root / "data/raw/p4"
+    processed = root / "data/processed"
+    jobs = [list(modis_chunks(farm, LONG_MODIS_YEARS)) for farm in farms]
+    ordered = [job for group in zip(*jobs, strict=True) for job in group]
+    import_p2_modis(ordered, raw, root / "data/raw/p2_evidence/p2_evidence.json")
+    if fetch:
+        pending = [job for job in ordered if not cache_hit(job, read_json(job.path(raw)))]
+        print(f"{len(pending)} MODIS chunks need network fetch", flush=True)
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            for job, outcome in zip(pending, pool.map(lambda chunk: fetch_chunk(chunk, raw), pending), strict=True):
+                print(f"{job.farm_id}/{job.name}: {outcome}", flush=True)
+    metadata = band_metadata(root)
+    for farm, farm_jobs in zip(farms, jobs, strict=True):
+        ndvi = modis_data(farm_jobs, raw, metadata)
+        path = processed / f"ndvi_long_{farm['farm_id']}.csv"
+        atomic_write(path, lambda temp: ndvi.to_csv(temp, index=False))
+    write_json(raw / "manifest_p19.json", [manifest_row(job, raw) for job in ordered])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fetch", action="store_true", help="explicitly enable network requests for cache misses")
     years = parser.add_mutually_exclusive_group()
     years.add_argument("--core-only", action="store_true", help="limit MODIS to 2019–2023")
     years.add_argument("--extended", action="store_true", help="include 2015–2024 MODIS windows (default)")
+    years.add_argument("--long-record", action="store_true", help="build 2001–2024 NDVI, with MODIS-only network on --fetch")
     parser.add_argument("--workers", type=int, default=4, choices=range(1, 9))
     args = parser.parse_args()
-    run(fetch=args.fetch, extended=not args.core_only, workers=args.workers)
+    if args.long_record:
+        run_long_modis(fetch=args.fetch, workers=args.workers)
+    else:
+        run(fetch=args.fetch, extended=not args.core_only, workers=args.workers)
 
 
 if __name__ == "__main__":
