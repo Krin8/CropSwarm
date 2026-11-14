@@ -1,0 +1,3107 @@
+{
+  "n": 2005,
+  "counties": 103,
+  "first_year": 1990,
+  "last_year": 2019,
+  "years": 30,
+  "districts": 9,
+  "schemes": {
+    "leave_one_year_out": {
+      "n": 2005,
+      "outer_folds": 30,
+      "bootstrap_block": "year",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": 0.023173945121363948,
+            "bootstrap_95": [
+              -0.14754305395122438,
+              0.11062392655547747
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.659813098034627,
+            "bootstrap_95": [
+              9.120470496953287,
+              12.066223713736564
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.18071384090112985,
+            "bootstrap_95": [
+              0.04369224161171067,
+              0.32673460028805673
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.04171554443903869,
+            "bootstrap_95": [
+              -0.37799181240869056,
+              0.14217732238709255
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.008180574868293,
+            "bootstrap_95": [
+              9.043791920052286,
+              12.989467628997458
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.1798205523782862,
+            "bootstrap_95": [
+              -0.02203126849151823,
+              0.3556594171974287
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.2571865998224373,
+            "bootstrap_95": [
+              -0.05236773249050276,
+              0.44250914232891014
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.295672991848145,
+            "bootstrap_95": [
+              7.6163027933664,
+              11.266901921996944
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5371225761486199,
+            "bootstrap_95": [
+              0.34890762618426774,
+              0.6793040588268409
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.15349530837198289,
+            "bootstrap_95": [
+              -0.1577092840046567,
+              0.36020822653100604
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.923289403858025,
+            "bootstrap_95": [
+              8.013112213550908,
+              11.836605777848874
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.48073068795996526,
+            "bootstrap_95": [
+              0.3122746857711128,
+              0.6148341521980987
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -1.7125075830201482,
+          "bootstrap_95": [
+            -2.5536529133823533,
+            -0.9138742462175842
+          ]
+        },
+        "random_forest": {
+          "value": -1.084891171010268,
+          "bootstrap_95": [
+            -1.803287651355621,
+            -0.3195166486346044
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 0.1}": 22,
+          "{\"alpha\": 10.0}": 6,
+          "{\"alpha\": 1.0}": 2
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 5}": 21,
+          "{\"min_samples_leaf\": 20}": 9
+        }
+      },
+      "folds": [
+        {
+          "held_out": "1990",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1991",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1992",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1993",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1994",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1995",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1996",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1997",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1998",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "1999",
+          "selected": {
+            "ridge": {
+              "alpha": 1.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2000",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2001",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2002",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2003",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2004",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2005",
+          "selected": {
+            "ridge": {
+              "alpha": 1.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2006",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2007",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 103
+        },
+        {
+          "held_out": "2008",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 25
+        },
+        {
+          "held_out": "2009",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 26
+        },
+        {
+          "held_out": "2010",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 15
+        },
+        {
+          "held_out": "2011",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 21
+        },
+        {
+          "held_out": "2012",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 15
+        },
+        {
+          "held_out": "2013",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 17
+        },
+        {
+          "held_out": "2014",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 10
+        },
+        {
+          "held_out": "2015",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 6
+        },
+        {
+          "held_out": "2016",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 5
+        },
+        {
+          "held_out": "2017",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 4
+        },
+        {
+          "held_out": "2018",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 3
+        },
+        {
+          "held_out": "2019",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 4
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 6.693749073526945,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 84.99394195281025,
+                "predicted_yield_anomaly_bu_ac": 15.813895654314502
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 155.43769859965465,
+                "predicted_yield_anomaly_bu_ac": 7.36430580646902
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.5968536351428,
+                "predicted_yield_anomaly_bu_ac": 0.03595006675338861
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 277.35611770573576,
+                "predicted_yield_anomaly_bu_ac": -7.258960417835217
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 347.6633780932289,
+                "predicted_yield_anomaly_bu_ac": -15.697102441719256
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 4.488995741812937,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 241.1347206982544,
+                "predicted_yield_anomaly_bu_ac": 10.467056534265495
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 340.0601815461347,
+                "predicted_yield_anomaly_bu_ac": 5.768835229475635
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 438.48520947630914,
+                "predicted_yield_anomaly_bu_ac": 1.092398559232542
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 553.039093765586,
+                "predicted_yield_anomaly_bu_ac": -4.342426368285151
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 722.8356229426435,
+                "predicted_yield_anomaly_bu_ac": -12.390122666048788
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 1.9445611007563386,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.021792921542298,
+                "predicted_yield_anomaly_bu_ac": -7.460941153395235
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.659193905620564,
+                "predicted_yield_anomaly_bu_ac": -3.5776464327025805
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.187249693075008,
+                "predicted_yield_anomaly_bu_ac": -0.36227064136832593
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.789460130443118,
+                "predicted_yield_anomaly_bu_ac": 3.304730923064577
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.657431195089202,
+                "predicted_yield_anomaly_bu_ac": 8.586546873981431
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.851664348005631,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.154114713216958,
+                "predicted_yield_anomaly_bu_ac": 4.390652678999071
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.1027431421446385,
+                "predicted_yield_anomaly_bu_ac": 2.576792160906015
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.77356608478803,
+                "predicted_yield_anomaly_bu_ac": 0.4999357546405439
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.64992518703241,
+                "predicted_yield_anomaly_bu_ac": -1.6513534948382298
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.70423940149626,
+                "predicted_yield_anomaly_bu_ac": -5.70161601592237
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.15783357969049483,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.6802987972376755,
+                "predicted_yield_anomaly_bu_ac": 2.2313888161842756
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.610284972184922,
+                "predicted_yield_anomaly_bu_ac": 0.8845125510109474
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.309042557068869,
+                "predicted_yield_anomaly_bu_ac": -0.1277606009167038
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.9973543103779,
+                "predicted_yield_anomaly_bu_ac": -1.1241004306673579
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.915335403798196,
+                "predicted_yield_anomaly_bu_ac": -2.453776167604398
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 1.9119165351833818,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 84.99394195281025,
+                "predicted_yield_anomaly_bu_ac": 6.306709639184827
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 155.43769859965465,
+                "predicted_yield_anomaly_bu_ac": 4.566429890242831
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.5968536351428,
+                "predicted_yield_anomaly_bu_ac": 1.2958047540044957
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 277.35611770573576,
+                "predicted_yield_anomaly_bu_ac": -1.8417684366537201
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 347.6633780932289,
+                "predicted_yield_anomaly_bu_ac": -4.563576084573391
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 1.0710628893136942,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.021792921542298,
+                "predicted_yield_anomaly_bu_ac": -2.6644889072381663
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.659193905620564,
+                "predicted_yield_anomaly_bu_ac": -0.3063615816443904
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.187249693075008,
+                "predicted_yield_anomaly_bu_ac": 2.8689824357160965
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.789460130443118,
+                "predicted_yield_anomaly_bu_ac": 4.101525841724876
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.657431195089202,
+                "predicted_yield_anomaly_bu_ac": 6.248508085542822
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 0.7870100526942867,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 241.1347206982544,
+                "predicted_yield_anomaly_bu_ac": 1.9583379258261349
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 340.0601815461347,
+                "predicted_yield_anomaly_bu_ac": 1.5752530596543768
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 438.48520947630914,
+                "predicted_yield_anomaly_bu_ac": 1.7766817688948748
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 553.039093765586,
+                "predicted_yield_anomaly_bu_ac": 0.4157563489927144
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 722.8356229426435,
+                "predicted_yield_anomaly_bu_ac": -5.701202154828452
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.3794026985840233,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.6802987972376755,
+                "predicted_yield_anomaly_bu_ac": 2.7626059379435968
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.610284972184922,
+                "predicted_yield_anomaly_bu_ac": 1.5488603099410965
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.309042557068869,
+                "predicted_yield_anomaly_bu_ac": -0.7355617486408446
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.9973543103779,
+                "predicted_yield_anomaly_bu_ac": -1.289125233179254
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.915335403798196,
+                "predicted_yield_anomaly_bu_ac": -2.0671544450751145
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": -0.0033284161940230206,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.154114713216958,
+                "predicted_yield_anomaly_bu_ac": 1.3253058060730305
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.1027431421446385,
+                "predicted_yield_anomaly_bu_ac": 1.552045722634232
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.77356608478803,
+                "predicted_yield_anomaly_bu_ac": 1.2365594786395453
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.64992518703241,
+                "predicted_yield_anomaly_bu_ac": 1.132535535472967
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.70423940149626,
+                "predicted_yield_anomaly_bu_ac": 0.21685895480286765
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "leave_one_county_out": {
+      "n": 2005,
+      "outer_folds": 103,
+      "bootstrap_block": "fips",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.0026381462550368884,
+            "bootstrap_95": [
+              -0.009898633037335196,
+              -0.0019792461903546444
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.799734637329623,
+            "bootstrap_95": [
+              10.46573486777424,
+              11.17523898946135
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.32332716364256187,
+            "bootstrap_95": [
+              -0.3627681355788447,
+              -0.2783180119850442
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.010684351672522574,
+            "bootstrap_95": [
+              -0.03389128690952201,
+              0.005014383650417054
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.842982164914025,
+            "bootstrap_95": [
+              10.468294898590454,
+              11.248254632141215
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.06555861389168455,
+            "bootstrap_95": [
+              0.01694700792697665,
+              0.11500760097854452
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.3008039500093028,
+            "bootstrap_95": [
+              0.26936177363608316,
+              0.33112707879117326
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.018627629480015,
+            "bootstrap_95": [
+              8.634286986103339,
+              9.438797286735218
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5668780753207147,
+            "bootstrap_95": [
+              0.5398707148084421,
+              0.5963558305436458
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.5869320210060127,
+            "bootstrap_95": [
+              0.5515454611134191,
+              0.620392021016816
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 6.931891198752616,
+            "bootstrap_95": [
+              6.522331232720805,
+              7.364146348133617
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.763276446288706,
+            "bootstrap_95": [
+              0.7389622789540252,
+              0.7854967148021743
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -1.8243545354340096,
+          "bootstrap_95": [
+            -2.0072598746576276,
+            -1.63573409256978
+          ]
+        },
+        "random_forest": {
+          "value": -3.9110909661614084,
+          "bootstrap_95": [
+            -4.179827149306555,
+            -3.6223175027401426
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 0.1}": 103
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 5}": 103
+        }
+      },
+      "folds": [
+        {
+          "held_out": "20001",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20003",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20005",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20007",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20009",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20011",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20013",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20015",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20017",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20019",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20021",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20023",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20025",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20027",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20029",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20031",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20033",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20035",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20037",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20039",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20041",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20045",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20047",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 23
+        },
+        {
+          "held_out": "20049",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20051",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20053",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20055",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20057",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 24
+        },
+        {
+          "held_out": "20059",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20061",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20063",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20065",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 23
+        },
+        {
+          "held_out": "20067",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 24
+        },
+        {
+          "held_out": "20069",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 26
+        },
+        {
+          "held_out": "20071",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 21
+        },
+        {
+          "held_out": "20073",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20075",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20077",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20079",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 24
+        },
+        {
+          "held_out": "20081",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 23
+        },
+        {
+          "held_out": "20083",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 21
+        },
+        {
+          "held_out": "20085",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20087",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20089",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20091",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20093",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20095",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 28
+        },
+        {
+          "held_out": "20097",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20099",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20101",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20103",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20105",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20107",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20109",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20111",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20113",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20115",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20117",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20119",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20121",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20123",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20125",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20127",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20129",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 30
+        },
+        {
+          "held_out": "20131",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20133",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20135",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20137",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20139",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20141",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20143",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20145",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20147",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20149",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20151",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20153",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20155",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20157",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20159",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20161",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20163",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20165",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 19
+        },
+        {
+          "held_out": "20167",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20169",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20171",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 21
+        },
+        {
+          "held_out": "20173",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20175",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 23
+        },
+        {
+          "held_out": "20177",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20179",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20181",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20183",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20185",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 23
+        },
+        {
+          "held_out": "20187",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 22
+        },
+        {
+          "held_out": "20189",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 24
+        },
+        {
+          "held_out": "20191",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20193",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20195",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "20197",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20199",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20201",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20203",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 24
+        },
+        {
+          "held_out": "20205",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        },
+        {
+          "held_out": "20207",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 18
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 5.474719440824604,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 83.89530915020143,
+                "predicted_yield_anomaly_bu_ac": 16.20641832048969
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 155.2070266641089,
+                "predicted_yield_anomaly_bu_ac": 7.483950631619132
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.57950565892946,
+                "predicted_yield_anomaly_bu_ac": -0.022981608783243755
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 277.28042175330893,
+                "predicted_yield_anomaly_bu_ac": -7.447365780785711
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 348.32839274889756,
+                "predicted_yield_anomaly_bu_ac": -16.137624404372797
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 3.621732295354425,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 241.9824827930175,
+                "predicted_yield_anomaly_bu_ac": 10.827711396762307
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 340.134140149626,
+                "predicted_yield_anomaly_bu_ac": 6.042443023446332
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 440.1805112219452,
+                "predicted_yield_anomaly_bu_ac": 1.1648372240894826
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.9316473815459,
+                "predicted_yield_anomaly_bu_ac": -4.332211500883608
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 721.3670379052371,
+                "predicted_yield_anomaly_bu_ac": -12.544058935871332
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 1.627775087453319,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.016016278534435,
+                "predicted_yield_anomaly_bu_ac": -7.468030704794441
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.651026150009583,
+                "predicted_yield_anomaly_bu_ac": -3.5525474688478
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.187621666986379,
+                "predicted_yield_anomaly_bu_ac": -0.243875230165917
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.781861455975442,
+                "predicted_yield_anomaly_bu_ac": 3.420185712617892
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.654718578553606,
+                "predicted_yield_anomaly_bu_ac": 8.802356252640385
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.8952464945057912,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.0,
+                "predicted_yield_anomaly_bu_ac": 4.618270831816007
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.0,
+                "predicted_yield_anomaly_bu_ac": 2.7412223216269016
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.887032418952618,
+                "predicted_yield_anomaly_bu_ac": 0.531466740018241
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.890723192019944,
+                "predicted_yield_anomaly_bu_ac": -1.7224183049366186
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.870324189526183,
+                "predicted_yield_anomaly_bu_ac": -5.844167115791099
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.28575672971720323,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.674847253021289,
+                "predicted_yield_anomaly_bu_ac": 2.336408511929559
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.607734757337426,
+                "predicted_yield_anomaly_bu_ac": 0.99463591042355
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.303191281411854,
+                "predicted_yield_anomaly_bu_ac": -0.005576977106760404
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.998255292537888,
+                "predicted_yield_anomaly_bu_ac": -1.0052545659088352
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.912661885670438,
+                "predicted_yield_anomaly_bu_ac": -2.3203887167649677
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 3.900993219467816,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 83.89530915020143,
+                "predicted_yield_anomaly_bu_ac": 6.595991451383376
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 155.2070266641089,
+                "predicted_yield_anomaly_bu_ac": 4.468311896625898
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.57950565892946,
+                "predicted_yield_anomaly_bu_ac": 0.8712544228161555
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 277.28042175330893,
+                "predicted_yield_anomaly_bu_ac": -2.410386729697676
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 348.32839274889756,
+                "predicted_yield_anomaly_bu_ac": -3.5699038841325197
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 2.3637851440043054,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.016016278534435,
+                "predicted_yield_anomaly_bu_ac": -2.4111931257096297
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.651026150009583,
+                "predicted_yield_anomaly_bu_ac": -0.16070470909655657
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.187621666986379,
+                "predicted_yield_anomaly_bu_ac": 2.938235280969941
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.781861455975442,
+                "predicted_yield_anomaly_bu_ac": 3.964511712889461
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.654718578553606,
+                "predicted_yield_anomaly_bu_ac": 6.374940745114244
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 2.3002787056316834,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 241.9824827930175,
+                "predicted_yield_anomaly_bu_ac": 2.2379938415523886
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 340.134140149626,
+                "predicted_yield_anomaly_bu_ac": 1.644375776465691
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 440.1805112219452,
+                "predicted_yield_anomaly_bu_ac": 1.8937617322185245
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.9316473815459,
+                "predicted_yield_anomaly_bu_ac": 0.2905398892972684
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 721.3670379052371,
+                "predicted_yield_anomaly_bu_ac": -7.098635380478771
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 1.370990702521043,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.0,
+                "predicted_yield_anomaly_bu_ac": 1.8586149522899964
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.0,
+                "predicted_yield_anomaly_bu_ac": 1.9963754375583036
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.887032418952618,
+                "predicted_yield_anomaly_bu_ac": 1.3344853825766552
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.890723192019944,
+                "predicted_yield_anomaly_bu_ac": 1.274648113484657
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.870324189526183,
+                "predicted_yield_anomaly_bu_ac": 0.26552485179673263
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 1.0329250166470434,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.674847253021289,
+                "predicted_yield_anomaly_bu_ac": 2.640581790998471
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.607734757337426,
+                "predicted_yield_anomaly_bu_ac": 1.6565614779385431
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.303191281411854,
+                "predicted_yield_anomaly_bu_ac": -0.7071506535198933
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.998255292537888,
+                "predicted_yield_anomaly_bu_ac": -1.2185267258928414
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.912661885670438,
+                "predicted_yield_anomaly_bu_ac": -2.246300048374801
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "leave_one_district_out": {
+      "n": 2005,
+      "outer_folds": 9,
+      "bootstrap_block": "district",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.019264859490425,
+            "bootstrap_95": [
+              -0.06294952416513834,
+              -0.008887554273643947
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.888912260584265,
+            "bootstrap_95": [
+              10.243880671431791,
+              11.65701110181054
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.23985629534017602,
+            "bootstrap_95": [
+              -0.2961962348605944,
+              -0.11871585034157987
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.03637728936288109,
+            "bootstrap_95": [
+              -0.11910328881796216,
+              0.0004308255798143161
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.9799387222463,
+            "bootstrap_95": [
+              10.25239188885606,
+              11.893915807811235
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.016232333029867506,
+            "bootstrap_95": [
+              -0.09607562642308748,
+              0.1640630567293285
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.27040333319204846,
+            "bootstrap_95": [
+              0.20571135577825,
+              0.3313339876228421
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.212603780238815,
+            "bootstrap_95": [
+              8.391714941487376,
+              10.09193542667446
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5401238787175101,
+            "bootstrap_95": [
+              0.48423508596495557,
+              0.5993602628727446
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.40729738111812297,
+            "bootstrap_95": [
+              0.3226774860730216,
+              0.48875849576933916
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 8.303465694163792,
+            "bootstrap_95": [
+              7.54246338674498,
+              8.982777895602677
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.6426985573946197,
+            "bootstrap_95": [
+              0.5789748004631159,
+              0.7069272992761433
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -1.7673349420074853,
+          "bootstrap_95": [
+            -2.0946277028575815,
+            -1.3628554417442673
+          ]
+        },
+        "random_forest": {
+          "value": -2.6764730280825084,
+          "bootstrap_95": [
+            -3.3138673718567366,
+            -2.0029965685593534
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 1.0}": 1,
+          "{\"alpha\": 0.1}": 8
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 5}": 9
+        }
+      },
+      "folds": [
+        {
+          "held_out": "10",
+          "selected": {
+            "ridge": {
+              "alpha": 1.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 158
+        },
+        {
+          "held_out": "20",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 180
+        },
+        {
+          "held_out": "30",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 319
+        },
+        {
+          "held_out": "40",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 200
+        },
+        {
+          "held_out": "50",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 203
+        },
+        {
+          "held_out": "60",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 279
+        },
+        {
+          "held_out": "70",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 162
+        },
+        {
+          "held_out": "80",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 252
+        },
+        {
+          "held_out": "90",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 252
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 6.015126021967037,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 86.42993170918851,
+                "predicted_yield_anomaly_bu_ac": 15.646204897629273
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 154.61203936313058,
+                "predicted_yield_anomaly_bu_ac": 7.3089823430887835
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.36080855553413,
+                "predicted_yield_anomaly_bu_ac": -0.24202553463759674
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 275.9049922885095,
+                "predicted_yield_anomaly_bu_ac": -7.496863096756772
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 345.8462729714181,
+                "predicted_yield_anomaly_bu_ac": -16.04147105009349
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 3.9276489516758417,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 242.0476064837906,
+                "predicted_yield_anomaly_bu_ac": 10.962130954239711
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 342.1926882793017,
+                "predicted_yield_anomaly_bu_ac": 6.047027289049282
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 437.4039251870324,
+                "predicted_yield_anomaly_bu_ac": 1.3800835901313777
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.7188289276808,
+                "predicted_yield_anomaly_bu_ac": -4.27850655740923
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 724.3419122194515,
+                "predicted_yield_anomaly_bu_ac": -12.696854394058121
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 1.5795700009215388,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.01582497026664,
+                "predicted_yield_anomaly_bu_ac": -7.367367098387605
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.659005904469597,
+                "predicted_yield_anomaly_bu_ac": -3.412270139863973
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.181994801457893,
+                "predicted_yield_anomaly_bu_ac": -0.19538674138688625
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.762977552273162,
+                "predicted_yield_anomaly_bu_ac": 3.3758909147497294
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.6114852196432,
+                "predicted_yield_anomaly_bu_ac": 8.591186159778998
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 1.0860517013396596,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.092269326683292,
+                "predicted_yield_anomaly_bu_ac": 4.72418424993056
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.083291770573566,
+                "predicted_yield_anomaly_bu_ac": 2.833497239439233
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.54713216957606,
+                "predicted_yield_anomaly_bu_ac": 0.7768092528353704
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.625935162094763,
+                "predicted_yield_anomaly_bu_ac": -1.5244046155647293
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.376558603491286,
+                "predicted_yield_anomaly_bu_ac": -5.583150429074006
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.2915919168209591,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.655523241895262,
+                "predicted_yield_anomaly_bu_ac": 2.29307700873415
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.595320830615767,
+                "predicted_yield_anomaly_bu_ac": 0.9462274219623995
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.286158526760024,
+                "predicted_yield_anomaly_bu_ac": -0.04269093626331058
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.973687960867064,
+                "predicted_yield_anomaly_bu_ac": -1.0248928944925728
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.889356391713026,
+                "predicted_yield_anomaly_bu_ac": -2.3360318750889735
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 3.0572940746839112,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 86.42993170918851,
+                "predicted_yield_anomaly_bu_ac": 6.4922564268740945
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 154.61203936313058,
+                "predicted_yield_anomaly_bu_ac": 3.4120894903061263
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 216.36080855553413,
+                "predicted_yield_anomaly_bu_ac": 0.20186345870511752
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 275.9049922885095,
+                "predicted_yield_anomaly_bu_ac": -2.563514544158976
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 345.8462729714181,
+                "predicted_yield_anomaly_bu_ac": -3.552964746291669
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 1.5683199751385182,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 242.0476064837906,
+                "predicted_yield_anomaly_bu_ac": 1.7088935799897003
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 342.1926882793017,
+                "predicted_yield_anomaly_bu_ac": 1.2102569733811037
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 437.4039251870324,
+                "predicted_yield_anomaly_bu_ac": 1.433908231048721
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.7188289276808,
+                "predicted_yield_anomaly_bu_ac": 0.10546270574518377
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 724.3419122194515,
+                "predicted_yield_anomaly_bu_ac": -6.980507500972842
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 1.4838986448327862,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.01582497026664,
+                "predicted_yield_anomaly_bu_ac": -2.3346950028444455
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.659005904469597,
+                "predicted_yield_anomaly_bu_ac": -0.220624483358263
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.181994801457893,
+                "predicted_yield_anomaly_bu_ac": 2.4244353636564537
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.762977552273162,
+                "predicted_yield_anomaly_bu_ac": 3.577922410573519
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.6114852196432,
+                "predicted_yield_anomaly_bu_ac": 6.137550872630075
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.9127810302836021,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.092269326683292,
+                "predicted_yield_anomaly_bu_ac": 1.0120473093539932
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.083291770573566,
+                "predicted_yield_anomaly_bu_ac": 1.6293905344427733
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 12.54713216957606,
+                "predicted_yield_anomaly_bu_ac": 1.3482477249469227
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.625935162094763,
+                "predicted_yield_anomaly_bu_ac": 1.182206405963913
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.376558603491286,
+                "predicted_yield_anomaly_bu_ac": 0.4399222843028195
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.7511876049626132,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.655523241895262,
+                "predicted_yield_anomaly_bu_ac": 2.8676349579555627
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.595320830615767,
+                "predicted_yield_anomaly_bu_ac": 1.659070383206507
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.286158526760024,
+                "predicted_yield_anomaly_bu_ac": -0.8329330142145264
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 8.973687960867064,
+                "predicted_yield_anomaly_bu_ac": -1.5289002683454154
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 9.889356391713026,
+                "predicted_yield_anomaly_bu_ac": -2.214550789140301
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -68,12 +68,22 @@ def learned_yield_panel():
         st.caption(f"{practices.get('non_irrigated', 0):,} reported non-irrigated yields and "
                    f"{practices.get('all_practices', 0):,} all-practice fallbacks. USDA NASS yield and NASA POWER "
                    "centroid weather are regional proxies. All-practice yields can include irrigated wheat.")
-        labels = {"leave_one_year_out": "Hold out one year", "leave_one_county_out": "Hold out one county"}
+        cohorts = {"pooled": "All P25 rows", "non_irrigated": "Reported non-irrigated only",
+                   "all_practices": "All-practice fallback only"}
+        cohort = st.selectbox("Yield rows to evaluate", tuple(cohorts), format_func=cohorts.get,
+                              key="climate_yield_cohort")
+        validity = cached(f"climate_yield_validity_{cohort}.json")
+        st.caption(f"{cohorts[cohort]} · {validity['n']:,} county-years · {validity['counties']} counties · "
+                   f"{validity['first_year']}–{validity['last_year']}. The practice subsets cover different years "
+                   "and are evaluated separately.")
+        labels = {"leave_one_year_out": "Hold out one year", "leave_one_county_out": "Hold out one county",
+                  "leave_one_district_out": "Hold out one USDA reporting district"}
         names = {"county_mean": "County mean", "linear_trend": "Linear trend",
                  "ridge": "Ridge", "random_forest": "Random forest"}
         scheme = st.selectbox("Cross-validation split", tuple(labels), format_func=labels.get,
                               key="climate_yield_split")
-        results = study["schemes"][scheme]
+        results = (study["schemes"][scheme] if cohort == "pooled" and scheme in study["schemes"]
+                   else validity["schemes"][scheme])
         st.caption(f"{results['outer_folds']} held-out folds · {results['n']:,} predictions per model · "
                    f"{study['model_count']} models and baselines · "
                    f"{study['learned_configuration_count']} learned configurations tested inside training folds.")
@@ -92,13 +102,16 @@ def learned_yield_panel():
             rows.append(row)
         st.dataframe(pd.DataFrame(rows), hide_index=True)
         st.caption("Pooled held-out yield scores with descriptive 95% intervals. Bootstrap resamples complete held-out "
-                   "groups. Yield trends and model settings use training rows only. For a held-out county, "
-                   "both baselines use references from other counties.")
+                   "groups. Detrending, feature scaling and model selection use training rows only. Held-out "
+                   "counties and districts use reference yields from the training counties.")
         changes = []
         for model, stat in results["rmse_delta_vs_trend"].items():
             low, high = stat["bootstrap_95"]
             changes.append(f"{names[model]} {stat['value']:+.2f} [{low:+.2f}, {high:+.2f}]")
         st.caption("Paired RMSE change versus the linear trend (bu/acre) · " + " · ".join(changes))
+        if scheme == "leave_one_district_out":
+            st.caption(f"Each fold holds out one entire USDA reporting district. With {results['outer_folds']} "
+                       "spatial blocks, the intervals are descriptive. Nearby counties can straddle district borders.")
         model = st.selectbox("Inspect a learned model", tuple(results["interpretation"]), format_func=names.get,
                              key="climate_yield_model")
         features = results["interpretation"][model]
@@ -118,7 +131,7 @@ def learned_yield_panel():
                             margin=dict(t=12, b=55))
         st.plotly_chart(curve, key="climate_yield_partial_dependence", config={"displayModeBar": False})
         st.caption("Partial dependence averages predictions on held-out rows at training-fold quantiles of the "
-                   "selected feature. Holding out a county still lets the model see other counties in those years. "
+                   "selected feature. County and district holdouts still use other locations in the same years. "
                    "County-average associations cannot establish causation "
                    "or validate rotation recommendations.")
 

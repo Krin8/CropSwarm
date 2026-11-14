@@ -1,0 +1,7 @@
+{
+  "source": "USDA NASS Quick Stats bulk crops file used in P20 and P25",
+  "url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+  "bulk_sha256": "78382f2f6fe4e3a0a1d0feeb44a3b2cbb972b8ab4cef10d4fd223f98ec97bdc3",
+  "method": "ASD_CODE and ASD_DESC from cached P25 Kansas tab-separated source slice. Same filters as P25; 5,415 matching source rows reconciled row by row on state, county, year, value and description. Exclude aggregate other counties via P25 Census FIPS. Retain one unique district per county.",
+  "file_sha256": "0fdb9f0128560ee07fe573379644c13c1eea0e37973d3ea506a8e9fe6028c674"
+}

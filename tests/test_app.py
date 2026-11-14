@@ -108,3 +108,18 @@ def test_learned_county_yield_panel_compares_models_and_baselines():
     assert any("RMSE change when shuffled (bu/acre)" in table.value.columns for table in app.dataframe)
     assert any("cannot establish causation" in row.value for row in app.caption)
     assert any("Paired RMSE change versus the linear trend" in row.value for row in app.caption)
+
+
+def test_learned_yield_panel_preserves_p25_and_shows_practice_and_spatial_checks():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    table = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
+    assert table.set_index("Model")["RMSE (bu/acre)"]["County mean"].startswith("10.819 ")
+    for cohort, n in (("pooled", "3,215"), ("non_irrigated", "2,005"), ("all_practices", "1,210")):
+        app.selectbox(key="climate_yield_cohort").set_value(cohort).run()
+        app.selectbox(key="climate_yield_split").set_value("leave_one_district_out").run()
+        assert not app.exception
+        assert any(f"{n} county-years" in row.value for row in app.caption)
+        assert any("9 held-out folds" in row.value for row in app.caption)
+        assert any("holds out one entire USDA reporting district" in row.value for row in app.caption)
+        table = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
+        assert len(table) == 4

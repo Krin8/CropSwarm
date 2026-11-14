@@ -103,6 +103,8 @@ def tune(train, group_column, config):
 
 
 def check_fold(train, test, group_column, config, rng):
+    if not set(train[group_column]).isdisjoint(test[group_column]):
+        raise ValueError(f"Outer {group_column} groups overlap")
     trends = CountyTrends(train)
     mean, trend = trends.predict(test)
     predictions = {"county_mean": mean, "linear_trend": trend}
@@ -182,15 +184,18 @@ def summarize_attribution(pieces, predictions, config):
     return result
 
 
-def analyse(frame, config):
+def analyse(frame, config, *, schemes=None):
     frame = frame.sort_values(["fips", "year"]).reset_index(drop=True)
     if frame.duplicated(["fips", "year"]).any() or not np.isfinite(frame[["yield_bu_ac", *FEATURES]]).all().all():
         raise ValueError("Expected one finite yield and complete POWER feature row per county-year")
     result, held_out_rows = {}, []
-    for scheme, group_column in SCHEMES.items():
+    for scheme, group_column in (SCHEMES if schemes is None else schemes).items():
         splits = list(grouped_splits(frame, group_column))
         rng = np.random.default_rng(config["seed"])
-        predictions = frame[["fips", "year", "practice", "yield_bu_ac"]].copy()
+        columns = ["fips", "year", "practice", "yield_bu_ac"]
+        if group_column not in columns:
+            columns.append(group_column)
+        predictions = frame[columns].copy()
         pieces, choices = [], []
         for fit, held in splits:
             test, train = frame.iloc[held], frame.iloc[fit]

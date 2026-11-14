@@ -1,0 +1,582 @@
+{
+  "n": 3215,
+  "counties": 103,
+  "first_year": 1990,
+  "last_year": 2023,
+  "years": 34,
+  "districts": 9,
+  "schemes": {
+    "leave_one_district_out": {
+      "n": 3215,
+      "outer_folds": 9,
+      "bootstrap_block": "district",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.017050295572214935,
+            "bootstrap_95": [
+              -0.05915108567378783,
+              -0.007299851768480354
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.202230466527942,
+            "bootstrap_95": [
+              10.501593673855039,
+              12.01433121770338
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.23790009094652723,
+            "bootstrap_95": [
+              -0.2953010609159211,
+              -0.12566662524276037
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": 0.061992671021597,
+            "bootstrap_95": [
+              -0.012604193865747342,
+              0.11315004818519298
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.758120487903431,
+            "bootstrap_95": [
+              10.04443233662128,
+              11.679345314579972
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.2673299562261153,
+            "bootstrap_95": [
+              0.1623431316083866,
+              0.37252034389766947
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.25904364116358813,
+            "bootstrap_95": [
+              0.18761730592950776,
+              0.30148023483904957
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.561578674439962,
+            "bootstrap_95": [
+              8.97233770701027,
+              10.248865925070627
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5163024668401759,
+            "bootstrap_95": [
+              0.46394984181613286,
+              0.573047523415822
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.33853634506967567,
+            "bootstrap_95": [
+              0.259827976608082,
+              0.3952463414988407
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.034128866595056,
+            "bootstrap_95": [
+              8.383865920950324,
+              9.63144371675437
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5939504445402299,
+            "bootstrap_95": [
+              0.530216556283646,
+              0.6557224447839506
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -1.1965418134634689,
+          "bootstrap_95": [
+            -1.628456035602474,
+            -0.7581954989468006
+          ]
+        },
+        "random_forest": {
+          "value": -1.7239916213083752,
+          "bootstrap_95": [
+            -2.3575389612520516,
+            -1.1684790972236807
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 0.1}": 9
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 5}": 4,
+          "{\"min_samples_leaf\": 20}": 5
+        }
+      },
+      "folds": [
+        {
+          "held_out": "10",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 237
+        },
+        {
+          "held_out": "20",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 275
+        },
+        {
+          "held_out": "30",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 424
+        },
+        {
+          "held_out": "40",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 349
+        },
+        {
+          "held_out": "50",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 352
+        },
+        {
+          "held_out": "60",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 418
+        },
+        {
+          "held_out": "70",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 277
+        },
+        {
+          "held_out": "80",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 442
+        },
+        {
+          "held_out": "90",
+          "selected": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 441
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 4.5939930894473235,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 85.80626091637754,
+                "predicted_yield_anomaly_bu_ac": 13.670092007113839
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 157.55798105036482,
+                "predicted_yield_anomaly_bu_ac": 6.056128437977754
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 218.62833795908594,
+                "predicted_yield_anomaly_bu_ac": -0.41798150260856826
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 275.09038987917216,
+                "predicted_yield_anomaly_bu_ac": -6.385520472499503
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 347.29121928460387,
+                "predicted_yield_anomaly_bu_ac": -14.02912508085177
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 3.1544983144017156,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 243.09737480559875,
+                "predicted_yield_anomaly_bu_ac": 10.848484575405204
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 347.97922581648527,
+                "predicted_yield_anomaly_bu_ac": 5.908529643086385
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 445.9844339035769,
+                "predicted_yield_anomaly_bu_ac": 1.2914355147518795
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.8772597200622,
+                "predicted_yield_anomaly_bu_ac": -3.7418360565775317
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 734.1039387247279,
+                "predicted_yield_anomaly_bu_ac": -12.273908294930997
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 1.5063801489968451,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.7381026438569207,
+                "predicted_yield_anomaly_bu_ac": 5.666771619121929
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 8.366407465007777,
+                "predicted_yield_anomaly_bu_ac": 3.1398689719027324
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 13.685847589424572,
+                "predicted_yield_anomaly_bu_ac": 0.7461115949844402
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.9900466562986,
+                "predicted_yield_anomaly_bu_ac": -1.638712583064995
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.697231726283064,
+                "predicted_yield_anomaly_bu_ac": -6.449955120755756
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.7872905817038234,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.087526272281373,
+                "predicted_yield_anomaly_bu_ac": -5.373934485876681
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.729772398612273,
+                "predicted_yield_anomaly_bu_ac": -2.3380494033617985
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.267724955138174,
+                "predicted_yield_anomaly_bu_ac": 0.20349066055902576
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.829370025122621,
+                "predicted_yield_anomaly_bu_ac": 2.8508884106983485
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.622129453283888,
+                "predicted_yield_anomaly_bu_ac": 6.591887018264766
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": -0.011151417942981467,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.643776801052757,
+                "predicted_yield_anomaly_bu_ac": 0.2949034640175659
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.591775251824381,
+                "predicted_yield_anomaly_bu_ac": 0.14863877717883248
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.319749383897594,
+                "predicted_yield_anomaly_bu_ac": 0.03707247038222839
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 9.034524130876898,
+                "predicted_yield_anomaly_bu_ac": -0.07104701413220037
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 10.04137276229214,
+                "predicted_yield_anomaly_bu_ac": -0.22390726791517038
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 2.3500774669185294,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 85.80626091637754,
+                "predicted_yield_anomaly_bu_ac": 5.4293060064554926
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 157.55798105036482,
+                "predicted_yield_anomaly_bu_ac": 3.1707449094244238
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 218.62833795908594,
+                "predicted_yield_anomaly_bu_ac": 2.0333460512322246
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 275.09038987917216,
+                "predicted_yield_anomaly_bu_ac": -0.378723789167702
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 347.29121928460387,
+                "predicted_yield_anomaly_bu_ac": -5.766955716312294
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.6710917772549951,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.087526272281373,
+                "predicted_yield_anomaly_bu_ac": -2.3286623293840525
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.729772398612273,
+                "predicted_yield_anomaly_bu_ac": -0.0843260115251788
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.267724955138174,
+                "predicted_yield_anomaly_bu_ac": 1.2317729111318017
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.829370025122621,
+                "predicted_yield_anomaly_bu_ac": 2.475834716016449
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 15.622129453283888,
+                "predicted_yield_anomaly_bu_ac": 4.840141699729101
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.6488284530775559,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.7381026438569207,
+                "predicted_yield_anomaly_bu_ac": 1.6633336933473835
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 8.366407465007777,
+                "predicted_yield_anomaly_bu_ac": 2.012566191073078
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 13.685847589424572,
+                "predicted_yield_anomaly_bu_ac": 1.4737964241491375
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 18.9900466562986,
+                "predicted_yield_anomaly_bu_ac": 1.107795363830795
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 29.697231726283064,
+                "predicted_yield_anomaly_bu_ac": -0.3097967974996417
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 0.570178792849136,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 243.09737480559875,
+                "predicted_yield_anomaly_bu_ac": 1.6488983830009627
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 347.97922581648527,
+                "predicted_yield_anomaly_bu_ac": 0.9170301577592417
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 445.9844339035769,
+                "predicted_yield_anomaly_bu_ac": 1.0030529104434767
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 552.8772597200622,
+                "predicted_yield_anomaly_bu_ac": 0.2554532091300971
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 734.1039387247279,
+                "predicted_yield_anomaly_bu_ac": -1.651879172801879
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.2552830911148565,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 6.643776801052757,
+                "predicted_yield_anomaly_bu_ac": 1.0777407100750753
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 7.591775251824381,
+                "predicted_yield_anomaly_bu_ac": 0.9280039608977938
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.319749383897594,
+                "predicted_yield_anomaly_bu_ac": -0.1047605035014887
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 9.034524130876898,
+                "predicted_yield_anomaly_bu_ac": -0.7726276350677731
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 10.04137276229214,
+                "predicted_yield_anomaly_bu_ac": -0.9883267038467511
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
