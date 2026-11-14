@@ -4,6 +4,7 @@
   "default_years": 3,
   "fallback_years": 2,
   "seed_count": 30,
+  "restarts": 5,
   "ants": 96,
   "iterations": 40,
   "evaporation": 0.2,

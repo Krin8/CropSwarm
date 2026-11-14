@@ -183,7 +183,7 @@
   },
   "groundwater": {
     "regional_context": {
-      "value": "The High Plains aquifer supplies irrigated agriculture in western Kansas.",
+      "value": "The Kansas Geological Survey maps the High Plains aquifer across western Kansas.",
       "unit": "text",
       "source": "https://kgs.ku.edu/sites/kgs/files/files/PICpdfs/PIC18HighPlainsAquifer2023revision.pdf",
       "resolution": "region",
@@ -194,9 +194,9 @@
     }
   },
   "validation_flags": [
-    "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+    "The 2019 CDL neighborhood is classified as fallow. The MODIS spring peak remains unexplained.",
     "CDL point classes are not a verified farm management record",
-    "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally",
+    "Rainfed reference with supply fraction 0.0; assumption, validate locally",
     "The coarse SRTM slope is higher than the SSURGO map-unit slope class. Validate local slope."
   ],
   "limitations": [

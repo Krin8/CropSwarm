@@ -29,12 +29,12 @@ SOIL_LAYERS = {
 }
 GROUNDWATER = {
     "us_high_plains_b": (
-        "The High Plains aquifer supplies irrigated agriculture in western Kansas.",
+        "The Kansas Geological Survey maps the High Plains aquifer across western Kansas.",
         "https://kgs.ku.edu/sites/kgs/files/files/PICpdfs/PIC18HighPlainsAquifer2023revision.pdf",
     ),
     "telangana_a": (
-        "The Central Ground Water Board reports both rises and falls across Telangana during the 2023 monsoon.",
-        "https://gwdata.cgwb.gov.in/download/Yearbook/Telangana_GWYB_23-24.pdf",
+        "India's National Water Data Portal lists monthly groundwater measurements from Telangana's monitoring network.",
+        "https://nwdp.nwic.gov.in/dataset/ground-water-level-manual-monthly-telangana-ground-water-department",
     ),
     "kenya_makueni_north": (
         "Makueni County's water strategy reports that groundwater availability varies across the county.",

@@ -14,9 +14,9 @@
     "seasons_per_year": 1,
     "seasons_basis": "assumption, validate locally; P5 will derive and validate",
     "validation_flags": [
-      "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+      "The 2019 CDL neighborhood is classified as fallow. The MODIS spring peak remains unexplained.",
       "CDL point classes are not a verified farm management record",
-      "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally"
+      "Rainfed reference with supply fraction 0.0; assumption, validate locally"
     ],
     "evidence_refs": ["data/raw/p2_evidence/p2_evidence.json", "data/raw/p2_evidence/p2_wheat_cdl.json"]
   },
@@ -37,7 +37,7 @@
     "validation_flags": [
       "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
       "No point-specific crop identity or management record verified",
-      "2022 MODIS NDVI record incomplete"
+      "The 2022 MODIS download gap is filled. Telangana's second crop season remains tentative after quality screening."
     ],
     "evidence_refs": ["data/raw/p2_evidence/p2_evidence.json"]
   },

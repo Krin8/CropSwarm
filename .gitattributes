@@ -1,0 +1,2 @@
+# Preserve the exact archived HTML responses, including upstream line endings.
+data/raw/p13/*.html -text -diff

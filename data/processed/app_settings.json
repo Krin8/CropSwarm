@@ -28,9 +28,9 @@
       "seasons_per_year": 1,
       "seasons_basis": "assumption, validate locally; P5 will derive and validate",
       "validation_flags": [
-        "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+        "The 2019 CDL neighborhood is classified as fallow. The MODIS spring peak remains unexplained.",
         "CDL point classes are not a verified farm management record",
-        "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally"
+        "Rainfed reference with supply fraction 0.0; assumption, validate locally"
       ],
       "evidence_refs": [
         "data/raw/p2_evidence/p2_evidence.json",
@@ -62,7 +62,7 @@
       "validation_flags": [
         "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
         "No point-specific crop identity or management record verified",
-        "2022 MODIS NDVI record incomplete"
+        "The 2022 MODIS download gap is filled. Telangana's second crop season remains tentative after quality screening."
       ],
       "evidence_refs": [
         "data/raw/p2_evidence/p2_evidence.json"
@@ -564,10 +564,10 @@
       "disease_family": "fabaceae",
       "notes": "Grain cowpea. The heat trigger is flowering guidance used as a season-wide screen. ET is a local assumption.",
       "seasons_source": "assumption, validate locally",
-      "season_length_source": "KALRO cowpea extension manual Table 1 (Machakos 66 maturity 80\u201395 days, representative value) https://kalroerepository.kalro.org/server/api/core/bitstreams/f13941fb-c4d8-4cbc-a0c7-bec87acd5e40/content",
+      "season_length_source": "KALRO training manual Table 2.5 (Machakos 66 maturity 80\u201395 days, representative value) https://www.kalro.org/elrp/docfiles/ELRP-Training-Manual-Final.pdf",
       "water_need_source": "assumption, validate locally",
-      "thermal_source": "KALRO cowpea extension manual \u00a71.1.4 (20\u201335 \u00b0C optimal range, 30 \u00b0C flowering heat trigger) https://kalroerepository.kalro.org/server/api/core/bitstreams/f13941fb-c4d8-4cbc-a0c7-bec87acd5e40/content",
-      "rain_source": "assumption, validate locally; screening bounds use KALRO cowpea extension manual \u00a71.1.2 seasonal rainfall guidance https://kalroerepository.kalro.org/server/api/core/bitstreams/f13941fb-c4d8-4cbc-a0c7-bec87acd5e40/content",
+      "thermal_source": "KALRO training manual cowpea ecology (20\u201335 \u00b0C ecological range). Applying it to mean temperature and using a 30 \u00b0C daily maximum trigger is an assumption, validate locally. https://www.kalro.org/elrp/docfiles/ELRP-Training-Manual-Final.pdf",
+      "rain_source": "assumption, validate locally; seasonal rainfall bounds",
       "is_legume_source": "assumption, validate locally",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",

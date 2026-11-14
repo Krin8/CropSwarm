@@ -128,22 +128,30 @@ def app():
     farm_id = st.selectbox("Choose an illustrative farm", list(by_id), format_func=lambda key: by_id[key]["name"],
                            key="farm_picker")
     farm = by_id[farm_id]
-    st.caption(farm["region"])
+    st.caption(f"{farm['region']} · {farm['label']}")
     st.plotly_chart(farm_map(farms, farm_id), key="farm_map", on_select="rerun", selection_mode="points",
                     config={"displayModeBar": False})
     validity = load(farm_id, "validity")
     context = load(farm_id, "context")
     assessment = load(farm_id, "assessment")
-    st.subheader("Farm Climate Assessment")
-    st.write(assessment["assessment"])
-    for flag in validity["flags"]:
-        st.warning(flag)
-    charts = st.tabs(["Monthly rainfall", "Temperature", "Vegetation", "Annual rainfall"])
-    for tab, key in zip(charts, ("monthly_rain", "annual_temperature", "vegetation", "annual_rain"), strict=True):
-        with tab:
-            chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
-            st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
-    st.caption("NASA POWER rainfall and temperature · NASA Terra MODIS vegetation")
+    with st.container(key="climate_assessment"):
+        st.subheader("Farm Climate Assessment")
+        st.caption(farm["name"])
+        if farm["farm_id"] == "us_high_plains_b" and farm["irrigation"]["supply_fraction"] == 0:
+            st.caption("Rainfed reference · 0% of irrigation demand supplied · assumption, validate locally")
+        st.write(assessment["assessment"])
+        for flag in validity["flags"]:
+            st.warning(flag)
+        if farm_id == "us_high_plains_b":
+            st.caption("The 2019 spring MODIS peak over the CDL fallow neighborhood remains unexplained.")
+        elif farm_id == "telangana_a":
+            st.caption("Telangana's second crop season is tentative.")
+        charts = st.tabs(["Monthly rainfall", "Temperature", "Vegetation", "Annual rainfall"])
+        for tab, key in zip(charts, ("monthly_rain", "annual_temperature", "vegetation", "annual_rain"), strict=True):
+            with tab:
+                chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
+                st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
+        st.caption("NASA POWER rainfall and temperature · NASA Terra MODIS vegetation")
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")
@@ -156,7 +164,7 @@ def app():
         st.info("All priorities are zero. The selected preset supplies the weights.")
         values = list(presets[preset].values())
     weight = np.array(values) / sum(values)
-    st.caption("Adjusted priorities rank the displayed strategies. Scenario win percentages follow the selected named preset.")
+    st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
 
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")
@@ -169,32 +177,34 @@ def app():
             st.caption("Showing a new exact comparison and new scenario draws for your edited inputs.")
             if edits[3] > 0:
                 st.caption(f"Entered farm area {edits[3]:g} ha · farmer input")
-    st.subheader("Compare rotations")
-    scenario_names = {"historical": "Historical weather", "warmer_drier": "Warmer and drier",
-                      "less_irrigation": "Less irrigation", "more_irrigation": "More irrigation"}
-    scenario = st.selectbox("Scenario", list(scenario_names), format_func=scenario_names.get)
-    sims = uncertainty["scenarios"][scenario]
-    st.caption(f"{uncertainty['draws']} simulated draws · NASA POWER climate years · crop assumptions")
-    if scenario != "historical":
-        st.caption(f"Irrigation share {sims['supply_fraction']:.0%} · temperature change "
-                   f"{sims['temperature_change_c']:+g} °C · rainfall factor {sims['rainfall_factor']:.0%} · illustrative scenario assumptions")
-    rows = []
-    baseline = result["strategies"][0]
-    for entry in result["strategies"]:
-        key = entry["strategy_id"]
-        stats = sims["strategies"][key]
-        rating = np.array([entry["metrics"][m]["score"] for m in METRICS]) @ weight
-        rows.append({"Strategy": "Existing rotation" if key == "baseline" else title(key),
-                     "Rotation": " → ".join(entry["crop_names"]), "Historical priority score": round(float(rating), 3),
-                     "Wins in draws": f"{stats['wins_pct'][preset]:.1f}%",
-                     "Unmet water · median (mm)": round(stats["metrics"]["water"]["p50"], 1)})
-    st.dataframe(pd.DataFrame(rows), hide_index=True)
-    st.caption("Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
-    chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
-                             marker_color=COLORS[:len(rows)]))
-    chart.update_layout(yaxis=dict(range=[0, 1], title="Weighted score"), height=290,
-                        margin=dict(t=10, r=16, l=46, b=25))
-    st.plotly_chart(chart, key="comparison", config={"displayModeBar": False})
+    with st.container(key="strategy_comparison"):
+        st.subheader("Compare rotations")
+        st.caption(farm["name"])
+        scenario_names = {"historical": "Historical weather", "warmer_drier": "Warmer and drier",
+                          "less_irrigation": "Less irrigation", "more_irrigation": "More irrigation"}
+        scenario = st.selectbox("Scenario", list(scenario_names), format_func=scenario_names.get)
+        sims = uncertainty["scenarios"][scenario]
+        st.caption(f"{uncertainty['draws']} simulated draws · NASA POWER climate years · crop assumptions")
+        if scenario != "historical":
+            st.caption(f"Scenario irrigation supply share {sims['supply_fraction']:.0%} · temperature change "
+                       f"{sims['temperature_change_c']:+g} °C · rainfall factor {sims['rainfall_factor']:.0%} · illustrative scenario assumptions")
+        rows = []
+        baseline = result["strategies"][0]
+        for entry in result["strategies"]:
+            key = entry["strategy_id"]
+            stats = sims["strategies"][key]
+            rating = np.array([entry["metrics"][m]["score"] for m in METRICS]) @ weight
+            rows.append({"Strategy": "Existing rotation" if key == "baseline" else title(key),
+                         "Rotation": " → ".join(entry["crop_names"]), "Historical priority score": round(float(rating), 3),
+                         "Wins in draws": f"{stats['wins_pct'][preset]:.1f}%",
+                         "Unmet water · median (mm)": round(stats["metrics"]["water"]["p50"], 1)})
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        st.caption("Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
+        chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
+                                 marker_color=COLORS[:len(rows)]))
+        chart.update_layout(yaxis=dict(range=[0, 1], title="Weighted score"), height=290,
+                            margin=dict(t=10, r=16, l=46, b=25))
+        st.plotly_chart(chart, key="comparison", config={"displayModeBar": False})
 
     for entry, row in zip(result["strategies"], rows, strict=True):
         key = entry["strategy_id"]
@@ -213,16 +223,19 @@ def app():
                 st.write("Benefit · Keeping the existing rotation avoids a change in planting plans.")
             st.write(f"Water risk · Median unmet demand is {stats['metrics']['water']['p50']:.0f} mm per slot "
                      f"in this scenario. NASA POWER rainfall, soil water and crop demand inform this estimate.")
-            st.write(f"Wins in {stats['wins_pct'][preset]:.1f}% of draws under the {title(preset).lower()} preset. "
-                     f"Mean regret {stats['mean_regret'][preset]:.3f} weighted score units.")
-            details = []
-            for metric, info in entry["metrics"].items():
-                interval = stats["metrics"][metric]
-                details.append({"Metric": title(metric), "10th / 50th / 90th percentile":
-                                f"{interval['p10']:.2f} / {interval['p50']:.2f} / {interval['p90']:.2f}",
-                                "Unit": info["unit"], "Model score": round(info["score"], 3),
-                                "Source": info["source"], "How it works": info["explanation"]})
-            st.dataframe(pd.DataFrame(details), hide_index=True)
+            with st.container(key=f"uncertainty_{key}"):
+                st.markdown("**Scenario uncertainty**")
+                st.caption(f"{farm['name']} · {row['Strategy']} · {scenario_names[scenario]}")
+                st.write(f"Wins in {stats['wins_pct'][preset]:.1f}% of draws under the {title(preset).lower()} preset. "
+                         f"Mean regret {stats['mean_regret'][preset]:.3f} weighted score units.")
+                details = []
+                for metric, info in entry["metrics"].items():
+                    interval = stats["metrics"][metric]
+                    details.append({"Metric": title(metric), "10th / 50th / 90th percentile":
+                                    f"{interval['p10']:.2f} / {interval['p50']:.2f} / {interval['p90']:.2f}",
+                                    "Unit": info["unit"], "Model score": round(info["score"], 3),
+                                    "Source": info["source"], "How it works": info["explanation"]})
+                st.dataframe(pd.DataFrame(details), hide_index=True)
             st.caption("Information gap · The soil, crop and farm assumptions below apply to this strategy.")
 
     if result["verification"]:
@@ -230,8 +243,9 @@ def app():
             st.write(f"Exact enumeration checked {result['feasible_count']:,} feasible rotations across "
                      f"{result['horizon_years']} years.")
             for name, record in result["verification"].items():
-                st.write(f"{title(name)} · ant colony search hit the exact optimum in "
-                         f"{record['optimum_hits']} of {record['runs']} runs.")
+                single, restarts = record["single_run"], record["best_of_restarts"]
+                st.write(f"{title(name)} · exact hits {single['optimum_hits']}/{single['runs']} with one run, "
+                         f"{restarts['optimum_hits']}/{restarts['runs']} with the best of {record['restart_count']}.")
     st.subheader("What we cannot know from these data")
     for item in dict.fromkeys(uncertainty["unknowns"] + [context["groundwater"]["regional_context"]["uncertainty_note"]]):
         st.write(f"• {item}")

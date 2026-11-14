@@ -266,9 +266,9 @@
   },
   "groundwater": {
     "regional_context": {
-      "value": "The Central Ground Water Board reports both rises and falls across Telangana during the 2023 monsoon.",
+      "value": "India's National Water Data Portal lists monthly groundwater measurements from Telangana's monitoring network.",
       "unit": "text",
-      "source": "https://gwdata.cgwb.gov.in/download/Yearbook/Telangana_GWYB_23-24.pdf",
+      "source": "https://nwdp.nwic.gov.in/dataset/ground-water-level-manual-monthly-telangana-ground-water-department",
       "resolution": "region",
       "uncertainty_note": "Groundwater trend and availability at this field are unverified.",
       "evidence_refs": []
@@ -277,7 +277,7 @@
   "validation_flags": [
     "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
     "No point-specific crop identity or management record verified",
-    "2022 MODIS NDVI record incomplete"
+    "The 2022 MODIS download gap is filled. Telangana's second crop season remains tentative after quality screening."
   ],
   "limitations": [
     "Satellites do not directly measure soil nitrogen or organic carbon.",

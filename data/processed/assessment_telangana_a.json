@@ -627,7 +627,7 @@
   "validation_flags": [
     "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
     "No point-specific crop identity or management record verified",
-    "2022 MODIS NDVI record incomplete"
+    "The 2022 MODIS download gap is filled. Telangana's second crop season remains tentative after quality screening."
   ],
   "limitations": [
     "POWER soil wetness is modelled. Rainfall and vegetation are gridded products.",

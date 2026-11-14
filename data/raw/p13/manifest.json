@@ -1,0 +1,68 @@
+{
+  "cowpea": {
+    "url": "https://kalroerepository.kalro.org/server/api/core/bitstreams/f13941fb-c4d8-4cbc-a0c7-bec87acd5e40/content",
+    "params": {},
+    "timestamp": "2026-11-14T00:10:32.093815+00:00",
+    "status": null,
+    "error": "Request timed out after 15 seconds",
+    "method": "GET"
+  },
+  "icrisat": {
+    "url": "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+    "params": {},
+    "timestamp": "2026-11-14T00:10:32.094132+00:00",
+    "status": 200,
+    "final_url": "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+    "mime": "application/pdf",
+    "size": 688711,
+    "method": "GET",
+    "sha256": "12985b7a6783b8059cf1b9dc211acc4990de59c03db47aa8b54ce918adab02e4"
+  },
+  "trial": {
+    "url": "https://kalroerepository.kalro.org/server/api/core/bitstreams/d25bba84-bf16-4d64-99dc-60aa7283e3ec/content",
+    "params": {},
+    "timestamp": "2026-11-14T00:10:32.094232+00:00",
+    "status": null,
+    "error": "Request timed out after 15 seconds",
+    "method": "GET"
+  },
+  "cgwb": {
+    "url": "https://gwdata.cgwb.gov.in/download/Yearbook/Telangana_GWYB_23-24.pdf",
+    "params": {},
+    "timestamp": "2026-11-14T00:10:32.094328+00:00",
+    "status": 200,
+    "final_url": "https://gwdata.cgwb.gov.in/download/Yearbook/Telangana_GWYB_23-24.pdf",
+    "mime": "text/html; charset=UTF-8",
+    "size": 221,
+    "raw_response": "cgwb.html",
+    "method": "GET",
+    "sha256": "b05c96f30e316cba20a7f507fab30f9f92ea1fade08bbd5f14109d73c9aea966"
+  },
+  "ornl_ui": {
+    "url": "https://modis.ornl.gov/rst/globalsubset_ui/",
+    "params": {},
+    "timestamp": "2026-11-14T00:10:32.094398+00:00",
+    "status": 200,
+    "final_url": "https://modis.ornl.gov/rst/globalsubset_ui/",
+    "mime": "text/html; charset=utf-8",
+    "size": 27261,
+    "raw_response": "ornl_ui.html",
+    "method": "GET",
+    "sha256": "d7129f2ad1f14c6ba72dcc37cefbbeccd028a835e0021d70269a8005436dbcd8"
+  },
+  "sda": {
+    "url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+    "params": {
+      "query": "\nWITH ranked AS (\n    SELECT mu.mukey, mu.muname, c.cokey, c.compname, c.comppct_r, c.hydgrp, c.drainagecl,\n           ROW_NUMBER() OVER (PARTITION BY mu.mukey ORDER BY c.comppct_r DESC, c.cokey) AS rank\n    FROM SDA_Get_Mukey_from_intersection_with_WktWgs84('POINT(-100.67 37.94)') AS hit\n    JOIN mapunit AS mu ON mu.mukey = hit.mukey\n    JOIN component AS c ON c.mukey = mu.mukey\n    WHERE c.comppct_r IS NOT NULL AND c.majcompflag = 'Yes'\n)\nSELECT c.mukey, c.muname, c.compname, c.comppct_r, c.hydgrp, c.drainagecl,\n       h.hzdept_r, h.hzdepb_r, h.om_r, h.awc_r, h.claytotal_r, h.sandtotal_r, h.silttotal_r,\n       tex.texture, restriction.reskind, restriction.resdept_r\nFROM ranked AS c\nLEFT JOIN chorizon AS h ON h.cokey = c.cokey AND h.hzdept_r < 30\nOUTER APPLY (\n    SELECT TOP 1 t.texture FROM chtexturegrp AS t\n    WHERE t.chkey = h.chkey AND t.rvindicator = 'Yes' ORDER BY t.chtgkey\n) AS tex\nOUTER APPLY (\n    SELECT TOP 1 r.reskind, r.resdept_r FROM corestrictions AS r\n    WHERE r.cokey = c.cokey AND r.resdept_r IS NOT NULL ORDER BY r.resdept_r, r.corestrictkey\n) AS restriction\nWHERE c.rank = 1\nORDER BY c.mukey, h.hzdept_r\n",
+      "format": "JSON"
+    },
+    "timestamp": "2026-11-14T00:10:32.094446+00:00",
+    "status": 200,
+    "final_url": "https://sdmdataaccess.nrcs.usda.gov/Tabular/post.rest",
+    "mime": "application/json; charset=utf-8",
+    "size": 304,
+    "raw_response": "sda.json",
+    "method": "POST",
+    "sha256": "91a1553a3013b977a5cffc205d7d032270569f490721c6d65b5ff679535db469"
+  }
+}

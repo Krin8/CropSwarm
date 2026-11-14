@@ -14,12 +14,14 @@ CropSwarm helps farmers compare crop rotations under different weather and irrig
 ## Run the demo
 
 ```sh
+python3.12 -m venv .venv
+. .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app reads checked-in files in `data/processed/`. It needs no Earthdata credentials or live data services. The pin map uses bundled Natural Earth land outlines.
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md)
 
 ## Architecture
 
@@ -38,12 +40,12 @@ flowchart LR
 ## Evidence and limitations
 
 - **Tier 1** uses NASA POWER daily weather and precipitation, Terra MODIS vegetation composites, SRTM terrain and ISRIC SoilGrids model estimates. POWER root-zone wetness is modelled. MODIS vegetation cannot identify exact crops or farmer practices at these footprints. The satellites used here do not directly measure soil nitrogen or organic carbon.
-- **Tier 2** adds USDA SSURGO soil map units and CDL crop history in Kansas. Field groundwater trends and irrigation access remain unverified. The Makueni point is flagged `cropland unverified`. Telangana has a tentative second window and its repeated-paddy baseline retains its violation flag.
+- **Tier 2** adds USDA SSURGO soil map units and CDL crop history in Kansas. US High Plains B is modeled as rainfed with irrigation supply fraction 0.0. The spring 2019 MODIS NDVI peak over the CDL fallow neighborhood remains unexplained. Makueni cropland remains unverified. Telangana's second season is tentative and its repeated-paddy baseline retains its violation flag.
 - Crop calendars, irrigation share and market indices are illustrative. Soil water uses the upper 30 cm. The erosion index is a simplified proxy and relative income is an assumption. Scenario intervals describe the modeled draws. [Decisions and validity](docs/decisions.md) · [Scoring](docs/scoring.md)
 
 ## Optimizer verification
 
-All three sites fit a three-year horizon. Exact enumeration evaluated 504, 633,998 and 50,658 feasible rotations in Kansas, Telangana and Makueni, respectively. Across 30 seeds per site and preset, ACO hit the exact optimum in 21–30 runs. Every site and preset had at least one exact hit. [Verification, runtimes and gaps](docs/optimizer.md)
+All three sites fit a three-year horizon. Exact enumeration evaluated 504, 633,998 and 50,658 feasible rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best-of-five reached it 29–30 times. [Verification, seeds and optimality gaps](docs/optimizer.md)
 
 ## Rebuild from cached evidence
 

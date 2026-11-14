@@ -105,6 +105,23 @@ def strategy(model, sequence, strategy_id, priority, weights):
     }
 
 
+def aco_restarts(model, layers, weights, config, trial):
+    """Start each colony with independent seed and pheromone state."""
+    seeds = [trial + restart * config["seed_count"] for restart in range(config["restarts"])]
+    outcomes = [ant_colony(model, layers, weights, config, seed) for seed in seeds]
+    best = max(outcomes, key=lambda outcome: -np.inf if outcome[0] is None else outcome[0])
+    return seeds, outcomes, best
+
+
+def verification_summary(exact, scores):
+    gaps = [max(0., exact - value) for value in scores if value is not None]
+    hits = sum(gap <= 1e-10 for gap in gaps)
+    return {"runs": len(scores), "completed_runs": len(gaps), "optimum_hits": hits,
+            "exact_hit_rate": hits / len(scores), "best_gap": min(gaps, default=None),
+            "mean_gap": float(np.mean(gaps)) if gaps else None, "worst_gap": max(gaps, default=None),
+            "scores": scores}
+
+
 def optimise(model, presets, config):
     years = config["default_years"]
     layers = allowed_layers(model, years)
@@ -131,12 +148,13 @@ def optimise(model, presets, config):
         order = np.argsort(-objective, kind="stable")
         best = float(objective[order[0]])
         start = time.perf_counter()
-        swarm = [ant_colony(model, layers, weight, config, seed) for seed in range(config["seed_count"])]
+        trials = [aco_restarts(model, layers, weight, config, i) for i in range(config["seed_count"])]
         runtime = time.perf_counter() - start
+        swarm = [best_outcome for _, _, best_outcome in trials]
         distinct = [(value, sequence) for value, sequence in swarm if sequence is not None and tuple(sequence) not in seen]
         if distinct:
             _, chosen = max(distinct, key=lambda row: row[0])
-            method = "ant colony"
+            method = f"best-of-{config['restarts']} ant colony"
         else:
             index = next(i for i in order if tuple(rotations[i]) not in seen)
             chosen = rotations[index]
@@ -146,12 +164,15 @@ def optimise(model, presets, config):
         entry["why"] = f"Selected by {method} for the {name.replace('_', ' ')} priorities."
         entry["selection_method"] = method
         selected.append(entry)
-        finite = [value for value, _ in swarm if value is not None]
-        gap = [max(0, best-value) for value in finite]
-        verification[name] = {"exact_score": best, "runs": len(swarm),
-                              "optimum_hits": sum(bool(np.isclose(value, best, rtol=0, atol=1e-10)) for value in finite),
-                              "best_gap": min(gap, default=None), "worst_gap": max(gap, default=None),
-                              "runtime_seconds": runtime, "per_seed_scores": [value for value, _ in swarm]}
+        verification[name] = {
+            "exact_score": best,
+            "single_run": verification_summary(best, [outcomes[0][0] for _, outcomes, _ in trials]),
+            "best_of_restarts": verification_summary(best, [value for value, _ in swarm]),
+            "runtime_seconds": runtime,
+            "restart_count": config["restarts"],
+            "trials": [{"seeds": seeds, "scores": [value for value, _ in outcomes]}
+                       for seeds, outcomes, _ in trials],
+        }
     return {"farm_id": model.farm["farm_id"], "label": "illustrative; validate locally",
             "horizon_years": years, "three_year_feasible_count": original_count,
             "feasible_count": count, "exact_runtime_seconds": exact_seconds, "verification": verification,
@@ -166,7 +187,8 @@ def main():
         result = optimise(preload(farm), presets, config)
         write_json(ROOT / "data/processed" / f"strategies_{farm['farm_id']}.json", result)
         print(farm["farm_id"], result["feasible_count"],
-              {name: row["optimum_hits"] for name, row in result["verification"].items()}, flush=True)
+              {name: [row["single_run"]["optimum_hits"], row["best_of_restarts"]["optimum_hits"]]
+               for name, row in result["verification"].items()}, flush=True)
 
 
 if __name__ == "__main__":

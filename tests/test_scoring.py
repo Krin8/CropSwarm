@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pytest
 
-from src.scoring import ROOT, baseline_indices, daily_water_deficit, preload, score_rotations
+from src.scoring import METRICS, ROOT, baseline_indices, daily_water_deficit, preload, score_rotations
 
 FARMS = json.loads((ROOT / "config/farms.json").read_text())
 
@@ -33,3 +33,27 @@ def test_legume_credit_and_water_score():
     assert raw[1, 1] > raw[0, 1]
     assert score[1, 1] > score[0, 1]
     assert score[2, 0] > score[0, 0]
+
+
+def test_legume_improves_nitrogen_over_active_cereal_rotation():
+    model = preload(next(farm for farm in FARMS if farm["farm_id"] == "telangana_a"))
+    rice, chickpea, maize = (model.ids.index(crop) for crop in ("paddy", "chickpea", "maize"))
+    raw, score, flags = score_rotations(model, [[rice, maize], [rice, chickpea]])
+    assert not any(flag.any() for flag in flags.values())
+    assert raw[1, 1] > raw[0, 1]
+    assert score[1, 1] > score[0, 1]
+
+
+def test_telangana_paddy_baseline_flagged_and_loses_to_water_saver():
+    farm = next(farm for farm in FARMS if farm["farm_id"] == "telangana_a")
+    model = preload(farm)
+    result = json.loads((ROOT / "data/processed/strategies_telangana_a.json").read_text())
+    alternative = next(row for row in result["strategies"] if row["strategy_id"] == "water_saver")
+    candidate = [model.ids.index(crop) for year in alternative["crop_ids"] for crop in year]
+    raw, scores, flags = score_rotations(model, [baseline_indices(model, result["horizon_years"]), candidate])
+    assert flags["identical_consecutive_crop"][0].all()
+    assert not any(flag[1].any() for flag in flags.values())
+    assert raw[1, 0] < raw[0, 0]
+    preset = json.loads((ROOT / "config/weights_presets.json").read_text())["presets"]["water_saver"]
+    objectives = scores @ np.array([preset[metric] for metric in METRICS])
+    assert objectives[1] > objectives[0]

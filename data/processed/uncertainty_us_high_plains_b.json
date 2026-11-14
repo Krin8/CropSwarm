@@ -14,9 +14,9 @@
     "NASA POWER soil wetness is a model product.",
     "Irrigation share, baseline management, prices and pest pressure need local evidence.",
     "Crop income is a relative index. Market prices and yield can change.",
-    "CDL says fallow in 2019 but MODIS NDVI shows spring peaks; investigate with 3x3 CDL neighborhood in P7",
+    "The 2019 CDL neighborhood is classified as fallow. The MODIS spring peak remains unexplained.",
     "CDL point classes are not a verified farm management record",
-    "Supply fraction 0.0 is an assumption despite regional irrigation; validate locally"
+    "Rainfed reference with supply fraction 0.0; assumption, validate locally"
   ],
   "scenarios": {
     "historical": {
