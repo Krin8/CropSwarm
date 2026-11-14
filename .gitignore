@@ -1,6 +1,17 @@
 .venv/
+venv/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
 __pycache__/
 .pytest_cache/
-*.pyc
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.cache/
+/data/cache/
+/data/raw/**
+# Existing, reviewed raw evidence stays tracked. Force-add only deliberate new fixtures.
 /__init__.py
 /data.py

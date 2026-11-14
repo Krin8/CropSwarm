@@ -9,7 +9,25 @@ app_port: 7860
 
 # CropSwarm
 
-CropSwarm helps farmers compare crop rotations under different weather and irrigation assumptions. The offline demo covers three illustrative sites and displays the existing rotation alongside four distinct alternatives, evidence, trade-offs, modeled ranges and wins across scenario draws. The farmer decides. Validate inputs locally before changing a rotation.
+CropSwarm is an offline decision-support demo for comparing crop rotations at three illustrative farms in Kansas, Telangana and Makueni. It combines NASA weather, vegetation and terrain data with soil estimates, crop parameters and farmer priorities to show a baseline and alternatives with evidence, trade-offs and modeled uncertainty. The farmer decides; validate every input locally before changing a rotation.
+
+## Seven key results
+
+1. Each farm shows its existing baseline and four distinct alternative strategies with reasons, benefits, risks and information gaps.
+2. NASA POWER supplies 1991–2025 daily weather for all three sites; Terra MODIS supplies 2015–2024 vegetation composites. [Coverage](docs/data_pipeline.md)
+3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
+4. Exact enumeration evaluated 504 feasible rotations in Kansas, 633,998 in Telangana and 50,658 in Makueni over three years. [Verification](docs/optimizer.md)
+5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times; best-of-five found it 29–30 times. [Gaps](docs/optimizer.md)
+6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
+7. The baseline flags remain visible: Kansas fallow and spring NDVI disagree, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Validity](docs/decisions.md)
+
+## Screenshots
+
+![Kansas climate assessment](docs/screenshots/us_high_plains_b_climate.png)
+![Telangana strategy comparison](docs/screenshots/telangana_a_comparison.png)
+![Makueni scenario uncertainty](docs/screenshots/kenya_makueni_north_uncertainty.png)
+
+[All nine screenshots](docs/screenshots/README.md)
 
 ## Run the demo
 
@@ -21,7 +39,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Submission summary](docs/submission_summary.md)
 
 ## Architecture
 
