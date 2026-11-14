@@ -1,0 +1,24 @@
+{
+  "quickstats_kansas.csv": {
+    "source": "USDA NASS Quick Stats bulk crops file",
+    "catalog": "https://www.nass.usda.gov/datasets",
+    "url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+    "bulk_sha256": "78382f2f6fe4e3a0a1d0feeb44a3b2cbb972b8ab4cef10d4fd223f98ec97bdc3",
+    "provenance": "Exact P20 gzip recovered from local cache; SHA-256 matched; P25 made no new bulk request.",
+    "filters": "KS state ANSI 20; county survey; total domain; annual YEAR; 1990\u20132024; winter-wheat non-irrigated and all-practice yield in BU / ACRE. Preserved source values and identifying columns with NUL padding removed.",
+    "file_sha256": "8c2d427fc0287143aee44a5dac93b51795ff870fa33db67e566b81ea5282056f"
+  },
+  "kansas_centroids.csv": {
+    "source": "U.S. Census Bureau TIGERweb Kansas Counties, January 1, 2026",
+    "url": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ks.html",
+    "response_sha256": "0fc7b81e940df16d47f7adc610c58562107445d9e18490086fc65be1baf36de3",
+    "coordinates": "CENTLAT / CENTLON. FIPS and basename are from the same table. These are fixed geographic centroids.",
+    "file_sha256": "51cc1da0dd1b2eb1b6d3bf818f10763de28ada59c25f6d8c473f0ff698d1f7a1"
+  },
+  "power_manifest.json": {
+    "source": "NASA POWER daily climate point API, AG community, local solar time",
+    "docs": "https://power.larc.nasa.gov/docs/services/api/temporal/daily/",
+    "archive": "power_archive contains gzip-compressed original cache envelopes. The manifest records the parameters, timestamp, HTTP status and SHA-256 for each archive.",
+    "file_sha256": "80f89da8cac8f6ebc44a8285fa0967acf0cb68fa856f501ddafc75a66975a72c"
+  }
+}

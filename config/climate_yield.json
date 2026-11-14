@@ -1,0 +1,23 @@
+{
+  "source": "P25 analysis and computing design choices; assumption, validate locally",
+  "state_fips": "20",
+  "first_harvest_year": 1990,
+  "last_harvest_year": 2024,
+  "minimum_yield_years": 20,
+  "minimum_climate_years": 20,
+  "centroid_source": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ks.html",
+  "centroid_vintage": "2026-01-01",
+  "power_chunk_years": 18,
+  "fetch_workers": 4,
+  "storage_proxy_mm": 60.2,
+  "storage_source": "Kansas illustrative farm context, mapped top 30 cm available water; statewide transfer is an assumption, validate locally",
+  "seed": 42,
+  "inner_folds": 3,
+  "bootstrap_draws": 1000,
+  "bootstrap_quantiles": [0.025, 0.975],
+  "ridge_alphas": [0.1, 1.0, 10.0],
+  "forest_trees": 48,
+  "forest_min_leaf": [5, 20],
+  "permutation_repeats": 10,
+  "partial_quantiles": [0.1, 0.3, 0.5, 0.7, 0.9]
+}

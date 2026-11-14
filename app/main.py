@@ -58,6 +58,71 @@ def correlation_counts(farm_ids):
     return counts
 
 
+def learned_yield_panel():
+    with st.expander("Learned climate-yield check"):
+        study = cached("climate_yield_model.json")
+        data = study["dataset"]
+        practices = data["practice_counts"]
+        st.write(f"Kansas winter wheat · {data['retained_counties']} counties · "
+                 f"{data['retained_rows']:,} county-years · {data['first_year']}–{data['last_year']}")
+        st.caption(f"{practices.get('non_irrigated', 0):,} reported non-irrigated yields and "
+                   f"{practices.get('all_practices', 0):,} all-practice fallbacks. USDA NASS yield and NASA POWER "
+                   "centroid weather are regional proxies. All-practice yields can include irrigated wheat.")
+        labels = {"leave_one_year_out": "Hold out one year", "leave_one_county_out": "Hold out one county"}
+        names = {"county_mean": "County mean", "linear_trend": "Linear trend",
+                 "ridge": "Ridge", "random_forest": "Random forest"}
+        scheme = st.selectbox("Cross-validation split", tuple(labels), format_func=labels.get,
+                              key="climate_yield_split")
+        results = study["schemes"][scheme]
+        st.caption(f"{results['outer_folds']} held-out folds · {results['n']:,} predictions per model · "
+                   f"{study['model_count']} models and baselines · "
+                   f"{study['learned_configuration_count']} learned configurations tested inside training folds.")
+        metric_names = {"r2": "R²", "rmse_bu_ac": "RMSE (bu/acre)", "spearman": "Spearman ρ"}
+        rows = []
+        for model, scores in results["performance"].items():
+            row = {"Model": names[model]}
+            for key, name in metric_names.items():
+                stat = scores[key]
+                if stat["value"] is None:
+                    row[name] = "Unavailable"
+                else:
+                    bound = stat["bootstrap_95"]
+                    suffix = f" [{bound[0]:.3f}, {bound[1]:.3f}]" if bound is not None else ""
+                    row[name] = f"{stat['value']:.3f}{suffix}"
+            rows.append(row)
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        st.caption("Pooled held-out yield scores with descriptive 95% intervals. Bootstrap resamples complete held-out "
+                   "groups. Yield trends and model settings use training rows only. For a held-out county, "
+                   "both baselines use references from other counties.")
+        changes = []
+        for model, stat in results["rmse_delta_vs_trend"].items():
+            low, high = stat["bootstrap_95"]
+            changes.append(f"{names[model]} {stat['value']:+.2f} [{low:+.2f}, {high:+.2f}]")
+        st.caption("Paired RMSE change versus the linear trend (bu/acre) · " + " · ".join(changes))
+        model = st.selectbox("Inspect a learned model", tuple(results["interpretation"]), format_func=names.get,
+                             key="climate_yield_model")
+        features = results["interpretation"][model]
+        st.dataframe(pd.DataFrame([{"Feature": row["label"],
+                                    "RMSE change when shuffled (bu/acre)": row["permutation_rmse_increase"]}
+                                   for row in features]), hide_index=True)
+        st.caption("Permutation importance shuffles each feature within held-out folds. A negative change means "
+                   "the shuffle lowered error. Related weather features can share information.")
+        feature = st.selectbox("Inspect partial dependence", [row["label"] for row in features],
+                               key="climate_yield_feature")
+        selected = next(row for row in features if row["label"] == feature)
+        partial = selected["partial_dependence"]
+        curve = go.Figure(go.Scatter(x=[row["value"] for row in partial],
+                                     y=[row["predicted_yield_anomaly_bu_ac"] for row in partial],
+                                     mode="lines+markers", marker_color="#32774F"))
+        curve.update_layout(height=260, xaxis_title=selected["label"], yaxis_title="Modeled yield anomaly (bu/acre)",
+                            margin=dict(t=12, b=55))
+        st.plotly_chart(curve, key="climate_yield_partial_dependence", config={"displayModeBar": False})
+        st.caption("Partial dependence averages predictions on held-out rows at training-fold quantiles of the "
+                   "selected feature. Holding out a county still lets the model see other counties in those years. "
+                   "County-average associations cannot establish causation "
+                   "or validate rotation recommendations.")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -457,6 +522,7 @@ def app():
                              column_config={"Spearman ρ": st.column_config.NumberColumn(format="%.2f")})
                 st.caption("Sources · NASA POWER daily rainfall and maximum temperature · CropSwarm crop catalog, "
                            "season windows and soil water estimate. Bootstrap intervals are descriptive.")
+        learned_yield_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

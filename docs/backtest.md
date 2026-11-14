@@ -141,3 +141,7 @@ Each cell gives Spearman ρ [95% descriptive bootstrap interval], followed by th
 | Historical Warangal kharif rice, district aggregate | 1990–2017 (28) | −0.32 [−0.59, +0.05], n=27 | −0.35 [−0.66, +0.03], n=27 |
 
 Only winter wheat water deficit reached the strong-association cutoff, in both overlapping practice series. The all-practice sorghum heat estimate stayed below zero across its interval but fell short of that cutoff. The primary non-irrigated sorghum and district rice intervals included zero for both indicators. All point estimates were in the expected negative direction. These associations cannot establish the yield of an individual farm, explain why a particular year was poor, or establish the benefit of rotating crops. The app's **Yield back-test** section uses the same results. [Kansas data](../data/processed/yield_backtest_us_high_plains_b.json) · [Telangana data](../data/processed/yield_backtest_telangana_a.json) · [Makueni disposition](../data/processed/yield_backtest_kenya_makueni_north.json)
+
+## P25 learned climate-yield check
+
+The separate [Kansas county study](ml_model.md) compares climate-based models with county mean and trend baselines on held-out years and counties. Its performance measures are separate from the P15/P19/P20 correlation tally. Rotation recommendations still need field validation.

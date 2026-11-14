@@ -94,3 +94,17 @@ def test_opportunity_alternate_threshold_reports_modeled_changes_without_hiding_
     assert any("No reliable planting window" in row.value for row in app.info)
     app.selectbox(key="opportunity_year_us_high_plains_b").set_value(2012).run()
     assert not app.exception
+
+
+def test_learned_county_yield_panel_compares_models_and_baselines():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="climate_yield_split").set_value("leave_one_county_out").run()
+    app.selectbox(key="climate_yield_model").set_value("random_forest").run()
+    assert not app.exception
+    assert any(row.label == "Learned climate-yield check" for row in app.expander)
+    assert any("103 counties" in row.value and "3,215 county-years" in row.value for row in app.markdown)
+    performance = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
+    assert set(performance["Model"]) == {"County mean", "Linear trend", "Ridge", "Random forest"}
+    assert any("RMSE change when shuffled (bu/acre)" in table.value.columns for table in app.dataframe)
+    assert any("cannot establish causation" in row.value for row in app.caption)
+    assert any("Paired RMSE change versus the linear trend" in row.value for row in app.caption)

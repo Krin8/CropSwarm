@@ -16,7 +16,7 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 | Non-NASA | [ISRIC SoilGrids](api_status.md) | Gridded soil texture and organic-carbon estimates. |
 | Non-NASA | [USDA SSURGO](api_status.md) | Kansas soil map units and estimated soil water capacity. |
 | Non-NASA | [USDA NASS Cropland Data Layer](decisions.md) | Mapped Kansas crop history and the P15 crop identity input. |
-| Non-NASA | [USDA NASS Quick Stats](backtest.md#p20-yield-back-test) | Finney County winter wheat and sorghum yields for P20. |
+| Non-NASA | [USDA NASS Quick Stats](backtest.md#p20-yield-back-test) | Finney County winter wheat and sorghum yields for P20 and Kansas county winter wheat for the [P25 learned check](ml_model.md). |
 | Non-NASA | [ICRISAT district yields](backtest.md#p20-yield-back-test) | Historical Warangal kharif rice yields from the public study archive for P20. |
 | Non-NASA | [Crop catalog and assumptions](crops.md) | Indicative crop water need, sourced botanical families and locally unverified values for crop climate screening, nitrogen, cover and relative income. See the [P23 source audit](p23_changes.md). |
 
