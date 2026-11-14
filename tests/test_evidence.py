@@ -17,6 +17,21 @@ def test_crop_source_requires_verified_citation_without_assumption_qualifier():
     assert crop_source_grade("unverified https://example.org/parameter", CONFIG) == "assumption"
 
 
+def test_sourced_cowpea_water_use_and_family_do_not_upgrade_risk_policy():
+    farm = next(farm for farm in FARMS if farm["farm_id"] == "kenya_makueni_north")
+    model = preload(farm)
+    assert model.crops["cowpea"]["water_need_mm"] == pytest.approx((281.6 + 288.0) / 2)
+    sequence = [model.ids.index(crop) for crop in ("cowpea", "fallow")]
+    metrics = evidence_for_strategy(model, sequence)["metrics"]
+    for metric, field in (("water", "crop.water_need_mm"), ("risk", "crop.disease_family")):
+        grades = {item["crop_id"]: item["grade"] for item in metrics[metric]["inputs"]
+                  if item["input"] == field}
+        assert grades == {"cowpea": "literature", "fallow": "assumption"}
+    assert metrics["risk"]["label"] == "low"
+    assert next(item for item in metrics["risk"]["inputs"]
+                if item["input"] == "model.risk_rule")["grade"] == "assumption"
+
+
 def test_label_thresholds_are_conservative_at_boundaries():
     shares = dict.fromkeys(GRADES, 0.0)
     shares.update(nasa_measured=.75, literature=.15, assumption=.10)

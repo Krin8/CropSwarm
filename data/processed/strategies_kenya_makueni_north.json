@@ -6,31 +6,21 @@
   "three_year_feasible_count": 16914,
   "raw_feasible_count": 50658,
   "feasible_count": 16914,
-  "exact_runtime_seconds": 0.010229708015685901,
+  "exact_runtime_seconds": 0.010139916994376108,
   "verification": {
     "water_saver": {
       "exact_score": 0.7467280962622784,
       "single_run": {
         "runs": 30,
         "completed_runs": 30,
-        "optimum_hits": 21,
-        "exact_hit_rate": 0.7,
+        "optimum_hits": 22,
+        "exact_hit_rate": 0.7333333333333333,
         "best_gap": 0.0,
-        "mean_gap": 0.0017133261710377435,
-        "worst_gap": 0.005711087236792478,
+        "mean_gap": 0.001695792132139288,
+        "worst_gap": 0.010896153306631295,
         "scores": [
           0.741017009025486,
-          0.741017009025486,
-          0.7467280962622784,
-          0.7467280962622784,
-          0.7467280962622784,
-          0.7467280962622784,
-          0.741017009025486,
-          0.7467280962622784,
-          0.741017009025486,
-          0.7467280962622784,
-          0.7467280962622784,
-          0.7467280962622784,
+          0.7358319429556471,
           0.7467280962622784,
           0.7467280962622784,
           0.7467280962622784,
@@ -38,6 +28,16 @@
           0.7467280962622784,
           0.7467280962622784,
           0.741017009025486,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.741017009025486,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.7467280962622784,
+          0.7467280962622784,
           0.7467280962622784,
           0.741017009025486,
           0.7467280962622784,
@@ -92,7 +92,7 @@
           0.7467280962622784
         ]
       },
-      "runtime_seconds": 5.119174999999814,
+      "runtime_seconds": 5.351132834010059,
       "restart_count": 5,
       "trials": [
         {
@@ -107,7 +107,7 @@
             0.741017009025486,
             0.7467280962622784,
             0.7467280962622784,
-            0.741017009025486,
+            0.7467280962622784,
             0.7467280962622784
           ]
         },
@@ -120,10 +120,10 @@
             121
           ],
           "scores": [
-            0.741017009025486,
+            0.7358319429556471,
             0.7467280962622784,
             0.7467280962622784,
-            0.741017009025486,
+            0.7358319429556471,
             0.7467280962622784
           ]
         },
@@ -156,7 +156,7 @@
             0.741017009025486,
             0.7467280962622784,
             0.7467280962622784,
-            0.7388982025076638
+            0.741017009025486
           ]
         },
         {
@@ -169,7 +169,7 @@
           ],
           "scores": [
             0.7467280962622784,
-            0.741017009025486,
+            0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784
@@ -187,7 +187,7 @@
             0.7467280962622784,
             0.7467280962622784,
             0.741017009025486,
-            0.741017009025486,
+            0.7467280962622784,
             0.7467280962622784
           ]
         },
@@ -200,11 +200,11 @@
             126
           ],
           "scores": [
-            0.741017009025486,
-            0.741017009025486,
             0.7467280962622784,
             0.7467280962622784,
-            0.741017009025486
+            0.741017009025486,
+            0.7467280962622784,
+            0.7467280962622784
           ]
         },
         {
@@ -218,7 +218,7 @@
           "scores": [
             0.7467280962622784,
             0.7467280962622784,
-            0.7467280962622784,
+            0.741017009025486,
             0.741017009025486,
             0.7467280962622784
           ]
@@ -233,7 +233,7 @@
           ],
           "scores": [
             0.741017009025486,
-            0.7467280962622784,
+            0.741017009025486,
             0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784
@@ -265,7 +265,7 @@
           ],
           "scores": [
             0.7467280962622784,
-            0.741017009025486,
+            0.7467280962622784,
             0.741017009025486,
             0.7467280962622784,
             0.741017009025486
@@ -296,7 +296,7 @@
             132
           ],
           "scores": [
-            0.7467280962622784,
+            0.741017009025486,
             0.741017009025486,
             0.741017009025486,
             0.7467280962622784,
@@ -377,7 +377,7 @@
           ],
           "scores": [
             0.7467280962622784,
-            0.741017009025486,
+            0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784
@@ -392,10 +392,10 @@
             138
           ],
           "scores": [
-            0.741017009025486,
-            0.741017009025486,
+            0.7467280962622784,
             0.741017009025486,
             0.7467280962622784,
+            0.741017009025486,
             0.7467280962622784
           ]
         },
@@ -409,7 +409,7 @@
           ],
           "scores": [
             0.7467280962622784,
-            0.7467280962622784,
+            0.741017009025486,
             0.741017009025486,
             0.741017009025486,
             0.7467280962622784
@@ -459,7 +459,7 @@
             0.7467280962622784,
             0.7467280962622784,
             0.741017009025486,
-            0.7467280962622784,
+            0.741017009025486,
             0.7467280962622784
           ]
         },
@@ -508,7 +508,7 @@
             0.7467280962622784,
             0.741017009025486,
             0.7467280962622784,
-            0.741017009025486
+            0.7467280962622784
           ]
         },
         {
@@ -556,7 +556,7 @@
             0.7467280962622784,
             0.7467280962622784,
             0.7467280962622784,
-            0.7467280962622784
+            0.741017009025486
           ]
         },
         {
@@ -570,7 +570,7 @@
           "scores": [
             0.7467280962622784,
             0.741017009025486,
-            0.741017009025486,
+            0.7467280962622784,
             0.7467280962622784,
             0.741017009025486
           ]
@@ -585,7 +585,7 @@
         "optimum_hits": 26,
         "exact_hit_rate": 0.8666666666666667,
         "best_gap": 0.0,
-        "mean_gap": 0.00015999469665506732,
+        "mean_gap": 0.0002676420590385864,
         "worst_gap": 0.002444210857432183,
         "scores": [
           0.7558022369316822,
@@ -602,7 +602,7 @@
           0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
-          0.755017026917609,
+          0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
@@ -611,10 +611,10 @@
           0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
+          0.7533580260742501,
           0.7558022369316822,
           0.7558022369316822,
-          0.7558022369316822,
-          0.755017026917609,
+          0.7534466068894623,
           0.7558022369316822,
           0.755017026917609,
           0.7558022369316822
@@ -623,11 +623,11 @@
       "best_of_restarts": {
         "runs": 30,
         "completed_runs": 30,
-        "optimum_hits": 29,
-        "exact_hit_rate": 0.9666666666666667,
+        "optimum_hits": 30,
+        "exact_hit_rate": 1.0,
         "best_gap": 0.0,
-        "mean_gap": 2.617366713577596e-05,
-        "worst_gap": 0.0007852100140732787,
+        "mean_gap": 0.0,
+        "worst_gap": 0.0,
         "scores": [
           0.7558022369316822,
           0.7558022369316822,
@@ -643,7 +643,7 @@
           0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
-          0.755017026917609,
+          0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
           0.7558022369316822,
@@ -661,7 +661,7 @@
           0.7558022369316822
         ]
       },
-      "runtime_seconds": 4.79146262499853,
+      "runtime_seconds": 4.9607004589925054,
       "restart_count": 5,
       "trials": [
         {
@@ -691,7 +691,7 @@
           "scores": [
             0.7558022369316822,
             0.7558022369316822,
-            0.7558022369316822,
+            0.755017026917609,
             0.7533580260742501,
             0.7533580260742501
           ]
@@ -722,7 +722,7 @@
           ],
           "scores": [
             0.7558022369316822,
-            0.7558022369316822,
+            0.7533580260742501,
             0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822
@@ -738,7 +738,7 @@
           ],
           "scores": [
             0.7558022369316822,
-            0.7542318169035356,
+            0.755017026917609,
             0.7558022369316822,
             0.7558022369316822,
             0.755017026917609
@@ -772,7 +772,7 @@
             0.7558022369316822,
             0.7558022369316822,
             0.7533580260742501,
-            0.755017026917609,
+            0.7533580260742501,
             0.7558022369316822
           ]
         },
@@ -804,7 +804,7 @@
             0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822,
-            0.7542318169035356,
+            0.7558022369316822,
             0.7558022369316822
           ]
         },
@@ -818,8 +818,8 @@
           ],
           "scores": [
             0.7558022369316822,
+            0.7518125240128061,
             0.7533580260742501,
-            0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822
           ]
@@ -836,7 +836,7 @@
             0.7558022369316822,
             0.7518125240128061,
             0.7558022369316822,
-            0.7533580260742501,
+            0.7558022369316822,
             0.7558022369316822
           ]
         },
@@ -897,10 +897,10 @@
             134
           ],
           "scores": [
-            0.755017026917609,
+            0.7558022369316822,
             0.7533580260742501,
             0.755017026917609,
-            0.755017026917609,
+            0.7558022369316822,
             0.755017026917609
           ]
         },
@@ -915,7 +915,7 @@
           "scores": [
             0.7558022369316822,
             0.7558022369316822,
-            0.755017026917609,
+            0.7533580260742501,
             0.7558022369316822,
             0.7558022369316822
           ]
@@ -931,9 +931,9 @@
           "scores": [
             0.7558022369316822,
             0.7558022369316822,
+            0.7533580260742501,
             0.7558022369316822,
-            0.7558022369316822,
-            0.7542318169035356
+            0.755017026917609
           ]
         },
         {
@@ -947,7 +947,7 @@
           "scores": [
             0.7558022369316822,
             0.7558022369316822,
-            0.755017026917609,
+            0.7533580260742501,
             0.7558022369316822,
             0.7558022369316822
           ]
@@ -994,7 +994,7 @@
           ],
           "scores": [
             0.7558022369316822,
-            0.755017026917609,
+            0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822
@@ -1041,7 +1041,7 @@
             143
           ],
           "scores": [
-            0.7558022369316822,
+            0.7533580260742501,
             0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822,
@@ -1059,9 +1059,9 @@
           "scores": [
             0.7558022369316822,
             0.7533580260742501,
-            0.7533580260742501,
-            0.7533580260742501,
-            0.755017026917609
+            0.755017026917609,
+            0.7558022369316822,
+            0.7558022369316822
           ]
         },
         {
@@ -1089,7 +1089,7 @@
             146
           ],
           "scores": [
-            0.755017026917609,
+            0.7534466068894623,
             0.7558022369316822,
             0.755017026917609,
             0.7558022369316822,
@@ -1108,7 +1108,7 @@
             0.7558022369316822,
             0.755017026917609,
             0.7558022369316822,
-            0.7518125240128061,
+            0.7533580260742501,
             0.7558022369316822
           ]
         },
@@ -1138,7 +1138,7 @@
           ],
           "scores": [
             0.7558022369316822,
-            0.7533580260742501,
+            0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822,
             0.7558022369316822
@@ -1151,11 +1151,11 @@
       "single_run": {
         "runs": 30,
         "completed_runs": 30,
-        "optimum_hits": 29,
-        "exact_hit_rate": 0.9666666666666667,
+        "optimum_hits": 30,
+        "exact_hit_rate": 1.0,
         "best_gap": 0.0,
-        "mean_gap": 3.4080991785538176e-05,
-        "worst_gap": 0.0010224297535661453,
+        "mean_gap": 0.0,
+        "worst_gap": 0.0,
         "scores": [
           0.7073988152969009,
           0.7073988152969009,
@@ -1175,7 +1175,7 @@
           0.7073988152969009,
           0.7073988152969009,
           0.7073988152969009,
-          0.7063763855433347,
+          0.7073988152969009,
           0.7073988152969009,
           0.7073988152969009,
           0.7073988152969009,
@@ -1230,7 +1230,7 @@
           0.7073988152969009
         ]
       },
-      "runtime_seconds": 4.974105166998925,
+      "runtime_seconds": 5.122258916002465,
       "restart_count": 5,
       "trials": [
         {
@@ -1292,7 +1292,7 @@
           "scores": [
             0.7073988152969009,
             0.7073988152969009,
-            0.7073988152969009,
+            0.7063763855433347,
             0.7073988152969009,
             0.7073988152969009
           ]
@@ -1355,7 +1355,7 @@
           ],
           "scores": [
             0.7073988152969009,
-            0.7063763855433347,
+            0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009
@@ -1436,7 +1436,7 @@
           "scores": [
             0.7073988152969009,
             0.7073988152969009,
-            0.7063763855433347,
+            0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009
           ]
@@ -1469,7 +1469,7 @@
             0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009,
-            0.7063763855433347,
+            0.7073988152969009,
             0.7073988152969009
           ]
         },
@@ -1530,7 +1530,7 @@
             138
           ],
           "scores": [
-            0.7063763855433347,
+            0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009,
@@ -1627,7 +1627,7 @@
           ],
           "scores": [
             0.7073988152969009,
-            0.7073988152969009,
+            0.7063763855433347,
             0.7073988152969009,
             0.7073988152969009,
             0.7073988152969009
@@ -1741,16 +1741,16 @@
           0.7349556127954251,
           0.7394869643689552,
           0.7394869643689552,
-          0.7359211558726277,
-          0.7394869643689552,
-          0.7394869643689552,
-          0.7394869643689552,
-          0.7394869643689552,
           0.7394869643689552,
           0.7359211558726277,
+          0.7394869643689552,
+          0.7394869643689552,
+          0.7394869643689552,
+          0.7394869643689552,
+          0.7394869643689552,
           0.7349556127954251,
           0.728653587248431,
-          0.7394869643689552,
+          0.7359211558726277,
           0.7394869643689552,
           0.7349556127954251,
           0.7394869643689552,
@@ -1799,7 +1799,7 @@
           0.7394869643689552
         ]
       },
-      "runtime_seconds": 4.7660181669925805,
+      "runtime_seconds": 4.894081916019786,
       "restart_count": 5,
       "trials": [
         {
@@ -1814,7 +1814,7 @@
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
-            0.7359211558726277,
+            0.7358444662924302,
             0.7394869643689552
           ]
         },
@@ -1830,7 +1830,7 @@
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
-            0.7359211558726277,
+            0.7349556127954251,
             0.7394869643689552
           ]
         },
@@ -1844,10 +1844,10 @@
           ],
           "scores": [
             0.7394869643689552,
+            0.7359211558726277,
             0.7394869643689552,
             0.7394869643689552,
-            0.7394869643689552,
-            0.7358444662924302
+            0.7349556127954251
           ]
         },
         {
@@ -1877,7 +1877,7 @@
           "scores": [
             0.7349556127954251,
             0.7394869643689552,
-            0.7359211558726277,
+            0.7394869643689552,
             0.7394869643689552,
             0.7359211558726277
           ]
@@ -1892,9 +1892,9 @@
           ],
           "scores": [
             0.7394869643689552,
-            0.7349556127954251,
             0.7394869643689552,
-            0.7349556127954251,
+            0.7394869643689552,
+            0.7359211558726277,
             0.7394869643689552
           ]
         },
@@ -1911,7 +1911,7 @@
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
-            0.7349556127954251
+            0.7394869643689552
           ]
         },
         {
@@ -1924,9 +1924,9 @@
           ],
           "scores": [
             0.7394869643689552,
-            0.7394869643689552,
-            0.7394869643689552,
             0.7349556127954251,
+            0.7394869643689552,
+            0.7359211558726277,
             0.7394869643689552
           ]
         },
@@ -1940,7 +1940,7 @@
           ],
           "scores": [
             0.7359211558726277,
-            0.7394869643689552,
+            0.7359211558726277,
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552
@@ -1958,7 +1958,7 @@
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
-            0.7349556127954251,
+            0.7359211558726277,
             0.7394869643689552
           ]
         },
@@ -2051,11 +2051,11 @@
             135
           ],
           "scores": [
-            0.7359211558726277,
-            0.7359211558726277,
-            0.7359211558726277,
             0.7394869643689552,
-            0.7394869643689552
+            0.7394869643689552,
+            0.7359211558726277,
+            0.7359211558726277,
+            0.7349556127954251
           ]
         },
         {
@@ -2067,7 +2067,7 @@
             136
           ],
           "scores": [
-            0.7394869643689552,
+            0.7359211558726277,
             0.7349556127954251,
             0.7394869643689552,
             0.7394869643689552,
@@ -2100,7 +2100,7 @@
           ],
           "scores": [
             0.7394869643689552,
-            0.731804600021928,
+            0.7359211558726277,
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552
@@ -2147,7 +2147,7 @@
             141
           ],
           "scores": [
-            0.7359211558726277,
+            0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552,
@@ -2195,11 +2195,11 @@
             144
           ],
           "scores": [
+            0.7359211558726277,
+            0.7358444662924302,
             0.7394869643689552,
             0.7349556127954251,
-            0.7394869643689552,
-            0.7359211558726277,
-            0.7358444662924302
+            0.7359211558726277
           ]
         },
         {
@@ -2212,7 +2212,7 @@
           ],
           "scores": [
             0.7394869643689552,
-            0.7394869643689552,
+            0.7349556127954251,
             0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552
@@ -2230,7 +2230,7 @@
             0.7349556127954251,
             0.7349556127954251,
             0.7359211558726277,
-            0.7349556127954251,
+            0.7394869643689552,
             0.7394869643689552
           ]
         },
@@ -2261,7 +2261,7 @@
           "scores": [
             0.7394869643689552,
             0.7394869643689552,
-            0.7394869643689552,
+            0.7349556127954251,
             0.7394869643689552,
             0.7394869643689552
           ]
@@ -2277,7 +2277,7 @@
           "scores": [
             0.7394869643689552,
             0.7394869643689552,
-            0.7349556127954251,
+            0.7394869643689552,
             0.7394869643689552,
             0.7394869643689552
           ]
@@ -3047,51 +3047,51 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "common_bean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "common_bean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "common_bean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
@@ -3927,16 +3927,16 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.1,
-              "assumption": 0.9
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -3949,8 +3949,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -3963,8 +3963,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -4808,51 +4808,51 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -5689,51 +5689,51 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -6570,16 +6570,16 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.16666666666666666,
-              "assumption": 0.8333333333333334
+              "literature": 0.3333333333333333,
+              "assumption": 0.6666666666666667
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -6592,29 +6592,29 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "green_gram",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {

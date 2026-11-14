@@ -14,7 +14,7 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 | NASA / NGA | [SRTM](data_pipeline.md) through OpenTopoData | Terrain slope proxy in the erosion score. |
 | Non-NASA | [ISRIC SoilGrids](api_status.md) | Gridded soil texture and organic-carbon estimates. |
 | Non-NASA | [USDA SSURGO and CDL](api_status.md) | Kansas soil context and mapped crop history; CDL is not a farm management record. |
-| Non-NASA | [Crop catalog and assumptions](crops.md) | Crop coefficients, rotation rules, irrigation share and relative income inputs; validate locally. |
+| Non-NASA | [Crop catalog and assumptions](crops.md) | Indicative crop water need, sourced botanical families and locally unverified values for crop climate screening, nitrogen, cover and relative income. See the [P23 source audit](p23_changes.md). |
 
 ## Limitations
 

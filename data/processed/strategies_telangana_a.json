@@ -6,7 +6,7 @@
   "three_year_feasible_count": 211394,
   "raw_feasible_count": 633998,
   "feasible_count": 211394,
-  "exact_runtime_seconds": 0.1303956659976393,
+  "exact_runtime_seconds": 0.14080612498219125,
   "verification": {
     "water_saver": {
       "exact_score": 0.8015436421206531,
@@ -92,7 +92,7 @@
           0.801543642120653
         ]
       },
-      "runtime_seconds": 4.876933583000209,
+      "runtime_seconds": 5.090136000013445,
       "restart_count": 5,
       "trials": [
         {
@@ -124,7 +124,7 @@
             0.801543642120653,
             0.801543642120653,
             0.801543642120653,
-            0.801543642120653
+            0.7933216408192162
           ]
         },
         {
@@ -204,7 +204,7 @@
             0.801543642120653,
             0.801543642120653,
             0.801543642120653,
-            0.801543642120653
+            0.7933216408192162
           ]
         },
         {
@@ -393,7 +393,7 @@
           ],
           "scores": [
             0.801543642120653,
-            0.801543642120653,
+            0.7933216408192162,
             0.801543642120653,
             0.801543642120653,
             0.801543642120653
@@ -661,7 +661,7 @@
           0.770346322462403
         ]
       },
-      "runtime_seconds": 4.75543145800475,
+      "runtime_seconds": 4.846155584004009,
       "restart_count": 5,
       "trials": [
         {
@@ -1059,7 +1059,7 @@
           "scores": [
             0.770346322462403,
             0.770346322462403,
-            0.7660607825811363,
+            0.770346322462403,
             0.7660607825811363,
             0.770346322462403
           ]
@@ -1093,7 +1093,7 @@
             0.770346322462403,
             0.770346322462403,
             0.770346322462403,
-            0.770346322462403
+            0.7660607825811363
           ]
         },
         {
@@ -1230,7 +1230,7 @@
           0.67297875858833
         ]
       },
-      "runtime_seconds": 4.262023291987134,
+      "runtime_seconds": 4.3845107079832815,
       "restart_count": 5,
       "trials": [
         {
@@ -1323,7 +1323,7 @@
           ],
           "scores": [
             0.6724059669726538,
-            0.67297875858833,
+            0.6724059669726538,
             0.6724059669726538,
             0.67297875858833,
             0.6724059669726539
@@ -1516,7 +1516,7 @@
           "scores": [
             0.67297875858833,
             0.67297875858833,
-            0.6724059669726538,
+            0.67297875858833,
             0.67297875858833,
             0.67297875858833
           ]
@@ -1694,7 +1694,7 @@
             0.67297875858833,
             0.67297875858833,
             0.67297875858833,
-            0.6718331753569777
+            0.6724059669726539
           ]
         },
         {
@@ -1799,7 +1799,7 @@
           0.7418562683807485
         ]
       },
-      "runtime_seconds": 4.867006333020981,
+      "runtime_seconds": 5.036583624983905,
       "restart_count": 5,
       "trials": [
         {
@@ -3041,51 +3041,51 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "paddy",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
                 "weight": 0.03333333333333333
               },
               {
@@ -3922,16 +3922,16 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.1,
-              "assumption": 0.9
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -3944,8 +3944,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -3958,8 +3958,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -4795,16 +4795,16 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.1,
-              "assumption": 0.9
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "soybean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
                 "weight": 0.03333333333333333
               },
               {
@@ -4817,8 +4817,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -4831,8 +4831,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -5668,51 +5668,51 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "maize",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.03333333333333333
               },
               {
@@ -6541,16 +6541,16 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.1,
-              "assumption": 0.9
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -6563,8 +6563,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pigeonpea",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
                 "weight": 0.03333333333333333
               },
               {
@@ -6577,8 +6577,8 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "pearl_millet",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
                 "weight": 0.03333333333333333
               },
               {

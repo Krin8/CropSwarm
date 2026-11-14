@@ -6,7 +6,7 @@
   "three_year_feasible_count": 168,
   "raw_feasible_count": 504,
   "feasible_count": 168,
-  "exact_runtime_seconds": 0.0010182919795624912,
+  "exact_runtime_seconds": 0.002453291992424056,
   "verification": {
     "water_saver": {
       "exact_score": 0.683723229418286,
@@ -92,7 +92,7 @@
           0.683723229418286
         ]
       },
-      "runtime_seconds": 5.32753320800839,
+      "runtime_seconds": 6.233385250001447,
       "restart_count": 5,
       "trials": [
         {
@@ -661,7 +661,7 @@
           0.7157552327704902
         ]
       },
-      "runtime_seconds": 4.836144000000786,
+      "runtime_seconds": 5.536994624999352,
       "restart_count": 5,
       "trials": [
         {
@@ -1230,7 +1230,7 @@
           0.6413635397298838
         ]
       },
-      "runtime_seconds": 5.160304874996655,
+      "runtime_seconds": 5.353236915980233,
       "restart_count": 5,
       "trials": [
         {
@@ -1799,7 +1799,7 @@
           0.6781246362760627
         ]
       },
-      "runtime_seconds": 5.237803833006183,
+      "runtime_seconds": 5.353046250005718,
       "restart_count": 5,
       "trials": [
         {
@@ -2782,8 +2782,8 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.06666666666666667,
-              "assumption": 0.9333333333333333
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
@@ -2797,15 +2797,15 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "winter_wheat",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "sorghum",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
@@ -3353,8 +3353,8 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.13333333333333333,
-              "assumption": 0.8666666666666667
+              "literature": 0.26666666666666666,
+              "assumption": 0.7333333333333334
             },
             "label": "low",
             "inputs": [
@@ -3368,15 +3368,15 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "sorghum",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "soybean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
                 "weight": 0.06666666666666667
               },
               {
@@ -3925,8 +3925,8 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.06666666666666667,
-              "assumption": 0.9333333333333333
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
@@ -3940,15 +3940,15 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "soybean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "cereal_rye_cover",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Secale cereale, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=317600",
                 "weight": 0.06666666666666667
               },
               {
@@ -4497,30 +4497,30 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.2,
-              "assumption": 0.8
+              "literature": 0.4,
+              "assumption": 0.6000000000000001
             },
             "label": "low",
             "inputs": [
               {
                 "input": "crop.disease_family",
                 "crop_id": "sorghum",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "soybean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "sunflower",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Asteraceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
@@ -5069,8 +5069,8 @@
               "nasa_measured": 0,
               "nasa_modeled": 0,
               "external_measured": 0,
-              "literature": 0.06666666666666667,
-              "assumption": 0.9333333333333333
+              "literature": 0.2,
+              "assumption": 0.8
             },
             "label": "low",
             "inputs": [
@@ -5084,15 +5084,15 @@
               {
                 "input": "crop.disease_family",
                 "crop_id": "winter_wheat",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
                 "weight": 0.06666666666666667
               },
               {
                 "input": "crop.disease_family",
                 "crop_id": "soybean",
-                "grade": "assumption",
-                "source": "assumption, validate locally",
+                "grade": "literature",
+                "source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
                 "weight": 0.06666666666666667
               },
               {

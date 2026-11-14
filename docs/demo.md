@@ -10,7 +10,7 @@
 | 1:05–1:30 | Compare rotations | “CropSwarm compares the existing rotation with four distinct strategies. Each shows how it trades off water, nitrogen, erosion, climate fit, income and risk. Open one to see its evidence.” |
 | 1:30–1:55 | Warmer and drier | “The percentiles show a range of modeled outcomes. Wins show how frequently each strategy scored highest among the displayed rotations under the selected preset.” |
 | 1:55–2:15 | Telangana, then Makueni | “Telangana's second season is tentative, and repeated paddy keeps its rotation warning. Makueni's cropland status is unverified.” |
-| 2:15–2:30 | Optimizer check | “We checked ant colony search against exact enumeration. The best of five searches reached the optimum in at least 29 of 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
+| 2:15–2:30 | Optimizer check | “We checked ant colony search against exact enumeration. The best of five searches reached the optimum in all 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
 
 ## Slide outline
 

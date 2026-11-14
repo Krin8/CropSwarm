@@ -1,6 +1,6 @@
 # Ant colony search and exact verification
 
-All three farms use a three-year horizon. Exact enumeration prunes identical consecutive crops, including the repeating-cycle boundary. **Whole-year cyclic shifts are one rotation**: the lexicographically smallest year shift is retained. This reduces the raw feasible counts from 504 to **168** in Kansas, 633,998 to **211,394** in Telangana, and 50,658 to **16,914** in Makueni. A one-season-slot shift is *not* equivalent at two-season farms because it changes the climate window. The scoring engine's six metric definitions and values were not changed. Ant colony searches use the same feasible layers, canonicalize winning sequences, and choose the lexicographically first canonical sequence when weighted scores are exactly equal.
+All three farms use a three-year horizon. Exact enumeration prunes identical consecutive crops, including the repeating-cycle boundary. **Whole-year cyclic shifts are one rotation**: the lexicographically smallest year shift is retained. This reduces the raw feasible counts from 504 to **168** in Kansas, 633,998 to **211,394** in Telangana, and 50,658 to **16,914** in Makueni. A one-season-slot shift is *not* equivalent at two-season farms because it changes the climate window. The scoring engine's six metric definitions are unchanged. Ant colony searches use the same feasible layers, canonicalize winning sequences, and choose the lexicographically first canonical sequence when weighted scores are exactly equal.
 
 Displayed alternatives use the best-of-five swarm result when its six-score vector differs from every already selected strategy, including the baseline, by more than **0.05 on at least one normalized metric**. Otherwise exact enumeration supplies the highest-scoring canonical alternative that clears that threshold. The `0.05` threshold is a design choice, not empirical. All three farms retain four distinct alternatives; none is padded with a near-duplicate. If fewer than four clear the threshold under edited inputs, the app displays fewer and says why. See [distinctness settings](../config/tie_diagnosis.json).
 
@@ -12,9 +12,9 @@ The [P16d change log](p16d_changes.md) compares these canonical results with the
 
 | Farm | Feasible rotations | Preset | Single exact hits | Single mean / worst gap | Best of 5 exact hits | Best of 5 mean / worst gap |
 |---|---:|---|---:|---:|---:|---:|
-| kenya_makueni_north | 16,914 | water_saver | 21/30 (70.0%) | 0.001713 / 0.005711 | 30/30 (100.0%) | 0.000000 / 0.000000 |
-| kenya_makueni_north | 16,914 | soil_builder | 26/30 (86.7%) | 0.000160 / 0.002444 | 29/30 (96.7%) | 0.000026 / 0.000785 |
-| kenya_makueni_north | 16,914 | income | 29/30 (96.7%) | 0.000034 / 0.001022 | 30/30 (100.0%) | 0.000000 / 0.000000 |
+| kenya_makueni_north | 16,914 | water_saver | 22/30 (73.3%) | 0.001696 / 0.010896 | 30/30 (100.0%) | 0.000000 / 0.000000 |
+| kenya_makueni_north | 16,914 | soil_builder | 26/30 (86.7%) | 0.000268 / 0.002444 | 30/30 (100.0%) | 0.000000 / 0.000000 |
+| kenya_makueni_north | 16,914 | income | 30/30 (100.0%) | 0.000000 / 0.000000 | 30/30 (100.0%) | 0.000000 / 0.000000 |
 | kenya_makueni_north | 16,914 | balanced | 21/30 (70.0%) | 0.001441 / 0.010833 | 30/30 (100.0%) | 0.000000 / 0.000000 |
 | telangana_a | 211,394 | water_saver | 28/30 (93.3%) | 0.000548 / 0.008222 | 30/30 (100.0%) | 0.000000 / 0.000000 |
 | telangana_a | 211,394 | soil_builder | 28/30 (93.3%) | 0.000286 / 0.004286 | 30/30 (100.0%) | 0.000000 / 0.000000 |

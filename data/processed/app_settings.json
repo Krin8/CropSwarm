@@ -167,13 +167,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (barley/oats/wheat 450\u2013650 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (winter wheat 1.5\u20131.8 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "sorghum": {
       "crop_id": "sorghum",
@@ -204,13 +204,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (grain sorghum 1.0\u20132.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "paddy": {
       "crop_id": "paddy",
@@ -239,13 +239,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (paddy rice 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (rice 0.5\u20131.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "USDA ARS GRIN Taxonomy, Oryza sativa subsp. sativa, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525"
     },
     "maize": {
       "crop_id": "maize",
@@ -277,13 +277,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (maize 500\u2013800 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (field maize 1.0\u20131.7 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Poaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "common_bean": {
       "crop_id": "common_bean",
@@ -315,13 +315,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (bean 300\u2013500 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (edible bean 20 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (dry beans and pulses 0.6\u20130.9 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "soybean": {
       "crop_id": "soybean",
@@ -350,13 +350,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (soybean 450\u2013700 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024",
       "n_credit_source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (soybean 30 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (soybean 0.6\u20131.3 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "USDA ARS GRIN Taxonomy, Glycine max subsp. max, Family (Fabaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024"
     },
     "chickpea": {
       "crop_id": "chickpea",
@@ -385,13 +385,13 @@
       "water_need_source": "Wani et al., ICRISAT repository, Table 10.7 (chickpea 300\u2013500 mm, midpoint) https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "Kew Plants of the World Online, Cicer arietinum, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:486336-1/general-information",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (chickpea 0.6\u20131.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "Kew Plants of the World Online, Cicer arietinum, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:486336-1/general-information"
     },
     "pigeonpea": {
       "crop_id": "pigeonpea",
@@ -420,13 +420,13 @@
       "water_need_source": "Wani et al., ICRISAT repository, Table 10.7 (pigeonpea 500\u2013800 mm, short-season lower bound) https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
-      "root_depth_source": "assumption, validate locally",
+      "root_depth_source": "FAO/IIASA GAEZ v5 Soil suitability assessment Table A3.1 p. 39 (1.0\u20132.0 m, midpoint 1.5 m; deep by catalog rule) https://pure.iiasa.ac.at/id/eprint/21525/1/cd8206en.pdf",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "Kew Plants of the World Online, Cajanus cajan, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information"
     },
     "green_gram": {
       "crop_id": "green_gram",
@@ -457,13 +457,13 @@
       "water_need_source": "Wani et al., ICRISAT repository, Table 10.7 (green gram/black gram 350\u2013400 mm, midpoint) https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (green gram 0.6\u20131.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "Kew Plants of the World Online, Vigna radiata, family heading (Fabaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information"
     },
     "pearl_millet": {
       "crop_id": "pearl_millet",
@@ -494,13 +494,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (millet 1.0\u20132.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "Kew Plants of the World Online, Cenchrus americanus, family heading (Poaceae) https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information"
     },
     "sunflower": {
       "crop_id": "sunflower",
@@ -531,13 +531,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (sunflower 600\u20131000 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Asteraceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (sunflower 0.8\u20131.5 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Asteraceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "cowpea": {
       "crop_id": "cowpea",
@@ -549,7 +549,7 @@
         "short_rains"
       ],
       "season_length_days": 85,
-      "water_need_mm": 275.0,
+      "water_need_mm": 284.8,
       "heat_tolerance_c": 30.0,
       "min_temp_c": 20.0,
       "max_temp_c": 35.0,
@@ -565,16 +565,16 @@
       "notes": "Grain cowpea. The heat trigger is flowering guidance used as a season-wide screen. ET is a local assumption.",
       "seasons_source": "assumption, validate locally",
       "season_length_source": "KALRO training manual Table 2.5 (Machakos 66 maturity 80\u201395 days, representative value) https://www.kalro.org/elrp/docfiles/ELRP-Training-Manual-Final.pdf",
-      "water_need_source": "assumption, validate locally",
+      "water_need_source": "Patil (2010), MAUSAM p. 567 Table 1, Bangalore kharif actual ET (281.6\u2013288.0 mm, midpoint 284.8); illustrative regional transfer, validate locally https://mausamjournal.imd.gov.in/index.php/MAUSAM/article/download/914/760/3269",
       "thermal_source": "KALRO training manual cowpea ecology (20\u201335 \u00b0C ecological range). Applying it to mean temperature and using a 30 \u00b0C daily maximum trigger is an assumption, validate locally. https://www.kalro.org/elrp/docfiles/ELRP-Training-Manual-Final.pdf",
       "rain_source": "assumption, validate locally; seasonal rainfall bounds",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (cowpea 0.6\u20131.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     },
     "cereal_rye_cover": {
       "crop_id": "cereal_rye_cover",
@@ -602,13 +602,13 @@
       "water_need_source": "assumption, validate locally",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "USDA ARS GRIN Taxonomy, Secale cereale, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=317600",
       "n_credit_source": "assumption, validate locally",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "assumption, validate locally",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "USDA ARS GRIN Taxonomy, Secale cereale, Family (Poaceae) https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=317600"
     },
     "field_pea": {
       "crop_id": "field_pea",
@@ -637,13 +637,13 @@
       "water_need_source": "FAO irrigation training manual Table 14 (pea 350\u2013500 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
       "thermal_source": "assumption, validate locally",
       "rain_source": "assumption, validate locally",
-      "is_legume_source": "assumption, validate locally",
+      "is_legume_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden",
       "n_credit_source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (field pea 20 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
       "n_demand_source": "assumption, validate locally",
       "cover_source": "assumption, validate locally",
       "root_depth_source": "FAO-56 Table 22 (dry pea 0.6\u20131.0 m; simplified class from range midpoint) https://www.fao.org/4/x0490e/x0490e0e.htm",
       "income_source": "assumption, validate locally",
-      "disease_family_source": "assumption, validate locally"
+      "disease_family_source": "UMN Extension, Rotate crops, Plant families (Fabaceae) https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
     }
   },
   "weights_presets": {

@@ -18,7 +18,7 @@ Each map has four preset panels. The outlined grid cell is unchanged historical 
 | Telangana | Soil builder | 2 of 35 | +3 °C, 0% rain | Soybean then fallow replaces pigeonpea then fallow as the top annual pattern. |
 | Telangana | Income | 12 of 35 | +1 °C, +10% rain | Soybean then maize replaces pigeonpea then maize as the top annual pattern. |
 | Telangana | Balanced | 1 of 35 | +3 °C, +10% rain | Soybean then fallow replaces pigeonpea then fallow as the top annual pattern. |
-| Makueni | Water saver | 12 of 35 | 0 °C, −30% rain | Fallow then cowpea replaces green gram then fallow as the top annual pattern. |
+| Makueni | Water saver | 11 of 35 | 0 °C, −30% rain | Fallow then cowpea replaces green gram then fallow as the top annual pattern. |
 | Makueni | Soil builder | 30 of 35 | 0 °C, −10% rain | Green gram then fallow replaces green gram then pearl millet as the top annual pattern. |
 | Makueni | Income | 8 of 35 | 0 °C, −20% rain | The illustrative maize–common bean baseline becomes top, replacing maize then green gram. |
 | Makueni | Balanced | 25 of 35 | 0 °C, +10% rain | Pearl millet then green gram replaces green gram then pearl millet; the within-year season order changes. |
@@ -37,7 +37,7 @@ The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design 
 | Telangana | Soil builder | +2.5, 0%; 0.00142840 | +3, 0%; 0.00000017 | Yes |
 | Telangana | Income | +1, 0%; 0.00057279 | +1, +10%; 0.00038725 | Yes |
 | Telangana | Balanced | +3, 0%; 0.00082907 | +3, +10%; 0.00080211 | Yes |
-| Makueni | Water saver | 0, −20%; 0.00298428 | 0, −30%; 0.00221868 | Yes |
+| Makueni | Water saver | 0, −20%; 0.00492650 | 0, −30%; 0.00116940 | Yes |
 | Makueni | Soil builder | 0, 0%; 0.00078521 | 0, −10%; 0.00139570 | Yes |
 | Makueni | Income | 0, −10%; 0.00127225 | 0, −20%; 0.00022166 | Yes |
 | Makueni | Balanced | 0, 0%; 0.00356581 | 0, +10%; 0.00068979 | Yes |
@@ -48,7 +48,7 @@ The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design 
 
 The app's **Robustness check** reports the changed-label counts above. These are label counts, not probabilities of a crop outcome. The nearest reported changes are all between near-equal options. In the previous grid, Kansas soil-builder and income could switch labels within unchanged exact-tied pairs. Canonical year shifts and lexicographic tie-breaking remove those two earlier label artifacts; their new nearest changed cells involve different crop sets, though crop order is still tied within each cell.
 
-The [metric-by-metric tie diagnosis](tie_diagnosis.md) lists both strategies at the adjacent cells for every near-tie. Kansas's zero gaps arise from crop order having no effect on any of the six modeled metric scores for those compared rotations, even after whole-year shifts are collapsed. In Telangana and Makueni, distinct crop mixes have small weighted trade-offs: some metric scores improve while others decline. Nitrogen, relative income and family/cover risk are **climate-insensitive for a fixed rotation** in this sweep; they can still differ between rotations and are not by themselves the cause of the nonzero ties. Recomputed full-precision gaps agree with the refreshed P16b calculation. No scoring parameter or metric definition changed. The P16 grid and the P16b/P16c artifacts were regenerated on the canonical space.
+The [metric-by-metric tie diagnosis](tie_diagnosis.md) lists both strategies at the adjacent cells for every near-tie. Kansas's zero gaps arise from crop order having no effect on any of the six modeled metric scores for those compared rotations, even after whole-year shifts are collapsed. In Telangana and Makueni, distinct crop mixes have small weighted trade-offs: some metric scores improve while others decline. Nitrogen, relative income and family/cover risk are **climate-insensitive for a fixed rotation** in this sweep; they can still differ between rotations and are not by themselves the cause of the nonzero ties. Recomputed full-precision gaps agree with the refreshed P16b calculation. P23 refreshed the grid with the sourced cowpea water-use input. The climate grid, scoring definitions and near-tie tolerance were preserved. See the [P23 comparison](p23_changes.md).
 
 The four alternatives displayed for each reference farm now form **four meaningfully different metric profiles**, each also different from the baseline, under a maximum absolute difference of `0.05` across the six normalized metric scores. This threshold is a **design choice, not empirical evidence**. No reference alternative is a near-duplicate. The app recomputes distinctness for edited comparisons and shows fewer alternatives if no further canonical candidate clears the threshold; it never pads the list with a near-duplicate. See [tie-diagnosis settings](../config/tie_diagnosis.json).
 

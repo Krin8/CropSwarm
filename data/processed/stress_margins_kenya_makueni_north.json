@@ -22,11 +22,11 @@
           "is_baseline": false
         },
         "second": {
-          "id": "rotation_7b607e5d7b52",
-          "score": 0.7132840811276054,
+          "id": "rotation_eff7c03a5c45",
+          "score": 0.7113418574582036,
           "is_baseline": false
         },
-        "gap": 0.002984276055377544,
+        "gap": 0.004926499724779432,
         "feasible_count": 16914
       },
       "after": {
@@ -34,21 +34,21 @@
         "rainfall_change_pct": -30,
         "top": {
           "id": "rotation_7b607e5d7b52",
-          "score": 0.7050914526486777,
+          "score": 0.7023963133521266,
           "is_baseline": false
         },
         "second": {
-          "id": "rotation_4846a7876663",
-          "score": 0.7028727717267527,
+          "id": "rotation_1ac72790f6cf",
+          "score": 0.7012269162147639,
           "is_baseline": false
         },
-        "gap": 0.002218680921925009,
+        "gap": 0.0011693971373627488,
         "feasible_count": 16914
       },
       "near_tie_before": true,
       "near_tie_after": true,
       "near_tie": true,
-      "sentence": "At +0 \u00b0C and -20% rain, the top-two score gap is 0.0030; at +0 \u00b0C and -30% rain, it is 0.0022."
+      "sentence": "At +0 \u00b0C and -20% rain, the top-two score gap is 0.0049; at +0 \u00b0C and -30% rain, it is 0.0012."
     },
     "soil_builder": {
       "status": "tip",

@@ -272,7 +272,7 @@
           "rainfall_change_pct": -30,
           "winner_id": "rotation_7b607e5d7b52",
           "baseline_score": 0.5446638883934711,
-          "exact_optimum_score": 0.7050914526486777,
+          "exact_optimum_score": 0.7023963133521266,
           "exact_optimum_id": "rotation_7b607e5d7b52",
           "feasible_count": 16914,
           "baseline_flags": {},
@@ -325,10 +325,10 @@
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_7b607e5d7b52",
+          "winner_id": "rotation_1ac72790f6cf",
           "baseline_score": 0.5446638883934711,
-          "exact_optimum_score": 0.7028855702957365,
-          "exact_optimum_id": "rotation_7b607e5d7b52",
+          "exact_optimum_score": 0.7012269162147639,
+          "exact_optimum_id": "rotation_1ac72790f6cf",
           "feasible_count": 16914,
           "baseline_flags": {},
           "status": "complete"

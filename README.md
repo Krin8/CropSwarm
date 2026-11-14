@@ -17,7 +17,7 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 2. NASA POWER supplies 1991–2025 daily weather for all three sites. The long-record validation uses 2001–2024 Terra MODIS composites. [Coverage and results](docs/backtest.md#p19-long-record-nasa-consistency-check)
 3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
 4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
-5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times; best-of-five found it 29–30 times. [Gaps](docs/optimizer.md)
+5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times. Best of five found it in all 30 trials. [Gaps](docs/optimizer.md)
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
 7. The baseline flags remain visible: Kansas fallow and spring NDVI disagree, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Validity](docs/decisions.md)
 
@@ -65,7 +65,7 @@ flowchart LR
 
 ## Optimizer verification
 
-All three sites fit a three-year horizon. Exact enumeration evaluated 168, 211,394 and 16,914 canonical rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best-of-five reached it 29–30 times. [Verification, seeds and optimality gaps](docs/optimizer.md)
+All three sites fit a three-year horizon. Exact enumeration evaluated 168, 211,394 and 16,914 canonical rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best of five reached it in all 30 trials. [Verification, seeds and optimality gaps](docs/optimizer.md)
 
 ## Rebuild from cached evidence
 
