@@ -194,29 +194,104 @@ The [P32 extract](../data/raw/p32/quickstats_targets.csv) uses the cached P20 pu
 
 Both yield-only cohorts span 1990–2023. The [saved inventory](../data/processed/climate_yield_transfer_yield_inventory.json) lists all 32 Nebraska and 17 Oklahoma counties excluded for fewer than 20 valid years. Yield coverage precedes the independent county geography join and the complete-weather screen.
 
-### Evaluation disposition
+### Weather coverage and final cohorts
 
-The verified Nebraska and Oklahoma county centroid tables are absent from the available offline data. The current network scope covers NASS bulk data and resumable POWER requests. The feature build stops before sending a POWER request for either target. Final climate-paired sample sizes, RMSE, R², Spearman and bootstrap intervals are unavailable. There were zero real P32 fits or model configurations tried.
+After the yield-only screen, the authorized [Nebraska](https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ne.html) and [Oklahoma](https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ok.html) Census TIGERweb ACS26 tables supplied the published January 1, 2026 `CENTLAT` and `CENTLON` values. All USDA county identifiers reconciled by FIPS. The [archive provenance](../data/raw/p32/provenance.json) records both table hashes. 234 of 234 requested NASA POWER chunks were complete. All 117 yield-eligible counties cleared the climate screen. Nebraska lost 11 county-years because a required daily radiation value was missing. Oklahoma retained all 1,800 eligible county-years. The feature builder reused the Kansas winter-wheat window and crop inputs.
 
-| Preregistered case | Status |
-|---|---|
-| Nebraska USDA district holdout | Pending Nebraska centroid and weather inputs |
-| Oklahoma USDA district holdout | Pending Oklahoma centroid and weather inputs |
-| Kansas → Nebraska and Kansas → Oklahoma | Target features and own-state references unavailable |
-| Nebraska → Kansas and Oklahoma → Kansas | Source-state climate features unavailable |
-| Three-state blocked holdout, including all three state-specific comparisons | Final three-state cohort unavailable |
+| State | Retained counties | USDA districts | Paired county-years | Harvest years | Non-irrigated / fallback |
+| --- | --- | --- | --- | --- | --- |
+| Kansas | 103 | 9 | 3,215 | 1990–2023 | 2,005 / 1,210 |
+| Nebraska | 59 | 8 | 1,733 | 1990–2023 | 1,154 / 579 |
+| Oklahoma | 58 | 8 | 1,800 | 1990–2023 | 421 / 1,379 |
 
-The prepared evaluator reuses the P25/P27 training-fold trends, ridge scaling, model construction and inner selection. The fixed grid has ridge alpha 0.1, 1 and 10, and forest minimum leaf size 5 and 20 with 48 trees. The same paired bootstrap estimates RMSE, R² and Spearman with 95% intervals. Direct transfer estimates use the source state's averages of training-county means and trends. Each comparison also pairs the same evaluated county-years with the target-state held-out mean and trend baselines, fitted on other reporting districts. The pooled fold excludes an entire state and tunes on the remaining states' state-qualified reporting districts. Its pooled bootstrap would have three state blocks. Seeded fixtures exercise every planned case, disjoint folds and reproducibility.
+The Nebraska and Oklahoma feature coverage and request manifests list every county and date range. Centroid weather is gridded and can miss field exposures. County yields combine management and varieties. The all-practice fallback is more frequent in Oklahoma and can include irrigated wheat. The tests describe weather–yield associations in county averages. Rotation quality still needs field evidence. [Nebraska coverage](../data/processed/climate_yield_transfer_31_coverage.json) · [Oklahoma coverage](../data/processed/climate_yield_transfer_40_coverage.json) · [Nebraska POWER manifest](../data/raw/p32/power_31_manifest.json) · [Oklahoma POWER manifest](../data/raw/p32/power_40_manifest.json)
 
-Centroid weather is a coarse proxy. The yield records mix management and reporting practices. The comparison describes historical weather–yield associations in county averages and does not validate rotation recommendations.
+### Results
 
-### Resume from verified county coordinates
+The reporting unit is bushels per acre. Every result uses the same held-out rows for all four methods. The brackets show paired descriptive 95% bootstrap intervals. Target-state estimates resample USDA reporting districts. The pooled estimate resamples its three held-out states. The source-only baselines use the mean or trend of training counties, with the unchanged P27 equal-county fallback for unseen counties. The comparison against own-state baselines uses one USDA district held out at a time within the target state. Those reference fits may use years shared with the held-out district from other districts. No yields from the evaluated state enter the transfer model, scaling, trend fitting or tuning. Shared years can occur across states.
 
-With locally available verified centroid tables, save the Census HTML as `data/raw/p32/census_31_counties.html` and `data/raw/p32/census_40_counties.html`. A sourced CSV with `fips,county,lat,lon` also works with `--state`, `--centroid-file` and `--centroid-source`. Preserve the source and vintage of either input. Then run:
+| Evaluation | County-years | Model | RMSE, bu/acre | R² | Spearman ρ |
+| --- | --- | --- | --- | --- | --- |
+| Nebraska district holdout | 1,733 | County mean | 11.274 [10.892, 11.612] | -0.047 [-0.206, -0.019] | -0.277 [-0.396, -0.043] |
+| Nebraska district holdout | 1,733 | Linear trend | 10.161 [9.133, 11.407] | 0.150 [-0.178, 0.300] | 0.405 [0.249, 0.589] |
+| Nebraska district holdout | 1,733 | Ridge | 9.861 [8.994, 10.879] | 0.199 [-0.078, 0.333] | 0.457 [0.344, 0.599] |
+| Nebraska district holdout | 1,733 | Random forest | 9.090 [8.083, 10.164] | 0.320 [0.071, 0.437] | 0.576 [0.453, 0.678] |
+| Oklahoma district holdout | 1,800 | County mean | 9.200 [8.515, 10.180] | -0.025 [-0.102, -0.014] | -0.253 [-0.305, -0.103] |
+| Oklahoma district holdout | 1,800 | Linear trend | 8.985 [8.351, 9.831] | 0.022 [-0.131, 0.076] | 0.168 [0.051, 0.299] |
+| Oklahoma district holdout | 1,800 | Ridge | 7.863 [7.041, 8.954] | 0.251 [0.104, 0.349] | 0.524 [0.436, 0.618] |
+| Oklahoma district holdout | 1,800 | Random forest | 7.716 [6.726, 8.873] | 0.279 [0.145, 0.386] | 0.545 [0.447, 0.648] |
+| Kansas → Nebraska | 1,733 | County mean | 11.331 [10.435, 11.929] | -0.057 [-0.189, -0.001] | Unavailable |
+| Kansas → Nebraska | 1,733 | Linear trend | 10.383 [9.826, 10.859] | 0.112 [0.009, 0.152] | 0.453 [0.315, 0.594] |
+| Kansas → Nebraska | 1,733 | Ridge | 11.017 [10.250, 11.519] | 0.001 [-0.149, 0.069] | 0.381 [0.251, 0.507] |
+| Kansas → Nebraska | 1,733 | Random forest | 9.915 [9.495, 10.444] | 0.190 [0.100, 0.225] | 0.503 [0.373, 0.599] |
+| Kansas → Oklahoma | 1,800 | County mean | 12.158 [11.305, 13.293] | -0.790 [-1.433, -0.453] | Unavailable |
+| Kansas → Oklahoma | 1,800 | Linear trend | 12.027 [10.909, 13.412] | -0.752 [-1.473, -0.332] | 0.220 [0.093, 0.326] |
+| Kansas → Oklahoma | 1,800 | Ridge | 12.096 [10.535, 13.930] | -0.772 [-1.689, -0.303] | 0.434 [0.339, 0.530] |
+| Kansas → Oklahoma | 1,800 | Random forest | 13.225 [11.738, 15.077] | -1.118 [-2.222, -0.473] | 0.492 [0.405, 0.580] |
+| Nebraska → Kansas | 3,215 | County mean | 11.379 [10.469, 12.429] | -0.049 [-0.139, -0.003] | Unavailable |
+| Nebraska → Kansas | 3,215 | Linear trend | 11.304 [10.195, 12.595] | -0.036 [-0.209, 0.093] | 0.300 [0.195, 0.390] |
+| Nebraska → Kansas | 3,215 | Ridge | 10.894 [10.116, 11.611] | 0.038 [-0.084, 0.138] | 0.467 [0.408, 0.512] |
+| Nebraska → Kansas | 3,215 | Random forest | 10.180 [9.315, 10.950] | 0.160 [0.014, 0.297] | 0.529 [0.479, 0.578] |
+| Oklahoma → Kansas | 3,215 | County mean | 13.737 [12.940, 14.694] | -0.529 [-0.871, -0.290] | Unavailable |
+| Oklahoma → Kansas | 3,215 | Linear trend | 13.353 [12.650, 14.229] | -0.445 [-0.763, -0.229] | 0.300 [0.195, 0.390] |
+| Oklahoma → Kansas | 3,215 | Ridge | 13.762 [12.618, 15.017] | -0.535 [-0.984, -0.231] | 0.512 [0.417, 0.595] |
+| Oklahoma → Kansas | 3,215 | Random forest | 12.964 [11.933, 14.107] | -0.362 [-0.691, -0.125] | 0.571 [0.516, 0.624] |
+| Nebraska + Oklahoma → Kansas | 3,215 | County mean | 11.446 [10.932, 12.053] | -0.062 [-0.182, -0.007] | Unavailable |
+| Nebraska + Oklahoma → Kansas | 3,215 | Linear trend | 10.920 [10.391, 11.558] | 0.034 [-0.069, 0.100] | 0.300 [0.195, 0.390] |
+| Nebraska + Oklahoma → Kansas | 3,215 | Ridge | 9.728 [9.275, 10.252] | 0.233 [0.113, 0.299] | 0.536 [0.464, 0.582] |
+| Nebraska + Oklahoma → Kansas | 3,215 | Random forest | 9.152 [8.748, 9.605] | 0.321 [0.256, 0.349] | 0.624 [0.593, 0.652] |
+| Kansas + Oklahoma → Nebraska | 1,733 | County mean | 12.331 [10.686, 13.234] | -0.252 [-0.497, -0.045] | Unavailable |
+| Kansas + Oklahoma → Nebraska | 1,733 | Linear trend | 11.553 [10.143, 12.357] | -0.099 [-0.313, 0.061] | 0.453 [0.315, 0.594] |
+| Kansas + Oklahoma → Nebraska | 1,733 | Ridge | 12.220 [10.474, 13.195] | -0.230 [-0.507, -0.010] | 0.433 [0.331, 0.534] |
+| Kansas + Oklahoma → Nebraska | 1,733 | Random forest | 11.254 [9.992, 12.144] | -0.043 [-0.233, 0.090] | 0.489 [0.368, 0.586] |
+| Kansas + Nebraska → Oklahoma | 1,800 | County mean | 12.782 [11.867, 14.002] | -0.979 [-1.708, -0.585] | Unavailable |
+| Kansas + Nebraska → Oklahoma | 1,800 | Linear trend | 12.937 [11.666, 14.481] | -1.027 [-1.896, -0.508] | 0.220 [0.093, 0.326] |
+| Kansas + Nebraska → Oklahoma | 1,800 | Ridge | 12.372 [10.953, 14.093] | -0.853 [-1.730, -0.406] | 0.451 [0.359, 0.539] |
+| Kansas + Nebraska → Oklahoma | 1,800 | Random forest | 14.244 [12.661, 16.197] | -1.457 [-2.736, -0.690] | 0.484 [0.393, 0.571] |
+| Three-state holdout, pooled | 6,748 | County mean | 12.044 [11.446, 12.782] | -0.124 [-0.979, -0.062] | -0.345 [-0.449, -0.076] |
+| Three-state holdout, pooled | 6,748 | Linear trend | 11.651 [10.920, 12.937] | -0.052 [-1.027, 0.034] | 0.117 [0.009, 0.453] |
+| Three-state holdout, pooled | 6,748 | Ridge | 11.147 [9.728, 12.372] | 0.037 [-0.853, 0.233] | 0.290 [0.136, 0.536] |
+| Three-state holdout, pooled | 6,748 | Random forest | 11.250 [9.152, 14.244] | 0.019 [-1.457, 0.321] | 0.332 [0.182, 0.624] |
+
+### Differences against own-state references
+
+Negative RMSE differences favor the transfer model. For in-state references, the performance table directly compares models with that state's mean and trend. Kansas own-state references come from the saved P27 district evaluation. Nebraska and Oklahoma references come from the P32 in-state rows above.
+
+| Evaluation | Own mean RMSE | Own trend RMSE | Model | Δ vs own mean | Δ vs own trend |
+| --- | --- | --- | --- | --- | --- |
+| Kansas → Nebraska | 11.274 | 10.161 | Ridge | -0.257 [-1.208, +0.466] | +0.856 [-1.131, +2.311] |
+| Kansas → Nebraska | 11.274 | 10.161 | Random forest | -1.358 [-1.897, -0.821] | -0.245 [-1.860, +0.984] |
+| Kansas → Oklahoma | 9.200 | 8.985 | Ridge | +2.896 [+1.141, +5.014] | +3.111 [+1.535, +4.930] |
+| Kansas → Oklahoma | 9.200 | 8.985 | Random forest | +4.025 [+1.774, +6.285] | +4.240 [+2.227, +6.132] |
+| Nebraska → Kansas | 11.202 | 10.758 | Ridge | -0.309 [-0.992, +0.380] | +0.135 [-0.721, +1.008] |
+| Nebraska → Kansas | 11.202 | 10.758 | Random forest | -1.022 [-1.954, -0.217] | -0.578 [-1.430, +0.173] |
+| Oklahoma → Kansas | 11.202 | 10.758 | Ridge | +2.560 [+1.044, +4.057] | +3.004 [+1.373, +4.503] |
+| Oklahoma → Kansas | 11.202 | 10.758 | Random forest | +1.761 [+0.411, +3.020] | +2.205 [+0.731, +3.574] |
+| Nebraska + Oklahoma → Kansas | 11.202 | 10.758 | Ridge | -1.474 [-2.141, -0.829] | -1.030 [-1.865, -0.302] |
+| Nebraska + Oklahoma → Kansas | 11.202 | 10.758 | Random forest | -2.050 [-2.533, -1.645] | -1.606 [-2.265, -1.083] |
+| Kansas + Oklahoma → Nebraska | 11.274 | 10.161 | Ridge | +0.946 [-0.987, +2.137] | +2.059 [-0.815, +3.787] |
+| Kansas + Oklahoma → Nebraska | 11.274 | 10.161 | Random forest | -0.020 [-1.483, +0.955] | +1.093 [-1.350, +2.743] |
+| Kansas + Nebraska → Oklahoma | 9.200 | 8.985 | Ridge | +3.172 [+1.486, +5.176] | +3.387 [+1.895, +5.101] |
+| Kansas + Nebraska → Oklahoma | 9.200 | 8.985 | Random forest | +5.044 [+2.653, +7.457] | +5.259 [+3.116, +7.265] |
+| Three-state holdout, pooled | 10.724 | 10.158 | Ridge | +0.423 [-1.474, +3.172] | +0.989 [-1.030, +3.387] |
+| Three-state holdout, pooled | 10.724 | 10.158 | Random forest | +0.526 [-2.050, +5.044] | +1.091 [-1.606, +5.259] |
+
+### What transferred
+
+- **Within each target state.** Both learners lowered point RMSE relative to the district-held-out mean and trend. Against the trend, the forest's paired improvement was 1.071 bu/acre in Nebraska (95% interval 0.826–1.296) and 1.269 in Oklahoma (0.824–1.824). Oklahoma ridge also had an interval excluding zero. Nebraska ridge's interval included zero.
+- **Kansas → Nebraska and Nebraska → Kansas.** The forest beat both own-state baselines on point RMSE in both directions. Against the own-state trend, its improvements were 0.245 and 0.578 bu/acre, respectively. Both paired intervals included zero. Ridge exceeded the own-state trend RMSE in both directions.
+- **Kansas → Oklahoma and Oklahoma → Kansas.** Both transferred learners had higher RMSE than both own-state baselines in both directions. The paired intervals exclude zero. For example, Kansas → Oklahoma random forest had RMSE 13.225 bu/acre against Oklahoma's trend RMSE of 8.985.
+- **Pooled state holdout.** Training on Nebraska and Oklahoma lowered RMSE for both learners versus both Kansas own-state references, with paired intervals excluding zero. The Nebraska and Oklahoma pooled folds both trailed their own-state trends. Overall, pooled ridge and forest had RMSEs of 11.147 and 11.250 bu/acre versus 11.651 for the source-only trend and 10.158 for the own-state trend. All paired differences against either trend included zero at the pooled level. The pooled bootstrap uses only three state blocks.
+
+A direct-transfer county-mean baseline assigns every target row the same training-state mean, so its Spearman coefficient is undefined. Similar rank associations can coexist with substantial absolute yield error. The tests use these historical counties and overlapping years. Differences in irrigation reporting, management, cultivars or weather distributions could contribute to the transfer gaps. The evaluation does not separate these influences.
+
+### Models, selection and reproduction
+
+Compared 4 methods with 5 learned configurations. Tried ridge alpha 0.1, 1.0, 10.0 and forest minimum leaf sizes 5, 20, with the unchanged 48 trees. There were 16 target-state district folds, 4 directed fits and 3 pooled state folds. That used 345 inner learned fits and 46 outer learned refits. Inner selection groups were USDA districts, qualified by state for the pooled fit. The saved report includes chosen configurations per fold, sample sizes, source-trend comparisons and all intervals.
+
+The [results JSON](../data/processed/climate_yield_transfer.json) and [held-out predictions](../data/processed/climate_yield_transfer_predictions.csv) are separate from P25/P27. Use the following commands from the repository root to rebuild them offline from the committed NASA archives. Add `--fetch --archive` to the first command to resume missing weather chunks. Run `python -m src.cross_state_yield_data --yield-inventory` to reproduce the yield-only screen.
 
 ```sh
-python -m src.cross_state_yield_data --fetch --archive
+python -m src.cross_state_yield_data
 python -m src.cross_state_yield
 ```
-
-The first command resumes county POWER chunks and writes only P32 weather, feature and coverage files. The second consumes the final cohort and writes separate P32 results. Run `python -m src.cross_state_yield_data --yield-inventory` to reproduce the yield-only counts offline.

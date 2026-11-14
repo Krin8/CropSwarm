@@ -1,0 +1,2616 @@
+{
+  "label": "illustrative, validate locally",
+  "status": "complete",
+  "states": {
+    "20": "Kansas",
+    "31": "Nebraska",
+    "40": "Oklahoma"
+  },
+  "model_count": 4,
+  "configurations": {
+    "ridge": [
+      {
+        "alpha": 0.1
+      },
+      {
+        "alpha": 1.0
+      },
+      {
+        "alpha": 10.0
+      }
+    ],
+    "random_forest": [
+      {
+        "min_samples_leaf": 5
+      },
+      {
+        "min_samples_leaf": 20
+      }
+    ]
+  },
+  "learned_configuration_count": 5,
+  "outer_fits_by_experiment": {
+    "in_state": 16,
+    "direct": 4,
+    "pooled": 3
+  },
+  "inner_learned_fits": 345,
+  "outer_learned_refits": 46,
+  "cases": {
+    "in_state_31": {
+      "n": 1733,
+      "outer_folds": 8,
+      "bootstrap_block": "district",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.04654268021621033,
+            "bootstrap_95": [
+              -0.20570102692173226,
+              -0.019166775899523484
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.273643899777442,
+            "bootstrap_95": [
+              10.892202186078103,
+              11.612437075225525
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.27748150471153266,
+            "bootstrap_95": [
+              -0.39616793200043215,
+              -0.04272039619353941
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": 0.14985187153542145,
+            "bootstrap_95": [
+              -0.177642417046883,
+              0.2995336377846548
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.160922571605639,
+            "bootstrap_95": [
+              9.132666455359077,
+              11.406798656694466
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.40459810628220655,
+            "bootstrap_95": [
+              0.24920698023390062,
+              0.5888165597842412
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.19928188365495103,
+            "bootstrap_95": [
+              -0.07772925556738579,
+              0.3333351376209099
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.861106920012876,
+            "bootstrap_95": [
+              8.993578569987227,
+              10.878769903782695
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.4568455338913916,
+            "bootstrap_95": [
+              0.34381449984682294,
+              0.5993416884013818
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.3196151760592235,
+            "bootstrap_95": [
+              0.07068804671787612,
+              0.43696735561225664
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.089984641715997,
+            "bootstrap_95": [
+              8.082858286589813,
+              10.163691474434264
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5755699874363813,
+            "bootstrap_95": [
+              0.4526019821085988,
+              0.6775103512772968
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -0.2998156515927626,
+          "bootstrap_95": [
+            -0.6132686302289363,
+            0.12311942987005155
+          ]
+        },
+        "random_forest": {
+          "value": -1.0709379298896415,
+          "bootstrap_95": [
+            -1.2960495073554903,
+            -0.8261351014074386
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 10.0}": 8
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 5}": 2,
+          "{\"min_samples_leaf\": 20}": 6
+        }
+      },
+      "folds": [
+        {
+          "held_out": "10",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 335
+        },
+        {
+          "held_out": "20",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 67
+        },
+        {
+          "held_out": "30",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 20
+        },
+        {
+          "held_out": "50",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 134
+        },
+        {
+          "held_out": "60",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 261
+        },
+        {
+          "held_out": "70",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 290
+        },
+        {
+          "held_out": "80",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 245
+        },
+        {
+          "held_out": "90",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 381
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 0.6900569467121862,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 175.57503360113628,
+                "predicted_yield_anomaly_bu_ac": 4.4435406686412495
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 233.15324053442222,
+                "predicted_yield_anomaly_bu_ac": 1.8040678049997116
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 273.9977360291181,
+                "predicted_yield_anomaly_bu_ac": -0.07138637719021297
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 310.64168511696045,
+                "predicted_yield_anomaly_bu_ac": -1.7404881762365696
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 355.2913144835549,
+                "predicted_yield_anomaly_bu_ac": -3.7802019020959503
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.3512294474483859,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.83266012694749,
+                "predicted_yield_anomaly_bu_ac": 2.6209850403600177
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 5.169936526255043,
+                "predicted_yield_anomaly_bu_ac": 1.8666026166881857
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.459896133871899,
+                "predicted_yield_anomaly_bu_ac": 0.7927549607297556
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 12.691286785920369,
+                "predicted_yield_anomaly_bu_ac": -0.6032172295133796
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 19.02596653202539,
+                "predicted_yield_anomaly_bu_ac": -2.6709326139206993
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.10733748968830703,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 12.74012279284478,
+                "predicted_yield_anomaly_bu_ac": -1.3655922833403986
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.307978452217142,
+                "predicted_yield_anomaly_bu_ac": -0.21252365223511127
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 13.646744984242531,
+                "predicted_yield_anomaly_bu_ac": 0.46960207454301117
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.029415719739003,
+                "predicted_yield_anomaly_bu_ac": 1.2426163554647751
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 14.513372830573925,
+                "predicted_yield_anomaly_bu_ac": 2.2136189336250913
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.007163558379524204,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 4.483024825780106,
+                "predicted_yield_anomaly_bu_ac": 0.03209288785096332
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 5.371698098007013,
+                "predicted_yield_anomaly_bu_ac": 0.24922437572394596
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 6.000789671090595,
+                "predicted_yield_anomaly_bu_ac": 0.4003319093470956
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 6.663702155000221,
+                "predicted_yield_anomaly_bu_ac": 0.5613517004784675
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 7.703103333481292,
+                "predicted_yield_anomaly_bu_ac": 0.8083807611644422
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": -0.021006995470710166,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 222.32534218118866,
+                "predicted_yield_anomaly_bu_ac": 1.7161744573322009
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 302.5103669936526,
+                "predicted_yield_anomaly_bu_ac": 0.9270076402224992
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 363.1282169648009,
+                "predicted_yield_anomaly_bu_ac": 0.32639741903052505
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 434.6792065781881,
+                "predicted_yield_anomaly_bu_ac": -0.3805333335868661
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 547.0886266589729,
+                "predicted_yield_anomaly_bu_ac": -1.4685577426983818
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 0.7861001775494785,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 175.57503360113628,
+                "predicted_yield_anomaly_bu_ac": 1.1701068472312002
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 233.15324053442222,
+                "predicted_yield_anomaly_bu_ac": 1.5364035986016957
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 273.9977360291181,
+                "predicted_yield_anomaly_bu_ac": 0.0025087586591658905
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 310.64168511696045,
+                "predicted_yield_anomaly_bu_ac": -1.5521519922156242
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 355.2913144835549,
+                "predicted_yield_anomaly_bu_ac": -4.20131952838037
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 0.41891986564388084,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 222.32534218118866,
+                "predicted_yield_anomaly_bu_ac": -2.434644780891658
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 302.5103669936526,
+                "predicted_yield_anomaly_bu_ac": -0.5416296394915627
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 363.1282169648009,
+                "predicted_yield_anomaly_bu_ac": 0.2881593075804935
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 434.6792065781881,
+                "predicted_yield_anomaly_bu_ac": 0.8733924936959406
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 547.0886266589729,
+                "predicted_yield_anomaly_bu_ac": -0.074857799433836
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.3238154935874302,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 2.83266012694749,
+                "predicted_yield_anomaly_bu_ac": 0.6957610687667095
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 5.169936526255043,
+                "predicted_yield_anomaly_bu_ac": 1.2888149487264045
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 8.459896133871899,
+                "predicted_yield_anomaly_bu_ac": 0.9755961126123399
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 12.691286785920369,
+                "predicted_yield_anomaly_bu_ac": 0.328180890310597
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 19.02596653202539,
+                "predicted_yield_anomaly_bu_ac": -1.5777585252588309
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.13098462991445103,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 4.483024825780106,
+                "predicted_yield_anomaly_bu_ac": -0.4880201138616507
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 5.371698098007013,
+                "predicted_yield_anomaly_bu_ac": 0.5944613116665072
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 6.000789671090595,
+                "predicted_yield_anomaly_bu_ac": 0.6856370366463106
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 6.663702155000221,
+                "predicted_yield_anomaly_bu_ac": -0.36273343498047994
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 7.703103333481292,
+                "predicted_yield_anomaly_bu_ac": -0.2956724901513157
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.11629738570362491,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 12.74012279284478,
+                "predicted_yield_anomaly_bu_ac": -0.2457013944050738
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.307978452217142,
+                "predicted_yield_anomaly_bu_ac": -0.26279704452398417
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 13.646744984242531,
+                "predicted_yield_anomaly_bu_ac": 0.5536343685550591
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 14.029415719739003,
+                "predicted_yield_anomaly_bu_ac": 0.9412216556188199
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 14.513372830573925,
+                "predicted_yield_anomaly_bu_ac": 2.021911086805313
+              }
+            ]
+          }
+        ]
+      },
+      "kind": "in_state",
+      "train_states": [
+        "31"
+      ],
+      "test_state": "31",
+      "counties": 59
+    },
+    "in_state_40": {
+      "n": 1800,
+      "outer_folds": 8,
+      "bootstrap_block": "district",
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.024890603329315697,
+            "bootstrap_95": [
+              -0.10170492713224205,
+              -0.01422256261623733
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.199675700703692,
+            "bootstrap_95": [
+              8.51501196412404,
+              10.180259844945832
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.25337055703746675,
+            "bootstrap_95": [
+              -0.30491205001708427,
+              -0.10333566611824065
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": 0.022442584569906665,
+            "bootstrap_95": [
+              -0.13088622734036506,
+              0.07618425599996993
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 8.984727292673682,
+            "bootstrap_95": [
+              8.351404340371927,
+              9.831274473951877
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.1677972802850226,
+            "bootstrap_95": [
+              0.050736856202830284,
+              0.2989224690572225
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.2512482880043385,
+            "bootstrap_95": [
+              0.10379698288662259,
+              0.34875580862588956
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 7.863260739370092,
+            "bootstrap_95": [
+              7.041190861343071,
+              8.954457201535636
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5237112337415611,
+            "bootstrap_95": [
+              0.4362108116461123,
+              0.6178209106379029
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.2791070206393874,
+            "bootstrap_95": [
+              0.1446680517804153,
+              0.38620714743173334
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 7.715590338205872,
+            "bootstrap_95": [
+              6.72572805505547,
+              8.872520024396417
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5448502417825054,
+            "bootstrap_95": [
+              0.44745725117531004,
+              0.6478903902460326
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_trend": {
+        "ridge": {
+          "value": -1.1214665533035904,
+          "bootstrap_95": [
+            -1.5875912153735467,
+            -0.6990135444716777
+          ]
+        },
+        "random_forest": {
+          "value": -1.2691369544678102,
+          "bootstrap_95": [
+            -1.8242282649686803,
+            -0.8237546831979351
+          ]
+        }
+      },
+      "selected_config_counts": {
+        "ridge": {
+          "{\"alpha\": 10.0}": 8
+        },
+        "random_forest": {
+          "{\"min_samples_leaf\": 20}": 7,
+          "{\"min_samples_leaf\": 5}": 1
+        }
+      },
+      "folds": [
+        {
+          "held_out": "10",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 154
+        },
+        {
+          "held_out": "20",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 201
+        },
+        {
+          "held_out": "30",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 255
+        },
+        {
+          "held_out": "40",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 264
+        },
+        {
+          "held_out": "50",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 358
+        },
+        {
+          "held_out": "60",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "n": 185
+        },
+        {
+          "held_out": "70",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 309
+        },
+        {
+          "held_out": "80",
+          "selected": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "n": 74
+        }
+      ],
+      "interpretation": {
+        "ridge": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 3.7838722236425406,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 42.802344615384584,
+                "predicted_yield_anomaly_bu_ac": 8.690518987314839
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 96.61040230769224,
+                "predicted_yield_anomaly_bu_ac": 4.543437338147956
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 139.73553119658112,
+                "predicted_yield_anomaly_bu_ac": 1.2250292892737296
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 199.61211076923067,
+                "predicted_yield_anomaly_bu_ac": -3.386553226554788
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 291.1420491452993,
+                "predicted_yield_anomaly_bu_ac": -10.425154650586933
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.6337033325118879,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.629177905982903,
+                "predicted_yield_anomaly_bu_ac": -4.161412236983402
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 14.325751611111109,
+                "predicted_yield_anomaly_bu_ac": -1.9108125675965377
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.90169297008547,
+                "predicted_yield_anomaly_bu_ac": -0.04303586931880288
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 15.509857264957263,
+                "predicted_yield_anomaly_bu_ac": 1.9256426436461311
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 16.33874379059829,
+                "predicted_yield_anomaly_bu_ac": 4.610697979914557
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 0.6265389776369199,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 321.4857744444444,
+                "predicted_yield_anomaly_bu_ac": 4.47638767172481
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 468.2201788888888,
+                "predicted_yield_anomaly_bu_ac": 2.1303968602118877
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 581.5134444444445,
+                "predicted_yield_anomaly_bu_ac": 0.32281013643834355
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 698.2606655555556,
+                "predicted_yield_anomaly_bu_ac": -1.544747033616167
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 872.3679133333335,
+                "predicted_yield_anomaly_bu_ac": -4.320485737237827
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.16064252976045434,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 5.556111111111111,
+                "predicted_yield_anomaly_bu_ac": 1.5296008632448739
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.500555555555556,
+                "predicted_yield_anomaly_bu_ac": 0.9320020601101554
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 20.613333333333333,
+                "predicted_yield_anomaly_bu_ac": 0.3787670156090519
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 28.532777777777778,
+                "predicted_yield_anomaly_bu_ac": -0.22266163912739936
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 40.446666666666665,
+                "predicted_yield_anomaly_bu_ac": -1.141990380694504
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.06874006463843241,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 9.571702602564104,
+                "predicted_yield_anomaly_bu_ac": 1.5724166674608528
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 10.432746824786324,
+                "predicted_yield_anomaly_bu_ac": 0.7894103141489727
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 11.13525143162393,
+                "predicted_yield_anomaly_bu_ac": 0.15432375441851043
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 11.852654722222223,
+                "predicted_yield_anomaly_bu_ac": -0.4934442717110979
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 12.900232623931624,
+                "predicted_yield_anomaly_bu_ac": -1.440315718190126
+              }
+            ]
+          }
+        ],
+        "random_forest": [
+          {
+            "feature": "water_deficit_mm",
+            "label": "Modeled water deficit (mm)",
+            "permutation_rmse_increase": 2.2388867257380793,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 42.802344615384584,
+                "predicted_yield_anomaly_bu_ac": 4.229939441667359
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 96.61040230769224,
+                "predicted_yield_anomaly_bu_ac": 3.639893718346878
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 139.73553119658112,
+                "predicted_yield_anomaly_bu_ac": 2.790449832186037
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 199.61211076923067,
+                "predicted_yield_anomaly_bu_ac": 0.1573694994812065
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 291.1420491452993,
+                "predicted_yield_anomaly_bu_ac": -5.080461891074299
+              }
+            ]
+          },
+          {
+            "feature": "radiation_mj_m2_day",
+            "label": "Mean daily solar radiation (MJ/m\u00b2/day)",
+            "permutation_rmse_increase": 0.6638911613032432,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 13.629177905982903,
+                "predicted_yield_anomaly_bu_ac": -2.416937730125256
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 14.325751611111109,
+                "predicted_yield_anomaly_bu_ac": 0.42702701926417574
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 14.90169297008547,
+                "predicted_yield_anomaly_bu_ac": 1.185604082057181
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 15.509857264957263,
+                "predicted_yield_anomaly_bu_ac": 2.035971239996326
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 16.33874379059829,
+                "predicted_yield_anomaly_bu_ac": 2.924061460101287
+              }
+            ]
+          },
+          {
+            "feature": "heat_days",
+            "label": "Heat days",
+            "permutation_rmse_increase": 0.2620244443375004,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 5.556111111111111,
+                "predicted_yield_anomaly_bu_ac": -0.0849409185390042
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 13.500555555555556,
+                "predicted_yield_anomaly_bu_ac": 0.2933710107333675
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 20.613333333333333,
+                "predicted_yield_anomaly_bu_ac": 0.5521390761796132
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 28.532777777777778,
+                "predicted_yield_anomaly_bu_ac": 0.36172197761372504
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 40.446666666666665,
+                "predicted_yield_anomaly_bu_ac": -0.18432067679251007
+              }
+            ]
+          },
+          {
+            "feature": "mean_temp_c",
+            "label": "Mean air temperature (\u00b0C)",
+            "permutation_rmse_increase": 0.07446443185018214,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 9.571702602564104,
+                "predicted_yield_anomaly_bu_ac": 1.733280460673492
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 10.432746824786324,
+                "predicted_yield_anomaly_bu_ac": 0.38413210538186976
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 11.13525143162393,
+                "predicted_yield_anomaly_bu_ac": -0.39740626308228194
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 11.852654722222223,
+                "predicted_yield_anomaly_bu_ac": -0.57531651055686
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 12.900232623931624,
+                "predicted_yield_anomaly_bu_ac": -1.1629337405413365
+              }
+            ]
+          },
+          {
+            "feature": "rainfall_mm",
+            "label": "Season rainfall (mm)",
+            "permutation_rmse_increase": 0.06451683464048674,
+            "partial_dependence": [
+              {
+                "training_quantile": 0.1,
+                "value": 321.4857744444444,
+                "predicted_yield_anomaly_bu_ac": 1.3397857888199045
+              },
+              {
+                "training_quantile": 0.3,
+                "value": 468.2201788888888,
+                "predicted_yield_anomaly_bu_ac": 0.7647420217964065
+              },
+              {
+                "training_quantile": 0.5,
+                "value": 581.5134444444445,
+                "predicted_yield_anomaly_bu_ac": 0.028132662534474134
+              },
+              {
+                "training_quantile": 0.7,
+                "value": 698.2606655555556,
+                "predicted_yield_anomaly_bu_ac": -0.36965765540585754
+              },
+              {
+                "training_quantile": 0.9,
+                "value": 872.3679133333335,
+                "predicted_yield_anomaly_bu_ac": -0.8585583876966189
+              }
+            ]
+          }
+        ]
+      },
+      "kind": "in_state",
+      "train_states": [
+        "40"
+      ],
+      "test_state": "40",
+      "counties": 58
+    },
+    "20_to_31": {
+      "n": 1733,
+      "counties": 59,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 8,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.057155728997469346,
+            "bootstrap_95": [
+              -0.1894289182961337,
+              -0.0005730746202666584
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.330663037506072,
+            "bootstrap_95": [
+              10.435324263568331,
+              11.929242086005605
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": 0.11225682847922802,
+            "bootstrap_95": [
+              0.008848465829985254,
+              0.15184524322003143
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.383159145681171,
+            "bootstrap_95": [
+              9.825634651382071,
+              10.85896499117399
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.45264170196033043,
+            "bootstrap_95": [
+              0.3146374320743693,
+              0.5935042257144308
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.0005622055177052498,
+            "bootstrap_95": [
+              -0.148747874884183,
+              0.06862819875270591
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.017009519838737,
+            "bootstrap_95": [
+              10.249992732097114,
+              11.519192306194475
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.38133119343105004,
+            "bootstrap_95": [
+              0.25109398213360606,
+              0.5074129542028908
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.19043666923548186,
+            "bootstrap_95": [
+              0.09975090528339807,
+              0.22526571016154986
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.915423191603473,
+            "bootstrap_95": [
+              9.494788902507835,
+              10.443787584716675
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5026187226595948,
+            "bootstrap_95": [
+              0.3729651378179542,
+              0.5987750218748737
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": 0.6338503741575661,
+          "bootstrap_95": [
+            0.2702984405991226,
+            1.0419535291893471
+          ]
+        },
+        "random_forest": {
+          "value": -0.46773595407769797,
+          "bootstrap_95": [
+            -0.8170497492284248,
+            -0.022430534733866317
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": -0.2566343799387045,
+            "bootstrap_95": [
+              -1.2080036076448097,
+              0.46642676744210015
+            ]
+          },
+          "random_forest": {
+            "value": -1.3582207081739686,
+            "bootstrap_95": [
+              -1.8974253970532964,
+              -0.821391017723428
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 0.8560869482330986,
+            "bootstrap_95": [
+              -1.130530727536272,
+              2.3110833358767846
+            ]
+          },
+          "random_forest": {
+            "value": -0.24549938000216542,
+            "bootstrap_95": [
+              -1.8596180739342425,
+              0.9840761329301657
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 11.273643899777442,
+        "linear_trend": 10.160922571605639
+      },
+      "kind": "direct",
+      "train_states": [
+        "20"
+      ],
+      "test_state": "31",
+      "selected": {
+        "ridge": {
+          "alpha": 0.1
+        },
+        "random_forest": {
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    "20_to_40": {
+      "n": 1800,
+      "counties": 58,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 8,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.7901336980231526,
+            "bootstrap_95": [
+              -1.432984537811423,
+              -0.45257362936384915
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.158401941786371,
+            "bootstrap_95": [
+              11.305491356284204,
+              13.292532131828654
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.7515725676857841,
+            "bootstrap_95": [
+              -1.4732452459974452,
+              -0.33224978199781313
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.026737444203398,
+            "bootstrap_95": [
+              10.908975445583618,
+              13.411615581881684
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.22044755123054371,
+            "bootstrap_95": [
+              0.09258094772202377,
+              0.3257482520357808
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": -0.7718432978738394,
+            "bootstrap_95": [
+              -1.6886554780791825,
+              -0.30324557952657094
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.096129220033502,
+            "bootstrap_95": [
+              10.534746496709653,
+              13.930084293932591
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.43379098768230145,
+            "bootstrap_95": [
+              0.33940152259291867,
+              0.5299160291463411
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": -1.1179759241827307,
+            "bootstrap_95": [
+              -2.2223018467275835,
+              -0.47276791841154603
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 13.224957104580966,
+            "bootstrap_95": [
+              11.73848452429681,
+              15.076866884859488
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.4921108556081747,
+            "bootstrap_95": [
+              0.40493517828048253,
+              0.579541683954049
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": 0.0693917758301037,
+          "bootstrap_95": [
+            -0.46206073819351057,
+            0.6730754206345295
+          ]
+        },
+        "random_forest": {
+          "value": 1.1982196603775677,
+          "bootstrap_95": [
+            0.2730543376854352,
+            1.9666713770839113
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": 2.8964535193298104,
+            "bootstrap_95": [
+              1.1405055498730965,
+              5.013588718004948
+            ]
+          },
+          "random_forest": {
+            "value": 4.025281403877274,
+            "bootstrap_95": [
+              1.7739002406972701,
+              6.28469668291159
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 3.11140192735982,
+            "bootstrap_95": [
+              1.534642944358884,
+              4.930202175758387
+            ]
+          },
+          "random_forest": {
+            "value": 4.240229811907284,
+            "bootstrap_95": [
+              2.2268659107344213,
+              6.132148444741373
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 9.199675700703692,
+        "linear_trend": 8.984727292673682
+      },
+      "kind": "direct",
+      "train_states": [
+        "20"
+      ],
+      "test_state": "40",
+      "selected": {
+        "ridge": {
+          "alpha": 0.1
+        },
+        "random_forest": {
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    "31_to_20": {
+      "n": 3215,
+      "counties": 103,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 9,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.049336164897129775,
+            "bootstrap_95": [
+              -0.13926256179686566,
+              -0.0034983411752157116
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.378646581897383,
+            "bootstrap_95": [
+              10.46926605234193,
+              12.429458895471663
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.035652380507651626,
+            "bootstrap_95": [
+              -0.20887629402417054,
+              0.09307635079035988
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.30421195523156,
+            "bootstrap_95": [
+              10.195105847552599,
+              12.594624706633203
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.30029984838950496,
+            "bootstrap_95": [
+              0.19458638611047782,
+              0.3904659179125212
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.038221212624024004,
+            "bootstrap_95": [
+              -0.08417230377242084,
+              0.13837741936991493
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.893586473913563,
+            "bootstrap_95": [
+              10.116006612277737,
+              11.611027713348754
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.46654805732159976,
+            "bootstrap_95": [
+              0.4077852932820618,
+              0.5119318741572519
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.16012813151878336,
+            "bootstrap_95": [
+              0.013939749037333882,
+              0.29697353182702163
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.179813123948078,
+            "bootstrap_95": [
+              9.314504686600186,
+              10.94954865114874
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5288066645096275,
+            "bootstrap_95": [
+              0.4794582490143378,
+              0.5780166787784738
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": -0.4106254813179966,
+          "bootstrap_95": [
+            -1.5444241037400823,
+            0.6497958230395459
+          ]
+        },
+        "random_forest": {
+          "value": -1.1243988312834823,
+          "bootstrap_95": [
+            -1.9892742167182311,
+            -0.3400169786965488
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": -0.30864399261437825,
+            "bootstrap_95": [
+              -0.9924441467547428,
+              0.37973842336135777
+            ]
+          },
+          "random_forest": {
+            "value": -1.022417342579864,
+            "bootstrap_95": [
+              -1.9535550480966641,
+              -0.21712131953537644
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 0.13546598601013216,
+            "bootstrap_95": [
+              -0.721357911898808,
+              1.0082311240113988
+            ]
+          },
+          "random_forest": {
+            "value": -0.5783073639553535,
+            "bootstrap_95": [
+              -1.429553742957407,
+              0.17265587329295085
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 11.202230466527942,
+        "linear_trend": 10.758120487903431
+      },
+      "kind": "direct",
+      "train_states": [
+        "31"
+      ],
+      "test_state": "20",
+      "selected": {
+        "ridge": {
+          "alpha": 10.0
+        },
+        "random_forest": {
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    "40_to_20": {
+      "n": 3215,
+      "counties": 103,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 9,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.5293693353427011,
+            "bootstrap_95": [
+              -0.8705070612101385,
+              -0.28998582769942116
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 13.736923419709687,
+            "bootstrap_95": [
+              12.939616777519065,
+              14.694484041424534
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.4449826218105699,
+            "bootstrap_95": [
+              -0.7628438340969985,
+              -0.22907176380087924
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 13.352561905389324,
+            "bootstrap_95": [
+              12.650358942425433,
+              14.229172817205543
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.30029984838950496,
+            "bootstrap_95": [
+              0.19458638611047782,
+              0.3904659179125212
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": -0.5350324849385784,
+            "bootstrap_95": [
+              -0.9838903099237397,
+              -0.23121836186515488
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 13.762333360543568,
+            "bootstrap_95": [
+              12.617593819915514,
+              15.017334885642361
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5115587729633128,
+            "bootstrap_95": [
+              0.4171334625401142,
+              0.5950985427371572
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": -0.3620093438507752,
+            "bootstrap_95": [
+              -0.6910809075992463,
+              -0.12500528980781334
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.963531628168992,
+            "bootstrap_95": [
+              11.933067311024628,
+              14.107055969029746
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5710032606502454,
+            "bootstrap_95": [
+              0.5161630114885093,
+              0.6235403645750942
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": 0.4097714551542442,
+          "bootstrap_95": [
+            -0.10781256348380985,
+            0.9100716801205339
+          ]
+        },
+        "random_forest": {
+          "value": -0.389030277220332,
+          "bootstrap_95": [
+            -0.7626498172009302,
+            -0.017702393763375127
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": 2.5601028940156265,
+            "bootstrap_95": [
+              1.0435462757019691,
+              4.05716142246814
+            ]
+          },
+          "random_forest": {
+            "value": 1.7613011616410503,
+            "bootstrap_95": [
+              0.4113996581289909,
+              3.019986007018142
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 3.004212872640137,
+            "bootstrap_95": [
+              1.3732335497745214,
+              4.503075492791513
+            ]
+          },
+          "random_forest": {
+            "value": 2.2054111402655607,
+            "bootstrap_95": [
+              0.7306528800789831,
+              3.574251141767364
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 11.202230466527942,
+        "linear_trend": 10.758120487903431
+      },
+      "kind": "direct",
+      "train_states": [
+        "40"
+      ],
+      "test_state": "20",
+      "selected": {
+        "ridge": {
+          "alpha": 10.0
+        },
+        "random_forest": {
+          "min_samples_leaf": 20
+        }
+      }
+    },
+    "pooled_holdout_20": {
+      "n": 3215,
+      "counties": 103,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 9,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.0618375665166091,
+            "bootstrap_95": [
+              -0.1820909393037541,
+              -0.006660876574151942
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.446226383838427,
+            "bootstrap_95": [
+              10.931998156546824,
+              12.053339923045197
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": 0.033526623677692324,
+            "bootstrap_95": [
+              -0.0694298981794715,
+              0.099924433371353
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 10.920140738010334,
+            "bootstrap_95": [
+              10.391459076478398,
+              11.557792597318139
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.30029984838950496,
+            "bootstrap_95": [
+              0.19458638611047782,
+              0.3904659179125212
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.23301381188090986,
+            "bootstrap_95": [
+              0.11317140596276778,
+              0.2991606593939428
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.728078349461281,
+            "bootstrap_95": [
+              9.27456970377413,
+              10.251795571077052
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.5361646034016239,
+            "bootstrap_95": [
+              0.46409252944291673,
+              0.581925900832245
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.32116928988211646,
+            "bootstrap_95": [
+              0.2556688536501248,
+              0.349325296244354
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 9.151958219906861,
+            "bootstrap_95": [
+              8.747739986654398,
+              9.604542486458602
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.6244036940521662,
+            "bootstrap_95": [
+              0.5925946830631642,
+              0.6519877048454878
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": -1.1920623885490524,
+          "bootstrap_95": [
+            -1.5973454594783807,
+            -0.8432568219092805
+          ]
+        },
+        "random_forest": {
+          "value": -1.7681825181034725,
+          "bootstrap_95": [
+            -2.07085909977677,
+            -1.468092753166009
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": -1.4741521170666605,
+            "bootstrap_95": [
+              -2.141481388091005,
+              -0.8292563454283101
+            ]
+          },
+          "random_forest": {
+            "value": -2.0502722466210805,
+            "bootstrap_95": [
+              -2.5328130793617514,
+              -1.6448877719830945
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": -1.03004213844215,
+            "bootstrap_95": [
+              -1.865203426468071,
+              -0.30192610246771284
+            ]
+          },
+          "random_forest": {
+            "value": -1.6061622679965701,
+            "bootstrap_95": [
+              -2.265473310724837,
+              -1.082893719235605
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 11.202230466527942,
+        "linear_trend": 10.758120487903431
+      },
+      "kind": "pooled_fold",
+      "train_states": [
+        "31",
+        "40"
+      ],
+      "test_state": "20",
+      "selected": {
+        "ridge": {
+          "alpha": 10.0
+        },
+        "random_forest": {
+          "min_samples_leaf": 20
+        }
+      }
+    },
+    "pooled_holdout_31": {
+      "n": 1733,
+      "counties": 59,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 8,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.2520738381273262,
+            "bootstrap_95": [
+              -0.4971130524198651,
+              -0.04492179903655899
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.331071358720873,
+            "bootstrap_95": [
+              10.68605300108782,
+              13.233790169930042
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.0990369288578854,
+            "bootstrap_95": [
+              -0.3128132486859853,
+              0.060563388703331125
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.552925775853494,
+            "bootstrap_95": [
+              10.14302493269508,
+              12.357267263103608
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.45264170196033043,
+            "bootstrap_95": [
+              0.3146374320743693,
+              0.5935042257144308
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": -0.2295659971167825,
+            "bootstrap_95": [
+              -0.5070830189972201,
+              -0.009646172222205878
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.21973429302912,
+            "bootstrap_95": [
+              10.473529674828946,
+              13.195037391931015
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.43256249085918147,
+            "bootstrap_95": [
+              0.33135295102915685,
+              0.5344099730319936
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": -0.04290418931088236,
+            "bootstrap_95": [
+              -0.23330943777714555,
+              0.08979239484003891
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.25402942719813,
+            "bootstrap_95": [
+              9.992359093614008,
+              12.143914031516891
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.4894038927105718,
+            "bootstrap_95": [
+              0.3681599998461501,
+              0.5859006731483956
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": 0.6668085171756264,
+          "bootstrap_95": [
+            0.35175050885731524,
+            0.9646824392601056
+          ]
+        },
+        "random_forest": {
+          "value": -0.2988963486553633,
+          "bootstrap_95": [
+            -0.6228022889523938,
+            0.1384593636686066
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": 0.9460903932516782,
+            "bootstrap_95": [
+              -0.9874990453330413,
+              2.137482185227302
+            ]
+          },
+          "random_forest": {
+            "value": -0.01961447257931148,
+            "bootstrap_95": [
+              -1.4834035344565362,
+              0.9546363192480356
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 2.0588117214234813,
+            "bootstrap_95": [
+              -0.8147213900487613,
+              3.786654936777082
+            ]
+          },
+          "random_forest": {
+            "value": 1.0931068555924917,
+            "bootstrap_95": [
+              -1.350106220384163,
+              2.7433196060542557
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 11.273643899777442,
+        "linear_trend": 10.160922571605639
+      },
+      "kind": "pooled_fold",
+      "train_states": [
+        "20",
+        "40"
+      ],
+      "test_state": "31",
+      "selected": {
+        "ridge": {
+          "alpha": 0.1
+        },
+        "random_forest": {
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    "pooled_holdout_40": {
+      "n": 1800,
+      "counties": 58,
+      "bootstrap_block": "district_block",
+      "bootstrap_blocks": 8,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.9786139730009491,
+            "bootstrap_95": [
+              -1.7077397924992639,
+              -0.5850539680762679
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.78245576360005,
+            "bootstrap_95": [
+              11.866947480185921,
+              14.002479177324597
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": null,
+            "bootstrap_95": null,
+            "bootstrap_n": 0
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -1.0266751647200354,
+            "bootstrap_95": [
+              -1.896403698808679,
+              -0.5081209669529182
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.936769355613015,
+            "bootstrap_95": [
+              11.666388357739473,
+              14.48125199742684
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.22044755123054371,
+            "bootstrap_95": [
+              0.09258094772202377,
+              0.3257482520357808
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": -0.8534711874253922,
+            "bootstrap_95": [
+              -1.7300881364342986,
+              -0.4059826804996116
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.371623138981658,
+            "bootstrap_95": [
+              10.952806080138553,
+              14.09339696759041
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.4514118871333249,
+            "bootstrap_95": [
+              0.35921340362257825,
+              0.539192575748231
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": -1.456912644472247,
+            "bootstrap_95": [
+              -2.736000634376819,
+              -0.6897132242007196
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 14.243890299727129,
+            "bootstrap_95": [
+              12.66106901319179,
+              16.19729713216867
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.483742919268805,
+            "bootstrap_95": [
+              0.3927694039546589,
+              0.5709993132814929
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": -0.5651462166313568,
+          "bootstrap_95": [
+            -0.9161270496574752,
+            -0.1273747837168635
+          ]
+        },
+        "random_forest": {
+          "value": 1.3071209441141143,
+          "bootstrap_95": [
+            0.3852468490146341,
+            2.0536473309042376
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": 3.171947438277966,
+            "bootstrap_95": [
+              1.4858613398109402,
+              5.176263160213608
+            ]
+          },
+          "random_forest": {
+            "value": 5.044214599023437,
+            "bootstrap_95": [
+              2.6534072154564416,
+              7.456876560706341
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 3.3868958463079757,
+            "bootstrap_95": [
+              1.8948173665176906,
+              5.1005021471997205
+            ]
+          },
+          "random_forest": {
+            "value": 5.259163007053447,
+            "bootstrap_95": [
+              3.115516378546606,
+              7.264726766549947
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 9.199675700703692,
+        "linear_trend": 8.984727292673682
+      },
+      "kind": "pooled_fold",
+      "train_states": [
+        "20",
+        "31"
+      ],
+      "test_state": "40",
+      "selected": {
+        "ridge": {
+          "alpha": 0.1
+        },
+        "random_forest": {
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    "pooled": {
+      "n": 6748,
+      "counties": 220,
+      "bootstrap_block": "state",
+      "bootstrap_blocks": 3,
+      "performance": {
+        "county_mean": {
+          "r2": {
+            "value": -0.12396686350179276,
+            "bootstrap_95": [
+              -0.9786139730009493,
+              -0.0618375665166091
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 12.043887975632497,
+            "bootstrap_95": [
+              11.446226383838427,
+              12.78245576360005
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": -0.34548807585430896,
+            "bootstrap_95": [
+              -0.44943349665677024,
+              -0.0759812337875131
+            ],
+            "bootstrap_n": 896
+          }
+        },
+        "linear_trend": {
+          "r2": {
+            "value": -0.0517473925570231,
+            "bootstrap_95": [
+              -1.0266751647200363,
+              0.03352662367769266
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.650529812002187,
+            "bootstrap_95": [
+              10.920140738010332,
+              12.936769355613016
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.11740611103532299,
+            "bootstrap_95": [
+              0.008591894150335733,
+              0.45264170196033043
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "ridge": {
+          "r2": {
+            "value": 0.03713810117760952,
+            "bootstrap_95": [
+              -0.8534711874253924,
+              0.23301381188090986
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.147358141800826,
+            "bootstrap_95": [
+              9.728078349461281,
+              12.371623138981658
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.290024053564271,
+            "bootstrap_95": [
+              0.13567787027821332,
+              0.5361646034016239
+            ],
+            "bootstrap_n": 1000
+          }
+        },
+        "random_forest": {
+          "r2": {
+            "value": 0.019407130483690138,
+            "bootstrap_95": [
+              -1.4569126444722476,
+              0.32116928988211646
+            ],
+            "bootstrap_n": 1000
+          },
+          "rmse_bu_ac": {
+            "value": 11.249528465136908,
+            "bootstrap_95": [
+              9.151958219906861,
+              14.243890299727129
+            ],
+            "bootstrap_n": 1000
+          },
+          "spearman": {
+            "value": 0.33150738188263684,
+            "bootstrap_95": [
+              0.1821911509266625,
+              0.6244036940521661
+            ],
+            "bootstrap_n": 1000
+          }
+        }
+      },
+      "rmse_delta_vs_source_trend": {
+        "ridge": {
+          "value": -0.5031716702013611,
+          "bootstrap_95": [
+            -1.1920623885490507,
+            0.6668085171756264
+          ]
+        },
+        "random_forest": {
+          "value": -0.40100134686527866,
+          "bootstrap_95": [
+            -1.7681825181034707,
+            1.3071209441141125
+          ]
+        }
+      },
+      "rmse_delta_vs_own_baselines": {
+        "county_mean": {
+          "ridge": {
+            "value": 0.42336476727129657,
+            "bootstrap_95": [
+              -1.4741521170666605,
+              3.171947438277966
+            ]
+          },
+          "random_forest": {
+            "value": 0.525535090607379,
+            "bootstrap_95": [
+              -2.0502722466210805,
+              5.044214599023437
+            ]
+          }
+        },
+        "linear_trend": {
+          "ridge": {
+            "value": 0.9891330462168053,
+            "bootstrap_95": [
+              -1.03004213844215,
+              3.3868958463079757
+            ]
+          },
+          "random_forest": {
+            "value": 1.0913033695528878,
+            "bootstrap_95": [
+              -1.6061622679965701,
+              5.259163007053447
+            ]
+          }
+        }
+      },
+      "own_baseline_rmse": {
+        "county_mean": 10.72399337452953,
+        "linear_trend": 10.15822509558402
+      },
+      "kind": "pooled",
+      "train_states": [
+        "20",
+        "31",
+        "40"
+      ],
+      "test_state": null
+    }
+  },
+  "cohorts": {
+    "20": {
+      "county_years": 3215,
+      "counties": 103,
+      "districts": 9,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 2005,
+        "all_practices": 1210
+      }
+    },
+    "31": {
+      "county_years": 1733,
+      "counties": 59,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 1154,
+        "all_practices": 579
+      }
+    },
+    "40": {
+      "county_years": 1800,
+      "counties": 58,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "all_practices": 1379,
+        "non_irrigated": 421
+      }
+    }
+  }
+}

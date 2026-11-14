@@ -208,3 +208,16 @@ def test_cross_state_validation_shows_yield_screen_if_results_are_unavailable(mo
     assert any(row.label == "Cross-state winter-wheat check (P32)" for row in app.expander)
     assert any("59 counties, 1,744 county-years" in row.value for row in app.caption)
     assert any("58 counties, 1,800 county-years" in row.value for row in app.caption)
+
+
+def test_cross_state_validation_shows_completed_case_metrics():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    selector = app.selectbox(key="cross_state_yield_case")
+    assert selector.value == "pooled"
+    selector.set_value("20_to_40").run()
+    assert not app.exception
+    assert any("1,800 held-out county-years · 58 counties" in row.value for row in app.caption)
+    assert any("Own-state held-out references on the same rows" in row.value for row in app.caption)
+    table = next(row.value for row in app.dataframe if "Δ RMSE vs own linear trend" in row.value.columns)
+    assert set(table.Model) == {"Ridge", "Random forest"}
