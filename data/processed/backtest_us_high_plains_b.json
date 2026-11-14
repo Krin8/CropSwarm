@@ -1,0 +1,358 @@
+{
+  "farm_id": "us_high_plains_b",
+  "years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "label": "illustrative; validate locally",
+  "crop_identity": "CDL mapped point class, not verified farm management",
+  "method": "Crop-window rainfall and heat from scoring inputs; daily bucket deficit; QA-filtered MOD13Q1 peak and max-minus-min amplitude. Spearman and seeded paired bootstrap within season; no parameter tuning.",
+  "bootstrap": {
+    "draws": 1000,
+    "seed": 42,
+    "source": "design choice, not empirical"
+  },
+  "screening": {
+    "minimum_good_composites": 3,
+    "small_n_below": 8,
+    "source": "design choice, not empirical; validate locally"
+  },
+  "rows": [
+    {
+      "year": 2019,
+      "season": "cool",
+      "slot": 1,
+      "crop_id": "fallow",
+      "crop_basis": "USDA NASS CDL point classes 2019\u20132023; data/raw/p2_evidence/p2_wheat_cdl.json",
+      "window_start": "2018-10-01",
+      "window_end": "2019-06-30",
+      "rainfall_mm": {
+        "value": 511.27,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": null,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": null,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": null,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": null,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6972,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.42090000000000005,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 16,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2020,
+      "season": "cool",
+      "slot": 1,
+      "crop_id": "winter_wheat",
+      "crop_basis": "USDA NASS CDL point classes 2019\u20132023; data/raw/p2_evidence/p2_wheat_cdl.json",
+      "window_start": "2019-10-01",
+      "window_end": "2020-06-16",
+      "rainfall_mm": {
+        "value": 208.56,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 550.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 341.4400000000004,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.6208000000000007,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 22,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.5221,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.3234,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 15,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2021,
+      "season": "warm",
+      "slot": 1,
+      "crop_id": "sorghum",
+      "crop_basis": "USDA NASS CDL point classes 2019\u20132023; data/raw/p2_evidence/p2_wheat_cdl.json",
+      "window_start": "2021-04-01",
+      "window_end": "2021-07-14",
+      "rainfall_mm": {
+        "value": 253.92000000000002,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 450.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 205.40428571428563,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.45645396825396806,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 6,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.7341000000000001,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.5295000000000001,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 7,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2022,
+      "season": "cool",
+      "slot": 1,
+      "crop_id": "fallow",
+      "crop_basis": "USDA NASS CDL point classes 2019\u20132023; data/raw/p2_evidence/p2_wheat_cdl.json",
+      "window_start": "2021-10-01",
+      "window_end": "2022-06-30",
+      "rainfall_mm": {
+        "value": 166.49,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": null,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": null,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": null,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": null,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.3422,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.1605,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 17,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2023,
+      "season": "cool",
+      "slot": 1,
+      "crop_id": "winter_wheat",
+      "crop_basis": "USDA NASS CDL point classes 2019\u20132023; data/raw/p2_evidence/p2_wheat_cdl.json",
+      "window_start": "2022-10-01",
+      "window_end": "2023-06-17",
+      "rainfall_mm": {
+        "value": 273.41999999999996,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 550.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 400.99923076923176,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.7290895104895123,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 16,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6317,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.3693,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 11,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    }
+  ],
+  "seasons": {
+    "cool": {
+      "comparisons": {
+        "deficit_fraction_vs_ndvi_peak": {
+          "rho": null,
+          "n": 2,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "deficit_fraction_vs_ndvi_amplitude": {
+          "rho": null,
+          "n": 2,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "heat_days_vs_ndvi_peak": {
+          "rho": null,
+          "n": 2,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "heat_days_vs_ndvi_amplitude": {
+          "rho": null,
+          "n": 2,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        }
+      },
+      "directional": {
+        "consistent": 0,
+        "assessable": 0
+      },
+      "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel; data/crops.csv; illustrative crop demand and heat thresholds"
+    },
+    "warm": {
+      "comparisons": {
+        "deficit_fraction_vs_ndvi_peak": {
+          "rho": null,
+          "n": 1,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "deficit_fraction_vs_ndvi_amplitude": {
+          "rho": null,
+          "n": 1,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "heat_days_vs_ndvi_peak": {
+          "rho": null,
+          "n": 1,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        },
+        "heat_days_vs_ndvi_amplitude": {
+          "rho": null,
+          "n": 1,
+          "bootstrap_95": null,
+          "small_n": true,
+          "note": "insufficient variation or fewer than three pairs"
+        }
+      },
+      "directional": {
+        "consistent": 0,
+        "assessable": 0
+      },
+      "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel; data/crops.csv; illustrative crop demand and heat thresholds"
+    }
+  },
+  "caveats": [
+    "MODIS point pixels can mix fields, weeds and other cover; NDVI is not a crop-yield measure.",
+    "CDL is a mapped class at a different resolution, not a management record.",
+    "Small sample sizes and repeated assumptions make correlations descriptive only.",
+    "Kansas 2019 spring NDVI over mapped fallow remains unexplained.",
+    "Telangana's second season is tentative; Makueni cropland is unverified."
+  ]
+}

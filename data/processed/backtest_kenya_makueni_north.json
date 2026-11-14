@@ -1,0 +1,632 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "label": "illustrative; validate locally",
+  "crop_identity": "assumption, validate locally",
+  "method": "Crop-window rainfall and heat from scoring inputs; daily bucket deficit; QA-filtered MOD13Q1 peak and max-minus-min amplitude. Spearman and seeded paired bootstrap within season; no parameter tuning.",
+  "bootstrap": {
+    "draws": 1000,
+    "seed": 42,
+    "source": "design choice, not empirical"
+  },
+  "screening": {
+    "minimum_good_composites": 3,
+    "small_n_below": 8,
+    "source": "design choice, not empirical; validate locally"
+  },
+  "rows": [
+    {
+      "year": 2019,
+      "season": "long_rains",
+      "slot": 1,
+      "crop_id": "maize",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2019-03-01",
+      "window_end": "2019-06-28",
+      "rainfall_mm": {
+        "value": 138.01,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 500.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 361.9900000000001,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.7239800000000003,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 4,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.48610000000000003,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.13490000000000002,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 5,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2019,
+      "season": "short_rains",
+      "slot": 2,
+      "crop_id": "common_bean",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2019-11-01",
+      "window_end": "2020-02-08",
+      "rainfall_mm": {
+        "value": 384.28000000000003,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 400.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 53.080000000000005,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.1327,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.7537,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.04610000000000003,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 3,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2020,
+      "season": "long_rains",
+      "slot": 1,
+      "crop_id": "maize",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2020-03-01",
+      "window_end": "2020-06-28",
+      "rainfall_mm": {
+        "value": 357.6700000000001,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 500.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 174.71666666666664,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.34943333333333326,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.7034,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.22699999999999998,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 5,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2020,
+      "season": "short_rains",
+      "slot": 2,
+      "crop_id": "common_bean",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2020-11-01",
+      "window_end": "2021-02-08",
+      "rainfall_mm": {
+        "value": 250.88000000000005,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 400.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 169.05,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.42262500000000003,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 5,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6049,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.181,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 4,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2021,
+      "season": "long_rains",
+      "slot": 1,
+      "crop_id": "maize",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2021-03-01",
+      "window_end": "2021-06-28",
+      "rainfall_mm": {
+        "value": 186.91,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 500.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 313.09000000000003,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.6261800000000001,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.5212,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.19639999999999996,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 3,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2021,
+      "season": "short_rains",
+      "slot": 2,
+      "crop_id": "common_bean",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2021-11-01",
+      "window_end": "2022-02-08",
+      "rainfall_mm": {
+        "value": 218.18,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 400.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 181.82000000000002,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.45455000000000007,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 9,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.7707,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.48380000000000006,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 6,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2022,
+      "season": "long_rains",
+      "slot": 1,
+      "crop_id": "maize",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2022-03-01",
+      "window_end": "2022-06-28",
+      "rainfall_mm": {
+        "value": 135.03,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 500.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 364.97,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.72994,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6571,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.2571,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 4,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2022,
+      "season": "short_rains",
+      "slot": 2,
+      "crop_id": "common_bean",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2022-11-01",
+      "window_end": "2023-02-08",
+      "rainfall_mm": {
+        "value": 127.2,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 400.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 272.79999999999995,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.6819999999999999,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 9,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6424000000000001,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.20830000000000004,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 4,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2023,
+      "season": "long_rains",
+      "slot": 1,
+      "crop_id": "maize",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2023-03-01",
+      "window_end": "2023-06-28",
+      "rainfall_mm": {
+        "value": 335.02000000000004,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 500.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 203.91333333333338,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.4078266666666668,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.6266,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.29350000000000004,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 3,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    },
+    {
+      "year": 2023,
+      "season": "short_rains",
+      "slot": 2,
+      "crop_id": "common_bean",
+      "crop_basis": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
+      "window_start": "2023-11-01",
+      "window_end": "2024-02-08",
+      "rainfall_mm": {
+        "value": 419.96,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate"
+      },
+      "crop_water_need_mm": {
+        "value": 400.0,
+        "unit": "mm",
+        "source": "data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "deficit_mm": {
+        "value": 126.77000000000001,
+        "unit": "mm",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds; soil water and irrigation assumptions"
+      },
+      "deficit_fraction": {
+        "value": 0.316925,
+        "unit": "share of crop water need",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "heat_days": {
+        "value": 0,
+        "unit": "days",
+        "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; data/crops.csv; illustrative crop demand and heat thresholds"
+      },
+      "ndvi_peak": {
+        "value": 0.7531,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "ndvi_amplitude": {
+        "value": 0.1018,
+        "unit": "NDVI ratio",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "good_composites": {
+        "value": 3,
+        "unit": "composites",
+        "source": "NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel"
+      },
+      "status": "complete"
+    }
+  ],
+  "seasons": {
+    "long_rains": {
+      "comparisons": {
+        "deficit_fraction_vs_ndvi_peak": {
+          "rho": -0.39999999999999997,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "deficit_fraction_vs_ndvi_amplitude": {
+          "rho": -0.19999999999999998,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "heat_days_vs_ndvi_peak": {
+          "rho": -0.7071067811865475,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            -0.7071067811865475
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "heat_days_vs_ndvi_amplitude": {
+          "rho": -0.7071067811865475,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            -0.7071067811865475
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      },
+      "directional": {
+        "consistent": 2,
+        "assessable": 3
+      },
+      "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel; data/crops.csv; illustrative crop demand and heat thresholds"
+    },
+    "short_rains": {
+      "comparisons": {
+        "deficit_fraction_vs_ndvi_peak": {
+          "rho": -0.19999999999999998,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "deficit_fraction_vs_ndvi_amplitude": {
+          "rho": 0.8999999999999998,
+          "n": 5,
+          "bootstrap_95": [
+            0.1111111111111111,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "heat_days_vs_ndvi_peak": {
+          "rho": 0.0,
+          "n": 5,
+          "bootstrap_95": [
+            -1.0,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        "heat_days_vs_ndvi_amplitude": {
+          "rho": 0.9486832980505137,
+          "n": 5,
+          "bootstrap_95": [
+            0.7453559924999299,
+            1.0
+          ],
+          "small_n": true,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      },
+      "directional": {
+        "consistent": 2,
+        "assessable": 3
+      },
+      "source": "NASA POWER PRECTOTCORR and T2M_MAX; cached daily climate; NASA Terra MOD13Q1 NDVI via ORNL DAAC; QA-screened point pixel; data/crops.csv; illustrative crop demand and heat thresholds"
+    }
+  },
+  "caveats": [
+    "MODIS point pixels can mix fields, weeds and other cover; NDVI is not a crop-yield measure.",
+    "CDL is a mapped class at a different resolution, not a management record.",
+    "Small sample sizes and repeated assumptions make correlations descriptive only.",
+    "Kansas 2019 spring NDVI over mapped fallow remains unexplained.",
+    "Telangana's second season is tentative; Makueni cropland is unverified."
+  ]
+}

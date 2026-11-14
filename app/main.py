@@ -152,6 +152,33 @@ def app():
                 chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
                 st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
         st.caption("NASA POWER rainfall and temperature · NASA Terra MODIS vegetation")
+    with st.container(key="historical_validation"):
+        st.subheader("Validation · historical back-test")
+        backtest = load(farm_id, "backtest")
+        st.caption("2019–2023 · CDL mapped classes in Kansas; assumed crop identities in Telangana and Makueni. "
+                   "This uses the reference farm inputs, even when you edit the comparison below.")
+        figure = pio.from_json((DATA / f"chart_backtest_{farm_id}.json").read_text())
+        st.plotly_chart(figure, key=f"backtest_{farm_id}", config={"displayModeBar": False})
+        results = []
+        for season, entry in backtest["seasons"].items():
+            for name, statistic in entry["comparisons"].items():
+                interval = statistic["bootstrap_95"]
+                results.append({"Season": season, "Comparison": name.replace("_", " "),
+                                "Spearman ρ": None if statistic["rho"] is None else round(statistic["rho"], 2),
+                                "n": statistic["n"],
+                                "Bootstrap 95%": "unavailable" if interval is None else
+                                f"{interval[0]:.2f} to {interval[1]:.2f}",
+                                "Small sample": "yes" if statistic["small_n"] else "no",
+                                "Source": entry["source"]})
+            direction = entry["directional"]
+            st.caption(f"{season.replace('_', ' ').title()}: directionally consistent in "
+                       f"{direction['consistent']} of {direction['assessable']} assessable year comparisons "
+                       "(water stress versus NDVI peak).")
+        st.dataframe(pd.DataFrame(results), hide_index=True)
+        st.caption("Sources · NASA POWER daily climate; NASA Terra MOD13Q1 QA-filtered NDVI; "
+                   "USDA NASS CDL Kansas classes; illustrative crop catalog and irrigation assumptions.")
+        for caveat in backtest["caveats"]:
+            st.caption(caveat)
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")
