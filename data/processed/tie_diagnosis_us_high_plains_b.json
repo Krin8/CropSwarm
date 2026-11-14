@@ -4,7 +4,7 @@
   "grid_source": "data/processed/stress_test_<farm_id>.json; unchanged P16 grid",
   "margin_source": "data/processed/stress_margins_<farm_id>.json; P16b",
   "metric_source": "src.scoring.score_rotations and data/crops.csv; source tags on each metric",
-  "tie_break_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation; whole-year cyclic shifts share a strategy label",
+  "tie_break_rule": "Choose the lexicographically first canonical whole-year rotation among exactly equal feasible objective scores; baseline wins an exact tie with the best feasible rotation; whole-year cyclic shifts share a strategy label",
   "alternative_difference": {
     "threshold": 0.05,
     "source": "design choice, not empirical; validate locally",
@@ -16,17 +16,19 @@
   },
   "alternatives": {
     "displayed_alternatives": 4,
-    "meaningfully_different_groups": 3,
+    "meaningfully_different_groups": 4,
     "groups": [
       [
-        "water_saver",
-        "balanced"
+        "water_saver"
       ],
       [
         "soil_builder"
       ],
       [
         "income"
+      ],
+      [
+        "balanced"
       ]
     ],
     "pairs": [
@@ -39,7 +41,7 @@
           "water": 0.05857677119332594,
           "nitrogen": 0.16233766233766234,
           "erosion": 0.020211713694743727,
-          "climate_fit": 0.16834733893557424,
+          "climate_fit": 0.1683473389355743,
           "income": 0.19333333333333327,
           "risk": 0.0
         }
@@ -61,14 +63,14 @@
       {
         "first": "water_saver",
         "second": "balanced",
-        "max_difference": 0.0,
-        "near_duplicate": true,
+        "max_difference": 0.119327731092437,
+        "near_duplicate": false,
         "metric_differences": {
-          "water": 0.0,
-          "nitrogen": 0.0,
-          "erosion": 0.0,
-          "climate_fit": 0.0,
-          "income": 0.0,
+          "water": 0.02579362982489053,
+          "nitrogen": 0.03246753246753242,
+          "erosion": 0.0041030424999650705,
+          "climate_fit": 0.119327731092437,
+          "income": 0.02333333333333326,
           "risk": 0.0
         }
       },
@@ -81,7 +83,7 @@
           "water": 0.11331100658445181,
           "nitrogen": 0.303030303030303,
           "erosion": 0.03223928466611159,
-          "climate_fit": 0.11736694677871151,
+          "climate_fit": 0.11736694677871146,
           "income": 0.4099999999999998,
           "risk": 0.16666666666666663
         }
@@ -89,28 +91,28 @@
       {
         "first": "soil_builder",
         "second": "balanced",
-        "max_difference": 0.19333333333333327,
+        "max_difference": 0.21666666666666654,
         "near_duplicate": false,
         "metric_differences": {
-          "water": 0.05857677119332594,
-          "nitrogen": 0.16233766233766234,
-          "erosion": 0.020211713694743727,
-          "climate_fit": 0.16834733893557424,
-          "income": 0.19333333333333327,
+          "water": 0.03278314136843541,
+          "nitrogen": 0.19480519480519476,
+          "erosion": 0.024314756194708798,
+          "climate_fit": 0.0490196078431373,
+          "income": 0.21666666666666654,
           "risk": 0.0
         }
       },
       {
         "first": "income",
         "second": "balanced",
-        "max_difference": 0.28571428571428575,
+        "max_difference": 0.19333333333333325,
         "near_duplicate": false,
         "metric_differences": {
-          "water": 0.17188777777777775,
-          "nitrogen": 0.14069264069264065,
-          "erosion": 0.052450998360855317,
-          "climate_fit": 0.28571428571428575,
-          "income": 0.2166666666666665,
+          "water": 0.14609414795288722,
+          "nitrogen": 0.10822510822510822,
+          "erosion": 0.05655404086082039,
+          "climate_fit": 0.16638655462184876,
+          "income": 0.19333333333333325,
           "risk": 0.16666666666666663
         }
       }
@@ -548,10 +550,10 @@
     },
     "soil_builder": {
       "status": "near tie",
-      "changed_cells": 7,
+      "changed_cells": 1,
       "grid_cells": 35,
       "before": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 3.0,
         "rainfall_change_pct": 0,
         "top": {
           "id": "rotation_1f498b38b325",
@@ -574,7 +576,7 @@
               "Soybean"
             ]
           },
-          "weighted_score": 0.7157552327704902,
+          "weighted_score": 0.7138224596612466,
           "metrics": {
             "water": {
               "value": 134.91373430853818,
@@ -598,9 +600,9 @@
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.45070028011204477,
+              "value": 0.43137254901960786,
               "unit": "historical share",
-              "score": 0.45070028011204477,
+              "score": 0.43137254901960786,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
@@ -641,7 +643,7 @@
               "Cereal rye cover"
             ]
           },
-          "weighted_score": 0.7157552327704902,
+          "weighted_score": 0.7138224596612466,
           "metrics": {
             "water": {
               "value": 134.91373430853818,
@@ -665,9 +667,9 @@
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.45070028011204477,
+              "value": 0.43137254901960786,
               "unit": "historical share",
-              "score": 0.45070028011204477,
+              "score": 0.43137254901960786,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
@@ -717,8 +719,8 @@
             "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
           },
           "climate_fit": {
-            "top_score": 0.45070028011204477,
-            "second_score": 0.45070028011204477,
+            "top_score": 0.43137254901960786,
+            "second_score": 0.43137254901960786,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -763,10 +765,10 @@
         "bug_or_rounding": false
       },
       "after": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 3.0,
         "rainfall_change_pct": 10,
         "top": {
-          "id": "rotation_1f498b38b325",
+          "id": "rotation_1ffe62f1d21c",
           "is_baseline": false,
           "rotation": {
             "crop_ids": [
@@ -774,52 +776,52 @@
                 "fallow"
               ],
               [
-                "cereal_rye_cover"
+                "soybean"
               ],
               [
-                "soybean"
+                "pearl_millet"
               ]
             ],
             "crop_names": [
               "Bare fallow",
-              "Cereal rye cover",
-              "Soybean"
+              "Soybean",
+              "Pearl millet"
             ]
           },
-          "weighted_score": 0.7141322830077597,
+          "weighted_score": 0.7128513510023182,
           "metrics": {
             "water": {
-              "value": 125.6343763875921,
+              "value": 168.4281887125221,
               "unit": "mm unmet per slot",
-              "score": 0.6501678682370327,
+              "score": 0.6637991012959128,
               "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
               "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
             },
             "nitrogen": {
-              "value": 6.333333333333333,
+              "value": -8.666666666666666,
               "unit": "kg N/ha per slot",
-              "score": 0.8203463203463203,
+              "score": 0.7229437229437229,
               "source": "Crop catalog \u00b7 local assumptions",
               "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
             },
             "erosion": {
-              "value": 90.14732216082355,
+              "value": 106.6805464249412,
               "unit": "slope \u00d7 rainfall proxy",
-              "score": 0.8344329549424901,
+              "score": 0.8040675816727261,
               "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.45070028011204477,
+              "value": 0.6190476190476191,
               "unit": "historical share",
-              "score": 0.45070028011204477,
+              "score": 0.6190476190476191,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
             "income": {
-              "value": 0.24333333333333343,
+              "value": 0.4166666666666667,
               "unit": "relative index",
-              "score": 0.24333333333333343,
+              "score": 0.4166666666666667,
               "source": "Crop catalog \u00b7 illustrative economic assumptions",
               "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
             },
@@ -833,7 +835,7 @@
           }
         },
         "second": {
-          "id": "rotation_e0eacd64bd52",
+          "id": "rotation_db20a931ca7f",
           "is_baseline": false,
           "rotation": {
             "crop_ids": [
@@ -841,52 +843,52 @@
                 "fallow"
               ],
               [
-                "soybean"
+                "pearl_millet"
               ],
               [
-                "cereal_rye_cover"
+                "soybean"
               ]
             ],
             "crop_names": [
               "Bare fallow",
-              "Soybean",
-              "Cereal rye cover"
+              "Pearl millet",
+              "Soybean"
             ]
           },
-          "weighted_score": 0.7141322830077597,
+          "weighted_score": 0.7128513510023182,
           "metrics": {
             "water": {
-              "value": 125.6343763875921,
+              "value": 168.4281887125221,
               "unit": "mm unmet per slot",
-              "score": 0.6501678682370327,
+              "score": 0.6637991012959128,
               "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
               "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
             },
             "nitrogen": {
-              "value": 6.333333333333333,
+              "value": -8.666666666666666,
               "unit": "kg N/ha per slot",
-              "score": 0.8203463203463203,
+              "score": 0.7229437229437229,
               "source": "Crop catalog \u00b7 local assumptions",
               "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
             },
             "erosion": {
-              "value": 90.14732216082355,
+              "value": 106.68054642494117,
               "unit": "slope \u00d7 rainfall proxy",
-              "score": 0.8344329549424901,
+              "score": 0.8040675816727261,
               "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.45070028011204477,
+              "value": 0.6190476190476191,
               "unit": "historical share",
-              "score": 0.45070028011204477,
+              "score": 0.6190476190476191,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
             "income": {
-              "value": 0.24333333333333343,
+              "value": 0.4166666666666667,
               "unit": "relative index",
-              "score": 0.24333333333333343,
+              "score": 0.4166666666666667,
               "source": "Crop catalog \u00b7 illustrative economic assumptions",
               "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
             },
@@ -902,8 +904,8 @@
         "gap": 0.0,
         "metric_differences": {
           "water": {
-            "top_score": 0.6501678682370327,
-            "second_score": 0.6501678682370327,
+            "top_score": 0.6637991012959128,
+            "second_score": 0.6637991012959128,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -911,8 +913,8 @@
             "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
           },
           "nitrogen": {
-            "top_score": 0.8203463203463203,
-            "second_score": 0.8203463203463203,
+            "top_score": 0.7229437229437229,
+            "second_score": 0.7229437229437229,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -920,8 +922,8 @@
             "source": "Crop catalog \u00b7 local assumptions"
           },
           "erosion": {
-            "top_score": 0.8344329549424901,
-            "second_score": 0.8344329549424901,
+            "top_score": 0.8040675816727261,
+            "second_score": 0.8040675816727261,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -929,8 +931,8 @@
             "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
           },
           "climate_fit": {
-            "top_score": 0.45070028011204477,
-            "second_score": 0.45070028011204477,
+            "top_score": 0.6190476190476191,
+            "second_score": 0.6190476190476191,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -938,8 +940,8 @@
             "source": "NASA POWER \u00b7 crop catalog"
           },
           "income": {
-            "top_score": 0.24333333333333343,
-            "second_score": 0.24333333333333343,
+            "top_score": 0.4166666666666667,
+            "second_score": 0.4166666666666667,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -977,10 +979,10 @@
     },
     "income": {
       "status": "near tie",
-      "changed_cells": 23,
+      "changed_cells": 20,
       "grid_cells": 35,
       "before": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 1.0,
         "rainfall_change_pct": 0,
         "top": {
           "id": "rotation_f0f8f8017785",
@@ -1003,7 +1005,7 @@
               "Soybean"
             ]
           },
-          "weighted_score": 0.6413635397298838,
+          "weighted_score": 0.6213635397298838,
           "metrics": {
             "water": {
               "value": 262.57476392038296,
@@ -1027,9 +1029,9 @@
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.3333333333333333,
+              "value": 0.19999999999999998,
               "unit": "historical share",
-              "score": 0.3333333333333333,
+              "score": 0.19999999999999998,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
@@ -1070,7 +1072,7 @@
               "Sunflower"
             ]
           },
-          "weighted_score": 0.6413635397298838,
+          "weighted_score": 0.6213635397298838,
           "metrics": {
             "water": {
               "value": 262.57476392038296,
@@ -1094,9 +1096,9 @@
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.3333333333333333,
+              "value": 0.19999999999999998,
               "unit": "historical share",
-              "score": 0.3333333333333333,
+              "score": 0.19999999999999998,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
@@ -1146,8 +1148,8 @@
             "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
           },
           "climate_fit": {
-            "top_score": 0.3333333333333333,
-            "second_score": 0.3333333333333333,
+            "top_score": 0.19999999999999998,
+            "second_score": 0.19999999999999998,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -1192,63 +1194,63 @@
         "bug_or_rounding": false
       },
       "after": {
-        "temperature_change_c": 0.0,
-        "rainfall_change_pct": 10,
+        "temperature_change_c": 1.5,
+        "rainfall_change_pct": 0,
         "top": {
-          "id": "rotation_f0f8f8017785",
+          "id": "rotation_030dcd6fdf40",
           "is_baseline": false,
           "rotation": {
             "crop_ids": [
               [
-                "sorghum"
-              ],
-              [
-                "sunflower"
+                "maize"
               ],
               [
                 "soybean"
+              ],
+              [
+                "sunflower"
               ]
             ],
             "crop_names": [
-              "Grain sorghum",
-              "Sunflower",
-              "Soybean"
+              "Grain maize",
+              "Soybean",
+              "Sunflower"
             ]
           },
-          "weighted_score": 0.6446282173926936,
+          "weighted_score": 0.6197423915466538,
           "metrics": {
             "water": {
-              "value": 241.63499687578738,
+              "value": 266.07415167548504,
               "unit": "mm unmet per slot",
-              "score": 0.5540180725733128,
+              "score": 0.5247262110267616,
               "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
               "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
             },
             "nitrogen": {
-              "value": -40.333333333333336,
+              "value": -55.333333333333336,
               "unit": "kg N/ha per slot",
-              "score": 0.5173160173160173,
+              "score": 0.41991341991341985,
               "source": "Crop catalog \u00b7 local assumptions",
               "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
             },
             "erosion": {
-              "value": 70.83844521600001,
+              "value": 65.41648806000002,
               "unit": "slope \u00d7 rainfall proxy",
-              "score": 0.869896168075213,
+              "score": 0.8798542833384244,
               "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.3333333333333333,
+              "value": 0.02857142857142857,
               "unit": "historical share",
-              "score": 0.3333333333333333,
+              "score": 0.02857142857142857,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
             "income": {
-              "value": 0.6533333333333332,
+              "value": 0.7266666666666669,
               "unit": "relative index",
-              "score": 0.6533333333333332,
+              "score": 0.7266666666666669,
               "source": "Crop catalog \u00b7 illustrative economic assumptions",
               "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
             },
@@ -1262,60 +1264,60 @@
           }
         },
         "second": {
-          "id": "rotation_f2030cfe9ba5",
+          "id": "rotation_a0f1f717f567",
           "is_baseline": false,
           "rotation": {
             "crop_ids": [
               [
-                "sorghum"
-              ],
-              [
-                "soybean"
+                "maize"
               ],
               [
                 "sunflower"
+              ],
+              [
+                "soybean"
               ]
             ],
             "crop_names": [
-              "Grain sorghum",
-              "Soybean",
-              "Sunflower"
+              "Grain maize",
+              "Sunflower",
+              "Soybean"
             ]
           },
-          "weighted_score": 0.6446282173926936,
+          "weighted_score": 0.6197423915466538,
           "metrics": {
             "water": {
-              "value": 241.63499687578738,
+              "value": 266.07415167548504,
               "unit": "mm unmet per slot",
-              "score": 0.5540180725733128,
+              "score": 0.5247262110267616,
               "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
               "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
             },
             "nitrogen": {
-              "value": -40.333333333333336,
+              "value": -55.333333333333336,
               "unit": "kg N/ha per slot",
-              "score": 0.5173160173160173,
+              "score": 0.41991341991341985,
               "source": "Crop catalog \u00b7 local assumptions",
               "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
             },
             "erosion": {
-              "value": 70.83844521600001,
+              "value": 65.41648806000002,
               "unit": "slope \u00d7 rainfall proxy",
-              "score": 0.869896168075213,
+              "score": 0.8798542833384244,
               "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
               "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
             },
             "climate_fit": {
-              "value": 0.3333333333333333,
+              "value": 0.02857142857142857,
               "unit": "historical share",
-              "score": 0.3333333333333333,
+              "score": 0.02857142857142857,
               "source": "NASA POWER \u00b7 crop catalog",
               "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
             },
             "income": {
-              "value": 0.6533333333333332,
+              "value": 0.7266666666666669,
               "unit": "relative index",
-              "score": 0.6533333333333332,
+              "score": 0.7266666666666669,
               "source": "Crop catalog \u00b7 illustrative economic assumptions",
               "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
             },
@@ -1331,8 +1333,8 @@
         "gap": 0.0,
         "metric_differences": {
           "water": {
-            "top_score": 0.5540180725733128,
-            "second_score": 0.5540180725733128,
+            "top_score": 0.5247262110267616,
+            "second_score": 0.5247262110267616,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -1340,8 +1342,8 @@
             "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
           },
           "nitrogen": {
-            "top_score": 0.5173160173160173,
-            "second_score": 0.5173160173160173,
+            "top_score": 0.41991341991341985,
+            "second_score": 0.41991341991341985,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -1349,8 +1351,8 @@
             "source": "Crop catalog \u00b7 local assumptions"
           },
           "erosion": {
-            "top_score": 0.869896168075213,
-            "second_score": 0.869896168075213,
+            "top_score": 0.8798542833384244,
+            "second_score": 0.8798542833384244,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -1358,8 +1360,8 @@
             "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
           },
           "climate_fit": {
-            "top_score": 0.3333333333333333,
-            "second_score": 0.3333333333333333,
+            "top_score": 0.02857142857142857,
+            "second_score": 0.02857142857142857,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,
@@ -1367,8 +1369,8 @@
             "source": "NASA POWER \u00b7 crop catalog"
           },
           "income": {
-            "top_score": 0.6533333333333332,
-            "second_score": 0.6533333333333332,
+            "top_score": 0.7266666666666669,
+            "second_score": 0.7266666666666669,
             "score_difference": 0.0,
             "weighted_contribution": 0.0,
             "identical": true,

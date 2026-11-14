@@ -43,7 +43,8 @@ def test_cached_analysis_reproduces_and_preserves_grid_and_margins():
     second = analyse(preload(farm), grid, margins, strategies, presets, config)
     assert first == second
     assert json.dumps((grid, margins), sort_keys=True) == before
-    assert first["alternatives"]["meaningfully_different_groups"] == 3
+    assert first["alternatives"]["meaningfully_different_groups"] == 4
+    assert not any(pair["near_duplicate"] for pair in first["alternatives"]["pairs"])
 
 
 def test_saved_diagnoses_cover_each_near_tie_and_reconstruct_every_gap():
@@ -52,7 +53,8 @@ def test_saved_diagnoses_cover_each_near_tie_and_reconstruct_every_gap():
         grid = json.loads((processed / f"stress_test_{farm_id}.json").read_text())
         margins = json.loads((processed / f"stress_margins_{farm_id}.json").read_text())
         report = json.loads((processed / f"tie_diagnosis_{farm_id}.json").read_text())
-        assert report["alternatives"]["meaningfully_different_groups"] == 3
+        assert report["alternatives"]["meaningfully_different_groups"] == report["alternatives"]["displayed_alternatives"]
+        assert not any(pair["near_duplicate"] for pair in report["alternatives"]["pairs"])
         for preset, finding in report["presets"].items():
             entry = grid["presets"][preset]
             assert finding["changed_cells"] == sum(

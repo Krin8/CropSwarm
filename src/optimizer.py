@@ -36,6 +36,33 @@ def enumerate_rotations(layers):
     return rotations
 
 
+def canonical_cycle(sequence, slots_per_year):
+    """Lexicographically smallest whole-year shift; never swap within-year seasons."""
+    rows = np.asarray(sequence, dtype=int).reshape(-1, slots_per_year)
+    return min(tuple(np.roll(rows, -offset, axis=0).ravel()) for offset in range(len(rows)))
+
+
+def canonical_rotations(rotations, slots_per_year):
+    """Keep one representative per whole-year cycle without changing score rules."""
+    if len(rotations) == 0:
+        return rotations
+    years = rotations.shape[1] // slots_per_year
+    rows = rotations.reshape(len(rotations), years, slots_per_year)
+    keep = np.ones(len(rotations), dtype=bool)
+    indices = np.arange(len(rotations))
+    for offset in range(1, years):
+        shifted = np.roll(rows, -offset, axis=1).reshape(rotations.shape)
+        different = shifted != rotations
+        first = different.argmax(axis=1)
+        smaller = different.any(axis=1) & (shifted[indices, first] < rotations[indices, first])
+        keep &= ~smaller
+    return rotations[keep]
+
+
+def enumerate_canonical_rotations(layers, slots_per_year):
+    return canonical_rotations(enumerate_rotations(layers), slots_per_year)
+
+
 def ant_colony(model, layers, weights, config, seed):
     rng = np.random.default_rng(seed)
     n = len(model.ids)
@@ -76,18 +103,22 @@ def ant_colony(model, layers, weights, config, seed):
             continue
         _, scores, _ = score_rotations(model, batch)
         objective = scores @ weights
-        leader = objective.argmax()
-        if objective[leader] > best:
-            best = float(objective[leader])
-            best_sequence = batch[leader].copy()
+        maximum = objective.max()
+        leader_sequence = min(canonical_cycle(batch[index], len(model.season_labels))
+                              for index in np.flatnonzero(objective == maximum))
+        if maximum > best or (maximum == best and (best_sequence is None or leader_sequence < tuple(best_sequence))):
+            best = float(maximum)
+            best_sequence = np.array(leader_sequence)
         pheromone *= 1 - config["evaporation"]
         top = np.argsort(objective)[-config["elites"]:]
         previous = np.column_stack((np.full(len(top), n), batch[top, :-1]))
         np.add.at(pheromone, (np.arange(slots)[None, :], previous, batch[top]), objective[top, None])
-    return (best, best_sequence) if best_sequence is not None else (None, None)
+    return (best, np.array(canonical_cycle(best_sequence, len(model.season_labels)))) if best_sequence is not None else (None, None)
 
 
 def strategy(model, sequence, strategy_id, priority, weights):
+    if priority is not None:
+        sequence = np.array(canonical_cycle(sequence, len(model.season_labels)))
     raw, scores, violations = score_rotations(model, sequence)
     flags = {name: np.flatnonzero(mask[0]).tolist() for name, mask in violations.items() if mask.any()}
     source_tags = {"water": f"NASA POWER · {model.soil_source} · crop catalog and irrigation assumption"}
@@ -109,7 +140,8 @@ def aco_restarts(model, layers, weights, config, trial):
     """Start each colony with independent seed and pheromone state."""
     seeds = [trial + restart * config["seed_count"] for restart in range(config["restarts"])]
     outcomes = [ant_colony(model, layers, weights, config, seed) for seed in seeds]
-    best = max(outcomes, key=lambda outcome: -np.inf if outcome[0] is None else outcome[0])
+    best = min(outcomes, key=lambda outcome: (-(outcome[0] if outcome[0] is not None else -np.inf),
+                                            tuple(outcome[1]) if outcome[1] is not None else ()))
     return seeds, outcomes, best
 
 
@@ -122,7 +154,9 @@ def verification_summary(exact, scores):
             "scores": scores}
 
 
-def optimise(model, presets, config):
+def optimise(model, presets, config, difference_threshold=None):
+    if difference_threshold is None:
+        difference_threshold = json.loads((ROOT / "config/tie_diagnosis.json").read_text())["alternative_max_metric_difference"]
     years = config["default_years"]
     layers = allowed_layers(model, years)
     count = count_rotations(layers, len(model.ids))
@@ -134,13 +168,14 @@ def optimise(model, presets, config):
     if count > config["max_exact_rotations"] or count < 3:
         raise ValueError(f"Unsupported feasible search space of {count} rotations")
     exact_start = time.perf_counter()
-    rotations = enumerate_rotations(layers)
-    assert len(rotations) == count
+    rotations = enumerate_canonical_rotations(layers, len(model.season_labels))
+    canonical_count = len(rotations)
     _, scores, _ = score_rotations(model, rotations)
     weights = {name: np.array([values[key] for key in METRICS]) for name, values in presets.items()}
     reference = baseline_indices(model, years)
     selected = [strategy(model, reference, "baseline", None, weights)]
-    seen = {tuple(reference)}
+    selected_vectors = [score_rotations(model, reference)[1][0]]
+    seen = {canonical_cycle(reference, len(model.season_labels))}
     verification = {}
     exact_seconds = time.perf_counter() - exact_start
     for name, weight in weights.items():
@@ -151,19 +186,34 @@ def optimise(model, presets, config):
         trials = [aco_restarts(model, layers, weight, config, i) for i in range(config["seed_count"])]
         runtime = time.perf_counter() - start
         swarm = [best_outcome for _, _, best_outcome in trials]
-        distinct = [(value, sequence) for value, sequence in swarm if sequence is not None and tuple(sequence) not in seen]
-        if distinct:
-            _, chosen = max(distinct, key=lambda row: row[0])
-            method = f"best-of-{config['restarts']} ant colony"
-        else:
-            index = next(i for i in order if tuple(rotations[i]) not in seen)
-            chosen = rotations[index]
-            method = "exact distinct fallback"
-        seen.add(tuple(chosen))
-        entry = strategy(model, chosen, name, name, weights)
-        entry["why"] = f"Selected by {method} for the {name.replace('_', ' ')} priorities."
-        entry["selection_method"] = method
-        selected.append(entry)
+        chosen = None
+        method = None
+        for value, sequence in sorted((row for row in swarm if row[1] is not None),
+                                      key=lambda row: (-row[0], canonical_cycle(row[1], len(model.season_labels)))):
+            key = canonical_cycle(sequence, len(model.season_labels))
+            if key in seen:
+                continue
+            vector = score_rotations(model, sequence)[1][0]
+            if all(np.max(np.abs(vector - other)) > difference_threshold for other in selected_vectors):
+                chosen, method = sequence, f"best-of-{config['restarts']} ant colony"
+                break
+        if chosen is None:
+            for index in order:
+                sequence = rotations[index]
+                key = tuple(sequence)
+                if key in seen:
+                    continue
+                vector = scores[index]
+                if all(np.max(np.abs(vector - other)) > difference_threshold for other in selected_vectors):
+                    chosen, method = sequence, "exact metric-distinct fallback"
+                    break
+        if chosen is not None:
+            seen.add(canonical_cycle(chosen, len(model.season_labels)))
+            entry = strategy(model, chosen, name, name, weights)
+            entry["why"] = f"Selected by {method} for the {name.replace('_', ' ')} priorities."
+            entry["selection_method"] = method
+            selected.append(entry)
+            selected_vectors.append(score_rotations(model, chosen)[1][0])
         verification[name] = {
             "exact_score": best,
             "single_run": verification_summary(best, [outcomes[0][0] for _, outcomes, _ in trials]),
@@ -174,8 +224,14 @@ def optimise(model, presets, config):
                        for seeds, outcomes, _ in trials],
         }
     return {"farm_id": model.farm["farm_id"], "label": "illustrative; validate locally",
-            "horizon_years": years, "three_year_feasible_count": original_count,
-            "feasible_count": count, "exact_runtime_seconds": exact_seconds, "verification": verification,
+            "horizon_years": years, "three_year_raw_count": original_count,
+            "three_year_feasible_count": canonical_count if years == config["default_years"] else None,
+            "raw_feasible_count": count, "feasible_count": canonical_count,
+            "exact_runtime_seconds": exact_seconds, "verification": verification,
+            "selection": {"requested_alternatives": len(presets), "displayed_alternatives": len(selected) - 1,
+                          "difference_threshold": difference_threshold,
+                          "source": "config/tie_diagnosis.json; design choice, not empirical",
+                          "note": "Fewer alternatives mean no additional canonical rotation cleared the metric-difference threshold."},
             "strategies": selected, "parameter_source": "config/optimizer.json"}
 
 

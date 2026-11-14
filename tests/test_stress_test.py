@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pytest
 
-from src.optimizer import allowed_layers, enumerate_rotations
+from src.optimizer import allowed_layers, enumerate_canonical_rotations
 from src.scoring import METRICS, ROOT, baseline_indices, preload, score_rotations
 from src.stress_test import canonical_cycle, exact_cell, rotation_id, sweep, tipping_point
 
@@ -16,8 +16,8 @@ def kansas_fixture():
 
 def test_exact_cell_matches_independent_full_enumeration():
     model, presets = kansas_fixture()
-    observed = exact_cell(model, presets, 3, 42)["water_saver"]
-    rotations = enumerate_rotations(allowed_layers(model, 3))
+    observed = exact_cell(model, presets, 3)["water_saver"]
+    rotations = enumerate_canonical_rotations(allowed_layers(model, 3), len(model.season_labels))
     _, scores, _ = score_rotations(model, rotations)
     vector = np.array([presets["water_saver"][metric] for metric in METRICS])
     _, baseline_scores, _ = score_rotations(model, baseline_indices(model, 3))
@@ -47,11 +47,11 @@ def test_whole_year_cycle_shift_is_same_strategy_but_season_swap_is_not():
     assert rotation_id([2, 1, 3, 4], 2) != rotation_id([1, 2, 3, 4], 2)
 
 
-def test_fixed_seed_reproduces_exact_sweep_on_cached_fixture():
+def test_deterministic_canonical_ties_reproduce_exact_sweep_on_cached_fixture():
     model, presets = kansas_fixture()
     config = {"temperature_changes_c": [0, .5], "rainfall_changes_pct": [-10, 0],
-              "seed": 42, "source": "design choice, not empirical", "distance_rule": "test grid steps",
-              "tie_rule": "fixed-seed exact ties"}
+              "source": "design choice, not empirical", "distance_rule": "test grid steps",
+              "tie_rule": "lexicographic canonical ties"}
     first = sweep(model, presets, config, 3)
     model, _ = kansas_fixture()
     second = sweep(model, presets, config, 3)
@@ -64,7 +64,7 @@ def test_fixed_seed_reproduces_exact_sweep_on_cached_fixture():
 def test_processed_sweep_has_full_grid_and_exact_scores(farm_id):
     path = ROOT / "data/processed" / f"stress_test_{farm_id}.json"
     result = json.loads(path.read_text())
-    assert result["seed"] == 42
+    assert "lexicographically" in result["tie_rule"]
     assert "design choice" in result["grid_source"]
     assert len(result["presets"]) == 4
     for preset in result["presets"].values():

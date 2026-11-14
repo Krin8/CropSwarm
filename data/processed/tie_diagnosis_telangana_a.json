@@ -4,7 +4,7 @@
   "grid_source": "data/processed/stress_test_<farm_id>.json; unchanged P16 grid",
   "margin_source": "data/processed/stress_margins_<farm_id>.json; P16b",
   "metric_source": "src.scoring.score_rotations and data/crops.csv; source tags on each metric",
-  "tie_break_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation; whole-year cyclic shifts share a strategy label",
+  "tie_break_rule": "Choose the lexicographically first canonical whole-year rotation among exactly equal feasible objective scores; baseline wins an exact tie with the best feasible rotation; whole-year cyclic shifts share a strategy label",
   "alternative_difference": {
     "threshold": 0.05,
     "source": "design choice, not empirical; validate locally",
@@ -16,17 +16,19 @@
   },
   "alternatives": {
     "displayed_alternatives": 4,
-    "meaningfully_different_groups": 3,
+    "meaningfully_different_groups": 4,
     "groups": [
       [
         "water_saver"
       ],
       [
-        "soil_builder",
-        "balanced"
+        "soil_builder"
       ],
       [
         "income"
+      ],
+      [
+        "balanced"
       ]
     ],
     "pairs": [
@@ -61,14 +63,14 @@
       {
         "first": "water_saver",
         "second": "balanced",
-        "max_difference": 0.06190476190476202,
+        "max_difference": 0.06493506493506496,
         "near_duplicate": false,
         "metric_differences": {
-          "water": 0.002671392481537027,
-          "nitrogen": 0.0043290043290042934,
-          "erosion": 0.0031731696320188574,
-          "climate_fit": 0.06190476190476202,
-          "income": 0.01666666666666672,
+          "water": 0.008434728115307433,
+          "nitrogen": 0.06493506493506496,
+          "erosion": 0.0031403296569902928,
+          "climate_fit": 0.033333333333333215,
+          "income": 0.018333333333333368,
           "risk": 0.0
         }
       },
@@ -89,28 +91,28 @@
       {
         "first": "soil_builder",
         "second": "balanced",
-        "max_difference": 0.0,
-        "near_duplicate": true,
+        "max_difference": 0.09523809523809523,
+        "near_duplicate": false,
         "metric_differences": {
-          "water": 0.0,
-          "nitrogen": 0.0,
-          "erosion": 0.0,
-          "climate_fit": 0.0,
-          "income": 0.0,
+          "water": 0.005763335633770406,
+          "nitrogen": 0.06926406926406925,
+          "erosion": 3.2839975028564616e-05,
+          "climate_fit": 0.09523809523809523,
+          "income": 0.03500000000000009,
           "risk": 0.0
         }
       },
       {
         "first": "income",
         "second": "balanced",
-        "max_difference": 0.4380952380952381,
+        "max_difference": 0.5333333333333333,
         "near_duplicate": false,
         "metric_differences": {
-          "water": 0.1823021369302279,
-          "nitrogen": 0.3939393939393939,
-          "erosion": 0.05607090055614383,
-          "climate_fit": 0.4380952380952381,
-          "income": 0.38333333333333347,
+          "water": 0.1765388012964575,
+          "nitrogen": 0.3246753246753247,
+          "erosion": 0.05603806058111527,
+          "climate_fit": 0.5333333333333333,
+          "income": 0.41833333333333356,
           "risk": 0.25
         }
       }

@@ -4,8 +4,9 @@ import json
 import numpy as np
 import pytest
 
-from src.optimizer import aco_restarts, allowed_layers, count_rotations, enumerate_rotations
-from src.scoring import METRICS, ROOT, preload
+from src.optimizer import (aco_restarts, allowed_layers, canonical_cycle, canonical_rotations,
+                           count_rotations, enumerate_rotations)
+from src.scoring import METRICS, ROOT, preload, score_rotations
 
 
 def test_exact_enumerator_matches_independent_small_search_with_cycle_boundary():
@@ -16,12 +17,45 @@ def test_exact_enumerator_matches_independent_small_search_with_cycle_boundary()
 
 
 @pytest.mark.parametrize("farm", json.loads((ROOT / "config/farms.json").read_text()))
+def test_whole_year_shifts_preserve_all_metrics_but_season_slot_shifts_need_not(farm):
+    model = preload(farm)
+    rotations = enumerate_rotations(allowed_layers(model, 3))
+    slots = len(model.season_labels)
+    slot_counterexample = False
+    for start in range(0, len(rotations), 10000):
+        batch = rotations[start:start + 10000]
+        _, scores, _ = score_rotations(model, batch)
+        for year_shift in (1, 2):
+            _, shifted, _ = score_rotations(model, np.roll(batch, year_shift * slots, axis=1))
+            np.testing.assert_allclose(scores, shifted, rtol=0, atol=1e-12)
+        if slots > 1 and not slot_counterexample:
+            _, shifted, _ = score_rotations(model, np.roll(batch, 1, axis=1))
+            slot_counterexample = bool(np.max(np.abs(scores - shifted)) > 1e-3)
+    if slots > 1:
+        assert slot_counterexample
+
+
+def test_canonical_year_rotation_deduplicates_but_keeps_season_order():
+    rows = np.array([[0, 1, 2], [1, 2, 0], [2, 0, 1], [0, 2, 1]])
+    assert len(canonical_rotations(rows, 1)) == 2
+    assert canonical_cycle([2, 1, 3, 4], 2) == canonical_cycle([3, 4, 2, 1], 2)
+    assert canonical_cycle([2, 1, 3, 4], 2) != canonical_cycle([1, 2, 3, 4], 2)
+
+
+@pytest.mark.parametrize("farm", json.loads((ROOT / "config/farms.json").read_text()))
 def test_cached_results_keep_baseline_and_distinct_candidates(farm):
     path = ROOT / "data/processed" / f"strategies_{farm['farm_id']}.json"
     result = json.loads(path.read_text())
     strategies = result["strategies"]
     assert strategies[0]["strategy_id"] == "baseline"
-    assert len({tuple(map(tuple, row["crop_ids"])) for row in strategies}) >= 4
+    assert 3 <= len(strategies) <= 5
+    cycles = [tuple(tuple(year) for year in row["crop_ids"]) for row in strategies]
+    assert len({min(cycle[i:] + cycle[:i] for i in range(len(cycle))) for cycle in cycles}) == len(strategies)
+    threshold = json.loads((ROOT / "config/tie_diagnosis.json").read_text())["alternative_max_metric_difference"]
+    for first, second in itertools.combinations(strategies, 2):
+        gap = max(abs(first["metrics"][metric]["score"] - second["metrics"][metric]["score"])
+                  for metric in METRICS)
+        assert gap > threshold
     assert not any(row["flags"] for row in strategies[1:])
     for row in result["verification"].values():
         single = row["single_run"]

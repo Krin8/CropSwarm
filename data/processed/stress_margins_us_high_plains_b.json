@@ -18,16 +18,16 @@
         "rainfall_change_pct": 0,
         "top": {
           "id": "rotation_1830baa3f05c",
-          "score": 0.6637232294182861,
+          "score": 0.663723229418286,
           "is_baseline": false
         },
         "second": {
           "id": "rotation_608edfeb3f80",
-          "score": 0.6637232294182861,
+          "score": 0.663723229418286,
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 504
+        "feasible_count": 168
       },
       "after": {
         "temperature_change_c": 2.0,
@@ -43,7 +43,7 @@
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 504
+        "feasible_count": 168
       },
       "near_tie_before": true,
       "near_tie_after": true,
@@ -53,80 +53,80 @@
     "soil_builder": {
       "status": "tip",
       "before": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 3.0,
         "rainfall_change_pct": 0,
         "top": {
           "id": "rotation_1f498b38b325",
-          "score": 0.7157552327704902,
+          "score": 0.7138224596612466,
           "is_baseline": false
         },
         "second": {
           "id": "rotation_e0eacd64bd52",
-          "score": 0.7157552327704902,
+          "score": 0.7138224596612466,
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 504
+        "feasible_count": 168
       },
       "after": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 3.0,
         "rainfall_change_pct": 10,
         "top": {
-          "id": "rotation_1f498b38b325",
-          "score": 0.7141322830077597,
+          "id": "rotation_1ffe62f1d21c",
+          "score": 0.7128513510023182,
           "is_baseline": false
         },
         "second": {
-          "id": "rotation_e0eacd64bd52",
-          "score": 0.7141322830077597,
+          "id": "rotation_db20a931ca7f",
+          "score": 0.7128513510023182,
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 720
+        "feasible_count": 240
       },
       "near_tie_before": true,
       "near_tie_after": true,
       "near_tie": true,
-      "sentence": "At +0 \u00b0C and +0% rain, the top-two score gap is 0.0000; at +0 \u00b0C and +10% rain, it is 0.0000."
+      "sentence": "At +3 \u00b0C and +0% rain, the top-two score gap is 0.0000; at +3 \u00b0C and +10% rain, it is 0.0000."
     },
     "income": {
       "status": "tip",
       "before": {
-        "temperature_change_c": 0.0,
+        "temperature_change_c": 1.0,
         "rainfall_change_pct": 0,
         "top": {
           "id": "rotation_f0f8f8017785",
-          "score": 0.6413635397298839,
+          "score": 0.6213635397298838,
           "is_baseline": false
         },
         "second": {
           "id": "rotation_f2030cfe9ba5",
-          "score": 0.6413635397298839,
+          "score": 0.6213635397298838,
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 504
+        "feasible_count": 168
       },
       "after": {
-        "temperature_change_c": 0.0,
-        "rainfall_change_pct": 10,
+        "temperature_change_c": 1.5,
+        "rainfall_change_pct": 0,
         "top": {
-          "id": "rotation_f0f8f8017785",
-          "score": 0.6446282173926936,
+          "id": "rotation_030dcd6fdf40",
+          "score": 0.6197423915466538,
           "is_baseline": false
         },
         "second": {
-          "id": "rotation_f2030cfe9ba5",
-          "score": 0.6446282173926936,
+          "id": "rotation_a0f1f717f567",
+          "score": 0.6197423915466538,
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 720
+        "feasible_count": 168
       },
       "near_tie_before": true,
       "near_tie_after": true,
       "near_tie": true,
-      "sentence": "At +0 \u00b0C and +0% rain, the top-two score gap is 0.0000; at +0 \u00b0C and +10% rain, it is 0.0000."
+      "sentence": "At +1 \u00b0C and +0% rain, the top-two score gap is 0.0000; at +1.5 \u00b0C and +0% rain, it is 0.0000."
     },
     "balanced": {
       "status": "tip",
@@ -144,7 +144,7 @@
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 504
+        "feasible_count": 168
       },
       "after": {
         "temperature_change_c": 1.0,
@@ -160,7 +160,7 @@
           "is_baseline": false
         },
         "gap": 0.0,
-        "feasible_count": 720
+        "feasible_count": 240
       },
       "near_tie_before": true,
       "near_tie_after": true,

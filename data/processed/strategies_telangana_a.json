@@ -2,9 +2,11 @@
   "farm_id": "telangana_a",
   "label": "illustrative; validate locally",
   "horizon_years": 3,
-  "three_year_feasible_count": 633998,
-  "feasible_count": 633998,
-  "exact_runtime_seconds": 0.19045583298429847,
+  "three_year_raw_count": 633998,
+  "three_year_feasible_count": 211394,
+  "raw_feasible_count": 633998,
+  "feasible_count": 211394,
+  "exact_runtime_seconds": 0.1254274999955669,
   "verification": {
     "water_saver": {
       "exact_score": 0.8015436421206531,
@@ -90,7 +92,7 @@
           0.801543642120653
         ]
       },
-      "runtime_seconds": 0.9941654160211328,
+      "runtime_seconds": 5.110148542007664,
       "restart_count": 5,
       "trials": [
         {
@@ -659,7 +661,7 @@
           0.770346322462403
         ]
       },
-      "runtime_seconds": 0.9913057910162024,
+      "runtime_seconds": 4.907584916014457,
       "restart_count": 5,
       "trials": [
         {
@@ -1228,7 +1230,7 @@
           0.67297875858833
         ]
       },
-      "runtime_seconds": 0.9826619590166956,
+      "runtime_seconds": 4.401247041998431,
       "restart_count": 5,
       "trials": [
         {
@@ -1797,7 +1799,7 @@
           0.7418562683807485
         ]
       },
-      "runtime_seconds": 0.9909051670110784,
+      "runtime_seconds": 5.026516875019297,
       "restart_count": 5,
       "trials": [
         {
@@ -2283,6 +2285,13 @@
       ]
     }
   },
+  "selection": {
+    "requested_alternatives": 4,
+    "displayed_alternatives": 4,
+    "difference_threshold": 0.05,
+    "source": "config/tie_diagnosis.json; design choice, not empirical",
+    "note": "Fewer alternatives mean no additional canonical rotation cleared the metric-difference threshold."
+  },
   "strategies": [
     {
       "strategy_id": "baseline",
@@ -2526,8 +2535,8 @@
         "income": 0.5835136523617706,
         "balanced": 0.7337414807002318
       },
-      "why": "Selected by exact distinct fallback for the soil builder priorities.",
-      "selection_method": "exact distinct fallback"
+      "why": "Selected by exact metric-distinct fallback for the soil builder priorities.",
+      "selection_method": "exact metric-distinct fallback"
     },
     {
       "strategy_id": "income",
@@ -2617,55 +2626,55 @@
           "fallow"
         ],
         [
-          "soybean",
+          "pigeonpea",
           "fallow"
         ],
         [
-          "pigeonpea",
+          "pearl_millet",
           "fallow"
         ]
       ],
       "crop_names": [
         "Pigeonpea",
         "Bare fallow",
-        "Soybean",
-        "Bare fallow",
         "Pigeonpea",
+        "Bare fallow",
+        "Pearl millet",
         "Bare fallow"
       ],
       "metrics": {
         "water": {
-          "value": 15.042787228607919,
+          "value": 16.230400985221674,
           "unit": "mm unmet per slot",
-          "score": 0.9716014902770836,
+          "score": 0.9658381546433132,
           "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
           "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
         },
         "nitrogen": {
-          "value": 8.166666666666666,
+          "value": -2.5,
           "unit": "kg N/ha per slot",
-          "score": 0.8322510822510822,
+          "score": 0.762987012987013,
           "source": "Crop catalog \u00b7 local assumptions",
           "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
         },
         "erosion": {
-          "value": 20.41725707137255,
+          "value": 20.413368571372548,
           "unit": "slope \u00d7 rainfall proxy",
-          "score": 0.8275679021790799,
+          "score": 0.8276007421541085,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
           "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
         },
         "climate_fit": {
-          "value": 0.6666666666666666,
+          "value": 0.7619047619047619,
           "unit": "historical share",
-          "score": 0.6666666666666666,
+          "score": 0.7619047619047619,
           "source": "NASA POWER \u00b7 crop catalog",
           "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
         },
         "income": {
-          "value": 0.3316666666666667,
+          "value": 0.29666666666666663,
           "unit": "relative index",
-          "score": 0.3316666666666667,
+          "score": 0.29666666666666663,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
           "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
         },
@@ -2679,13 +2688,13 @@
       },
       "flags": {},
       "objectives": {
-        "water_saver": 0.7933216408192162,
-        "soil_builder": 0.7660607825811363,
-        "income": 0.5835136523617706,
-        "balanced": 0.7337414807002318
+        "water_saver": 0.7917038612410034,
+        "soil_builder": 0.7507372477561052,
+        "income": 0.5745482681564523,
+        "balanced": 0.73158288085383
       },
-      "why": "Selected by exact distinct fallback for the balanced priorities.",
-      "selection_method": "exact distinct fallback"
+      "why": "Selected by exact metric-distinct fallback for the balanced priorities.",
+      "selection_method": "exact metric-distinct fallback"
     }
   ],
   "parameter_source": "config/optimizer.json"

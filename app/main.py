@@ -15,7 +15,7 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.optimizer import allowed_layers, count_rotations, enumerate_rotations, strategy
+from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.tie_diagnosis import alternative_groups
 from src.uncertainty import simulate
@@ -119,7 +119,7 @@ def edit_farm(farm, context, settings):
 
 
 @st.cache_data(show_spinner="Recomputing edited farm comparison…")
-def edited_results(farm, settings, edits, result, assessment):
+def edited_results(farm, settings, edits, result, assessment, difference_threshold):
     supply, water, rotation, _ = edits
     farm = copy.deepcopy(farm)
     farm["irrigation"]["supply_fraction"] = supply
@@ -130,24 +130,28 @@ def edited_results(farm, settings, edits, result, assessment):
     layers = allowed_layers(model, years)
     if count_rotations(layers, len(model.ids)) < 3:
         return None
-    rotations = enumerate_rotations(layers)
+    rotations = enumerate_canonical_rotations(layers, len(model.season_labels))
     _, scores, _ = score_rotations(model, rotations)
     presets = settings["weights_presets"]["presets"]
     weights = {name: np.array([preset[k] for k in METRICS]) for name, preset in presets.items()}
     baseline = baseline_indices(model, years)
     selected = [strategy(model, baseline, "baseline", None, weights)]
     selected[0]["why"] = "Your edited existing rotation."
-    seen = {tuple(baseline)}
+    selected_vectors = [score_rotations(model, baseline)[1][0]]
     for name, vector in weights.items():
         for index in np.argsort(-(scores @ vector), kind="stable"):
             sequence = rotations[index]
-            if tuple(sequence) not in seen:
-                seen.add(tuple(sequence))
+            if all(np.max(np.abs(scores[index] - other)) > difference_threshold for other in selected_vectors):
                 selected.append(strategy(model, sequence, name, name, weights))
+                selected_vectors.append(scores[index])
                 break
     if len(selected) < 3:
         return None
-    updated = {**result, "strategies": selected, "verification": {}}
+    updated = {**result, "strategies": selected, "verification": {},
+               "selection": {"requested_alternatives": len(weights),
+                             "displayed_alternatives": len(selected) - 1,
+                             "difference_threshold": difference_threshold,
+                             "source": "config/tie_diagnosis.json; design choice, not empirical"}}
     return updated, simulate(model, updated, assessment, presets, settings["uncertainty"])
 
 
@@ -262,9 +266,10 @@ def app():
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")
     if edits is not None:
-        updated = edited_results(farm, settings, edits, result, assessment)
+        updated = edited_results(farm, settings, edits, result, assessment,
+                                 diagnosis["alternative_difference"]["threshold"])
         if updated is None:
-            st.warning("Fewer than three distinct rotations meet those inputs. This table uses the reference farm assumptions.")
+            st.warning("Fewer than three metric-distinct rotations meet those inputs. This table uses the reference farm assumptions.")
         else:
             result, uncertainty = updated
             st.caption("Showing a new exact comparison and new scenario draws for your edited inputs.")
@@ -294,9 +299,10 @@ def app():
                          "Wins in draws": f"{stats['wins_pct'][preset]:.1f}%",
                          "Unmet water · median (mm)": round(stats["metrics"]["water"]["p50"], 1)})
         st.dataframe(pd.DataFrame(rows), hide_index=True)
-        st.caption(f"Four displayed alternatives form {alternatives['meaningfully_different_groups']} "
+        st.caption(f"{alternatives['displayed_alternatives']} displayed alternatives form "
+                   f"{alternatives['meaningfully_different_groups']} "
                    "meaningfully different metric profiles at a maximum 0.05 normalized-score difference "
-                   "· design choice, not empirical. Near-duplicate profiles are flagged below.")
+                   "· design choice, not empirical. Candidates below this threshold are omitted rather than padded.")
         st.caption("Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
         chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
                                  marker_color=COLORS[:len(rows)]))

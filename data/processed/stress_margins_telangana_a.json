@@ -34,7 +34,7 @@
           "is_baseline": false
         },
         "gap": 0.0014283970241237842,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "after": {
         "temperature_change_c": 3.0,
@@ -50,7 +50,7 @@
           "is_baseline": false
         },
         "gap": 1.7440444766148033e-07,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "near_tie_before": true,
       "near_tie_after": true,
@@ -73,7 +73,7 @@
           "is_baseline": false
         },
         "gap": 0.0005727916156762491,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "after": {
         "temperature_change_c": 1.0,
@@ -89,7 +89,7 @@
           "is_baseline": false
         },
         "gap": 0.0003872505404394211,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "near_tie_before": true,
       "near_tie_after": true,
@@ -112,7 +112,7 @@
           "is_baseline": false
         },
         "gap": 0.0008290733948023155,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "after": {
         "temperature_change_c": 3.0,
@@ -128,7 +128,7 @@
           "is_baseline": false
         },
         "gap": 0.0008021107486291257,
-        "feasible_count": 633998
+        "feasible_count": 211394
       },
       "near_tie_before": true,
       "near_tie_after": true,

@@ -1,8 +1,8 @@
 # Robustness check under climate stress
 
-This is a **sensitivity exercise, not a climate projection**. It uniformly adds `0–3 °C` to cached historical NASA POWER daily temperature in `0.5 °C` steps and scales daily precipitation by `−30% to +10%` in `10%` steps. These grid ranges, a fixed tie-breaking seed of `42`, and the normalized-distance definition of “smallest” are **design choices, not empirical estimates**. All results are illustrative and need local validation. No model parameters or crop values were tuned to produce the maps.
+This is a **sensitivity exercise, not a climate projection**. It uniformly adds `0–3 °C` to cached historical NASA POWER daily temperature in `0.5 °C` steps and scales daily precipitation by `−30% to +10%` in `10%` steps. These grid ranges, the lexicographic tie rule, and the normalized-distance definition of “smallest” are **design choices, not empirical estimates**. All results are illustrative and need local validation. No model parameters or crop values were tuned to produce the maps.
 
-For each of the `35` grid cells per farm, the existing three-year baseline is retained, including any flags. The existing score components and median unmet-water feasibility screen are recomputed from cached daily climate. Every feasible three-year rotation is enumerated and scored exactly for all four presets; **ACO is not used**. The map label is the highest-scoring feasible rotation or the baseline if it scores at least as high. **Exact-score tie rule:** for each cell, the enumerated rotations are ordered by `numpy.random.default_rng(42).permutation(feasible_count)`; the first exact maximizer in that order is selected, and an exactly equal baseline takes precedence. The seed and enumeration order make this reproducible, although changing the feasible count can change the chosen label among equal-scoring rotations. Whole-year cyclic shifts share one strategy label; within-year season order remains distinct. The nearest changed map label uses Euclidean distance in grid steps from `0 °C, 0%` rainfall; ties prefer the smaller temperature change, then smaller rainfall magnitude. See [scoring](scoring.md), [farm assumptions](decisions.md), and [stress-test configuration](../config/stress_test.json).
+For each of the `35` grid cells per farm, the existing three-year baseline is retained, including any flags. The existing score components and median unmet-water feasibility screen are recomputed from cached daily climate. Every feasible three-year rotation is enumerated and scored exactly for all four presets; **ACO is not used**. Whole-year cyclic shifts are collapsed to their lexicographically smallest year shift; within-year season order remains distinct. The map label is the highest-scoring canonical feasible rotation or the baseline if it scores at least as high. **Exact-score tie rule:** the lexicographically first canonical maximizer wins, and an exactly equal baseline takes precedence. This rule is deterministic and independent of the feasible pool size. The nearest changed map label uses Euclidean distance in grid steps from `0 °C, 0%` rainfall; ties prefer the smaller temperature change, then smaller rainfall magnitude. See [scoring](scoring.md), [farm assumptions](decisions.md), and [stress-test configuration](../config/stress_test.json).
 
 ## Winner maps
 
@@ -11,8 +11,8 @@ Each map has four preset panels. The outlined grid cell is unchanged historical 
 | Farm | Preset | Cells with a different map label | Nearest changed map cell | Map-label change from unchanged weather |
 |---|---|---:|---|---|
 | Kansas | Water saver | 15 of 35 | +2 °C, 0% rain | Fallow → soybean → sorghum changes to fallow → soybean → pearl millet. |
-| Kansas | Soil builder | 7 of 35 | 0 °C, +10% rain | Fallow → cereal rye cover → soybean changes to fallow → soybean → cereal rye cover. |
-| Kansas | Income | 23 of 35 | 0 °C, +10% rain | Sorghum → soybean → sunflower changes to sorghum → sunflower → soybean. |
+| Kansas | Soil builder | 1 of 35 | +3 °C, +10% rain | Fallow → cereal rye cover → soybean changes to fallow → soybean → pearl millet. |
+| Kansas | Income | 20 of 35 | +1.5 °C, 0% rain | Sorghum → soybean → sunflower changes to maize → soybean → sunflower. |
 | Kansas | Balanced | 19 of 35 | +1 °C, +10% rain | Fallow → soybean → sorghum changes to fallow → soybean → pearl millet. |
 | Telangana | Water saver | 0 of 35 | **No label change** | Pigeonpea then fallow remains the top repeated annual pattern throughout the grid. |
 | Telangana | Soil builder | 2 of 35 | +3 °C, 0% rain | Soybean then fallow replaces pigeonpea then fallow as the top annual pattern. |
@@ -30,8 +30,8 @@ The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design 
 | Farm | Preset | Before cell: °C, rain; top-two gap | First changed cell: °C, rain; top-two gap | Near-tie? |
 |---|---|---|---|---|
 | Kansas | Water saver | +1.5, 0%; **0** | +2, 0%; **0** | Yes; exact ties on both sides |
-| Kansas | Soil builder | 0, 0%; **0** | 0, +10%; **0** | Yes; exact ties on both sides |
-| Kansas | Income | 0, 0%; **0** | 0, +10%; **0** | Yes; exact ties on both sides |
+| Kansas | Soil builder | +3, 0%; **0** | +3, +10%; **0** | Yes; exact ties on both sides |
+| Kansas | Income | +1, 0%; **0** | +1.5, 0%; **0** | Yes; exact ties on both sides |
 | Kansas | Balanced | +1, 0%; **0** | +1, +10%; **0** | Yes; exact ties on both sides |
 | Telangana | Water saver | No reported tip | No reported tip | Not applicable |
 | Telangana | Soil builder | +2.5, 0%; 0.00142840 | +3, 0%; 0.00000017 | Yes |
@@ -46,11 +46,11 @@ The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design 
 
 ## What the ties mean (P16c)
 
-The app's **Robustness check** reports the changed-label counts above. These are label counts, not probabilities of a crop outcome. The nearest reported changes are all between near-equal options. Kansas soil-builder and income even retain the same exact-tied pair on both sides of the reported change; those two map-label flips are tie-selection artifacts, not a change in the top score or crop set.
+The app's **Robustness check** reports the changed-label counts above. These are label counts, not probabilities of a crop outcome. The nearest reported changes are all between near-equal options. In the previous grid, Kansas soil-builder and income could switch labels within unchanged exact-tied pairs. Canonical year shifts and lexicographic tie-breaking remove those two earlier label artifacts; their new nearest changed cells involve different crop sets, though crop order is still tied within each cell.
 
-The [metric-by-metric tie diagnosis](tie_diagnosis.md) lists both strategies at the adjacent cells for every near-tie. Kansas's zero gaps arise from crop order having no effect on any of the six modeled metric scores for those compared rotations. In Telangana and Makueni, distinct crop mixes have small weighted trade-offs: some metric scores improve while others decline. Nitrogen, relative income and family/cover risk are **climate-insensitive for a fixed rotation** in this sweep; they can still differ between rotations and are not by themselves the cause of the nonzero ties. Recomputed full-precision gaps agree with P16b. No scoring bug or numerical rounding error was found. The count-dependent tie-label selection was a presentation flaw in the earlier “tipping point” interpretation; the grid and scores remain unchanged.
+The [metric-by-metric tie diagnosis](tie_diagnosis.md) lists both strategies at the adjacent cells for every near-tie. Kansas's zero gaps arise from crop order having no effect on any of the six modeled metric scores for those compared rotations, even after whole-year shifts are collapsed. In Telangana and Makueni, distinct crop mixes have small weighted trade-offs: some metric scores improve while others decline. Nitrogen, relative income and family/cover risk are **climate-insensitive for a fixed rotation** in this sweep; they can still differ between rotations and are not by themselves the cause of the nonzero ties. Recomputed full-precision gaps agree with the refreshed P16b calculation. No scoring parameter or metric definition changed. The P16 grid and the P16b/P16c artifacts were regenerated on the canonical space.
 
-The four alternatives displayed for each reference farm form **three meaningfully different metric profiles** under a maximum absolute difference of `0.05` across the six normalized metric scores. This threshold is a **design choice, not empirical evidence**. The app flags the near-duplicate pairs: Kansas water saver/balanced, Telangana soil builder/balanced, and Makueni soil builder/balanced. Edited farm comparisons recompute these flags for the displayed strategies. See [tie-diagnosis settings](../config/tie_diagnosis.json).
+The four alternatives displayed for each reference farm now form **four meaningfully different metric profiles**, each also different from the baseline, under a maximum absolute difference of `0.05` across the six normalized metric scores. This threshold is a **design choice, not empirical evidence**. No reference alternative is a near-duplicate. The app recomputes distinctness for edited comparisons and shows fewer alternatives if no further canonical candidate clears the threshold; it never pads the list with a near-duplicate. See [tie-diagnosis settings](../config/tie_diagnosis.json).
 
 ## Limits and interpretation
 

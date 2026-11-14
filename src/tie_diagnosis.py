@@ -5,7 +5,7 @@ from pathlib import Path
 
 import numpy as np
 
-from src.optimizer import allowed_layers, enumerate_rotations
+from src.optimizer import allowed_layers, enumerate_canonical_rotations
 from src.precompute_cache import write_json
 from src.scoring import METRICS, ROOT, baseline_indices, metric_rows, preload, score_rotations
 from src.stress_test import rotation_id, rotation_record, shifted_model
@@ -42,7 +42,7 @@ def alternative_groups(alternatives, threshold):
 def detailed_top_two(model, weights, years):
     """Return metric vectors for the top two distinct-cycle strategies, baseline included."""
     layers = allowed_layers(model, years)
-    rotations = (enumerate_rotations(layers) if all(len(layer) for layer in layers)
+    rotations = (enumerate_canonical_rotations(layers, len(model.season_labels)) if all(len(layer) for layer in layers)
                  else np.empty((0, years * len(model.season_labels)), dtype=int))
     baseline = baseline_indices(model, years)
     base_raw, base_scores, _ = score_rotations(model, baseline)

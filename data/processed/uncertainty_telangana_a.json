@@ -70,10 +70,10 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.26946,
-            "soil_builder": 0.29622,
+            "water_saver": 0.27055,
+            "soil_builder": 0.29531,
             "income": 0.10455,
-            "balanced": 0.23492
+            "balanced": 0.236
           }
         },
         "water_saver": {
@@ -116,16 +116,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 38.6,
-            "soil_builder": 35.4,
+            "water_saver": 43.2,
+            "soil_builder": 54.0,
             "income": 0.0,
-            "balanced": 35.4
+            "balanced": 40.4
           },
           "mean_regret": {
-            "water_saver": 0.0028,
-            "soil_builder": 0.00283,
+            "water_saver": 0.00388,
+            "soil_builder": 0.00191,
             "income": 0.08672,
-            "balanced": 0.00395
+            "balanced": 0.00502
           }
         },
         "soil_builder": {
@@ -168,16 +168,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 31.7,
-            "soil_builder": 33.0,
+            "water_saver": 33.8,
+            "soil_builder": 46.0,
             "income": 0.0,
-            "balanced": 33.7
+            "balanced": 36.6
           },
           "mean_regret": {
-            "water_saver": 0.01075,
-            "soil_builder": 0.00697,
+            "water_saver": 0.01184,
+            "soil_builder": 0.00606,
             "income": 0.08846,
-            "balanced": 0.01178
+            "balanced": 0.01285
           }
         },
         "income": {
@@ -226,42 +226,42 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.11822,
-            "soil_builder": 0.09748,
+            "water_saver": 0.1193,
+            "soil_builder": 0.09657,
             "income": 0.00047,
-            "balanced": 0.07392
+            "balanced": 0.07499
           }
         },
         "balanced": {
           "metrics": {
             "water": {
-              "p10": 7.9912,
-              "p50": 14.1308,
-              "p90": 23.8332,
+              "p10": 9.4646,
+              "p50": 15.5797,
+              "p90": 24.1155,
               "unit": "mm unmet per slot"
             },
             "nitrogen": {
-              "p10": 6.2637,
-              "p50": 8.1733,
-              "p90": 9.9381,
+              "p10": -4.2639,
+              "p50": -2.4177,
+              "p90": -0.748,
               "unit": "kg N/ha per slot"
             },
             "erosion": {
-              "p10": 14.4186,
-              "p50": 20.0895,
-              "p90": 28.2378,
+              "p10": 14.3723,
+              "p50": 19.9218,
+              "p90": 28.4255,
               "unit": "slope \u00d7 rainfall proxy"
             },
             "climate_fit": {
-              "p10": 0.5,
-              "p50": 0.6667,
-              "p90": 0.8333,
+              "p10": 0.65,
+              "p50": 0.8333,
+              "p90": 1.0,
               "unit": "historical share"
             },
             "income": {
-              "p10": 0.2994,
-              "p50": 0.3325,
-              "p90": 0.3647,
+              "p10": 0.2662,
+              "p50": 0.2972,
+              "p90": 0.3281,
               "unit": "relative index"
             },
             "risk": {
@@ -272,16 +272,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 29.7,
-            "soil_builder": 31.6,
+            "water_saver": 23.0,
+            "soil_builder": 0.0,
             "income": 0.0,
-            "balanced": 30.9
+            "balanced": 23.0
           },
           "mean_regret": {
-            "water_saver": 0.0112,
-            "soil_builder": 0.00729,
-            "income": 0.08891,
-            "balanced": 0.01229
+            "water_saver": 0.0138,
+            "soil_builder": 0.02169,
+            "income": 0.09759,
+            "balanced": 0.01554
           }
         }
       }
@@ -337,10 +337,10 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.28074,
-            "soil_builder": 0.30406,
+            "water_saver": 0.2823,
+            "soil_builder": 0.30343,
             "income": 0.11554,
-            "balanced": 0.24731
+            "balanced": 0.24884
           }
         },
         "water_saver": {
@@ -383,16 +383,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 41.2,
-            "soil_builder": 35.4,
+            "water_saver": 46.8,
+            "soil_builder": 56.0,
             "income": 0.0,
-            "balanced": 34.6
+            "balanced": 44.0
           },
           "mean_regret": {
-            "water_saver": 0.00135,
-            "soil_builder": 0.002,
+            "water_saver": 0.00291,
+            "soil_builder": 0.00136,
             "income": 0.08583,
-            "balanced": 0.00236
+            "balanced": 0.00389
           }
         },
         "soil_builder": {
@@ -435,16 +435,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 30.3,
-            "soil_builder": 31.0,
+            "water_saver": 32.8,
+            "soil_builder": 44.0,
             "income": 0.0,
-            "balanced": 31.9
+            "balanced": 35.6
           },
           "mean_regret": {
-            "water_saver": 0.0112,
-            "soil_builder": 0.0073,
+            "water_saver": 0.01276,
+            "soil_builder": 0.00667,
             "income": 0.0894,
-            "balanced": 0.01224
+            "balanced": 0.01377
           }
         },
         "income": {
@@ -493,42 +493,42 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.1178,
-            "soil_builder": 0.09813,
+            "water_saver": 0.11937,
+            "soil_builder": 0.09749,
             "income": 0.0,
-            "balanced": 0.07348
+            "balanced": 0.07501
           }
         },
         "balanced": {
           "metrics": {
             "water": {
-              "p10": 9.5117,
-              "p50": 16.37,
-              "p90": 26.815,
+              "p10": 10.8359,
+              "p50": 17.4558,
+              "p90": 26.9905,
               "unit": "mm unmet per slot"
             },
             "nitrogen": {
-              "p10": 6.2637,
-              "p50": 8.1733,
-              "p90": 9.9381,
+              "p10": -4.2639,
+              "p50": -2.4177,
+              "p90": -0.748,
               "unit": "kg N/ha per slot"
             },
             "erosion": {
-              "p10": 12.9768,
-              "p50": 18.0805,
-              "p90": 25.414,
+              "p10": 12.9351,
+              "p50": 17.9296,
+              "p90": 25.5829,
               "unit": "slope \u00d7 rainfall proxy"
             },
             "climate_fit": {
               "p10": 0.5,
               "p50": 0.6667,
-              "p90": 0.8333,
+              "p90": 1.0,
               "unit": "historical share"
             },
             "income": {
-              "p10": 0.2994,
-              "p50": 0.3325,
-              "p90": 0.3647,
+              "p10": 0.2662,
+              "p50": 0.2972,
+              "p90": 0.3281,
               "unit": "relative index"
             },
             "risk": {
@@ -539,16 +539,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 28.5,
-            "soil_builder": 33.6,
+            "water_saver": 20.4,
+            "soil_builder": 0.0,
             "income": 0.0,
-            "balanced": 33.5
+            "balanced": 20.4
           },
           "mean_regret": {
-            "water_saver": 0.01094,
-            "soil_builder": 0.00715,
-            "income": 0.08915,
-            "balanced": 0.01196
+            "water_saver": 0.01318,
+            "soil_builder": 0.02121,
+            "income": 0.0969,
+            "balanced": 0.01463
           }
         }
       }
@@ -604,10 +604,10 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.31305,
-            "soil_builder": 0.30864,
+            "water_saver": 0.31374,
+            "soil_builder": 0.30774,
             "income": 0.10549,
-            "balanced": 0.25605
+            "balanced": 0.25695
           }
         },
         "water_saver": {
@@ -650,16 +650,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 44.2,
-            "soil_builder": 36.2,
+            "water_saver": 48.0,
+            "soil_builder": 55.6,
             "income": 0.0,
-            "balanced": 36.4
+            "balanced": 41.0
           },
           "mean_regret": {
-            "water_saver": 0.00264,
-            "soil_builder": 0.00275,
+            "water_saver": 0.00333,
+            "soil_builder": 0.00185,
             "income": 0.07516,
-            "balanced": 0.00383
+            "balanced": 0.00472
           }
         },
         "soil_builder": {
@@ -702,16 +702,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 29.3,
-            "soil_builder": 31.8,
+            "water_saver": 29.2,
+            "soil_builder": 44.4,
             "income": 0.2,
-            "balanced": 33.7
+            "balanced": 36.0
           },
           "mean_regret": {
-            "water_saver": 0.0112,
-            "soil_builder": 0.00707,
+            "water_saver": 0.01188,
+            "soil_builder": 0.00617,
             "income": 0.07708,
-            "balanced": 0.01195
+            "balanced": 0.01284
           }
         },
         "income": {
@@ -760,42 +760,42 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.15841,
-            "soil_builder": 0.10893,
+            "water_saver": 0.15909,
+            "soil_builder": 0.10803,
             "income": 0.00045,
-            "balanced": 0.0934
+            "balanced": 0.09429
           }
         },
         "balanced": {
           "metrics": {
             "water": {
-              "p10": 12.9857,
-              "p50": 22.9626,
-              "p90": 38.729,
+              "p10": 15.38,
+              "p50": 25.317,
+              "p90": 39.1877,
               "unit": "mm unmet per slot"
             },
             "nitrogen": {
-              "p10": 6.2637,
-              "p50": 8.1733,
-              "p90": 9.9381,
+              "p10": -4.2639,
+              "p50": -2.4177,
+              "p90": -0.748,
               "unit": "kg N/ha per slot"
             },
             "erosion": {
-              "p10": 14.4186,
-              "p50": 20.0895,
-              "p90": 28.2378,
+              "p10": 14.3723,
+              "p50": 19.9218,
+              "p90": 28.4255,
               "unit": "slope \u00d7 rainfall proxy"
             },
             "climate_fit": {
-              "p10": 0.5,
-              "p50": 0.6667,
-              "p90": 0.8333,
+              "p10": 0.65,
+              "p50": 0.8333,
+              "p90": 1.0,
               "unit": "historical share"
             },
             "income": {
-              "p10": 0.2994,
-              "p50": 0.3325,
-              "p90": 0.3647,
+              "p10": 0.2662,
+              "p50": 0.2972,
+              "p90": 0.3281,
               "unit": "relative index"
             },
             "risk": {
@@ -806,16 +806,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 26.5,
-            "soil_builder": 32.0,
+            "water_saver": 22.8,
+            "soil_builder": 0.0,
             "income": 0.0,
-            "balanced": 29.9
+            "balanced": 23.0
           },
           "mean_regret": {
-            "water_saver": 0.01164,
-            "soil_builder": 0.00738,
-            "income": 0.07753,
-            "balanced": 0.01246
+            "water_saver": 0.01497,
+            "soil_builder": 0.02212,
+            "income": 0.08653,
+            "balanced": 0.01607
           }
         }
       }
@@ -871,10 +871,10 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.22595,
-            "soil_builder": 0.28381,
+            "water_saver": 0.22741,
+            "soil_builder": 0.28288,
             "income": 0.1036,
-            "balanced": 0.21381
+            "balanced": 0.21505
           }
         },
         "water_saver": {
@@ -917,16 +917,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 34.4,
-            "soil_builder": 34.4,
+            "water_saver": 40.4,
+            "soil_builder": 53.4,
             "income": 0.0,
-            "balanced": 33.0
+            "balanced": 39.6
           },
           "mean_regret": {
-            "water_saver": 0.00303,
-            "soil_builder": 0.00291,
+            "water_saver": 0.00448,
+            "soil_builder": 0.00198,
             "income": 0.09827,
-            "balanced": 0.00408
+            "balanced": 0.00532
           }
         },
         "soil_builder": {
@@ -969,16 +969,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 33.7,
-            "soil_builder": 32.6,
+            "water_saver": 36.6,
+            "soil_builder": 46.6,
             "income": 0.0,
-            "balanced": 34.1
+            "balanced": 37.4
           },
           "mean_regret": {
-            "water_saver": 0.01038,
-            "soil_builder": 0.00689,
+            "water_saver": 0.01184,
+            "soil_builder": 0.00596,
             "income": 0.09984,
-            "balanced": 0.01162
+            "balanced": 0.01286
           }
         },
         "income": {
@@ -1027,42 +1027,42 @@
             "balanced": 0.0
           },
           "mean_regret": {
-            "water_saver": 0.0781,
-            "soil_builder": 0.08604,
+            "water_saver": 0.07956,
+            "soil_builder": 0.08511,
             "income": 0.0005,
-            "balanced": 0.05446
+            "balanced": 0.0557
           }
         },
         "balanced": {
           "metrics": {
             "water": {
-              "p10": 2.9967,
-              "p50": 5.2991,
-              "p90": 8.9375,
+              "p10": 3.5492,
+              "p50": 5.8424,
+              "p90": 9.0433,
               "unit": "mm unmet per slot"
             },
             "nitrogen": {
-              "p10": 6.2637,
-              "p50": 8.1733,
-              "p90": 9.9381,
+              "p10": -4.2639,
+              "p50": -2.4177,
+              "p90": -0.748,
               "unit": "kg N/ha per slot"
             },
             "erosion": {
-              "p10": 14.4186,
-              "p50": 20.0895,
-              "p90": 28.2378,
+              "p10": 14.3723,
+              "p50": 19.9218,
+              "p90": 28.4255,
               "unit": "slope \u00d7 rainfall proxy"
             },
             "climate_fit": {
-              "p10": 0.5,
-              "p50": 0.6667,
-              "p90": 0.8333,
+              "p10": 0.65,
+              "p50": 0.8333,
+              "p90": 1.0,
               "unit": "historical share"
             },
             "income": {
-              "p10": 0.2994,
-              "p50": 0.3325,
-              "p90": 0.3647,
+              "p10": 0.2662,
+              "p50": 0.2972,
+              "p90": 0.3281,
               "unit": "relative index"
             },
             "risk": {
@@ -1073,16 +1073,16 @@
             }
           },
           "wins_pct": {
-            "water_saver": 31.9,
-            "soil_builder": 33.0,
+            "water_saver": 23.0,
+            "soil_builder": 0.0,
             "income": 0.0,
-            "balanced": 32.9
+            "balanced": 23.0
           },
           "mean_regret": {
-            "water_saver": 0.01084,
-            "soil_builder": 0.0072,
-            "income": 0.1003,
-            "balanced": 0.01214
+            "water_saver": 0.01269,
+            "soil_builder": 0.02126,
+            "income": 0.10865,
+            "balanced": 0.015
           }
         }
       }

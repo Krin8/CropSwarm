@@ -7,12 +7,11 @@ from xml.sax.saxutils import escape
 
 import numpy as np
 
-from src.optimizer import allowed_layers, enumerate_rotations
+from src.optimizer import allowed_layers, canonical_cycle, enumerate_canonical_rotations
 from src.precompute_cache import write_json
 from src.scoring import METRICS, ROOT, baseline_indices, historical_metrics, preload, score_rotations
 
 POWER = "NASA POWER cached historical daily climate; uniform illustrative shifts"
-ASSUMPTION = "design choice, not empirical; validate locally"
 
 
 def shifted_model(model, temperature_change_c, rainfall_change_pct):
@@ -38,13 +37,6 @@ def shifted_model(model, temperature_change_c, rainfall_change_pct):
     return model
 
 
-def canonical_cycle(sequence, slots):
-    """A rotation has no preferred starting year, but keeps within-year season order."""
-    rows = np.asarray(sequence, dtype=int).reshape(-1, slots)
-    candidates = [tuple(np.roll(rows, -offset, axis=0).ravel()) for offset in range(len(rows))]
-    return min(candidates)
-
-
 def rotation_id(sequence, slots):
     key = ",".join(str(value) for value in canonical_cycle(sequence, slots))
     return "rotation_" + hashlib.sha256(key.encode()).hexdigest()[:12]
@@ -59,13 +51,13 @@ def rotation_record(model, sequence, *, canonical=True):
             "crop_names": [model.crops[crop_id]["display_name"] for crop_id in ids]}
 
 
-def exact_cell(model, presets, years, seed):
+def exact_cell(model, presets, years):
     """Enumerate every currently feasible rotation; keep baseline even if it has flags."""
     layers = allowed_layers(model, years)
     if any(not len(layer) for layer in layers):
         rotations = np.empty((0, years * len(model.season_labels)), dtype=int)
     else:
-        rotations = enumerate_rotations(layers)
+        rotations = enumerate_canonical_rotations(layers, len(model.season_labels))
     baseline = baseline_indices(model, years)
     _, baseline_scores, baseline_flags = score_rotations(model, baseline)
     flags = {key: np.flatnonzero(value[0]).tolist() for key, value in baseline_flags.items() if value.any()}
@@ -73,17 +65,16 @@ def exact_cell(model, presets, years, seed):
                for name, values in presets.items()}
     if len(rotations):
         _, scores, _ = score_rotations(model, rotations)
-        tie_order = np.random.default_rng(seed).permutation(len(rotations))
     else:
         scores = np.empty((0, len(METRICS)))
-        tie_order = np.empty(0, dtype=int)
     results = {}
     slots = len(model.season_labels)
     for preset, vector in weights.items():
         baseline_score = float(baseline_scores[0] @ vector)
         if len(rotations):
             objectives = scores @ vector
-            best_index = int(tie_order[np.argmax(objectives[tie_order])])
+            # The canonical enumerator is lexicographically ordered; first exact max wins.
+            best_index = int(np.argmax(objectives))
             exact_score = float(objectives[best_index])
             best = rotations[best_index]
             winner_is_baseline = baseline_score >= exact_score
@@ -145,7 +136,7 @@ def sweep(model, presets, config, years):
     for temp in temperatures:
         for rain in rains:
             shifted_model(model, temp, rain)
-            cell = exact_cell(model, presets, years, config["seed"])
+            cell = exact_cell(model, presets, years)
             for name, result in cell.items():
                 for key in ("winner_id", "exact_optimum_id"):
                     identifier = result[key]
@@ -169,7 +160,7 @@ def sweep(model, presets, config, years):
             "climate_source": POWER, "grid_source": config["source"],
             "temperature_changes_c": temperatures, "rainfall_changes_pct": rains,
             "distance_rule": config["distance_rule"], "tie_rule": config["tie_rule"],
-            "seed": config["seed"], "seed_source": ASSUMPTION, "horizon_years": years,
+            "horizon_years": years,
             "rotation_catalog": rotations, "presets": out,
             "caveat": "Uniform shifts to cached historical daily weather are a sensitivity stress test, not a climate projection. Crop calendars and soil storage stay fixed. Crop and irrigation inputs are illustrative; validate locally."}
 

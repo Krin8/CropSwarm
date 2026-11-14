@@ -19,7 +19,7 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
     assert any("Robustness check" in row.value for row in app.subheader)
-    assert any("Near-duplicate metric profile" in row.value for row in app.info)
+    assert not any("Near-duplicate metric profile" in row.value for row in app.info)
     if site != "telangana_a":
         assert any("top choices are close here" in row.value for row in app.info)
     assert any("What we cannot know" in row.value for row in app.subheader)

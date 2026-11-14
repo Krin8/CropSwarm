@@ -2,9 +2,11 @@
   "farm_id": "kenya_makueni_north",
   "label": "illustrative; validate locally",
   "horizon_years": 3,
-  "three_year_feasible_count": 50658,
-  "feasible_count": 50658,
-  "exact_runtime_seconds": 0.015423958015162498,
+  "three_year_raw_count": 50658,
+  "three_year_feasible_count": 16914,
+  "raw_feasible_count": 50658,
+  "feasible_count": 16914,
+  "exact_runtime_seconds": 0.009646999998949468,
   "verification": {
     "water_saver": {
       "exact_score": 0.7467280962622784,
@@ -90,7 +92,7 @@
           0.7467280962622784
         ]
       },
-      "runtime_seconds": 0.9936447920044884,
+      "runtime_seconds": 5.260442250000779,
       "restart_count": 5,
       "trials": [
         {
@@ -659,7 +661,7 @@
           0.7558022369316822
         ]
       },
-      "runtime_seconds": 0.9794257920002565,
+      "runtime_seconds": 4.919767249986762,
       "restart_count": 5,
       "trials": [
         {
@@ -1228,7 +1230,7 @@
           0.7073988152969009
         ]
       },
-      "runtime_seconds": 0.9771113749884535,
+      "runtime_seconds": 5.081642542005284,
       "restart_count": 5,
       "trials": [
         {
@@ -1797,7 +1799,7 @@
           0.7394869643689552
         ]
       },
-      "runtime_seconds": 0.9832312079961412,
+      "runtime_seconds": 4.9087544579815585,
       "restart_count": 5,
       "trials": [
         {
@@ -2283,6 +2285,13 @@
       ]
     }
   },
+  "selection": {
+    "requested_alternatives": 4,
+    "displayed_alternatives": 4,
+    "difference_threshold": 0.05,
+    "source": "config/tie_diagnosis.json; design choice, not empirical",
+    "note": "Fewer alternatives mean no additional canonical rotation cleared the metric-difference threshold."
+  },
   "strategies": [
     {
       "strategy_id": "baseline",
@@ -2605,7 +2614,7 @@
       "crop_ids": [
         [
           "green_gram",
-          "sorghum"
+          "fallow"
         ],
         [
           "green_gram",
@@ -2618,7 +2627,7 @@
       ],
       "crop_names": [
         "Green gram (mung bean)",
-        "Grain sorghum",
+        "Bare fallow",
         "Green gram (mung bean)",
         "Pearl millet",
         "Green gram (mung bean)",
@@ -2626,57 +2635,57 @@
       ],
       "metrics": {
         "water": {
-          "value": 211.95507843137253,
+          "value": 174.21104481792716,
           "unit": "mm unmet per slot",
-          "score": 0.4882437622159975,
+          "score": 0.5721193924680983,
           "source": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
           "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
         },
         "nitrogen": {
-          "value": -25.0,
+          "value": -12.5,
           "unit": "kg N/ha per slot",
-          "score": 0.6168831168831169,
+          "score": 0.698051948051948,
           "source": "Crop catalog \u00b7 local assumptions",
           "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
         },
         "erosion": {
-          "value": 42.04044420705883,
+          "value": 51.10025069445379,
           "unit": "slope \u00d7 rainfall proxy",
-          "score": 0.8816922450816087,
+          "score": 0.8561966684830435,
           "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
           "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
         },
         "climate_fit": {
-          "value": 0.8456582633053221,
+          "value": 0.8750700280112046,
           "unit": "historical share",
-          "score": 0.8456582633053221,
+          "score": 0.8750700280112046,
           "source": "NASA POWER \u00b7 crop catalog",
           "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
         },
         "income": {
-          "value": 0.5899999999999999,
+          "value": 0.49333333333333335,
           "unit": "relative index",
-          "score": 0.5899999999999999,
+          "score": 0.49333333333333335,
           "source": "Crop catalog \u00b7 illustrative economic assumptions",
           "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
         },
         "risk": {
-          "value": 0.0,
+          "value": 0.08333333333333333,
           "unit": "relative penalty",
-          "score": 1.0,
+          "score": 0.9166666666666666,
           "source": "Crop catalog \u00b7 disease family and cover assumptions",
           "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
         }
       },
       "flags": {},
       "objectives": {
-        "water_saver": 0.6874357483120258,
-        "soil_builder": 0.7478781988874692,
-        "income": 0.6969460396597902,
-        "balanced": 0.7359211558726277
+        "water_saver": 0.708663083954945,
+        "soil_builder": 0.755017026917609,
+        "income": 0.6605874716778375,
+        "balanced": 0.7358444662924302
       },
-      "why": "Selected by exact distinct fallback for the balanced priorities.",
-      "selection_method": "exact distinct fallback"
+      "why": "Selected by exact metric-distinct fallback for the balanced priorities.",
+      "selection_method": "exact metric-distinct fallback"
     }
   ],
   "parameter_source": "config/optimizer.json"

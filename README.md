@@ -13,10 +13,10 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 
 ## Seven key results
 
-1. Each farm shows its existing baseline and four distinct alternative strategies with reasons, benefits, risks and information gaps.
+1. Each farm shows its existing baseline and four alternatives with distinct metric profiles, reasons, benefits, risks and information gaps.
 2. NASA POWER supplies 1991–2025 daily weather for all three sites; Terra MODIS supplies 2015–2024 vegetation composites. [Coverage](docs/data_pipeline.md)
 3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
-4. Exact enumeration evaluated 504 feasible rotations in Kansas, 633,998 in Telangana and 50,658 in Makueni over three years. [Verification](docs/optimizer.md)
+4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
 5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times; best-of-five found it 29–30 times. [Gaps](docs/optimizer.md)
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
 7. The baseline flags remain visible: Kansas fallow and spring NDVI disagree, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Validity](docs/decisions.md)
@@ -63,7 +63,7 @@ flowchart LR
 
 ## Optimizer verification
 
-All three sites fit a three-year horizon. Exact enumeration evaluated 504, 633,998 and 50,658 feasible rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best-of-five reached it 29–30 times. [Verification, seeds and optimality gaps](docs/optimizer.md)
+All three sites fit a three-year horizon. Exact enumeration evaluated 168, 211,394 and 16,914 canonical rotations in Kansas, Telangana and Makueni, respectively. Across 30 trials per farm and preset, a single ACO run reached the exact optimum 21–30 times and best-of-five reached it 29–30 times. [Verification, seeds and optimality gaps](docs/optimizer.md)
 
 ## Rebuild from cached evidence
 

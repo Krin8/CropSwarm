@@ -20,36 +20,16 @@
     10
   ],
   "distance_rule": "Euclidean distance in grid steps from 0 C and 0% rainfall; ties prefer smaller temperature change, then smaller absolute rainfall change",
-  "tie_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation",
-  "seed": 42,
-  "seed_source": "design choice, not empirical; validate locally",
+  "tie_rule": "Choose the lexicographically first canonical whole-year rotation among exactly equal feasible objective scores; baseline wins an exact tie with the best feasible rotation",
   "horizon_years": 3,
   "rotation_catalog": {
-    "rotation_1830baa3f05c": {
+    "rotation_608edfeb3f80": {
       "crop_ids": [
         [
           "fallow"
-        ],
-        [
-          "soybean"
         ],
         [
           "sorghum"
-        ]
-      ],
-      "crop_names": [
-        "Bare fallow",
-        "Soybean",
-        "Grain sorghum"
-      ]
-    },
-    "rotation_1f498b38b325": {
-      "crop_ids": [
-        [
-          "fallow"
-        ],
-        [
-          "cereal_rye_cover"
         ],
         [
           "soybean"
@@ -57,26 +37,8 @@
       ],
       "crop_names": [
         "Bare fallow",
-        "Cereal rye cover",
-        "Soybean"
-      ]
-    },
-    "rotation_f2030cfe9ba5": {
-      "crop_ids": [
-        [
-          "sorghum"
-        ],
-        [
-          "soybean"
-        ],
-        [
-          "sunflower"
-        ]
-      ],
-      "crop_names": [
         "Grain sorghum",
-        "Soybean",
-        "Sunflower"
+        "Soybean"
       ]
     },
     "rotation_e0eacd64bd52": {
@@ -97,22 +59,22 @@
         "Cereal rye cover"
       ]
     },
-    "rotation_f0f8f8017785": {
+    "rotation_f2030cfe9ba5": {
       "crop_ids": [
         [
           "sorghum"
         ],
         [
-          "sunflower"
+          "soybean"
         ],
         [
-          "soybean"
+          "sunflower"
         ]
       ],
       "crop_names": [
         "Grain sorghum",
-        "Sunflower",
-        "Soybean"
+        "Soybean",
+        "Sunflower"
       ]
     },
     "rotation_1ffe62f1d21c": {
@@ -149,42 +111,6 @@
         "Grain maize",
         "Soybean",
         "Sunflower"
-      ]
-    },
-    "rotation_a0f1f717f567": {
-      "crop_ids": [
-        [
-          "maize"
-        ],
-        [
-          "sunflower"
-        ],
-        [
-          "soybean"
-        ]
-      ],
-      "crop_names": [
-        "Grain maize",
-        "Sunflower",
-        "Soybean"
-      ]
-    },
-    "rotation_f16fd5552c2b": {
-      "crop_ids": [
-        [
-          "soybean"
-        ],
-        [
-          "sunflower"
-        ],
-        [
-          "pearl_millet"
-        ]
-      ],
-      "crop_names": [
-        "Soybean",
-        "Sunflower",
-        "Pearl millet"
       ]
     },
     "rotation_2ab28ade433d": {
@@ -230,220 +156,220 @@
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5936660613014559,
           "exact_optimum_score": 0.6457093835365231,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6073207448949572,
-          "exact_optimum_score": 0.6615439068743056,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6615439068743058,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6203642303478193,
-          "exact_optimum_score": 0.6737736936734794,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6737736936734795,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6299285870139996,
-          "exact_optimum_score": 0.6837232294182861,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.683723229418286,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.637147825226738,
           "exact_optimum_score": 0.6908972461691504,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5937080781081785,
-          "exact_optimum_score": 0.6442808121079516,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6442808121079517,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6059341902731086,
           "exact_optimum_score": 0.6586867640171629,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6146499446335336,
           "exact_optimum_score": 0.6680594079591937,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6227437130644198,
-          "exact_optimum_score": 0.6780089437040004,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6780089437040002,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.628492363041864,
           "exact_optimum_score": 0.6851829604548647,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5879517755871702,
           "exact_optimum_score": 0.638566526393666,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5973207448949572,
           "exact_optimum_score": 0.6501153354457343,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6060364992553823,
-          "exact_optimum_score": 0.6594879793877652,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.659487979387765,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.612701696257697,
-          "exact_optimum_score": 0.6680089437040004,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6680089437040002,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6184503462351412,
           "exact_optimum_score": 0.6751829604548647,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.582153456259439,
-          "exact_optimum_score": 0.6357093835365231,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6357093835365232,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5900938541386548,
-          "exact_optimum_score": 0.64582962116002,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6458296211600201,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5973390202637857,
           "exact_optimum_score": 0.6552022651020508,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6040042172661004,
-          "exact_optimum_score": 0.6637232294182861,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.663723229418286,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6097528672435446,
           "exact_optimum_score": 0.6708972461691504,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -452,9 +378,9 @@
           "rainfall_change_pct": -30,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5705988344106996,
-          "exact_optimum_score": 0.6286586779138229,
+          "exact_optimum_score": 0.628658677913823,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -465,7 +391,7 @@
           "baseline_score": 0.5785392322899152,
           "exact_optimum_score": 0.6415556610750377,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -476,7 +402,7 @@
           "baseline_score": 0.5857843984150461,
           "exact_optimum_score": 0.6553828579621934,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -487,7 +413,7 @@
           "baseline_score": 0.592449595417361,
           "exact_optimum_score": 0.6657042567050353,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -498,7 +424,7 @@
           "baseline_score": 0.5981982453948052,
           "exact_optimum_score": 0.6764160973004957,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -507,9 +433,9 @@
           "rainfall_change_pct": -30,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5647584982762458,
-          "exact_optimum_score": 0.6315158207709658,
+          "exact_optimum_score": 0.6315158207709659,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -518,9 +444,9 @@
           "rainfall_change_pct": -20,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5726988961554614,
-          "exact_optimum_score": 0.6444128039321806,
+          "exact_optimum_score": 0.6444128039321805,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -531,7 +457,7 @@
           "baseline_score": 0.5799440622805924,
           "exact_optimum_score": 0.6582400008193363,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -542,7 +468,7 @@
           "baseline_score": 0.5866092592829071,
           "exact_optimum_score": 0.6685613995621782,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -553,7 +479,7 @@
           "baseline_score": 0.5923579092603514,
           "exact_optimum_score": 0.6792732401576386,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -564,7 +490,7 @@
           "baseline_score": 0.558918162141792,
           "exact_optimum_score": 0.6329443921995372,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -575,7 +501,7 @@
           "baseline_score": 0.5668585600210077,
           "exact_optimum_score": 0.6458413753607519,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -584,9 +510,9 @@
           "rainfall_change_pct": -10,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5741037261461386,
-          "exact_optimum_score": 0.6596685722479078,
+          "exact_optimum_score": 0.6596685722479079,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -597,7 +523,7 @@
           "baseline_score": 0.5807689231484534,
           "exact_optimum_score": 0.6699899709907495,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -608,66 +534,66 @@
           "baseline_score": 0.5865175731258976,
           "exact_optimum_score": 0.68070181158621,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         }
       ],
       "tipping_point": {
         "found": true,
-        "reference_winner_id": "rotation_1830baa3f05c",
+        "reference_winner_id": "rotation_608edfeb3f80",
         "cell": {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": 0,
           "winner_id": "rotation_1ffe62f1d21c"
         },
-        "sentence": "The top strategy first changes at +2 \u00b0C and +0% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 soybean \u2192 sorghum to fallow \u2192 soybean \u2192 pearl_millet."
+        "sentence": "The top strategy first changes at +2 \u00b0C and +0% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 sorghum \u2192 soybean to fallow \u2192 soybean \u2192 pearl_millet."
       },
-      "reference_winner_id": "rotation_1830baa3f05c"
+      "reference_winner_id": "rotation_608edfeb3f80"
     },
     "soil_builder": {
       "cells": [
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6131161264695776,
           "exact_optimum_score": 0.7123581708871687,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6155538711761048,
           "exact_optimum_score": 0.7133922092784994,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6178490006475716,
           "exact_optimum_score": 0.7161522644261565,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6180456515461328,
           "exact_optimum_score": 0.7157552327704902,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -678,51 +604,51 @@
           "baseline_score": 0.6170280509137787,
           "exact_optimum_score": 0.7141322830077597,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6131441376740594,
           "exact_optimum_score": 0.7123581708871687,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6146295014282057,
           "exact_optimum_score": 0.7133922092784994,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6140394768380477,
           "exact_optimum_score": 0.7161522644261565,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6132557355797461,
           "exact_optimum_score": 0.716735624927353,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -733,51 +659,51 @@
           "baseline_score": 0.6112577427905292,
           "exact_optimum_score": 0.7151126751646224,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6093066026600538,
-          "exact_optimum_score": 0.7114057899347878,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7114057899347879,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6088872045094382,
           "exact_optimum_score": 0.7114594361692557,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6082971799192802,
-          "exact_optimum_score": 0.7142194913169128,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7142194913169129,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6065610577085978,
-          "exact_optimum_score": 0.7148028518181092,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7148028518181093,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -788,51 +714,51 @@
           "baseline_score": 0.6045630649193809,
           "exact_optimum_score": 0.7131799020553786,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6054410564415664,
-          "exact_optimum_score": 0.7114057899347878,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7114057899347879,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6040692773385699,
           "exact_optimum_score": 0.7114594361692557,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6024988605915491,
-          "exact_optimum_score": 0.71323909916005,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7132390991600501,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.6007627383808667,
-          "exact_optimum_score": 0.7138224596612465,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7138224596612466,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -843,51 +769,51 @@
           "baseline_score": 0.5987647455916498,
           "exact_optimum_score": 0.7121995098985159,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5977379752090735,
-          "exact_optimum_score": 0.7114057899347878,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7114057899347879,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5963661961060769,
           "exact_optimum_score": 0.7114594361692557,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5947957793590561,
-          "exact_optimum_score": 0.71323909916005,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7132390991600501,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5930596571483737,
-          "exact_optimum_score": 0.7138224596612465,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7138224596612466,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -898,51 +824,51 @@
           "baseline_score": 0.5910616643591569,
           "exact_optimum_score": 0.7121995098985159,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5938444177861042,
-          "exact_optimum_score": 0.7114057899347878,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7114057899347879,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5924726386831076,
           "exact_optimum_score": 0.7114594361692557,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.590902221936087,
-          "exact_optimum_score": 0.71323909916005,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7132390991600501,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5891660997254045,
-          "exact_optimum_score": 0.7138224596612465,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7138224596612466,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -953,51 +879,51 @@
           "baseline_score": 0.5871681069361876,
           "exact_optimum_score": 0.7121995098985159,
           "exact_optimum_id": "rotation_e0eacd64bd52",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5899508603631349,
-          "exact_optimum_score": 0.7114057899347878,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7114057899347879,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5885790812601385,
           "exact_optimum_score": 0.7114594361692557,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5870086645131178,
-          "exact_optimum_score": 0.71323909916005,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7132390991600501,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1f498b38b325",
+          "winner_id": "rotation_e0eacd64bd52",
           "baseline_score": 0.5852725423024352,
-          "exact_optimum_score": 0.7138224596612465,
-          "exact_optimum_id": "rotation_1f498b38b325",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.7138224596612466,
+          "exact_optimum_id": "rotation_e0eacd64bd52",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1008,22 +934,22 @@
           "baseline_score": 0.5832745495132183,
           "exact_optimum_score": 0.7128513510023182,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         }
       ],
       "tipping_point": {
         "found": true,
-        "reference_winner_id": "rotation_1f498b38b325",
+        "reference_winner_id": "rotation_e0eacd64bd52",
         "cell": {
-          "temperature_change_c": 0.0,
+          "temperature_change_c": 3.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_e0eacd64bd52"
+          "winner_id": "rotation_1ffe62f1d21c"
         },
-        "sentence": "The top strategy first changes at +0 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 cereal_rye_cover \u2192 soybean to fallow \u2192 soybean \u2192 cereal_rye_cover."
+        "sentence": "The top strategy first changes at +3 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 soybean \u2192 cereal_rye_cover to fallow \u2192 soybean \u2192 pearl_millet."
       },
-      "reference_winner_id": "rotation_1f498b38b325"
+      "reference_winner_id": "rotation_e0eacd64bd52"
     },
     "income": {
       "cells": [
@@ -1032,9 +958,9 @@
           "rainfall_change_pct": -30,
           "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.528733076778503,
-          "exact_optimum_score": 0.6191858667204219,
+          "exact_optimum_score": 0.6191858667204218,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1045,7 +971,7 @@
           "baseline_score": 0.5363637446129415,
           "exact_optimum_score": 0.629248953521444,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1056,7 +982,7 @@
           "baseline_score": 0.5438798084168012,
           "exact_optimum_score": 0.6361901722864919,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1065,20 +991,20 @@
           "rainfall_change_pct": 0,
           "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.5483310070931335,
-          "exact_optimum_score": 0.6413635397298839,
+          "exact_optimum_score": 0.6413635397298838,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_f0f8f8017785",
+          "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.55109176376236,
           "exact_optimum_score": 0.6446282173926936,
-          "exact_optimum_id": "rotation_f0f8f8017785",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_f2030cfe9ba5",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1089,7 +1015,7 @@
           "baseline_score": 0.5287750935852257,
           "exact_optimum_score": 0.6134715810061361,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1100,7 +1026,7 @@
           "baseline_score": 0.5349771899910927,
           "exact_optimum_score": 0.6221060963785869,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1111,7 +1037,7 @@
           "baseline_score": 0.5381655227025155,
           "exact_optimum_score": 0.6261901722864919,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1120,20 +1046,20 @@
           "rainfall_change_pct": 0,
           "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.5411461331435536,
-          "exact_optimum_score": 0.6313635397298839,
+          "exact_optimum_score": 0.6313635397298838,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_f0f8f8017785",
+          "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.542436301577486,
           "exact_optimum_score": 0.6346282173926936,
-          "exact_optimum_id": "rotation_f0f8f8017785",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_f2030cfe9ba5",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1144,7 +1070,7 @@
           "baseline_score": 0.5230187910642172,
           "exact_optimum_score": 0.6077572952918504,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1155,7 +1081,7 @@
           "baseline_score": 0.5263637446129414,
           "exact_optimum_score": 0.6135346678071584,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1166,7 +1092,7 @@
           "baseline_score": 0.5295520773243642,
           "exact_optimum_score": 0.6176187437150633,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1175,20 +1101,20 @@
           "rainfall_change_pct": 0,
           "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.5311041163368309,
-          "exact_optimum_score": 0.6213635397298839,
+          "exact_optimum_score": 0.6213635397298838,
           "exact_optimum_id": "rotation_f2030cfe9ba5",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_f0f8f8017785",
+          "winner_id": "rotation_f2030cfe9ba5",
           "baseline_score": 0.5323942847707632,
           "exact_optimum_score": 0.6246282173926936,
-          "exact_optimum_id": "rotation_f0f8f8017785",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_f2030cfe9ba5",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1199,7 +1125,7 @@
           "baseline_score": 0.5172204717364861,
           "exact_optimum_score": 0.6073881892726529,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1208,9 +1134,9 @@
           "rainfall_change_pct": -20,
           "winner_id": "rotation_030dcd6fdf40",
           "baseline_score": 0.519136853856639,
-          "exact_optimum_score": 0.6118058447350471,
+          "exact_optimum_score": 0.611805844735047,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1221,7 +1147,7 @@
           "baseline_score": 0.5208545983327675,
           "exact_optimum_score": 0.6159618090019807,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1230,20 +1156,20 @@
           "rainfall_change_pct": 0,
           "winner_id": "rotation_030dcd6fdf40",
           "baseline_score": 0.5224066373452343,
-          "exact_optimum_score": 0.6197423915466539,
+          "exact_optimum_score": 0.6197423915466538,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_a0f1f717f567",
+          "winner_id": "rotation_030dcd6fdf40",
           "baseline_score": 0.5236968057791667,
           "exact_optimum_score": 0.6230358966463457,
-          "exact_optimum_id": "rotation_a0f1f717f567",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_030dcd6fdf40",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1254,7 +1180,7 @@
           "baseline_score": 0.5056658498877467,
           "exact_optimum_score": 0.60453104641551,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1265,29 +1191,29 @@
           "baseline_score": 0.5075822320078994,
           "exact_optimum_score": 0.6089487018779042,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.509299976484028,
-          "exact_optimum_score": 0.6132179260655634,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6132179260655635,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.5108520154964948,
-          "exact_optimum_score": 0.6195021057335967,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6195021057335965,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1298,7 +1224,7 @@
           "baseline_score": 0.5121421839304272,
           "exact_optimum_score": 0.6268229721894527,
           "exact_optimum_id": "rotation_2ab28ade433d",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1309,7 +1235,7 @@
           "baseline_score": 0.49982551375329287,
           "exact_optimum_score": 0.6031024749869386,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1320,29 +1246,29 @@
           "baseline_score": 0.5017418958734456,
           "exact_optimum_score": 0.6075201304493327,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.5034596403495742,
           "exact_optimum_score": 0.6146464974941348,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 2.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.5050116793620409,
-          "exact_optimum_score": 0.6209306771621681,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6209306771621679,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1353,7 +1279,7 @@
           "baseline_score": 0.5063018477959733,
           "exact_optimum_score": 0.6282515436180242,
           "exact_optimum_id": "rotation_2ab28ade433d",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1364,7 +1290,7 @@
           "baseline_score": 0.4939851776188391,
           "exact_optimum_score": 0.6031024749869386,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1375,29 +1301,29 @@
           "baseline_score": 0.49590155973899186,
           "exact_optimum_score": 0.6075201304493327,
           "exact_optimum_id": "rotation_030dcd6fdf40",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.49761930421512046,
-          "exact_optimum_score": 0.6160750689227062,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6160750689227064,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 3.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_f16fd5552c2b",
+          "winner_id": "rotation_2ab28ade433d",
           "baseline_score": 0.4991713432275872,
-          "exact_optimum_score": 0.6223592485907395,
-          "exact_optimum_id": "rotation_f16fd5552c2b",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6223592485907394,
+          "exact_optimum_id": "rotation_2ab28ade433d",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1408,7 +1334,7 @@
           "baseline_score": 0.5004615116615196,
           "exact_optimum_score": 0.6296801150465955,
           "exact_optimum_id": "rotation_2ab28ade433d",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         }
@@ -1417,11 +1343,11 @@
         "found": true,
         "reference_winner_id": "rotation_f2030cfe9ba5",
         "cell": {
-          "temperature_change_c": 0.0,
-          "rainfall_change_pct": 10,
-          "winner_id": "rotation_f0f8f8017785"
+          "temperature_change_c": 1.5,
+          "rainfall_change_pct": 0,
+          "winner_id": "rotation_030dcd6fdf40"
         },
-        "sentence": "The top strategy first changes at +0 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from sorghum \u2192 soybean \u2192 sunflower to sorghum \u2192 sunflower \u2192 soybean."
+        "sentence": "The top strategy first changes at +1.5 \u00b0C and +0% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from sorghum \u2192 soybean \u2192 sunflower to maize \u2192 soybean \u2192 sunflower."
       },
       "reference_winner_id": "rotation_f2030cfe9ba5"
     },
@@ -1430,154 +1356,154 @@
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6057044270750624,
-          "exact_optimum_score": 0.6594039261353589,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.659403926135359,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6140409986356742,
           "exact_optimum_score": 0.6687225444883717,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6221351242966828,
           "exact_optimum_score": 0.6744399506722913,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6266618363837522,
-          "exact_optimum_score": 0.6781246362760628,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6781246362760627,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.0,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6291243208682654,
           "exact_optimum_score": 0.6795360425861777,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6057520461226815,
-          "exact_optimum_score": 0.6577848785163113,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6577848785163114,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6124695700642455,
           "exact_optimum_score": 0.6654844492502765,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6156589338204923,
           "exact_optimum_score": 0.6679637601961009,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.618518979240895,
-          "exact_optimum_score": 0.6716484457998724,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6716484457998723,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 0.5,
           "rainfall_change_pct": 10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6193147970587416,
           "exact_optimum_score": 0.6730598521099873,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 720,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5992282365988719,
-          "exact_optimum_score": 0.6513086880401208,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6513086880401209,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6027076653023408,
           "exact_optimum_score": 0.6557701635359907,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": -10,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6058970290585876,
-          "exact_optimum_score": 0.6582494744818151,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_score": 0.6582494744818153,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 0,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.6071380268599427,
           "exact_optimum_score": 0.660315112466539,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1588,29 +1514,29 @@
           "baseline_score": 0.6079338446777892,
           "exact_optimum_score": 0.6647234832908159,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -30,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5926568080274432,
           "exact_optimum_score": 0.6480705928020256,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
         {
           "temperature_change_c": 1.5,
           "rainfall_change_pct": -20,
-          "winner_id": "rotation_1830baa3f05c",
+          "winner_id": "rotation_608edfeb3f80",
           "baseline_score": 0.5945171891118646,
           "exact_optimum_score": 0.6509130206788478,
-          "exact_optimum_id": "rotation_1830baa3f05c",
-          "feasible_count": 504,
+          "exact_optimum_id": "rotation_608edfeb3f80",
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1621,7 +1547,7 @@
           "baseline_score": 0.5960398862014447,
           "exact_optimum_score": 0.6558263164126347,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1632,7 +1558,7 @@
           "baseline_score": 0.5972808840027998,
           "exact_optimum_score": 0.6605270170344566,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1643,7 +1569,7 @@
           "baseline_score": 0.5980767018206463,
           "exact_optimum_score": 0.6663425309098635,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1654,7 +1580,7 @@
           "baseline_score": 0.5795615699322052,
           "exact_optimum_score": 0.6471717810535088,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1665,7 +1591,7 @@
           "baseline_score": 0.5814219510166265,
           "exact_optimum_score": 0.6540486498894248,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1674,9 +1600,9 @@
           "rainfall_change_pct": -10,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5829446481062066,
-          "exact_optimum_score": 0.6623025068888252,
+          "exact_optimum_score": 0.6623025068888251,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1687,7 +1613,7 @@
           "baseline_score": 0.5841856459075617,
           "exact_optimum_score": 0.6670032075106471,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1698,7 +1624,7 @@
           "baseline_score": 0.5849814637254083,
           "exact_optimum_score": 0.6728187213860539,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1709,7 +1635,7 @@
           "baseline_score": 0.5729425223131577,
           "exact_optimum_score": 0.650409876291604,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1720,7 +1646,7 @@
           "baseline_score": 0.5748029033975789,
           "exact_optimum_score": 0.6572867451275201,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1729,9 +1655,9 @@
           "rainfall_change_pct": -10,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.576325600487159,
-          "exact_optimum_score": 0.6655406021269205,
+          "exact_optimum_score": 0.6655406021269203,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1742,7 +1668,7 @@
           "baseline_score": 0.5775665982885141,
           "exact_optimum_score": 0.6702413027487424,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1753,7 +1679,7 @@
           "baseline_score": 0.5783624161063606,
           "exact_optimum_score": 0.6760568166241492,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1764,7 +1690,7 @@
           "baseline_score": 0.5663234746941099,
           "exact_optimum_score": 0.6520289239106516,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1775,7 +1701,7 @@
           "baseline_score": 0.5681838557785313,
           "exact_optimum_score": 0.6589057927465677,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1784,9 +1710,9 @@
           "rainfall_change_pct": -10,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5697065528681113,
-          "exact_optimum_score": 0.6671596497459681,
+          "exact_optimum_score": 0.667159649745968,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1795,9 +1721,9 @@
           "rainfall_change_pct": 0,
           "winner_id": "rotation_1ffe62f1d21c",
           "baseline_score": 0.5709475506694665,
-          "exact_optimum_score": 0.6718603503677899,
+          "exact_optimum_score": 0.67186035036779,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 504,
+          "feasible_count": 168,
           "baseline_flags": {},
           "status": "complete"
         },
@@ -1808,22 +1734,22 @@
           "baseline_score": 0.571743368487313,
           "exact_optimum_score": 0.6776758642431968,
           "exact_optimum_id": "rotation_1ffe62f1d21c",
-          "feasible_count": 720,
+          "feasible_count": 240,
           "baseline_flags": {},
           "status": "complete"
         }
       ],
       "tipping_point": {
         "found": true,
-        "reference_winner_id": "rotation_1830baa3f05c",
+        "reference_winner_id": "rotation_608edfeb3f80",
         "cell": {
           "temperature_change_c": 1.0,
           "rainfall_change_pct": 10,
           "winner_id": "rotation_1ffe62f1d21c"
         },
-        "sentence": "The top strategy first changes at +1 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 soybean \u2192 sorghum to fallow \u2192 soybean \u2192 pearl_millet."
+        "sentence": "The top strategy first changes at +1 \u00b0C and +10% rainfall (nearest grid cell in normalized steps from unchanged historical weather). The top rotation changes from fallow \u2192 sorghum \u2192 soybean to fallow \u2192 soybean \u2192 pearl_millet."
       },
-      "reference_winner_id": "rotation_1830baa3f05c"
+      "reference_winner_id": "rotation_608edfeb3f80"
     }
   },
   "caveat": "Uniform shifts to cached historical daily weather are a sensitivity stress test, not a climate projection. Crop calendars and soil storage stay fixed. Crop and irrigation inputs are illustrative; validate locally."
