@@ -295,3 +295,131 @@ The [results JSON](../data/processed/climate_yield_transfer.json) and [held-out 
 python -m src.cross_state_yield_data
 python -m src.cross_state_yield
 ```
+
+## P37 local yield recalibration
+
+This learning curve uses only reported non-irrigated winter-wheat records in the cached P25 and P32 feature files. The [preregistration](p37_plan.md) was committed as `5cd5183` before evaluation. The P25/P27/P32 results stay distinct. All P37 results are illustrative and need local validation.
+
+### Common test and source cutoff
+
+For each USDA reporting district, the first 0, 3, 5, 8 or 12 distinct observed years supply local calibration records. Observed years can have calendar gaps. The test set for every method and calibration size starts at that district's thirteenth observed year. Unused earlier years are left out for smaller calibration sizes. All test years follow every calibration year. Districts may use different test origins.
+
+| Target | Districts | Test counties | Test county-years | Across-district test period | Calibration rows at k = 3 / 5 / 8 / 12 |
+| --- | --- | --- | --- | --- | --- |
+| Nebraska | 8 | 59 | 462 | 2002–2019 | 173 / 285 / 461 / 692 |
+| Oklahoma | 5 | 24 | 88 | 2002–2008 | 95 / 148 / 196 / 270 |
+
+Oklahoma excluded South Central, Northeast and East Central, which had 3, 3 and 5 observed years. Nebraska's Northeast district is retained with only one later county-year. The block bootstrap uses eight Nebraska districts and five Oklahoma districts and shares the exact same resamples across curves within each state. The sample is sparse, especially in Oklahoma. The intervals are pointwise and descriptive without multiplicity adjustment.
+
+The Kansas forest uses 48 trees and the unchanged P25/P27 weather features, scaling and county detrending rules where applicable. Like P25/P27, the forest receives the raw weather features. It refits only on the Kansas records preceding each test origin and uses the same prediction throughout each district's curve. The local intercept/trend calibrates the source residual as a district-wide function of year. The two local ridges use earlier-only inner validation, and the mean and trend are county-level fits using the existing unseen-county fallback. The source feature and source adjustment use the outer-origin Kansas fit as frozen input during local selection.
+
+| First held-out year | Last Kansas training year | Kansas training rows | Kansas counties | Selected forest minimum leaf |
+| --- | --- | --- | --- | --- |
+| 2002 | 2001 | 1,236 | 103 | 5 |
+| 2007 | 2006 | 1,751 | 103 | 5 |
+| 2008 | 2007 | 1,854 | 103 | 5 |
+
+### First tested amount that beat the local trend
+
+A method qualifies when the upper endpoint of the paired 95% bootstrap interval for its RMSE minus local-trend RMSE is below zero. The baseline needs local observations, so there is no comparison at k = 0.
+
+| Method | Nebraska | Oklahoma |
+| --- | --- | --- |
+| Kansas source only | 3 years | 3 years |
+| Source + local intercept/trend | 5 years | 8 years |
+| Local ridge | 3 years | 3 years |
+| Local ridge + source feature | 3 years | 3 years |
+| Local trend | Reference | Reference |
+| Local county mean | 3 years | 3 years |
+
+### Full curves
+
+Each bracket is a descriptive 95% district-block bootstrap interval. Units are bushels per acre for RMSE and its paired difference. A negative paired difference favors the listed method. A dash marks an unavailable estimate or comparison. The local methods require yield history and are unavailable at k = 0.
+
+#### Nebraska
+
+| Local years | Method | RMSE | R² | Spearman ρ | Δ RMSE vs local trend |
+| --- | --- | --- | --- | --- | --- |
+| 0 | Kansas source only | 12.381 [10.148, 14.728] | -0.373 [-1.375, -0.039] | 0.234 [-0.103, 0.482] | — |
+| 0 | Source + local intercept/trend | — | — | — | — |
+| 0 | Local ridge | — | — | — | — |
+| 0 | Local ridge + source feature | — | — | — | — |
+| 0 | Local trend | — | — | — | — |
+| 0 | Local county mean | — | — | — | — |
+| 3 | Kansas source only | 12.381 [10.148, 14.728] | -0.373 [-1.375, -0.039] | 0.234 [-0.103, 0.482] | -79.231 [-102.946, -35.134] |
+| 3 | Source + local intercept/trend | 87.932 [45.724, 112.187] | -68.234 [-124.940, -23.435] | -0.331 [-0.508, 0.001] | -3.680 [-10.307, +1.314] |
+| 3 | Local ridge | 12.670 [9.430, 15.255] | -0.437 [-1.514, 0.069] | 0.281 [-0.177, 0.617] | -78.942 [-99.584, -42.074] |
+| 3 | Local ridge + source feature | 15.173 [12.228, 18.017] | -1.061 [-2.766, -0.547] | 0.300 [-0.179, 0.576] | -76.439 [-97.484, -39.155] |
+| 3 | Local trend | 91.612 [50.328, 113.992] | -74.150 [-128.000, -34.160] | -0.246 [-0.407, 0.019] | +0.000 [+0.000, +0.000] |
+| 3 | Local county mean | 12.171 [9.665, 14.209] | -0.326 [-1.357, -0.038] | 0.366 [0.007, 0.527] | -79.442 [-100.575, -41.500] |
+| 5 | Kansas source only | 12.381 [10.148, 14.728] | -0.373 [-1.375, -0.039] | 0.234 [-0.103, 0.482] | -18.764 [-31.844, -5.699] |
+| 5 | Source + local intercept/trend | 23.678 [13.981, 32.785] | -4.020 [-10.853, -1.032] | -0.296 [-0.493, 0.117] | -7.468 [-12.488, -1.605] |
+| 5 | Local ridge | 13.261 [9.888, 16.274] | -0.575 [-2.078, -0.051] | 0.257 [-0.194, 0.581] | -17.884 [-26.036, -9.075] |
+| 5 | Local ridge + source feature | 14.931 [11.355, 18.008] | -0.996 [-2.473, -0.301] | 0.320 [-0.153, 0.612] | -16.214 [-25.657, -5.750] |
+| 5 | Local trend | 31.146 [19.847, 42.365] | -7.686 [-20.865, -2.930] | -0.312 [-0.454, 0.062] | +0.000 [+0.000, +0.000] |
+| 5 | Local county mean | 12.589 [9.608, 15.242] | -0.419 [-1.811, 0.002] | 0.241 [-0.084, 0.426] | -18.556 [-27.614, -9.661] |
+| 8 | Kansas source only | 12.381 [10.148, 14.728] | -0.373 [-1.375, -0.039] | 0.234 [-0.103, 0.482] | -3.104 [-8.240, +1.085] |
+| 8 | Source + local intercept/trend | 14.303 [10.978, 16.729] | -0.832 [-1.946, -0.210] | -0.058 [-0.366, 0.407] | -1.183 [-5.722, +2.673] |
+| 8 | Local ridge | 12.938 [9.028, 16.180] | -0.499 [-2.126, 0.088] | 0.219 [-0.166, 0.556] | -2.548 [-4.815, -0.528] |
+| 8 | Local ridge + source feature | 12.484 [8.930, 16.343] | -0.396 [-2.070, 0.212] | 0.214 [-0.093, 0.516] | -3.001 [-4.952, -1.039] |
+| 8 | Local trend | 15.485 [12.940, 18.895] | -1.147 [-3.059, -0.564] | -0.067 [-0.244, 0.242] | +0.000 [+0.000, +0.000] |
+| 8 | Local county mean | 12.201 [9.050, 14.922] | -0.333 [-1.721, 0.112] | 0.172 [-0.121, 0.416] | -3.285 [-5.764, -0.804] |
+| 12 | Kansas source only | 12.381 [10.148, 14.728] | -0.373 [-1.375, -0.039] | 0.234 [-0.103, 0.482] | +1.630 [-0.460, +4.127] |
+| 12 | Source + local intercept/trend | 10.074 [8.543, 11.770] | 0.091 [-0.644, 0.300] | 0.499 [-0.084, 0.647] | -0.677 [-1.972, +0.947] |
+| 12 | Local ridge | 10.253 [8.194, 12.040] | 0.059 [-0.817, 0.289] | 0.386 [-0.234, 0.594] | -0.498 [-2.746, +1.882] |
+| 12 | Local ridge + source feature | 9.690 [8.008, 11.244] | 0.159 [-0.486, 0.362] | 0.448 [-0.106, 0.628] | -1.061 [-2.711, +0.510] |
+| 12 | Local trend | 10.751 [9.994, 11.618] | -0.035 [-0.482, 0.084] | 0.265 [0.032, 0.476] | +0.000 [+0.000, +0.000] |
+| 12 | Local county mean | 11.004 [8.474, 13.111] | -0.084 [-1.061, 0.201] | 0.218 [-0.120, 0.440] | +0.253 [-2.490, +2.866] |
+
+#### Oklahoma
+
+| Local years | Method | RMSE | R² | Spearman ρ | Δ RMSE vs local trend |
+| --- | --- | --- | --- | --- | --- |
+| 0 | Kansas source only | 20.259 [17.082, 21.230] | -6.011 [-10.243, -2.942] | 0.458 [0.164, 0.645] | — |
+| 0 | Source + local intercept/trend | — | — | — | — |
+| 0 | Local ridge | — | — | — | — |
+| 0 | Local ridge + source feature | — | — | — | — |
+| 0 | Local trend | — | — | — | — |
+| 0 | Local county mean | — | — | — | — |
+| 3 | Kansas source only | 20.259 [17.082, 21.230] | -6.011 [-10.243, -2.942] | 0.458 [0.164, 0.645] | -29.601 [-46.483, -10.127] |
+| 3 | Source + local intercept/trend | 60.023 [39.683, 75.027] | -60.537 [-138.257, -18.760] | -0.043 [-0.250, 0.472] | +10.163 [-24.809, +43.110] |
+| 3 | Local ridge | 7.005 [6.194, 7.767] | 0.162 [-0.063, 0.390] | 0.421 [0.188, 0.779] | -42.856 [-58.170, -24.608] |
+| 3 | Local ridge + source feature | 7.863 [6.659, 8.561] | -0.056 [-0.456, 0.317] | 0.295 [0.026, 0.836] | -41.997 [-57.500, -23.635] |
+| 3 | Local trend | 49.861 [31.045, 65.906] | -41.463 [-68.662, -22.707] | 0.249 [-0.091, 0.300] | +0.000 [+0.000, +0.000] |
+| 3 | Local county mean | 7.463 [6.864, 8.979] | 0.049 [-0.342, 0.222] | 0.302 [0.003, 0.492] | -42.397 [-58.164, -23.968] |
+| 5 | Kansas source only | 20.259 [17.082, 21.230] | -6.011 [-10.243, -2.942] | 0.458 [0.164, 0.645] | -8.182 [-27.199, +1.238] |
+| 5 | Source + local intercept/trend | 27.535 [11.364, 34.648] | -11.950 [-20.588, -1.054] | 0.421 [0.131, 0.729] | -0.906 [-30.252, +8.206] |
+| 5 | Local ridge | 6.675 [6.144, 8.179] | 0.239 [-0.104, 0.376] | 0.695 [0.456, 0.833] | -21.766 [-36.534, -13.592] |
+| 5 | Local ridge + source feature | 7.933 [6.911, 10.266] | -0.075 [-0.782, 0.318] | 0.661 [0.461, 0.815] | -20.508 [-36.917, -12.162] |
+| 5 | Local trend | 28.441 [20.074, 44.324] | -12.816 [-26.787, -8.622] | 0.107 [-0.363, 0.299] | +0.000 [+0.000, +0.000] |
+| 5 | Local county mean | 7.530 [6.762, 9.433] | 0.032 [-0.347, 0.143] | 0.325 [0.048, 0.475] | -20.911 [-35.249, -13.063] |
+| 8 | Kansas source only | 20.259 [17.082, 21.230] | -6.011 [-10.243, -2.942] | 0.458 [0.164, 0.645] | -3.378 [-23.606, +4.345] |
+| 8 | Source + local intercept/trend | 14.654 [10.335, 17.062] | -2.668 [-6.119, -0.258] | 0.329 [0.120, 0.717] | -8.984 [-28.880, -0.241] |
+| 8 | Local ridge | 6.862 [6.309, 7.537] | 0.196 [-0.282, 0.443] | 0.742 [0.488, 0.862] | -16.775 [-32.964, -9.548] |
+| 8 | Local ridge + source feature | 7.965 [5.853, 9.356] | -0.084 [-1.144, 0.556] | 0.660 [0.515, 0.868] | -15.672 [-33.039, -7.420] |
+| 8 | Local trend | 23.638 [16.515, 40.500] | -8.543 [-23.014, -4.305] | 0.024 [-0.201, 0.191] | +0.000 [+0.000, +0.000] |
+| 8 | Local county mean | 7.783 [7.118, 9.625] | -0.035 [-0.376, 0.101] | 0.346 [0.029, 0.527] | -15.855 [-31.098, -9.045] |
+| 12 | Kansas source only | 20.259 [17.082, 21.230] | -6.011 [-10.243, -2.942] | 0.458 [0.164, 0.645] | +8.893 [+1.263, +12.248] |
+| 12 | Source + local intercept/trend | 7.201 [6.826, 8.014] | 0.114 [-0.301, 0.352] | 0.407 [0.120, 0.640] | -4.166 [-8.324, -1.742] |
+| 12 | Local ridge | 6.029 [5.632, 6.827] | 0.379 [0.106, 0.493] | 0.680 [0.484, 0.833] | -5.338 [-9.652, -2.907] |
+| 12 | Local ridge + source feature | 6.319 [5.877, 6.987] | 0.318 [0.119, 0.438] | 0.573 [0.387, 0.799] | -5.048 [-9.398, -2.868] |
+| 12 | Local trend | 11.367 [8.979, 16.248] | -1.207 [-2.837, -0.739] | 0.011 [-0.194, 0.172] | +0.000 [+0.000, +0.000] |
+| 12 | Local county mean | 7.501 [6.535, 9.641] | 0.039 [-0.391, 0.103] | 0.271 [0.011, 0.349] | -3.866 [-6.664, -2.214] |
+
+### Reading the learning curves
+
+- The three-year county trend extrapolated sharply, with RMSE of 91.612 bu/acre in Nebraska and 49.861 in Oklahoma. At 12 years those errors fell to 10.751 and 11.367. The source-only prediction is identical at every k. Its early wins show weakness of the short trend baseline. In Oklahoma the source-only model was worse than the trend at 12 years, with a paired difference of +8.893 [+1.263, +12.248] bu/acre.
+
+- In Nebraska at 12 years the source-feature ridge had the lowest point RMSE (9.690 bu/acre). Its paired difference from the trend was −1.061 [−2.711, +0.510]. Every Nebraska 12-year comparison with the trend included zero.
+
+- In Oklahoma at 12 years the local ridge had the lowest point RMSE (6.029 bu/acre), ahead of the source-feature ridge (6.319) and the local county mean (7.501). The local ridge's paired difference from the trend was −5.338 [−9.652, −2.907]. Source adjustment, source-feature ridge and county mean also beat the trend at that size. The preregistered comparisons are against the trend, so this analysis does not establish that including the Kansas feature improves on local ridge.
+
+- This exercise uses recorded district yield history, which many farmers do not have. Weather uses NASA POWER historic county centroids and the Kansas crop window. County yields represent many farms, varieties and management choices. These associations do not validate rotation recommendations.
+
+### Fit counts and reproduction
+
+Six methods were specified. The source forest tried two minimum leaf sizes (5 and 20). Each local ridge tried the same three alphas (0.1, 1 and 10). This yields eight search entries across the three fitted model roles, with no tuned settings for the residual line, trend or mean.
+
+The source search ran 18 inner fits and 3 outer fits over three origins. Local ridge selection ran 1,872 inner fits and 104 outer fits across both ridge variants. There were 156 method-level fixed fit instances for the residual line, county trend and mean. Counts are for fitted district and history-size combinations, not individual county regressions.
+
+Run `python -m src.local_recalibration` from the repository root to rebuild the two P37 files offline. The saved report records the exact district test and calibration years, available sample sizes, selected source and ridge configurations and the source file hashes. [Report JSON](../data/processed/climate_yield_recalibration.json) · [Held-out predictions](../data/processed/climate_yield_recalibration_predictions.csv)

@@ -1,0 +1,3424 @@
+{
+  "label": "illustrative, validate locally",
+  "local_years": [
+    0,
+    3,
+    5,
+    8,
+    12
+  ],
+  "methods": {
+    "source": "Kansas source only",
+    "source_adjusted": "Source + local intercept/trend",
+    "local_ridge": "Local ridge",
+    "source_feature": "Local ridge + source feature",
+    "local_trend": "Local trend",
+    "county_mean": "Local county mean"
+  },
+  "states": {
+    "31": {
+      "name": "Nebraska",
+      "test_rows": 462,
+      "test_counties": 59,
+      "district_blocks": 8,
+      "first_test_year": 2002,
+      "last_test_year": 2019,
+      "districts": [
+        {
+          "district": "10",
+          "district_name": "NORTHWEST",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019
+          ],
+          "test_rows": 117,
+          "test_counties": 11,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 29,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 51,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 84,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 128,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "20",
+          "district_name": "NORTH",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009
+          ],
+          "test_rows": 18,
+          "test_counties": 3,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 9,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 0.1,
+                "source_feature": 1.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 15,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 24,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 36,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "30",
+          "district_name": "NORTHEAST",
+          "observed_years": [
+            1991,
+            1992,
+            1993,
+            1994,
+            1996,
+            1997,
+            1998,
+            1999,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2007
+          ],
+          "test_rows": 1,
+          "test_counties": 1,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 3,
+              "years": [
+                1991,
+                1992,
+                1993
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 5,
+              "years": [
+                1991,
+                1992,
+                1993,
+                1994,
+                1996
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 8,
+              "years": [
+                1991,
+                1992,
+                1993,
+                1994,
+                1996,
+                1997,
+                1998,
+                1999
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 12,
+              "years": [
+                1991,
+                1992,
+                1993,
+                1994,
+                1996,
+                1997,
+                1998,
+                1999,
+                2003,
+                2004,
+                2005,
+                2006
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "50",
+          "district_name": "CENTRAL",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "test_rows": 31,
+          "test_counties": 5,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 15,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 23,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 38,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 57,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "60",
+          "district_name": "EAST",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2010,
+            2011,
+            2013
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2010,
+            2011,
+            2013
+          ],
+          "test_rows": 66,
+          "test_counties": 10,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 30,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 50,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 79,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 115,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "70",
+          "district_name": "SOUTHWEST",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017
+          ],
+          "test_rows": 96,
+          "test_counties": 9,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 27,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 45,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 72,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 108,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "80",
+          "district_name": "SOUTH",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2010,
+            2018,
+            2019
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2010,
+            2018,
+            2019
+          ],
+          "test_rows": 54,
+          "test_counties": 8,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 24,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 36,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 60,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 92,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "90",
+          "district_name": "SOUTHEAST",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2011,
+            2016
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2009,
+            2011,
+            2016
+          ],
+          "test_rows": 79,
+          "test_counties": 12,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 36,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 0.1,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 60,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 96,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 144,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        }
+      ],
+      "curves": {
+        "0": {
+          "source": {
+            "r2": {
+              "value": -0.37261197091734277,
+              "bootstrap_95": [
+                -1.3745478160235192,
+                -0.03943986119169103
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.381234582115301,
+              "bootstrap_95": [
+                10.147992374118342,
+                14.728008738127867
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.23448202846498753,
+              "bootstrap_95": [
+                -0.10300994802444044,
+                0.48175111950657346
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": null
+          },
+          "source_adjusted": {
+            "status": "unavailable at zero local years"
+          },
+          "local_ridge": {
+            "status": "unavailable at zero local years"
+          },
+          "source_feature": {
+            "status": "unavailable at zero local years"
+          },
+          "local_trend": {
+            "status": "unavailable at zero local years"
+          },
+          "county_mean": {
+            "status": "unavailable at zero local years"
+          }
+        },
+        "3": {
+          "source": {
+            "r2": {
+              "value": -0.37261197091734277,
+              "bootstrap_95": [
+                -1.3745478160235192,
+                -0.03943986119169103
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.381234582115301,
+              "bootstrap_95": [
+                10.147992374118342,
+                14.728008738127867
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.23448202846498753,
+              "bootstrap_95": [
+                -0.10300994802444044,
+                0.48175111950657346
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -79.23100540595898,
+              "bootstrap_95": [
+                -102.94610097216841,
+                -35.133637483227055
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -68.23374246100296,
+              "bootstrap_95": [
+                -124.93964503573282,
+                -23.435277078315565
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 87.93240775092352,
+              "bootstrap_95": [
+                45.72376640867417,
+                112.18704750594455
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.3307187399393087,
+              "bootstrap_95": [
+                -0.508263010147247,
+                0.0013539259394496168
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.6798322371507624,
+              "bootstrap_95": [
+                -10.307401007947401,
+                1.3140920361054491
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": -0.43740761451630084,
+              "bootstrap_95": [
+                -1.5143358691029916,
+                0.06892446793073019
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.670099677835246,
+              "bootstrap_95": [
+                9.4301092431313,
+                15.255189415758807
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.28094380203901437,
+              "bootstrap_95": [
+                -0.17669367234276045,
+                0.6169316951826613
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -78.94214031023904,
+              "bootstrap_95": [
+                -99.5839448012634,
+                -42.07355424475109
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -1.0614005339814407,
+              "bootstrap_95": [
+                -2.766017593514035,
+                -0.5467893028436526
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 15.172992847299048,
+              "bootstrap_95": [
+                12.228439213169867,
+                18.01699784018615
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.30026948843367396,
+              "bootstrap_95": [
+                -0.17884266534339405,
+                0.5757843177140461
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -76.43924714077524,
+              "bootstrap_95": [
+                -97.48410136017336,
+                -39.155389974811776
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -74.14963615070414,
+              "bootstrap_95": [
+                -128.00020509013143,
+                -34.160376759429276
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 91.61223998807428,
+              "bootstrap_95": [
+                50.32822860193652,
+                113.99168862093994
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.246026077674013,
+              "bootstrap_95": [
+                -0.40657996705224986,
+                0.018529726242239756
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": -0.3263044640729378,
+              "bootstrap_95": [
+                -1.3571268744853835,
+                -0.03815727366178148
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.170591244709158,
+              "bootstrap_95": [
+                9.665266445178302,
+                14.208564966602479
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.3657410935640839,
+              "bootstrap_95": [
+                0.006793628438019643,
+                0.5265626376038212
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -79.44164874336512,
+              "bootstrap_95": [
+                -100.57544533134143,
+                -41.499699388639094
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "5": {
+          "source": {
+            "r2": {
+              "value": -0.37261197091734277,
+              "bootstrap_95": [
+                -1.3745478160235192,
+                -0.03943986119169103
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.381234582115301,
+              "bootstrap_95": [
+                10.147992374118342,
+                14.728008738127867
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.23448202846498753,
+              "bootstrap_95": [
+                -0.10300994802444044,
+                0.48175111950657346
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -18.764271831676666,
+              "bootstrap_95": [
+                -31.84445212226792,
+                -5.699462535189043
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -4.019923132441303,
+              "bootstrap_95": [
+                -10.852681685714995,
+                -1.0317712315042826
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 23.67764988727838,
+              "bootstrap_95": [
+                13.980851997146523,
+                32.78513128382027
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.2961593236772881,
+              "bootstrap_95": [
+                -0.49339281041810096,
+                0.1168294262388611
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -7.467856526513586,
+              "bootstrap_95": [
+                -12.487978534402416,
+                -1.6050721218716197
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": -0.574619266297737,
+              "bootstrap_95": [
+                -2.0776468468681317,
+                -0.05116399148560873
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 13.26104782977835,
+              "bootstrap_95": [
+                9.888474180367702,
+                16.274355660722932
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.257102942398253,
+              "bootstrap_95": [
+                -0.1935739707543284,
+                0.5814442164763276
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -17.884458584013615,
+              "bootstrap_95": [
+                -26.03582167773711,
+                -9.075235246557998
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -0.9961873385157654,
+              "bootstrap_95": [
+                -2.473435229111685,
+                -0.3010534526182459
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 14.931062359267811,
+              "bootstrap_95": [
+                11.355128840486211,
+                18.007598659157907
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.32033642469540174,
+              "bootstrap_95": [
+                -0.1534216079888034,
+                0.6117541045546883
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -16.214444054524158,
+              "bootstrap_95": [
+                -25.656725007776924,
+                -5.749751041760177
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -7.685816928641575,
+              "bootstrap_95": [
+                -20.865075302874164,
+                -2.930452355859342
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 31.145506413791967,
+              "bootstrap_95": [
+                19.847248823276644,
+                42.36524271396066
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.31193623971373574,
+              "bootstrap_95": [
+                -0.4540749736849305,
+                0.06249122185885899
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": -0.41913360341137906,
+              "bootstrap_95": [
+                -1.8109656423151117,
+                0.0021182258583443826
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.589303480384135,
+              "bootstrap_95": [
+                9.608362986460731,
+                15.242136888579951
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.2407342980822265,
+              "bootstrap_95": [
+                -0.08410166127528401,
+                0.4264528803549429
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -18.556202933407832,
+              "bootstrap_95": [
+                -27.614067603089417,
+                -9.660556682198555
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "8": {
+          "source": {
+            "r2": {
+              "value": -0.37261197091734277,
+              "bootstrap_95": [
+                -1.3745478160235192,
+                -0.03943986119169103
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.381234582115301,
+              "bootstrap_95": [
+                10.147992374118342,
+                14.728008738127867
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.23448202846498753,
+              "bootstrap_95": [
+                -0.10300994802444044,
+                0.48175111950657346
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.104190009412701,
+              "bootstrap_95": [
+                -8.239746242376729,
+                1.0849604359747307
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -0.8317145758697324,
+              "bootstrap_95": [
+                -1.9456551285469308,
+                -0.2101643129195332
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 14.302730702635579,
+              "bootstrap_95": [
+                10.97766161706608,
+                16.728853876345013
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.057813460165863056,
+              "bootstrap_95": [
+                -0.3664126064861397,
+                0.40746628534963636
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -1.1826938888924232,
+              "bootstrap_95": [
+                -5.721726135639723,
+                2.673030648414193
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": -0.4987615901593596,
+              "bootstrap_95": [
+                -2.1255394489193473,
+                0.08846571669918075
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.93767800895582,
+              "bootstrap_95": [
+                9.02822911585939,
+                16.180124096720768
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.21914875831805794,
+              "bootstrap_95": [
+                -0.16608364245832227,
+                0.5557953947449116
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -2.5477465825721826,
+              "bootstrap_95": [
+                -4.815077509217386,
+                -0.5275304455573651
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -0.39552346892682655,
+              "bootstrap_95": [
+                -2.07040461199807,
+                0.21155083015835274
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.48414008511711,
+              "bootstrap_95": [
+                8.930002504400212,
+                16.343223952950165
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.21437207844808168,
+              "bootstrap_95": [
+                -0.09271346174804514,
+                0.5161903038774339
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.001284506410892,
+              "bootstrap_95": [
+                -4.951959830464719,
+                -1.039329001812933
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -1.1471684316024402,
+              "bootstrap_95": [
+                -3.0586254248152303,
+                -0.5636925796606997
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 15.485424591528002,
+              "bootstrap_95": [
+                12.94045510602804,
+                18.894640778283968
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.06718793851800609,
+              "bootstrap_95": [
+                -0.24399923976018434,
+                0.24230413257484645
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": -0.3328910951365016,
+              "bootstrap_95": [
+                -1.7205161317230446,
+                0.11241734253503986
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.200774327558527,
+              "bootstrap_95": [
+                9.049784013270857,
+                14.922316973199504
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.1716774495252797,
+              "bootstrap_95": [
+                -0.12136481038875564,
+                0.4161654517402627
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.284650263969475,
+              "bootstrap_95": [
+                -5.763625797737944,
+                -0.8041098823370121
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "12": {
+          "source": {
+            "r2": {
+              "value": -0.37261197091734277,
+              "bootstrap_95": [
+                -1.3745478160235192,
+                -0.03943986119169103
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 12.381234582115301,
+              "bootstrap_95": [
+                10.147992374118342,
+                14.728008738127867
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.23448202846498753,
+              "bootstrap_95": [
+                -0.10300994802444044,
+                0.48175111950657346
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 1.629956365296838,
+              "bootstrap_95": [
+                -0.4599000037533111,
+                4.127254761450431
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": 0.09121247377623909,
+              "bootstrap_95": [
+                -0.6443695216581398,
+                0.2997011264560971
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 10.07444753885403,
+              "bootstrap_95": [
+                8.543069656718231,
+                11.769968974456644
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.49868947982151546,
+              "bootstrap_95": [
+                -0.08369381520054714,
+                0.647250195143408
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -0.676830677964432,
+              "bootstrap_95": [
+                -1.9720888794476972,
+                0.9472195430085201
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": 0.05865670338037743,
+              "bootstrap_95": [
+                -0.8168950922329964,
+                0.28897200246741156
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 10.253309765066165,
+              "bootstrap_95": [
+                8.194416590122295,
+                12.040473589249984
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.3855331236971277,
+              "bootstrap_95": [
+                -0.23350982297427855,
+                0.593814381939031
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -0.497968451752298,
+              "bootstrap_95": [
+                -2.7459522957817826,
+                1.8816657288974565
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": 0.15917637198165746,
+              "bootstrap_95": [
+                -0.48645143504818705,
+                0.3624227649115198
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 9.69041808318545,
+              "bootstrap_95": [
+                8.008156794149908,
+                11.244224339380214
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.44830651986988934,
+              "bootstrap_95": [
+                -0.1058553554411873,
+                0.6280675819886343
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -1.0608601336330121,
+              "bootstrap_95": [
+                -2.71083603821418,
+                0.5097686034333444
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -0.0349993546420615,
+              "bootstrap_95": [
+                -0.48164779837807864,
+                0.08420806748767928
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 10.751278216818463,
+              "bootstrap_95": [
+                9.993615084251122,
+                11.61750517202943
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.26536713259241124,
+              "bootstrap_95": [
+                0.03230169254261938,
+                0.47607308214211885
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": -0.0841942326366436,
+              "bootstrap_95": [
+                -1.0612326175734126,
+                0.2006647458621976
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 11.003823287349135,
+              "bootstrap_95": [
+                8.473526470980481,
+                13.111290647742944
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.21809929416648763,
+              "bootstrap_95": [
+                -0.12023028924545283,
+                0.43986090139821094
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.25254507053067243,
+              "bootstrap_95": [
+                -2.490026509384231,
+                2.8655696840773137
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        }
+      },
+      "smallest_k_beating_trend": {
+        "source": 3,
+        "source_adjusted": 5,
+        "local_ridge": 3,
+        "source_feature": 3,
+        "local_trend": null,
+        "county_mean": 3
+      },
+      "local_fit_counts": {
+        "ridge_inner": 1152,
+        "ridge_outer": 64,
+        "ordinary_least_squares_and_mean": 96
+      }
+    },
+    "40": {
+      "name": "Oklahoma",
+      "test_rows": 88,
+      "test_counties": 24,
+      "district_blocks": 5,
+      "first_test_year": 2002,
+      "last_test_year": 2008,
+      "districts": [
+        {
+          "district": "10",
+          "district_name": "PANHANDLE",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007
+          ],
+          "test_rows": 30,
+          "test_counties": 5,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 15,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 1.0,
+                "source_feature": 1.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 25,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 40,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 60,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "20",
+          "district_name": "WEST CENTRAL",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "test_rows": 14,
+          "test_counties": 4,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 15,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 22,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 29,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 1.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 37,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 1.0,
+                "source_feature": 1.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "30",
+          "district_name": "SOUTHWEST",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007,
+            2008
+          ],
+          "test_rows": 31,
+          "test_counties": 6,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 22,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 33,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 44,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 63,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "40",
+          "district_name": "NORTH CENTRAL",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2002,
+            2003,
+            2004,
+            2005,
+            2006,
+            2007
+          ],
+          "test_rows": 7,
+          "test_counties": 3,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 19,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 1.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 32,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 0.1
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 42,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 0.1
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 59,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "50",
+          "district_name": "CENTRAL",
+          "observed_years": [
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2007,
+            2008
+          ],
+          "status": "retained",
+          "common_test_years": [
+            2008
+          ],
+          "test_rows": 6,
+          "test_counties": 6,
+          "calibration": {
+            "0": {
+              "n": 0,
+              "years": [],
+              "selected_alpha": {}
+            },
+            "3": {
+              "n": 24,
+              "years": [
+                1990,
+                1991,
+                1992
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "5": {
+              "n": 36,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "8": {
+              "n": 41,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1996,
+                1997,
+                1998
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            },
+            "12": {
+              "n": 51,
+              "years": [
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000,
+                2001,
+                2007
+              ],
+              "selected_alpha": {
+                "local_ridge": 10.0,
+                "source_feature": 10.0
+              },
+              "test_counties_without_local_yield": 0
+            }
+          }
+        },
+        {
+          "district": "60",
+          "district_name": "SOUTH CENTRAL",
+          "observed_years": [
+            1991,
+            1992,
+            1993
+          ],
+          "status": "fewer than 13 observed years"
+        },
+        {
+          "district": "70",
+          "district_name": "NORTHEAST",
+          "observed_years": [
+            1991,
+            1992,
+            1993
+          ],
+          "status": "fewer than 13 observed years"
+        },
+        {
+          "district": "80",
+          "district_name": "EAST CENTRAL",
+          "observed_years": [
+            1991,
+            1992,
+            1993,
+            2005,
+            2007
+          ],
+          "status": "fewer than 13 observed years"
+        }
+      ],
+      "curves": {
+        "0": {
+          "source": {
+            "r2": {
+              "value": -6.010609655710849,
+              "bootstrap_95": [
+                -10.243339079927287,
+                -2.9424611627317008
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 20.25949688564885,
+              "bootstrap_95": [
+                17.08194743673658,
+                21.229990982263935
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.45821243205677736,
+              "bootstrap_95": [
+                0.16362792669681558,
+                0.6453628597194215
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": null
+          },
+          "source_adjusted": {
+            "status": "unavailable at zero local years"
+          },
+          "local_ridge": {
+            "status": "unavailable at zero local years"
+          },
+          "source_feature": {
+            "status": "unavailable at zero local years"
+          },
+          "local_trend": {
+            "status": "unavailable at zero local years"
+          },
+          "county_mean": {
+            "status": "unavailable at zero local years"
+          }
+        },
+        "3": {
+          "source": {
+            "r2": {
+              "value": -6.010609655710849,
+              "bootstrap_95": [
+                -10.243339079927287,
+                -2.9424611627317008
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 20.25949688564885,
+              "bootstrap_95": [
+                17.08194743673658,
+                21.229990982263935
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.45821243205677736,
+              "bootstrap_95": [
+                0.16362792669681558,
+                0.6453628597194215
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -29.60103736370825,
+              "bootstrap_95": [
+                -46.4825756908817,
+                -10.126576369188097
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -60.53689115096672,
+              "bootstrap_95": [
+                -138.25719564723988,
+                -18.759795732245056
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 60.02311618749278,
+              "bootstrap_95": [
+                39.6825719288979,
+                75.02666570947791
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": -0.043449736508910486,
+              "bootstrap_95": [
+                -0.24957960575092503,
+                0.47163367751510793
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 10.16258193813568,
+              "bootstrap_95": [
+                -24.80888585871935,
+                43.110251193472656
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": 0.16195846259935176,
+              "bootstrap_95": [
+                -0.06335255390743422,
+                0.3900521552761592
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.004603151884175,
+              "bootstrap_95": [
+                6.193775886854973,
+                7.7669544053240305
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.4214164635196221,
+              "bootstrap_95": [
+                0.18767596608435586,
+                0.7793392204399177
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -42.855931097472926,
+              "bootstrap_95": [
+                -58.169952817348374,
+                -24.608067985099638
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -0.05606070745900449,
+              "bootstrap_95": [
+                -0.45561159377237215,
+                0.3166610094307868
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.863125456288653,
+              "bootstrap_95": [
+                6.65905373145834,
+                8.561327206300085
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.2953922025347864,
+              "bootstrap_95": [
+                0.02570500756518399,
+                0.8356904078471644
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -41.997408793068445,
+              "bootstrap_95": [
+                -57.49972704688241,
+                -23.634906469820933
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -41.46316191141269,
+              "bootstrap_95": [
+                -68.66225763439934,
+                -22.707200205049176
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 49.8605342493571,
+              "bootstrap_95": [
+                31.04478930464045,
+                65.9063089100663
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.2491326021899808,
+              "bootstrap_95": [
+                -0.09087774242503233,
+                0.2995045897368345
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": 0.04855854338605958,
+              "bootstrap_95": [
+                -0.341534586932456,
+                0.2223691404458492
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.463487299966931,
+              "bootstrap_95": [
+                6.8638189576765996,
+                8.978973509136653
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.3016122817703225,
+              "bootstrap_95": [
+                0.0029586392615302865,
+                0.4915922876017018
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -42.39704694939017,
+              "bootstrap_95": [
+                -58.16388554590378,
+                -23.96791257948891
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "5": {
+          "source": {
+            "r2": {
+              "value": -6.010609655710849,
+              "bootstrap_95": [
+                -10.243339079927287,
+                -2.9424611627317008
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 20.25949688564885,
+              "bootstrap_95": [
+                17.08194743673658,
+                21.229990982263935
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.45821243205677736,
+              "bootstrap_95": [
+                0.16362792669681558,
+                0.6453628597194215
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -8.18162910251743,
+              "bootstrap_95": [
+                -27.198905084687112,
+                1.2384052280803637
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -11.949632161810134,
+              "bootstrap_95": [
+                -20.58848322265184,
+                -1.0540803939167926
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 27.534644833397863,
+              "bootstrap_95": [
+                11.364022739264657,
+                34.64825931303927
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.4206628421755462,
+              "bootstrap_95": [
+                0.13052394114435673,
+                0.7291766108216855
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -0.906481154768418,
+              "bootstrap_95": [
+                -30.251672257416015,
+                8.206215040733511
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": 0.2389071362584888,
+              "bootstrap_95": [
+                -0.1040914778583586,
+                0.3757666989407866
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 6.675281544021715,
+              "bootstrap_95": [
+                6.143514651332731,
+                8.178594801031613
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.6951544379947543,
+              "bootstrap_95": [
+                0.4559493777202976,
+                0.833166580388444
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -21.765844444144566,
+              "bootstrap_95": [
+                -36.53445541853768,
+                -13.591671836240648
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -0.0750137202312875,
+              "bootstrap_95": [
+                -0.7818164388254316,
+                0.31795452815229397
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.933371036724441,
+              "bootstrap_95": [
+                6.911365763473042,
+                10.266133496917737
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.6611100111226017,
+              "bootstrap_95": [
+                0.4608937635661752,
+                0.8145557475949758
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -20.50775495144184,
+              "bootstrap_95": [
+                -36.91670563477706,
+                -12.162066227833689
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -12.816309292927953,
+              "bootstrap_95": [
+                -26.78660513822507,
+                -8.62208495609079
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 28.44112598816628,
+              "bootstrap_95": [
+                20.07362195795472,
+                44.323607914810566
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.1072755773878034,
+              "bootstrap_95": [
+                -0.3628918003830994,
+                0.2986560734372556
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": 0.03154985477025796,
+              "bootstrap_95": [
+                -0.3469857338255298,
+                0.14255174655475444
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.529903267199641,
+              "bootstrap_95": [
+                6.76234510067948,
+                9.43340014326964
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.3250616044843016,
+              "bootstrap_95": [
+                0.04750387904458406,
+                0.4748909154994297
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -20.91122272096664,
+              "bootstrap_95": [
+                -35.248956751411846,
+                -13.063053986134298
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "8": {
+          "source": {
+            "r2": {
+              "value": -6.010609655710849,
+              "bootstrap_95": [
+                -10.243339079927287,
+                -2.9424611627317008
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 20.25949688564885,
+              "bootstrap_95": [
+                17.08194743673658,
+                21.229990982263935
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.45821243205677736,
+              "bootstrap_95": [
+                0.16362792669681558,
+                0.6453628597194215
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.3780705835705085,
+              "bootstrap_95": [
+                -23.60553172323076,
+                4.345256994870441
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": -2.6677960447080564,
+              "bootstrap_95": [
+                -6.119043870856607,
+                -0.25779192851607724
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 14.653904324129538,
+              "bootstrap_95": [
+                10.33511055447897,
+                17.062152489867323
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.32904325185558175,
+              "bootstrap_95": [
+                0.12035660491602383,
+                0.7165436129649139
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -8.983663145089821,
+              "bootstrap_95": [
+                -28.879674734291918,
+                -0.24124108938785982
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": 0.19570434711066798,
+              "bootstrap_95": [
+                -0.28217480911720716,
+                0.44320240944233735
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 6.862124977893333,
+              "bootstrap_95": [
+                6.308933457026785,
+                7.536619493150933
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.7418356348000519,
+              "bootstrap_95": [
+                0.4879027737560732,
+                0.8615994652104491
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -16.775442491326025,
+              "bootstrap_95": [
+                -32.963804665113614,
+                -9.548332270913328
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": -0.08372331530638366,
+              "bootstrap_95": [
+                -1.1441682916807352,
+                0.5556005658312295
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.965443679102983,
+              "bootstrap_95": [
+                5.852978388961447,
+                9.356173574328848
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.659771482181948,
+              "bootstrap_95": [
+                0.5152874159199806,
+                0.8681259434426419
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -15.672123790116377,
+              "bootstrap_95": [
+                -33.039254798819194,
+                -7.420160267402344
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -8.543420002748954,
+              "bootstrap_95": [
+                -23.014436251555875,
+                -4.3052289903103516
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 23.63756746921936,
+              "bootstrap_95": [
+                16.51498741697149,
+                40.50042415826454
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.023538632273649523,
+              "bootstrap_95": [
+                -0.20083842685969794,
+                0.19102741523924402
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": -0.034617992391398955,
+              "bootstrap_95": [
+                -0.37576216809605456,
+                0.10067007504173797
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.782887916673119,
+              "bootstrap_95": [
+                7.118044291357716,
+                9.625379793284313
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.34604954230843865,
+              "bootstrap_95": [
+                0.02854647588041068,
+                0.5270738693642019
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -15.85467955254624,
+              "bootstrap_95": [
+                -31.09793559637506,
+                -9.044638442091266
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        },
+        "12": {
+          "source": {
+            "r2": {
+              "value": -6.010609655710849,
+              "bootstrap_95": [
+                -10.243339079927287,
+                -2.9424611627317008
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 20.25949688564885,
+              "bootstrap_95": [
+                17.08194743673658,
+                21.229990982263935
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.45821243205677736,
+              "bootstrap_95": [
+                0.16362792669681558,
+                0.6453628597194215
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 8.89263356966903,
+              "bootstrap_95": [
+                1.2625415735908305,
+                12.24784319193114
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_adjusted": {
+            "r2": {
+              "value": 0.11427578964660767,
+              "bootstrap_95": [
+                -0.3009187302289278,
+                0.35217221236932783
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.201119545462268,
+              "bootstrap_95": [
+                6.825989600126725,
+                8.014354778751889
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.4072422101448248,
+              "bootstrap_95": [
+                0.12030535391215637,
+                0.6396958172797487
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -4.165743770517553,
+              "bootstrap_95": [
+                -8.323511798392662,
+                -1.7420170788357376
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_ridge": {
+            "r2": {
+              "value": 0.37914729967968563,
+              "bootstrap_95": [
+                0.10636245515110264,
+                0.493186353566502
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 6.028996752774821,
+              "bootstrap_95": [
+                5.6320594333718095,
+                6.826934167237991
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.6796909062856235,
+              "bootstrap_95": [
+                0.4843531431758666,
+                0.8334448043717433
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -5.337866563204999,
+              "bootstrap_95": [
+                -9.652098777428913,
+                -2.9074805347190997
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "source_feature": {
+            "r2": {
+              "value": 0.31797125171326657,
+              "bootstrap_95": [
+                0.1193731985134208,
+                0.43849909408185433
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 6.31905453273765,
+              "bootstrap_95": [
+                5.877132211416011,
+                6.986909669291748
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.5727318765936512,
+              "bootstrap_95": [
+                0.3869936756293599,
+                0.798860591786922
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -5.0478087832421705,
+              "bootstrap_95": [
+                -9.398121800989149,
+                -2.8675966537197555
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "local_trend": {
+            "r2": {
+              "value": -1.206885239364237,
+              "bootstrap_95": [
+                -2.837222566401401,
+                -0.7394366153856089
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 11.36686331597982,
+              "bootstrap_95": [
+                8.9790472137855,
+                16.24836284084596
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.010796245105684367,
+              "bootstrap_95": [
+                -0.19434259559217698,
+                0.172019804183379
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": 0.0,
+              "bootstrap_95": [
+                0.0,
+                0.0
+              ],
+              "bootstrap_n": 1000
+            }
+          },
+          "county_mean": {
+            "r2": {
+              "value": 0.03907642449162152,
+              "bootstrap_95": [
+                -0.39132398351847675,
+                0.1031732631579293
+              ],
+              "bootstrap_n": 1000
+            },
+            "rmse_bu_ac": {
+              "value": 7.500585863946326,
+              "bootstrap_95": [
+                6.535382632110625,
+                9.641207956001521
+              ],
+              "bootstrap_n": 1000
+            },
+            "spearman": {
+              "value": 0.27124637929420664,
+              "bootstrap_95": [
+                0.011489411383844617,
+                0.3488337768258243
+              ],
+              "bootstrap_n": 1000
+            },
+            "status": "complete",
+            "rmse_delta_vs_local_trend": {
+              "value": -3.8662774520334944,
+              "bootstrap_95": [
+                -6.664295554455958,
+                -2.2135075829317383
+              ],
+              "bootstrap_n": 1000
+            }
+          }
+        }
+      },
+      "smallest_k_beating_trend": {
+        "source": 3,
+        "source_adjusted": 8,
+        "local_ridge": 3,
+        "source_feature": 3,
+        "local_trend": null,
+        "county_mean": 3
+      },
+      "local_fit_counts": {
+        "ridge_inner": 720,
+        "ridge_outer": 40,
+        "ordinary_least_squares_and_mean": 60
+      }
+    }
+  },
+  "source_origins": {
+    "2002": {
+      "training_rows": 1236,
+      "training_counties": 103,
+      "first_year": 1990,
+      "last_year": 2001,
+      "selected": {
+        "min_samples_leaf": 5
+      }
+    },
+    "2007": {
+      "training_rows": 1751,
+      "training_counties": 103,
+      "first_year": 1990,
+      "last_year": 2006,
+      "selected": {
+        "min_samples_leaf": 5
+      }
+    },
+    "2008": {
+      "training_rows": 1854,
+      "training_counties": 103,
+      "first_year": 1990,
+      "last_year": 2007,
+      "selected": {
+        "min_samples_leaf": 5
+      }
+    }
+  },
+  "source_fit_counts": {
+    "grid_configs": 2,
+    "inner_learned": 18,
+    "outer_learned": 3
+  },
+  "ridge_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "source_leaf_grid": [
+    5,
+    20
+  ],
+  "bootstrap_draws": 1000,
+  "seed": 42,
+  "source_files_sha256": {
+    "data/processed/climate_yield_features.csv": "b5dc0d6a3d49ed310cf0921f52472b01cc5cbca3de0075d2109d704f21919d5f",
+    "data/processed/climate_yield_transfer_31_features.csv": "e15ddd9a5f716f9a25ec708fb3a83c0571b835bf12bda6893404b1383fb684c0",
+    "data/processed/climate_yield_transfer_40_features.csv": "c37d7e8a1706155676fd48b83ff7a8e08464fefd038e4996285c690c16073592",
+    "data/raw/p27/kansas_reporting_districts.csv": "0fdb9f0128560ee07fe573379644c13c1eea0e37973d3ea506a8e9fe6028c674",
+    "config/climate_yield.json": "3a5fe125c7c35072a88f4af23b73306843eb4024854ca14c309990a49df446bc"
+  }
+}

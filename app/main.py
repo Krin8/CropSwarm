@@ -245,6 +245,55 @@ def cross_state_yield_panel():
                    "Yield series mix management and can include irrigated wheat where all-practice records are used.")
 
 
+def local_recalibration_panel():
+    report = cached("climate_yield_recalibration.json")
+    states = report["states"]
+    methods = report["methods"]
+    with st.expander("Local yield recalibration (P37)"):
+        state_id = st.selectbox("Target state", tuple(states), format_func=lambda key: states[key]["name"],
+                                key="local_recalibration_state")
+        state = states[state_id]
+        st.caption(f"Reported non-irrigated winter wheat · {state['test_rows']:,} common test county-years · "
+                   f"{state['district_blocks']} USDA reporting districts. The same later rows are used at every "
+                   "calibration size. At zero local years only the Kansas model is estimable.")
+        figure = go.Figure()
+        for method, label in methods.items():
+            series = [state["curves"][str(k)][method].get("rmse_bu_ac", {}) for k in report["local_years"]]
+            values = [item.get("value") for item in series]
+            intervals = [item.get("bootstrap_95") for item in series]
+            figure.add_scatter(x=report["local_years"], y=values, name=label, mode="lines+markers",
+                               error_y={"type": "data", "symmetric": False,
+                                        "array": [max(0, span[1] - value) if span else None
+                                                  for value, span in zip(values, intervals, strict=True)],
+                                        "arrayminus": [max(0, value - span[0]) if span else None
+                                                       for value, span in zip(values, intervals, strict=True)]})
+        figure.update_layout(xaxis_title="Earlier local yield years per district", yaxis_title="RMSE (bu/acre)",
+                             xaxis={"tickvals": report["local_years"]}, height=385,
+                             legend={"orientation": "h"}, margin={"t": 15, "b": 45})
+        st.plotly_chart(figure, key="local_recalibration_curve", config={"displayModeBar": False})
+
+        def interval_text(item):
+            if not item or item["value"] is None:
+                return "Unavailable"
+            return f"{item['value']:.3f} [{item['bootstrap_95'][0]:.3f}, {item['bootstrap_95'][1]:.3f}]"
+
+        metric_names = {"rmse_bu_ac": "RMSE (bu/acre)", "r2": "R²", "spearman": "Spearman ρ",
+                        "rmse_delta_vs_local_trend": "Δ RMSE vs local trend"}
+        rows = [{"Local years": k, "Method": methods[key],
+                 **{label: interval_text(value.get(metric)) for metric, label in metric_names.items()}}
+                for k in report["local_years"] for key, value in state["curves"][str(k)].items()]
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        first = state["smallest_k_beating_trend"]
+        improvements = [f"{methods[key]} at {k} years" for key, k in first.items() if k is not None]
+        if improvements:
+            st.write("First tested history length with a paired RMSE interval below zero · " + " · ".join(improvements))
+        else:
+            st.write("No method beat the local trend with a paired RMSE interval below zero at a tested history length.")
+        st.caption("Intervals resample whole USDA districts and are descriptive. This test uses district yield "
+                   "history, which many farmers do not have. County-average associations do not validate rotation "
+                   "recommendations.")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -764,6 +813,7 @@ def app():
         learned_yield_panel()
         india_yield_screen_panel()
         cross_state_yield_panel()
+        local_recalibration_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

@@ -221,3 +221,19 @@ def test_cross_state_validation_shows_completed_case_metrics():
     assert any("Own-state held-out references on the same rows" in row.value for row in app.caption)
     table = next(row.value for row in app.dataframe if "Δ RMSE vs own linear trend" in row.value.columns)
     assert set(table.Model) == {"Ridge", "Random forest"}
+
+
+def test_local_recalibration_shows_common_tail_and_both_states():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Local yield recalibration (P37)" for row in app.expander)
+    assert any("462 common test county-years" in row.value for row in app.caption)
+    app.selectbox(key="local_recalibration_state").set_value("40").run()
+    assert not app.exception
+    assert any("88 common test county-years" in row.value for row in app.caption)
+    rows = next(table.value for table in app.dataframe if "Local years" in table.value.columns)
+    assert len(rows) == 30
+    for k in (0, 3, 5, 8, 12):
+        assert len(rows.loc[rows["Local years"].eq(k)]) == 6
+    assert rows.loc[rows["Local years"].eq(0), "RMSE (bu/acre)"].eq("Unavailable").sum() == 5
+    assert any("Source + local intercept/trend at 8 years" in row.value for row in app.markdown)
