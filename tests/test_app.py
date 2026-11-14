@@ -1,3 +1,5 @@
+import json
+
 import pytest
 from streamlit.testing.v1 import AppTest
 
@@ -40,6 +42,10 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
             [20, 20, 17, 17, 27, 27, 25, 25] if site == "us_high_plains_b" else [27, 27])
     assert any(len(table.value) == 24 and "Passes QA" in table.value.columns for table in app.dataframe)
     assert any("Robustness check" in row.value for row in app.subheader)
+    assert any(row.value == "What to check first" for row in app.subheader)
+    assert any("sensitivity inside the model" in row.value for row in app.caption)
+    assert sum("Input evidence" in row.value for row in app.caption) == 3
+    assert any("Joint association with top score" in table.value.columns for table in app.dataframe)
     assert any("Evidence labels:" in row.value for row in app.caption)
     assert any("Evidence" in table.value.columns for table in app.dataframe)
     assert not any("Near-duplicate metric profile" in row.value for row in app.info)
@@ -50,3 +56,13 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
         assert any("cropland unverified" in row.value for row in app.warning)
     if site == "telangana_a":
         assert any("Identical consecutive crop" in row.value for row in app.warning)
+
+
+def test_sensitivity_panel_uses_the_selected_named_preset():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
+    data = json.loads((ROOT / "data/processed/sensitivity_us_high_plains_b.json").read_text())
+    first = data["presets"]["income"]["ranking"][0]
+    assert not app.exception
+    assert any(row.value == f"**Priority {first['rank']} · {first['question']}**" for row in app.markdown)
+    assert any("Income" in row.value and "inputs varied" in row.value for row in app.caption)

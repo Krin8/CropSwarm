@@ -1,4 +1,4 @@
-"""Capture six final app panels per farm from local Streamlit."""
+"""Capture reference app panels per farm from local Streamlit."""
 
 import argparse
 import json
@@ -37,7 +37,7 @@ def wait_for_streamlit(url, process):
     raise RuntimeError("Local Streamlit server did not become ready")
 
 
-def capture(url, destination, channel=None):
+def capture(url, destination, channel=None, *, sensitivity_only=False):
     farms = json.loads((ROOT / "data/processed/app_settings.json").read_text())["farms"]
     destination.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
@@ -58,6 +58,13 @@ def capture(url, destination, channel=None):
                 page.get_by_role("option", name=name, exact=True).click()
             climate = page.locator(".st-key-climate_assessment")
             expect(climate.get_by_text(name, exact=True)).to_be_visible()
+            sensitivity = page.locator(".st-key-what_to_check_first")
+            expect(sensitivity.get_by_text(name, exact=False)).to_be_visible()
+            expect(sensitivity.get_by_text("Real-world importance needs local evidence", exact=False)).to_be_visible()
+            sensitivity.screenshot(path=destination / f"{farm_id}_sensitivity.png", animations="disabled")
+            if sensitivity_only:
+                page.close()
+                continue
             comparison = page.locator(".st-key-strategy_comparison")
             expect(comparison.get_by_text(name, exact=True)).to_be_visible()
             for panel, locator in (("climate", climate), ("comparison", comparison)):
@@ -90,6 +97,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "docs/screenshots")
     parser.add_argument("--channel", choices=["chrome", "msedge"], help="Use an installed browser channel")
+    parser.add_argument("--sensitivity-only", action="store_true", help="Capture only What to check first")
     args = parser.parse_args()
     port = local_port()
     url = f"http://{HOST}:{port}"
@@ -101,7 +109,7 @@ def main():
                                    env={**os.environ, "STREAMLIT_BROWSER_GATHER_USAGE_STATS": "false"})
         try:
             wait_for_streamlit(url, process)
-            capture(url, args.output, args.channel)
+            capture(url, args.output, args.channel, sensitivity_only=args.sensitivity_only)
         except Exception:
             log.seek(0)
             print(log.read().decode(errors="replace"), file=sys.stderr)

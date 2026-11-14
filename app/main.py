@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
+from src.sensitivity import check_first
 from src.tie_diagnosis import alternative_groups
 from src.uncertainty import simulate
 
@@ -366,6 +367,37 @@ def app():
         st.caption(stress["caveat"])
         st.caption("Grid: +0 to +3 °C by 0.5 °C; rainfall −30% to +10% by 10% · design choice, not empirical. "
                    "The map uses reference farm inputs even when you edit the comparison below.")
+
+    with st.container(key="what_to_check_first"):
+        st.subheader("What to check first")
+        sensitivity = load(farm_id, "sensitivity")
+        priorities_to_check = sensitivity["presets"][preset]
+        joint = priorities_to_check["joint"]
+        low, high = joint["top_score_range"]
+        st.caption(f"{farm['name']} · {title(preset)} · {sensitivity['input_count']} inputs varied")
+        st.write(f"The top rotation changed in {joint['winner_change_fraction']:.0%} of {joint['evaluations']} "
+                 f"joint draws. In {joint['material_change_fraction']:.0%}, the earlier leader became "
+                 f"ineligible or the winner led by more than {sensitivity['design']['near_tie_gap']:g} points. "
+                 f"The top score ranged from {low:.3f} to {high:.3f} on the model's 0–1 scale.")
+        for item in check_first(priorities_to_check["ranking"]):
+            st.markdown(f"**Priority {item['rank']} · {item['question']}**")
+            st.write(item["reason"])
+            grade = item["grade"].replace("_", " ").capitalize()
+            st.caption(f"Input evidence · {grade} · {item['source']}")
+        st.caption("This ranks sensitivity inside the model. Real-world importance needs local evidence. "
+                   "The check uses the reference farm, the named preset and illustrative ranges.")
+        with st.expander("All input effects"):
+            st.dataframe(pd.DataFrame([{
+                "Rank": row["rank"], "Input": row["question"],
+                "Evidence": row["grade"], "Tied rank": row["tied"], "Weak effect": row["weak"],
+                "Sweep settings": row["one_at_a_time"]["evaluations"],
+                "Ranking changes in sweep": f"{row['one_at_a_time']['winner_change_fraction']:.0%}",
+                "Material changes in sweep": f"{row['one_at_a_time']['material_change_fraction']:.0%}",
+                "Top score span": row["one_at_a_time"]["top_score_span"],
+                "Joint association method": row["joint_association"]["method"],
+                "Joint association with top score": row["joint_association"]["top_score"],
+                "Joint association with winner change": row["joint_association"]["winner_changed"],
+            } for row in priorities_to_check["ranking"]]), hide_index=True)
 
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")

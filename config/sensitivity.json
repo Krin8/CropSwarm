@@ -1,0 +1,12 @@
+{
+  "source": "design choice, not empirical; assumption, validate locally",
+  "relative_spread": 0.2,
+  "zero_irrigation_upper_fraction": 0.2,
+  "sweep_levels": 5,
+  "joint_draws": 512,
+  "seed": 42,
+  "categorical_change_probability": 0.2,
+  "rank_score_decimals": 6,
+  "weak_score_span": 0.01,
+  "near_tie_gap": 0.01
+}

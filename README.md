@@ -29,7 +29,7 @@ Evidence grades expose how each modeled metric depends on NASA, external, litera
 ![Telangana strategy comparison](docs/screenshots/telangana_a_comparison.png)
 ![Makueni scenario uncertainty](docs/screenshots/kenya_makueni_north_uncertainty.png)
 
-[All eighteen screenshots](docs/screenshots/README.md)
+[All 21 screenshots](docs/screenshots/README.md)
 
 ## Run the demo
 
@@ -41,7 +41,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Robustness check](docs/stress_test.md) · [Submission summary](docs/submission_summary.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Robustness check](docs/stress_test.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md)
 
 ## Architecture
 
@@ -83,6 +83,7 @@ python -m src.yield_backtest
 python -m src.stress_test
 python -m src.stress_margins
 python -m src.tie_diagnosis
+python -m src.sensitivity
 python -m src.app_assets
 ```
 

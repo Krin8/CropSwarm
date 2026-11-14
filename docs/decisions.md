@@ -64,3 +64,7 @@ The Kenya decision rule requires at least two rain-aligned peaks in at least thr
 ## P13 submission checks
 
 US B's reference uses a rainfed assumption with zero irrigation supplied. The 2019 spring NDVI peak remains unexplained after the CDL neighborhood check. Makueni cropland is unverified and Telangana's second season is tentative. Five independent seeded ACO restarts run per trial, and their results are compared against exact enumeration. [Claim changes](claim_audit.md) · [ACO results](optimizer.md)
+
+## P22 field-check priorities
+
+Use exact canonical search under each trial so eligibility changes can introduce or remove contenders. The app ranks the effects of one-at-a-time tests and shows joint rank associations separately. Keep the existing 0.01 near-tie tolerance as a design choice. Use cited crop water ranges, one-sided irrigation tests from a zero reference and one-slot substitutions for assumed baseline identities. These choices set the scope of the sensitivity experiment. [Ranges and results](sensitivity.md)

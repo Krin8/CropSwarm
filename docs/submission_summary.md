@@ -24,6 +24,8 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 
 SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. The historical comparisons check NASA input consistency and associations with county or district yields. Rotation recommendations still need field validation.
 
+The [What to check first panel](sensitivity.md) ranks which assumptions move the modeled score and ranking under specified ranges. Its priorities depend on the reference farm and preset.
+
 These are illustrative point estimates, not field boundaries or management records. Kansas irrigation supply is set to 0, the 2019 spring NDVI peak over mapped fallow is unresolved, Telangana's second season is tentative, and Makueni cropland remains unverified. POWER root-zone wetness and SoilGrids properties are modeled estimates. The app does not directly measure soil nitrogen or soil organic carbon. Relative income, rainfall uncertainty, simplified erosion, season windows and crop choices need local validation. Scenario intervals and win percentages reflect the specified model and assumptions, not calibrated forecast probabilities. See [decisions](decisions.md), [methods](scoring.md), and [citation audit](citation_audit.md).
 
 ## AI-assistance statement

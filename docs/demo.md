@@ -12,6 +12,8 @@
 | 1:55–2:15 | Telangana, then Makueni | “Telangana's second season is tentative, and repeated paddy keeps its rotation warning. Makueni's cropland status is unverified.” |
 | 2:15–2:30 | Optimizer check | “We checked ant colony search against exact enumeration. The best of five searches reached the optimum in all 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
 
+For a longer demo, open [What to check first](sensitivity.md) after choosing a priority preset. Show one of its ranked local checks and its evidence grade. The priority reflects sensitivity under the tested model ranges.
+
 ## Slide outline
 
 1. Describe the decision and the reference baseline rotation.

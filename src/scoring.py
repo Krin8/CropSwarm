@@ -97,13 +97,17 @@ def historical_metrics(windows, crop, storage, slope, supply, policy, *, water_f
                             np.full(len(deficit), crop["relative_income_index"])])
 
 
-def preload(farm, *, root=ROOT, processed=None, crops=None, policy=None, storage_override=None):
+def preload(farm, *, root=ROOT, processed=None, crops=None, policy=None, storage_override=None,
+            season_calendar=None, climate=None, window_lookup=None):
     out = Path(processed) if processed else root / "data/processed"
     context = json.loads((out / f"context_{farm['farm_id']}.json").read_text())
-    seasons = json.loads((out / f"seasons_{farm['farm_id']}.json").read_text())
+    seasons = season_calendar
+    if seasons is None:
+        seasons = json.loads((out / f"seasons_{farm['farm_id']}.json").read_text())
     if len(seasons["slots"]) != farm["seasons_per_year"]:
         raise ValueError(f"Season-slot disagreement for {farm['farm_id']}")
-    climate = pd.read_parquet(out / f"climate_{farm['farm_id']}.parquet").set_index("date")
+    if climate is None:
+        climate = pd.read_parquet(out / f"climate_{farm['farm_id']}.parquet").set_index("date")
     if crops is None:
         crops = load_crops(root / "data/crops.csv", farms=[farm])
     if policy is None:
@@ -132,7 +136,8 @@ def preload(farm, *, root=ROOT, processed=None, crops=None, policy=None, storage
                 length + policy["calendar_extension_days"])
             days[slot, index] = (label, start, crop["season_length_days"])
             search_length = crop["season_length_days"] or length
-            windows = crop_windows(climate, start, search_length)
+            windows = (crop_windows(climate, start, search_length) if window_lookup is None
+                       else window_lookup(start, search_length))
             histories[slot, index] = windows
             hist = historical_metrics(windows, crop, storage, slope, farm["irrigation"]["supply_fraction"], policy)
             if len(hist) == 0:
