@@ -29,7 +29,7 @@ Evidence grades expose how each modeled metric depends on NASA, external, litera
 ![Telangana strategy comparison](docs/screenshots/telangana_a_comparison.png)
 ![Makueni scenario uncertainty](docs/screenshots/kenya_makueni_north_uncertainty.png)
 
-[All 27 screenshots](docs/screenshots/README.md)
+[All 30 screenshots](docs/screenshots/README.md)
 
 ## Run the demo
 
@@ -42,6 +42,8 @@ python -m pytest -q
 ```
 
 The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Risk-aware picks and draw-count stability (P28b)](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
+
+Under **Farm priorities**, use **Download brief** to print or share the reference shortlist for the selected farm and named preset. [All 12 HTML and PDF briefs](docs/briefs/README.md)
 
 ## Architecture
 

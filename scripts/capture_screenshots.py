@@ -17,7 +17,7 @@ from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 HOST = "127.0.0.1"
-PANELS = ("climate", "comparison", "opportunity", "validation", "robustness", "robust_pick", "sensitivity", "uncertainty", "evidence")
+PANELS = ("climate", "comparison", "opportunity", "validation", "robustness", "robust_pick", "sensitivity", "uncertainty", "evidence", "brief")
 
 
 def local_port():
@@ -59,6 +59,19 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 page.get_by_role("option", name=name, exact=True).click()
             climate = page.locator(".st-key-climate_assessment")
             expect(climate.get_by_text(name, exact=True)).to_be_visible()
+            if "brief" in panels:
+                brief = page.locator(".st-key-decision_brief:visible")
+                html_button = brief.get_by_role("button", name="Download brief (HTML)")
+                pdf_button = brief.get_by_role("button", name="Download brief (PDF)")
+                expect(html_button).to_be_visible()
+                expect(pdf_button).to_be_visible()
+                for button, extension in ((html_button, "html"), (pdf_button, "pdf")):
+                    with page.expect_download() as download:
+                        button.click()
+                    expected_name = f"{farm_id}_water_saver.{extension}"
+                    if download.value.suggested_filename != expected_name:
+                        raise AssertionError(f"Expected download {expected_name}")
+                brief.screenshot(path=destination / f"{farm_id}_brief.png", animations="disabled")
             if "opportunity" in panels:
                 opportunity = page.locator(".st-key-opportunity_windows:visible").filter(
                     has=page.get_by_text(name, exact=True))

@@ -15,6 +15,8 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 | Strategy and scenario comparisons | `strategies_<farm_id>.json` and `uncertainty_<farm_id>.json` |
 | Applying edited inputs | `seasons_<farm_id>.json` and `climate_<farm_id>.parquet` |
 
+The farm decision brief uses the same saved JSON, plus the bundled PDFs and release manifest in `docs/briefs/`.
+
 The app has no runtime dependency on `data/raw/`, `data/cache/`, `ndvi_*.csv`, `coverage_p4.json`, the source crop CSV or the precompute configuration files. The offline back-test rebuild (`python -m src.backtest`) does read the committed Kansas CDL raw sample, crop CSV, climate and NDVI processed files. Keep the committed archives and fixtures when running the full test suite or rebuilding processed data. Install the pinned requirements in a fresh Python 3.12 virtual environment, then run `python -m pytest -q` and `python -m streamlit run app/main.py` from the checkout.
 
 The screenshot script starts its own loopback-only Streamlit server, blocks external HTTP resources in the browser, and opens a separate session per farm. The uncertainty panels use the existing rotation under historical-weather draws. With Google Chrome installed:
@@ -24,4 +26,4 @@ python -m pip install -r requirements-screenshots.txt
 python scripts/capture_screenshots.py --channel chrome
 ```
 
-Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 27 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views. Pass `--panels` followed by panel names to refresh a custom subset.
+Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 30 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views. Pass `--panels` followed by panel names to refresh a custom subset.

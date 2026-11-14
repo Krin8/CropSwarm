@@ -7,5 +7,6 @@ COPY .streamlit .streamlit
 COPY app app
 COPY src src
 COPY data/processed data/processed
+COPY docs/briefs docs/briefs
 EXPOSE 7860
 CMD ["python", "-m", "streamlit", "run", "app/main.py", "--server.address=0.0.0.0", "--server.port=7860", "--server.headless=true"]
