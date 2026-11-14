@@ -74,6 +74,9 @@ python -m src.diagnostics
 python -m src.farm_validity
 python -m src.optimizer
 python -m src.uncertainty
+python -m src.backtest
+python -m src.stress_test
+python -m src.stress_margins
 python -m src.app_assets
 ```
 

@@ -23,6 +23,27 @@ Each map has four preset panels. The outlined grid cell is unchanged historical 
 | Makueni | Income | 0 °C, −20% rain | The illustrative maize–common bean baseline becomes top, replacing maize then green gram. |
 | Makueni | Balanced | 0 °C, +10% rain | Pearl millet then green gram replaces green gram then pearl millet; the within-year season order changes. |
 
+## Margins around the reported flips (P16b)
+
+The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design choice, not empirical evidence**. A flip is flagged when the gap between the best two **distinct** rotations is at most that tolerance in either adjacent cell. Whole-year cyclic starting positions count as the same rotation. The “before” cell is one grid step from the reported changed cell toward unchanged weather. Where both axes can move, the predecessor farther from unchanged weather in normalized grid-step distance is used; a tie favors the temperature-axis step. This defines one reproducible path through a two-dimensional grid, not a continuous threshold. The grid, ranking scores and P16 parameters were not changed.
+
+| Farm | Preset | Before cell: °C, rain; top-two gap | First changed cell: °C, rain; top-two gap | Near-tie? |
+|---|---|---|---|---|
+| Kansas | Water saver | +1.5, 0%; **0** | +2, 0%; **0** | Yes; exact ties on both sides |
+| Kansas | Soil builder | 0, 0%; **0** | 0, +10%; **0** | Yes; exact ties on both sides |
+| Kansas | Income | 0, 0%; **0** | 0, +10%; **0** | Yes; exact ties on both sides |
+| Kansas | Balanced | +1, 0%; **0** | +1, +10%; **0** | Yes; exact ties on both sides |
+| Telangana | Water saver | No reported tip | No reported tip | Not applicable |
+| Telangana | Soil builder | +2.5, 0%; 0.00142840 | +3, 0%; 0.00000017 | Yes |
+| Telangana | Income | +1, 0%; 0.00057279 | +1, +10%; 0.00038725 | Yes |
+| Telangana | Balanced | +3, 0%; 0.00082907 | +3, +10%; 0.00080211 | Yes |
+| Makueni | Water saver | 0, −20%; 0.00298428 | 0, −30%; 0.00221868 | Yes |
+| Makueni | Soil builder | 0, 0%; 0.00078521 | 0, −10%; 0.00139570 | Yes |
+| Makueni | Income | 0, −10%; 0.00127225 | 0, −20%; 0.00022166 | Yes |
+| Makueni | Balanced | 0, 0%; 0.00356581 | 0, +10%; 0.00068979 | Yes |
+
+**All eleven reported flips are near-ties by this rule.** The four Kansas flips have zero gap between different rotation strategies on both sides, so their displayed winner labels are especially sensitive to exact tie-breaking. These are close model rankings, not evidence of abrupt farm outcomes. Full-precision scores, both top rotations, source tags and the predecessor rule are in the [Kansas](../data/processed/stress_margins_us_high_plains_b.json), [Telangana](../data/processed/stress_margins_telangana_a.json), and [Makueni](../data/processed/stress_margins_kenya_makueni_north.json) margin files.
+
 ## Limits and interpretation
 
 “First” means nearest **tested grid cell**, not a precise physical threshold. A winner can change because scores cross or the existing water-screen constraint changes; the JSON records feasible counts for each cell. The simple uniform shifts leave solar radiation, humidity, soil-water capacity, planting dates, crop water need, prices and management unchanged. They do not represent a climate model, future probability or forecast. No confidence interval is assigned to tipping locations. The baseline may carry hard-rule flags; the app continues to display those flags elsewhere. Kansas is modeled as rainfed, Telangana's second season is tentative, and Makueni cropland remains unverified. Local crop, soil and farmer evidence could change every map.

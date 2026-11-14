@@ -1,0 +1,139 @@
+{
+  "farm_id": "telangana_a",
+  "label": "illustrative; validate locally",
+  "grid_source": "data/processed/stress_test_<farm_id>.json; P16 grid, unchanged",
+  "score_source": "src.scoring.score_rotations; config/weights_presets.json; cached NASA POWER climate",
+  "tolerance": {
+    "value": 0.01,
+    "unit": "normalized weighted-score points",
+    "source": "design choice, not empirical; validate locally",
+    "rule": "A flip is a near-tie when the top-two distinct-cycle weighted-score gap is at most near_tie_gap in either the before or after cell."
+  },
+  "before_cell_rule": "From the reported first-change cell, take one adjacent grid step toward unchanged weather on either axis; choose the predecessor farthest from unchanged weather in normalized grid-step distance, with temperature-axis precedence for a tie.",
+  "presets": {
+    "water_saver": {
+      "status": "no tipping in grid",
+      "before": null,
+      "after": null,
+      "near_tie": false,
+      "sentence": "No top-strategy change occurs in this grid."
+    },
+    "soil_builder": {
+      "status": "tip",
+      "before": {
+        "temperature_change_c": 2.5,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_61c3731b20ce",
+          "score": 0.7574891796052601,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_4fedef9bc467",
+          "score": 0.7560607825811363,
+          "is_baseline": false
+        },
+        "gap": 0.0014283970241237842,
+        "feasible_count": 633998
+      },
+      "after": {
+        "temperature_change_c": 3.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_4eb77b288db2",
+          "score": 0.7532039885328888,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_27a527b94664",
+          "score": 0.7532038141284412,
+          "is_baseline": false
+        },
+        "gap": 1.7440444766148033e-07,
+        "feasible_count": 633998
+      },
+      "near_tie_before": true,
+      "near_tie_after": true,
+      "near_tie": true,
+      "sentence": "At +2.5 \u00b0C and +0% rain, the top-two score gap is 0.0014; at +3 \u00b0C and +0% rain, it is 0.0000."
+    },
+    "income": {
+      "status": "tip",
+      "before": {
+        "temperature_change_c": 1.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_6e538c546655",
+          "score": 0.6708359014454729,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_2cef77310540",
+          "score": 0.6702631098297966,
+          "is_baseline": false
+        },
+        "gap": 0.0005727916156762491,
+        "feasible_count": 633998
+      },
+      "after": {
+        "temperature_change_c": 1.0,
+        "rainfall_change_pct": 10,
+        "top": {
+          "id": "rotation_8e02dbd7c3a4",
+          "score": 0.6654097440776658,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_868acf205a85",
+          "score": 0.6650224935372264,
+          "is_baseline": false
+        },
+        "gap": 0.0003872505404394211,
+        "feasible_count": 633998
+      },
+      "near_tie_before": true,
+      "near_tie_after": true,
+      "near_tie": true,
+      "sentence": "At +1 \u00b0C and +0% rain, the top-two score gap is 0.0006; at +1 \u00b0C and +10% rain, it is 0.0004."
+    },
+    "balanced": {
+      "status": "tip",
+      "before": {
+        "temperature_change_c": 3.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_61c3731b20ce",
+          "score": 0.7127134112378913,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_4fedef9bc467",
+          "score": 0.711884337843089,
+          "is_baseline": false
+        },
+        "gap": 0.0008290733948023155,
+        "feasible_count": 633998
+      },
+      "after": {
+        "temperature_change_c": 3.0,
+        "rainfall_change_pct": 10,
+        "top": {
+          "id": "rotation_4eb77b288db2",
+          "score": 0.7078720225045675,
+          "is_baseline": false
+        },
+        "second": {
+          "id": "rotation_27a527b94664",
+          "score": 0.7070699117559384,
+          "is_baseline": false
+        },
+        "gap": 0.0008021107486291257,
+        "feasible_count": 633998
+      },
+      "near_tie_before": true,
+      "near_tie_after": true,
+      "near_tie": true,
+      "sentence": "At +3 \u00b0C and +0% rain, the top-two score gap is 0.0008; at +3 \u00b0C and +10% rain, it is 0.0008."
+    }
+  }
+}

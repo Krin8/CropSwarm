@@ -1,0 +1,6 @@
+{
+  "near_tie_gap": 0.01,
+  "source": "design choice, not empirical; validate locally",
+  "before_cell_rule": "From the reported first-change cell, take one adjacent grid step toward unchanged weather on either axis; choose the predecessor farthest from unchanged weather in normalized grid-step distance, with temperature-axis precedence for a tie.",
+  "near_tie_rule": "A flip is a near-tie when the top-two distinct-cycle weighted-score gap is at most near_tie_gap in either the before or after cell."
+}

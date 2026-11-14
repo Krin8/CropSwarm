@@ -241,7 +241,20 @@ def app():
         st.caption(f"Winner map for {title(preset).lower()} · exact search over feasible rotations at every cell · "
                    "NASA POWER cached historical weather and illustrative crop inputs.")
         st.dataframe(pd.DataFrame(legend), hide_index=True)
-        st.write(stress["presets"][preset]["tipping_point"]["sentence"])
+        tip = stress["presets"][preset]["tipping_point"]
+        margin = load(farm_id, "stress_margins")["presets"][preset]
+        if tip["found"]:
+            point = tip["cell"]
+            st.write(f"The map's nearest changed cell is +{point['temperature_change_c']:g} °C and "
+                     f"{point['rainfall_change_pct']:+g}% rain. This is a sampled grid cell, not a sharp threshold.")
+            st.write(margin["sentence"])
+            if margin["near_tie"]:
+                st.info("top choices are close here · the gap is within the illustrative near-tie tolerance "
+                        "on at least one side of this change.")
+        else:
+            st.write(tip["sentence"])
+        st.caption("Near tie: top-two distinct-rotation score gap ≤0.01 normalized points at either adjacent "
+                   "cell · design choice, not empirical. Cyclic starting-year labels count as one rotation.")
         st.caption(stress["caveat"])
         st.caption("Grid: +0 to +3 °C by 0.5 °C; rainfall −30% to +10% by 10% · design choice, not empirical. "
                    "The map uses reference farm inputs even when you edit the comparison below.")
