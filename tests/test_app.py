@@ -19,6 +19,15 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
     assert any("NASA climate and vegetation check" in row.label for row in app.expander)
+    assert any(row.label == "Yield back-test" for row in app.expander)
+    yield_tables = [table.value for table in app.dataframe if "Paired n" in table.value.columns]
+    if site == "kenya_makueni_north":
+        assert not yield_tables
+        assert any("A comparable seasonal yield series was not verified" in row.value for row in app.caption)
+    else:
+        assert len(yield_tables) == 1
+        assert list(yield_tables[0]["Paired n"]) == (
+            [20, 20, 17, 17, 27, 27, 25, 25] if site == "us_high_plains_b" else [27, 27])
     assert any(len(table.value) == 24 and "Passes QA" in table.value.columns for table in app.dataframe)
     assert any("Robustness check" in row.value for row in app.subheader)
     assert any("Evidence labels:" in row.value for row in app.caption)

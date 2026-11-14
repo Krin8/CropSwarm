@@ -1,0 +1,32 @@
+{
+  "quickstats_finney.csv": {
+    "source": "USDA NASS Quick Stats bulk crops file",
+    "catalog": "https://www.nass.usda.gov/datasets",
+    "download": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+    "bulk_sha256": "78382f2f6fe4e3a0a1d0feeb44a3b2cbb972b8ab4cef10d4fd223f98ec97bdc3",
+    "geography": "Kansas state ANSI 20, Finney County ANSI 055. The configured point (37.94, -100.67) falls inside Finney on the Census county map.",
+    "geography_reference": "https://www2.census.gov/geo/maps/DC2020/GARM20/GARM2020_ST20_KS.pdf",
+    "extract": "COUNTY / SURVEY / TOTAL domain / ANNUAL / YEAR, 1990–2024 inclusive. Four exact data-item labels in config/yield_backtest.json. Kept all source columns. Removed NUL padding."
+  },
+  "icrisat_warangal.csv": {
+    "source": "ICRISAT district-level kharif rice data published in the Maiti et al. (2024) study archive",
+    "paper": "https://doi.org/10.1038/s43247-024-01414-7",
+    "archive": "https://doi.org/10.5281/zenodo.10958118",
+    "download": "https://zenodo.org/api/records/10958118/files/Data.csv/content",
+    "data_sha256": "b66f8ec074a92335b0701ba09efd0584c37e1d1a163be86336efdf28b6854d83",
+    "district_map_download": "https://zenodo.org/api/records/10958118/files/Shapefile.rar/content",
+    "district_map_sha256": "5d0b5805b57af24e1ae697429a0b74c1a644437d2202043be874570e4874de38",
+    "license": "CC BY 4.0",
+    "extract": "Warangal, Telangana, Dist.Code=60, Sh_Dist_code=2021, FID_1=19, 1990–2017. Kept the first twelve source columns, including published yield, and omitted study climate columns.",
+    "geography": "Point-in-polygon check at 79.445 E, 17.845 N against WGS84 companion shapefile India_DI_sh_1993_F returned one polygon, Warangal (FID_1=19, IPUM1993=002021). Historical geography is distinct from current Warangal and Hanumakonda. District yield reaggregation method is unverified.",
+    "boundary_change_reference": "https://cdnbbsr.s3waas.gov.in/s3ec04ddcbe25988981920c872c1787382/uploads/2024/06/2024062539.pdf",
+    "direct_portal": "https://data.icrisat.org/dld/src/crops.html",
+    "direct_portal_status": "Connection timed out. The study archive and companion map were reachable."
+  },
+  "makueni": {
+    "source": "Kenya National Bureau of Statistics, National Agriculture Production Report 2025",
+    "url": "https://www.knbs.or.ke/wp-content/uploads/2025/10/National-Agriculture-Production-Report-2025.pdf",
+    "sha256": "72a8a2f73d1206e7b17b930544c667e9f659913db59be694d5a821fcc43be2f0",
+    "status": "County coverage verified in Annexes 1 and 4, 2020–2024. Annual area and production do not identify the P5 growing season. An individual NDMA season report does not establish a comparable annual series. Skipped."
+  }
+}

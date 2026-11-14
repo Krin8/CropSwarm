@@ -1,0 +1,1172 @@
+{
+  "geography": "Finney County, Kansas (FIPS 20055)",
+  "note": "County yields aggregate farms and varieties. The all-practice series mixes irrigation practices and is shown separately from non-irrigated yields.",
+  "source": "USDA NASS Quick Stats",
+  "source_url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+  "farm_id": "us_high_plains_b",
+  "year_bounds": [
+    1990,
+    2024
+  ],
+  "series": [
+    {
+      "crop": "winter_wheat",
+      "season": "cool",
+      "start_year_offset": -1,
+      "practice": "Non-irrigated",
+      "selector": "WHEAT, WINTER, NON-IRRIGATED - YIELD, MEASURED IN BU / ACRE",
+      "crop_name": "Winter wheat",
+      "yield_unit": "bu/acre",
+      "yearly_yield_count": 22,
+      "onset_month": 10,
+      "window_source": "assumption, validate locally",
+      "crop_source": "data/crops.csv",
+      "season_length_days": 260,
+      "season_length_source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+      "water_need_mm": 550.0,
+      "water_need_source": "FAO irrigation training manual Table 14 (barley/oats/wheat 450\u2013650 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+      "heat_threshold_c": 30.0,
+      "heat_source": "assumption, validate locally",
+      "rows": [
+        {
+          "year": 1990,
+          "yield": 47.7,
+          "trend": 39.474903041913926,
+          "yield_anomaly": 8.225096958086077,
+          "window_start": "1989-10-01",
+          "window_end": "1990-06-17",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1991,
+          "yield": 31.2,
+          "trend": 39.07214616139432,
+          "yield_anomaly": -7.872146161394323,
+          "window_start": "1990-10-01",
+          "window_end": "1991-06-17",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1992,
+          "yield": 35.2,
+          "trend": 38.669389280874725,
+          "yield_anomaly": -3.469389280874722,
+          "window_start": "1991-10-01",
+          "window_end": "1992-06-16",
+          "water_deficit_mm": 302.3769230769231,
+          "heat_days": 17
+        },
+        {
+          "year": 1993,
+          "yield": 39.0,
+          "trend": 38.26663240035512,
+          "yield_anomaly": 0.733367599644879,
+          "window_start": "1992-10-01",
+          "window_end": "1993-06-17",
+          "water_deficit_mm": 214.7953846153846,
+          "heat_days": 16
+        },
+        {
+          "year": 1994,
+          "yield": 38.0,
+          "trend": 37.86387551983552,
+          "yield_anomaly": 0.13612448016448297,
+          "window_start": "1993-10-01",
+          "window_end": "1994-06-17",
+          "water_deficit_mm": 337.6969230769235,
+          "heat_days": 31
+        },
+        {
+          "year": 1995,
+          "yield": 22.0,
+          "trend": 37.46111863931591,
+          "yield_anomaly": -15.461118639315913,
+          "window_start": "1994-10-01",
+          "window_end": "1995-06-17",
+          "water_deficit_mm": 295.376153846154,
+          "heat_days": 10
+        },
+        {
+          "year": 1996,
+          "yield": 24.0,
+          "trend": 37.05836175879631,
+          "yield_anomaly": -13.058361758796309,
+          "window_start": "1995-10-01",
+          "window_end": "1996-06-16",
+          "water_deficit_mm": 433.05076923077024,
+          "heat_days": 26
+        },
+        {
+          "year": 1997,
+          "yield": 38.0,
+          "trend": 36.655604878276705,
+          "yield_anomaly": 1.344395121723295,
+          "window_start": "1996-10-01",
+          "window_end": "1997-06-17",
+          "water_deficit_mm": 350.3830769230772,
+          "heat_days": 9
+        },
+        {
+          "year": 1998,
+          "yield": 49.0,
+          "trend": 36.25284799775711,
+          "yield_anomaly": 12.747152002242892,
+          "window_start": "1997-10-01",
+          "window_end": "1998-06-17",
+          "water_deficit_mm": 249.14000000000007,
+          "heat_days": 27
+        },
+        {
+          "year": 1999,
+          "yield": 59.0,
+          "trend": 35.850091117237504,
+          "yield_anomaly": 23.149908882762496,
+          "window_start": "1998-10-01",
+          "window_end": "1999-06-17",
+          "water_deficit_mm": 186.9438461538461,
+          "heat_days": 11
+        },
+        {
+          "year": 2000,
+          "yield": 36.0,
+          "trend": 35.4473342367179,
+          "yield_anomaly": 0.5526657632820999,
+          "window_start": "1999-10-01",
+          "window_end": "2000-06-16",
+          "water_deficit_mm": 264.9738461538462,
+          "heat_days": 25
+        },
+        {
+          "year": 2001,
+          "yield": 34.0,
+          "trend": 35.044577356198296,
+          "yield_anomaly": -1.044577356198296,
+          "window_start": "2000-10-01",
+          "window_end": "2001-06-17",
+          "water_deficit_mm": 229.22307692307692,
+          "heat_days": 21
+        },
+        {
+          "year": 2002,
+          "yield": 27.0,
+          "trend": 34.64182047567869,
+          "yield_anomaly": -7.641820475678692,
+          "window_start": "2001-10-01",
+          "window_end": "2002-06-17",
+          "water_deficit_mm": 399.4069230769237,
+          "heat_days": 28
+        },
+        {
+          "year": 2003,
+          "yield": 36.0,
+          "trend": 34.23906359515909,
+          "yield_anomaly": 1.760936404840912,
+          "window_start": "2002-10-01",
+          "window_end": "2003-06-17",
+          "water_deficit_mm": 295.95692307692303,
+          "heat_days": 15
+        },
+        {
+          "year": 2004,
+          "yield": 27.0,
+          "trend": 33.83630671463949,
+          "yield_anomaly": -6.836306714639491,
+          "window_start": "2003-10-01",
+          "window_end": "2004-06-16",
+          "water_deficit_mm": 372.76384615384706,
+          "heat_days": 40
+        },
+        {
+          "year": 2005,
+          "yield": 38.0,
+          "trend": 33.43354983411989,
+          "yield_anomaly": 4.566450165880113,
+          "window_start": "2004-10-01",
+          "window_end": "2005-06-17",
+          "water_deficit_mm": 280.05000000000007,
+          "heat_days": 14
+        },
+        {
+          "year": 2006,
+          "yield": 23.0,
+          "trend": 33.03079295360028,
+          "yield_anomaly": -10.030792953600283,
+          "window_start": "2005-10-01",
+          "window_end": "2006-06-17",
+          "water_deficit_mm": 330.40923076923104,
+          "heat_days": 35
+        },
+        {
+          "year": 2007,
+          "yield": 47.0,
+          "trend": 32.62803607308068,
+          "yield_anomaly": 14.371963926919321,
+          "window_start": "2006-10-01",
+          "window_end": "2007-06-17",
+          "water_deficit_mm": 160.22153846153842,
+          "heat_days": 10
+        },
+        {
+          "year": 2008,
+          "yield": 38.5,
+          "trend": 32.225279192561075,
+          "yield_anomaly": 6.274720807438925,
+          "window_start": "2007-10-01",
+          "window_end": "2008-06-16",
+          "water_deficit_mm": 340.4946153846157,
+          "heat_days": 30
+        },
+        {
+          "year": 2009,
+          "yield": 48.0,
+          "trend": 31.822522312041475,
+          "yield_anomaly": 16.177477687958525,
+          "window_start": "2008-10-01",
+          "window_end": "2009-06-17",
+          "water_deficit_mm": 252.73692307692295,
+          "heat_days": 18
+        },
+        {
+          "year": 2012,
+          "yield": 18.4,
+          "trend": 30.614251670482666,
+          "yield_anomaly": -12.214251670482668,
+          "window_start": "2011-10-01",
+          "window_end": "2012-06-16",
+          "water_deficit_mm": 285.0538461538463,
+          "heat_days": 38
+        },
+        {
+          "year": 2013,
+          "yield": 17.8,
+          "trend": 30.211494789963062,
+          "yield_anomaly": -12.411494789963061,
+          "window_start": "2012-10-01",
+          "window_end": "2013-06-17",
+          "water_deficit_mm": 399.94384615384655,
+          "heat_days": 26
+        }
+      ],
+      "comparisons": [
+        {
+          "indicator": "Modeled water deficit",
+          "field": "water_deficit_mm",
+          "finding": "Strong expected association",
+          "rho": -0.6105263157894737,
+          "n": 20,
+          "bootstrap_95": [
+            -0.8715308884560988,
+            -0.2073917386010715
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        {
+          "indicator": "Heat days",
+          "field": "heat_days",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.38073750432063297,
+          "n": 20,
+          "bootstrap_95": [
+            -0.7768251340523162,
+            0.10477119869327639
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      ]
+    },
+    {
+      "crop": "sorghum",
+      "season": "warm",
+      "start_year_offset": 0,
+      "practice": "Non-irrigated",
+      "selector": "SORGHUM, GRAIN, NON-IRRIGATED - YIELD, MEASURED IN BU / ACRE",
+      "crop_name": "Grain sorghum",
+      "yield_unit": "bu/acre",
+      "yearly_yield_count": 18,
+      "onset_month": 4,
+      "window_source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "crop_source": "data/crops.csv",
+      "season_length_days": 105,
+      "season_length_source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+      "water_need_mm": 450.0,
+      "water_need_source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+      "heat_threshold_c": 38.0,
+      "heat_source": "assumption, validate locally",
+      "rows": [
+        {
+          "year": 1990,
+          "yield": 57.0,
+          "trend": 59.83625730994151,
+          "yield_anomaly": -2.8362573099415087,
+          "window_start": "1990-04-01",
+          "window_end": "1990-07-14",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1991,
+          "yield": 56.0,
+          "trend": 59.88166494668042,
+          "yield_anomaly": -3.8816649466804165,
+          "window_start": "1991-04-01",
+          "window_end": "1991-07-14",
+          "water_deficit_mm": 217.14,
+          "heat_days": 6
+        },
+        {
+          "year": 1992,
+          "yield": 70.0,
+          "trend": 59.92707258341932,
+          "yield_anomaly": 10.072927416580683,
+          "window_start": "1992-04-01",
+          "window_end": "1992-07-14",
+          "water_deficit_mm": 226.35999999999996,
+          "heat_days": 1
+        },
+        {
+          "year": 1993,
+          "yield": 60.0,
+          "trend": 59.972480220158225,
+          "yield_anomaly": 0.027519779841775005,
+          "window_start": "1993-04-01",
+          "window_end": "1993-07-14",
+          "water_deficit_mm": 214.30285714285714,
+          "heat_days": 1
+        },
+        {
+          "year": 1994,
+          "yield": 63.0,
+          "trend": 60.01788785689713,
+          "yield_anomaly": 2.982112143102867,
+          "window_start": "1994-04-01",
+          "window_end": "1994-07-14",
+          "water_deficit_mm": 248.06857142857143,
+          "heat_days": 11
+        },
+        {
+          "year": 1995,
+          "yield": 39.0,
+          "trend": 60.06329549363604,
+          "yield_anomaly": -21.06329549363604,
+          "window_start": "1995-04-01",
+          "window_end": "1995-07-14",
+          "water_deficit_mm": 147.69857142857143,
+          "heat_days": 5
+        },
+        {
+          "year": 1996,
+          "yield": 70.0,
+          "trend": 60.10870313037494,
+          "yield_anomaly": 9.891296869625059,
+          "window_start": "1996-04-01",
+          "window_end": "1996-07-14",
+          "water_deficit_mm": 210.36857142857136,
+          "heat_days": 11
+        },
+        {
+          "year": 1997,
+          "yield": 70.0,
+          "trend": 60.15411076711385,
+          "yield_anomaly": 9.845889232886151,
+          "window_start": "1997-04-01",
+          "window_end": "1997-07-14",
+          "water_deficit_mm": 200.05999999999995,
+          "heat_days": 1
+        },
+        {
+          "year": 1998,
+          "yield": 71.0,
+          "trend": 60.19951840385276,
+          "yield_anomaly": 10.800481596147243,
+          "window_start": "1998-04-01",
+          "window_end": "1998-07-14",
+          "water_deficit_mm": 266.92857142857133,
+          "heat_days": 9
+        },
+        {
+          "year": 1999,
+          "yield": 78.0,
+          "trend": 60.24492604059166,
+          "yield_anomaly": 17.755073959408342,
+          "window_start": "1999-04-01",
+          "window_end": "1999-07-14",
+          "water_deficit_mm": 141.98999999999995,
+          "heat_days": 0
+        },
+        {
+          "year": 2000,
+          "yield": 59.0,
+          "trend": 60.290333677330565,
+          "yield_anomaly": -1.2903336773305654,
+          "window_start": "2000-04-01",
+          "window_end": "2000-07-14",
+          "water_deficit_mm": 282.22999999999996,
+          "heat_days": 8
+        },
+        {
+          "year": 2001,
+          "yield": 64.0,
+          "trend": 60.33574131406947,
+          "yield_anomaly": 3.664258685930527,
+          "window_start": "2001-04-01",
+          "window_end": "2001-07-14",
+          "water_deficit_mm": 190.90285714285713,
+          "heat_days": 9
+        },
+        {
+          "year": 2002,
+          "yield": 27.0,
+          "trend": 60.381148950808374,
+          "yield_anomaly": -33.381148950808374,
+          "window_start": "2002-04-01",
+          "window_end": "2002-07-14",
+          "water_deficit_mm": 289.35,
+          "heat_days": 8
+        },
+        {
+          "year": 2003,
+          "yield": 23.0,
+          "trend": 60.42655658754728,
+          "yield_anomaly": -37.42655658754728,
+          "window_start": "2003-04-01",
+          "window_end": "2003-07-14",
+          "water_deficit_mm": 195.54999999999995,
+          "heat_days": 10
+        },
+        {
+          "year": 2004,
+          "yield": 56.0,
+          "trend": 60.47196422428619,
+          "yield_anomaly": -4.4719642242861894,
+          "window_start": "2004-04-01",
+          "window_end": "2004-07-14",
+          "water_deficit_mm": 216.61285714285705,
+          "heat_days": 1
+        },
+        {
+          "year": 2005,
+          "yield": 83.0,
+          "trend": 60.5173718610251,
+          "yield_anomaly": 22.482628138974903,
+          "window_start": "2005-04-01",
+          "window_end": "2005-07-14",
+          "water_deficit_mm": 199.25999999999988,
+          "heat_days": 2
+        },
+        {
+          "year": 2006,
+          "yield": 59.0,
+          "trend": 60.562779497764,
+          "yield_anomaly": -1.562779497763998,
+          "window_start": "2006-04-01",
+          "window_end": "2006-07-14",
+          "water_deficit_mm": 246.44999999999987,
+          "heat_days": 8
+        },
+        {
+          "year": 2007,
+          "yield": 79.0,
+          "trend": 60.608187134502906,
+          "yield_anomaly": 18.391812865497094,
+          "window_start": "2007-04-01",
+          "window_end": "2007-07-14",
+          "water_deficit_mm": 200.06142857142856,
+          "heat_days": 0
+        }
+      ],
+      "comparisons": [
+        {
+          "indicator": "Modeled water deficit",
+          "field": "water_deficit_mm",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.19607843137254904,
+          "n": 17,
+          "bootstrap_95": [
+            -0.6741956581064678,
+            0.3992956116350236
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        {
+          "indicator": "Heat days",
+          "field": "heat_days",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.32199926393719847,
+          "n": 17,
+          "bootstrap_95": [
+            -0.702572636835711,
+            0.21719361103792345
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      ]
+    },
+    {
+      "crop": "winter_wheat",
+      "season": "cool",
+      "start_year_offset": -1,
+      "practice": "All practices",
+      "selector": "WHEAT, WINTER - YIELD, MEASURED IN BU / ACRE",
+      "crop_name": "Winter wheat",
+      "yield_unit": "bu/acre",
+      "yearly_yield_count": 29,
+      "onset_month": 10,
+      "window_source": "assumption, validate locally",
+      "crop_source": "data/crops.csv",
+      "season_length_days": 260,
+      "season_length_source": "assumption, validate locally; Kansas State University Wheat Production Handbook production calendar https://bookstore.ksre.ksu.edu/pubs/wheat-production-handbook_C529.pdf",
+      "water_need_mm": 550.0,
+      "water_need_source": "FAO irrigation training manual Table 14 (barley/oats/wheat 450\u2013650 mm, midpoint) https://www.fao.org/4/s2022e/s2022e07.htm",
+      "heat_threshold_c": 30.0,
+      "heat_source": "assumption, validate locally",
+      "rows": [
+        {
+          "year": 1990,
+          "yield": 50.5,
+          "trend": 41.49715177977621,
+          "yield_anomaly": 9.00284822022379,
+          "window_start": "1989-10-01",
+          "window_end": "1990-06-17",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1991,
+          "yield": 39.2,
+          "trend": 41.41792354625107,
+          "yield_anomaly": -2.2179235462510647,
+          "window_start": "1990-10-01",
+          "window_end": "1991-06-17",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1992,
+          "yield": 43.5,
+          "trend": 41.338695312725925,
+          "yield_anomaly": 2.1613046872740753,
+          "window_start": "1991-10-01",
+          "window_end": "1992-06-16",
+          "water_deficit_mm": 302.3769230769231,
+          "heat_days": 17
+        },
+        {
+          "year": 1993,
+          "yield": 43.0,
+          "trend": 41.25946707920078,
+          "yield_anomaly": 1.7405329207992182,
+          "window_start": "1992-10-01",
+          "window_end": "1993-06-17",
+          "water_deficit_mm": 214.7953846153846,
+          "heat_days": 16
+        },
+        {
+          "year": 1994,
+          "yield": 43.1,
+          "trend": 41.18023884567563,
+          "yield_anomaly": 1.9197611543243696,
+          "window_start": "1993-10-01",
+          "window_end": "1994-06-17",
+          "water_deficit_mm": 337.6969230769235,
+          "heat_days": 31
+        },
+        {
+          "year": 1995,
+          "yield": 24.0,
+          "trend": 41.10101061215049,
+          "yield_anomaly": -17.10101061215049,
+          "window_start": "1994-10-01",
+          "window_end": "1995-06-17",
+          "water_deficit_mm": 295.376153846154,
+          "heat_days": 10
+        },
+        {
+          "year": 1996,
+          "yield": 30.0,
+          "trend": 41.021782378625346,
+          "yield_anomaly": -11.021782378625346,
+          "window_start": "1995-10-01",
+          "window_end": "1996-06-16",
+          "water_deficit_mm": 433.05076923077024,
+          "heat_days": 26
+        },
+        {
+          "year": 1997,
+          "yield": 43.0,
+          "trend": 40.9425541451002,
+          "yield_anomaly": 2.0574458548997967,
+          "window_start": "1996-10-01",
+          "window_end": "1997-06-17",
+          "water_deficit_mm": 350.3830769230772,
+          "heat_days": 9
+        },
+        {
+          "year": 1998,
+          "yield": 54.0,
+          "trend": 40.86332591157506,
+          "yield_anomaly": 13.13667408842494,
+          "window_start": "1997-10-01",
+          "window_end": "1998-06-17",
+          "water_deficit_mm": 249.14000000000007,
+          "heat_days": 27
+        },
+        {
+          "year": 1999,
+          "yield": 58.0,
+          "trend": 40.78409767804992,
+          "yield_anomaly": 17.215902321950082,
+          "window_start": "1998-10-01",
+          "window_end": "1999-06-17",
+          "water_deficit_mm": 186.9438461538461,
+          "heat_days": 11
+        },
+        {
+          "year": 2000,
+          "yield": 38.0,
+          "trend": 40.704869444524775,
+          "yield_anomaly": -2.7048694445247747,
+          "window_start": "1999-10-01",
+          "window_end": "2000-06-16",
+          "water_deficit_mm": 264.9738461538462,
+          "heat_days": 25
+        },
+        {
+          "year": 2001,
+          "yield": 41.0,
+          "trend": 40.62564121099963,
+          "yield_anomaly": 0.3743587890003681,
+          "window_start": "2000-10-01",
+          "window_end": "2001-06-17",
+          "water_deficit_mm": 229.22307692307692,
+          "heat_days": 21
+        },
+        {
+          "year": 2002,
+          "yield": 33.0,
+          "trend": 40.54641297747449,
+          "yield_anomaly": -7.546412977474489,
+          "window_start": "2001-10-01",
+          "window_end": "2002-06-17",
+          "water_deficit_mm": 399.4069230769237,
+          "heat_days": 28
+        },
+        {
+          "year": 2003,
+          "yield": 40.0,
+          "trend": 40.467184743949346,
+          "yield_anomaly": -0.46718474394934617,
+          "window_start": "2002-10-01",
+          "window_end": "2003-06-17",
+          "water_deficit_mm": 295.95692307692303,
+          "heat_days": 15
+        },
+        {
+          "year": 2004,
+          "yield": 33.0,
+          "trend": 40.3879565104242,
+          "yield_anomaly": -7.387956510424203,
+          "window_start": "2003-10-01",
+          "window_end": "2004-06-16",
+          "water_deficit_mm": 372.76384615384706,
+          "heat_days": 40
+        },
+        {
+          "year": 2005,
+          "yield": 46.0,
+          "trend": 40.30872827689905,
+          "yield_anomaly": 5.691271723100947,
+          "window_start": "2004-10-01",
+          "window_end": "2005-06-17",
+          "water_deficit_mm": 280.05000000000007,
+          "heat_days": 14
+        },
+        {
+          "year": 2006,
+          "yield": 26.0,
+          "trend": 40.22950004337391,
+          "yield_anomaly": -14.22950004337391,
+          "window_start": "2005-10-01",
+          "window_end": "2006-06-17",
+          "water_deficit_mm": 330.40923076923104,
+          "heat_days": 35
+        },
+        {
+          "year": 2007,
+          "yield": 50.0,
+          "trend": 40.15027180984877,
+          "yield_anomaly": 9.849728190151232,
+          "window_start": "2006-10-01",
+          "window_end": "2007-06-17",
+          "water_deficit_mm": 160.22153846153842,
+          "heat_days": 10
+        },
+        {
+          "year": 2008,
+          "yield": 43.5,
+          "trend": 40.071043576323625,
+          "yield_anomaly": 3.428956423676375,
+          "window_start": "2007-10-01",
+          "window_end": "2008-06-16",
+          "water_deficit_mm": 340.4946153846157,
+          "heat_days": 30
+        },
+        {
+          "year": 2009,
+          "yield": 51.0,
+          "trend": 39.99181534279848,
+          "yield_anomaly": 11.008184657201518,
+          "window_start": "2008-10-01",
+          "window_end": "2009-06-17",
+          "water_deficit_mm": 252.73692307692295,
+          "heat_days": 18
+        },
+        {
+          "year": 2010,
+          "yield": 55.9,
+          "trend": 39.91258710927334,
+          "yield_anomaly": 15.98741289072666,
+          "window_start": "2009-10-01",
+          "window_end": "2010-06-17",
+          "water_deficit_mm": 237.00692307692304,
+          "heat_days": 20
+        },
+        {
+          "year": 2011,
+          "yield": 27.3,
+          "trend": 39.833358875748196,
+          "yield_anomaly": -12.533358875748196,
+          "window_start": "2010-10-01",
+          "window_end": "2011-06-17",
+          "water_deficit_mm": 401.34230769230857,
+          "heat_days": 34
+        },
+        {
+          "year": 2012,
+          "yield": 29.1,
+          "trend": 39.75413064222305,
+          "yield_anomaly": -10.654130642223052,
+          "window_start": "2011-10-01",
+          "window_end": "2012-06-16",
+          "water_deficit_mm": 285.0538461538463,
+          "heat_days": 38
+        },
+        {
+          "year": 2013,
+          "yield": 23.9,
+          "trend": 39.67490240869791,
+          "yield_anomaly": -15.774902408697912,
+          "window_start": "2012-10-01",
+          "window_end": "2013-06-17",
+          "water_deficit_mm": 399.94384615384655,
+          "heat_days": 26
+        },
+        {
+          "year": 2014,
+          "yield": 25.5,
+          "trend": 39.59567417517277,
+          "yield_anomaly": -14.095674175172768,
+          "window_start": "2013-10-01",
+          "window_end": "2014-06-17",
+          "water_deficit_mm": 398.9130769230777,
+          "heat_days": 26
+        },
+        {
+          "year": 2015,
+          "yield": 41.0,
+          "trend": 39.516445941647625,
+          "yield_anomaly": 1.4835540583523752,
+          "window_start": "2014-10-01",
+          "window_end": "2015-06-17",
+          "water_deficit_mm": 314.2223076923079,
+          "heat_days": 18
+        },
+        {
+          "year": 2020,
+          "yield": 40.7,
+          "trend": 39.1203047740219,
+          "yield_anomaly": 1.5796952259780994,
+          "window_start": "2019-10-01",
+          "window_end": "2020-06-16",
+          "water_deficit_mm": 341.4400000000004,
+          "heat_days": 22
+        },
+        {
+          "year": 2021,
+          "yield": 66.5,
+          "trend": 39.04107654049676,
+          "yield_anomaly": 27.45892345950324,
+          "window_start": "2020-10-01",
+          "window_end": "2021-06-17",
+          "water_deficit_mm": 291.92692307692323,
+          "heat_days": 23
+        },
+        {
+          "year": 2022,
+          "yield": 30.6,
+          "trend": 38.96184830697162,
+          "yield_anomaly": -8.361848306971616,
+          "window_start": "2021-10-01",
+          "window_end": "2022-06-17",
+          "water_deficit_mm": 394.39923076923174,
+          "heat_days": 33
+        }
+      ],
+      "comparisons": [
+        {
+          "indicator": "Modeled water deficit",
+          "field": "water_deficit_mm",
+          "finding": "Strong expected association",
+          "rho": -0.6239316239316238,
+          "n": 27,
+          "bootstrap_95": [
+            -0.8080731515648489,
+            -0.3212167158517194
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        {
+          "indicator": "Heat days",
+          "field": "heat_days",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.41918746603570395,
+          "n": 27,
+          "bootstrap_95": [
+            -0.7284119336491116,
+            0.009841336733983833
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      ]
+    },
+    {
+      "crop": "sorghum",
+      "season": "warm",
+      "start_year_offset": 0,
+      "practice": "All practices",
+      "selector": "SORGHUM, GRAIN - YIELD, MEASURED IN BU / ACRE",
+      "crop_name": "Grain sorghum",
+      "yield_unit": "bu/acre",
+      "yearly_yield_count": 26,
+      "onset_month": 4,
+      "window_source": "NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "crop_source": "data/crops.csv",
+      "season_length_days": 105,
+      "season_length_source": "FAO Kenya agro-ecological assessment Table 4.11 (lowland sorghum 70\u2013130 days, representative value) https://www.fao.org/4/t0733e/T0733E05.htm",
+      "water_need_mm": 450.0,
+      "water_need_source": "FAO irrigation training manual Table 14 (sorghum/millet 450\u2013650 mm, short-season lower bound) https://www.fao.org/4/s2022e/s2022e07.htm",
+      "heat_threshold_c": 38.0,
+      "heat_source": "assumption, validate locally",
+      "rows": [
+        {
+          "year": 1990,
+          "yield": 87.0,
+          "trend": 76.73999104845026,
+          "yield_anomaly": 10.260008951549736,
+          "window_start": "1990-04-01",
+          "window_end": "1990-07-14",
+          "water_deficit_mm": null,
+          "heat_days": null
+        },
+        {
+          "year": 1991,
+          "yield": 90.0,
+          "trend": 76.32375293722727,
+          "yield_anomaly": 13.676247062772731,
+          "window_start": "1991-04-01",
+          "window_end": "1991-07-14",
+          "water_deficit_mm": 217.14,
+          "heat_days": 6
+        },
+        {
+          "year": 1992,
+          "yield": 95.0,
+          "trend": 75.90751482600426,
+          "yield_anomaly": 19.09248517399574,
+          "window_start": "1992-04-01",
+          "window_end": "1992-07-14",
+          "water_deficit_mm": 226.35999999999996,
+          "heat_days": 1
+        },
+        {
+          "year": 1993,
+          "yield": 69.0,
+          "trend": 75.49127671478125,
+          "yield_anomaly": -6.49127671478125,
+          "window_start": "1993-04-01",
+          "window_end": "1993-07-14",
+          "water_deficit_mm": 214.30285714285714,
+          "heat_days": 1
+        },
+        {
+          "year": 1994,
+          "yield": 85.0,
+          "trend": 75.07503860355824,
+          "yield_anomaly": 9.92496139644176,
+          "window_start": "1994-04-01",
+          "window_end": "1994-07-14",
+          "water_deficit_mm": 248.06857142857143,
+          "heat_days": 11
+        },
+        {
+          "year": 1995,
+          "yield": 57.0,
+          "trend": 74.65880049233523,
+          "yield_anomaly": -17.65880049233523,
+          "window_start": "1995-04-01",
+          "window_end": "1995-07-14",
+          "water_deficit_mm": 147.69857142857143,
+          "heat_days": 5
+        },
+        {
+          "year": 1996,
+          "yield": 76.0,
+          "trend": 74.24256238111222,
+          "yield_anomaly": 1.7574376188877778,
+          "window_start": "1996-04-01",
+          "window_end": "1996-07-14",
+          "water_deficit_mm": 210.36857142857136,
+          "heat_days": 11
+        },
+        {
+          "year": 1997,
+          "yield": 79.0,
+          "trend": 73.82632426988921,
+          "yield_anomaly": 5.173675730110787,
+          "window_start": "1997-04-01",
+          "window_end": "1997-07-14",
+          "water_deficit_mm": 200.05999999999995,
+          "heat_days": 1
+        },
+        {
+          "year": 1998,
+          "yield": 75.0,
+          "trend": 73.4100861586662,
+          "yield_anomaly": 1.5899138413337965,
+          "window_start": "1998-04-01",
+          "window_end": "1998-07-14",
+          "water_deficit_mm": 266.92857142857133,
+          "heat_days": 9
+        },
+        {
+          "year": 1999,
+          "yield": 84.0,
+          "trend": 72.99384804744321,
+          "yield_anomaly": 11.006151952556792,
+          "window_start": "1999-04-01",
+          "window_end": "1999-07-14",
+          "water_deficit_mm": 141.98999999999995,
+          "heat_days": 0
+        },
+        {
+          "year": 2000,
+          "yield": 62.0,
+          "trend": 72.5776099362202,
+          "yield_anomaly": -10.577609936220199,
+          "window_start": "2000-04-01",
+          "window_end": "2000-07-14",
+          "water_deficit_mm": 282.22999999999996,
+          "heat_days": 8
+        },
+        {
+          "year": 2001,
+          "yield": 67.0,
+          "trend": 72.16137182499719,
+          "yield_anomaly": -5.16137182499719,
+          "window_start": "2001-04-01",
+          "window_end": "2001-07-14",
+          "water_deficit_mm": 190.90285714285713,
+          "heat_days": 9
+        },
+        {
+          "year": 2002,
+          "yield": 39.0,
+          "trend": 71.74513371377418,
+          "yield_anomaly": -32.74513371377418,
+          "window_start": "2002-04-01",
+          "window_end": "2002-07-14",
+          "water_deficit_mm": 289.35,
+          "heat_days": 8
+        },
+        {
+          "year": 2003,
+          "yield": 38.0,
+          "trend": 71.32889560255117,
+          "yield_anomaly": -33.32889560255117,
+          "window_start": "2003-04-01",
+          "window_end": "2003-07-14",
+          "water_deficit_mm": 195.54999999999995,
+          "heat_days": 10
+        },
+        {
+          "year": 2004,
+          "yield": 69.0,
+          "trend": 70.91265749132816,
+          "yield_anomaly": -1.9126574913281615,
+          "window_start": "2004-04-01",
+          "window_end": "2004-07-14",
+          "water_deficit_mm": 216.61285714285705,
+          "heat_days": 1
+        },
+        {
+          "year": 2005,
+          "yield": 89.0,
+          "trend": 70.49641938010515,
+          "yield_anomaly": 18.503580619894848,
+          "window_start": "2005-04-01",
+          "window_end": "2005-07-14",
+          "water_deficit_mm": 199.25999999999988,
+          "heat_days": 2
+        },
+        {
+          "year": 2006,
+          "yield": 64.0,
+          "trend": 70.08018126888214,
+          "yield_anomaly": -6.080181268882143,
+          "window_start": "2006-04-01",
+          "window_end": "2006-07-14",
+          "water_deficit_mm": 246.44999999999987,
+          "heat_days": 8
+        },
+        {
+          "year": 2007,
+          "yield": 82.0,
+          "trend": 69.66394315765913,
+          "yield_anomaly": 12.336056842340867,
+          "window_start": "2007-04-01",
+          "window_end": "2007-07-14",
+          "water_deficit_mm": 200.06142857142856,
+          "heat_days": 0
+        },
+        {
+          "year": 2008,
+          "yield": 51.0,
+          "trend": 69.24770504643614,
+          "yield_anomaly": -18.24770504643614,
+          "window_start": "2008-04-01",
+          "window_end": "2008-07-14",
+          "water_deficit_mm": 255.79,
+          "heat_days": 5
+        },
+        {
+          "year": 2009,
+          "yield": 96.0,
+          "trend": 68.83146693521313,
+          "yield_anomaly": 27.16853306478687,
+          "window_start": "2009-04-01",
+          "window_end": "2009-07-14",
+          "water_deficit_mm": 181.53999999999994,
+          "heat_days": 5
+        },
+        {
+          "year": 2010,
+          "yield": 75.0,
+          "trend": 68.41522882399012,
+          "yield_anomaly": 6.58477117600988,
+          "window_start": "2010-04-01",
+          "window_end": "2010-07-14",
+          "water_deficit_mm": 206.82714285714283,
+          "heat_days": 5
+        },
+        {
+          "year": 2012,
+          "yield": 28.2,
+          "trend": 67.5827526015441,
+          "yield_anomaly": -39.3827526015441,
+          "window_start": "2012-04-01",
+          "window_end": "2012-07-14",
+          "water_deficit_mm": 307.1199999999999,
+          "heat_days": 16
+        },
+        {
+          "year": 2013,
+          "yield": 37.5,
+          "trend": 67.16651449032109,
+          "yield_anomaly": -29.66651449032109,
+          "window_start": "2013-04-01",
+          "window_end": "2013-07-14",
+          "water_deficit_mm": 324.0699999999999,
+          "heat_days": 17
+        },
+        {
+          "year": 2014,
+          "yield": 74.5,
+          "trend": 66.75027637909808,
+          "yield_anomaly": 7.749723620901918,
+          "window_start": "2014-04-01",
+          "window_end": "2014-07-14",
+          "water_deficit_mm": 222.13142857142861,
+          "heat_days": 3
+        },
+        {
+          "year": 2016,
+          "yield": 107.5,
+          "trend": 65.91780015665208,
+          "yield_anomaly": 41.58219984334792,
+          "window_start": "2016-04-01",
+          "window_end": "2016-07-14",
+          "water_deficit_mm": 119.16857142857143,
+          "heat_days": 0
+        },
+        {
+          "year": 2020,
+          "yield": 79.1,
+          "trend": 64.25284771176004,
+          "yield_anomaly": 14.847152288239954,
+          "window_start": "2020-04-01",
+          "window_end": "2020-07-14",
+          "water_deficit_mm": 286.82142857142844,
+          "heat_days": 9
+        }
+      ],
+      "comparisons": [
+        {
+          "indicator": "Modeled water deficit",
+          "field": "water_deficit_mm",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.4115384615384615,
+          "n": 25,
+          "bootstrap_95": [
+            -0.7574336476367612,
+            0.05982075938563468
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        },
+        {
+          "indicator": "Heat days",
+          "field": "heat_days",
+          "finding": "Weak or uncertain expected association",
+          "rho": -0.5078485615983226,
+          "n": 25,
+          "bootstrap_95": [
+            -0.7529112934218071,
+            -0.1481625132295316
+          ],
+          "small_n": false,
+          "note": "descriptive bootstrap; not a calibrated confidence interval"
+        }
+      ]
+    }
+  ],
+  "label": "illustrative, validate locally",
+  "climate_source": "NASA POWER daily (AG, LST)",
+  "method_source": "P20 analysis design, validate locally",
+  "bootstrap": {
+    "seed": 42,
+    "draws": 1000,
+    "source": "P20 analysis design, validate locally"
+  },
+  "soil_storage_mm": 60.2,
+  "soil_source": "https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf",
+  "irrigation_supply_fraction": 0.0,
+  "irrigation_source": "assumption, validate locally",
+  "yield_input": "data/raw/p20/quickstats_finney.csv"
+}

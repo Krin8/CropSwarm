@@ -79,6 +79,7 @@ python -m src.uncertainty
 python -m src.backtest
 python -m src.data_pipeline --long-record
 python -m src.nasa_consistency
+python -m src.yield_backtest
 python -m src.stress_test
 python -m src.stress_margins
 python -m src.tie_diagnosis

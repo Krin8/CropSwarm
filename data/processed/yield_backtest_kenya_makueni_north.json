@@ -1,0 +1,20 @@
+{
+  "geography": "Makueni County, Kenya",
+  "note": "Skipped. KNBS verifies county-level maize and bean coverage, but its annual area and production combine seasons. A comparable seasonal yield series was not verified. Cropland at the point also remains unverified.",
+  "source": "Kenya National Bureau of Statistics, National Agriculture Production Report 2025",
+  "source_url": "https://www.knbs.or.ke/wp-content/uploads/2025/10/National-Agriculture-Production-Report-2025.pdf",
+  "farm_id": "kenya_makueni_north",
+  "year_bounds": [
+    1990,
+    2024
+  ],
+  "series": [],
+  "label": "illustrative, validate locally",
+  "climate_source": "NASA POWER daily (AG, LST)",
+  "method_source": "P20 analysis design, validate locally",
+  "bootstrap": {
+    "seed": 42,
+    "draws": 1000,
+    "source": "P20 analysis design, validate locally"
+  }
+}

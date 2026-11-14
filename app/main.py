@@ -266,6 +266,35 @@ def app():
                 "Year": row["year"], "Expected": row["expected"], "Valid NDVI": row["valid_ndvi"],
                 "Passes QA": row["qa_accepted"], "Record": row["status"],
             } for row in consistency["coverage"]]), hide_index=True)
+        with st.expander("Yield back-test"):
+            yields = load(farm_id, "yield_backtest")
+            st.write(yields["geography"])
+            st.caption(yields["note"])
+            st.markdown(f"Yield source · [{yields['source']}]({yields['source_url']})")
+            if yields["series"]:
+                st.caption("Yield anomalies are departures from a separate linear trend for each crop and practice. "
+                           "The county or district and the NASA POWER reference point cover different areas. "
+                           "Model inputs are illustrative and need local validation.")
+                st.caption(f"Modeled irrigation supply: {yields['irrigation_supply_fraction']:.0%} of unmet water demand "
+                           "at the reference point. Actual county or district supply varies.")
+                yield_results = []
+                for series in yields["series"]:
+                    years = [row["year"] for row in series["rows"]]
+                    for statistic in series["comparisons"]:
+                        interval = statistic["bootstrap_95"]
+                        yield_results.append({
+                            "Crop": series["crop_name"], "Yield series": series["practice"],
+                            "Reported years": f"{min(years)}–{max(years)} ({len(years)} records)" if years else "None",
+                            "POWER indicator": statistic["indicator"], "Paired n": statistic["n"],
+                            "Spearman ρ": statistic["rho"],
+                            "Bootstrap 95%": "Unavailable" if interval is None else
+                            f"{interval[0]:.2f} to {interval[1]:.2f}",
+                            "Finding": statistic["finding"],
+                        })
+                st.dataframe(pd.DataFrame(yield_results), hide_index=True,
+                             column_config={"Spearman ρ": st.column_config.NumberColumn(format="%.2f")})
+                st.caption("Sources · NASA POWER daily rainfall and maximum temperature · CropSwarm crop catalog, "
+                           "season windows and soil water estimate. Bootstrap intervals are descriptive.")
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

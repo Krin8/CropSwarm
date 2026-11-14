@@ -104,8 +104,7 @@ def build(root=ROOT):
                       climate_source=POWER_SOURCE, method_source=config["method_source"],
                       bootstrap={"seed": SEED, "draws": BOOTSTRAP_DRAWS, "source": config["method_source"]})
         if site["series"]:
-            delimiter = "\t" if site["format"] == "quickstats" else ","
-            frame = pd.read_csv(raw / site["file"], sep=delimiter)
+            frame = pd.read_csv(raw / site["file"])
             climate = pd.read_parquet(processed / f"climate_{farm_id}.parquet").set_index("date")
             windows = json.loads((processed / f"seasons_{farm_id}.json").read_text())["season_windows"]
             context = json.loads((processed / f"context_{farm_id}.json").read_text())

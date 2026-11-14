@@ -8,7 +8,7 @@
       "note": "County yields aggregate farms and varieties. The all-practice series mixes irrigation practices and is shown separately from non-irrigated yields.",
       "source": "USDA NASS Quick Stats",
       "source_url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
-      "file": "quickstats_finney.tsv",
+      "file": "quickstats_finney.csv",
       "format": "quickstats",
       "series": [
         {"crop": "winter_wheat", "season": "cool", "start_year_offset": -1, "practice": "Non-irrigated", "selector": "WHEAT, WINTER, NON-IRRIGATED - YIELD, MEASURED IN BU / ACRE"},
