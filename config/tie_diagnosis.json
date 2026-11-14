@@ -1,0 +1,7 @@
+{
+  "alternative_max_metric_difference": 0.05,
+  "source": "design choice, not empirical; validate locally",
+  "rule": "Two displayed alternatives are near-duplicates when the largest absolute difference among their six normalized metric scores is at most the threshold. Groups are formed in display order and every member must be near every existing group member.",
+  "exact_metric_tolerance": 1e-12,
+  "exact_metric_tolerance_source": "floating-point comparison convention, design choice"
+}

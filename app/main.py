@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.optimizer import allowed_layers, count_rotations, enumerate_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
+from src.tie_diagnosis import alternative_groups
 from src.uncertainty import simulate
 
 DATA = ROOT / "data/processed"
@@ -234,25 +235,24 @@ def app():
     st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
 
     with st.container(key="climate_stress_test"):
-        st.subheader("Climate stress test")
+        st.subheader("Robustness check")
         stress = load(farm_id, "stress_test")
+        diagnosis = load(farm_id, "tie_diagnosis")
         figure, legend = stress_map(stress, preset)
         st.plotly_chart(figure, key=f"stress_{farm_id}_{preset}", config={"displayModeBar": False})
         st.caption(f"Winner map for {title(preset).lower()} · exact search over feasible rotations at every cell · "
                    "NASA POWER cached historical weather and illustrative crop inputs.")
         st.dataframe(pd.DataFrame(legend), hide_index=True)
-        tip = stress["presets"][preset]["tipping_point"]
+        finding = diagnosis["presets"][preset]
         margin = load(farm_id, "stress_margins")["presets"][preset]
-        if tip["found"]:
-            point = tip["cell"]
-            st.write(f"The map's nearest changed cell is +{point['temperature_change_c']:g} °C and "
-                     f"{point['rainfall_change_pct']:+g}% rain. This is a sampled grid cell, not a sharp threshold.")
-            st.write(margin["sentence"])
-            if margin["near_tie"]:
-                st.info("top choices are close here · the gap is within the illustrative near-tie tolerance "
-                        "on at least one side of this change.")
-        else:
-            st.write(tip["sentence"])
+        st.write(f"The P16 map labels a different top rotation in {finding['changed_cells']} of "
+                 f"{finding['grid_cells']} tested climate cells compared with unchanged weather.")
+        if margin["near_tie"]:
+            st.info("top choices are close here · the nearest reported change is between options "
+                    "within the illustrative near-tie tolerance. Equal-score labels may change "
+                    "without a score gain.")
+        elif finding["changed_cells"] == 0:
+            st.caption("The map keeps the same top-rotation label throughout the tested grid.")
         st.caption("Near tie: top-two distinct-rotation score gap ≤0.01 normalized points at either adjacent "
                    "cell · design choice, not empirical. Cyclic starting-year labels count as one rotation.")
         st.caption(stress["caveat"])
@@ -270,6 +270,8 @@ def app():
             st.caption("Showing a new exact comparison and new scenario draws for your edited inputs.")
             if edits[3] > 0:
                 st.caption(f"Entered farm area {edits[3]:g} ha · farmer input")
+    alternatives = alternative_groups(result["strategies"][1:],
+                                       diagnosis["alternative_difference"]["threshold"])
     with st.container(key="strategy_comparison"):
         st.subheader("Compare rotations")
         st.caption(farm["name"])
@@ -292,6 +294,9 @@ def app():
                          "Wins in draws": f"{stats['wins_pct'][preset]:.1f}%",
                          "Unmet water · median (mm)": round(stats["metrics"]["water"]["p50"], 1)})
         st.dataframe(pd.DataFrame(rows), hide_index=True)
+        st.caption(f"Four displayed alternatives form {alternatives['meaningfully_different_groups']} "
+                   "meaningfully different metric profiles at a maximum 0.05 normalized-score difference "
+                   "· design choice, not empirical. Near-duplicate profiles are flagged below.")
         st.caption("Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
         chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
                                  marker_color=COLORS[:len(rows)]))
@@ -305,6 +310,11 @@ def app():
         with st.expander(row["Strategy"], expanded=key == "baseline"):
             st.write(entry["why"])
             st.write(row["Rotation"])
+            for pair in alternatives["pairs"]:
+                if pair["near_duplicate"] and key in (pair["first"], pair["second"]):
+                    other = pair["second"] if key == pair["first"] else pair["first"]
+                    st.info(f"Near-duplicate metric profile with {title(other)} "
+                            f"(largest metric-score difference {pair['max_difference']:.3f}).")
             for flag, slots in entry["flags"].items():
                 st.warning(f"{title(flag)} in slots {', '.join(str(slot + 1) for slot in slots)}.")
             if key != "baseline":

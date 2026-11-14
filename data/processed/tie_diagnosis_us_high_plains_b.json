@@ -1,0 +1,1838 @@
+{
+  "farm_id": "us_high_plains_b",
+  "label": "illustrative; validate locally",
+  "grid_source": "data/processed/stress_test_<farm_id>.json; unchanged P16 grid",
+  "margin_source": "data/processed/stress_margins_<farm_id>.json; P16b",
+  "metric_source": "src.scoring.score_rotations and data/crops.csv; source tags on each metric",
+  "tie_break_rule": "Use one fixed-seed permutation of exact feasible rotations to choose among exactly equal objective scores; baseline wins an exact tie with the best feasible rotation; whole-year cyclic shifts share a strategy label",
+  "alternative_difference": {
+    "threshold": 0.05,
+    "source": "design choice, not empirical; validate locally",
+    "rule": "Two displayed alternatives are near-duplicates when the largest absolute difference among their six normalized metric scores is at most the threshold. Groups are formed in display order and every member must be near every existing group member."
+  },
+  "exact_metric_tolerance": {
+    "value": 1e-12,
+    "source": "floating-point comparison convention, design choice"
+  },
+  "alternatives": {
+    "displayed_alternatives": 4,
+    "meaningfully_different_groups": 3,
+    "groups": [
+      [
+        "water_saver",
+        "balanced"
+      ],
+      [
+        "soil_builder"
+      ],
+      [
+        "income"
+      ]
+    ],
+    "pairs": [
+      {
+        "first": "water_saver",
+        "second": "soil_builder",
+        "max_difference": 0.19333333333333327,
+        "near_duplicate": false,
+        "metric_differences": {
+          "water": 0.05857677119332594,
+          "nitrogen": 0.16233766233766234,
+          "erosion": 0.020211713694743727,
+          "climate_fit": 0.16834733893557424,
+          "income": 0.19333333333333327,
+          "risk": 0.0
+        }
+      },
+      {
+        "first": "water_saver",
+        "second": "income",
+        "max_difference": 0.28571428571428575,
+        "near_duplicate": false,
+        "metric_differences": {
+          "water": 0.17188777777777775,
+          "nitrogen": 0.14069264069264065,
+          "erosion": 0.052450998360855317,
+          "climate_fit": 0.28571428571428575,
+          "income": 0.2166666666666665,
+          "risk": 0.16666666666666663
+        }
+      },
+      {
+        "first": "water_saver",
+        "second": "balanced",
+        "max_difference": 0.0,
+        "near_duplicate": true,
+        "metric_differences": {
+          "water": 0.0,
+          "nitrogen": 0.0,
+          "erosion": 0.0,
+          "climate_fit": 0.0,
+          "income": 0.0,
+          "risk": 0.0
+        }
+      },
+      {
+        "first": "soil_builder",
+        "second": "income",
+        "max_difference": 0.4099999999999998,
+        "near_duplicate": false,
+        "metric_differences": {
+          "water": 0.11331100658445181,
+          "nitrogen": 0.303030303030303,
+          "erosion": 0.03223928466611159,
+          "climate_fit": 0.11736694677871151,
+          "income": 0.4099999999999998,
+          "risk": 0.16666666666666663
+        }
+      },
+      {
+        "first": "soil_builder",
+        "second": "balanced",
+        "max_difference": 0.19333333333333327,
+        "near_duplicate": false,
+        "metric_differences": {
+          "water": 0.05857677119332594,
+          "nitrogen": 0.16233766233766234,
+          "erosion": 0.020211713694743727,
+          "climate_fit": 0.16834733893557424,
+          "income": 0.19333333333333327,
+          "risk": 0.0
+        }
+      },
+      {
+        "first": "income",
+        "second": "balanced",
+        "max_difference": 0.28571428571428575,
+        "near_duplicate": false,
+        "metric_differences": {
+          "water": 0.17188777777777775,
+          "nitrogen": 0.14069264069264065,
+          "erosion": 0.052450998360855317,
+          "climate_fit": 0.28571428571428575,
+          "income": 0.2166666666666665,
+          "risk": 0.16666666666666663
+        }
+      }
+    ]
+  },
+  "presets": {
+    "water_saver": {
+      "status": "near tie",
+      "changed_cells": 15,
+      "grid_cells": 35,
+      "before": {
+        "temperature_change_c": 1.5,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_1830baa3f05c",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Grain sorghum"
+            ]
+          },
+          "weighted_score": 0.663723229418286,
+          "metrics": {
+            "water": {
+              "value": 159.44209725371627,
+              "unit": "mm unmet per slot",
+              "score": 0.6873452631809568,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -18.666666666666668,
+              "unit": "kg N/ha per slot",
+              "score": 0.6580086580086579,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 92.9569089317647,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8292727907984292,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.4857142857142857,
+              "unit": "historical share",
+              "score": 0.4857142857142857,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4366666666666667,
+              "unit": "relative index",
+              "score": 0.4366666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_608edfeb3f80",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.663723229418286,
+          "metrics": {
+            "water": {
+              "value": 159.44209725371627,
+              "unit": "mm unmet per slot",
+              "score": 0.6873452631809568,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -18.666666666666668,
+              "unit": "kg N/ha per slot",
+              "score": 0.6580086580086579,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 92.9569089317647,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8292727907984292,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.4857142857142857,
+              "unit": "historical share",
+              "score": 0.4857142857142857,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4366666666666667,
+              "unit": "relative index",
+              "score": 0.4366666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6873452631809568,
+            "second_score": 0.6873452631809568,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.6580086580086579,
+            "second_score": 0.6580086580086579,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8292727907984292,
+            "second_score": 0.8292727907984292,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.4857142857142857,
+            "second_score": 0.4857142857142857,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.4366666666666667,
+            "second_score": 0.4366666666666667,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      },
+      "after": {
+        "temperature_change_c": 2.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_1ffe62f1d21c",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "pearl_millet"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Pearl millet"
+            ]
+          },
+          "weighted_score": 0.6657042567050353,
+          "metrics": {
+            "water": {
+              "value": 180.590151675485,
+              "unit": "mm unmet per slot",
+              "score": 0.6403495866881375,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -8.666666666666666,
+              "unit": "kg N/ha per slot",
+              "score": 0.7229437229437229,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 96.98231493176469,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8218796197024782,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5619047619047619,
+              "unit": "historical share",
+              "score": 0.5619047619047619,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4166666666666667,
+              "unit": "relative index",
+              "score": 0.4166666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_db20a931ca7f",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "pearl_millet"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Pearl millet",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.6657042567050353,
+          "metrics": {
+            "water": {
+              "value": 180.590151675485,
+              "unit": "mm unmet per slot",
+              "score": 0.6403495866881375,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -8.666666666666666,
+              "unit": "kg N/ha per slot",
+              "score": 0.7229437229437229,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 96.98231493176472,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8218796197024782,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5619047619047619,
+              "unit": "historical share",
+              "score": 0.5619047619047619,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4166666666666667,
+              "unit": "relative index",
+              "score": 0.4166666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6403495866881375,
+            "second_score": 0.6403495866881375,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.7229437229437229,
+            "second_score": 0.7229437229437229,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8218796197024782,
+            "second_score": 0.8218796197024782,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.5619047619047619,
+            "second_score": 0.5619047619047619,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.4166666666666667,
+            "second_score": 0.4166666666666667,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      }
+    },
+    "soil_builder": {
+      "status": "near tie",
+      "changed_cells": 7,
+      "grid_cells": 35,
+      "before": {
+        "temperature_change_c": 0.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_1f498b38b325",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "cereal_rye_cover"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Cereal rye cover",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.7157552327704902,
+          "metrics": {
+            "water": {
+              "value": 134.91373430853818,
+              "unit": "mm unmet per slot",
+              "score": 0.6287684919876309,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": 6.333333333333333,
+              "unit": "kg N/ha per slot",
+              "score": 0.8203463203463203,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 81.95211105529411,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8494845044931729,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.45070028011204477,
+              "unit": "historical share",
+              "score": 0.45070028011204477,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.24333333333333343,
+              "unit": "relative index",
+              "score": 0.24333333333333343,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_e0eacd64bd52",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Cereal rye cover"
+            ]
+          },
+          "weighted_score": 0.7157552327704902,
+          "metrics": {
+            "water": {
+              "value": 134.91373430853818,
+              "unit": "mm unmet per slot",
+              "score": 0.6287684919876309,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": 6.333333333333333,
+              "unit": "kg N/ha per slot",
+              "score": 0.8203463203463203,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 81.95211105529411,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8494845044931729,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.45070028011204477,
+              "unit": "historical share",
+              "score": 0.45070028011204477,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.24333333333333343,
+              "unit": "relative index",
+              "score": 0.24333333333333343,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6287684919876309,
+            "second_score": 0.6287684919876309,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.8203463203463203,
+            "second_score": 0.8203463203463203,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8494845044931729,
+            "second_score": 0.8494845044931729,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.45070028011204477,
+            "second_score": 0.45070028011204477,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.24333333333333343,
+            "second_score": 0.24333333333333343,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      },
+      "after": {
+        "temperature_change_c": 0.0,
+        "rainfall_change_pct": 10,
+        "top": {
+          "id": "rotation_1f498b38b325",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "cereal_rye_cover"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Cereal rye cover",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.7141322830077597,
+          "metrics": {
+            "water": {
+              "value": 125.6343763875921,
+              "unit": "mm unmet per slot",
+              "score": 0.6501678682370327,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": 6.333333333333333,
+              "unit": "kg N/ha per slot",
+              "score": 0.8203463203463203,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 90.14732216082355,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8344329549424901,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.45070028011204477,
+              "unit": "historical share",
+              "score": 0.45070028011204477,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.24333333333333343,
+              "unit": "relative index",
+              "score": 0.24333333333333343,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_e0eacd64bd52",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Cereal rye cover"
+            ]
+          },
+          "weighted_score": 0.7141322830077597,
+          "metrics": {
+            "water": {
+              "value": 125.6343763875921,
+              "unit": "mm unmet per slot",
+              "score": 0.6501678682370327,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": 6.333333333333333,
+              "unit": "kg N/ha per slot",
+              "score": 0.8203463203463203,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 90.14732216082355,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8344329549424901,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.45070028011204477,
+              "unit": "historical share",
+              "score": 0.45070028011204477,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.24333333333333343,
+              "unit": "relative index",
+              "score": 0.24333333333333343,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6501678682370327,
+            "second_score": 0.6501678682370327,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.8203463203463203,
+            "second_score": 0.8203463203463203,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8344329549424901,
+            "second_score": 0.8344329549424901,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.45070028011204477,
+            "second_score": 0.45070028011204477,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.24333333333333343,
+            "second_score": 0.24333333333333343,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      }
+    },
+    "income": {
+      "status": "near tie",
+      "changed_cells": 23,
+      "grid_cells": 35,
+      "before": {
+        "temperature_change_c": 0.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_f0f8f8017785",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "sunflower"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Sunflower",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.6413635397298838,
+          "metrics": {
+            "water": {
+              "value": 262.57476392038296,
+              "unit": "mm unmet per slot",
+              "score": 0.515457485403179,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -40.333333333333336,
+              "unit": "kg N/ha per slot",
+              "score": 0.5173160173160173,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 64.39858656000001,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8817237891592845,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.3333333333333333,
+              "unit": "historical share",
+              "score": 0.3333333333333333,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.6533333333333332,
+              "unit": "relative index",
+              "score": 0.6533333333333332,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.0,
+              "unit": "relative penalty",
+              "score": 1.0,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_f2030cfe9ba5",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Soybean",
+              "Sunflower"
+            ]
+          },
+          "weighted_score": 0.6413635397298838,
+          "metrics": {
+            "water": {
+              "value": 262.57476392038296,
+              "unit": "mm unmet per slot",
+              "score": 0.515457485403179,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -40.333333333333336,
+              "unit": "kg N/ha per slot",
+              "score": 0.5173160173160173,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 64.39858656000001,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8817237891592845,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.3333333333333333,
+              "unit": "historical share",
+              "score": 0.3333333333333333,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.6533333333333332,
+              "unit": "relative index",
+              "score": 0.6533333333333332,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.0,
+              "unit": "relative penalty",
+              "score": 1.0,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.515457485403179,
+            "second_score": 0.515457485403179,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.5173160173160173,
+            "second_score": 0.5173160173160173,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8817237891592845,
+            "second_score": 0.8817237891592845,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.3333333333333333,
+            "second_score": 0.3333333333333333,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.6533333333333332,
+            "second_score": 0.6533333333333332,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 1.0,
+            "second_score": 1.0,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      },
+      "after": {
+        "temperature_change_c": 0.0,
+        "rainfall_change_pct": 10,
+        "top": {
+          "id": "rotation_f0f8f8017785",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "sunflower"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Sunflower",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.6446282173926936,
+          "metrics": {
+            "water": {
+              "value": 241.63499687578738,
+              "unit": "mm unmet per slot",
+              "score": 0.5540180725733128,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -40.333333333333336,
+              "unit": "kg N/ha per slot",
+              "score": 0.5173160173160173,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 70.83844521600001,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.869896168075213,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.3333333333333333,
+              "unit": "historical share",
+              "score": 0.3333333333333333,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.6533333333333332,
+              "unit": "relative index",
+              "score": 0.6533333333333332,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.0,
+              "unit": "relative penalty",
+              "score": 1.0,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_f2030cfe9ba5",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Soybean",
+              "Sunflower"
+            ]
+          },
+          "weighted_score": 0.6446282173926936,
+          "metrics": {
+            "water": {
+              "value": 241.63499687578738,
+              "unit": "mm unmet per slot",
+              "score": 0.5540180725733128,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -40.333333333333336,
+              "unit": "kg N/ha per slot",
+              "score": 0.5173160173160173,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 70.83844521600001,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.869896168075213,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.3333333333333333,
+              "unit": "historical share",
+              "score": 0.3333333333333333,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.6533333333333332,
+              "unit": "relative index",
+              "score": 0.6533333333333332,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.0,
+              "unit": "relative penalty",
+              "score": 1.0,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.5540180725733128,
+            "second_score": 0.5540180725733128,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.5173160173160173,
+            "second_score": 0.5173160173160173,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.869896168075213,
+            "second_score": 0.869896168075213,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.3333333333333333,
+            "second_score": 0.3333333333333333,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.6533333333333332,
+            "second_score": 0.6533333333333332,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 1.0,
+            "second_score": 1.0,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      }
+    },
+    "balanced": {
+      "status": "near tie",
+      "changed_cells": 19,
+      "grid_cells": 35,
+      "before": {
+        "temperature_change_c": 1.0,
+        "rainfall_change_pct": 0,
+        "top": {
+          "id": "rotation_1830baa3f05c",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Grain sorghum"
+            ]
+          },
+          "weighted_score": 0.660315112466539,
+          "metrics": {
+            "water": {
+              "value": 159.44209725371627,
+              "unit": "mm unmet per slot",
+              "score": 0.6873452631809568,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -18.666666666666668,
+              "unit": "kg N/ha per slot",
+              "score": 0.6580086580086579,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 92.9569089317647,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8292727907984292,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5142857142857142,
+              "unit": "historical share",
+              "score": 0.5142857142857142,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4366666666666667,
+              "unit": "relative index",
+              "score": 0.4366666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_608edfeb3f80",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.660315112466539,
+          "metrics": {
+            "water": {
+              "value": 159.44209725371627,
+              "unit": "mm unmet per slot",
+              "score": 0.6873452631809568,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -18.666666666666668,
+              "unit": "kg N/ha per slot",
+              "score": 0.6580086580086579,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 92.9569089317647,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8292727907984292,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5142857142857142,
+              "unit": "historical share",
+              "score": 0.5142857142857142,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4366666666666667,
+              "unit": "relative index",
+              "score": 0.4366666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6873452631809568,
+            "second_score": 0.6873452631809568,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.6580086580086579,
+            "second_score": 0.6580086580086579,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8292727907984292,
+            "second_score": 0.8292727907984292,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.5142857142857142,
+            "second_score": 0.5142857142857142,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.4366666666666667,
+            "second_score": 0.4366666666666667,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      },
+      "after": {
+        "temperature_change_c": 1.0,
+        "rainfall_change_pct": 10,
+        "top": {
+          "id": "rotation_1ffe62f1d21c",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "pearl_millet"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Pearl millet"
+            ]
+          },
+          "weighted_score": 0.6647234832908158,
+          "metrics": {
+            "water": {
+              "value": 168.4281887125221,
+              "unit": "mm unmet per slot",
+              "score": 0.6637991012959128,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -8.666666666666666,
+              "unit": "kg N/ha per slot",
+              "score": 0.7229437229437229,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 106.6805464249412,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8040675816727261,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5428571428571428,
+              "unit": "historical share",
+              "score": 0.5428571428571428,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4166666666666667,
+              "unit": "relative index",
+              "score": 0.4166666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "second": {
+          "id": "rotation_db20a931ca7f",
+          "is_baseline": false,
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "pearl_millet"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Pearl millet",
+              "Soybean"
+            ]
+          },
+          "weighted_score": 0.6647234832908158,
+          "metrics": {
+            "water": {
+              "value": 168.4281887125221,
+              "unit": "mm unmet per slot",
+              "score": 0.6637991012959128,
+              "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog",
+              "explanation": "Lower unmet crop water demand after a daily soil-water bucket and assumed irrigation."
+            },
+            "nitrogen": {
+              "value": -8.666666666666666,
+              "unit": "kg N/ha per slot",
+              "score": 0.7229437229437229,
+              "source": "Crop catalog \u00b7 local assumptions",
+              "explanation": "The previous crop's carryover credit offsets the current crop's assumed nitrogen demand."
+            },
+            "erosion": {
+              "value": 106.68054642494117,
+              "unit": "slope \u00d7 rainfall proxy",
+              "score": 0.8040675816727261,
+              "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+              "explanation": "Lower slope, lower daily rainfall intensity or more cover reduces a simplified RUSLE-style index."
+            },
+            "climate_fit": {
+              "value": 0.5428571428571428,
+              "unit": "historical share",
+              "score": 0.5428571428571428,
+              "source": "NASA POWER \u00b7 crop catalog",
+              "explanation": "Share of complete historical crop windows meeting the crop's temperature, rainfall and heat screens."
+            },
+            "income": {
+              "value": 0.4166666666666667,
+              "unit": "relative index",
+              "score": 0.4166666666666667,
+              "source": "Crop catalog \u00b7 illustrative economic assumptions",
+              "explanation": "The catalog's relative income index is a scenario input. It gives no price or yield forecast."
+            },
+            "risk": {
+              "value": 0.16666666666666666,
+              "unit": "relative penalty",
+              "score": 0.8333333333333334,
+              "source": "Crop catalog \u00b7 disease family and cover assumptions",
+              "explanation": "Consecutive crops in the same family and uncovered fallow raise the risk proxy."
+            }
+          }
+        },
+        "gap": 0.0,
+        "metric_differences": {
+          "water": {
+            "top_score": 0.6637991012959128,
+            "second_score": 0.6637991012959128,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 soil available water \u00b7 crop catalog"
+          },
+          "nitrogen": {
+            "top_score": 0.7229437229437229,
+            "second_score": 0.7229437229437229,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 local assumptions"
+          },
+          "erosion": {
+            "top_score": 0.8040675816727261,
+            "second_score": 0.8040675816727261,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions"
+          },
+          "climate_fit": {
+            "top_score": 0.5428571428571428,
+            "second_score": 0.5428571428571428,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": true,
+            "source": "NASA POWER \u00b7 crop catalog"
+          },
+          "income": {
+            "top_score": 0.4166666666666667,
+            "second_score": 0.4166666666666667,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 illustrative economic assumptions"
+          },
+          "risk": {
+            "top_score": 0.8333333333333334,
+            "second_score": 0.8333333333333334,
+            "score_difference": 0.0,
+            "weighted_contribution": 0.0,
+            "identical": true,
+            "responds_to_uniform_climate_shift": false,
+            "source": "Crop catalog \u00b7 disease family and cover assumptions"
+          }
+        },
+        "identical_metrics": [
+          "water",
+          "nitrogen",
+          "erosion",
+          "climate_fit",
+          "income",
+          "risk"
+        ],
+        "different_metrics": [],
+        "same_crop_multiset": true,
+        "cause": "crop order has the same modeled metric vector",
+        "climate_fixed_metrics": [
+          "income",
+          "nitrogen",
+          "risk"
+        ],
+        "bug_or_rounding": false
+      }
+    }
+  },
+  "interpretation": "Climate-fixed nitrogen, income and family/cover risk components do not change under uniform weather shifts for a fixed rotation. Water, erosion and climate-fit can change. Equal weighted scores may still describe different rotations. This is a modeled robustness check, not a climate projection."
+}
