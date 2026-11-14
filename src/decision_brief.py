@@ -14,7 +14,8 @@ from src.sensitivity import check_first
 BRIEFS = ROOT / "docs/briefs"
 REFERENCE_FILES = ("assessment", "strategies", "sensitivity", "robust_stability", "context", "uncertainty", "validity")
 TEMPLATE = Environment(loader=FileSystemLoader(Path(__file__).with_name("templates")),
-                       autoescape=select_autoescape()).get_template("decision_brief.html")
+                       autoescape=select_autoescape(), lstrip_blocks=True,
+                       keep_trailing_newline=True).get_template("decision_brief.html")
 METRIC_LABELS = ("Water", "Nitrogen", "Erosion", "Climate fit", "Income index", "Risk")
 ROBUST_LABELS = {"expected": "Expected score", "conditional_cvar": "Feasible-only CVaR",
                  "minimax_regret": "Minimax regret"}

@@ -57,6 +57,7 @@ def test_brief_matches_saved_outputs_and_avoids_forbidden_claims(reference_case)
     doc = DocumentText(html)
     text = " ".join(doc.text)
     assert not FORBIDDEN.search(html)
+    assert all(line == line.rstrip() for line in html.splitlines())
     assert farm["name"] in text and "illustrative representative farm" in text
     assert date_string in text and hash_string in text
     assert "options to discuss with an extension officer" in text
