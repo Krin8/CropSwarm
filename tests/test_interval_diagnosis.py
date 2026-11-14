@@ -86,3 +86,21 @@ def test_missing_weather_and_empty_regime_are_distinct():
                          "covered": [False, False, True], "district": ["01", "02", "02"]})
     row, = study.summarize(rows, "district", {"seed": 42})
     assert (row["coverage"], row["unavailable"], row["unbounded"], row["mean_width"]) == (.5, 1, 1, None)
+
+
+def test_saved_alternatives_cover_identical_p33_rows_with_unchanged_reference():
+    data = study.ROOT / "data/processed"
+    keys = ["protocol", "state", "fold", "k", "model", "level", "fips", "year"]
+    categorical = {"fips": str, "state": str, "fold": str}
+    saved = pd.read_csv(data / "climate_yield_interval_predictions.csv", dtype=categorical)
+    methods = pd.read_csv(data / "climate_yield_interval_diagnosis_rows.csv.gz", dtype=categorical)
+    report = json.loads((data / "climate_yield_interval_diagnosis.json").read_text())
+    assert len(methods) == report["interval_count"] == len(saved) * len(study.METHODS)
+    assert not methods.duplicated([*keys, "method"]).any()
+    assert methods.groupby("method").size().eq(len(saved)).all()
+    base = saved.set_index(keys).sort_index()
+    for name in ("reference", "leave_year_out"):
+        alternate = methods.loc[methods.method.eq(name)].set_index(keys).sort_index()
+        np.testing.assert_allclose(alternate.radius, base.radius, rtol=1e-10, atol=1e-10)
+        pd.testing.assert_series_equal(alternate.covered, base.covered, check_names=True)
+    assert report["interval_status_by_method"]["weighted"]["unbounded"] == 6024

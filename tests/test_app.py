@@ -270,3 +270,24 @@ def test_yield_interval_panel_shows_spatial_temporal_and_local_results():
     assert len(table) == 24
     assert table["Mean width (bu/acre)"].eq("Unbounded").any()
     assert len(table.loc[table.Sample.eq("P37 · 12 local years")]) == 4
+
+
+def test_interval_undercoverage_panel_shows_all_methods_and_2007_blocker():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Why yield intervals missed (P33b)" for row in app.expander)
+
+    app.selectbox(key="interval_diagnosis_study").set_value("2007").run()
+    assert not app.exception
+    assert any("0/103 held-out" in row.value for row in app.caption)
+    table = next(row.value for row in app.dataframe if "Learner" in row.value and "Unbounded" in row.value)
+    assert len(table) == 20 and table.Method.nunique() == 5
+    assert table["Below nominal"].eq("Yes").all()
+
+    app.selectbox(key="interval_diagnosis_study").set_value("40").run()
+    app.selectbox(key="interval_diagnosis_history").set_value("3").run()
+    assert not app.exception
+    assert any("Calibration / test residual SD" in row.value for row in app.caption)
+    table = next(row.value for row in app.dataframe if "Learner" in row.value and "Unbounded" in row.value)
+    weighted = table[table.Method.eq("Climate-similarity weighting") & table.Nominal.eq("90%")]
+    assert weighted.Unbounded.tolist() == [88, 88]

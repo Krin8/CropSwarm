@@ -1293,3 +1293,1262 @@ The P32 transfer cohorts include all-practice fallback yields where preferred re
 Conformal nominal levels rely on exchangeability. District-level dependence, differences between training and test years, and shifts across states can violate that condition. Block bootstrap ranges summarize these archived test groups and do not restore a coverage guarantee. The local calibration uses district yield history that many farmers do not have. Weather–yield associations in county averages do not validate rotation recommendations.
 
 Rebuild offline with `python -m src.yield_intervals`. The [report JSON](../data/processed/climate_yield_intervals.json) contains all sample counts, fold assignments, selected settings and data hashes. The [held-out intervals CSV](../data/processed/climate_yield_interval_predictions.csv) includes each outcome, center, lower and upper bound, and coverage indicator.
+
+## P33b interval undercoverage diagnosis
+
+The [preregistration](p33b_plan.md) was committed as `376aecc` before evaluation. P33b reconstructs the fixed P33 fits only to recover calibration predictions. The reconstruction reproduces the saved P33 centers and radii. The five methods adjust interval width around the same center. All prior data, settings and outputs remain as published.
+
+### Calibration versus test residual spread
+
+On the P37 design, each calibration residual is observed yield minus the frozen Kansas center. The calibration observations are out of sample for that center. At positive k, they come from the first k years in the district and go directly into the local radius. There is no local point fit. At k = 0, a Kansas reserved-district split supplies calibration residuals before the test origin. The leave-one-year-out scores coincide exactly with the reference because each year's observations already lie outside the center fit. A different leave-year-out result would require a different point-fitting design.
+
+The ratio divides the sample SD of calibration errors by the sample SD of test errors. Errors are signed. Pooling repeats shared Kansas residuals for the districts that used them at k = 0. Test errors enter only this diagnostic. All positive-k ratios are below one. That is consistent with narrower calibration errors, while differences in error location and shape can also affect coverage.
+
+| State | k | Learner | Calibration n | Test n | Calibration SD | Test SD | Calibration / test SD |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Nebraska | 0 | Ridge | 3535 | 462 | 6.845 | 10.861 | 0.630 |
+| Nebraska | 0 | Forest | 3535 | 462 | 7.387 | 9.768 | 0.756 |
+| Nebraska | 3 | Ridge | 173 | 462 | 8.565 | 10.861 | 0.789 |
+| Nebraska | 3 | Forest | 173 | 462 | 7.283 | 9.768 | 0.746 |
+| Nebraska | 5 | Ridge | 285 | 462 | 8.114 | 10.861 | 0.747 |
+| Nebraska | 5 | Forest | 285 | 462 | 6.561 | 9.768 | 0.672 |
+| Nebraska | 8 | Ridge | 461 | 462 | 7.710 | 10.861 | 0.710 |
+| Nebraska | 8 | Forest | 461 | 462 | 6.700 | 9.768 | 0.686 |
+| Nebraska | 12 | Ridge | 692 | 462 | 8.357 | 10.861 | 0.769 |
+| Nebraska | 12 | Forest | 692 | 462 | 7.364 | 9.768 | 0.754 |
+| Oklahoma | 0 | Ridge | 2310 | 88 | 7.130 | 7.990 | 0.892 |
+| Oklahoma | 0 | Forest | 2310 | 88 | 7.501 | 6.576 | 1.141 |
+| Oklahoma | 3 | Ridge | 95 | 88 | 5.279 | 7.990 | 0.661 |
+| Oklahoma | 3 | Forest | 95 | 88 | 5.039 | 6.576 | 0.766 |
+| Oklahoma | 5 | Ridge | 148 | 88 | 5.780 | 7.990 | 0.723 |
+| Oklahoma | 5 | Forest | 148 | 88 | 5.377 | 6.576 | 0.818 |
+| Oklahoma | 8 | Ridge | 196 | 88 | 6.958 | 7.990 | 0.871 |
+| Oklahoma | 8 | Forest | 196 | 88 | 5.939 | 6.576 | 0.903 |
+| Oklahoma | 12 | Ridge | 270 | 88 | 6.578 | 7.990 | 0.823 |
+| Oklahoma | 12 | Forest | 270 | 88 | 6.101 | 6.576 | 0.928 |
+
+### Method results
+
+The analysis reports 254,260 intervals, counting each learner, level and method. The 2007 view repeats its existing year-holdout rows. The full widths are in bu/acre. The 95% intervals shown are block bootstrap intervals for empirical coverage, not for width. Unbounded intervals count as covered. The mean width is unbounded if any contributing interval is unbounded. Unavailable intervals are counted and omitted from coverage. Any coverage below nominal is marked.
+
+| Protocol | Interval evaluations |
+| --- | --- |
+| Kansas district holdout | 64,300 |
+| Kansas harvest-year holdout | 64,300 |
+| P32 Kansas-to-target direct transfer | 70,660 |
+| P37 chronological calibration | 55,000 |
+
+#### Kansas
+
+| Evaluation | Method | Learner | Nominal | n | Coverage [95% interval] | Mean width | Unbounded | Unavailable | Below nominal |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| District holdout | P33 reference | Ridge | 80% | 3,215 | 80.4% [76.6%, 83.7%] | 24.92 | 0 | 0 | — |
+| District holdout | Leave-one-year-out | Ridge | 80% | 3,215 | 80.4% [76.6%, 83.7%] | 24.92 | 0 | 0 | — |
+| District holdout | Training-only inflation | Ridge | 80% | 3,215 | 87.6% [84.7%, 89.9%] | 29.75 | 0 | 0 | — |
+| District holdout | Weather-regime Mondrian | Ridge | 80% | 3,215 | 79.5% [74.3%, 83.4%] | 24.58 | 0 | 0 | Yes |
+| District holdout | Climate-similarity weighting | Ridge | 80% | 3,215 | 84.5% [80.0%, 87.8%] | Unbounded | 187 | 0 | — |
+| District holdout | P33 reference | Ridge | 90% | 3,215 | 90.0% [87.4%, 92.0%] | 31.98 | 0 | 0 | Yes |
+| District holdout | Leave-one-year-out | Ridge | 90% | 3,215 | 90.0% [87.4%, 92.0%] | 31.98 | 0 | 0 | Yes |
+| District holdout | Training-only inflation | Ridge | 90% | 3,215 | 94.7% [93.0%, 96.1%] | 38.20 | 0 | 0 | — |
+| District holdout | Weather-regime Mondrian | Ridge | 90% | 3,215 | 89.3% [85.3%, 92.4%] | 31.52 | 0 | 0 | Yes |
+| District holdout | Climate-similarity weighting | Ridge | 90% | 3,215 | 92.7% [90.7%, 94.3%] | Unbounded | 340 | 0 | — |
+| District holdout | P33 reference | Forest | 80% | 3,215 | 80.8% [75.8%, 85.0%] | 23.93 | 0 | 0 | — |
+| District holdout | Leave-one-year-out | Forest | 80% | 3,215 | 80.8% [75.8%, 85.0%] | 23.93 | 0 | 0 | — |
+| District holdout | Training-only inflation | Forest | 80% | 3,215 | 86.2% [81.8%, 89.9%] | 27.58 | 0 | 0 | — |
+| District holdout | Weather-regime Mondrian | Forest | 80% | 3,215 | 80.2% [75.4%, 84.4%] | 23.80 | 0 | 0 | — |
+| District holdout | Climate-similarity weighting | Forest | 80% | 3,215 | 82.7% [77.5%, 86.4%] | Unbounded | 187 | 0 | — |
+| District holdout | P33 reference | Forest | 90% | 3,215 | 90.2% [86.3%, 93.2%] | 32.13 | 0 | 0 | — |
+| District holdout | Leave-one-year-out | Forest | 90% | 3,215 | 90.2% [86.3%, 93.2%] | 32.13 | 0 | 0 | — |
+| District holdout | Training-only inflation | Forest | 90% | 3,215 | 94.0% [91.1%, 96.5%] | 37.00 | 0 | 0 | — |
+| District holdout | Weather-regime Mondrian | Forest | 90% | 3,215 | 89.3% [85.6%, 92.7%] | 31.63 | 0 | 0 | Yes |
+| District holdout | Climate-similarity weighting | Forest | 90% | 3,215 | 91.6% [88.0%, 94.5%] | Unbounded | 340 | 0 | — |
+| Harvest-year holdout | P33 reference | Ridge | 80% | 3,215 | 78.8% [72.9%, 84.2%] | 23.46 | 0 | 0 | Yes |
+| Harvest-year holdout | Leave-one-year-out | Ridge | 80% | 3,215 | 78.8% [72.9%, 84.2%] | 23.46 | 0 | 0 | Yes |
+| Harvest-year holdout | Training-only inflation | Ridge | 80% | 3,215 | 84.1% [78.3%, 88.8%] | 26.89 | 0 | 0 | — |
+| Harvest-year holdout | Weather-regime Mondrian | Ridge | 80% | 3,215 | 79.1% [73.4%, 84.3%] | 23.87 | 0 | 0 | Yes |
+| Harvest-year holdout | Climate-similarity weighting | Ridge | 80% | 3,215 | 79.2% [73.3%, 84.4%] | 24.08 | 0 | 0 | Yes |
+| Harvest-year holdout | P33 reference | Ridge | 90% | 3,215 | 88.3% [83.4%, 92.1%] | 29.90 | 0 | 0 | Yes |
+| Harvest-year holdout | Leave-one-year-out | Ridge | 90% | 3,215 | 88.3% [83.4%, 92.1%] | 29.90 | 0 | 0 | Yes |
+| Harvest-year holdout | Training-only inflation | Ridge | 90% | 3,215 | 92.3% [87.8%, 95.5%] | 34.27 | 0 | 0 | — |
+| Harvest-year holdout | Weather-regime Mondrian | Ridge | 90% | 3,215 | 88.8% [83.7%, 92.5%] | 30.35 | 0 | 0 | Yes |
+| Harvest-year holdout | Climate-similarity weighting | Ridge | 90% | 3,215 | 88.9% [84.3%, 92.6%] | 30.52 | 0 | 0 | Yes |
+| Harvest-year holdout | P33 reference | Forest | 80% | 3,215 | 75.5% [69.4%, 80.4%] | 22.21 | 0 | 0 | Yes |
+| Harvest-year holdout | Leave-one-year-out | Forest | 80% | 3,215 | 75.5% [69.4%, 80.4%] | 22.21 | 0 | 0 | Yes |
+| Harvest-year holdout | Training-only inflation | Forest | 80% | 3,215 | 81.9% [76.5%, 86.1%] | 25.47 | 0 | 0 | — |
+| Harvest-year holdout | Weather-regime Mondrian | Forest | 80% | 3,215 | 75.6% [70.1%, 80.5%] | 22.59 | 0 | 0 | Yes |
+| Harvest-year holdout | Climate-similarity weighting | Forest | 80% | 3,215 | 76.8% [70.9%, 81.3%] | 22.88 | 0 | 0 | Yes |
+| Harvest-year holdout | P33 reference | Forest | 90% | 3,215 | 85.8% [80.7%, 89.8%] | 28.37 | 0 | 0 | Yes |
+| Harvest-year holdout | Leave-one-year-out | Forest | 90% | 3,215 | 85.8% [80.7%, 89.8%] | 28.37 | 0 | 0 | Yes |
+| Harvest-year holdout | Training-only inflation | Forest | 90% | 3,215 | 90.9% [86.3%, 94.2%] | 32.53 | 0 | 0 | — |
+| Harvest-year holdout | Weather-regime Mondrian | Forest | 90% | 3,215 | 86.5% [81.7%, 90.4%] | 29.03 | 0 | 0 | Yes |
+| Harvest-year holdout | Climate-similarity weighting | Forest | 90% | 3,215 | 87.0% [82.3%, 90.6%] | 29.43 | 0 | 0 | Yes |
+| 2007 held-out year | P33 reference | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 22.61 | 0 | 0 | Yes |
+| 2007 held-out year | Leave-one-year-out | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 22.61 | 0 | 0 | Yes |
+| 2007 held-out year | Training-only inflation | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 23.77 | 0 | 0 | Yes |
+| 2007 held-out year | Weather-regime Mondrian | Ridge | 80% | 103 | 38.8% [14.7%, 68.3%] | 22.55 | 0 | 0 | Yes |
+| 2007 held-out year | Climate-similarity weighting | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 23.77 | 0 | 0 | Yes |
+| 2007 held-out year | P33 reference | Ridge | 90% | 103 | 46.6% [21.9%, 76.0%] | 28.32 | 0 | 0 | Yes |
+| 2007 held-out year | Leave-one-year-out | Ridge | 90% | 103 | 46.6% [21.9%, 76.0%] | 28.32 | 0 | 0 | Yes |
+| 2007 held-out year | Training-only inflation | Ridge | 90% | 103 | 49.5% [25.7%, 77.5%] | 29.76 | 0 | 0 | Yes |
+| 2007 held-out year | Weather-regime Mondrian | Ridge | 90% | 103 | 43.7% [19.5%, 74.0%] | 27.86 | 0 | 0 | Yes |
+| 2007 held-out year | Climate-similarity weighting | Ridge | 90% | 103 | 49.5% [25.7%, 77.5%] | 29.64 | 0 | 0 | Yes |
+| 2007 held-out year | P33 reference | Forest | 80% | 103 | 31.1% [7.8%, 60.0%] | 23.25 | 0 | 0 | Yes |
+| 2007 held-out year | Leave-one-year-out | Forest | 80% | 103 | 31.1% [7.8%, 60.0%] | 23.25 | 0 | 0 | Yes |
+| 2007 held-out year | Training-only inflation | Forest | 80% | 103 | 34.0% [10.9%, 63.6%] | 25.50 | 0 | 0 | Yes |
+| 2007 held-out year | Weather-regime Mondrian | Forest | 80% | 103 | 33.0% [9.2%, 62.8%] | 24.41 | 0 | 0 | Yes |
+| 2007 held-out year | Climate-similarity weighting | Forest | 80% | 103 | 33.0% [9.2%, 62.8%] | 25.27 | 0 | 0 | Yes |
+| 2007 held-out year | P33 reference | Forest | 90% | 103 | 37.9% [15.3%, 66.4%] | 28.75 | 0 | 0 | Yes |
+| 2007 held-out year | Leave-one-year-out | Forest | 90% | 103 | 37.9% [15.3%, 66.4%] | 28.75 | 0 | 0 | Yes |
+| 2007 held-out year | Training-only inflation | Forest | 90% | 103 | 44.7% [23.2%, 71.8%] | 31.54 | 0 | 0 | Yes |
+| 2007 held-out year | Weather-regime Mondrian | Forest | 90% | 103 | 41.7% [18.3%, 70.7%] | 30.12 | 0 | 0 | Yes |
+| 2007 held-out year | Climate-similarity weighting | Forest | 90% | 103 | 42.7% [20.0%, 70.8%] | 30.72 | 0 | 0 | Yes |
+
+<details>
+<summary>All Kansas district outer folds</summary>
+
+| Evaluation | Method | Learner | Nominal | n | Coverage [95% interval] | Mean width | Unbounded | Unavailable | Below nominal |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 10 | P33 reference | Ridge | 80% | 237 | 80.6% [72.1%, 88.1%] | 26.92 | 0 | 0 | — |
+| 10 | Leave-one-year-out | Ridge | 80% | 237 | 80.6% [72.1%, 88.1%] | 26.92 | 0 | 0 | — |
+| 10 | Training-only inflation | Ridge | 80% | 237 | 85.7% [78.7%, 91.6%] | 29.70 | 0 | 0 | — |
+| 10 | Weather-regime Mondrian | Ridge | 80% | 237 | 81.9% [73.4%, 89.2%] | 28.16 | 0 | 0 | — |
+| 10 | Climate-similarity weighting | Ridge | 80% | 237 | 82.7% [74.8%, 89.8%] | 28.55 | 0 | 0 | — |
+| 10 | P33 reference | Ridge | 90% | 237 | 90.3% [84.2%, 95.2%] | 33.61 | 0 | 0 | — |
+| 10 | Leave-one-year-out | Ridge | 90% | 237 | 90.3% [84.2%, 95.2%] | 33.61 | 0 | 0 | — |
+| 10 | Training-only inflation | Ridge | 90% | 237 | 94.1% [88.8%, 98.0%] | 37.07 | 0 | 0 | — |
+| 10 | Weather-regime Mondrian | Ridge | 90% | 237 | 90.3% [83.7%, 95.4%] | 34.01 | 0 | 0 | — |
+| 10 | Climate-similarity weighting | Ridge | 90% | 237 | 92.4% [86.8%, 96.9%] | Unbounded | 13 | 0 | — |
+| 10 | P33 reference | Forest | 80% | 237 | 81.9% [73.7%, 88.9%] | 25.20 | 0 | 0 | — |
+| 10 | Leave-one-year-out | Forest | 80% | 237 | 81.9% [73.7%, 88.9%] | 25.20 | 0 | 0 | — |
+| 10 | Training-only inflation | Forest | 80% | 237 | 89.9% [83.2%, 95.4%] | 30.45 | 0 | 0 | — |
+| 10 | Weather-regime Mondrian | Forest | 80% | 237 | 81.0% [72.8%, 88.3%] | 24.73 | 0 | 0 | — |
+| 10 | Climate-similarity weighting | Forest | 80% | 237 | 81.9% [73.7%, 88.9%] | 25.30 | 0 | 0 | — |
+| 10 | P33 reference | Forest | 90% | 237 | 92.8% [87.2%, 97.5%] | 33.24 | 0 | 0 | — |
+| 10 | Leave-one-year-out | Forest | 90% | 237 | 92.8% [87.2%, 97.5%] | 33.24 | 0 | 0 | — |
+| 10 | Training-only inflation | Forest | 90% | 237 | 98.7% [96.5%, 100.0%] | 40.16 | 0 | 0 | — |
+| 10 | Weather-regime Mondrian | Forest | 90% | 237 | 91.1% [85.3%, 96.3%] | 31.66 | 0 | 0 | — |
+| 10 | Climate-similarity weighting | Forest | 90% | 237 | 95.4% [90.5%, 98.7%] | Unbounded | 13 | 0 | — |
+| 20 | P33 reference | Ridge | 80% | 275 | 86.9% [81.0%, 92.1%] | 26.37 | 0 | 0 | — |
+| 20 | Leave-one-year-out | Ridge | 80% | 275 | 86.9% [81.0%, 92.1%] | 26.37 | 0 | 0 | — |
+| 20 | Training-only inflation | Ridge | 80% | 275 | 90.2% [85.0%, 95.1%] | 29.09 | 0 | 0 | — |
+| 20 | Weather-regime Mondrian | Ridge | 80% | 275 | 86.9% [79.9%, 93.1%] | 27.13 | 0 | 0 | — |
+| 20 | Climate-similarity weighting | Ridge | 80% | 275 | 92.0% [86.8%, 96.4%] | Unbounded | 31 | 0 | — |
+| 20 | P33 reference | Ridge | 90% | 275 | 93.8% [89.8%, 97.1%] | 32.92 | 0 | 0 | — |
+| 20 | Leave-one-year-out | Ridge | 90% | 275 | 93.8% [89.8%, 97.1%] | 32.92 | 0 | 0 | — |
+| 20 | Training-only inflation | Ridge | 90% | 275 | 96.4% [93.5%, 98.9%] | 36.31 | 0 | 0 | — |
+| 20 | Weather-regime Mondrian | Ridge | 90% | 275 | 94.2% [90.2%, 97.5%] | 33.90 | 0 | 0 | — |
+| 20 | Climate-similarity weighting | Ridge | 90% | 275 | 96.7% [93.0%, 99.6%] | Unbounded | 70 | 0 | — |
+| 20 | P33 reference | Forest | 80% | 275 | 88.4% [83.8%, 92.6%] | 24.38 | 0 | 0 | — |
+| 20 | Leave-one-year-out | Forest | 80% | 275 | 88.4% [83.8%, 92.6%] | 24.38 | 0 | 0 | — |
+| 20 | Training-only inflation | Forest | 80% | 275 | 94.2% [90.6%, 97.2%] | 28.83 | 0 | 0 | — |
+| 20 | Weather-regime Mondrian | Forest | 80% | 275 | 88.7% [83.8%, 93.7%] | 25.65 | 0 | 0 | — |
+| 20 | Climate-similarity weighting | Forest | 80% | 275 | 91.3% [86.2%, 95.6%] | Unbounded | 31 | 0 | — |
+| 20 | P33 reference | Forest | 90% | 275 | 96.4% [93.3%, 99.0%] | 33.33 | 0 | 0 | — |
+| 20 | Leave-one-year-out | Forest | 90% | 275 | 96.4% [93.3%, 99.0%] | 33.33 | 0 | 0 | — |
+| 20 | Training-only inflation | Forest | 90% | 275 | 98.5% [96.6%, 100.0%] | 39.42 | 0 | 0 | — |
+| 20 | Weather-regime Mondrian | Forest | 90% | 275 | 94.9% [91.2%, 98.2%] | 33.85 | 0 | 0 | — |
+| 20 | Climate-similarity weighting | Forest | 90% | 275 | 97.1% [94.2%, 99.3%] | Unbounded | 70 | 0 | — |
+| 30 | P33 reference | Ridge | 80% | 424 | 72.9% [63.8%, 81.3%] | 23.81 | 0 | 0 | Yes |
+| 30 | Leave-one-year-out | Ridge | 80% | 424 | 72.9% [63.8%, 81.3%] | 23.81 | 0 | 0 | Yes |
+| 30 | Training-only inflation | Ridge | 80% | 424 | 81.4% [73.2%, 88.6%] | 28.96 | 0 | 0 | — |
+| 30 | Weather-regime Mondrian | Ridge | 80% | 424 | 66.5% [57.5%, 75.0%] | 21.30 | 0 | 0 | Yes |
+| 30 | Climate-similarity weighting | Ridge | 80% | 424 | 89.6% [82.7%, 94.8%] | Unbounded | 133 | 0 | — |
+| 30 | P33 reference | Ridge | 90% | 424 | 84.4% [77.5%, 91.0%] | 30.83 | 0 | 0 | Yes |
+| 30 | Leave-one-year-out | Ridge | 90% | 424 | 84.4% [77.5%, 91.0%] | 30.83 | 0 | 0 | Yes |
+| 30 | Training-only inflation | Ridge | 90% | 424 | 90.8% [85.2%, 95.5%] | 37.50 | 0 | 0 | — |
+| 30 | Weather-regime Mondrian | Ridge | 90% | 424 | 78.3% [69.6%, 86.5%] | 27.63 | 0 | 0 | Yes |
+| 30 | Climate-similarity weighting | Ridge | 90% | 424 | 94.8% [89.5%, 98.6%] | Unbounded | 184 | 0 | — |
+| 30 | P33 reference | Forest | 80% | 424 | 79.5% [72.4%, 84.9%] | 23.27 | 0 | 0 | Yes |
+| 30 | Leave-one-year-out | Forest | 80% | 424 | 79.5% [72.4%, 84.9%] | 23.27 | 0 | 0 | Yes |
+| 30 | Training-only inflation | Forest | 80% | 424 | 87.7% [82.0%, 92.3%] | 27.29 | 0 | 0 | — |
+| 30 | Weather-regime Mondrian | Forest | 80% | 424 | 76.2% [69.0%, 82.4%] | 21.72 | 0 | 0 | Yes |
+| 30 | Climate-similarity weighting | Forest | 80% | 424 | 84.4% [77.4%, 90.2%] | Unbounded | 133 | 0 | — |
+| 30 | P33 reference | Forest | 90% | 424 | 90.3% [85.4%, 94.2%] | 30.15 | 0 | 0 | — |
+| 30 | Leave-one-year-out | Forest | 90% | 424 | 90.3% [85.4%, 94.2%] | 30.15 | 0 | 0 | — |
+| 30 | Training-only inflation | Forest | 90% | 424 | 94.8% [91.6%, 97.3%] | 35.36 | 0 | 0 | — |
+| 30 | Weather-regime Mondrian | Forest | 90% | 424 | 88.4% [82.9%, 92.9%] | 28.93 | 0 | 0 | Yes |
+| 30 | Climate-similarity weighting | Forest | 90% | 424 | 93.4% [88.7%, 97.1%] | Unbounded | 184 | 0 | — |
+| 40 | P33 reference | Ridge | 80% | 349 | 79.9% [70.3%, 88.2%] | 25.58 | 0 | 0 | Yes |
+| 40 | Leave-one-year-out | Ridge | 80% | 349 | 79.9% [70.3%, 88.2%] | 25.58 | 0 | 0 | Yes |
+| 40 | Training-only inflation | Ridge | 80% | 349 | 88.3% [81.6%, 94.2%] | 30.85 | 0 | 0 | — |
+| 40 | Weather-regime Mondrian | Ridge | 80% | 349 | 80.8% [71.3%, 89.1%] | 26.53 | 0 | 0 | — |
+| 40 | Climate-similarity weighting | Ridge | 80% | 349 | 80.5% [71.1%, 88.8%] | 25.90 | 0 | 0 | — |
+| 40 | P33 reference | Ridge | 90% | 349 | 90.8% [84.6%, 95.9%] | 32.14 | 0 | 0 | — |
+| 40 | Leave-one-year-out | Ridge | 90% | 349 | 90.8% [84.6%, 95.9%] | 32.14 | 0 | 0 | — |
+| 40 | Training-only inflation | Ridge | 90% | 349 | 96.6% [92.7%, 99.4%] | 38.76 | 0 | 0 | — |
+| 40 | Weather-regime Mondrian | Ridge | 90% | 349 | 94.3% [88.9%, 98.3%] | 34.59 | 0 | 0 | — |
+| 40 | Climate-similarity weighting | Ridge | 90% | 349 | 91.1% [84.7%, 96.1%] | 32.69 | 0 | 0 | — |
+| 40 | P33 reference | Forest | 80% | 349 | 86.2% [79.2%, 92.5%] | 24.32 | 0 | 0 | — |
+| 40 | Leave-one-year-out | Forest | 80% | 349 | 86.2% [79.2%, 92.5%] | 24.32 | 0 | 0 | — |
+| 40 | Training-only inflation | Forest | 80% | 349 | 87.7% [81.2%, 93.3%] | 26.28 | 0 | 0 | — |
+| 40 | Weather-regime Mondrian | Forest | 80% | 349 | 86.8% [79.5%, 92.8%] | 25.51 | 0 | 0 | — |
+| 40 | Climate-similarity weighting | Forest | 80% | 349 | 86.2% [79.2%, 92.5%] | 24.04 | 0 | 0 | — |
+| 40 | P33 reference | Forest | 90% | 349 | 93.4% [88.4%, 97.7%] | 32.85 | 0 | 0 | — |
+| 40 | Leave-one-year-out | Forest | 90% | 349 | 93.4% [88.4%, 97.7%] | 32.85 | 0 | 0 | — |
+| 40 | Training-only inflation | Forest | 90% | 349 | 96.8% [93.3%, 99.2%] | 35.50 | 0 | 0 | — |
+| 40 | Weather-regime Mondrian | Forest | 90% | 349 | 96.3% [92.5%, 99.1%] | 36.06 | 0 | 0 | — |
+| 40 | Climate-similarity weighting | Forest | 90% | 349 | 94.3% [89.1%, 98.1%] | 33.26 | 0 | 0 | — |
+| 50 | P33 reference | Ridge | 80% | 352 | 85.5% [76.9%, 93.1%] | 24.96 | 0 | 0 | — |
+| 50 | Leave-one-year-out | Ridge | 80% | 352 | 85.5% [76.9%, 93.1%] | 24.96 | 0 | 0 | — |
+| 50 | Training-only inflation | Ridge | 80% | 352 | 91.8% [84.9%, 97.1%] | 30.06 | 0 | 0 | — |
+| 50 | Weather-regime Mondrian | Ridge | 80% | 352 | 85.2% [76.4%, 92.8%] | 24.53 | 0 | 0 | — |
+| 50 | Climate-similarity weighting | Ridge | 80% | 352 | 87.8% [79.4%, 94.5%] | 25.63 | 0 | 0 | — |
+| 50 | P33 reference | Ridge | 90% | 352 | 93.5% [87.4%, 98.0%] | 31.89 | 0 | 0 | — |
+| 50 | Leave-one-year-out | Ridge | 90% | 352 | 93.5% [87.4%, 98.0%] | 31.89 | 0 | 0 | — |
+| 50 | Training-only inflation | Ridge | 90% | 352 | 96.9% [93.1%, 99.2%] | 38.40 | 0 | 0 | — |
+| 50 | Weather-regime Mondrian | Ridge | 90% | 352 | 93.5% [87.2%, 98.1%] | 31.24 | 0 | 0 | — |
+| 50 | Climate-similarity weighting | Ridge | 90% | 352 | 94.0% [88.3%, 98.3%] | 33.07 | 0 | 0 | — |
+| 50 | P33 reference | Forest | 80% | 352 | 88.4% [81.1%, 94.4%] | 23.92 | 0 | 0 | — |
+| 50 | Leave-one-year-out | Forest | 80% | 352 | 88.4% [81.1%, 94.4%] | 23.92 | 0 | 0 | — |
+| 50 | Training-only inflation | Forest | 80% | 352 | 92.6% [87.1%, 97.1%] | 28.26 | 0 | 0 | — |
+| 50 | Weather-regime Mondrian | Forest | 80% | 352 | 86.4% [78.5%, 93.2%] | 23.54 | 0 | 0 | — |
+| 50 | Climate-similarity weighting | Forest | 80% | 352 | 88.4% [81.7%, 94.2%] | 23.87 | 0 | 0 | — |
+| 50 | P33 reference | Forest | 90% | 352 | 94.9% [89.8%, 98.3%] | 30.68 | 0 | 0 | — |
+| 50 | Leave-one-year-out | Forest | 90% | 352 | 94.9% [89.8%, 98.3%] | 30.68 | 0 | 0 | — |
+| 50 | Training-only inflation | Forest | 90% | 352 | 97.4% [93.6%, 99.7%] | 36.24 | 0 | 0 | — |
+| 50 | Weather-regime Mondrian | Forest | 90% | 352 | 94.3% [89.7%, 97.7%] | 29.68 | 0 | 0 | — |
+| 50 | Climate-similarity weighting | Forest | 90% | 352 | 95.7% [91.9%, 98.6%] | 31.11 | 0 | 0 | — |
+| 60 | P33 reference | Ridge | 80% | 418 | 85.2% [77.8%, 91.3%] | 24.30 | 0 | 0 | — |
+| 60 | Leave-one-year-out | Ridge | 80% | 418 | 85.2% [77.8%, 91.3%] | 24.30 | 0 | 0 | — |
+| 60 | Training-only inflation | Ridge | 80% | 418 | 89.7% [83.9%, 94.4%] | 29.27 | 0 | 0 | — |
+| 60 | Weather-regime Mondrian | Ridge | 80% | 418 | 81.1% [73.0%, 88.0%] | 22.46 | 0 | 0 | — |
+| 60 | Climate-similarity weighting | Ridge | 80% | 418 | 87.6% [81.1%, 92.9%] | 25.92 | 0 | 0 | — |
+| 60 | P33 reference | Ridge | 90% | 418 | 91.4% [85.9%, 95.8%] | 31.72 | 0 | 0 | — |
+| 60 | Leave-one-year-out | Ridge | 90% | 418 | 91.4% [85.9%, 95.8%] | 31.72 | 0 | 0 | — |
+| 60 | Training-only inflation | Ridge | 90% | 418 | 95.9% [92.0%, 98.8%] | 38.20 | 0 | 0 | — |
+| 60 | Weather-regime Mondrian | Ridge | 90% | 418 | 90.2% [84.2%, 95.0%] | 29.51 | 0 | 0 | — |
+| 60 | Climate-similarity weighting | Ridge | 90% | 418 | 93.5% [88.6%, 97.6%] | Unbounded | 13 | 0 | — |
+| 60 | P33 reference | Forest | 80% | 418 | 78.7% [69.3%, 87.4%] | 23.63 | 0 | 0 | Yes |
+| 60 | Leave-one-year-out | Forest | 80% | 418 | 78.7% [69.3%, 87.4%] | 23.63 | 0 | 0 | Yes |
+| 60 | Training-only inflation | Forest | 80% | 418 | 84.2% [75.7%, 91.7%] | 27.95 | 0 | 0 | — |
+| 60 | Weather-regime Mondrian | Forest | 80% | 418 | 78.0% [69.0%, 86.1%] | 21.86 | 0 | 0 | Yes |
+| 60 | Climate-similarity weighting | Forest | 80% | 418 | 80.1% [71.1%, 88.3%] | 24.21 | 0 | 0 | — |
+| 60 | P33 reference | Forest | 90% | 418 | 88.3% [80.0%, 94.8%] | 30.83 | 0 | 0 | Yes |
+| 60 | Leave-one-year-out | Forest | 90% | 418 | 88.3% [80.0%, 94.8%] | 30.83 | 0 | 0 | Yes |
+| 60 | Training-only inflation | Forest | 90% | 418 | 91.9% [84.5%, 97.1%] | 36.47 | 0 | 0 | — |
+| 60 | Weather-regime Mondrian | Forest | 90% | 418 | 83.5% [74.5%, 90.7%] | 26.92 | 0 | 0 | Yes |
+| 60 | Climate-similarity weighting | Forest | 90% | 418 | 89.0% [80.9%, 95.3%] | Unbounded | 13 | 0 | Yes |
+| 70 | P33 reference | Ridge | 80% | 277 | 68.2% [57.6%, 78.1%] | 24.48 | 0 | 0 | Yes |
+| 70 | Leave-one-year-out | Ridge | 80% | 277 | 68.2% [57.6%, 78.1%] | 24.48 | 0 | 0 | Yes |
+| 70 | Training-only inflation | Ridge | 80% | 277 | 79.8% [70.7%, 87.8%] | 29.52 | 0 | 0 | Yes |
+| 70 | Weather-regime Mondrian | Ridge | 80% | 277 | 69.3% [58.7%, 79.1%] | 24.46 | 0 | 0 | Yes |
+| 70 | Climate-similarity weighting | Ridge | 80% | 277 | 66.1% [55.6%, 75.4%] | 23.71 | 0 | 0 | Yes |
+| 70 | P33 reference | Ridge | 90% | 277 | 82.7% [73.1%, 90.6%] | 30.96 | 0 | 0 | Yes |
+| 70 | Leave-one-year-out | Ridge | 90% | 277 | 82.7% [73.1%, 90.6%] | 30.96 | 0 | 0 | Yes |
+| 70 | Training-only inflation | Ridge | 90% | 277 | 89.9% [81.4%, 96.7%] | 37.34 | 0 | 0 | Yes |
+| 70 | Weather-regime Mondrian | Ridge | 90% | 277 | 83.4% [74.3%, 91.3%] | 31.25 | 0 | 0 | Yes |
+| 70 | Climate-similarity weighting | Ridge | 90% | 277 | 83.8% [74.5%, 91.3%] | 31.06 | 0 | 0 | Yes |
+| 70 | P33 reference | Forest | 80% | 277 | 59.6% [48.4%, 70.2%] | 21.10 | 0 | 0 | Yes |
+| 70 | Leave-one-year-out | Forest | 80% | 277 | 59.6% [48.4%, 70.2%] | 21.10 | 0 | 0 | Yes |
+| 70 | Training-only inflation | Forest | 80% | 277 | 66.8% [55.5%, 77.8%] | 24.96 | 0 | 0 | Yes |
+| 70 | Weather-regime Mondrian | Forest | 80% | 277 | 61.4% [50.2%, 71.8%] | 21.75 | 0 | 0 | Yes |
+| 70 | Climate-similarity weighting | Forest | 80% | 277 | 60.3% [49.1%, 70.8%] | 21.73 | 0 | 0 | Yes |
+| 70 | P33 reference | Forest | 90% | 277 | 72.6% [61.5%, 82.8%] | 28.55 | 0 | 0 | Yes |
+| 70 | Leave-one-year-out | Forest | 90% | 277 | 72.6% [61.5%, 82.8%] | 28.55 | 0 | 0 | Yes |
+| 70 | Training-only inflation | Forest | 90% | 277 | 80.5% [70.3%, 89.1%] | 33.77 | 0 | 0 | Yes |
+| 70 | Weather-regime Mondrian | Forest | 90% | 277 | 74.0% [62.5%, 83.9%] | 28.95 | 0 | 0 | Yes |
+| 70 | Climate-similarity weighting | Forest | 90% | 277 | 75.5% [64.5%, 85.1%] | 29.31 | 0 | 0 | Yes |
+| 80 | P33 reference | Ridge | 80% | 442 | 82.1% [72.4%, 90.4%] | 24.70 | 0 | 0 | — |
+| 80 | Leave-one-year-out | Ridge | 80% | 442 | 82.1% [72.4%, 90.4%] | 24.70 | 0 | 0 | — |
+| 80 | Training-only inflation | Ridge | 80% | 442 | 90.3% [82.6%, 96.5%] | 30.17 | 0 | 0 | — |
+| 80 | Weather-regime Mondrian | Ridge | 80% | 442 | 84.8% [75.3%, 92.9%] | 25.75 | 0 | 0 | — |
+| 80 | Climate-similarity weighting | Ridge | 80% | 442 | 84.4% [75.3%, 92.2%] | 25.47 | 0 | 0 | — |
+| 80 | P33 reference | Ridge | 90% | 442 | 91.9% [84.6%, 97.4%] | 32.39 | 0 | 0 | — |
+| 80 | Leave-one-year-out | Ridge | 90% | 442 | 91.9% [84.6%, 97.4%] | 32.39 | 0 | 0 | — |
+| 80 | Training-only inflation | Ridge | 90% | 442 | 95.7% [91.8%, 98.9%] | 39.57 | 0 | 0 | — |
+| 80 | Weather-regime Mondrian | Ridge | 90% | 442 | 92.3% [85.0%, 97.9%] | 33.12 | 0 | 0 | — |
+| 80 | Climate-similarity weighting | Ridge | 90% | 442 | 92.8% [86.3%, 97.6%] | 34.19 | 0 | 0 | — |
+| 80 | P33 reference | Forest | 80% | 442 | 84.2% [76.3%, 91.3%] | 25.22 | 0 | 0 | — |
+| 80 | Leave-one-year-out | Forest | 80% | 442 | 84.2% [76.3%, 91.3%] | 25.22 | 0 | 0 | — |
+| 80 | Training-only inflation | Forest | 80% | 442 | 87.6% [80.0%, 94.2%] | 28.10 | 0 | 0 | — |
+| 80 | Weather-regime Mondrian | Forest | 80% | 442 | 85.5% [77.8%, 92.3%] | 26.18 | 0 | 0 | — |
+| 80 | Climate-similarity weighting | Forest | 80% | 442 | 85.1% [77.8%, 92.1%] | 26.65 | 0 | 0 | — |
+| 80 | P33 reference | Forest | 90% | 442 | 90.7% [84.4%, 96.3%] | 34.42 | 0 | 0 | — |
+| 80 | Leave-one-year-out | Forest | 90% | 442 | 90.7% [84.4%, 96.3%] | 34.42 | 0 | 0 | — |
+| 80 | Training-only inflation | Forest | 90% | 442 | 93.7% [87.7%, 98.6%] | 38.33 | 0 | 0 | — |
+| 80 | Weather-regime Mondrian | Forest | 90% | 442 | 90.7% [84.5%, 95.9%] | 35.27 | 0 | 0 | — |
+| 80 | Climate-similarity weighting | Forest | 90% | 442 | 91.4% [85.0%, 96.8%] | 36.13 | 0 | 0 | — |
+| 90 | P33 reference | Ridge | 80% | 441 | 81.4% [72.5%, 87.8%] | 24.55 | 0 | 0 | — |
+| 90 | Leave-one-year-out | Ridge | 80% | 441 | 81.4% [72.5%, 87.8%] | 24.55 | 0 | 0 | — |
+| 90 | Training-only inflation | Ridge | 80% | 441 | 89.1% [80.6%, 94.6%] | 29.99 | 0 | 0 | — |
+| 90 | Weather-regime Mondrian | Ridge | 80% | 441 | 80.0% [70.9%, 86.6%] | 23.64 | 0 | 0 | — |
+| 90 | Climate-similarity weighting | Ridge | 80% | 441 | 85.3% [76.8%, 91.2%] | Unbounded | 23 | 0 | — |
+| 90 | P33 reference | Ridge | 90% | 441 | 90.5% [81.7%, 95.6%] | 32.08 | 0 | 0 | — |
+| 90 | Leave-one-year-out | Ridge | 90% | 441 | 90.5% [81.7%, 95.6%] | 32.08 | 0 | 0 | — |
+| 90 | Training-only inflation | Ridge | 90% | 441 | 95.2% [87.7%, 99.3%] | 39.19 | 0 | 0 | — |
+| 90 | Weather-regime Mondrian | Ridge | 90% | 441 | 88.9% [80.0%, 94.4%] | 30.72 | 0 | 0 | Yes |
+| 90 | Climate-similarity weighting | Ridge | 90% | 441 | 93.4% [85.8%, 97.7%] | Unbounded | 60 | 0 | — |
+| 90 | P33 reference | Forest | 80% | 441 | 78.5% [70.4%, 85.4%] | 24.07 | 0 | 0 | Yes |
+| 90 | Leave-one-year-out | Forest | 80% | 441 | 78.5% [70.4%, 85.4%] | 24.07 | 0 | 0 | Yes |
+| 90 | Training-only inflation | Forest | 80% | 441 | 84.4% [77.5%, 90.1%] | 26.81 | 0 | 0 | — |
+| 90 | Weather-regime Mondrian | Forest | 80% | 441 | 77.1% [69.6%, 83.8%] | 23.75 | 0 | 0 | Yes |
+| 90 | Climate-similarity weighting | Forest | 80% | 441 | 83.0% [75.1%, 89.7%] | Unbounded | 23 | 0 | — |
+| 90 | P33 reference | Forest | 90% | 441 | 90.9% [85.3%, 95.5%] | 34.47 | 0 | 0 | — |
+| 90 | Leave-one-year-out | Forest | 90% | 441 | 90.9% [85.3%, 95.5%] | 34.47 | 0 | 0 | — |
+| 90 | Training-only inflation | Forest | 90% | 441 | 93.7% [87.9%, 97.4%] | 38.39 | 0 | 0 | — |
+| 90 | Weather-regime Mondrian | Forest | 90% | 441 | 89.8% [84.3%, 94.4%] | 33.34 | 0 | 0 | Yes |
+| 90 | Climate-similarity weighting | Forest | 90% | 441 | 91.6% [85.5%, 96.3%] | Unbounded | 60 | 0 | — |
+
+</details>
+
+<details>
+<summary>All Kansas harvest-year outer folds</summary>
+
+| Evaluation | Method | Learner | Nominal | n | Coverage [95% interval] | Mean width | Unbounded | Unavailable | Below nominal |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1990 | P33 reference | Ridge | 80% | 103 | 80.6% [62.4%, 93.4%] | 22.80 | 0 | 0 | — |
+| 1990 | Leave-one-year-out | Ridge | 80% | 103 | 80.6% [62.4%, 93.4%] | 22.80 | 0 | 0 | — |
+| 1990 | Training-only inflation | Ridge | 80% | 103 | 84.5% [65.4%, 97.0%] | 27.03 | 0 | 0 | — |
+| 1990 | Weather-regime Mondrian | Ridge | 80% | 103 | 78.6% [60.6%, 92.5%] | 23.10 | 0 | 0 | Yes |
+| 1990 | Climate-similarity weighting | Ridge | 80% | 103 | 80.6% [62.4%, 93.4%] | 23.77 | 0 | 0 | — |
+| 1990 | P33 reference | Ridge | 90% | 103 | 88.3% [70.6%, 99.0%] | 29.70 | 0 | 0 | Yes |
+| 1990 | Leave-one-year-out | Ridge | 90% | 103 | 88.3% [70.6%, 99.0%] | 29.70 | 0 | 0 | Yes |
+| 1990 | Training-only inflation | Ridge | 90% | 103 | 94.2% [82.5%, 100.0%] | 35.21 | 0 | 0 | — |
+| 1990 | Weather-regime Mondrian | Ridge | 90% | 103 | 89.3% [73.5%, 99.0%] | 30.19 | 0 | 0 | Yes |
+| 1990 | Climate-similarity weighting | Ridge | 90% | 103 | 89.3% [71.7%, 99.1%] | 30.42 | 0 | 0 | Yes |
+| 1990 | P33 reference | Forest | 80% | 103 | 77.7% [55.3%, 93.8%] | 20.71 | 0 | 0 | Yes |
+| 1990 | Leave-one-year-out | Forest | 80% | 103 | 77.7% [55.3%, 93.8%] | 20.71 | 0 | 0 | Yes |
+| 1990 | Training-only inflation | Forest | 80% | 103 | 86.4% [67.0%, 98.2%] | 25.52 | 0 | 0 | — |
+| 1990 | Weather-regime Mondrian | Forest | 80% | 103 | 75.7% [53.8%, 91.7%] | 20.86 | 0 | 0 | Yes |
+| 1990 | Climate-similarity weighting | Forest | 80% | 103 | 78.6% [56.5%, 94.5%] | 21.65 | 0 | 0 | Yes |
+| 1990 | P33 reference | Forest | 90% | 103 | 87.4% [67.6%, 100.0%] | 26.51 | 0 | 0 | Yes |
+| 1990 | Leave-one-year-out | Forest | 90% | 103 | 87.4% [67.6%, 100.0%] | 26.51 | 0 | 0 | Yes |
+| 1990 | Training-only inflation | Forest | 90% | 103 | 91.3% [75.7%, 100.0%] | 32.67 | 0 | 0 | — |
+| 1990 | Weather-regime Mondrian | Forest | 90% | 103 | 88.3% [68.6%, 100.0%] | 26.52 | 0 | 0 | Yes |
+| 1990 | Climate-similarity weighting | Forest | 90% | 103 | 87.4% [67.6%, 100.0%] | 27.18 | 0 | 0 | Yes |
+| 1991 | P33 reference | Ridge | 80% | 103 | 94.2% [89.7%, 97.4%] | 22.95 | 0 | 0 | — |
+| 1991 | Leave-one-year-out | Ridge | 80% | 103 | 94.2% [89.7%, 97.4%] | 22.95 | 0 | 0 | — |
+| 1991 | Training-only inflation | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 27.54 | 0 | 0 | — |
+| 1991 | Weather-regime Mondrian | Ridge | 80% | 103 | 96.1% [91.2%, 100.0%] | 22.97 | 0 | 0 | — |
+| 1991 | Climate-similarity weighting | Ridge | 80% | 103 | 96.1% [91.2%, 100.0%] | 24.49 | 0 | 0 | — |
+| 1991 | P33 reference | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.78 | 0 | 0 | — |
+| 1991 | Leave-one-year-out | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.78 | 0 | 0 | — |
+| 1991 | Training-only inflation | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 35.75 | 0 | 0 | — |
+| 1991 | Weather-regime Mondrian | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.99 | 0 | 0 | — |
+| 1991 | Climate-similarity weighting | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 30.95 | 0 | 0 | — |
+| 1991 | P33 reference | Forest | 80% | 103 | 82.5% [68.5%, 93.8%] | 20.41 | 0 | 0 | — |
+| 1991 | Leave-one-year-out | Forest | 80% | 103 | 82.5% [68.5%, 93.8%] | 20.41 | 0 | 0 | — |
+| 1991 | Training-only inflation | Forest | 80% | 103 | 94.2% [86.4%, 100.0%] | 27.15 | 0 | 0 | — |
+| 1991 | Weather-regime Mondrian | Forest | 80% | 103 | 81.6% [68.2%, 92.8%] | 20.07 | 0 | 0 | — |
+| 1991 | Climate-similarity weighting | Forest | 80% | 103 | 83.5% [68.5%, 95.1%] | 21.55 | 0 | 0 | — |
+| 1991 | P33 reference | Forest | 90% | 103 | 92.2% [81.8%, 100.0%] | 26.19 | 0 | 0 | — |
+| 1991 | Leave-one-year-out | Forest | 90% | 103 | 92.2% [81.8%, 100.0%] | 26.19 | 0 | 0 | — |
+| 1991 | Training-only inflation | Forest | 90% | 103 | 97.1% [90.4%, 100.0%] | 34.84 | 0 | 0 | — |
+| 1991 | Weather-regime Mondrian | Forest | 90% | 103 | 91.3% [81.4%, 100.0%] | 26.36 | 0 | 0 | — |
+| 1991 | Climate-similarity weighting | Forest | 90% | 103 | 94.2% [86.4%, 100.0%] | 27.40 | 0 | 0 | — |
+| 1992 | P33 reference | Ridge | 80% | 103 | 84.5% [71.9%, 94.1%] | 23.00 | 0 | 0 | — |
+| 1992 | Leave-one-year-out | Ridge | 80% | 103 | 84.5% [71.9%, 94.1%] | 23.00 | 0 | 0 | — |
+| 1992 | Training-only inflation | Ridge | 80% | 103 | 90.3% [80.6%, 97.4%] | 26.35 | 0 | 0 | — |
+| 1992 | Weather-regime Mondrian | Ridge | 80% | 103 | 82.5% [71.3%, 91.3%] | 22.48 | 0 | 0 | — |
+| 1992 | Climate-similarity weighting | Ridge | 80% | 103 | 83.5% [71.1%, 93.3%] | 22.35 | 0 | 0 | — |
+| 1992 | P33 reference | Ridge | 90% | 103 | 95.1% [92.4%, 98.1%] | 29.43 | 0 | 0 | — |
+| 1992 | Leave-one-year-out | Ridge | 90% | 103 | 95.1% [92.4%, 98.1%] | 29.43 | 0 | 0 | — |
+| 1992 | Training-only inflation | Ridge | 90% | 103 | 97.1% [93.6%, 100.0%] | 33.72 | 0 | 0 | — |
+| 1992 | Weather-regime Mondrian | Ridge | 90% | 103 | 95.1% [92.4%, 98.1%] | 29.51 | 0 | 0 | — |
+| 1992 | Climate-similarity weighting | Ridge | 90% | 103 | 95.1% [92.4%, 98.1%] | 29.07 | 0 | 0 | — |
+| 1992 | P33 reference | Forest | 80% | 103 | 70.9% [57.6%, 84.9%] | 20.94 | 0 | 0 | Yes |
+| 1992 | Leave-one-year-out | Forest | 80% | 103 | 70.9% [57.6%, 84.9%] | 20.94 | 0 | 0 | Yes |
+| 1992 | Training-only inflation | Forest | 80% | 103 | 77.7% [63.5%, 91.8%] | 27.30 | 0 | 0 | Yes |
+| 1992 | Weather-regime Mondrian | Forest | 80% | 103 | 70.9% [57.6%, 84.9%] | 21.28 | 0 | 0 | Yes |
+| 1992 | Climate-similarity weighting | Forest | 80% | 103 | 71.8% [58.3%, 86.0%] | 21.84 | 0 | 0 | Yes |
+| 1992 | P33 reference | Forest | 90% | 103 | 77.7% [63.5%, 91.8%] | 26.84 | 0 | 0 | Yes |
+| 1992 | Leave-one-year-out | Forest | 90% | 103 | 77.7% [63.5%, 91.8%] | 26.84 | 0 | 0 | Yes |
+| 1992 | Training-only inflation | Forest | 90% | 103 | 85.4% [71.7%, 97.4%] | 35.00 | 0 | 0 | Yes |
+| 1992 | Weather-regime Mondrian | Forest | 90% | 103 | 78.6% [64.1%, 92.2%] | 27.23 | 0 | 0 | Yes |
+| 1992 | Climate-similarity weighting | Forest | 90% | 103 | 78.6% [64.1%, 92.2%] | 28.03 | 0 | 0 | Yes |
+| 1993 | P33 reference | Ridge | 80% | 103 | 65.0% [42.3%, 84.1%] | 22.14 | 0 | 0 | Yes |
+| 1993 | Leave-one-year-out | Ridge | 80% | 103 | 65.0% [42.3%, 84.1%] | 22.14 | 0 | 0 | Yes |
+| 1993 | Training-only inflation | Ridge | 80% | 103 | 74.8% [52.9%, 92.0%] | 26.81 | 0 | 0 | Yes |
+| 1993 | Weather-regime Mondrian | Ridge | 80% | 103 | 65.0% [42.3%, 84.1%] | 21.48 | 0 | 0 | Yes |
+| 1993 | Climate-similarity weighting | Ridge | 80% | 103 | 64.1% [41.3%, 82.5%] | 20.46 | 0 | 0 | Yes |
+| 1993 | P33 reference | Ridge | 90% | 103 | 78.6% [56.4%, 95.5%] | 28.49 | 0 | 0 | Yes |
+| 1993 | Leave-one-year-out | Ridge | 90% | 103 | 78.6% [56.4%, 95.5%] | 28.49 | 0 | 0 | Yes |
+| 1993 | Training-only inflation | Ridge | 90% | 103 | 92.2% [83.0%, 100.0%] | 34.50 | 0 | 0 | — |
+| 1993 | Weather-regime Mondrian | Ridge | 90% | 103 | 77.7% [56.2%, 94.6%] | 28.37 | 0 | 0 | Yes |
+| 1993 | Climate-similarity weighting | Ridge | 90% | 103 | 74.8% [52.9%, 92.0%] | 27.19 | 0 | 0 | Yes |
+| 1993 | P33 reference | Forest | 80% | 103 | 76.7% [58.6%, 91.0%] | 21.07 | 0 | 0 | Yes |
+| 1993 | Leave-one-year-out | Forest | 80% | 103 | 76.7% [58.6%, 91.0%] | 21.07 | 0 | 0 | Yes |
+| 1993 | Training-only inflation | Forest | 80% | 103 | 80.6% [63.6%, 93.8%] | 23.05 | 0 | 0 | — |
+| 1993 | Weather-regime Mondrian | Forest | 80% | 103 | 79.6% [63.3%, 92.7%] | 22.70 | 0 | 0 | Yes |
+| 1993 | Climate-similarity weighting | Forest | 80% | 103 | 81.6% [66.3%, 93.8%] | 24.71 | 0 | 0 | — |
+| 1993 | P33 reference | Forest | 90% | 103 | 90.3% [79.4%, 100.0%] | 27.76 | 0 | 0 | — |
+| 1993 | Leave-one-year-out | Forest | 90% | 103 | 90.3% [79.4%, 100.0%] | 27.76 | 0 | 0 | — |
+| 1993 | Training-only inflation | Forest | 90% | 103 | 93.2% [82.7%, 100.0%] | 30.36 | 0 | 0 | — |
+| 1993 | Weather-regime Mondrian | Forest | 90% | 103 | 93.2% [82.4%, 100.0%] | 29.45 | 0 | 0 | — |
+| 1993 | Climate-similarity weighting | Forest | 90% | 103 | 94.2% [83.7%, 100.0%] | 33.33 | 0 | 0 | — |
+| 1994 | P33 reference | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 21.70 | 0 | 0 | — |
+| 1994 | Leave-one-year-out | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 21.70 | 0 | 0 | — |
+| 1994 | Training-only inflation | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 26.13 | 0 | 0 | — |
+| 1994 | Weather-regime Mondrian | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 21.89 | 0 | 0 | — |
+| 1994 | Climate-similarity weighting | Ridge | 80% | 103 | 100.0% [100.0%, 100.0%] | 23.32 | 0 | 0 | — |
+| 1994 | P33 reference | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 28.07 | 0 | 0 | — |
+| 1994 | Leave-one-year-out | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 28.07 | 0 | 0 | — |
+| 1994 | Training-only inflation | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 33.81 | 0 | 0 | — |
+| 1994 | Weather-regime Mondrian | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 28.62 | 0 | 0 | — |
+| 1994 | Climate-similarity weighting | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.53 | 0 | 0 | — |
+| 1994 | P33 reference | Forest | 80% | 103 | 91.3% [75.7%, 100.0%] | 21.67 | 0 | 0 | — |
+| 1994 | Leave-one-year-out | Forest | 80% | 103 | 91.3% [75.7%, 100.0%] | 21.67 | 0 | 0 | — |
+| 1994 | Training-only inflation | Forest | 80% | 103 | 92.2% [78.5%, 100.0%] | 24.55 | 0 | 0 | — |
+| 1994 | Weather-regime Mondrian | Forest | 80% | 103 | 90.3% [74.8%, 100.0%] | 22.02 | 0 | 0 | — |
+| 1994 | Climate-similarity weighting | Forest | 80% | 103 | 91.3% [75.7%, 100.0%] | 21.64 | 0 | 0 | — |
+| 1994 | P33 reference | Forest | 90% | 103 | 94.2% [82.5%, 100.0%] | 27.60 | 0 | 0 | — |
+| 1994 | Leave-one-year-out | Forest | 90% | 103 | 94.2% [82.5%, 100.0%] | 27.60 | 0 | 0 | — |
+| 1994 | Training-only inflation | Forest | 90% | 103 | 95.1% [85.4%, 100.0%] | 31.27 | 0 | 0 | — |
+| 1994 | Weather-regime Mondrian | Forest | 90% | 103 | 94.2% [82.5%, 100.0%] | 28.00 | 0 | 0 | — |
+| 1994 | Climate-similarity weighting | Forest | 90% | 103 | 94.2% [82.5%, 100.0%] | 27.13 | 0 | 0 | — |
+| 1995 | P33 reference | Ridge | 80% | 103 | 72.8% [52.9%, 89.6%] | 22.37 | 0 | 0 | Yes |
+| 1995 | Leave-one-year-out | Ridge | 80% | 103 | 72.8% [52.9%, 89.6%] | 22.37 | 0 | 0 | Yes |
+| 1995 | Training-only inflation | Ridge | 80% | 103 | 83.5% [64.0%, 98.0%] | 26.95 | 0 | 0 | — |
+| 1995 | Weather-regime Mondrian | Ridge | 80% | 103 | 69.9% [50.5%, 87.3%] | 22.07 | 0 | 0 | Yes |
+| 1995 | Climate-similarity weighting | Ridge | 80% | 103 | 56.3% [35.2%, 74.5%] | 19.98 | 0 | 0 | Yes |
+| 1995 | P33 reference | Ridge | 90% | 103 | 85.4% [68.5%, 98.0%] | 28.21 | 0 | 0 | Yes |
+| 1995 | Leave-one-year-out | Ridge | 90% | 103 | 85.4% [68.5%, 98.0%] | 28.21 | 0 | 0 | Yes |
+| 1995 | Training-only inflation | Ridge | 90% | 103 | 92.2% [82.0%, 100.0%] | 33.99 | 0 | 0 | — |
+| 1995 | Weather-regime Mondrian | Ridge | 90% | 103 | 85.4% [68.5%, 98.0%] | 27.92 | 0 | 0 | Yes |
+| 1995 | Climate-similarity weighting | Ridge | 90% | 103 | 81.6% [62.4%, 96.9%] | 26.06 | 0 | 0 | Yes |
+| 1995 | P33 reference | Forest | 80% | 103 | 56.3% [36.1%, 74.7%] | 20.57 | 0 | 0 | Yes |
+| 1995 | Leave-one-year-out | Forest | 80% | 103 | 56.3% [36.1%, 74.7%] | 20.57 | 0 | 0 | Yes |
+| 1995 | Training-only inflation | Forest | 80% | 103 | 68.9% [47.2%, 88.4%] | 24.28 | 0 | 0 | Yes |
+| 1995 | Weather-regime Mondrian | Forest | 80% | 103 | 56.3% [36.1%, 74.7%] | 20.81 | 0 | 0 | Yes |
+| 1995 | Climate-similarity weighting | Forest | 80% | 103 | 56.3% [36.1%, 74.7%] | 21.30 | 0 | 0 | Yes |
+| 1995 | P33 reference | Forest | 90% | 103 | 77.7% [61.9%, 92.3%] | 26.74 | 0 | 0 | Yes |
+| 1995 | Leave-one-year-out | Forest | 90% | 103 | 77.7% [61.9%, 92.3%] | 26.74 | 0 | 0 | Yes |
+| 1995 | Training-only inflation | Forest | 90% | 103 | 87.4% [76.2%, 96.3%] | 31.57 | 0 | 0 | Yes |
+| 1995 | Weather-regime Mondrian | Forest | 90% | 103 | 78.6% [62.0%, 93.7%] | 28.62 | 0 | 0 | Yes |
+| 1995 | Climate-similarity weighting | Forest | 90% | 103 | 78.6% [63.8%, 92.3%] | 27.59 | 0 | 0 | Yes |
+| 1996 | P33 reference | Ridge | 80% | 103 | 90.3% [82.3%, 97.8%] | 23.08 | 0 | 0 | — |
+| 1996 | Leave-one-year-out | Ridge | 80% | 103 | 90.3% [82.3%, 97.8%] | 23.08 | 0 | 0 | — |
+| 1996 | Training-only inflation | Ridge | 80% | 103 | 95.1% [90.5%, 99.1%] | 26.83 | 0 | 0 | — |
+| 1996 | Weather-regime Mondrian | Ridge | 80% | 103 | 89.3% [81.4%, 96.8%] | 22.77 | 0 | 0 | — |
+| 1996 | Climate-similarity weighting | Ridge | 80% | 103 | 91.3% [83.3%, 98.0%] | 25.07 | 0 | 0 | — |
+| 1996 | P33 reference | Ridge | 90% | 103 | 98.1% [94.3%, 100.0%] | 28.96 | 0 | 0 | — |
+| 1996 | Leave-one-year-out | Ridge | 90% | 103 | 98.1% [94.3%, 100.0%] | 28.96 | 0 | 0 | — |
+| 1996 | Training-only inflation | Ridge | 90% | 103 | 99.0% [97.1%, 100.0%] | 33.67 | 0 | 0 | — |
+| 1996 | Weather-regime Mondrian | Ridge | 90% | 103 | 98.1% [94.3%, 100.0%] | 28.71 | 0 | 0 | — |
+| 1996 | Climate-similarity weighting | Ridge | 90% | 103 | 99.0% [97.1%, 100.0%] | 31.41 | 0 | 0 | — |
+| 1996 | P33 reference | Forest | 80% | 103 | 93.2% [86.4%, 98.1%] | 22.23 | 0 | 0 | — |
+| 1996 | Leave-one-year-out | Forest | 80% | 103 | 93.2% [86.4%, 98.1%] | 22.23 | 0 | 0 | — |
+| 1996 | Training-only inflation | Forest | 80% | 103 | 95.1% [89.6%, 100.0%] | 24.37 | 0 | 0 | — |
+| 1996 | Weather-regime Mondrian | Forest | 80% | 103 | 93.2% [86.4%, 98.1%] | 22.31 | 0 | 0 | — |
+| 1996 | Climate-similarity weighting | Forest | 80% | 103 | 92.2% [83.5%, 98.1%] | 21.81 | 0 | 0 | — |
+| 1996 | P33 reference | Forest | 90% | 103 | 98.1% [95.5%, 100.0%] | 28.84 | 0 | 0 | — |
+| 1996 | Leave-one-year-out | Forest | 90% | 103 | 98.1% [95.5%, 100.0%] | 28.84 | 0 | 0 | — |
+| 1996 | Training-only inflation | Forest | 90% | 103 | 99.0% [97.1%, 100.0%] | 31.61 | 0 | 0 | — |
+| 1996 | Weather-regime Mondrian | Forest | 90% | 103 | 98.1% [95.5%, 100.0%] | 29.98 | 0 | 0 | — |
+| 1996 | Climate-similarity weighting | Forest | 90% | 103 | 96.1% [91.5%, 100.0%] | 27.26 | 0 | 0 | — |
+| 1997 | P33 reference | Ridge | 80% | 103 | 84.5% [69.2%, 95.4%] | 22.72 | 0 | 0 | — |
+| 1997 | Leave-one-year-out | Ridge | 80% | 103 | 84.5% [69.2%, 95.4%] | 22.72 | 0 | 0 | — |
+| 1997 | Training-only inflation | Ridge | 80% | 103 | 90.3% [79.5%, 98.0%] | 26.71 | 0 | 0 | — |
+| 1997 | Weather-regime Mondrian | Ridge | 80% | 103 | 84.5% [68.6%, 96.0%] | 21.81 | 0 | 0 | — |
+| 1997 | Climate-similarity weighting | Ridge | 80% | 103 | 84.5% [69.2%, 95.4%] | 22.80 | 0 | 0 | — |
+| 1997 | P33 reference | Ridge | 90% | 103 | 91.3% [80.2%, 100.0%] | 28.05 | 0 | 0 | — |
+| 1997 | Leave-one-year-out | Ridge | 90% | 103 | 91.3% [80.2%, 100.0%] | 28.05 | 0 | 0 | — |
+| 1997 | Training-only inflation | Ridge | 90% | 103 | 95.1% [85.4%, 100.0%] | 32.97 | 0 | 0 | — |
+| 1997 | Weather-regime Mondrian | Ridge | 90% | 103 | 90.3% [79.5%, 98.0%] | 27.39 | 0 | 0 | — |
+| 1997 | Climate-similarity weighting | Ridge | 90% | 103 | 92.2% [81.1%, 100.0%] | 28.75 | 0 | 0 | — |
+| 1997 | P33 reference | Forest | 80% | 103 | 62.1% [45.0%, 79.8%] | 22.07 | 0 | 0 | Yes |
+| 1997 | Leave-one-year-out | Forest | 80% | 103 | 62.1% [45.0%, 79.8%] | 22.07 | 0 | 0 | Yes |
+| 1997 | Training-only inflation | Forest | 80% | 103 | 63.1% [46.1%, 79.8%] | 22.92 | 0 | 0 | Yes |
+| 1997 | Weather-regime Mondrian | Forest | 80% | 103 | 63.1% [46.1%, 79.8%] | 22.56 | 0 | 0 | Yes |
+| 1997 | Climate-similarity weighting | Forest | 80% | 103 | 63.1% [46.1%, 79.8%] | 22.39 | 0 | 0 | Yes |
+| 1997 | P33 reference | Forest | 90% | 103 | 80.6% [61.4%, 94.1%] | 28.85 | 0 | 0 | Yes |
+| 1997 | Leave-one-year-out | Forest | 90% | 103 | 80.6% [61.4%, 94.1%] | 28.85 | 0 | 0 | Yes |
+| 1997 | Training-only inflation | Forest | 90% | 103 | 81.6% [62.0%, 94.5%] | 29.96 | 0 | 0 | Yes |
+| 1997 | Weather-regime Mondrian | Forest | 90% | 103 | 80.6% [60.8%, 94.0%] | 28.84 | 0 | 0 | Yes |
+| 1997 | Climate-similarity weighting | Forest | 90% | 103 | 81.6% [62.0%, 94.5%] | 29.11 | 0 | 0 | Yes |
+| 1998 | P33 reference | Ridge | 80% | 103 | 79.6% [62.6%, 93.5%] | 22.43 | 0 | 0 | Yes |
+| 1998 | Leave-one-year-out | Ridge | 80% | 103 | 79.6% [62.6%, 93.5%] | 22.43 | 0 | 0 | Yes |
+| 1998 | Training-only inflation | Ridge | 80% | 103 | 87.4% [76.1%, 97.2%] | 26.12 | 0 | 0 | — |
+| 1998 | Weather-regime Mondrian | Ridge | 80% | 103 | 81.6% [65.5%, 94.3%] | 22.57 | 0 | 0 | — |
+| 1998 | Climate-similarity weighting | Ridge | 80% | 103 | 79.6% [62.6%, 93.5%] | 22.45 | 0 | 0 | Yes |
+| 1998 | P33 reference | Ridge | 90% | 103 | 89.3% [78.7%, 97.4%] | 28.23 | 0 | 0 | Yes |
+| 1998 | Leave-one-year-out | Ridge | 90% | 103 | 89.3% [78.7%, 97.4%] | 28.23 | 0 | 0 | Yes |
+| 1998 | Training-only inflation | Ridge | 90% | 103 | 94.2% [86.5%, 99.1%] | 32.88 | 0 | 0 | — |
+| 1998 | Weather-regime Mondrian | Ridge | 90% | 103 | 91.3% [81.2%, 99.0%] | 28.62 | 0 | 0 | — |
+| 1998 | Climate-similarity weighting | Ridge | 90% | 103 | 89.3% [78.7%, 97.4%] | 28.32 | 0 | 0 | Yes |
+| 1998 | P33 reference | Forest | 80% | 103 | 75.7% [62.5%, 87.0%] | 21.58 | 0 | 0 | Yes |
+| 1998 | Leave-one-year-out | Forest | 80% | 103 | 75.7% [62.5%, 87.0%] | 21.58 | 0 | 0 | Yes |
+| 1998 | Training-only inflation | Forest | 80% | 103 | 78.6% [67.5%, 88.5%] | 22.77 | 0 | 0 | Yes |
+| 1998 | Weather-regime Mondrian | Forest | 80% | 103 | 73.8% [59.8%, 85.5%] | 21.67 | 0 | 0 | Yes |
+| 1998 | Climate-similarity weighting | Forest | 80% | 103 | 75.7% [62.5%, 87.0%] | 21.76 | 0 | 0 | Yes |
+| 1998 | P33 reference | Forest | 90% | 103 | 91.3% [81.1%, 98.2%] | 28.04 | 0 | 0 | — |
+| 1998 | Leave-one-year-out | Forest | 90% | 103 | 91.3% [81.1%, 98.2%] | 28.04 | 0 | 0 | — |
+| 1998 | Training-only inflation | Forest | 90% | 103 | 94.2% [88.3%, 99.0%] | 29.59 | 0 | 0 | — |
+| 1998 | Weather-regime Mondrian | Forest | 90% | 103 | 90.3% [80.2%, 97.4%] | 28.23 | 0 | 0 | — |
+| 1998 | Climate-similarity weighting | Forest | 90% | 103 | 93.2% [85.2%, 99.0%] | 28.84 | 0 | 0 | — |
+| 1999 | P33 reference | Ridge | 80% | 103 | 85.4% [74.3%, 95.4%] | 22.61 | 0 | 0 | — |
+| 1999 | Leave-one-year-out | Ridge | 80% | 103 | 85.4% [74.3%, 95.4%] | 22.61 | 0 | 0 | — |
+| 1999 | Training-only inflation | Ridge | 80% | 103 | 89.3% [78.7%, 98.0%] | 25.04 | 0 | 0 | — |
+| 1999 | Weather-regime Mondrian | Ridge | 80% | 103 | 84.5% [72.6%, 95.1%] | 22.57 | 0 | 0 | — |
+| 1999 | Climate-similarity weighting | Ridge | 80% | 103 | 82.5% [69.5%, 94.0%] | 21.68 | 0 | 0 | — |
+| 1999 | P33 reference | Ridge | 90% | 103 | 94.2% [84.0%, 100.0%] | 28.67 | 0 | 0 | — |
+| 1999 | Leave-one-year-out | Ridge | 90% | 103 | 94.2% [84.0%, 100.0%] | 28.67 | 0 | 0 | — |
+| 1999 | Training-only inflation | Ridge | 90% | 103 | 97.1% [92.7%, 100.0%] | 31.74 | 0 | 0 | — |
+| 1999 | Weather-regime Mondrian | Ridge | 90% | 103 | 93.2% [82.9%, 100.0%] | 28.66 | 0 | 0 | — |
+| 1999 | Climate-similarity weighting | Ridge | 90% | 103 | 93.2% [83.3%, 99.1%] | 27.34 | 0 | 0 | — |
+| 1999 | P33 reference | Forest | 80% | 103 | 76.7% [62.6%, 88.9%] | 21.64 | 0 | 0 | Yes |
+| 1999 | Leave-one-year-out | Forest | 80% | 103 | 76.7% [62.6%, 88.9%] | 21.64 | 0 | 0 | Yes |
+| 1999 | Training-only inflation | Forest | 80% | 103 | 79.6% [67.4%, 90.4%] | 22.96 | 0 | 0 | Yes |
+| 1999 | Weather-regime Mondrian | Forest | 80% | 103 | 76.7% [61.7%, 88.9%] | 21.81 | 0 | 0 | Yes |
+| 1999 | Climate-similarity weighting | Forest | 80% | 103 | 78.6% [67.0%, 88.9%] | 21.99 | 0 | 0 | Yes |
+| 1999 | P33 reference | Forest | 90% | 103 | 91.3% [83.8%, 97.2%] | 28.04 | 0 | 0 | — |
+| 1999 | Leave-one-year-out | Forest | 90% | 103 | 91.3% [83.8%, 97.2%] | 28.04 | 0 | 0 | — |
+| 1999 | Training-only inflation | Forest | 90% | 103 | 94.2% [86.3%, 100.0%] | 29.75 | 0 | 0 | — |
+| 1999 | Weather-regime Mondrian | Forest | 90% | 103 | 91.3% [81.4%, 98.2%] | 28.51 | 0 | 0 | — |
+| 1999 | Climate-similarity weighting | Forest | 90% | 103 | 94.2% [86.3%, 100.0%] | 29.55 | 0 | 0 | — |
+| 2000 | P33 reference | Ridge | 80% | 103 | 95.1% [89.5%, 100.0%] | 23.26 | 0 | 0 | — |
+| 2000 | Leave-one-year-out | Ridge | 80% | 103 | 95.1% [89.5%, 100.0%] | 23.26 | 0 | 0 | — |
+| 2000 | Training-only inflation | Ridge | 80% | 103 | 97.1% [93.6%, 100.0%] | 24.72 | 0 | 0 | — |
+| 2000 | Weather-regime Mondrian | Ridge | 80% | 103 | 96.1% [91.1%, 100.0%] | 23.75 | 0 | 0 | — |
+| 2000 | Climate-similarity weighting | Ridge | 80% | 103 | 96.1% [91.1%, 100.0%] | 23.90 | 0 | 0 | — |
+| 2000 | P33 reference | Ridge | 90% | 103 | 99.0% [96.7%, 100.0%] | 29.19 | 0 | 0 | — |
+| 2000 | Leave-one-year-out | Ridge | 90% | 103 | 99.0% [96.7%, 100.0%] | 29.19 | 0 | 0 | — |
+| 2000 | Training-only inflation | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 31.03 | 0 | 0 | — |
+| 2000 | Weather-regime Mondrian | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 30.33 | 0 | 0 | — |
+| 2000 | Climate-similarity weighting | Ridge | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.75 | 0 | 0 | — |
+| 2000 | P33 reference | Forest | 80% | 103 | 98.1% [95.3%, 100.0%] | 22.42 | 0 | 0 | — |
+| 2000 | Leave-one-year-out | Forest | 80% | 103 | 98.1% [95.3%, 100.0%] | 22.42 | 0 | 0 | — |
+| 2000 | Training-only inflation | Forest | 80% | 103 | 98.1% [95.3%, 100.0%] | 22.42 | 0 | 0 | — |
+| 2000 | Weather-regime Mondrian | Forest | 80% | 103 | 98.1% [95.3%, 100.0%] | 21.66 | 0 | 0 | — |
+| 2000 | Climate-similarity weighting | Forest | 80% | 103 | 98.1% [95.3%, 100.0%] | 21.16 | 0 | 0 | — |
+| 2000 | P33 reference | Forest | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.36 | 0 | 0 | — |
+| 2000 | Leave-one-year-out | Forest | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.36 | 0 | 0 | — |
+| 2000 | Training-only inflation | Forest | 90% | 103 | 100.0% [100.0%, 100.0%] | 29.36 | 0 | 0 | — |
+| 2000 | Weather-regime Mondrian | Forest | 90% | 103 | 100.0% [100.0%, 100.0%] | 28.03 | 0 | 0 | — |
+| 2000 | Climate-similarity weighting | Forest | 90% | 103 | 100.0% [100.0%, 100.0%] | 27.67 | 0 | 0 | — |
+| 2001 | P33 reference | Ridge | 80% | 103 | 92.2% [85.7%, 98.0%] | 23.06 | 0 | 0 | — |
+| 2001 | Leave-one-year-out | Ridge | 80% | 103 | 92.2% [85.7%, 98.0%] | 23.06 | 0 | 0 | — |
+| 2001 | Training-only inflation | Ridge | 80% | 103 | 92.2% [85.7%, 98.0%] | 24.57 | 0 | 0 | — |
+| 2001 | Weather-regime Mondrian | Ridge | 80% | 103 | 91.3% [84.2%, 98.0%] | 23.45 | 0 | 0 | — |
+| 2001 | Climate-similarity weighting | Ridge | 80% | 103 | 92.2% [85.7%, 98.0%] | 22.50 | 0 | 0 | — |
+| 2001 | P33 reference | Ridge | 90% | 103 | 97.1% [93.0%, 100.0%] | 29.18 | 0 | 0 | — |
+| 2001 | Leave-one-year-out | Ridge | 90% | 103 | 97.1% [93.0%, 100.0%] | 29.18 | 0 | 0 | — |
+| 2001 | Training-only inflation | Ridge | 90% | 103 | 98.1% [95.4%, 100.0%] | 31.09 | 0 | 0 | — |
+| 2001 | Weather-regime Mondrian | Ridge | 90% | 103 | 96.1% [90.2%, 100.0%] | 29.19 | 0 | 0 | — |
+| 2001 | Climate-similarity weighting | Ridge | 90% | 103 | 97.1% [93.0%, 100.0%] | 29.11 | 0 | 0 | — |
+| 2001 | P33 reference | Forest | 80% | 103 | 81.6% [67.6%, 95.5%] | 22.39 | 0 | 0 | — |
+| 2001 | Leave-one-year-out | Forest | 80% | 103 | 81.6% [67.6%, 95.5%] | 22.39 | 0 | 0 | — |
+| 2001 | Training-only inflation | Forest | 80% | 103 | 81.6% [67.6%, 95.5%] | 22.39 | 0 | 0 | — |
+| 2001 | Weather-regime Mondrian | Forest | 80% | 103 | 75.7% [60.0%, 91.8%] | 21.74 | 0 | 0 | Yes |
+| 2001 | Climate-similarity weighting | Forest | 80% | 103 | 82.5% [68.4%, 97.7%] | 23.19 | 0 | 0 | — |
+| 2001 | P33 reference | Forest | 90% | 103 | 86.4% [73.6%, 100.0%] | 28.26 | 0 | 0 | Yes |
+| 2001 | Leave-one-year-out | Forest | 90% | 103 | 86.4% [73.6%, 100.0%] | 28.26 | 0 | 0 | Yes |
+| 2001 | Training-only inflation | Forest | 90% | 103 | 86.4% [73.6%, 100.0%] | 28.26 | 0 | 0 | Yes |
+| 2001 | Weather-regime Mondrian | Forest | 90% | 103 | 87.4% [75.9%, 100.0%] | 27.78 | 0 | 0 | Yes |
+| 2001 | Climate-similarity weighting | Forest | 90% | 103 | 87.4% [75.2%, 100.0%] | 29.06 | 0 | 0 | Yes |
+| 2002 | P33 reference | Ridge | 80% | 103 | 82.5% [69.5%, 93.5%] | 22.71 | 0 | 0 | — |
+| 2002 | Leave-one-year-out | Ridge | 80% | 103 | 82.5% [69.5%, 93.5%] | 22.71 | 0 | 0 | — |
+| 2002 | Training-only inflation | Ridge | 80% | 103 | 82.5% [69.5%, 93.5%] | 22.71 | 0 | 0 | — |
+| 2002 | Weather-regime Mondrian | Ridge | 80% | 103 | 81.6% [66.7%, 93.5%] | 23.69 | 0 | 0 | — |
+| 2002 | Climate-similarity weighting | Ridge | 80% | 103 | 84.5% [72.6%, 94.6%] | 23.93 | 0 | 0 | — |
+| 2002 | P33 reference | Ridge | 90% | 103 | 90.3% [82.6%, 96.7%] | 28.69 | 0 | 0 | — |
+| 2002 | Leave-one-year-out | Ridge | 90% | 103 | 90.3% [82.6%, 96.7%] | 28.69 | 0 | 0 | — |
+| 2002 | Training-only inflation | Ridge | 90% | 103 | 90.3% [82.6%, 96.7%] | 28.69 | 0 | 0 | — |
+| 2002 | Weather-regime Mondrian | Ridge | 90% | 103 | 91.3% [83.3%, 98.1%] | 29.95 | 0 | 0 | — |
+| 2002 | Climate-similarity weighting | Ridge | 90% | 103 | 92.2% [84.8%, 98.2%] | 30.14 | 0 | 0 | — |
+| 2002 | P33 reference | Forest | 80% | 103 | 92.2% [85.9%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2002 | Leave-one-year-out | Forest | 80% | 103 | 92.2% [85.9%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2002 | Training-only inflation | Forest | 80% | 103 | 92.2% [85.9%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2002 | Weather-regime Mondrian | Forest | 80% | 103 | 92.2% [85.9%, 97.1%] | 22.25 | 0 | 0 | — |
+| 2002 | Climate-similarity weighting | Forest | 80% | 103 | 91.3% [85.1%, 95.8%] | 22.16 | 0 | 0 | — |
+| 2002 | P33 reference | Forest | 90% | 103 | 99.0% [96.8%, 100.0%] | 29.39 | 0 | 0 | — |
+| 2002 | Leave-one-year-out | Forest | 90% | 103 | 99.0% [96.8%, 100.0%] | 29.39 | 0 | 0 | — |
+| 2002 | Training-only inflation | Forest | 90% | 103 | 99.0% [96.8%, 100.0%] | 29.39 | 0 | 0 | — |
+| 2002 | Weather-regime Mondrian | Forest | 90% | 103 | 99.0% [97.1%, 100.0%] | 29.15 | 0 | 0 | — |
+| 2002 | Climate-similarity weighting | Forest | 90% | 103 | 98.1% [95.5%, 100.0%] | 28.24 | 0 | 0 | — |
+| 2003 | P33 reference | Ridge | 80% | 103 | 53.4% [31.9%, 76.3%] | 22.20 | 0 | 0 | Yes |
+| 2003 | Leave-one-year-out | Ridge | 80% | 103 | 53.4% [31.9%, 76.3%] | 22.20 | 0 | 0 | Yes |
+| 2003 | Training-only inflation | Ridge | 80% | 103 | 53.4% [31.9%, 76.3%] | 22.22 | 0 | 0 | Yes |
+| 2003 | Weather-regime Mondrian | Ridge | 80% | 103 | 55.3% [35.2%, 76.6%] | 23.49 | 0 | 0 | Yes |
+| 2003 | Climate-similarity weighting | Ridge | 80% | 103 | 51.5% [27.7%, 75.8%] | 21.49 | 0 | 0 | Yes |
+| 2003 | P33 reference | Ridge | 90% | 103 | 64.1% [43.8%, 83.1%] | 28.26 | 0 | 0 | Yes |
+| 2003 | Leave-one-year-out | Ridge | 90% | 103 | 64.1% [43.8%, 83.1%] | 28.26 | 0 | 0 | Yes |
+| 2003 | Training-only inflation | Ridge | 90% | 103 | 64.1% [43.8%, 83.1%] | 28.29 | 0 | 0 | Yes |
+| 2003 | Weather-regime Mondrian | Ridge | 90% | 103 | 74.8% [56.8%, 90.4%] | 30.10 | 0 | 0 | Yes |
+| 2003 | Climate-similarity weighting | Ridge | 90% | 103 | 63.1% [42.6%, 82.7%] | 27.92 | 0 | 0 | Yes |
+| 2003 | P33 reference | Forest | 80% | 103 | 51.5% [29.9%, 75.7%] | 23.06 | 0 | 0 | Yes |
+| 2003 | Leave-one-year-out | Forest | 80% | 103 | 51.5% [29.9%, 75.7%] | 23.06 | 0 | 0 | Yes |
+| 2003 | Training-only inflation | Forest | 80% | 103 | 53.4% [32.3%, 76.8%] | 24.78 | 0 | 0 | Yes |
+| 2003 | Weather-regime Mondrian | Forest | 80% | 103 | 49.5% [27.5%, 74.5%] | 21.44 | 0 | 0 | Yes |
+| 2003 | Climate-similarity weighting | Forest | 80% | 103 | 53.4% [32.3%, 76.8%] | 23.66 | 0 | 0 | Yes |
+| 2003 | P33 reference | Forest | 90% | 103 | 59.2% [38.3%, 81.3%] | 28.94 | 0 | 0 | Yes |
+| 2003 | Leave-one-year-out | Forest | 90% | 103 | 59.2% [38.3%, 81.3%] | 28.94 | 0 | 0 | Yes |
+| 2003 | Training-only inflation | Forest | 90% | 103 | 64.1% [43.3%, 84.8%] | 31.10 | 0 | 0 | Yes |
+| 2003 | Weather-regime Mondrian | Forest | 90% | 103 | 55.3% [35.0%, 78.1%] | 27.09 | 0 | 0 | Yes |
+| 2003 | Climate-similarity weighting | Forest | 90% | 103 | 61.2% [40.4%, 83.0%] | 30.00 | 0 | 0 | Yes |
+| 2004 | P33 reference | Ridge | 80% | 103 | 89.3% [76.1%, 97.5%] | 22.59 | 0 | 0 | — |
+| 2004 | Leave-one-year-out | Ridge | 80% | 103 | 89.3% [76.1%, 97.5%] | 22.59 | 0 | 0 | — |
+| 2004 | Training-only inflation | Ridge | 80% | 103 | 89.3% [76.1%, 97.5%] | 22.59 | 0 | 0 | — |
+| 2004 | Weather-regime Mondrian | Ridge | 80% | 103 | 90.3% [77.0%, 98.4%] | 23.00 | 0 | 0 | — |
+| 2004 | Climate-similarity weighting | Ridge | 80% | 103 | 90.3% [77.0%, 98.4%] | 23.09 | 0 | 0 | — |
+| 2004 | P33 reference | Ridge | 90% | 103 | 93.2% [79.6%, 100.0%] | 28.66 | 0 | 0 | — |
+| 2004 | Leave-one-year-out | Ridge | 90% | 103 | 93.2% [79.6%, 100.0%] | 28.66 | 0 | 0 | — |
+| 2004 | Training-only inflation | Ridge | 90% | 103 | 93.2% [79.6%, 100.0%] | 28.66 | 0 | 0 | — |
+| 2004 | Weather-regime Mondrian | Ridge | 90% | 103 | 94.2% [83.0%, 100.0%] | 28.41 | 0 | 0 | — |
+| 2004 | Climate-similarity weighting | Ridge | 90% | 103 | 93.2% [79.6%, 100.0%] | 28.96 | 0 | 0 | — |
+| 2004 | P33 reference | Forest | 80% | 103 | 86.4% [69.1%, 98.2%] | 23.32 | 0 | 0 | — |
+| 2004 | Leave-one-year-out | Forest | 80% | 103 | 86.4% [69.1%, 98.2%] | 23.32 | 0 | 0 | — |
+| 2004 | Training-only inflation | Forest | 80% | 103 | 86.4% [69.1%, 98.2%] | 23.32 | 0 | 0 | — |
+| 2004 | Weather-regime Mondrian | Forest | 80% | 103 | 87.4% [69.4%, 98.4%] | 23.76 | 0 | 0 | — |
+| 2004 | Climate-similarity weighting | Forest | 80% | 103 | 85.4% [65.9%, 98.2%] | 22.22 | 0 | 0 | — |
+| 2004 | P33 reference | Forest | 90% | 103 | 95.1% [84.9%, 100.0%] | 29.48 | 0 | 0 | — |
+| 2004 | Leave-one-year-out | Forest | 90% | 103 | 95.1% [84.9%, 100.0%] | 29.48 | 0 | 0 | — |
+| 2004 | Training-only inflation | Forest | 90% | 103 | 95.1% [84.9%, 100.0%] | 29.48 | 0 | 0 | — |
+| 2004 | Weather-regime Mondrian | Forest | 90% | 103 | 94.2% [84.2%, 100.0%] | 30.19 | 0 | 0 | — |
+| 2004 | Climate-similarity weighting | Forest | 90% | 103 | 93.2% [82.6%, 100.0%] | 28.03 | 0 | 0 | — |
+| 2005 | P33 reference | Ridge | 80% | 103 | 91.3% [83.2%, 100.0%] | 22.65 | 0 | 0 | — |
+| 2005 | Leave-one-year-out | Ridge | 80% | 103 | 91.3% [83.2%, 100.0%] | 22.65 | 0 | 0 | — |
+| 2005 | Training-only inflation | Ridge | 80% | 103 | 93.2% [86.4%, 100.0%] | 24.47 | 0 | 0 | — |
+| 2005 | Weather-regime Mondrian | Ridge | 80% | 103 | 90.3% [82.1%, 98.9%] | 22.70 | 0 | 0 | — |
+| 2005 | Climate-similarity weighting | Ridge | 80% | 103 | 91.3% [83.2%, 100.0%] | 23.07 | 0 | 0 | — |
+| 2005 | P33 reference | Ridge | 90% | 103 | 97.1% [94.2%, 100.0%] | 28.82 | 0 | 0 | — |
+| 2005 | Leave-one-year-out | Ridge | 90% | 103 | 97.1% [94.2%, 100.0%] | 28.82 | 0 | 0 | — |
+| 2005 | Training-only inflation | Ridge | 90% | 103 | 97.1% [94.2%, 100.0%] | 31.12 | 0 | 0 | — |
+| 2005 | Weather-regime Mondrian | Ridge | 90% | 103 | 95.1% [90.5%, 100.0%] | 28.16 | 0 | 0 | — |
+| 2005 | Climate-similarity weighting | Ridge | 90% | 103 | 97.1% [94.2%, 100.0%] | 29.01 | 0 | 0 | — |
+| 2005 | P33 reference | Forest | 80% | 103 | 92.2% [86.0%, 97.3%] | 23.67 | 0 | 0 | — |
+| 2005 | Leave-one-year-out | Forest | 80% | 103 | 92.2% [86.0%, 97.3%] | 23.67 | 0 | 0 | — |
+| 2005 | Training-only inflation | Forest | 80% | 103 | 92.2% [86.0%, 97.3%] | 23.67 | 0 | 0 | — |
+| 2005 | Weather-regime Mondrian | Forest | 80% | 103 | 89.3% [83.0%, 95.3%] | 23.62 | 0 | 0 | — |
+| 2005 | Climate-similarity weighting | Forest | 80% | 103 | 92.2% [86.0%, 97.3%] | 25.51 | 0 | 0 | — |
+| 2005 | P33 reference | Forest | 90% | 103 | 97.1% [93.6%, 100.0%] | 29.86 | 0 | 0 | — |
+| 2005 | Leave-one-year-out | Forest | 90% | 103 | 97.1% [93.6%, 100.0%] | 29.86 | 0 | 0 | — |
+| 2005 | Training-only inflation | Forest | 90% | 103 | 97.1% [93.6%, 100.0%] | 29.86 | 0 | 0 | — |
+| 2005 | Weather-regime Mondrian | Forest | 90% | 103 | 97.1% [93.7%, 100.0%] | 29.61 | 0 | 0 | — |
+| 2005 | Climate-similarity weighting | Forest | 90% | 103 | 98.1% [94.7%, 100.0%] | 32.00 | 0 | 0 | — |
+| 2006 | P33 reference | Ridge | 80% | 103 | 81.6% [62.9%, 95.2%] | 23.17 | 0 | 0 | — |
+| 2006 | Leave-one-year-out | Ridge | 80% | 103 | 81.6% [62.9%, 95.2%] | 23.17 | 0 | 0 | — |
+| 2006 | Training-only inflation | Ridge | 80% | 103 | 84.5% [68.6%, 95.9%] | 25.34 | 0 | 0 | — |
+| 2006 | Weather-regime Mondrian | Ridge | 80% | 103 | 78.6% [61.3%, 92.2%] | 23.43 | 0 | 0 | Yes |
+| 2006 | Climate-similarity weighting | Ridge | 80% | 103 | 76.7% [57.7%, 91.8%] | 20.66 | 0 | 0 | Yes |
+| 2006 | P33 reference | Ridge | 90% | 103 | 87.4% [73.2%, 96.6%] | 29.02 | 0 | 0 | Yes |
+| 2006 | Leave-one-year-out | Ridge | 90% | 103 | 87.4% [73.2%, 96.6%] | 29.02 | 0 | 0 | Yes |
+| 2006 | Training-only inflation | Ridge | 90% | 103 | 93.2% [82.6%, 100.0%] | 31.74 | 0 | 0 | — |
+| 2006 | Weather-regime Mondrian | Ridge | 90% | 103 | 88.3% [77.4%, 96.4%] | 29.52 | 0 | 0 | Yes |
+| 2006 | Climate-similarity weighting | Ridge | 90% | 103 | 85.4% [69.9%, 96.3%] | 27.28 | 0 | 0 | Yes |
+| 2006 | P33 reference | Forest | 80% | 103 | 83.5% [65.6%, 94.8%] | 23.62 | 0 | 0 | — |
+| 2006 | Leave-one-year-out | Forest | 80% | 103 | 83.5% [65.6%, 94.8%] | 23.62 | 0 | 0 | — |
+| 2006 | Training-only inflation | Forest | 80% | 103 | 83.5% [65.6%, 94.8%] | 23.62 | 0 | 0 | — |
+| 2006 | Weather-regime Mondrian | Forest | 80% | 103 | 82.5% [64.9%, 93.8%] | 22.43 | 0 | 0 | — |
+| 2006 | Climate-similarity weighting | Forest | 80% | 103 | 78.6% [60.8%, 90.8%] | 20.37 | 0 | 0 | Yes |
+| 2006 | P33 reference | Forest | 90% | 103 | 92.2% [80.9%, 100.0%] | 29.98 | 0 | 0 | — |
+| 2006 | Leave-one-year-out | Forest | 90% | 103 | 92.2% [80.9%, 100.0%] | 29.98 | 0 | 0 | — |
+| 2006 | Training-only inflation | Forest | 90% | 103 | 92.2% [80.9%, 100.0%] | 29.98 | 0 | 0 | — |
+| 2006 | Weather-regime Mondrian | Forest | 90% | 103 | 88.3% [77.6%, 96.3%] | 27.49 | 0 | 0 | Yes |
+| 2006 | Climate-similarity weighting | Forest | 90% | 103 | 84.5% [66.0%, 96.1%] | 24.90 | 0 | 0 | Yes |
+| 2007 | P33 reference | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 22.61 | 0 | 0 | Yes |
+| 2007 | Leave-one-year-out | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 22.61 | 0 | 0 | Yes |
+| 2007 | Training-only inflation | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 23.77 | 0 | 0 | Yes |
+| 2007 | Weather-regime Mondrian | Ridge | 80% | 103 | 38.8% [14.7%, 68.3%] | 22.55 | 0 | 0 | Yes |
+| 2007 | Climate-similarity weighting | Ridge | 80% | 103 | 38.8% [15.1%, 68.5%] | 23.77 | 0 | 0 | Yes |
+| 2007 | P33 reference | Ridge | 90% | 103 | 46.6% [21.9%, 76.0%] | 28.32 | 0 | 0 | Yes |
+| 2007 | Leave-one-year-out | Ridge | 90% | 103 | 46.6% [21.9%, 76.0%] | 28.32 | 0 | 0 | Yes |
+| 2007 | Training-only inflation | Ridge | 90% | 103 | 49.5% [25.7%, 77.5%] | 29.76 | 0 | 0 | Yes |
+| 2007 | Weather-regime Mondrian | Ridge | 90% | 103 | 43.7% [19.5%, 74.0%] | 27.86 | 0 | 0 | Yes |
+| 2007 | Climate-similarity weighting | Ridge | 90% | 103 | 49.5% [25.7%, 77.5%] | 29.64 | 0 | 0 | Yes |
+| 2007 | P33 reference | Forest | 80% | 103 | 31.1% [7.8%, 60.0%] | 23.25 | 0 | 0 | Yes |
+| 2007 | Leave-one-year-out | Forest | 80% | 103 | 31.1% [7.8%, 60.0%] | 23.25 | 0 | 0 | Yes |
+| 2007 | Training-only inflation | Forest | 80% | 103 | 34.0% [10.9%, 63.6%] | 25.50 | 0 | 0 | Yes |
+| 2007 | Weather-regime Mondrian | Forest | 80% | 103 | 33.0% [9.2%, 62.8%] | 24.41 | 0 | 0 | Yes |
+| 2007 | Climate-similarity weighting | Forest | 80% | 103 | 33.0% [9.2%, 62.8%] | 25.27 | 0 | 0 | Yes |
+| 2007 | P33 reference | Forest | 90% | 103 | 37.9% [15.3%, 66.4%] | 28.75 | 0 | 0 | Yes |
+| 2007 | Leave-one-year-out | Forest | 90% | 103 | 37.9% [15.3%, 66.4%] | 28.75 | 0 | 0 | Yes |
+| 2007 | Training-only inflation | Forest | 90% | 103 | 44.7% [23.2%, 71.8%] | 31.54 | 0 | 0 | Yes |
+| 2007 | Weather-regime Mondrian | Forest | 90% | 103 | 41.7% [18.3%, 70.7%] | 30.12 | 0 | 0 | Yes |
+| 2007 | Climate-similarity weighting | Forest | 90% | 103 | 42.7% [20.0%, 70.8%] | 30.72 | 0 | 0 | Yes |
+| 2008 | P33 reference | Ridge | 80% | 93 | 76.3% [52.2%, 94.2%] | 22.41 | 0 | 0 | Yes |
+| 2008 | Leave-one-year-out | Ridge | 80% | 93 | 76.3% [52.2%, 94.2%] | 22.41 | 0 | 0 | Yes |
+| 2008 | Training-only inflation | Ridge | 80% | 93 | 76.3% [52.2%, 94.2%] | 22.41 | 0 | 0 | Yes |
+| 2008 | Weather-regime Mondrian | Ridge | 80% | 93 | 76.3% [52.4%, 94.8%] | 22.34 | 0 | 0 | Yes |
+| 2008 | Climate-similarity weighting | Ridge | 80% | 93 | 77.4% [52.2%, 95.6%] | 23.11 | 0 | 0 | Yes |
+| 2008 | P33 reference | Ridge | 90% | 93 | 83.9% [62.4%, 100.0%] | 29.08 | 0 | 0 | Yes |
+| 2008 | Leave-one-year-out | Ridge | 90% | 93 | 83.9% [62.4%, 100.0%] | 29.08 | 0 | 0 | Yes |
+| 2008 | Training-only inflation | Ridge | 90% | 93 | 83.9% [62.4%, 100.0%] | 29.08 | 0 | 0 | Yes |
+| 2008 | Weather-regime Mondrian | Ridge | 90% | 93 | 80.6% [56.2%, 98.8%] | 27.82 | 0 | 0 | Yes |
+| 2008 | Climate-similarity weighting | Ridge | 90% | 93 | 84.9% [65.6%, 100.0%] | 30.01 | 0 | 0 | Yes |
+| 2008 | P33 reference | Forest | 80% | 93 | 82.8% [69.7%, 94.8%] | 20.24 | 0 | 0 | — |
+| 2008 | Leave-one-year-out | Forest | 80% | 93 | 82.8% [69.7%, 94.8%] | 20.24 | 0 | 0 | — |
+| 2008 | Training-only inflation | Forest | 80% | 93 | 87.1% [74.4%, 97.9%] | 22.06 | 0 | 0 | — |
+| 2008 | Weather-regime Mondrian | Forest | 80% | 93 | 82.8% [69.7%, 94.8%] | 20.25 | 0 | 0 | — |
+| 2008 | Climate-similarity weighting | Forest | 80% | 93 | 87.1% [74.4%, 97.9%] | 21.96 | 0 | 0 | — |
+| 2008 | P33 reference | Forest | 90% | 93 | 94.6% [89.5%, 100.0%] | 26.15 | 0 | 0 | — |
+| 2008 | Leave-one-year-out | Forest | 90% | 93 | 94.6% [89.5%, 100.0%] | 26.15 | 0 | 0 | — |
+| 2008 | Training-only inflation | Forest | 90% | 93 | 95.7% [91.2%, 100.0%] | 28.50 | 0 | 0 | — |
+| 2008 | Weather-regime Mondrian | Forest | 90% | 93 | 94.6% [89.5%, 100.0%] | 26.07 | 0 | 0 | — |
+| 2008 | Climate-similarity weighting | Forest | 90% | 93 | 94.6% [89.5%, 100.0%] | 28.10 | 0 | 0 | — |
+| 2009 | P33 reference | Ridge | 80% | 103 | 88.3% [73.0%, 99.0%] | 24.70 | 0 | 0 | — |
+| 2009 | Leave-one-year-out | Ridge | 80% | 103 | 88.3% [73.0%, 99.0%] | 24.70 | 0 | 0 | — |
+| 2009 | Training-only inflation | Ridge | 80% | 103 | 92.2% [80.9%, 100.0%] | 28.53 | 0 | 0 | — |
+| 2009 | Weather-regime Mondrian | Ridge | 80% | 103 | 91.3% [79.4%, 99.0%] | 26.85 | 0 | 0 | — |
+| 2009 | Climate-similarity weighting | Ridge | 80% | 103 | 92.2% [80.9%, 100.0%] | 27.89 | 0 | 0 | — |
+| 2009 | P33 reference | Ridge | 90% | 103 | 95.1% [85.4%, 100.0%] | 34.01 | 0 | 0 | — |
+| 2009 | Leave-one-year-out | Ridge | 90% | 103 | 95.1% [85.4%, 100.0%] | 34.01 | 0 | 0 | — |
+| 2009 | Training-only inflation | Ridge | 90% | 103 | 98.1% [94.2%, 100.0%] | 39.28 | 0 | 0 | — |
+| 2009 | Weather-regime Mondrian | Ridge | 90% | 103 | 99.0% [97.1%, 100.0%] | 38.13 | 0 | 0 | — |
+| 2009 | Climate-similarity weighting | Ridge | 90% | 103 | 98.1% [94.2%, 100.0%] | 38.34 | 0 | 0 | — |
+| 2009 | P33 reference | Forest | 80% | 103 | 84.5% [67.9%, 98.0%] | 25.78 | 0 | 0 | — |
+| 2009 | Leave-one-year-out | Forest | 80% | 103 | 84.5% [67.9%, 98.0%] | 25.78 | 0 | 0 | — |
+| 2009 | Training-only inflation | Forest | 80% | 103 | 95.1% [87.7%, 100.0%] | 33.01 | 0 | 0 | — |
+| 2009 | Weather-regime Mondrian | Forest | 80% | 103 | 89.3% [77.9%, 100.0%] | 28.86 | 0 | 0 | — |
+| 2009 | Climate-similarity weighting | Forest | 80% | 103 | 88.3% [72.0%, 99.0%] | 29.21 | 0 | 0 | — |
+| 2009 | P33 reference | Forest | 90% | 103 | 95.1% [87.7%, 100.0%] | 33.70 | 0 | 0 | — |
+| 2009 | Leave-one-year-out | Forest | 90% | 103 | 95.1% [87.7%, 100.0%] | 33.70 | 0 | 0 | — |
+| 2009 | Training-only inflation | Forest | 90% | 103 | 98.1% [94.2%, 100.0%] | 43.16 | 0 | 0 | — |
+| 2009 | Weather-regime Mondrian | Forest | 90% | 103 | 97.1% [93.1%, 100.0%] | 37.87 | 0 | 0 | — |
+| 2009 | Climate-similarity weighting | Forest | 90% | 103 | 98.1% [94.2%, 100.0%] | 39.28 | 0 | 0 | — |
+| 2010 | P33 reference | Ridge | 80% | 97 | 81.4% [63.2%, 96.6%] | 23.24 | 0 | 0 | — |
+| 2010 | Leave-one-year-out | Ridge | 80% | 97 | 81.4% [63.2%, 96.6%] | 23.24 | 0 | 0 | — |
+| 2010 | Training-only inflation | Ridge | 80% | 97 | 82.5% [64.1%, 97.9%] | 24.93 | 0 | 0 | — |
+| 2010 | Weather-regime Mondrian | Ridge | 80% | 97 | 77.3% [59.6%, 92.7%] | 23.34 | 0 | 0 | Yes |
+| 2010 | Climate-similarity weighting | Ridge | 80% | 97 | 79.4% [62.0%, 93.3%] | 22.82 | 0 | 0 | Yes |
+| 2010 | P33 reference | Ridge | 90% | 97 | 90.7% [77.8%, 100.0%] | 29.98 | 0 | 0 | — |
+| 2010 | Leave-one-year-out | Ridge | 90% | 97 | 90.7% [77.8%, 100.0%] | 29.98 | 0 | 0 | — |
+| 2010 | Training-only inflation | Ridge | 90% | 97 | 91.8% [81.1%, 100.0%] | 32.16 | 0 | 0 | — |
+| 2010 | Weather-regime Mondrian | Ridge | 90% | 97 | 92.8% [85.2%, 99.0%] | 30.43 | 0 | 0 | — |
+| 2010 | Climate-similarity weighting | Ridge | 90% | 97 | 90.7% [77.8%, 100.0%] | 29.77 | 0 | 0 | — |
+| 2010 | P33 reference | Forest | 80% | 97 | 86.6% [74.5%, 97.8%] | 21.38 | 0 | 0 | — |
+| 2010 | Leave-one-year-out | Forest | 80% | 97 | 86.6% [74.5%, 97.8%] | 21.38 | 0 | 0 | — |
+| 2010 | Training-only inflation | Forest | 80% | 97 | 89.7% [80.4%, 97.9%] | 24.89 | 0 | 0 | — |
+| 2010 | Weather-regime Mondrian | Forest | 80% | 97 | 84.5% [70.5%, 96.8%] | 21.45 | 0 | 0 | — |
+| 2010 | Climate-similarity weighting | Forest | 80% | 97 | 86.6% [74.5%, 97.8%] | 21.54 | 0 | 0 | — |
+| 2010 | P33 reference | Forest | 90% | 97 | 91.8% [82.9%, 100.0%] | 27.21 | 0 | 0 | — |
+| 2010 | Leave-one-year-out | Forest | 90% | 97 | 91.8% [82.9%, 100.0%] | 27.21 | 0 | 0 | — |
+| 2010 | Training-only inflation | Forest | 90% | 97 | 96.9% [92.5%, 100.0%] | 31.66 | 0 | 0 | — |
+| 2010 | Weather-regime Mondrian | Forest | 90% | 97 | 93.8% [86.7%, 100.0%] | 27.54 | 0 | 0 | — |
+| 2010 | Climate-similarity weighting | Forest | 90% | 97 | 91.8% [82.9%, 100.0%] | 27.69 | 0 | 0 | — |
+| 2011 | P33 reference | Ridge | 80% | 102 | 93.1% [85.0%, 99.1%] | 25.99 | 0 | 0 | — |
+| 2011 | Leave-one-year-out | Ridge | 80% | 102 | 93.1% [85.0%, 99.1%] | 25.99 | 0 | 0 | — |
+| 2011 | Training-only inflation | Ridge | 80% | 102 | 99.0% [97.1%, 100.0%] | 33.29 | 0 | 0 | — |
+| 2011 | Weather-regime Mondrian | Ridge | 80% | 102 | 95.1% [90.7%, 98.9%] | 26.52 | 0 | 0 | — |
+| 2011 | Climate-similarity weighting | Ridge | 80% | 102 | 95.1% [89.8%, 99.1%] | 27.73 | 0 | 0 | — |
+| 2011 | P33 reference | Ridge | 90% | 102 | 98.0% [95.3%, 100.0%] | 31.72 | 0 | 0 | — |
+| 2011 | Leave-one-year-out | Ridge | 90% | 102 | 98.0% [95.3%, 100.0%] | 31.72 | 0 | 0 | — |
+| 2011 | Training-only inflation | Ridge | 90% | 102 | 99.0% [97.1%, 100.0%] | 40.63 | 0 | 0 | — |
+| 2011 | Weather-regime Mondrian | Ridge | 90% | 102 | 97.1% [94.2%, 99.1%] | 33.03 | 0 | 0 | — |
+| 2011 | Climate-similarity weighting | Ridge | 90% | 102 | 99.0% [97.1%, 100.0%] | 33.96 | 0 | 0 | — |
+| 2011 | P33 reference | Forest | 80% | 102 | 91.2% [85.7%, 96.8%] | 23.07 | 0 | 0 | — |
+| 2011 | Leave-one-year-out | Forest | 80% | 102 | 91.2% [85.7%, 96.8%] | 23.07 | 0 | 0 | — |
+| 2011 | Training-only inflation | Forest | 80% | 102 | 96.1% [93.0%, 99.0%] | 28.00 | 0 | 0 | — |
+| 2011 | Weather-regime Mondrian | Forest | 80% | 102 | 92.2% [86.6%, 97.0%] | 24.06 | 0 | 0 | — |
+| 2011 | Climate-similarity weighting | Forest | 80% | 102 | 93.1% [89.1%, 97.1%] | 24.10 | 0 | 0 | — |
+| 2011 | P33 reference | Forest | 90% | 102 | 96.1% [93.0%, 99.0%] | 28.92 | 0 | 0 | — |
+| 2011 | Leave-one-year-out | Forest | 90% | 102 | 96.1% [93.0%, 99.0%] | 28.92 | 0 | 0 | — |
+| 2011 | Training-only inflation | Forest | 90% | 102 | 100.0% [100.0%, 100.0%] | 35.10 | 0 | 0 | — |
+| 2011 | Weather-regime Mondrian | Forest | 90% | 102 | 98.0% [95.1%, 100.0%] | 31.19 | 0 | 0 | — |
+| 2011 | Climate-similarity weighting | Forest | 90% | 102 | 97.1% [94.0%, 100.0%] | 31.32 | 0 | 0 | — |
+| 2012 | P33 reference | Ridge | 80% | 96 | 86.5% [75.2%, 94.7%] | 23.35 | 0 | 0 | — |
+| 2012 | Leave-one-year-out | Ridge | 80% | 96 | 86.5% [75.2%, 94.7%] | 23.35 | 0 | 0 | — |
+| 2012 | Training-only inflation | Ridge | 80% | 96 | 92.7% [84.7%, 98.9%] | 29.46 | 0 | 0 | — |
+| 2012 | Weather-regime Mondrian | Ridge | 80% | 96 | 90.6% [80.4%, 98.8%] | 26.73 | 0 | 0 | — |
+| 2012 | Climate-similarity weighting | Ridge | 80% | 96 | 88.5% [76.2%, 96.9%] | 25.93 | 0 | 0 | — |
+| 2012 | P33 reference | Ridge | 90% | 96 | 92.7% [84.7%, 98.9%] | 29.46 | 0 | 0 | — |
+| 2012 | Leave-one-year-out | Ridge | 90% | 96 | 92.7% [84.7%, 98.9%] | 29.46 | 0 | 0 | — |
+| 2012 | Training-only inflation | Ridge | 90% | 96 | 97.9% [95.3%, 100.0%] | 37.17 | 0 | 0 | — |
+| 2012 | Weather-regime Mondrian | Ridge | 90% | 96 | 93.8% [85.3%, 99.0%] | 32.07 | 0 | 0 | — |
+| 2012 | Climate-similarity weighting | Ridge | 90% | 96 | 93.8% [85.3%, 99.0%] | 30.47 | 0 | 0 | — |
+| 2012 | P33 reference | Forest | 80% | 96 | 78.1% [66.3%, 88.5%] | 21.06 | 0 | 0 | Yes |
+| 2012 | Leave-one-year-out | Forest | 80% | 96 | 78.1% [66.3%, 88.5%] | 21.06 | 0 | 0 | Yes |
+| 2012 | Training-only inflation | Forest | 80% | 96 | 84.4% [75.5%, 92.5%] | 24.08 | 0 | 0 | — |
+| 2012 | Weather-regime Mondrian | Forest | 80% | 96 | 80.2% [68.0%, 89.6%] | 22.01 | 0 | 0 | — |
+| 2012 | Climate-similarity weighting | Forest | 80% | 96 | 76.0% [62.7%, 86.9%] | 20.50 | 0 | 0 | Yes |
+| 2012 | P33 reference | Forest | 90% | 96 | 88.5% [80.4%, 96.2%] | 26.08 | 0 | 0 | Yes |
+| 2012 | Leave-one-year-out | Forest | 90% | 96 | 88.5% [80.4%, 96.2%] | 26.08 | 0 | 0 | Yes |
+| 2012 | Training-only inflation | Forest | 90% | 96 | 92.7% [87.4%, 97.9%] | 29.82 | 0 | 0 | — |
+| 2012 | Weather-regime Mondrian | Forest | 90% | 96 | 91.7% [85.3%, 97.7%] | 28.52 | 0 | 0 | — |
+| 2012 | Climate-similarity weighting | Forest | 90% | 96 | 88.5% [80.4%, 96.2%] | 26.95 | 0 | 0 | Yes |
+| 2013 | P33 reference | Ridge | 80% | 86 | 44.2% [25.7%, 58.1%] | 23.51 | 0 | 0 | Yes |
+| 2013 | Leave-one-year-out | Ridge | 80% | 86 | 44.2% [25.7%, 58.1%] | 23.51 | 0 | 0 | Yes |
+| 2013 | Training-only inflation | Ridge | 80% | 86 | 59.3% [40.3%, 73.6%] | 27.41 | 0 | 0 | Yes |
+| 2013 | Weather-regime Mondrian | Ridge | 80% | 86 | 43.0% [26.2%, 54.4%] | 22.81 | 0 | 0 | Yes |
+| 2013 | Climate-similarity weighting | Ridge | 80% | 86 | 43.0% [25.7%, 55.2%] | 23.13 | 0 | 0 | Yes |
+| 2013 | P33 reference | Ridge | 90% | 86 | 77.9% [64.9%, 87.9%] | 30.84 | 0 | 0 | Yes |
+| 2013 | Leave-one-year-out | Ridge | 90% | 86 | 77.9% [64.9%, 87.9%] | 30.84 | 0 | 0 | Yes |
+| 2013 | Training-only inflation | Ridge | 90% | 86 | 87.2% [80.0%, 92.5%] | 35.97 | 0 | 0 | Yes |
+| 2013 | Weather-regime Mondrian | Ridge | 90% | 86 | 76.7% [60.6%, 87.4%] | 30.15 | 0 | 0 | Yes |
+| 2013 | Climate-similarity weighting | Ridge | 90% | 86 | 79.1% [67.1%, 88.2%] | 31.06 | 0 | 0 | Yes |
+| 2013 | P33 reference | Forest | 80% | 86 | 60.5% [36.3%, 81.7%] | 22.10 | 0 | 0 | Yes |
+| 2013 | Leave-one-year-out | Forest | 80% | 86 | 60.5% [36.3%, 81.7%] | 22.10 | 0 | 0 | Yes |
+| 2013 | Training-only inflation | Forest | 80% | 86 | 69.8% [47.7%, 88.2%] | 25.11 | 0 | 0 | Yes |
+| 2013 | Weather-regime Mondrian | Forest | 80% | 86 | 58.1% [34.1%, 79.8%] | 21.78 | 0 | 0 | Yes |
+| 2013 | Climate-similarity weighting | Forest | 80% | 86 | 61.6% [39.1%, 81.7%] | 22.37 | 0 | 0 | Yes |
+| 2013 | P33 reference | Forest | 90% | 86 | 70.9% [50.0%, 88.5%] | 27.42 | 0 | 0 | Yes |
+| 2013 | Leave-one-year-out | Forest | 90% | 86 | 70.9% [50.0%, 88.5%] | 27.42 | 0 | 0 | Yes |
+| 2013 | Training-only inflation | Forest | 90% | 86 | 79.1% [63.9%, 90.8%] | 31.16 | 0 | 0 | Yes |
+| 2013 | Weather-regime Mondrian | Forest | 90% | 86 | 69.8% [47.7%, 88.2%] | 27.18 | 0 | 0 | Yes |
+| 2013 | Climate-similarity weighting | Forest | 90% | 86 | 75.6% [58.2%, 90.2%] | 29.61 | 0 | 0 | Yes |
+| 2014 | P33 reference | Ridge | 80% | 84 | 66.7% [47.4%, 83.8%] | 24.87 | 0 | 0 | Yes |
+| 2014 | Leave-one-year-out | Ridge | 80% | 84 | 66.7% [47.4%, 83.8%] | 24.87 | 0 | 0 | Yes |
+| 2014 | Training-only inflation | Ridge | 80% | 84 | 78.6% [62.6%, 91.3%] | 31.10 | 0 | 0 | Yes |
+| 2014 | Weather-regime Mondrian | Ridge | 80% | 84 | 63.1% [41.3%, 82.0%] | 23.46 | 0 | 0 | Yes |
+| 2014 | Climate-similarity weighting | Ridge | 80% | 84 | 67.9% [48.7%, 84.6%] | 25.98 | 0 | 0 | Yes |
+| 2014 | P33 reference | Ridge | 90% | 84 | 83.3% [67.0%, 96.2%] | 32.69 | 0 | 0 | Yes |
+| 2014 | Leave-one-year-out | Ridge | 90% | 84 | 83.3% [67.0%, 96.2%] | 32.69 | 0 | 0 | Yes |
+| 2014 | Training-only inflation | Ridge | 90% | 84 | 96.4% [88.8%, 100.0%] | 40.88 | 0 | 0 | — |
+| 2014 | Weather-regime Mondrian | Ridge | 90% | 84 | 79.8% [62.2%, 93.8%] | 30.72 | 0 | 0 | Yes |
+| 2014 | Climate-similarity weighting | Ridge | 90% | 84 | 83.3% [67.0%, 96.2%] | 33.67 | 0 | 0 | Yes |
+| 2014 | P33 reference | Forest | 80% | 84 | 51.2% [26.5%, 74.1%] | 22.55 | 0 | 0 | Yes |
+| 2014 | Leave-one-year-out | Forest | 80% | 84 | 51.2% [26.5%, 74.1%] | 22.55 | 0 | 0 | Yes |
+| 2014 | Training-only inflation | Forest | 80% | 84 | 72.6% [54.1%, 87.4%] | 28.05 | 0 | 0 | Yes |
+| 2014 | Weather-regime Mondrian | Forest | 80% | 84 | 53.6% [26.7%, 76.6%] | 22.18 | 0 | 0 | Yes |
+| 2014 | Climate-similarity weighting | Forest | 80% | 84 | 54.8% [30.8%, 76.2%] | 23.53 | 0 | 0 | Yes |
+| 2014 | P33 reference | Forest | 90% | 84 | 73.8% [56.4%, 87.7%] | 28.46 | 0 | 0 | Yes |
+| 2014 | Leave-one-year-out | Forest | 90% | 84 | 73.8% [56.4%, 87.7%] | 28.46 | 0 | 0 | Yes |
+| 2014 | Training-only inflation | Forest | 90% | 84 | 88.1% [78.8%, 96.3%] | 35.40 | 0 | 0 | Yes |
+| 2014 | Weather-regime Mondrian | Forest | 90% | 84 | 70.2% [51.5%, 86.3%] | 28.26 | 0 | 0 | Yes |
+| 2014 | Climate-similarity weighting | Forest | 90% | 84 | 77.4% [63.3%, 89.3%] | 30.87 | 0 | 0 | Yes |
+| 2015 | P33 reference | Ridge | 80% | 81 | 84.0% [71.4%, 94.7%] | 24.91 | 0 | 0 | — |
+| 2015 | Leave-one-year-out | Ridge | 80% | 81 | 84.0% [71.4%, 94.7%] | 24.91 | 0 | 0 | — |
+| 2015 | Training-only inflation | Ridge | 80% | 81 | 96.3% [93.3%, 98.9%] | 31.09 | 0 | 0 | — |
+| 2015 | Weather-regime Mondrian | Ridge | 80% | 81 | 86.4% [76.0%, 95.2%] | 26.48 | 0 | 0 | — |
+| 2015 | Climate-similarity weighting | Ridge | 80% | 81 | 84.0% [71.4%, 94.7%] | 24.91 | 0 | 0 | — |
+| 2015 | P33 reference | Ridge | 90% | 81 | 96.3% [93.3%, 98.9%] | 31.58 | 0 | 0 | — |
+| 2015 | Leave-one-year-out | Ridge | 90% | 81 | 96.3% [93.3%, 98.9%] | 31.58 | 0 | 0 | — |
+| 2015 | Training-only inflation | Ridge | 90% | 81 | 98.8% [96.4%, 100.0%] | 39.41 | 0 | 0 | — |
+| 2015 | Weather-regime Mondrian | Ridge | 90% | 81 | 97.5% [94.1%, 100.0%] | 32.91 | 0 | 0 | — |
+| 2015 | Climate-similarity weighting | Ridge | 90% | 81 | 96.3% [93.3%, 98.9%] | 31.98 | 0 | 0 | — |
+| 2015 | P33 reference | Forest | 80% | 81 | 81.5% [73.1%, 89.4%] | 21.61 | 0 | 0 | — |
+| 2015 | Leave-one-year-out | Forest | 80% | 81 | 81.5% [73.1%, 89.4%] | 21.61 | 0 | 0 | — |
+| 2015 | Training-only inflation | Forest | 80% | 81 | 93.8% [85.9%, 100.0%] | 25.24 | 0 | 0 | — |
+| 2015 | Weather-regime Mondrian | Forest | 80% | 81 | 81.5% [73.7%, 88.4%] | 22.91 | 0 | 0 | — |
+| 2015 | Climate-similarity weighting | Forest | 80% | 81 | 87.7% [78.4%, 95.0%] | 22.61 | 0 | 0 | — |
+| 2015 | P33 reference | Forest | 90% | 81 | 97.5% [93.9%, 100.0%] | 28.30 | 0 | 0 | — |
+| 2015 | Leave-one-year-out | Forest | 90% | 81 | 97.5% [93.9%, 100.0%] | 28.30 | 0 | 0 | — |
+| 2015 | Training-only inflation | Forest | 90% | 81 | 100.0% [100.0%, 100.0%] | 33.07 | 0 | 0 | — |
+| 2015 | Weather-regime Mondrian | Forest | 90% | 81 | 97.5% [94.5%, 100.0%] | 30.09 | 0 | 0 | — |
+| 2015 | Climate-similarity weighting | Forest | 90% | 81 | 97.5% [93.9%, 100.0%] | 29.50 | 0 | 0 | — |
+| 2016 | P33 reference | Ridge | 80% | 80 | 50.0% [31.9%, 66.3%] | 25.01 | 0 | 0 | Yes |
+| 2016 | Leave-one-year-out | Ridge | 80% | 80 | 50.0% [31.9%, 66.3%] | 25.01 | 0 | 0 | Yes |
+| 2016 | Training-only inflation | Ridge | 80% | 80 | 62.5% [42.1%, 78.2%] | 29.68 | 0 | 0 | Yes |
+| 2016 | Weather-regime Mondrian | Ridge | 80% | 80 | 60.0% [39.4%, 76.4%] | 27.06 | 0 | 0 | Yes |
+| 2016 | Climate-similarity weighting | Ridge | 80% | 80 | 60.0% [37.9%, 76.4%] | 28.05 | 0 | 0 | Yes |
+| 2016 | P33 reference | Ridge | 90% | 80 | 71.2% [53.3%, 85.1%] | 32.53 | 0 | 0 | Yes |
+| 2016 | Leave-one-year-out | Ridge | 90% | 80 | 71.2% [53.3%, 85.1%] | 32.53 | 0 | 0 | Yes |
+| 2016 | Training-only inflation | Ridge | 90% | 80 | 83.8% [67.9%, 94.8%] | 38.60 | 0 | 0 | Yes |
+| 2016 | Weather-regime Mondrian | Ridge | 90% | 80 | 73.8% [53.5%, 89.2%] | 33.50 | 0 | 0 | Yes |
+| 2016 | Climate-similarity weighting | Ridge | 90% | 80 | 77.5% [60.0%, 90.5%] | 34.53 | 0 | 0 | Yes |
+| 2016 | P33 reference | Forest | 80% | 80 | 53.8% [27.3%, 72.8%] | 22.81 | 0 | 0 | Yes |
+| 2016 | Leave-one-year-out | Forest | 80% | 80 | 53.8% [27.3%, 72.8%] | 22.81 | 0 | 0 | Yes |
+| 2016 | Training-only inflation | Forest | 80% | 80 | 71.2% [46.4%, 88.6%] | 29.10 | 0 | 0 | Yes |
+| 2016 | Weather-regime Mondrian | Forest | 80% | 80 | 60.0% [34.9%, 78.4%] | 24.77 | 0 | 0 | Yes |
+| 2016 | Climate-similarity weighting | Forest | 80% | 80 | 63.7% [38.0%, 81.0%] | 25.46 | 0 | 0 | Yes |
+| 2016 | P33 reference | Forest | 90% | 80 | 68.8% [43.7%, 85.7%] | 28.76 | 0 | 0 | Yes |
+| 2016 | Leave-one-year-out | Forest | 90% | 80 | 68.8% [43.7%, 85.7%] | 28.76 | 0 | 0 | Yes |
+| 2016 | Training-only inflation | Forest | 90% | 80 | 85.0% [68.1%, 95.7%] | 36.67 | 0 | 0 | Yes |
+| 2016 | Weather-regime Mondrian | Forest | 90% | 80 | 75.0% [54.7%, 90.0%] | 31.19 | 0 | 0 | Yes |
+| 2016 | Climate-similarity weighting | Forest | 90% | 80 | 80.0% [59.2%, 94.3%] | 31.72 | 0 | 0 | Yes |
+| 2017 | P33 reference | Ridge | 80% | 75 | 42.7% [28.2%, 59.0%] | 24.82 | 0 | 0 | Yes |
+| 2017 | Leave-one-year-out | Ridge | 80% | 75 | 42.7% [28.2%, 59.0%] | 24.82 | 0 | 0 | Yes |
+| 2017 | Training-only inflation | Ridge | 80% | 75 | 53.3% [39.5%, 69.6%] | 28.74 | 0 | 0 | Yes |
+| 2017 | Weather-regime Mondrian | Ridge | 80% | 75 | 44.0% [31.3%, 60.3%] | 25.58 | 0 | 0 | Yes |
+| 2017 | Climate-similarity weighting | Ridge | 80% | 75 | 52.0% [36.4%, 68.8%] | 27.79 | 0 | 0 | Yes |
+| 2017 | P33 reference | Ridge | 90% | 75 | 62.7% [48.1%, 77.3%] | 32.27 | 0 | 0 | Yes |
+| 2017 | Leave-one-year-out | Ridge | 90% | 75 | 62.7% [48.1%, 77.3%] | 32.27 | 0 | 0 | Yes |
+| 2017 | Training-only inflation | Ridge | 90% | 75 | 82.7% [70.9%, 94.8%] | 37.37 | 0 | 0 | Yes |
+| 2017 | Weather-regime Mondrian | Ridge | 90% | 75 | 68.0% [54.2%, 82.0%] | 32.73 | 0 | 0 | Yes |
+| 2017 | Climate-similarity weighting | Ridge | 90% | 75 | 72.0% [57.0%, 88.1%] | 34.40 | 0 | 0 | Yes |
+| 2017 | P33 reference | Forest | 80% | 75 | 48.0% [37.5%, 60.3%] | 22.72 | 0 | 0 | Yes |
+| 2017 | Leave-one-year-out | Forest | 80% | 75 | 48.0% [37.5%, 60.3%] | 22.72 | 0 | 0 | Yes |
+| 2017 | Training-only inflation | Forest | 80% | 75 | 76.0% [64.4%, 88.6%] | 30.75 | 0 | 0 | Yes |
+| 2017 | Weather-regime Mondrian | Forest | 80% | 75 | 62.7% [47.5%, 76.0%] | 24.76 | 0 | 0 | Yes |
+| 2017 | Climate-similarity weighting | Forest | 80% | 75 | 60.0% [46.4%, 75.0%] | 25.44 | 0 | 0 | Yes |
+| 2017 | P33 reference | Forest | 90% | 75 | 74.7% [61.5%, 88.5%] | 28.98 | 0 | 0 | Yes |
+| 2017 | Leave-one-year-out | Forest | 90% | 75 | 74.7% [61.5%, 88.5%] | 28.98 | 0 | 0 | Yes |
+| 2017 | Training-only inflation | Forest | 90% | 75 | 93.3% [84.2%, 100.0%] | 39.23 | 0 | 0 | — |
+| 2017 | Weather-regime Mondrian | Forest | 90% | 75 | 74.7% [56.1%, 89.5%] | 30.83 | 0 | 0 | Yes |
+| 2017 | Climate-similarity weighting | Forest | 90% | 75 | 78.7% [69.0%, 89.2%] | 31.77 | 0 | 0 | Yes |
+| 2018 | P33 reference | Ridge | 80% | 65 | 100.0% [100.0%, 100.0%] | 26.80 | 0 | 0 | — |
+| 2018 | Leave-one-year-out | Ridge | 80% | 65 | 100.0% [100.0%, 100.0%] | 26.80 | 0 | 0 | — |
+| 2018 | Training-only inflation | Ridge | 80% | 65 | 100.0% [100.0%, 100.0%] | 33.75 | 0 | 0 | — |
+| 2018 | Weather-regime Mondrian | Ridge | 80% | 65 | 100.0% [100.0%, 100.0%] | 27.12 | 0 | 0 | — |
+| 2018 | Climate-similarity weighting | Ridge | 80% | 65 | 100.0% [100.0%, 100.0%] | 28.30 | 0 | 0 | — |
+| 2018 | P33 reference | Ridge | 90% | 65 | 100.0% [100.0%, 100.0%] | 33.31 | 0 | 0 | — |
+| 2018 | Leave-one-year-out | Ridge | 90% | 65 | 100.0% [100.0%, 100.0%] | 33.31 | 0 | 0 | — |
+| 2018 | Training-only inflation | Ridge | 90% | 65 | 100.0% [100.0%, 100.0%] | 41.95 | 0 | 0 | — |
+| 2018 | Weather-regime Mondrian | Ridge | 90% | 65 | 100.0% [100.0%, 100.0%] | 33.71 | 0 | 0 | — |
+| 2018 | Climate-similarity weighting | Ridge | 90% | 65 | 100.0% [100.0%, 100.0%] | 33.72 | 0 | 0 | — |
+| 2018 | P33 reference | Forest | 80% | 65 | 87.7% [82.1%, 93.9%] | 23.46 | 0 | 0 | — |
+| 2018 | Leave-one-year-out | Forest | 80% | 65 | 87.7% [82.1%, 93.9%] | 23.46 | 0 | 0 | — |
+| 2018 | Training-only inflation | Forest | 80% | 65 | 96.9% [93.0%, 100.0%] | 31.63 | 0 | 0 | — |
+| 2018 | Weather-regime Mondrian | Forest | 80% | 65 | 84.6% [78.1%, 90.9%] | 22.40 | 0 | 0 | — |
+| 2018 | Climate-similarity weighting | Forest | 80% | 65 | 87.7% [82.1%, 93.9%] | 23.46 | 0 | 0 | — |
+| 2018 | P33 reference | Forest | 90% | 65 | 96.9% [93.0%, 100.0%] | 28.94 | 0 | 0 | — |
+| 2018 | Leave-one-year-out | Forest | 90% | 65 | 96.9% [93.0%, 100.0%] | 28.94 | 0 | 0 | — |
+| 2018 | Training-only inflation | Forest | 90% | 65 | 100.0% [100.0%, 100.0%] | 39.02 | 0 | 0 | — |
+| 2018 | Weather-regime Mondrian | Forest | 90% | 65 | 93.8% [89.2%, 98.2%] | 28.10 | 0 | 0 | — |
+| 2018 | Climate-similarity weighting | Forest | 90% | 65 | 96.9% [93.0%, 100.0%] | 29.41 | 0 | 0 | — |
+| 2019 | P33 reference | Ridge | 80% | 64 | 70.3% [44.4%, 90.0%] | 27.02 | 0 | 0 | Yes |
+| 2019 | Leave-one-year-out | Ridge | 80% | 64 | 70.3% [44.4%, 90.0%] | 27.02 | 0 | 0 | Yes |
+| 2019 | Training-only inflation | Ridge | 80% | 64 | 82.8% [60.8%, 96.7%] | 32.04 | 0 | 0 | — |
+| 2019 | Weather-regime Mondrian | Ridge | 80% | 64 | 67.2% [38.6%, 88.7%] | 26.44 | 0 | 0 | Yes |
+| 2019 | Climate-similarity weighting | Ridge | 80% | 64 | 65.6% [37.5%, 87.9%] | 24.45 | 0 | 0 | Yes |
+| 2019 | P33 reference | Ridge | 90% | 64 | 84.4% [62.2%, 97.6%] | 33.43 | 0 | 0 | Yes |
+| 2019 | Leave-one-year-out | Ridge | 90% | 64 | 84.4% [62.2%, 97.6%] | 33.43 | 0 | 0 | Yes |
+| 2019 | Training-only inflation | Ridge | 90% | 64 | 87.5% [68.5%, 98.8%] | 39.63 | 0 | 0 | Yes |
+| 2019 | Weather-regime Mondrian | Ridge | 90% | 64 | 81.2% [61.1%, 95.3%] | 32.75 | 0 | 0 | Yes |
+| 2019 | Climate-similarity weighting | Ridge | 90% | 64 | 78.1% [56.1%, 93.4%] | 30.24 | 0 | 0 | Yes |
+| 2019 | P33 reference | Forest | 80% | 64 | 50.0% [38.1%, 63.2%] | 23.06 | 0 | 0 | Yes |
+| 2019 | Leave-one-year-out | Forest | 80% | 64 | 50.0% [38.1%, 63.2%] | 23.06 | 0 | 0 | Yes |
+| 2019 | Training-only inflation | Forest | 80% | 64 | 73.4% [58.5%, 84.8%] | 30.45 | 0 | 0 | Yes |
+| 2019 | Weather-regime Mondrian | Forest | 80% | 64 | 43.8% [32.8%, 55.1%] | 21.84 | 0 | 0 | Yes |
+| 2019 | Climate-similarity weighting | Forest | 80% | 64 | 48.4% [33.9%, 62.3%] | 21.86 | 0 | 0 | Yes |
+| 2019 | P33 reference | Forest | 90% | 64 | 71.9% [55.2%, 84.6%] | 29.53 | 0 | 0 | Yes |
+| 2019 | Leave-one-year-out | Forest | 90% | 64 | 71.9% [55.2%, 84.6%] | 29.53 | 0 | 0 | Yes |
+| 2019 | Training-only inflation | Forest | 90% | 64 | 93.8% [86.0%, 98.6%] | 38.99 | 0 | 0 | — |
+| 2019 | Weather-regime Mondrian | Forest | 90% | 64 | 73.4% [60.8%, 83.3%] | 27.66 | 0 | 0 | Yes |
+| 2019 | Climate-similarity weighting | Forest | 90% | 64 | 68.8% [54.5%, 79.1%] | 27.91 | 0 | 0 | Yes |
+| 2020 | P33 reference | Ridge | 80% | 94 | 89.4% [79.3%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2020 | Leave-one-year-out | Ridge | 80% | 94 | 89.4% [79.3%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2020 | Training-only inflation | Ridge | 80% | 94 | 89.4% [79.3%, 97.1%] | 22.79 | 0 | 0 | — |
+| 2020 | Weather-regime Mondrian | Ridge | 80% | 94 | 89.4% [79.3%, 97.1%] | 23.34 | 0 | 0 | — |
+| 2020 | Climate-similarity weighting | Ridge | 80% | 94 | 93.6% [85.7%, 100.0%] | 24.91 | 0 | 0 | — |
+| 2020 | P33 reference | Ridge | 90% | 94 | 98.9% [96.8%, 100.0%] | 28.61 | 0 | 0 | — |
+| 2020 | Leave-one-year-out | Ridge | 90% | 94 | 98.9% [96.8%, 100.0%] | 28.61 | 0 | 0 | — |
+| 2020 | Training-only inflation | Ridge | 90% | 94 | 98.9% [96.8%, 100.0%] | 28.61 | 0 | 0 | — |
+| 2020 | Weather-regime Mondrian | Ridge | 90% | 94 | 98.9% [96.8%, 100.0%] | 29.47 | 0 | 0 | — |
+| 2020 | Climate-similarity weighting | Ridge | 90% | 94 | 100.0% [100.0%, 100.0%] | 31.58 | 0 | 0 | — |
+| 2020 | P33 reference | Forest | 80% | 94 | 87.2% [76.9%, 95.7%] | 20.96 | 0 | 0 | — |
+| 2020 | Leave-one-year-out | Forest | 80% | 94 | 87.2% [76.9%, 95.7%] | 20.96 | 0 | 0 | — |
+| 2020 | Training-only inflation | Forest | 80% | 94 | 90.4% [82.2%, 97.8%] | 23.28 | 0 | 0 | — |
+| 2020 | Weather-regime Mondrian | Forest | 80% | 94 | 83.0% [73.3%, 90.7%] | 20.84 | 0 | 0 | — |
+| 2020 | Climate-similarity weighting | Forest | 80% | 94 | 88.3% [78.5%, 95.9%] | 21.97 | 0 | 0 | — |
+| 2020 | P33 reference | Forest | 90% | 94 | 92.6% [84.8%, 98.1%] | 27.29 | 0 | 0 | — |
+| 2020 | Leave-one-year-out | Forest | 90% | 94 | 92.6% [84.8%, 98.1%] | 27.29 | 0 | 0 | — |
+| 2020 | Training-only inflation | Forest | 90% | 94 | 97.9% [94.9%, 100.0%] | 30.31 | 0 | 0 | — |
+| 2020 | Weather-regime Mondrian | Forest | 90% | 94 | 93.6% [86.4%, 98.9%] | 27.20 | 0 | 0 | — |
+| 2020 | Climate-similarity weighting | Forest | 90% | 94 | 94.7% [87.2%, 100.0%] | 28.91 | 0 | 0 | — |
+| 2021 | P33 reference | Ridge | 80% | 85 | 76.5% [60.6%, 89.7%] | 24.78 | 0 | 0 | Yes |
+| 2021 | Leave-one-year-out | Ridge | 80% | 85 | 76.5% [60.6%, 89.7%] | 24.78 | 0 | 0 | Yes |
+| 2021 | Training-only inflation | Ridge | 80% | 85 | 85.9% [73.7%, 95.0%] | 31.33 | 0 | 0 | — |
+| 2021 | Weather-regime Mondrian | Ridge | 80% | 85 | 78.8% [63.7%, 91.3%] | 25.42 | 0 | 0 | Yes |
+| 2021 | Climate-similarity weighting | Ridge | 80% | 85 | 76.5% [60.6%, 89.7%] | 25.13 | 0 | 0 | Yes |
+| 2021 | P33 reference | Ridge | 90% | 85 | 85.9% [73.7%, 95.0%] | 31.29 | 0 | 0 | Yes |
+| 2021 | Leave-one-year-out | Ridge | 90% | 85 | 85.9% [73.7%, 95.0%] | 31.29 | 0 | 0 | Yes |
+| 2021 | Training-only inflation | Ridge | 90% | 85 | 92.9% [82.6%, 100.0%] | 39.56 | 0 | 0 | — |
+| 2021 | Weather-regime Mondrian | Ridge | 90% | 85 | 85.9% [72.7%, 96.0%] | 31.55 | 0 | 0 | Yes |
+| 2021 | Climate-similarity weighting | Ridge | 90% | 85 | 88.2% [77.0%, 97.4%] | 31.62 | 0 | 0 | Yes |
+| 2021 | P33 reference | Forest | 80% | 85 | 71.8% [46.0%, 90.8%] | 22.38 | 0 | 0 | Yes |
+| 2021 | Leave-one-year-out | Forest | 80% | 85 | 71.8% [46.0%, 90.8%] | 22.38 | 0 | 0 | Yes |
+| 2021 | Training-only inflation | Forest | 80% | 85 | 80.0% [59.2%, 95.0%] | 28.29 | 0 | 0 | — |
+| 2021 | Weather-regime Mondrian | Forest | 80% | 85 | 71.8% [47.5%, 89.9%] | 23.26 | 0 | 0 | Yes |
+| 2021 | Climate-similarity weighting | Forest | 80% | 85 | 71.8% [46.0%, 90.8%] | 23.12 | 0 | 0 | Yes |
+| 2021 | P33 reference | Forest | 90% | 85 | 78.8% [57.8%, 95.0%] | 27.66 | 0 | 0 | Yes |
+| 2021 | Leave-one-year-out | Forest | 90% | 85 | 78.8% [57.8%, 95.0%] | 27.66 | 0 | 0 | Yes |
+| 2021 | Training-only inflation | Forest | 90% | 85 | 88.2% [70.5%, 100.0%] | 34.96 | 0 | 0 | Yes |
+| 2021 | Weather-regime Mondrian | Forest | 90% | 85 | 80.0% [60.5%, 94.3%] | 29.73 | 0 | 0 | Yes |
+| 2021 | Climate-similarity weighting | Forest | 90% | 85 | 81.2% [59.7%, 96.2%] | 29.78 | 0 | 0 | Yes |
+| 2022 | P33 reference | Ridge | 80% | 87 | 71.3% [52.1%, 88.9%] | 24.05 | 0 | 0 | Yes |
+| 2022 | Leave-one-year-out | Ridge | 80% | 87 | 71.3% [52.1%, 88.9%] | 24.05 | 0 | 0 | Yes |
+| 2022 | Training-only inflation | Ridge | 80% | 87 | 86.2% [71.1%, 98.7%] | 29.21 | 0 | 0 | — |
+| 2022 | Weather-regime Mondrian | Ridge | 80% | 87 | 77.0% [58.2%, 92.5%] | 25.02 | 0 | 0 | Yes |
+| 2022 | Climate-similarity weighting | Ridge | 80% | 87 | 81.6% [65.9%, 94.5%] | 27.30 | 0 | 0 | — |
+| 2022 | P33 reference | Ridge | 90% | 87 | 89.7% [77.4%, 100.0%] | 30.81 | 0 | 0 | Yes |
+| 2022 | Leave-one-year-out | Ridge | 90% | 87 | 89.7% [77.4%, 100.0%] | 30.81 | 0 | 0 | Yes |
+| 2022 | Training-only inflation | Ridge | 90% | 87 | 94.3% [84.0%, 100.0%] | 37.41 | 0 | 0 | — |
+| 2022 | Weather-regime Mondrian | Ridge | 90% | 87 | 87.4% [71.3%, 97.8%] | 31.62 | 0 | 0 | Yes |
+| 2022 | Climate-similarity weighting | Ridge | 90% | 87 | 90.8% [77.8%, 100.0%] | 32.99 | 0 | 0 | — |
+| 2022 | P33 reference | Forest | 80% | 87 | 80.5% [69.0%, 90.1%] | 22.11 | 0 | 0 | — |
+| 2022 | Leave-one-year-out | Forest | 80% | 87 | 80.5% [69.0%, 90.1%] | 22.11 | 0 | 0 | — |
+| 2022 | Training-only inflation | Forest | 80% | 87 | 88.5% [76.2%, 96.5%] | 26.86 | 0 | 0 | — |
+| 2022 | Weather-regime Mondrian | Forest | 80% | 87 | 83.9% [68.3%, 94.3%] | 24.34 | 0 | 0 | — |
+| 2022 | Climate-similarity weighting | Forest | 80% | 87 | 80.5% [69.0%, 90.1%] | 23.26 | 0 | 0 | — |
+| 2022 | P33 reference | Forest | 90% | 87 | 89.7% [80.0%, 96.5%] | 29.11 | 0 | 0 | Yes |
+| 2022 | Leave-one-year-out | Forest | 90% | 87 | 89.7% [80.0%, 96.5%] | 29.11 | 0 | 0 | Yes |
+| 2022 | Training-only inflation | Forest | 90% | 87 | 97.7% [92.4%, 100.0%] | 35.36 | 0 | 0 | — |
+| 2022 | Weather-regime Mondrian | Forest | 90% | 87 | 94.3% [81.0%, 100.0%] | 31.88 | 0 | 0 | — |
+| 2022 | Climate-similarity weighting | Forest | 90% | 87 | 89.7% [80.0%, 96.5%] | 32.28 | 0 | 0 | Yes |
+| 2023 | P33 reference | Ridge | 80% | 69 | 81.2% [70.6%, 89.6%] | 26.48 | 0 | 0 | — |
+| 2023 | Leave-one-year-out | Ridge | 80% | 69 | 81.2% [70.6%, 89.6%] | 26.48 | 0 | 0 | — |
+| 2023 | Training-only inflation | Ridge | 80% | 69 | 87.0% [77.5%, 94.2%] | 32.44 | 0 | 0 | — |
+| 2023 | Weather-regime Mondrian | Ridge | 80% | 69 | 79.7% [66.7%, 90.0%] | 29.14 | 0 | 0 | Yes |
+| 2023 | Climate-similarity weighting | Ridge | 80% | 69 | 82.6% [71.0%, 91.9%] | 28.81 | 0 | 0 | — |
+| 2023 | P33 reference | Ridge | 90% | 69 | 89.9% [83.9%, 95.1%] | 33.45 | 0 | 0 | Yes |
+| 2023 | Leave-one-year-out | Ridge | 90% | 69 | 89.9% [83.9%, 95.1%] | 33.45 | 0 | 0 | Yes |
+| 2023 | Training-only inflation | Ridge | 90% | 69 | 97.1% [93.0%, 100.0%] | 40.96 | 0 | 0 | — |
+| 2023 | Weather-regime Mondrian | Ridge | 90% | 69 | 94.2% [87.8%, 98.6%] | 35.92 | 0 | 0 | — |
+| 2023 | Climate-similarity weighting | Ridge | 90% | 69 | 91.3% [86.0%, 95.5%] | 34.54 | 0 | 0 | — |
+| 2023 | P33 reference | Forest | 80% | 69 | 68.1% [53.7%, 83.1%] | 23.33 | 0 | 0 | Yes |
+| 2023 | Leave-one-year-out | Forest | 80% | 69 | 68.1% [53.7%, 83.1%] | 23.33 | 0 | 0 | Yes |
+| 2023 | Training-only inflation | Forest | 80% | 69 | 79.7% [70.4%, 90.5%] | 30.15 | 0 | 0 | Yes |
+| 2023 | Weather-regime Mondrian | Forest | 80% | 69 | 71.0% [56.7%, 84.7%] | 27.08 | 0 | 0 | Yes |
+| 2023 | Climate-similarity weighting | Forest | 80% | 69 | 68.1% [53.7%, 83.1%] | 24.55 | 0 | 0 | Yes |
+| 2023 | P33 reference | Forest | 90% | 69 | 78.3% [66.7%, 90.4%] | 29.10 | 0 | 0 | Yes |
+| 2023 | Leave-one-year-out | Forest | 90% | 69 | 78.3% [66.7%, 90.4%] | 29.10 | 0 | 0 | Yes |
+| 2023 | Training-only inflation | Forest | 90% | 69 | 92.8% [86.2%, 98.4%] | 37.61 | 0 | 0 | — |
+| 2023 | Weather-regime Mondrian | Forest | 90% | 69 | 87.0% [79.3%, 92.8%] | 33.86 | 0 | 0 | Yes |
+| 2023 | Climate-similarity weighting | Forest | 90% | 69 | 81.2% [73.1%, 91.2%] | 30.99 | 0 | 0 | Yes |
+
+</details>
+
+#### Kansas-to-state transfer
+
+P32 contains the full preferred-with-fallback cohort and overlapping historical years. P37 uses its non-irrigated common test tail with Kansas training restricted to earlier years. P37 k = 0 uses Kansas radii. Positive k replaces the radius using the named district's earlier local years.
+
+##### Nebraska
+
+| Evaluation | Method | Learner | Nominal | n | Coverage [95% interval] | Mean width | Unbounded | Unavailable | Below nominal |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P32 spatial transfer | P33 reference | Ridge | 80% | 1,733 | 75.6% [70.7%, 82.5%] | 26.71 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Ridge | 80% | 1,733 | 75.6% [70.7%, 82.5%] | 26.71 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Ridge | 80% | 1,733 | 80.6% [76.4%, 86.7%] | 29.45 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Ridge | 80% | 1,733 | 80.0% [75.8%, 86.8%] | 29.10 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Ridge | 80% | 1,733 | 77.0% [72.6%, 83.6%] | 27.56 | 0 | 0 | Yes |
+| P32 spatial transfer | P33 reference | Ridge | 90% | 1,733 | 85.3% [82.3%, 90.2%] | 32.72 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Ridge | 90% | 1,733 | 85.3% [82.3%, 90.2%] | 32.72 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Ridge | 90% | 1,733 | 88.5% [85.8%, 92.8%] | 36.07 | 0 | 0 | Yes |
+| P32 spatial transfer | Weather-regime Mondrian | Ridge | 90% | 1,733 | 88.9% [86.3%, 93.1%] | 36.37 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Ridge | 90% | 1,733 | 87.1% [84.4%, 91.5%] | 34.70 | 0 | 0 | Yes |
+| P32 spatial transfer | P33 reference | Forest | 80% | 1,733 | 74.4% [69.5%, 79.9%] | 24.84 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Forest | 80% | 1,733 | 74.4% [69.5%, 79.9%] | 24.84 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Forest | 80% | 1,733 | 83.8% [80.4%, 88.0%] | 29.96 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Forest | 80% | 1,733 | 81.1% [77.6%, 86.2%] | 28.42 | 0 | 0 | — |
+| P32 spatial transfer | Climate-similarity weighting | Forest | 80% | 1,733 | 73.7% [69.1%, 78.8%] | 24.11 | 0 | 0 | Yes |
+| P32 spatial transfer | P33 reference | Forest | 90% | 1,733 | 87.2% [83.8%, 91.3%] | 33.28 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Forest | 90% | 1,733 | 87.2% [83.8%, 91.3%] | 33.28 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Forest | 90% | 1,733 | 92.8% [90.7%, 95.2%] | 40.14 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Forest | 90% | 1,733 | 90.7% [88.0%, 94.0%] | 37.07 | 0 | 0 | — |
+| P32 spatial transfer | Climate-similarity weighting | Forest | 90% | 1,733 | 87.9% [84.7%, 91.8%] | 33.58 | 0 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Ridge | 80% | 462 | 55.0% [37.9%, 70.7%] | 18.34 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Ridge | 80% | 462 | 55.0% [37.9%, 70.7%] | 18.34 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Ridge | 80% | 462 | 58.9% [41.0%, 75.7%] | 19.89 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Ridge | 80% | 462 | 54.5% [38.0%, 69.7%] | 18.28 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Ridge | 80% | 462 | 69.5% [65.9%, 74.2%] | Unbounded | 67 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Ridge | 90% | 462 | 64.5% [45.2%, 81.9%] | 22.95 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Ridge | 90% | 462 | 64.5% [45.2%, 81.9%] | 22.95 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Ridge | 90% | 462 | 68.0% [47.4%, 86.0%] | 24.89 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Ridge | 90% | 462 | 66.2% [46.4%, 83.8%] | 23.90 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Ridge | 90% | 462 | 85.3% [80.5%, 90.8%] | Unbounded | 142 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Forest | 80% | 462 | 53.9% [39.2%, 65.9%] | 18.85 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Forest | 80% | 462 | 53.9% [39.2%, 65.9%] | 18.85 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Forest | 80% | 462 | 54.1% [39.7%, 66.1%] | 18.85 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Forest | 80% | 462 | 53.7% [38.5%, 66.1%] | 19.19 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Forest | 80% | 462 | 69.9% [65.0%, 74.1%] | Unbounded | 67 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Forest | 90% | 462 | 68.8% [54.8%, 81.2%] | 25.17 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Forest | 90% | 462 | 68.8% [54.8%, 81.2%] | 25.17 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Forest | 90% | 462 | 68.8% [54.8%, 81.2%] | 25.18 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Forest | 90% | 462 | 72.5% [58.3%, 86.3%] | 27.17 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Forest | 90% | 462 | 82.3% [77.3%, 86.2%] | Unbounded | 142 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Ridge | 80% | 462 | 66.7% [43.1%, 87.4%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Ridge | 80% | 462 | 66.7% [43.1%, 87.4%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Ridge | 80% | 462 | 68.4% [44.6%, 89.3%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Ridge | 80% | 462 | 72.1% [50.6%, 89.3%] | Unbounded | 65 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Ridge | 80% | 462 | 76.6% [56.9%, 91.9%] | Unbounded | 91 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Ridge | 90% | 462 | 73.2% [48.6%, 94.3%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Ridge | 90% | 462 | 73.2% [48.6%, 94.3%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Ridge | 90% | 462 | 76.0% [51.6%, 96.3%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Ridge | 90% | 462 | 79.2% [57.9%, 96.2%] | Unbounded | 90 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Ridge | 90% | 462 | 85.9% [69.0%, 99.0%] | Unbounded | 183 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Forest | 80% | 462 | 55.6% [33.8%, 72.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Forest | 80% | 462 | 55.6% [33.8%, 72.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Forest | 80% | 462 | 55.6% [33.8%, 72.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Forest | 80% | 462 | 59.5% [39.5%, 75.0%] | Unbounded | 65 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Forest | 80% | 462 | 70.3% [50.3%, 85.8%] | Unbounded | 91 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Forest | 90% | 462 | 64.7% [41.0%, 83.7%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Forest | 90% | 462 | 64.7% [41.0%, 83.7%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Forest | 90% | 462 | 64.7% [41.0%, 83.7%] | Unbounded | 1 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Forest | 90% | 462 | 74.0% [56.6%, 88.3%] | Unbounded | 90 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Forest | 90% | 462 | 84.4% [68.4%, 96.9%] | Unbounded | 183 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Ridge | 80% | 462 | 63.0% [42.6%, 81.2%] | 21.92 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Ridge | 80% | 462 | 63.0% [42.6%, 81.2%] | 21.92 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Ridge | 80% | 462 | 66.0% [45.2%, 84.9%] | 23.77 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Ridge | 80% | 462 | 70.6% [50.7%, 88.2%] | Unbounded | 8 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Ridge | 80% | 462 | 74.9% [56.1%, 91.6%] | Unbounded | 80 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Ridge | 90% | 462 | 70.6% [48.4%, 90.0%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Ridge | 90% | 462 | 70.6% [48.4%, 90.0%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Ridge | 90% | 462 | 73.4% [52.2%, 91.9%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Ridge | 90% | 462 | 77.7% [55.9%, 94.7%] | Unbounded | 78 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Ridge | 90% | 462 | 81.6% [60.5%, 98.8%] | Unbounded | 138 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Forest | 80% | 462 | 51.7% [33.6%, 66.0%] | 17.40 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Forest | 80% | 462 | 51.7% [33.6%, 66.0%] | 17.40 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Forest | 80% | 462 | 51.9% [33.7%, 66.3%] | 17.41 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Forest | 80% | 462 | 54.3% [37.0%, 67.2%] | Unbounded | 8 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Forest | 80% | 462 | 66.7% [47.8%, 82.3%] | Unbounded | 80 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Forest | 90% | 462 | 61.7% [40.6%, 78.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Forest | 90% | 462 | 61.7% [40.6%, 78.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Forest | 90% | 462 | 61.7% [40.6%, 78.8%] | Unbounded | 1 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Forest | 90% | 462 | 69.7% [49.3%, 85.7%] | Unbounded | 78 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Forest | 90% | 462 | 77.7% [56.2%, 95.7%] | Unbounded | 138 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Ridge | 80% | 462 | 59.7% [40.6%, 75.7%] | 20.52 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Ridge | 80% | 462 | 59.7% [40.6%, 75.7%] | 20.52 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Ridge | 80% | 462 | 63.6% [43.3%, 81.2%] | 22.25 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Ridge | 80% | 462 | 68.4% [50.4%, 83.0%] | Unbounded | 8 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Ridge | 80% | 462 | 72.1% [54.8%, 86.9%] | Unbounded | 71 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Ridge | 90% | 462 | 69.3% [48.5%, 88.5%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Ridge | 90% | 462 | 69.3% [48.5%, 88.5%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Ridge | 90% | 462 | 71.6% [51.9%, 90.2%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Ridge | 90% | 462 | 77.1% [55.5%, 93.6%] | Unbounded | 63 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Ridge | 90% | 462 | 79.2% [59.5%, 96.1%] | Unbounded | 101 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Forest | 80% | 462 | 51.7% [35.4%, 65.1%] | 17.10 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Forest | 80% | 462 | 51.7% [35.4%, 65.1%] | 17.10 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Forest | 80% | 462 | 51.7% [35.4%, 65.1%] | 17.11 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Forest | 80% | 462 | 54.8% [39.0%, 67.9%] | Unbounded | 8 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Forest | 80% | 462 | 66.0% [49.0%, 81.7%] | Unbounded | 71 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Forest | 90% | 462 | 60.2% [40.5%, 75.0%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Forest | 90% | 462 | 60.2% [40.5%, 75.0%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Forest | 90% | 462 | 60.2% [40.5%, 75.0%] | Unbounded | 1 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Forest | 90% | 462 | 69.7% [48.1%, 86.0%] | Unbounded | 63 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Forest | 90% | 462 | 77.1% [57.4%, 94.1%] | Unbounded | 101 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Ridge | 80% | 462 | 62.6% [44.9%, 78.5%] | 22.16 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Ridge | 80% | 462 | 62.6% [44.9%, 78.5%] | 22.16 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Ridge | 80% | 462 | 66.7% [49.4%, 82.2%] | 24.03 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Ridge | 80% | 462 | 68.0% [55.5%, 81.0%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Ridge | 80% | 462 | 68.4% [50.2%, 87.1%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Ridge | 90% | 462 | 75.1% [62.2%, 89.1%] | 28.44 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Ridge | 90% | 462 | 75.1% [62.2%, 89.1%] | 28.44 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Ridge | 90% | 462 | 79.4% [70.1%, 91.6%] | 30.84 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Ridge | 90% | 462 | 77.3% [65.7%, 89.3%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Ridge | 90% | 462 | 80.1% [66.6%, 92.9%] | Unbounded | 63 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Forest | 80% | 462 | 55.4% [41.2%, 68.3%] | 19.33 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Forest | 80% | 462 | 55.4% [41.2%, 68.3%] | 19.33 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Forest | 80% | 462 | 55.4% [41.2%, 68.3%] | 19.34 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Forest | 80% | 462 | 58.7% [48.8%, 68.2%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Forest | 80% | 462 | 59.7% [43.7%, 76.5%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Forest | 90% | 462 | 66.7% [55.5%, 76.8%] | 24.77 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Forest | 90% | 462 | 66.7% [55.5%, 76.8%] | 24.77 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Forest | 90% | 462 | 66.7% [55.5%, 76.8%] | 24.78 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Forest | 90% | 462 | 69.9% [62.9%, 77.8%] | Unbounded | 8 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Forest | 90% | 462 | 80.1% [67.2%, 93.0%] | Unbounded | 63 | 0 | Yes |
+
+##### Oklahoma
+
+| Evaluation | Method | Learner | Nominal | n | Coverage [95% interval] | Mean width | Unbounded | Unavailable | Below nominal |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P32 spatial transfer | P33 reference | Ridge | 80% | 1,800 | 76.3% [66.2%, 83.6%] | 26.71 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Ridge | 80% | 1,800 | 76.3% [66.2%, 83.6%] | 26.71 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Ridge | 80% | 1,800 | 82.0% [73.0%, 88.8%] | 29.45 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Ridge | 80% | 1,800 | 58.9% [46.3%, 67.9%] | 19.55 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Ridge | 80% | 1,800 | 83.6% [77.5%, 88.6%] | Unbounded | 523 | 0 | — |
+| P32 spatial transfer | P33 reference | Ridge | 90% | 1,800 | 86.1% [78.8%, 91.5%] | 32.72 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Ridge | 90% | 1,800 | 86.1% [78.8%, 91.5%] | 32.72 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Ridge | 90% | 1,800 | 90.4% [85.2%, 94.3%] | 36.07 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Ridge | 90% | 1,800 | 79.1% [68.7%, 86.7%] | 28.10 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Ridge | 90% | 1,800 | 92.7% [89.1%, 95.6%] | Unbounded | 523 | 0 | — |
+| P32 spatial transfer | P33 reference | Forest | 80% | 1,800 | 65.4% [53.9%, 74.0%] | 24.84 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Forest | 80% | 1,800 | 65.4% [53.9%, 74.0%] | 24.84 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Forest | 80% | 1,800 | 77.5% [67.3%, 85.0%] | 29.96 | 0 | 0 | Yes |
+| P32 spatial transfer | Weather-regime Mondrian | Forest | 80% | 1,800 | 50.7% [37.5%, 60.7%] | 19.11 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Forest | 80% | 1,800 | 77.3% [68.1%, 84.0%] | Unbounded | 523 | 0 | Yes |
+| P32 spatial transfer | P33 reference | Forest | 90% | 1,800 | 83.9% [75.0%, 90.0%] | 33.28 | 0 | 0 | Yes |
+| P32 spatial transfer | Leave-one-year-out | Forest | 90% | 1,800 | 83.9% [75.0%, 90.0%] | 33.28 | 0 | 0 | Yes |
+| P32 spatial transfer | Training-only inflation | Forest | 90% | 1,800 | 92.1% [86.4%, 95.7%] | 40.14 | 0 | 0 | — |
+| P32 spatial transfer | Weather-regime Mondrian | Forest | 90% | 1,800 | 60.8% [47.1%, 71.2%] | 23.77 | 0 | 0 | Yes |
+| P32 spatial transfer | Climate-similarity weighting | Forest | 90% | 1,800 | 90.2% [84.7%, 94.1%] | Unbounded | 523 | 0 | — |
+| P37 · 0 local years | P33 reference | Ridge | 80% | 88 | 14.8% [3.7%, 45.5%] | 18.49 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Ridge | 80% | 88 | 14.8% [3.7%, 45.5%] | 18.49 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Ridge | 80% | 88 | 15.9% [3.9%, 45.5%] | 20.27 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Ridge | 80% | 88 | 14.8% [3.7%, 45.5%] | 18.55 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Ridge | 80% | 88 | 71.6% [55.6%, 87.2%] | Unbounded | 55 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Ridge | 90% | 88 | 20.5% [7.8%, 46.3%] | 23.36 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Ridge | 90% | 88 | 20.5% [7.8%, 46.3%] | 23.36 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Ridge | 90% | 88 | 20.5% [7.8%, 46.3%] | 25.65 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Ridge | 90% | 88 | 20.5% [7.8%, 46.3%] | 23.38 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Ridge | 90% | 88 | 79.5% [58.6%, 97.7%] | Unbounded | 60 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Forest | 80% | 88 | 6.8% [0.8%, 26.1%] | 19.03 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Forest | 80% | 88 | 6.8% [0.8%, 26.1%] | 19.03 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Forest | 80% | 88 | 6.8% [0.8%, 26.1%] | 19.11 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Forest | 80% | 88 | 6.8% [0.8%, 26.1%] | 18.95 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Forest | 80% | 88 | 68.2% [53.8%, 81.6%] | Unbounded | 55 | 0 | Yes |
+| P37 · 0 local years | P33 reference | Forest | 90% | 88 | 9.1% [3.7%, 30.4%] | 25.50 | 0 | 0 | Yes |
+| P37 · 0 local years | Leave-one-year-out | Forest | 90% | 88 | 9.1% [3.7%, 30.4%] | 25.50 | 0 | 0 | Yes |
+| P37 · 0 local years | Training-only inflation | Forest | 90% | 88 | 9.1% [3.7%, 30.4%] | 25.61 | 0 | 0 | Yes |
+| P37 · 0 local years | Weather-regime Mondrian | Forest | 90% | 88 | 9.1% [3.7%, 30.4%] | 23.65 | 0 | 0 | Yes |
+| P37 · 0 local years | Climate-similarity weighting | Forest | 90% | 88 | 77.3% [55.6%, 97.3%] | Unbounded | 60 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Ridge | 80% | 88 | 22.7% [12.6%, 50.0%] | 24.60 | 0 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Ridge | 80% | 88 | 22.7% [12.6%, 50.0%] | 24.60 | 0 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Ridge | 80% | 88 | 23.9% [13.3%, 50.0%] | 26.82 | 0 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Ridge | 80% | 88 | 22.7% [12.6%, 50.0%] | 25.05 | 0 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Ridge | 80% | 88 | 68.2% [56.1%, 83.4%] | Unbounded | 40 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Ridge | 90% | 88 | 33.0% [22.2%, 55.7%] | 29.63 | 0 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Ridge | 90% | 88 | 33.0% [22.2%, 55.7%] | 29.63 | 0 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Ridge | 90% | 88 | 38.6% [28.9%, 60.1%] | 32.33 | 0 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Ridge | 90% | 88 | 33.0% [22.2%, 55.7%] | 30.09 | 0 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Ridge | 90% | 88 | 100.0% [100.0%, 100.0%] | Unbounded | 88 | 0 | — |
+| P37 · 3 local years | P33 reference | Forest | 80% | 88 | 11.4% [4.8%, 30.4%] | 25.61 | 0 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Forest | 80% | 88 | 11.4% [4.8%, 30.4%] | 25.61 | 0 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Forest | 80% | 88 | 11.4% [4.8%, 30.4%] | 25.72 | 0 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Forest | 80% | 88 | 11.4% [4.8%, 30.4%] | 26.23 | 0 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Forest | 80% | 88 | 59.1% [51.9%, 72.5%] | Unbounded | 40 | 0 | Yes |
+| P37 · 3 local years | P33 reference | Forest | 90% | 88 | 23.9% [11.1%, 46.2%] | 31.90 | 0 | 0 | Yes |
+| P37 · 3 local years | Leave-one-year-out | Forest | 90% | 88 | 23.9% [11.1%, 46.2%] | 31.90 | 0 | 0 | Yes |
+| P37 · 3 local years | Training-only inflation | Forest | 90% | 88 | 23.9% [11.1%, 46.2%] | 32.03 | 0 | 0 | Yes |
+| P37 · 3 local years | Weather-regime Mondrian | Forest | 90% | 88 | 25.0% [12.4%, 48.7%] | 32.55 | 0 | 0 | Yes |
+| P37 · 3 local years | Climate-similarity weighting | Forest | 90% | 88 | 100.0% [100.0%, 100.0%] | Unbounded | 88 | 0 | — |
+| P37 · 5 local years | P33 reference | Ridge | 80% | 88 | 28.4% [20.0%, 54.6%] | 26.89 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Ridge | 80% | 88 | 28.4% [20.0%, 54.6%] | 26.89 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Ridge | 80% | 88 | 31.8% [21.1%, 54.7%] | 29.31 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Ridge | 80% | 88 | 28.4% [20.0%, 54.6%] | 26.89 | 0 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Ridge | 80% | 88 | 65.9% [55.7%, 87.2%] | Unbounded | 35 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Ridge | 90% | 88 | 36.4% [28.3%, 60.1%] | 30.75 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Ridge | 90% | 88 | 36.4% [28.3%, 60.1%] | 30.75 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Ridge | 90% | 88 | 45.5% [35.7%, 62.5%] | 33.54 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Ridge | 90% | 88 | 36.4% [28.3%, 60.1%] | 31.20 | 0 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Ridge | 90% | 88 | 93.2% [89.1%, 100.0%] | Unbounded | 65 | 0 | — |
+| P37 · 5 local years | P33 reference | Forest | 80% | 88 | 20.5% [9.1%, 35.9%] | 28.84 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Forest | 80% | 88 | 20.5% [9.1%, 35.9%] | 28.84 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Forest | 80% | 88 | 20.5% [9.1%, 35.9%] | 28.94 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Forest | 80% | 88 | 20.5% [9.1%, 35.9%] | 28.82 | 0 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Forest | 80% | 88 | 59.1% [49.1%, 72.5%] | Unbounded | 35 | 0 | Yes |
+| P37 · 5 local years | P33 reference | Forest | 90% | 88 | 33.0% [17.8%, 50.0%] | 35.45 | 0 | 0 | Yes |
+| P37 · 5 local years | Leave-one-year-out | Forest | 90% | 88 | 33.0% [17.8%, 50.0%] | 35.45 | 0 | 0 | Yes |
+| P37 · 5 local years | Training-only inflation | Forest | 90% | 88 | 33.0% [17.8%, 50.0%] | 35.58 | 0 | 0 | Yes |
+| P37 · 5 local years | Weather-regime Mondrian | Forest | 90% | 88 | 34.1% [20.4%, 50.6%] | 36.10 | 0 | 0 | Yes |
+| P37 · 5 local years | Climate-similarity weighting | Forest | 90% | 88 | 85.2% [70.8%, 100.0%] | Unbounded | 65 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Ridge | 80% | 88 | 44.3% [34.7%, 62.5%] | 32.87 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Ridge | 80% | 88 | 44.3% [34.7%, 62.5%] | 32.87 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Ridge | 80% | 88 | 52.3% [39.7%, 66.7%] | 35.83 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Ridge | 80% | 88 | 44.3% [34.7%, 62.5%] | 33.16 | 0 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Ridge | 80% | 88 | 72.7% [62.3%, 87.2%] | Unbounded | 34 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Ridge | 90% | 88 | 56.8% [46.3%, 69.2%] | 37.19 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Ridge | 90% | 88 | 56.8% [46.3%, 69.2%] | 37.19 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Ridge | 90% | 88 | 65.9% [53.0%, 77.8%] | 40.55 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Ridge | 90% | 88 | 59.1% [53.1%, 72.7%] | 37.56 | 0 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Ridge | 90% | 88 | 90.9% [88.4%, 97.5%] | Unbounded | 47 | 0 | — |
+| P37 · 8 local years | P33 reference | Forest | 80% | 88 | 27.3% [17.8%, 38.7%] | 33.74 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Forest | 80% | 88 | 27.3% [17.8%, 38.7%] | 33.74 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Forest | 80% | 88 | 27.3% [17.8%, 38.7%] | 33.84 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Forest | 80% | 88 | 27.3% [17.8%, 38.7%] | 33.95 | 0 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Forest | 80% | 88 | 65.9% [56.6%, 75.9%] | Unbounded | 34 | 0 | Yes |
+| P37 · 8 local years | P33 reference | Forest | 90% | 88 | 48.9% [41.5%, 53.2%] | 38.73 | 0 | 0 | Yes |
+| P37 · 8 local years | Leave-one-year-out | Forest | 90% | 88 | 48.9% [41.5%, 53.2%] | 38.73 | 0 | 0 | Yes |
+| P37 · 8 local years | Training-only inflation | Forest | 90% | 88 | 50.0% [41.5%, 58.7%] | 38.84 | 0 | 0 | Yes |
+| P37 · 8 local years | Weather-regime Mondrian | Forest | 90% | 88 | 48.9% [41.5%, 53.2%] | 38.80 | 0 | 0 | Yes |
+| P37 · 8 local years | Climate-similarity weighting | Forest | 90% | 88 | 79.5% [69.8%, 97.5%] | Unbounded | 47 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Ridge | 80% | 88 | 43.2% [30.8%, 62.5%] | 31.53 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Ridge | 80% | 88 | 43.2% [30.8%, 62.5%] | 31.53 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Ridge | 80% | 88 | 47.7% [35.7%, 64.3%] | 34.39 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Ridge | 80% | 88 | 43.2% [30.8%, 62.5%] | 31.58 | 0 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Ridge | 80% | 88 | 70.5% [64.0%, 83.3%] | Unbounded | 26 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Ridge | 90% | 88 | 56.8% [43.9%, 67.9%] | 37.04 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Ridge | 90% | 88 | 56.8% [43.9%, 67.9%] | 37.04 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Ridge | 90% | 88 | 67.0% [54.2%, 77.8%] | 40.40 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Ridge | 90% | 88 | 58.0% [47.6%, 69.6%] | 37.17 | 0 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Ridge | 90% | 88 | 85.2% [81.6%, 93.6%] | Unbounded | 45 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Forest | 80% | 88 | 28.4% [17.8%, 46.2%] | 33.50 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Forest | 80% | 88 | 28.4% [17.8%, 46.2%] | 33.50 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Forest | 80% | 88 | 28.4% [17.8%, 46.2%] | 33.62 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Forest | 80% | 88 | 28.4% [17.8%, 46.2%] | 33.65 | 0 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Forest | 80% | 88 | 56.8% [50.9%, 68.5%] | Unbounded | 26 | 0 | Yes |
+| P37 · 12 local years | P33 reference | Forest | 90% | 88 | 43.2% [33.3%, 62.5%] | 38.00 | 0 | 0 | Yes |
+| P37 · 12 local years | Leave-one-year-out | Forest | 90% | 88 | 43.2% [33.3%, 62.5%] | 38.00 | 0 | 0 | Yes |
+| P37 · 12 local years | Training-only inflation | Forest | 90% | 88 | 43.2% [33.3%, 62.5%] | 38.15 | 0 | 0 | Yes |
+| P37 · 12 local years | Weather-regime Mondrian | Forest | 90% | 88 | 44.3% [35.6%, 63.7%] | 38.33 | 0 | 0 | Yes |
+| P37 · 12 local years | Climate-similarity weighting | Forest | 90% | 88 | 78.4% [69.2%, 93.6%] | Unbounded | 45 | 0 | Yes |
+
+### Failures and interpretation
+
+Across all evaluations, 6,704 intervals were unbounded and none were unavailable. The reference, leave-one-year-out scores and inflation each had 8 unbounded intervals. Mondrian had 656, and climate-similarity weighting had 6,024.
+
+- **Kansas.** Training-only inflation lifted pooled harvest-year coverage at both levels for both learners. At nominal 90%, ridge rose from 88.3% to 92.3% and forest from 85.8% to 90.9%, with widths of 34.27 and 32.53 bu/acre. At 90%, no method exceeded 49.5% coverage in 2007. The 2007 80% results were 31.1–38.8%. Under district holdout, weighting reached both nominal levels but returned 340 unbounded intervals per learner at 90%. Mondrian conditioning undercovered both learners at 90% on both Kansas splits.
+
+- **Direct P32 transfer.** Inflation reached 90% empirical coverage for both Oklahoma learners (90.4% ridge, 92.1% forest) and for Nebraska forest (92.8%). Nebraska ridge reached 88.5%. The weighted Oklahoma 90% intervals included 523 unbounded intervals per learner. The Oklahoma forest Mondrian 90% interval covered 60.8%.
+
+- **P37 common test.** No finite-width pooled result reached nominal coverage. The weighted Oklahoma results that reached nominal 90% did so with unbounded intervals. At three years both learners reached 100% with all 88 intervals unbounded per learner. At five and eight years, ridge reached 93.2% and 90.9%, with 65 and 47 of 88 intervals unbounded. At 12 years, Oklahoma's largest finite-width 90% coverage was 67.0% for inflated ridge and 44.3% for Mondrian forest. Nebraska's corresponding values were 79.4% for inflated ridge and 66.7% for the reference and inflation forest. Nebraska Mondrian and weighted intervals could cover more rows with an unbounded mean width.
+
+### Exploratory 2007 freeze check
+
+The county POWER archives contain precipitation, daily maximum temperature, mean temperature and radiation. Zero of the 103 held-out Kansas counties had a complete cached March–May daily minimum series. The exploratory single-case test could not be run. Whether a spring freeze explains the residuals remains unknown.
+
+### Limits and reproduction
+
+Nominal interval guarantees apply only in-region and under exchangeability. A shared region alone does not establish exchangeability. Training-domain inflation, regime stratification and weather similarity are fixed sensitivity analyses. Weather-similarity weights are not known sampling likelihood ratios. County-average associations do not validate rotation recommendations. The local workflow also requires district yield history.
+
+Run `python -m src.interval_diagnosis` offline. The [summary and fold audit](../data/processed/climate_yield_interval_diagnosis.json) and [county-year method results](../data/processed/climate_yield_interval_diagnosis_rows.csv.gz) are separate from P33. A row can be joined to P33 on protocol, state, fold, k, model, level, FIPS and year. The original center plus or minus the P33b radius gives its endpoints. The county-year file distinguishes unavailable radii from infinite ones.

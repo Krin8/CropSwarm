@@ -354,6 +354,52 @@ def yield_interval_panel():
                    "shift can reduce coverage. These historical fits provide no future coverage guarantee.")
 
 
+def interval_diagnosis_panel():
+    report = cached("climate_yield_interval_diagnosis.json")
+    options = {"district": "Kansas · district holdout", "year": "Kansas · harvest-year holdout",
+               "2007": "Kansas · 2007 harvest-year holdout", "31": "Nebraska", "40": "Oklahoma"}
+    models = {"ridge": "Ridge", "random_forest": "Random forest"}
+    with st.expander("Why yield intervals missed (P33b)"):
+        st.caption(f"{report['interval_count']:,} interval evaluations across five methods. The fitted P33 "
+                   "point estimates supply the same center for every interval method.")
+        selected = st.selectbox("Undercoverage evaluation", tuple(options), format_func=options.get,
+                                key="interval_diagnosis_study")
+        if selected in ("31", "40"):
+            study = report["transfer"][selected]
+            settings = {"direct": "P32 · spatial transfer", **{str(k): f"P37 · {k} local years" for k in report["k"]}}
+            k = st.selectbox("Calibration history", tuple(settings), format_func=settings.get,
+                             key="interval_diagnosis_history")
+            rows = study["p32"] if k == "direct" else study["p37"][k]["results"]
+            if k != "direct":
+                ratios = study["p37"][k]["diagnosis"]
+                labels = " · ".join(f"{models[name]} {v['ratio']:.2f}" if v["ratio"] is not None
+                                    else f"{models[name]} unavailable" for name, v in ratios.items())
+                st.caption("Calibration / test residual SD · " + labels)
+        elif selected == "2007":
+            rows = report["kansas"]["year"]["folds"]["2007"]
+            frost = report["frost_2007"]
+            st.caption(f"Exploratory freeze check · {frost['complete_spring_minimum']}/{frost['counties']} held-out "
+                       "counties with complete cached spring daily minimum temperature.")
+        else:
+            rows = report["kansas"][selected]["pooled"]
+
+        def percentage(value):
+            return f"{value:.1%}" if value is not None else "Unavailable"
+
+        st.dataframe(pd.DataFrame([{
+            "Method": report["methods"][row["method"]], "Learner": models[row["model"]],
+            "Nominal": f"{row['level']}%", "Coverage": percentage(row["coverage"]),
+            "Coverage 95%": "Unavailable" if row["coverage_95"] is None else
+            "–".join(percentage(v) for v in row["coverage_95"]),
+            "Mean width (bu/acre)": ("Unbounded" if row["unbounded"] else
+                                    f"{row['mean_width']:.2f}" if row["mean_width"] is not None else "Unavailable"),
+            "Unbounded": row["unbounded"], "Unavailable": row["unavailable"],
+            "Below nominal": "Yes" if row["below_nominal"] else "",
+        } for row in rows]), hide_index=True)
+        st.caption("Nominal interval guarantees apply only in-region and under exchangeability. "
+                   "The similarity weights are a heuristic. County-yield associations do not validate rotation recommendations.")
+
+
 def opportunity_panel(farm_id, farm_name):
     data = load(farm_id, "opportunity_windows")
     with st.container(key="opportunity_windows"):
@@ -875,6 +921,7 @@ def app():
         cross_state_yield_panel()
         local_recalibration_panel()
         yield_interval_panel()
+        interval_diagnosis_panel()
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

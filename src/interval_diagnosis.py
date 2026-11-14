@@ -314,13 +314,16 @@ def build(root=ROOT):
     reference = rows.loc[rows.method.eq("reference")].set_index(keys).sort_index()
     original = saved.set_index(keys).sort_index()
     pd.testing.assert_series_equal(reference.covered, original.covered)
+    status = rows.assign(unbounded=np.isinf(rows.radius), unavailable=~rows.available).groupby("method")
     report = {"label": "illustrative, validate locally", "methods": METHODS, "levels": LEVELS, "k": YEARS,
               "interval_count": len(rows), "counts": rows.groupby("protocol").size().to_dict(),
+              "interval_status_by_method": status[["unbounded", "unavailable"]].sum().to_dict("index"),
               "kansas": ks, "transfer": transfer, "source_audit": source_audit,
               "frost_2007": frost_check(held, frost), "power_chunks": len(paths),
               "p33_predictions_sha256": hashlib.sha256((data / "climate_yield_interval_predictions.csv").read_bytes()).hexdigest()}
     # County-year rows retain alternate radii without duplicating P33 outcomes or centers.
     compact = rows[[*keys, "method", "radius", "available", "covered"]]
+
     def write_rows(path):
         with path.open("wb") as output, gzip.GzipFile(filename="", fileobj=output, mode="wb", mtime=0) as zipped:
             compact.to_csv(zipped, index=False)
