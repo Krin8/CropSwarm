@@ -1,0 +1,918 @@
+{
+  "label": "illustrative, validate locally",
+  "feature_labels": {
+    "rainfall_mm": "Season rainfall (mm)",
+    "water_deficit_mm": "Modeled water deficit (mm)",
+    "heat_days": "Heat days",
+    "radiation_mj_m2_day": "Mean daily solar radiation (MJ/m\u00b2/day)",
+    "mean_temp_c": "Mean air temperature (\u00b0C)"
+  },
+  "states": {
+    "20": "Kansas",
+    "31": "Nebraska",
+    "40": "Oklahoma"
+  },
+  "design": {
+    "ridge_alphas": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "inner_folds": 3,
+    "bootstrap_draws": 1000,
+    "bootstrap_quantiles": [
+      0.025,
+      0.975
+    ],
+    "seed": 42
+  },
+  "counts": {
+    "coefficients": 15,
+    "coefficient_differences": 15,
+    "model_specifications": 5,
+    "specification_alpha_configurations": 15,
+    "inner_ridge_fits": 477,
+    "final_ridge_fits": 53,
+    "coefficient_bootstrap_refits": 3000
+  },
+  "cohorts": {
+    "20": {
+      "n": 3215,
+      "counties": 103,
+      "districts": 9,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 2005,
+        "all_practices": 1210
+      },
+      "alpha": 0.1
+    },
+    "31": {
+      "n": 1733,
+      "counties": 59,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 1154,
+        "all_practices": 579
+      },
+      "alpha": 10.0
+    },
+    "40": {
+      "n": 1800,
+      "counties": 58,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "all_practices": 1379,
+        "non_irrigated": 421
+      },
+      "alpha": 10.0
+    }
+  },
+  "coefficients": {
+    "rainfall_mm": {
+      "states": {
+        "20": {
+          "value": -8.984774135396513,
+          "bootstrap_95": [
+            -10.558389511292512,
+            -5.5779569406945235
+          ]
+        },
+        "31": {
+          "value": -1.3782443823200878,
+          "bootstrap_95": [
+            -2.4780613719774007,
+            0.44816535880411407
+          ]
+        },
+        "40": {
+          "value": -3.4790145171375597,
+          "bootstrap_95": [
+            -4.204976761932923,
+            -2.430175374023198
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "left": "20",
+          "right": "31",
+          "right_minus_left": 7.606529753076425,
+          "bootstrap_95": [
+            4.124707604495387,
+            10.060505393491658
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "20",
+          "right": "40",
+          "right_minus_left": 5.505759618258954,
+          "bootstrap_95": [
+            2.1608087169157657,
+            7.435123977984256
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "31",
+          "right": "40",
+          "right_minus_left": -2.1007701348174717,
+          "bootstrap_95": [
+            -3.9360045743670846,
+            -0.5543465074823998
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": true
+        }
+      ],
+      "all_intervals_overlap": false,
+      "opposite_point_signs": false
+    },
+    "water_deficit_mm": {
+      "states": {
+        "20": {
+          "value": -10.353400184571244,
+          "bootstrap_95": [
+            -12.697955197169849,
+            -7.17447108372418
+          ]
+        },
+        "31": {
+          "value": -3.2858750408008155,
+          "bootstrap_95": [
+            -4.338356443735151,
+            -1.7622073438115022
+          ]
+        },
+        "40": {
+          "value": -7.3145023001612275,
+          "bootstrap_95": [
+            -8.447515906678172,
+            -5.490998453241629
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "left": "20",
+          "right": "31",
+          "right_minus_left": 7.067525143770428,
+          "bootstrap_95": [
+            3.8144994671753616,
+            9.804754813992758
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "20",
+          "right": "40",
+          "right_minus_left": 3.0388978844100167,
+          "bootstrap_95": [
+            -0.1790252010076311,
+            6.202737278184019
+          ],
+          "difference_excludes_zero": false,
+          "marginal_intervals_overlap": true
+        },
+        {
+          "left": "31",
+          "right": "40",
+          "right_minus_left": -4.028627259360412,
+          "bootstrap_95": [
+            -5.923250153989704,
+            -1.965587552038037
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        }
+      ],
+      "all_intervals_overlap": false,
+      "opposite_point_signs": false
+    },
+    "heat_days": {
+      "states": {
+        "20": {
+          "value": -4.588354456612391,
+          "bootstrap_95": [
+            -5.011146422140196,
+            -3.6177441738330645
+          ]
+        },
+        "31": {
+          "value": -2.093323445525619,
+          "bootstrap_95": [
+            -3.0351810453976587,
+            -1.2812444510095566
+          ]
+        },
+        "40": {
+          "value": -1.0136079673614766,
+          "bootstrap_95": [
+            -1.9702770103620564,
+            -0.014415605510678416
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "left": "20",
+          "right": "31",
+          "right_minus_left": 2.4950310110867724,
+          "bootstrap_95": [
+            1.0938960673460665,
+            3.42380197284086
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "20",
+          "right": "40",
+          "right_minus_left": 3.5747464892509146,
+          "bootstrap_95": [
+            2.2608635326734103,
+            4.598868238772254
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "31",
+          "right": "40",
+          "right_minus_left": 1.0797154781641423,
+          "bootstrap_95": [
+            -0.1970919146157112,
+            2.5799720040449063
+          ],
+          "difference_excludes_zero": false,
+          "marginal_intervals_overlap": true
+        }
+      ],
+      "all_intervals_overlap": false,
+      "opposite_point_signs": false
+    },
+    "radiation_mj_m2_day": {
+      "states": {
+        "20": {
+          "value": 4.63889855828202,
+          "bootstrap_95": [
+            3.187077755342458,
+            5.788116963756945
+          ]
+        },
+        "31": {
+          "value": 1.4116015015049856,
+          "bootstrap_95": [
+            0.8980742319695372,
+            1.797764586531691
+          ]
+        },
+        "40": {
+          "value": 3.4435086927588348,
+          "bootstrap_95": [
+            2.098716732341341,
+            4.591639757486682
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "left": "20",
+          "right": "31",
+          "right_minus_left": -3.2272970567770343,
+          "bootstrap_95": [
+            -4.479480115500889,
+            -1.7407272493026777
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        },
+        {
+          "left": "20",
+          "right": "40",
+          "right_minus_left": -1.1953898655231852,
+          "bootstrap_95": [
+            -2.788779713892781,
+            0.6839445014076729
+          ],
+          "difference_excludes_zero": false,
+          "marginal_intervals_overlap": true
+        },
+        {
+          "left": "31",
+          "right": "40",
+          "right_minus_left": 2.031907191253849,
+          "bootstrap_95": [
+            0.6392080932038724,
+            3.26568803394978
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": false
+        }
+      ],
+      "all_intervals_overlap": false,
+      "opposite_point_signs": false
+    },
+    "mean_temp_c": {
+      "states": {
+        "20": {
+          "value": -0.19641737062524048,
+          "bootstrap_95": [
+            -1.2367875529477672,
+            0.5687122146082648
+          ]
+        },
+        "31": {
+          "value": 0.2145489612519824,
+          "bootstrap_95": [
+            -0.399994293629148,
+            1.2611119860245417
+          ]
+        },
+        "40": {
+          "value": -1.1501929657803716,
+          "bootstrap_95": [
+            -1.9653145403503882,
+            -0.2548187349755809
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "left": "20",
+          "right": "31",
+          "right_minus_left": 0.41096633187722287,
+          "bootstrap_95": [
+            -0.47628207257178024,
+            1.8842350142393107
+          ],
+          "difference_excludes_zero": false,
+          "marginal_intervals_overlap": true
+        },
+        {
+          "left": "20",
+          "right": "40",
+          "right_minus_left": -0.9537755951551311,
+          "bootstrap_95": [
+            -2.0870445056969893,
+            0.3835567504320135
+          ],
+          "difference_excludes_zero": false,
+          "marginal_intervals_overlap": true
+        },
+        {
+          "left": "31",
+          "right": "40",
+          "right_minus_left": -1.364741927032354,
+          "bootstrap_95": [
+            -2.637686445862303,
+            -0.36803466555954095
+          ],
+          "difference_excludes_zero": true,
+          "marginal_intervals_overlap": true
+        }
+      ],
+      "all_intervals_overlap": true,
+      "opposite_point_signs": true
+    }
+  },
+  "held_out": {
+    "pooled": {
+      "n": 6748,
+      "districts": 25,
+      "rmse_bu_ac": {
+        "common_slopes": {
+          "value": 9.353744815556087,
+          "bootstrap_95": [
+            8.863328539771803,
+            9.925376799531492
+          ]
+        },
+        "interactions": {
+          "value": 9.227251314205091,
+          "bootstrap_95": [
+            8.744443462074189,
+            9.756703534242344
+          ]
+        }
+      },
+      "rmse_difference_bu_ac": {
+        "value": -0.12649350135099624,
+        "bootstrap_95": [
+          -0.25276273388285414,
+          0.0005582436641329052
+        ]
+      },
+      "clear_improvement": false
+    },
+    "by_state": {
+      "20": {
+        "n": 3215,
+        "districts": 9,
+        "rmse_bu_ac": {
+          "common_slopes": {
+            "value": 9.576565156856446,
+            "bootstrap_95": [
+              9.08611870704802,
+              10.165179918985816
+            ]
+          },
+          "interactions": {
+            "value": 9.562060691644987,
+            "bootstrap_95": [
+              8.973748224297763,
+              10.249815190354981
+            ]
+          }
+        },
+        "rmse_difference_bu_ac": {
+          "value": -0.014504465211459205,
+          "bootstrap_95": [
+            -0.1515659883621165,
+            0.12694925226382886
+          ]
+        },
+        "clear_improvement": false
+      },
+      "31": {
+        "n": 1733,
+        "districts": 8,
+        "rmse_bu_ac": {
+          "common_slopes": {
+            "value": 10.010556815768807,
+            "bootstrap_95": [
+              9.050217030517985,
+              11.334852451933017
+            ]
+          },
+          "interactions": {
+            "value": 9.879673753885665,
+            "bootstrap_95": [
+              9.004842904972687,
+              10.916006677207271
+            ]
+          }
+        },
+        "rmse_difference_bu_ac": {
+          "value": -0.13088306188314114,
+          "bootstrap_95": [
+            -0.48058206189009345,
+            0.2090531112789504
+          ]
+        },
+        "clear_improvement": false
+      },
+      "40": {
+        "n": 1800,
+        "districts": 8,
+        "rmse_bu_ac": {
+          "common_slopes": {
+            "value": 8.228811237678451,
+            "bootstrap_95": [
+              7.3593035328929535,
+              9.367907322750328
+            ]
+          },
+          "interactions": {
+            "value": 7.867925332508354,
+            "bootstrap_95": [
+              7.029787752595374,
+              8.968400459285116
+            ]
+          }
+        },
+        "rmse_difference_bu_ac": {
+          "value": -0.36088590517009767,
+          "bootstrap_95": [
+            -0.6231719483598709,
+            -0.1835291556208178
+          ]
+        },
+        "clear_improvement": true
+      }
+    },
+    "alpha_counts": {
+      "common_slopes": {
+        "10.0": 22,
+        "0.1": 2,
+        "1.0": 1
+      },
+      "interactions": {
+        "0.1": 19,
+        "10.0": 5,
+        "1.0": 1
+      }
+    },
+    "folds": [
+      {
+        "state": "20",
+        "district_block": "20:10",
+        "district_name": "NORTHWEST",
+        "n": 237,
+        "counties": 8,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.863045683897548,
+          "interactions": 9.672202227823382
+        },
+        "rmse_difference_bu_ac": -0.19084345607416608
+      },
+      {
+        "state": "20",
+        "district_block": "20:20",
+        "district_name": "WEST CENTRAL",
+        "n": 275,
+        "counties": 9,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.159503954758305,
+          "interactions": 9.363850899847657
+        },
+        "rmse_difference_bu_ac": 0.2043469450893518
+      },
+      {
+        "state": "20",
+        "district_block": "20:30",
+        "district_name": "SOUTHWEST",
+        "n": 424,
+        "counties": 14,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 10.807279542835584,
+          "interactions": 11.116220123253484
+        },
+        "rmse_difference_bu_ac": 0.3089405804179002
+      },
+      {
+        "state": "20",
+        "district_block": "20:40",
+        "district_name": "NORTH CENTRAL",
+        "n": 349,
+        "counties": 11,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 10.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.14444411931562,
+          "interactions": 9.106243440861554
+        },
+        "rmse_difference_bu_ac": -0.03820067845406605
+      },
+      {
+        "state": "20",
+        "district_block": "20:50",
+        "district_name": "CENTRAL",
+        "n": 352,
+        "counties": 11,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 10.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.570792455749503,
+          "interactions": 8.36628137685668
+        },
+        "rmse_difference_bu_ac": -0.20451107889282305
+      },
+      {
+        "state": "20",
+        "district_block": "20:60",
+        "district_name": "SOUTH CENTRAL",
+        "n": 418,
+        "counties": 13,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.934432522470857,
+          "interactions": 8.849895455842939
+        },
+        "rmse_difference_bu_ac": -0.08453706662791838
+      },
+      {
+        "state": "20",
+        "district_block": "20:70",
+        "district_name": "NORTHEAST",
+        "n": 277,
+        "counties": 9,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 11.100824953708193,
+          "interactions": 11.221882587545807
+        },
+        "rmse_difference_bu_ac": 0.12105763383761392
+      },
+      {
+        "state": "20",
+        "district_block": "20:80",
+        "district_name": "EAST CENTRAL",
+        "n": 442,
+        "counties": 14,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.163392797630923,
+          "interactions": 9.168287550643592
+        },
+        "rmse_difference_bu_ac": 0.004894753012669284
+      },
+      {
+        "state": "20",
+        "district_block": "20:90",
+        "district_name": "SOUTHEAST",
+        "n": 441,
+        "counties": 14,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.469509010855496,
+          "interactions": 9.15059090670976
+        },
+        "rmse_difference_bu_ac": -0.3189181041457356
+      },
+      {
+        "state": "31",
+        "district_block": "31:10",
+        "district_name": "NORTHWEST",
+        "n": 335,
+        "counties": 11,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 10.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 12.713642400317578,
+          "interactions": 12.041067384297724
+        },
+        "rmse_difference_bu_ac": -0.672575016019854
+      },
+      {
+        "state": "31",
+        "district_block": "31:20",
+        "district_name": "NORTH",
+        "n": 67,
+        "counties": 3,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.897292142906984,
+          "interactions": 8.41775352980019
+        },
+        "rmse_difference_bu_ac": -0.4795386131067936
+      },
+      {
+        "state": "31",
+        "district_block": "31:30",
+        "district_name": "NORTHEAST",
+        "n": 20,
+        "counties": 1,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.035388799274061,
+          "interactions": 8.225981745901308
+        },
+        "rmse_difference_bu_ac": -0.8094070533727535
+      },
+      {
+        "state": "31",
+        "district_block": "31:50",
+        "district_name": "CENTRAL",
+        "n": 134,
+        "counties": 5,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.436320311120983,
+          "interactions": 9.282131024664306
+        },
+        "rmse_difference_bu_ac": -0.15418928645667762
+      },
+      {
+        "state": "31",
+        "district_block": "31:60",
+        "district_name": "EAST",
+        "n": 261,
+        "counties": 10,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.026961468364137,
+          "interactions": 8.763119897498608
+        },
+        "rmse_difference_bu_ac": -0.2638415708655284
+      },
+      {
+        "state": "31",
+        "district_block": "31:70",
+        "district_name": "SOUTHWEST",
+        "n": 290,
+        "counties": 9,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 1.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.839518093121344,
+          "interactions": 9.7998533264178
+        },
+        "rmse_difference_bu_ac": -0.039664766703543464
+      },
+      {
+        "state": "31",
+        "district_block": "31:80",
+        "district_name": "SOUTH",
+        "n": 245,
+        "counties": 8,
+        "selected_alphas": {
+          "common_slopes": 0.1,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.053457996361928,
+          "interactions": 9.068693704113864
+        },
+        "rmse_difference_bu_ac": 0.015235707751935834
+      },
+      {
+        "state": "31",
+        "district_block": "31:90",
+        "district_name": "SOUTHEAST",
+        "n": 381,
+        "counties": 12,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 9.052674301977287,
+          "interactions": 9.570180921493614
+        },
+        "rmse_difference_bu_ac": 0.5175066195163271
+      },
+      {
+        "state": "40",
+        "district_block": "40:10",
+        "district_name": "PANHANDLE",
+        "n": 154,
+        "counties": 5,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.028940420316816,
+          "interactions": 6.893423860644372
+        },
+        "rmse_difference_bu_ac": -1.1355165596724444
+      },
+      {
+        "state": "40",
+        "district_block": "40:20",
+        "district_name": "WEST CENTRAL",
+        "n": 201,
+        "counties": 6,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 10.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 7.470171597480615,
+          "interactions": 6.912351563677441
+        },
+        "rmse_difference_bu_ac": -0.557820033803174
+      },
+      {
+        "state": "40",
+        "district_block": "40:30",
+        "district_name": "SOUTHWEST",
+        "n": 255,
+        "counties": 8,
+        "selected_alphas": {
+          "common_slopes": 0.1,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.54549530006636,
+          "interactions": 8.475501241345407
+        },
+        "rmse_difference_bu_ac": -0.06999405872095288
+      },
+      {
+        "state": "40",
+        "district_block": "40:40",
+        "district_name": "NORTH CENTRAL",
+        "n": 264,
+        "counties": 8,
+        "selected_alphas": {
+          "common_slopes": 1.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 6.605575434308895,
+          "interactions": 6.60959433218305
+        },
+        "rmse_difference_bu_ac": 0.004018897874155769
+      },
+      {
+        "state": "40",
+        "district_block": "40:50",
+        "district_name": "CENTRAL",
+        "n": 358,
+        "counties": 11,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 10.0
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 6.953339628669596,
+          "interactions": 6.712819696374357
+        },
+        "rmse_difference_bu_ac": -0.24051993229523916
+      },
+      {
+        "state": "40",
+        "district_block": "40:60",
+        "district_name": "SOUTH CENTRAL",
+        "n": 185,
+        "counties": 7,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.216956961631126,
+          "interactions": 7.608392565897522
+        },
+        "rmse_difference_bu_ac": -0.6085643957336044
+      },
+      {
+        "state": "40",
+        "district_block": "40:70",
+        "district_name": "NORTHEAST",
+        "n": 309,
+        "counties": 10,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 8.934011711673183,
+          "interactions": 8.74054318008431
+        },
+        "rmse_difference_bu_ac": -0.19346853158887178
+      },
+      {
+        "state": "40",
+        "district_block": "40:80",
+        "district_name": "EAST CENTRAL",
+        "n": 74,
+        "counties": 3,
+        "selected_alphas": {
+          "common_slopes": 10.0,
+          "interactions": 0.1
+        },
+        "rmse_bu_ac": {
+          "common_slopes": 14.766723531945278,
+          "interactions": 13.855764454929083
+        },
+        "rmse_difference_bu_ac": -0.9109590770161944
+      }
+    ]
+  }
+}

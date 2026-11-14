@@ -302,3 +302,15 @@ def test_transfer_diagnosis_uses_same_rows_for_all_four_models():
     restricted = table[table.Rows.eq("Inside all central bands")]
     assert len(restricted) == 4 and restricted["County-years"].eq(361).all()
     assert set(restricted["RMSE (bu/acre)"]) == {"10.981", "12.840", "8.572", "8.585"}
+
+
+def test_state_weather_yield_panel_shows_all_features_and_state_comparisons():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Do weather–yield associations differ by state? (P39)" for row in app.expander)
+    coefficients = next(row.value for row in app.dataframe if "All three intervals overlap" in row.value)
+    assert len(coefficients) == 5
+    assert {"Kansas", "Nebraska", "Oklahoma"} <= set(coefficients)
+    comparison = next(row.value for row in app.dataframe if "State interactions RMSE" in row.value)
+    assert comparison.Geography.tolist() == ["All states", "Kansas", "Nebraska", "Oklahoma"]
+    assert comparison.iloc[0]["County-years"] == comparison.iloc[1:]["County-years"].sum()

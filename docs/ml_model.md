@@ -2764,3 +2764,100 @@ Positive mean error indicates overprediction. Feature bins partition all Oklahom
 A different reporting mix could contribute to the transfer gap. The all-practice label does not tell us what fraction was irrigated. Cultivars, soils, management, and county-centroid weather error are other untested hypotheses. This diagnosis cannot separate them. County-average associations do not validate rotation recommendations.
 
 Run `python -m src.transfer_diagnosis` to rebuild only the P38 [saved diagnostic](../data/processed/climate_yield_transfer_diagnosis.json).
+
+## P39 Weather–yield associations by state
+
+The [preregistration](p39_plan.md) was committed as `38ee005` before fitting. This analysis uses the unchanged P25/P27/P32 winter-wheat county-years and five season features from cached NASA POWER. It retains the USDA NASS all-practice fallback for county-years without reported non-irrigated yields. The [saved results](../data/processed/climate_yield_state_associations.json) include every coefficient, difference and district result. Results are illustrative and need local validation.
+
+| State | County-years | Counties | USDA districts | Years | Reported non-irrigated rows | All-practice fallback rows | Selected alpha |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Kansas | 3,215 | 103 | 9 | 1990–2023 | 2,005 | 1,210 | 0.1 |
+| Nebraska | 1,733 | 59 | 8 | 1990–2023 | 1,154 | 579 | 10 |
+| Oklahoma | 1,800 | 58 | 8 | 1990–2023 | 421 | 1,379 | 10 |
+
+### State-specific slopes
+
+Each ridge uses yield residuals from county trends and the same five weather features. Slopes are in bu/acre per one standard deviation of that predictor **within the given state**, conditional on the other four features. Brackets show 95% percentile intervals from 1,000 whole-district resamples per state, with trends and scaling refitted and the selected alpha held fixed.
+
+| Weather feature | Kansas | Nebraska | Oklahoma | Pairs with overlapping intervals | Common overlap across all three |
+| --- | --- | --- | --- | --- | --- |
+| Season rainfall (mm) | -8.985 [-10.558, -5.578] | -1.378 [-2.478, +0.448] | -3.479 [-4.205, -2.430] | Nebraska–Oklahoma | No |
+| Modeled water deficit (mm) | -10.353 [-12.698, -7.174] | -3.286 [-4.338, -1.762] | -7.315 [-8.448, -5.491] | Kansas–Oklahoma | No |
+| Heat days | -4.588 [-5.011, -3.618] | -2.093 [-3.035, -1.281] | -1.014 [-1.970, -0.014] | Nebraska–Oklahoma | No |
+| Mean daily solar radiation (MJ/m²/day) | +4.639 [+3.187, +5.788] | +1.412 [+0.898, +1.798] | +3.444 [+2.099, +4.592] | Kansas–Oklahoma | No |
+| Mean air temperature (°C) | -0.196 [-1.237, +0.569] | +0.215 [-0.400, +1.261] | -1.150 [-1.965, -0.255] | Kansas–Nebraska, Kansas–Oklahoma, Nebraska–Oklahoma | Yes |
+
+Mean temperature was the only feature with opposite point signs across states. Nebraska's point slope was positive and Kansas's and Oklahoma's were negative. All three marginal intervals overlapped, and the Kansas and Nebraska intervals included zero. Rainfall, modeled water deficit and heat days had negative point slopes in all three states, while radiation had positive slopes. Kansas had the largest absolute slope for each of those four variables. The predictors, especially rainfall and modeled deficit, can covary. These conditional coefficients should be read with that dependence and the state-specific standard deviations in mind.
+
+<details>
+<summary>All 15 pairwise slope differences</summary>
+
+Positive differences indicate a higher coefficient in the first-named state. The 95% intervals come from subtracting independently resampled state slopes. Ten of 15 intervals exclude zero at the unadjusted level. The other five include zero. Individual interval overlap and a paired-state contrast answer different questions.
+
+| Weather feature | Contrast | Slope difference [95%] | Excludes zero |
+| --- | --- | --- | --- |
+| Season rainfall (mm) | Nebraska − Kansas | +7.607 [+4.125, +10.061] | Yes |
+| Season rainfall (mm) | Oklahoma − Kansas | +5.506 [+2.161, +7.435] | Yes |
+| Season rainfall (mm) | Oklahoma − Nebraska | -2.101 [-3.936, -0.554] | Yes |
+| Modeled water deficit (mm) | Nebraska − Kansas | +7.068 [+3.814, +9.805] | Yes |
+| Modeled water deficit (mm) | Oklahoma − Kansas | +3.039 [-0.179, +6.203] | No |
+| Modeled water deficit (mm) | Oklahoma − Nebraska | -4.029 [-5.923, -1.966] | Yes |
+| Heat days | Nebraska − Kansas | +2.495 [+1.094, +3.424] | Yes |
+| Heat days | Oklahoma − Kansas | +3.575 [+2.261, +4.599] | Yes |
+| Heat days | Oklahoma − Nebraska | +1.080 [-0.197, +2.580] | No |
+| Mean daily solar radiation (MJ/m²/day) | Nebraska − Kansas | -3.227 [-4.479, -1.741] | Yes |
+| Mean daily solar radiation (MJ/m²/day) | Oklahoma − Kansas | -1.195 [-2.789, +0.684] | No |
+| Mean daily solar radiation (MJ/m²/day) | Oklahoma − Nebraska | +2.032 [+0.639, +3.266] | Yes |
+| Mean air temperature (°C) | Nebraska − Kansas | +0.411 [-0.476, +1.884] | No |
+| Mean air temperature (°C) | Oklahoma − Kansas | -0.954 [-2.087, +0.384] | No |
+| Mean air temperature (°C) | Oklahoma − Nebraska | -1.365 [-2.638, -0.368] | Yes |
+
+</details>
+
+### Pooled blocked-district results
+
+Both models include state indicators and fold-local county trend references. The second allows each standardized weather slope to vary by state. Both use the same alpha grid (0.1, 1 and 10) with separate three-fold district tuning inside each outer training set. Every test district has the same held-out county-years as in P27 or P32, with training expanded to the other states. The county trends, weather scaler and ridge use fitting rows only. RMSE is in bu/acre. A negative difference favors the interaction model. Intervals are 95% paired district bootstraps, resampling within each state.
+
+| Geography | County-years | Districts | Common slopes RMSE [95%] | State interactions RMSE [95%] | Interactions − common [95%] |
+| --- | --- | --- | --- | --- | --- |
+| All states | 6,748 | 25 | 9.354 [8.863, 9.925] | 9.227 [8.744, 9.757] | -0.1265 [-0.2528, +0.0006] |
+| Kansas | 3,215 | 9 | 9.577 [9.086, 10.165] | 9.562 [8.974, 10.250] | -0.0145 [-0.1516, +0.1269] |
+| Nebraska | 1,733 | 8 | 10.011 [9.050, 11.335] | 9.880 [9.005, 10.916] | -0.1309 [-0.4806, +0.2091] |
+| Oklahoma | 1,800 | 8 | 8.229 [7.359, 9.368] | 7.868 [7.030, 8.968] | -0.3609 [-0.6232, -0.1835] |
+
+The pooled point RMSE fell by 0.126 bu/acre, with a 95% difference interval of [−0.2528, +0.0006]. This falls short of the preregistered criterion for a clear pooled improvement. Oklahoma's interval favored interactions, and the Kansas and Nebraska intervals included zero. Interactions lowered RMSE in 18 of 25 districts. The other seven had higher RMSE. Folds share training data, and the bootstrap describes the observed held-out errors without refitting the models.
+
+<details>
+<summary>All 25 district folds</summary>
+
+| State | USDA district | County-years | Common RMSE | Interactions RMSE | Δ RMSE | Common alpha | Interactions alpha |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Kansas | NORTHWEST | 237 | 9.863 | 9.672 | -0.191 | 10 | 0.1 |
+| Kansas | WEST CENTRAL | 275 | 9.160 | 9.364 | +0.204 | 10 | 0.1 |
+| Kansas | SOUTHWEST | 424 | 10.807 | 11.116 | +0.309 | 10 | 0.1 |
+| Kansas | NORTH CENTRAL | 349 | 9.144 | 9.106 | -0.038 | 10 | 10 |
+| Kansas | CENTRAL | 352 | 8.571 | 8.366 | -0.205 | 10 | 10 |
+| Kansas | SOUTH CENTRAL | 418 | 8.934 | 8.850 | -0.085 | 10 | 0.1 |
+| Kansas | NORTHEAST | 277 | 11.101 | 11.222 | +0.121 | 10 | 0.1 |
+| Kansas | EAST CENTRAL | 442 | 9.163 | 9.168 | +0.005 | 10 | 0.1 |
+| Kansas | SOUTHEAST | 441 | 9.470 | 9.151 | -0.319 | 10 | 0.1 |
+| Nebraska | NORTHWEST | 335 | 12.714 | 12.041 | -0.673 | 10 | 10 |
+| Nebraska | NORTH | 67 | 8.897 | 8.418 | -0.480 | 10 | 0.1 |
+| Nebraska | NORTHEAST | 20 | 9.035 | 8.226 | -0.809 | 10 | 0.1 |
+| Nebraska | CENTRAL | 134 | 9.436 | 9.282 | -0.154 | 10 | 0.1 |
+| Nebraska | EAST | 261 | 9.027 | 8.763 | -0.264 | 10 | 0.1 |
+| Nebraska | SOUTHWEST | 290 | 9.840 | 9.800 | -0.040 | 10 | 1 |
+| Nebraska | SOUTH | 245 | 9.053 | 9.069 | +0.015 | 0.1 | 0.1 |
+| Nebraska | SOUTHEAST | 381 | 9.053 | 9.570 | +0.518 | 10 | 0.1 |
+| Oklahoma | PANHANDLE | 154 | 8.029 | 6.893 | -1.136 | 10 | 0.1 |
+| Oklahoma | WEST CENTRAL | 201 | 7.470 | 6.912 | -0.558 | 10 | 10 |
+| Oklahoma | SOUTHWEST | 255 | 8.545 | 8.476 | -0.070 | 0.1 | 0.1 |
+| Oklahoma | NORTH CENTRAL | 264 | 6.606 | 6.610 | +0.004 | 1 | 0.1 |
+| Oklahoma | CENTRAL | 358 | 6.953 | 6.713 | -0.241 | 10 | 10 |
+| Oklahoma | SOUTH CENTRAL | 185 | 8.217 | 7.608 | -0.609 | 10 | 0.1 |
+| Oklahoma | NORTHEAST | 309 | 8.934 | 8.741 | -0.193 | 10 | 0.1 |
+| Oklahoma | EAST CENTRAL | 74 | 14.767 | 13.856 | -0.911 | 10 | 0.1 |
+
+</details>
+
+The study compared 15 fitted slopes and 15 pairwise differences. It used 5 model specifications (three standalone state ridges and two pooled ridges), 15 specification–alpha configurations, 477 inner fits, 53 final fits and 3,000 coefficient bootstrap refits. The intervals are descriptive, use few district blocks and have no multiple-comparison adjustment. The coefficient differences describe county-average associations and may reflect management, varieties, irrigation, reporting mix or differences in feature distributions. The study does not establish weather physiology or the quality of rotation recommendations.

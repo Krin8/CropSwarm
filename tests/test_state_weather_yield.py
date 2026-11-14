@@ -1,5 +1,6 @@
 """Check the P39 fold boundary, paired intervals and reproducible ridge fits."""
 
+import json
 from pathlib import Path
 
 import numpy as np
@@ -94,3 +95,19 @@ def test_paired_rmse_difference(study):
     summary = rmse_summary(rows, config)
     assert summary["rmse_difference_bu_ac"] == {"value": -1.0, "bootstrap_95": [-1.0, -1.0]}
     assert summary["clear_improvement"]
+
+
+def test_saved_report_matches_every_p27_and_p32_district_holdout():
+    processed = ROOT / "data/processed"
+    report = json.loads((processed / "climate_yield_state_associations.json").read_text())
+    kansas = json.loads((processed / "climate_yield_validity_pooled.json").read_text())
+    targets = json.loads((processed / "climate_yield_transfer.json").read_text())["cases"]
+    references = {"20": kansas["schemes"]["leave_one_district_out"],
+                  "31": targets["in_state_31"], "40": targets["in_state_40"]}
+    earlier = {(f"{state}:{fold['held_out']}", fold["n"])
+               for state, analysis in references.items() for fold in analysis["folds"]}
+    actual = {(fold["district_block"], fold["n"]) for fold in report["held_out"]["folds"]}
+    assert earlier == actual
+    pooled = report["held_out"]["pooled"]
+    assert pooled["rmse_difference_bu_ac"]["bootstrap_95"][1] > 0 > pooled["rmse_difference_bu_ac"]["value"]
+    assert not pooled["clear_improvement"]

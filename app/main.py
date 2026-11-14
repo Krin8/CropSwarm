@@ -288,6 +288,50 @@ def transfer_diagnosis_panel():
                    "are hypotheses for the gap. County-average results do not validate rotation recommendations.")
 
 
+def state_weather_yield_panel():
+    report = cached("climate_yield_state_associations.json")
+    states = report["states"]
+    with st.expander("Do weather–yield associations differ by state? (P39)"):
+        st.caption("Sources · Cached NASA POWER weather and USDA NASS winter-wheat yields. "
+                   "Illustrative county averages. All eligible rows include all-practice fallback where needed.")
+
+        def estimate(entry):
+            lo, hi = entry["bootstrap_95"]
+            return f"{entry['value']:+.3f} [{lo:+.3f}, {hi:+.3f}]"
+
+        coefficients = []
+        for feature, label in report["feature_labels"].items():
+            result = report["coefficients"][feature]
+            coefficients.append({"Weather feature": label,
+                                 **{state: estimate(result["states"][key]) for key, state in states.items()},
+                                 "All three intervals overlap": "Yes" if result["all_intervals_overlap"] else "No",
+                                 "Opposite point signs": "Yes" if result["opposite_point_signs"] else "No"})
+        st.caption("State-specific ridge slopes in bu/acre per within-state weather standard deviation. "
+                   "Brackets show descriptive 95% district bootstrap intervals.")
+        st.dataframe(pd.DataFrame(coefficients), hide_index=True)
+
+        held_out = report["held_out"]
+        pooled = held_out["pooled"]
+        rows = []
+        for label, result in [("All states", pooled),
+                              *((states[key], held_out["by_state"][key]) for key in states)]:
+            scores = result["rmse_bu_ac"]
+            rows.append({"Geography": label, "County-years": result["n"], "Held-out districts": result["districts"],
+                         "Common slopes RMSE": f"{scores['common_slopes']['value']:.3f}",
+                         "State interactions RMSE": f"{scores['interactions']['value']:.3f}",
+                         "Δ RMSE (interactions − common slopes)": estimate(result["rmse_difference_bu_ac"])})
+        st.caption("Held-out RMSE in bu/acre. Each fold holds out one USDA reporting district. "
+                   "A negative difference favors state interactions.")
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        outcome = ("State interactions improved pooled held-out RMSE under the preregistered interval rule."
+                   if pooled["clear_improvement"] else
+                   "Pooled holdout did not show a clear improvement under the preregistered interval rule.")
+        st.write(outcome)
+        st.caption("Differences can reflect management, varieties, irrigation or differences in weather variation. "
+                   "The analysis describes county-average associations. Weather physiology and rotation quality "
+                   "are outside its scope.")
+
+
 def local_recalibration_panel():
     report = cached("climate_yield_recalibration.json")
     county_mean = cached("climate_yield_recalibration_county_mean.json")["states"]
@@ -963,6 +1007,7 @@ def app():
         india_yield_screen_panel()
         cross_state_yield_panel()
         transfer_diagnosis_panel()
+        state_weather_yield_panel()
         local_recalibration_panel()
         yield_interval_panel()
         interval_diagnosis_panel()
