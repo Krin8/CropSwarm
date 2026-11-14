@@ -3,6 +3,7 @@
 import copy
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -15,6 +16,7 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_inputs, render_brief, repository_version
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.sensitivity import check_first
@@ -36,6 +38,24 @@ def load(farm_id, prefix):
 
 def title(name):
     return name.replace("_", " ").capitalize()
+
+
+def brief_controls(farm, preset):
+    stem = brief_filename(farm["farm_id"], preset)
+    html = render_brief(farm, preset, *reference_inputs(load, farm["farm_id"]),
+                        generated_on=date.today(), commit=repository_version())
+    release = brief_release()
+    pdf = BRIEFS / f"{stem}.pdf"
+    with st.container(key="decision_brief"):
+        st.caption(f"Farm decision brief · {farm['name']} · {title(preset)} preset. "
+                   "Uses the saved farm inputs and named preset weights.")
+        columns = st.columns(2)
+        columns[0].download_button("Download brief (HTML)", html, f"{stem}.html", mime="text/html", on_click="ignore")
+        if release.get("pdf_paper") and pdf.is_file():
+            columns[1].download_button("Download brief (PDF)", pdf.read_bytes(), pdf.name,
+                                       mime="application/pdf", on_click="ignore",
+                                       help=f"Bundled {release['pdf_paper']} copy generated {release['generated_on']} "
+                                            f"from {release['source_commit'][:12]}.")
 
 
 def correlation_counts(farm_ids):
@@ -632,6 +652,7 @@ def app():
         values = list(presets[preset].values())
     weight = np.array(values) / sum(values)
     st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
+    brief_controls(farm, preset)
 
     with st.container(key="climate_stress_test"):
         st.subheader("Robustness check under weather shifts (P16)")

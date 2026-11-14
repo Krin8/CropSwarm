@@ -150,3 +150,13 @@ def test_robust_pick_shows_original_and_held_out_telangana_swarm_results():
     assert "Original rule: 0/10 exact hits" in info
     assert "the original search reached 10/10" in info
     assert "search reached 10/10 in best-of-five trials" in info
+
+
+def test_download_brief_tracks_farm_and_named_preset():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="farm_picker").set_value("telangana_a").run()
+    next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
+    assert not app.exception
+    assert any("Farm decision brief · Telangana A · Income preset" in item.value for item in app.caption)
+    labels = {item.proto.label for item in app.get("download_button")}
+    assert "Download brief (HTML)" in labels
