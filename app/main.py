@@ -37,6 +37,26 @@ def title(name):
     return name.replace("_", " ").capitalize()
 
 
+def correlation_counts(farm_ids):
+    studies = {"P15 crop stress and NDVI": [], "P19 NASA weather and NDVI": [],
+               "P20 regional yield": []}
+    for farm_id in farm_ids:
+        for season in load(farm_id, "backtest")["seasons"].values():
+            studies["P15 crop stress and NDVI"].extend(season["comparisons"].values())
+        for season in load(farm_id, "nasa_consistency")["seasons"].values():
+            studies["P19 NASA weather and NDVI"].extend(season["comparisons"])
+        for series in load(farm_id, "yield_backtest")["series"]:
+            studies["P20 regional yield"].extend(series["comparisons"])
+    counts = []
+    for study, comparisons in studies.items():
+        intervals = [row["bootstrap_95"] for row in comparisons if row["bootstrap_95"] is not None]
+        counts.append({"Study": study, "Comparisons": len(comparisons),
+                       "Correlations computed": sum(row["rho"] is not None for row in comparisons),
+                       "Intervals available": len(intervals),
+                       "Intervals excluding zero": sum(low > 0 or high < 0 for low, high in intervals)})
+    return counts
+
+
 def stress_map(data, preset):
     selected = data["presets"][preset]
     rain = data["rainfall_changes_pct"]
@@ -184,7 +204,7 @@ def app():
         st.caption(farm["name"])
         if farm["farm_id"] == "us_high_plains_b" and farm["irrigation"]["supply_fraction"] == 0:
             st.caption("Rainfed reference · 0% of irrigation demand supplied · assumption, validate locally")
-        st.write(assessment["assessment"])
+        st.write(assessment["assessment"].replace("longest observed dry spell", "longest dry spell in the POWER record"))
         for flag in validity["flags"]:
             st.warning(flag)
         if farm_id == "us_high_plains_b":
@@ -196,9 +216,22 @@ def app():
             with tab:
                 chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
                 st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
-        st.caption("NASA POWER rainfall and temperature · NASA Terra MODIS vegetation")
+        st.caption("NASA POWER rainfall and temperature · GPM IMERG for the rainfall agreement check · NASA Terra MODIS vegetation")
     with st.container(key="historical_validation"):
         st.subheader("Validation · historical back-test")
+        counts = correlation_counts(by_id)
+        computed = sum(row["Correlations computed"] for row in counts)
+        comparisons = sum(row["Comparisons"] for row in counts)
+        excluding_zero = sum(row["Intervals excluding zero"] for row in counts)
+        st.write(f"Across all three farms, {computed} of {comparisons} comparisons produced a correlation. "
+                 f"{excluding_zero} bootstrap intervals excluded zero.")
+        st.caption("These checks compare NASA weather and vegetation data and examine consistency with county or "
+                   "district yields. "
+                   "Rotation recommendations still need field validation.")
+        with st.expander("Correlation counts across all farms"):
+            st.dataframe(pd.DataFrame(counts), hide_index=True)
+            st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "
+                       "Intervals are descriptive and unadjusted for multiple comparisons.")
         backtest = load(farm_id, "backtest")
         st.caption("2019–2023 · CDL mapped classes in Kansas; assumed crop identities in Telangana and Makueni. "
                    "This uses the reference farm inputs, even when you edit the comparison below.")
@@ -320,7 +353,7 @@ def app():
         st.dataframe(pd.DataFrame(legend), hide_index=True)
         finding = diagnosis["presets"][preset]
         margin = load(farm_id, "stress_margins")["presets"][preset]
-        st.write(f"The P16 map labels a different top rotation in {finding['changed_cells']} of "
+        st.write(f"The robustness map labels a different top rotation in {finding['changed_cells']} of "
                  f"{finding['grid_cells']} tested climate cells compared with unchanged weather.")
         if margin["near_tie"]:
             st.info("top choices are close here · the nearest reported change is between options "
@@ -346,8 +379,8 @@ def app():
             st.caption("Showing a new exact comparison and new scenario draws for your edited inputs.")
             if edits[3] > 0:
                 st.caption(f"Entered farm area {edits[3]:g} ha · farmer input")
-    alternatives = alternative_groups(result["strategies"][1:],
-                                       diagnosis["alternative_difference"]["threshold"])
+    difference_threshold = diagnosis["alternative_difference"]["threshold"]
+    alternatives = alternative_groups(result["strategies"][1:], difference_threshold)
     with st.container(key="strategy_comparison"):
         st.subheader("Compare rotations")
         st.caption(farm["name"])
@@ -375,9 +408,10 @@ def app():
         st.dataframe(pd.DataFrame(rows), hide_index=True)
         st.caption(f"{alternatives['displayed_alternatives']} displayed alternatives form "
                    f"{alternatives['meaningfully_different_groups']} "
-                   "meaningfully different metric profiles at a maximum 0.05 normalized-score difference "
-                   "· design choice, not empirical. Candidates below this threshold are omitted rather than padded.")
-        st.caption("Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
+                   f"distinct metric profiles. Each selected alternative differs from the baseline and every "
+                   f"other selected alternative by more than {difference_threshold:g} on at least one normalized "
+                   "metric. The threshold is a design choice.")
+        st.caption("Wins use the selected preset and split credit among tied strategies. Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
         chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
                                  marker_color=COLORS[:len(rows)]))
         chart.update_layout(yaxis=dict(range=[0, 1], title="Weighted score"), height=290,

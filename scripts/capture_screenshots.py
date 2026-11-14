@@ -42,7 +42,8 @@ def capture(url, destination, channel=None):
     destination.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(channel=channel)
-        context = browser.new_context(viewport={"width": 1450, "height": 1000}, device_scale_factor=1)
+        # Capture the full panel within the viewport so Streamlit renders its off-screen text.
+        context = browser.new_context(viewport={"width": 1450, "height": 2100}, device_scale_factor=1)
         # Reject external HTTP resources to verify that the browser demo is self-contained.
         context.route("**/*", lambda route: route.continue_() if urlsplit(route.request.url).hostname == HOST
                       else route.abort())
@@ -65,6 +66,8 @@ def capture(url, destination, channel=None):
             validation = page.locator(".st-key-historical_validation")
             expect(validation.get_by_text("Validation · historical back-test")).to_be_visible()
             expect(validation.locator(".js-plotly-plot:visible").first).to_be_visible()
+            validation.get_by_text("Correlation counts across all farms", exact=True).click()
+            expect(validation.get_by_text("Intervals that touch zero", exact=False)).to_be_visible()
             validation.screenshot(path=destination / f"{farm_id}_validation.png", animations="disabled")
             robustness = page.locator(".st-key-climate_stress_test")
             expect(robustness.get_by_text("Robustness check")).to_be_visible()

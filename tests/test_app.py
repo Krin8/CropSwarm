@@ -19,6 +19,16 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
     assert any("NASA climate and vegetation check" in row.label for row in app.expander)
+    counts = next(table.value for table in app.dataframe if "Intervals excluding zero" in table.value.columns)
+    assert list(counts["Comparisons"]) == [24, 36, 10]
+    assert list(counts["Correlations computed"]) == [12, 36, 10]
+    assert list(counts["Intervals available"]) == [12, 36, 10]
+    assert list(counts["Intervals excluding zero"]) == [4, 11, 3]
+    assert any("58 of 70 comparisons" in row.value and "18 bootstrap intervals" in row.value for row in app.markdown)
+    p15 = next(table.value for table in app.dataframe if "Comparison" in table.value.columns)
+    p19 = next(table.value for table in app.dataframe if "MODIS response" in table.value.columns)
+    assert len(p15) == 8
+    assert len(p19) == 12
     assert any(row.label == "Yield back-test" for row in app.expander)
     yield_tables = [table.value for table in app.dataframe if "Paired n" in table.value.columns]
     if site == "kenya_makueni_north":

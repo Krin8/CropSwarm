@@ -4,6 +4,19 @@ This is a **descriptive check**, not a crop-yield validation. We fixed the exist
 
 The [Kansas chart](charts/backtest_us_high_plains_b.svg), [Telangana chart](charts/backtest_telangana_a.svg), and [Makueni chart](charts/backtest_kenya_makueni_north.svg) show deficit share against NDVI peak. The app's **Validation** panel shows the same interactive plots and all four correlation pairs per season. The [Kansas](../data/processed/backtest_us_high_plains_b.json), [Telangana](../data/processed/backtest_telangana_a.json), and [Makueni](../data/processed/backtest_kenya_makueni_north.json) JSON files include every year, crop, season, source tag and statistic.
 
+## All correlations across P15, P19 and P20
+
+The back-tests check consistency between NASA weather and vegetation inputs and between modeled stress and county or district yields. Rotation recommendations still need field validation. All comparisons are shown below, including those with unavailable estimates, weak or opposite signs, and intervals that include zero.
+
+| Study | Comparisons | Correlations computed | Bootstrap intervals available | Intervals excluding zero |
+|---|---:|---:|---:|---:|
+| P15 crop stress and MODIS NDVI | 24 | 12 | 12 | 4 |
+| P19 NASA weather and MODIS NDVI | 36 | 36 | 36 | 11 |
+| P20 county or district yield | 10 | 10 | 10 | 3 |
+| **Total** | **70** | **58** | **58** | **18** |
+
+The totals pool the saved comparisons across all three farms. A correlation counts when Spearman ρ is available. An interval excludes zero only if both full-precision endpoints are strictly positive or strictly negative. The intervals are descriptive and unadjusted for multiple comparisons. Comparisons reuse observations, so the 18 intervals are not independent confirmations. Makueni has no seasonal yield comparison in P20.
+
 ## What was compared
 
 - Kansas uses saved USDA CDL point classes: 2019 fallow, 2020 winter wheat, 2021 sorghum, 2022 fallow, 2023 winter wheat. Winter wheat is assigned to the **harvest year** and its climate and NDVI window starts in the previous October. Fallow has no crop water or heat stress indicator. CDL is a mapped class, not verified management.
@@ -13,7 +26,7 @@ The [Kansas chart](charts/backtest_us_high_plains_b.svg), [Telangana chart](char
 
 ## Results
 
-Each cell is `Spearman ρ [bootstrap interval]; n`. “Unavailable” means fewer than three nonconstant pairs. A negative sign is the expected direction if more stress coincides with lower greenness. The numeric model indicators are illustrative and require local validation.
+Each cell gives Spearman ρ, the bootstrap interval and paired n. An estimate is unavailable with fewer than three pairs or a constant series. A negative sign is the expected direction if more stress coincides with lower greenness. The numeric model indicators are illustrative and require local validation.
 
 | Farm and season | Water deficit vs NDVI peak | Water deficit vs amplitude | Heat days vs NDVI peak | Heat days vs amplitude | Directionally consistent years |
 |---|---|---|---|---|---|
@@ -24,7 +37,7 @@ Each cell is `Spearman ρ [bootstrap interval]; n`. “Unavailable” means fewe
 | Makueni long rains | −0.40 [−1.00, 1.00]; n=5 | −0.20 [−1.00, 1.00]; n=5 | −0.71 [−1.00, −0.71]; n=5 | −0.71 [−1.00, −0.71]; n=5 | 2 of 3 assessable |
 | Makueni short rains | −0.20 [−1.00, 1.00]; n=5 | **+0.90 [+0.11, 1.00]; n=5, wrong sign** | 0.00 [−1.00, 1.00]; n=5 | **+0.95 [+0.75, 1.00]; n=5, wrong sign** | 2 of 3 assessable |
 
-The water-deficit/NDVI-peak direction is weakly negative where estimable, but every interval spans both signs. The positive short-rains amplitude results are contrary to the simple stress hypothesis and are reported unchanged. Kansas and Telangana cannot support a meaningful within-season correlation from these years. The 2019 Kansas spring NDVI peak over CDL-mapped fallow remains unexplained.
+Water deficit and NDVI peak are weakly negatively associated where estimable, with intervals spanning both signs. The positive short-rains amplitude results run against the expected direction. Neither Kansas season nor Telangana monsoon had enough pairs to estimate a correlation. Telangana post-monsoon had three pairs, and all four intervals spanned both signs. The 2019 Kansas spring NDVI peak over CDL-mapped fallow remains unexplained.
 
 ## What this does not prove
 

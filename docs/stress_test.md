@@ -10,10 +10,10 @@ Each map has four preset panels. The outlined grid cell is unchanged historical 
 
 | Farm | Preset | Cells with a different map label | Nearest changed map cell | Map-label change from unchanged weather |
 |---|---|---:|---|---|
-| Kansas | Water saver | 15 of 35 | +2 °C, 0% rain | Fallow → soybean → sorghum changes to fallow → soybean → pearl millet. |
-| Kansas | Soil builder | 1 of 35 | +3 °C, +10% rain | Fallow → cereal rye cover → soybean changes to fallow → soybean → pearl millet. |
+| Kansas | Water saver | 15 of 35 | +2 °C, 0% rain | Fallow → sorghum → soybean changes to fallow → soybean → pearl millet. |
+| Kansas | Soil builder | 1 of 35 | +3 °C, +10% rain | Fallow → soybean → cereal rye cover changes to fallow → soybean → pearl millet. |
 | Kansas | Income | 20 of 35 | +1.5 °C, 0% rain | Sorghum → soybean → sunflower changes to maize → soybean → sunflower. |
-| Kansas | Balanced | 19 of 35 | +1 °C, +10% rain | Fallow → soybean → sorghum changes to fallow → soybean → pearl millet. |
+| Kansas | Balanced | 19 of 35 | +1 °C, +10% rain | Fallow → sorghum → soybean changes to fallow → soybean → pearl millet. |
 | Telangana | Water saver | 0 of 35 | **No label change** | Pigeonpea then fallow remains the top repeated annual pattern throughout the grid. |
 | Telangana | Soil builder | 2 of 35 | +3 °C, 0% rain | Soybean then fallow replaces pigeonpea then fallow as the top annual pattern. |
 | Telangana | Income | 12 of 35 | +1 °C, +10% rain | Soybean then maize replaces pigeonpea then maize as the top annual pattern. |

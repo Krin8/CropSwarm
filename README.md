@@ -13,13 +13,13 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 
 ## Seven key results
 
-1. Each farm shows its existing baseline and four alternatives with distinct metric profiles, reasons, benefits, risks and information gaps.
-2. NASA POWER supplies 1991–2025 daily weather for all three sites. The long-record validation uses 2001–2024 Terra MODIS composites. [Coverage and results](docs/backtest.md#p19-long-record-nasa-consistency-check)
+1. Each farm shows its configured baseline and four alternatives with distinct metric profiles, reasons, benefits, risks and information gaps.
+2. NASA POWER supplies 1991–2025 daily weather for all three sites. The long-record consistency check uses 2001–2024 Terra MODIS composites. [Coverage and results](docs/backtest.md#p19-long-record-nasa-consistency-check)
 3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
 4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
 5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times. Best of five found it in all 30 trials. [Gaps](docs/optimizer.md)
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
-7. The baseline flags remain visible: Kansas fallow and spring NDVI disagree, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Validity](docs/decisions.md)
+7. The baseline flags remain visible: the spring NDVI peak over Kansas CDL-mapped fallow remains unexplained, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Site caveats](docs/decisions.md)
 
 Evidence grades expose how each modeled metric depends on NASA, external, literature and assumed inputs. All displayed strategies currently have a **low overall evidence label** because key crop and management inputs remain assumptions. [Method and limits](docs/evidence_grades.md)
 

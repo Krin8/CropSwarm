@@ -8,15 +8,21 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 
 | Provider | Dataset | Role in results |
 |---|---|---|
-| NASA | [POWER](data_pipeline.md) corrected precipitation, temperature, radiation, humidity and modeled root-zone wetness | Weather diagnostics, crop water balance and scenarios. POWER `PRECTOTCORR` drives seasonal windows and strategy scores. |
-| NASA | [GPM IMERG via POWER](data_pipeline.md) | **Used in the rainfall agreement diagnostic** shown in the climate assessment. It was **not used** to score or rank rotations. |
-| NASA | [Terra MODIS MOD13Q1 and MCD12Q1](data_pipeline.md) | Vegetation seasonality and land-cover validity checks. They do not establish crop identity at a point. |
+| NASA | [POWER](data_pipeline.md) corrected precipitation, temperature, radiation, humidity and modeled root-zone wetness | Daily weather was cached. Corrected precipitation and temperature feed seasonal diagnostics, stress indicators and scenario scoring. Modeled root-zone wetness informs the climate assessment. |
+| NASA | [GPM IMERG via POWER](data_pipeline.md) | Used in the climate assessment’s rainfall agreement check against POWER corrected precipitation on matching UTC dates. That diagnostic is its only role in the results. |
+| NASA | [Terra MODIS MOD13Q1 NDVI](data_pipeline.md) | Vegetation seasonality and the P15 and P19 historical comparisons. |
+| NASA | [MODIS MCD12Q1 land cover](decisions.md) | Land-cover screening, including the grassland flag at the illustrative Makueni point. |
 | NASA / NGA | [SRTM](data_pipeline.md) through OpenTopoData | Terrain slope proxy in the erosion score. |
 | Non-NASA | [ISRIC SoilGrids](api_status.md) | Gridded soil texture and organic-carbon estimates. |
-| Non-NASA | [USDA SSURGO and CDL](api_status.md) | Kansas soil context and mapped crop history; CDL is not a farm management record. |
+| Non-NASA | [USDA SSURGO](api_status.md) | Kansas soil map units and estimated soil water capacity. |
+| Non-NASA | [USDA NASS Cropland Data Layer](decisions.md) | Mapped Kansas crop history and the P15 crop identity input. |
+| Non-NASA | [USDA NASS Quick Stats](backtest.md#p20-yield-back-test) | Finney County winter wheat and sorghum yields for P20. |
+| Non-NASA | [ICRISAT district yields](backtest.md#p20-yield-back-test) | Historical Warangal kharif rice yields from the public study archive for P20. |
 | Non-NASA | [Crop catalog and assumptions](crops.md) | Indicative crop water need, sourced botanical families and locally unverified values for crop climate screening, nitrogen, cover and relative income. See the [P23 source audit](p23_changes.md). |
 
 ## Limitations
+
+SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. The historical comparisons check NASA input consistency and associations with county or district yields. Rotation recommendations still need field validation.
 
 These are illustrative point estimates, not field boundaries or management records. Kansas irrigation supply is set to 0, the 2019 spring NDVI peak over mapped fallow is unresolved, Telangana's second season is tentative, and Makueni cropland remains unverified. POWER root-zone wetness and SoilGrids properties are modeled estimates. The app does not directly measure soil nitrogen or soil organic carbon. Relative income, rainfall uncertainty, simplified erosion, season windows and crop choices need local validation. Scenario intervals and win percentages reflect the specified model and assumptions, not calibrated forecast probabilities. See [decisions](decisions.md), [methods](scoring.md), and [citation audit](citation_audit.md).
 
