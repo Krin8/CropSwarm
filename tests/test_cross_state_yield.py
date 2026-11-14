@@ -112,3 +112,19 @@ def test_committed_yield_inventory_reproduces_with_no_geography_or_network():
     assert yield_inventory(source, SETTINGS) == expected
     assert sum(row["eligible_counties"] for row in expected.values()) == 117
     assert sum(row["eligible_rows"] for row in expected.values()) == 3544
+
+
+def test_archived_centroid_tables_match_nass_ids_and_provenance():
+    import hashlib
+
+    from src.cross_state_yield_data import ARCHIVE, load_centroids
+
+    source = pd.read_csv(ARCHIVE / "quickstats_targets.csv", dtype=str, keep_default_na=False)
+    provenance = json.loads((ARCHIVE / "provenance.json").read_text())
+    for state, metadata in zip(("31", "40"), provenance["county_centroids"], strict=True):
+        path = ARCHIVE / metadata["file"]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == metadata["sha256"]
+        centroids = load_centroids(path, state)
+        counties = source.loc[source.STATE_ANSI.eq(state) & source.COUNTY_ANSI.ne(""), "COUNTY_ANSI"]
+        assert len(centroids) == metadata["county_count"]
+        assert set(state + counties) <= set(centroids.fips)

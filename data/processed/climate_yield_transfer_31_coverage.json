@@ -1,0 +1,1136 @@
+{
+  "selection": {
+    "source_rows": 3680,
+    "unmatched_county_rows": 199,
+    "missing_or_invalid_county_values": 0,
+    "unmatched_county_codes": [
+      "998"
+    ],
+    "duplicate_source_rows": 0,
+    "all_practice_rows_superseded": 1420
+  },
+  "selected_yield_rows": 2061,
+  "yield_counties": 59,
+  "retained_counties": 59,
+  "retained_rows": 1733,
+  "counties": [
+    {
+      "fips": "31001",
+      "county": "Adams",
+      "lat": 40.5243928,
+      "lon": -98.5012084,
+      "yield_years": 28,
+      "non_irrigated_years": 18,
+      "climate_years": 28,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31003",
+      "county": "Antelope",
+      "lat": 42.1766307,
+      "lon": -98.0666814,
+      "yield_years": 12,
+      "non_irrigated_years": 9,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31005",
+      "county": "Arthur",
+      "lat": 41.568872,
+      "lon": -101.6958307,
+      "yield_years": 5,
+      "non_irrigated_years": 5,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31007",
+      "county": "Banner",
+      "lat": 41.5459914,
+      "lon": -103.7104625,
+      "yield_years": 32,
+      "non_irrigated_years": 20,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31009",
+      "county": "Blaine",
+      "lat": 41.9127286,
+      "lon": -99.9768995,
+      "yield_years": 3,
+      "non_irrigated_years": 2,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31011",
+      "county": "Boone",
+      "lat": 41.7066382,
+      "lon": -98.0672827,
+      "yield_years": 17,
+      "non_irrigated_years": 16,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31013",
+      "county": "Box Butte",
+      "lat": 42.219688,
+      "lon": -103.0856521,
+      "yield_years": 32,
+      "non_irrigated_years": 26,
+      "climate_years": 31,
+      "unavailable_windows": [
+        {
+          "year": 1992,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31015",
+      "county": "Boyd",
+      "lat": 42.8999469,
+      "lon": -98.7662607,
+      "yield_years": 24,
+      "non_irrigated_years": 17,
+      "climate_years": 24,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31017",
+      "county": "Brown",
+      "lat": 42.4294931,
+      "lon": -99.9293903,
+      "yield_years": 6,
+      "non_irrigated_years": 2,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31019",
+      "county": "Buffalo",
+      "lat": 40.8551463,
+      "lon": -99.0749722,
+      "yield_years": 31,
+      "non_irrigated_years": 18,
+      "climate_years": 30,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31021",
+      "county": "Burt",
+      "lat": 41.8514947,
+      "lon": -96.3285312,
+      "yield_years": 8,
+      "non_irrigated_years": 8,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31023",
+      "county": "Butler",
+      "lat": 41.2259928,
+      "lon": -97.1318061,
+      "yield_years": 26,
+      "non_irrigated_years": 17,
+      "climate_years": 26,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31025",
+      "county": "Cass",
+      "lat": 40.9097829,
+      "lon": -96.1409012,
+      "yield_years": 26,
+      "non_irrigated_years": 20,
+      "climate_years": 26,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31027",
+      "county": "Cedar",
+      "lat": 42.5990489,
+      "lon": -97.252276,
+      "yield_years": 14,
+      "non_irrigated_years": 6,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31029",
+      "county": "Chase",
+      "lat": 40.5242278,
+      "lon": -101.6979468,
+      "yield_years": 33,
+      "non_irrigated_years": 26,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31031",
+      "county": "Cherry",
+      "lat": 42.545152,
+      "lon": -101.1184184,
+      "yield_years": 19,
+      "non_irrigated_years": 16,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31033",
+      "county": "Cheyenne",
+      "lat": 41.2197435,
+      "lon": -102.9950228,
+      "yield_years": 31,
+      "non_irrigated_years": 21,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31035",
+      "county": "Clay",
+      "lat": 40.5243592,
+      "lon": -98.0512841,
+      "yield_years": 32,
+      "non_irrigated_years": 19,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31037",
+      "county": "Colfax",
+      "lat": 41.5739168,
+      "lon": -97.0865,
+      "yield_years": 22,
+      "non_irrigated_years": 16,
+      "climate_years": 22,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31039",
+      "county": "Cuming",
+      "lat": 41.9163273,
+      "lon": -96.7873997,
+      "yield_years": 5,
+      "non_irrigated_years": 4,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31041",
+      "county": "Custer",
+      "lat": 41.394049,
+      "lon": -99.7261182,
+      "yield_years": 31,
+      "non_irrigated_years": 18,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31043",
+      "county": "Dakota",
+      "lat": 42.3910801,
+      "lon": -96.5644882,
+      "yield_years": 4,
+      "non_irrigated_years": 4,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31045",
+      "county": "Dawes",
+      "lat": 42.7195072,
+      "lon": -103.1353713,
+      "yield_years": 31,
+      "non_irrigated_years": 20,
+      "climate_years": 30,
+      "unavailable_windows": [
+        {
+          "year": 1992,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31047",
+      "county": "Dawson",
+      "lat": 40.8700144,
+      "lon": -99.8195345,
+      "yield_years": 29,
+      "non_irrigated_years": 18,
+      "climate_years": 28,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31049",
+      "county": "Deuel",
+      "lat": 41.1116409,
+      "lon": -102.3340022,
+      "yield_years": 33,
+      "non_irrigated_years": 22,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31051",
+      "county": "Dixon",
+      "lat": 42.4928715,
+      "lon": -96.8677069,
+      "yield_years": 3,
+      "non_irrigated_years": 3,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31053",
+      "county": "Dodge",
+      "lat": 41.5778405,
+      "lon": -96.6538861,
+      "yield_years": 11,
+      "non_irrigated_years": 11,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31055",
+      "county": "Douglas",
+      "lat": 41.2953852,
+      "lon": -96.1544421,
+      "yield_years": 17,
+      "non_irrigated_years": 10,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31057",
+      "county": "Dundy",
+      "lat": 40.1762808,
+      "lon": -101.6879619,
+      "yield_years": 34,
+      "non_irrigated_years": 25,
+      "climate_years": 34,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31059",
+      "county": "Fillmore",
+      "lat": 40.5245936,
+      "lon": -97.5965013,
+      "yield_years": 31,
+      "non_irrigated_years": 18,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31061",
+      "county": "Franklin",
+      "lat": 40.1762731,
+      "lon": -98.9527958,
+      "yield_years": 31,
+      "non_irrigated_years": 19,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31063",
+      "county": "Frontier",
+      "lat": 40.530158,
+      "lon": -100.3942535,
+      "yield_years": 30,
+      "non_irrigated_years": 19,
+      "climate_years": 30,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31065",
+      "county": "Furnas",
+      "lat": 40.1764339,
+      "lon": -99.9122712,
+      "yield_years": 34,
+      "non_irrigated_years": 19,
+      "climate_years": 33,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31067",
+      "county": "Gage",
+      "lat": 40.261675,
+      "lon": -96.689444,
+      "yield_years": 33,
+      "non_irrigated_years": 18,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31069",
+      "county": "Garden",
+      "lat": 41.618813,
+      "lon": -102.3352891,
+      "yield_years": 31,
+      "non_irrigated_years": 22,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31071",
+      "county": "Garfield",
+      "lat": 41.9142798,
+      "lon": -98.9913844,
+      "yield_years": 4,
+      "non_irrigated_years": 4,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31073",
+      "county": "Gosper",
+      "lat": 40.5147204,
+      "lon": -99.8307636,
+      "yield_years": 32,
+      "non_irrigated_years": 19,
+      "climate_years": 31,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31075",
+      "county": "Grant",
+      "lat": 41.9150025,
+      "lon": -101.7405978,
+      "yield_years": 0,
+      "non_irrigated_years": 0,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31077",
+      "county": "Greeley",
+      "lat": 41.5673653,
+      "lon": -98.5212447,
+      "yield_years": 15,
+      "non_irrigated_years": 13,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31079",
+      "county": "Hall",
+      "lat": 40.8724921,
+      "lon": -98.5021734,
+      "yield_years": 17,
+      "non_irrigated_years": 14,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31081",
+      "county": "Hamilton",
+      "lat": 40.8729242,
+      "lon": -98.0230058,
+      "yield_years": 29,
+      "non_irrigated_years": 19,
+      "climate_years": 29,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31083",
+      "county": "Harlan",
+      "lat": 40.1764227,
+      "lon": -99.4046429,
+      "yield_years": 33,
+      "non_irrigated_years": 18,
+      "climate_years": 32,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31085",
+      "county": "Hayes",
+      "lat": 40.5247486,
+      "lon": -101.061843,
+      "yield_years": 29,
+      "non_irrigated_years": 19,
+      "climate_years": 29,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31087",
+      "county": "Hitchcock",
+      "lat": 40.1763165,
+      "lon": -101.0422701,
+      "yield_years": 34,
+      "non_irrigated_years": 21,
+      "climate_years": 34,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31089",
+      "county": "Holt",
+      "lat": 42.4553168,
+      "lon": -98.7836842,
+      "yield_years": 22,
+      "non_irrigated_years": 19,
+      "climate_years": 22,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31091",
+      "county": "Hooker",
+      "lat": 41.9158806,
+      "lon": -101.1353267,
+      "yield_years": 0,
+      "non_irrigated_years": 0,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31093",
+      "county": "Howard",
+      "lat": 41.2199648,
+      "lon": -98.517096,
+      "yield_years": 23,
+      "non_irrigated_years": 18,
+      "climate_years": 23,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31095",
+      "county": "Jefferson",
+      "lat": 40.1756889,
+      "lon": -97.1427153,
+      "yield_years": 33,
+      "non_irrigated_years": 18,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31097",
+      "county": "Johnson",
+      "lat": 40.3926062,
+      "lon": -96.265097,
+      "yield_years": 33,
+      "non_irrigated_years": 18,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31099",
+      "county": "Kearney",
+      "lat": 40.5066641,
+      "lon": -98.9480392,
+      "yield_years": 32,
+      "non_irrigated_years": 20,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31101",
+      "county": "Keith",
+      "lat": 41.1988275,
+      "lon": -101.6613901,
+      "yield_years": 33,
+      "non_irrigated_years": 27,
+      "climate_years": 33,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31103",
+      "county": "Keya Paha",
+      "lat": 42.8790371,
+      "lon": -99.7123026,
+      "yield_years": 12,
+      "non_irrigated_years": 9,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31105",
+      "county": "Kimball",
+      "lat": 41.1976289,
+      "lon": -103.7149184,
+      "yield_years": 32,
+      "non_irrigated_years": 24,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31107",
+      "county": "Knox",
+      "lat": 42.6368232,
+      "lon": -97.8919176,
+      "yield_years": 21,
+      "non_irrigated_years": 14,
+      "climate_years": 20,
+      "unavailable_windows": [
+        {
+          "year": 1990,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31109",
+      "county": "Lancaster",
+      "lat": 40.7839108,
+      "lon": -96.6877572,
+      "yield_years": 29,
+      "non_irrigated_years": 18,
+      "climate_years": 29,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31111",
+      "county": "Lincoln",
+      "lat": 41.0475539,
+      "lon": -100.745189,
+      "yield_years": 31,
+      "non_irrigated_years": 23,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31113",
+      "county": "Logan",
+      "lat": 41.5664932,
+      "lon": -100.4827395,
+      "yield_years": 21,
+      "non_irrigated_years": 18,
+      "climate_years": 21,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31115",
+      "county": "Loup",
+      "lat": 41.9137725,
+      "lon": -99.4544216,
+      "yield_years": 4,
+      "non_irrigated_years": 4,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31117",
+      "county": "McPherson",
+      "lat": 41.568119,
+      "lon": -101.0604128,
+      "yield_years": 5,
+      "non_irrigated_years": 5,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31119",
+      "county": "Madison",
+      "lat": 41.9166221,
+      "lon": -97.6007794,
+      "yield_years": 9,
+      "non_irrigated_years": 9,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31121",
+      "county": "Merrick",
+      "lat": 41.1690123,
+      "lon": -98.0383627,
+      "yield_years": 24,
+      "non_irrigated_years": 16,
+      "climate_years": 24,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31123",
+      "county": "Morrill",
+      "lat": 41.71574,
+      "lon": -103.0104351,
+      "yield_years": 34,
+      "non_irrigated_years": 24,
+      "climate_years": 34,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31125",
+      "county": "Nance",
+      "lat": 41.3973598,
+      "lon": -97.9923337,
+      "yield_years": 23,
+      "non_irrigated_years": 18,
+      "climate_years": 23,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31127",
+      "county": "Nemaha",
+      "lat": 40.3876375,
+      "lon": -95.8497829,
+      "yield_years": 31,
+      "non_irrigated_years": 18,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31129",
+      "county": "Nuckolls",
+      "lat": 40.1763077,
+      "lon": -98.0471852,
+      "yield_years": 31,
+      "non_irrigated_years": 19,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31131",
+      "county": "Otoe",
+      "lat": 40.6485783,
+      "lon": -96.1347281,
+      "yield_years": 29,
+      "non_irrigated_years": 19,
+      "climate_years": 29,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31133",
+      "county": "Pawnee",
+      "lat": 40.1315348,
+      "lon": -96.2370549,
+      "yield_years": 31,
+      "non_irrigated_years": 20,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31135",
+      "county": "Perkins",
+      "lat": 40.8510571,
+      "lon": -101.6495987,
+      "yield_years": 34,
+      "non_irrigated_years": 21,
+      "climate_years": 34,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31137",
+      "county": "Phelps",
+      "lat": 40.5110656,
+      "lon": -99.4145278,
+      "yield_years": 27,
+      "non_irrigated_years": 19,
+      "climate_years": 26,
+      "unavailable_windows": [
+        {
+          "year": 1993,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31139",
+      "county": "Pierce",
+      "lat": 42.2642971,
+      "lon": -97.6012923,
+      "yield_years": 11,
+      "non_irrigated_years": 7,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31141",
+      "county": "Platte",
+      "lat": 41.5712287,
+      "lon": -97.5210871,
+      "yield_years": 25,
+      "non_irrigated_years": 18,
+      "climate_years": 25,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31143",
+      "county": "Polk",
+      "lat": 41.1868532,
+      "lon": -97.5685236,
+      "yield_years": 19,
+      "non_irrigated_years": 17,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31145",
+      "county": "Red Willow",
+      "lat": 40.1757996,
+      "lon": -100.476863,
+      "yield_years": 32,
+      "non_irrigated_years": 23,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31147",
+      "county": "Richardson",
+      "lat": 40.1251094,
+      "lon": -95.7174794,
+      "yield_years": 31,
+      "non_irrigated_years": 20,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31149",
+      "county": "Rock",
+      "lat": 42.4207714,
+      "lon": -99.4499488,
+      "yield_years": 6,
+      "non_irrigated_years": 5,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31151",
+      "county": "Saline",
+      "lat": 40.5239882,
+      "lon": -97.140908,
+      "yield_years": 34,
+      "non_irrigated_years": 18,
+      "climate_years": 34,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31153",
+      "county": "Sarpy",
+      "lat": 41.1129699,
+      "lon": -96.1120332,
+      "yield_years": 12,
+      "non_irrigated_years": 9,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31155",
+      "county": "Saunders",
+      "lat": 41.2262949,
+      "lon": -96.637282,
+      "yield_years": 31,
+      "non_irrigated_years": 19,
+      "climate_years": 31,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31157",
+      "county": "Scotts Bluff",
+      "lat": 41.8506289,
+      "lon": -103.707959,
+      "yield_years": 24,
+      "non_irrigated_years": 23,
+      "climate_years": 24,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31159",
+      "county": "Seward",
+      "lat": 40.8723121,
+      "lon": -97.1395092,
+      "yield_years": 26,
+      "non_irrigated_years": 20,
+      "climate_years": 26,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31161",
+      "county": "Sheridan",
+      "lat": 42.5036889,
+      "lon": -102.4087747,
+      "yield_years": 33,
+      "non_irrigated_years": 26,
+      "climate_years": 32,
+      "unavailable_windows": [
+        {
+          "year": 1992,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31163",
+      "county": "Sherman",
+      "lat": 41.2205157,
+      "lon": -98.9762105,
+      "yield_years": 19,
+      "non_irrigated_years": 18,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31165",
+      "county": "Sioux",
+      "lat": 42.4865476,
+      "lon": -103.7587514,
+      "yield_years": 26,
+      "non_irrigated_years": 21,
+      "climate_years": 25,
+      "unavailable_windows": [
+        {
+          "year": 1992,
+          "PRECTOTCORR": 0,
+          "T2M_MAX": 0,
+          "ALLSKY_SFC_SW_DWN": 1,
+          "T2M": 0
+        }
+      ],
+      "status": "retained"
+    },
+    {
+      "fips": "31167",
+      "county": "Stanton",
+      "lat": 41.9168132,
+      "lon": -97.1939147,
+      "yield_years": 9,
+      "non_irrigated_years": 8,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31169",
+      "county": "Thayer",
+      "lat": 40.1762131,
+      "lon": -97.5949199,
+      "yield_years": 32,
+      "non_irrigated_years": 18,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31171",
+      "county": "Thomas",
+      "lat": 41.9135528,
+      "lon": -100.5558819,
+      "yield_years": 2,
+      "non_irrigated_years": 2,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31173",
+      "county": "Thurston",
+      "lat": 42.1582054,
+      "lon": -96.5440045,
+      "yield_years": 9,
+      "non_irrigated_years": 5,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31175",
+      "county": "Valley",
+      "lat": 41.5672316,
+      "lon": -98.9819018,
+      "yield_years": 22,
+      "non_irrigated_years": 18,
+      "climate_years": 22,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31177",
+      "county": "Washington",
+      "lat": 41.5310028,
+      "lon": -96.221897,
+      "yield_years": 16,
+      "non_irrigated_years": 14,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31179",
+      "county": "Wayne",
+      "lat": 42.2093082,
+      "lon": -97.1191865,
+      "yield_years": 4,
+      "non_irrigated_years": 4,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31181",
+      "county": "Webster",
+      "lat": 40.1763614,
+      "lon": -98.4999473,
+      "yield_years": 32,
+      "non_irrigated_years": 18,
+      "climate_years": 32,
+      "unavailable_windows": [],
+      "status": "retained"
+    },
+    {
+      "fips": "31183",
+      "county": "Wheeler",
+      "lat": 41.914694,
+      "lon": -98.5281862,
+      "yield_years": 4,
+      "non_irrigated_years": 2,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    },
+    {
+      "fips": "31185",
+      "county": "York",
+      "lat": 40.8726722,
+      "lon": -97.597107,
+      "yield_years": 16,
+      "non_irrigated_years": 13,
+      "climate_years": 0,
+      "unavailable_windows": [],
+      "status": "fewer than minimum yield years"
+    }
+  ],
+  "complete_chunks": 118,
+  "requested_chunks": 118,
+  "centroids": {
+    "file": "census_31_counties.html",
+    "sha256": "a2dcd83ba390d1c3558a27e33558e14f420c5852cc121ce13902db96b02c7322",
+    "source": "US Census TIGERweb county table, archived HTML"
+  }
+}
