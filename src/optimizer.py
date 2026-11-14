@@ -64,7 +64,7 @@ def enumerate_canonical_rotations(layers, slots_per_year):
     return canonical_rotations(enumerate_rotations(layers), slots_per_year)
 
 
-def ant_colony(model, layers, weights, config, seed, *, fitness=None):
+def ant_colony(model, layers, weights, config, seed, *, fitness=None, exploration=0.):
     rng = np.random.default_rng(seed)
     n = len(model.ids)
     slots = len(layers)
@@ -93,6 +93,12 @@ def ant_colony(model, layers, weights, config, seed, *, fitness=None):
             if slot == slots - 1 and slot:
                 choices &= np.arange(n) != batch[:, :1]
             probabilities = pheromone[slot, previous] ** config["alpha"] * heuristic[slot] * choices
+            if exploration:
+                # Use the same categorical sampler after mixing in uniform legal transitions.
+                totals = probabilities.sum(axis=1, keepdims=True)
+                counts = choices.sum(axis=1, keepdims=True)
+                probabilities = ((1 - exploration) * probabilities / np.maximum(totals, np.finfo(float).tiny)
+                                 + exploration * choices / np.maximum(counts, 1))
             sums = probabilities.sum(axis=1)
             live &= sums > 0
             targets = rng.random(ants) * sums

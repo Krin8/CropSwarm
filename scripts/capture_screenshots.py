@@ -94,8 +94,10 @@ def capture(url, destination, channel=None, *, panels=PANELS):
             if "robust_pick" in panels:
                 robust = page.locator(".st-key-robust_pick:visible").filter(has=page.get_by_text(name, exact=False))
                 expect(robust).to_have_count(1)
-                expect(robust.get_by_text("Robust pick under assumption changes (P28)", exact=True)).to_be_visible()
+                expect(robust.get_by_text("Robust pick under assumption changes (P28b)", exact=True)).to_be_visible()
                 expect(robust.get_by_text("The minimax pick", exact=False)).to_be_visible()
+                robust.get_by_text("Top three by objective and metric evidence", exact=True).click()
+                expect(robust.get_by_text("Near-tie tolerance", exact=False)).to_be_visible()
                 robust.screenshot(path=destination / f"{farm_id}_robust_pick.png", animations="disabled")
             if "uncertainty" in panels or "evidence" in panels:
                 uncertainty = page.locator(".st-key-uncertainty_baseline")

@@ -81,3 +81,8 @@ Use the published non-irrigated yield when both practices are available for a co
 ## P28 risk-aware picks
 
 Use fixed, nominally feasible three-year cycles and the first 128 P22 draws. Assign zero realized score on draw-specific infeasibility and report the count alongside score results. Retain the nominal pick when a risk objective ties. Use exact enumeration for all three reference farms and separately test how often stochastic ACO reaches those objective references. [Methods and results](robust_optimization.md)
+
+
+## P28b feasible-tail and draw-count checks
+
+Retain P28 as the unconditional reference and compute CVaR separately on each candidate's feasible draws. Report feasibility beside the conditional score. Use the same nested P22 prefixes for expected score, regret and both CVaR definitions. Preserve the original swarm settings for controls and test more exploration on independent evaluation seeds. [P28b report](robust_optimization.md#p28b-feasible-tail-and-draw-count-check)

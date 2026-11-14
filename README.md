@@ -41,7 +41,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Risk-aware picks under assumption changes (P28)](docs/robust_optimization.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Risk-aware picks and draw-count stability (P28b)](docs/robust_optimization.md#p28b-feasible-tail-and-draw-count-check) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
 
 ## Architecture
 
@@ -85,6 +85,7 @@ python -m src.stress_margins
 python -m src.tie_diagnosis
 python -m src.sensitivity
 python -m src.robust_optimization
+python -m src.robust_stability
 python -m src.opportunity_windows
 python -m src.app_assets
 ```

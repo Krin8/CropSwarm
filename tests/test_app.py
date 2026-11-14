@@ -129,9 +129,24 @@ def test_robust_pick_shows_all_objectives_and_changes_with_preset():
     app = AppTest.from_file(str(ROOT / "app/main.py")).run()
     next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
     assert not app.exception
-    assert any(row.value == "Robust pick under assumption changes (P28)" for row in app.subheader)
+    assert any(row.value == "Robust pick under assumption changes (P28b)" for row in app.subheader)
     rows = next(table.value for table in app.dataframe if "Price of robustness" in table.value.columns)
-    assert list(rows["Pick"]) == ["Nominal best", "Expected score", "Worst 10% mean (CVaR)", "Minimax regret"]
+    assert list(rows["Pick"]) == ["Nominal best", "Expected score", "Feasible-only worst 10% mean", "Minimax regret"]
     assert set(rows["Evidence"]) == {"LOW"}
-    assert any("Income · 128 P22 assumption draws" in row.value for row in app.caption)
-    assert any("Every rotation ties on the worst-10% average" in row.value for row in app.info)
+    assert set(rows["Across draw counts"]) <= {"Reference", "Same pick", "Pick changes"}
+    assert any("Original zero-score CVaR rule at 512 draws" in row.value for row in app.caption)
+    app.selectbox(key="robust_draw_count").set_value(128).run()
+    assert not app.exception
+    assert any("Original zero-score CVaR rule at 128 draws" in row.value for row in app.caption)
+    finalists = next(table.value for table in app.dataframe if "Gap to objective best" in table.value.columns)
+    assert len(finalists) == 9
+
+
+def test_robust_pick_shows_original_and_held_out_telangana_swarm_results():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="farm_picker").set_value("telangana_a").run()
+    assert not app.exception
+    info = next(row.value for row in app.info if "Telangana CVaR swarm check" in row.value)
+    assert "Original rule: 0/10 exact hits" in info
+    assert "the original search reached 10/10" in info
+    assert "search reached 10/10 in best-of-five trials" in info

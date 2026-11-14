@@ -1,0 +1,6001 @@
+{
+  "farm_id": "us_high_plains_b",
+  "design": {
+    "source": "P28b analysis and compute design choices; assumption, validate locally",
+    "draw_counts": [
+      128,
+      256,
+      512
+    ],
+    "bootstrap_replicates": 500,
+    "bootstrap_seed": 2028,
+    "shortlist_per_count": 3,
+    "swarm_farm": "telangana_a",
+    "diagnostic_trials": 10,
+    "held_out_trials": 10,
+    "held_out_seed_start": 10000,
+    "exploration_fraction": 0.2,
+    "exploration_iterations": 160
+  },
+  "precision_tolerance": 1e-06,
+  "tail_fraction": 0.1,
+  "candidate_count": 168,
+  "sample_prefix_sha256": {
+    "128": "20d9785879a91826ffdce1b06a297e94a1936c17512ffcc5adf7fb02faaef7ae",
+    "512": "ce297c2f13829d9af8cb7489687dfada432e5b9077de0aef5f67a6332a2da916"
+  },
+  "presets": {
+    "water_saver": {
+      "draw_counts": {
+        "128": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.683723229418286,
+            "expected": 0.37448944319039584,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7285456836223603,
+            "feasible_draws": 71,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6175522172325094,
+            "feasible_share": 0.5546875,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.469995678414125,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6402283377098761,
+                  "expected": 0.469995678414125,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7423540920019149,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6076077279837235,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.04349489170840992,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.6402283377098761,
+                  "expected": 0.469995678414125,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7423540920019149,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6076077279837235,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.04349489170840992,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6325721161857045,
+                  "expected": 0.45058461982989684,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.760694721341133,
+                  "feasible_draws": 89,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6015783004379004,
+                  "feasible_share": 0.6953125,
+                  "nominal_cost": 0.05115111323258148,
+                  "gap_to_best": 0.019411058584228147
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.6250632319871972,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.647855537734366,
+                  "expected": 0.433783433411736,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7423540920019149,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6250632319871972,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.03586769168392001,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.647855537734366,
+                  "expected": 0.433783433411736,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7423540920019149,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6250632319871972,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.03586769168392001,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.650016640908712,
+                  "expected": 0.41944052980979896,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7406628787517546,
+                  "feasible_draws": 80,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6218787632882594,
+                  "feasible_share": 0.625,
+                  "nominal_cost": 0.033706588509573976,
+                  "gap_to_best": 0.003184468698937737
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2714543163776397,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.37448944319039584,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7285456836223603,
+                  "feasible_draws": 71,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6175522172325094,
+                  "feasible_share": 0.5546875,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.37448944319039584,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7285456836223603,
+                  "feasible_draws": 71,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6175522172325094,
+                  "feasible_share": 0.5546875,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Cereal rye cover"
+                  ],
+                  "index": 13,
+                  "nominal_score": 0.6210871345321602,
+                  "expected": 0.2860029011033476,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7359087884426116,
+                  "feasible_draws": 61,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5521215460828093,
+                  "feasible_share": 0.4765625,
+                  "nominal_cost": 0.06263609488612576,
+                  "gap_to_best": 0.007363104820251376
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.683723229418286,
+              "expected": 0.37448944319039584,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7285456836223603,
+              "feasible_draws": 71,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6175522172325094,
+              "feasible_share": 0.5546875,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "256": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.683723229418286,
+            "expected": 0.37971331021981314,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7285456836223603,
+            "feasible_draws": 144,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6158536578632064,
+            "feasible_share": 0.5625,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.4385179717792198,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6325721161857045,
+                  "expected": 0.4385179717792198,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.760694721341133,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5981841305035285,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.05115111323258148,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "maize"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Grain maize"
+                  ],
+                  "index": 23,
+                  "nominal_score": 0.6325721161857045,
+                  "expected": 0.4385179717792198,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.760694721341133,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5981841305035285,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.05115111323258148,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6402283377098761,
+                  "expected": 0.4359775732154958,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6078670636516565,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.04349489170840992,
+                  "gap_to_best": 0.002540398563724011
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.623981841773756,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.647855537734366,
+                  "expected": 0.4069601565541233,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.623981841773756,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.03586769168392001,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.647855537734366,
+                  "expected": 0.4069601565541233,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.623981841773756,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.03586769168392001,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.650016640908712,
+                  "expected": 0.3917778866947629,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 150,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6207390293478966,
+                  "feasible_share": 0.5859375,
+                  "nominal_cost": 0.033706588509573976,
+                  "gap_to_best": 0.0032428124258594426
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2714543163776397,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.37971331021981314,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7285456836223603,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6158536578632064,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.37971331021981314,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7285456836223603,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6158536578632064,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Common bean"
+                  ],
+                  "index": 9,
+                  "nominal_score": 0.67393492621945,
+                  "expected": 0.4128584745922126,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 161,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6012773354323754,
+                  "feasible_share": 0.62890625,
+                  "nominal_cost": 0.009788303198836057,
+                  "gap_to_best": 0.026274248957633972
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.683723229418286,
+              "expected": 0.37971331021981314,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7285456836223603,
+              "feasible_draws": 144,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6158536578632064,
+              "feasible_share": 0.5625,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "512": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.683723229418286,
+            "expected": 0.4008347928582225,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7459907874464988,
+            "feasible_draws": 304,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6167984095843215,
+            "feasible_share": 0.59375,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.4314287769113434,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6325721161857045,
+                  "expected": 0.4314287769113434,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.760694721341133,
+                  "feasible_draws": 342,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6007403229063714,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.05115111323258148,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "maize"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Grain maize"
+                  ],
+                  "index": 23,
+                  "nominal_score": 0.6325721161857045,
+                  "expected": 0.4314287769113434,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.760694721341133,
+                  "feasible_draws": 342,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6007403229063714,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.05115111323258148,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6402283377098761,
+                  "expected": 0.42986258610326333,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6086680962301011,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.04349489170840992,
+                  "gap_to_best": 0.0015661908080800702
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.6242810858660434,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "winter_wheat"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Winter wheat",
+                    "Soybean"
+                  ],
+                  "index": 3,
+                  "nominal_score": 0.6538491985289157,
+                  "expected": 0.32289245269494127,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7639869272708892,
+                  "feasible_draws": 249,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6242810858660434,
+                  "feasible_share": 0.486328125,
+                  "nominal_cost": 0.02987403088937035,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "winter_wheat"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Winter wheat"
+                  ],
+                  "index": 28,
+                  "nominal_score": 0.6538491985289157,
+                  "expected": 0.32289245269494127,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7639869272708892,
+                  "feasible_draws": 249,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6242810858660434,
+                  "feasible_share": 0.486328125,
+                  "nominal_cost": 0.02987403088937035,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.647855537734366,
+                  "expected": 0.42585144232143646,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6239062062200205,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.03586769168392001,
+                  "gap_to_best": 0.0003748796460228965
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2540092125535012,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.4008347928582225,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7459907874464988,
+                  "feasible_draws": 304,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6167984095843215,
+                  "feasible_share": 0.59375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.683723229418286,
+                  "expected": 0.4008347928582225,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7459907874464988,
+                  "feasible_draws": 304,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6167984095843215,
+                  "feasible_share": 0.59375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Common bean"
+                  ],
+                  "index": 9,
+                  "nominal_score": 0.67393492621945,
+                  "expected": 0.4200112180464203,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7548199325799942,
+                  "feasible_draws": 327,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6008339053036968,
+                  "feasible_share": 0.638671875,
+                  "nominal_cost": 0.009788303198836057,
+                  "gap_to_best": 0.00882914513349542
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.683723229418286,
+              "expected": 0.4008347928582225,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7459907874464988,
+              "feasible_draws": 304,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6167984095843215,
+              "feasible_share": 0.59375,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        }
+      },
+      "stability": {
+        "expected": {
+          "same_pick": false,
+          "finalist_indices": [
+            16,
+            23,
+            26,
+            45
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.135,
+                0.135,
+                0.365,
+                0.365
+              ],
+              "pick_win_share": 0.365
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.251,
+                0.251,
+                0.249,
+                0.249
+              ],
+              "pick_win_share": 0.251
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.273,
+                0.273,
+                0.227,
+                0.227
+              ],
+              "pick_win_share": 0.273
+            }
+          }
+        },
+        "conditional_cvar": {
+          "same_pick": false,
+          "finalist_indices": [
+            3,
+            24,
+            28,
+            31,
+            33
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.129,
+                0.315,
+                0.129,
+                0.315,
+                0.112
+              ],
+              "pick_win_share": 0.315
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.092,
+                0.365,
+                0.092,
+                0.365,
+                0.086
+              ],
+              "pick_win_share": 0.365
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.222,
+                0.165,
+                0.222,
+                0.165,
+                0.226
+              ],
+              "pick_win_share": 0.222
+            }
+          }
+        },
+        "minimax_regret": {
+          "same_pick": true,
+          "finalist_indices": [
+            9,
+            10,
+            13,
+            29
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.08733333333333335,
+                0.32166666666666677,
+                0.26933333333333326,
+                0.32166666666666677
+              ],
+              "pick_win_share": 0.32166666666666677
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.03266666666666667,
+                0.47833333333333333,
+                0.010666666666666666,
+                0.47833333333333333
+              ],
+              "pick_win_share": 0.47833333333333333
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.08716666666666673,
+                0.4541666666666675,
+                0.0045,
+                0.4541666666666675
+              ],
+              "pick_win_share": 0.4541666666666675
+            }
+          }
+        }
+      },
+      "exact_and_bootstrap_seconds": 0.09878120900248177
+    },
+    "soil_builder": {
+      "draw_counts": {
+        "128": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Cereal rye cover"
+            ],
+            "index": 34,
+            "nominal_score": 0.7157552327704902,
+            "expected": 0.3563260567374527,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7517802834510803,
+            "feasible_draws": 63,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.7038865269649597,
+            "feasible_share": 0.4921875,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.4896509062964469,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6704304970524679,
+                  "expected": 0.4896509062964469,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7592732474207877,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6531443803854611,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.04532473571802231,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.6704304970524679,
+                  "expected": 0.4896509062964469,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7592732474207877,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6531443803854611,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.04532473571802231,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.46085703112185,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7450925678014755,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6906171784895222,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.028793875174596917
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.7038865269649597,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Cereal rye cover"
+                  ],
+                  "index": 34,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.3563260567374527,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7517802834510803,
+                  "feasible_draws": 63,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7038865269649597,
+                  "feasible_share": 0.4921875,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Cereal rye cover",
+                    "Soybean"
+                  ],
+                  "index": 53,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.3563260567374527,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7517802834510803,
+                  "feasible_draws": 63,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7038865269649597,
+                  "feasible_share": 0.4921875,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.46085703112185,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7450925678014755,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6906171784895222,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.013269348475437481
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2549074321985245,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.46085703112185,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7450925678014755,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6906171784895222,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.46085703112185,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7450925678014755,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6906171784895222,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Common bean"
+                  ],
+                  "index": 9,
+                  "nominal_score": 0.6898233081017068,
+                  "expected": 0.4245708577800542,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7454484820365905,
+                  "feasible_draws": 80,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6451755322515965,
+                  "feasible_share": 0.625,
+                  "nominal_cost": 0.025931924668783468,
+                  "gap_to_best": 0.00035591423511505127
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Soybean",
+                "Cereal rye cover"
+              ],
+              "index": 34,
+              "nominal_score": 0.7157552327704902,
+              "expected": 0.3563260567374527,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7517802834510803,
+              "feasible_draws": 63,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.7038865269649597,
+              "feasible_share": 0.4921875,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "256": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Cereal rye cover"
+            ],
+            "index": 34,
+            "nominal_score": 0.7157552327704902,
+            "expected": 0.38083717522677035,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7646213859319686,
+            "feasible_draws": 135,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.7015440284653947,
+            "feasible_share": 0.52734375,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.4545930854859762,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6704304970524679,
+                  "expected": 0.4545930854859762,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6531180712563253,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.04532473571802231,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.6704304970524679,
+                  "expected": 0.4545930854859762,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6531180712563253,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.04532473571802231,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6436334535594994,
+                  "expected": 0.4447913602925837,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7734614849090575,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6282215879908924,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.07212177921099083,
+                  "gap_to_best": 0.009801725193392508
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.7015440284653947,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Cereal rye cover"
+                  ],
+                  "index": 34,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.38083717522677035,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7646213859319686,
+                  "feasible_draws": 135,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7015440284653947,
+                  "feasible_share": 0.52734375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Cereal rye cover",
+                    "Soybean"
+                  ],
+                  "index": 53,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.38083717522677035,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7646213859319686,
+                  "feasible_draws": 135,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7015440284653947,
+                  "feasible_share": 0.52734375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.4337382148951292,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6904289766665427,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.011115051798851971
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2504441767930985,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.704026749991729,
+                  "expected": 0.39271152194123715,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495558232069015,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6626062971850236,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.011728482778761262,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.704026749991729,
+                  "expected": 0.39271152194123715,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495558232069015,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6626062971850236,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.011728482778761262,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "pearl_millet"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Pearl millet"
+                  ],
+                  "index": 11,
+                  "nominal_score": 0.633827895631795,
+                  "expected": 0.3535659576766193,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7580068498849869,
+                  "feasible_draws": 146,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5769964755397954,
+                  "feasible_share": 0.5703125,
+                  "nominal_cost": 0.08192733713869527,
+                  "gap_to_best": 0.008451026678085394
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Soybean",
+                "Cereal rye cover"
+              ],
+              "index": 34,
+              "nominal_score": 0.7157552327704902,
+              "expected": 0.38083717522677035,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7646213859319686,
+              "feasible_draws": 135,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.7015440284653947,
+              "feasible_share": 0.52734375,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "512": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Soybean",
+              "Cereal rye cover"
+            ],
+            "index": 34,
+            "nominal_score": 0.7157552327704902,
+            "expected": 0.3879709787433967,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7646213859319686,
+            "feasible_draws": 275,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.7000328782200814,
+            "feasible_share": 0.537109375,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.4534977652831003,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.4534977652831003,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6897159150721115,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.4534977652831003,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6897159150721115,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6704304970524679,
+                  "expected": 0.4471433121711016,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7710974752902985,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6520751758742689,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.04532473571802231,
+                  "gap_to_best": 0.006354453111998726
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.7000328782200814,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Cereal rye cover"
+                  ],
+                  "index": 34,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.3879709787433967,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7646213859319686,
+                  "feasible_draws": 275,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7000328782200814,
+                  "feasible_share": 0.537109375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "cereal_rye_cover"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Cereal rye cover",
+                    "Soybean"
+                  ],
+                  "index": 53,
+                  "nominal_score": 0.7157552327704902,
+                  "expected": 0.3879709787433967,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7646213859319686,
+                  "feasible_draws": 275,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.7000328782200814,
+                  "feasible_share": 0.537109375,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.7028595834236524,
+                  "expected": 0.4534977652831003,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6897159150721115,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.012895649346837845,
+                  "gap_to_best": 0.010316963147969926
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.23935829699039457,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.704026749991729,
+                  "expected": 0.41497157618869096,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7606417030096054,
+                  "feasible_draws": 304,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6633018363463251,
+                  "feasible_share": 0.59375,
+                  "nominal_cost": 0.011728482778761262,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.704026749991729,
+                  "expected": 0.41497157618869096,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7606417030096054,
+                  "feasible_draws": 304,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6633018363463251,
+                  "feasible_share": 0.59375,
+                  "nominal_cost": 0.011728482778761262,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Common bean"
+                  ],
+                  "index": 9,
+                  "nominal_score": 0.6898233081017068,
+                  "expected": 0.4338313733635004,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7613363236188888,
+                  "feasible_draws": 327,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.645062564810117,
+                  "feasible_share": 0.638671875,
+                  "nominal_cost": 0.025931924668783468,
+                  "gap_to_best": 0.0006946206092833807
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Soybean",
+                "Cereal rye cover"
+              ],
+              "index": 34,
+              "nominal_score": 0.7157552327704902,
+              "expected": 0.3879709787433967,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7646213859319686,
+              "feasible_draws": 275,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.7000328782200814,
+              "feasible_share": 0.537109375,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        }
+      },
+      "stability": {
+        "expected": {
+          "same_pick": false,
+          "finalist_indices": [
+            16,
+            24,
+            26,
+            31,
+            45
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.094,
+                0.077,
+                0.376,
+                0.077,
+                0.376
+              ],
+              "pick_win_share": 0.376
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.246,
+                0.06,
+                0.317,
+                0.06,
+                0.317
+              ],
+              "pick_win_share": 0.317
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.078,
+                0.306,
+                0.155,
+                0.306,
+                0.155
+              ],
+              "pick_win_share": 0.306
+            }
+          }
+        },
+        "conditional_cvar": {
+          "same_pick": true,
+          "finalist_indices": [
+            24,
+            34,
+            53
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.5,
+                0.5
+              ],
+              "pick_win_share": 0.5
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.5,
+                0.5
+              ],
+              "pick_win_share": 0.5
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.5,
+                0.5
+              ],
+              "pick_win_share": 0.5
+            }
+          }
+        },
+        "minimax_regret": {
+          "same_pick": false,
+          "finalist_indices": [
+            9,
+            10,
+            11,
+            24,
+            29,
+            31
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.016,
+                0.11933333333333333,
+                0.0013333333333333333,
+                0.372,
+                0.11933333333333333,
+                0.372
+              ],
+              "pick_win_share": 0.372
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.006,
+                0.4386666666666667,
+                0.0026666666666666666,
+                0.057,
+                0.4386666666666667,
+                0.057
+              ],
+              "pick_win_share": 0.4386666666666667
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0026666666666666666,
+                0.332,
+                0.078,
+                0.12766666666666668,
+                0.332,
+                0.12766666666666668
+              ],
+              "pick_win_share": 0.332
+            }
+          }
+        }
+      },
+      "exact_and_bootstrap_seconds": 0.08570920798229054
+    },
+    "income": {
+      "draw_counts": {
+        "128": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Soybean",
+              "Sunflower"
+            ],
+            "index": 111,
+            "nominal_score": 0.6413635397298838,
+            "expected": 0.2932841430672852,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7485344588756562,
+            "feasible_draws": 59,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.5715229958990368,
+            "feasible_share": 0.4609375,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.40676214585546405,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.40676214585546405,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7227269113063812,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5214497933893101,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.40676214585546405,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7227269113063812,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5214497933893101,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.5639286069023761,
+                  "expected": 0.40223369026789446,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 89,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5329922209294995,
+                  "feasible_share": 0.6953125,
+                  "nominal_cost": 0.07743493282750769,
+                  "gap_to_best": 0.004528455587569591
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.5939924440489939,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 134,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.3308726175102492,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 65,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5939924440489939,
+                  "feasible_share": 0.5078125,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 141,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.3308726175102492,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 65,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5939924440489939,
+                  "feasible_share": 0.5078125,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "pearl_millet"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Soybean",
+                    "Pearl millet",
+                    "Sunflower"
+                  ],
+                  "index": 160,
+                  "nominal_score": 0.6066449628764536,
+                  "expected": 0.26857595053952543,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7431986778974533,
+                  "feasible_draws": 54,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.590855696335159,
+                  "feasible_share": 0.421875,
+                  "nominal_cost": 0.03471857685343016,
+                  "gap_to_best": 0.0031367477138348754
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2772730886936188,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.40676214585546405,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7227269113063812,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5214497933893101,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.40676214585546405,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7227269113063812,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5214497933893101,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.5555730659189639,
+                  "expected": 0.3697752906358801,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7356437593698502,
+                  "feasible_draws": 82,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5320856222655714,
+                  "feasible_share": 0.640625,
+                  "nominal_cost": 0.08579047381091987,
+                  "gap_to_best": 0.012916848063468933
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "crop_names": [
+                "Grain sorghum",
+                "Soybean",
+                "Sunflower"
+              ],
+              "index": 111,
+              "nominal_score": 0.6413635397298838,
+              "expected": 0.2932841430672852,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7485344588756562,
+              "feasible_draws": 59,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.5715229958990368,
+              "feasible_share": 0.4609375,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "256": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Soybean",
+              "Sunflower"
+            ],
+            "index": 111,
+            "nominal_score": 0.6413635397298838,
+            "expected": 0.28186904577451055,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7485344588756562,
+            "feasible_draws": 113,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.5766001380040451,
+            "feasible_share": 0.44140625,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.3920754642924294,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.5639286069023761,
+                  "expected": 0.3920754642924294,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5343533224758061,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.07743493282750769,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "maize"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Grain maize"
+                  ],
+                  "index": 23,
+                  "nominal_score": 0.5639286069023761,
+                  "expected": 0.3920754642924294,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5343533224758061,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.07743493282750769,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.378422060754383,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7279880404472352,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.52448548038452,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.013653403538046394
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.5969878878013408,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 134,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.30924625881762036,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 121,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5969878878013408,
+                  "feasible_share": 0.47265625,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 141,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.30924625881762036,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 121,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5969878878013408,
+                  "feasible_share": 0.47265625,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 128,
+                  "nominal_score": 0.6169614465612125,
+                  "expected": 0.31287333119908,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 125,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5800693843849003,
+                  "feasible_share": 0.48828125,
+                  "nominal_cost": 0.024402093168671257,
+                  "gap_to_best": 0.016918503416440522
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2720119595527648,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.378422060754383,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7279880404472352,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.52448548038452,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.378422060754383,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7279880404472352,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.52448548038452,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.5555730659189639,
+                  "expected": 0.34762668435578237,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7356437593698502,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5296891292737377,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.08579047381091987,
+                  "gap_to_best": 0.0076557189226149625
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "crop_names": [
+                "Grain sorghum",
+                "Soybean",
+                "Sunflower"
+              ],
+              "index": 111,
+              "nominal_score": 0.6413635397298838,
+              "expected": 0.28186904577451055,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7485344588756562,
+              "feasible_draws": 113,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.5766001380040451,
+              "feasible_share": 0.44140625,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "512": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Grain sorghum",
+              "Soybean",
+              "Sunflower"
+            ],
+            "index": 111,
+            "nominal_score": 0.6413635397298838,
+            "expected": 0.3108601059403554,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7485344588756562,
+            "feasible_draws": 247,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.5773027768483016,
+            "feasible_share": 0.482421875,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.3856335213058628,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.5639286069023761,
+                  "expected": 0.3856335213058628,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 342,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5345824503236347,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.07743493282750769,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "maize"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Grain maize"
+                  ],
+                  "index": 23,
+                  "nominal_score": 0.5639286069023761,
+                  "expected": 0.3856335213058628,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 342,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5345824503236347,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.07743493282750769,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.5535475914739857,
+                  "expected": 0.3733114625239978,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7407793998718262,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.525416088549059,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.08781594825589811,
+                  "gap_to_best": 0.012322058781865042
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.598888365043184,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 134,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.33515043701981995,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 260,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.598888365043184,
+                  "feasible_share": 0.5078125,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "maize"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Grain maize",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 141,
+                  "nominal_score": 0.6283138201180823,
+                  "expected": 0.33515043701981995,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7495938330888747,
+                  "feasible_draws": 260,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.598888365043184,
+                  "feasible_share": 0.5078125,
+                  "nominal_cost": 0.013049719611801458,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "winter_wheat"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Winter wheat",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 78,
+                  "nominal_score": 0.6279331117117777,
+                  "expected": 0.2672625944812353,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7966982781887054,
+                  "feasible_draws": 214,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5844662558748692,
+                  "feasible_share": 0.41796875,
+                  "nominal_cost": 0.013430428018106122,
+                  "gap_to_best": 0.014422109168314767
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2627860754728317,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.5669254394758337,
+                  "expected": 0.36853977909195235,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7372139245271683,
+                  "feasible_draws": 319,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5395475332593095,
+                  "feasible_share": 0.623046875,
+                  "nominal_cost": 0.07443810025405007,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 46,
+                  "nominal_score": 0.5669254394758337,
+                  "expected": 0.36853977909195235,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7372139245271683,
+                  "feasible_draws": 319,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5395475332593095,
+                  "feasible_share": 0.623046875,
+                  "nominal_cost": 0.07443810025405007,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.5555730659189639,
+                  "expected": 0.3635778080672026,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7407793998718262,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5286995659271876,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.08579047381091987,
+                  "gap_to_best": 0.003565475344657898
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "crop_names": [
+                "Grain sorghum",
+                "Soybean",
+                "Sunflower"
+              ],
+              "index": 111,
+              "nominal_score": 0.6413635397298838,
+              "expected": 0.3108601059403554,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7485344588756562,
+              "feasible_draws": 247,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.5773027768483016,
+              "feasible_share": 0.482421875,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        }
+      },
+      "stability": {
+        "expected": {
+          "same_pick": false,
+          "finalist_indices": [
+            16,
+            23,
+            26,
+            45
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.2155,
+                0.2155,
+                0.2845,
+                0.2845
+              ],
+              "pick_win_share": 0.2845
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.367,
+                0.367,
+                0.133,
+                0.133
+              ],
+              "pick_win_share": 0.367
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.426,
+                0.426,
+                0.074,
+                0.074
+              ],
+              "pick_win_share": 0.426
+            }
+          }
+        },
+        "conditional_cvar": {
+          "same_pick": true,
+          "finalist_indices": [
+            78,
+            128,
+            134,
+            141,
+            160
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.004,
+                0.068,
+                0.357,
+                0.357,
+                0.214
+              ],
+              "pick_win_share": 0.357
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.0,
+                0.498,
+                0.498,
+                0.004
+              ],
+              "pick_win_share": 0.498
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.0,
+                0.5,
+                0.5,
+                0.0
+              ],
+              "pick_win_share": 0.5
+            }
+          }
+        },
+        "minimax_regret": {
+          "same_pick": false,
+          "finalist_indices": [
+            24,
+            26,
+            33,
+            45,
+            46
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.459,
+                0.041,
+                0.459,
+                0.041
+              ],
+              "pick_win_share": 0.459
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0064,
+                0.44639999999999996,
+                0.0504,
+                0.44639999999999996,
+                0.0504
+              ],
+              "pick_win_share": 0.44639999999999996
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.224,
+                0.052,
+                0.336,
+                0.052,
+                0.336
+              ],
+              "pick_win_share": 0.336
+            }
+          }
+        }
+      },
+      "exact_and_bootstrap_seconds": 0.09557641699211672
+    },
+    "balanced": {
+      "draw_counts": {
+        "128": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.6781246362760627,
+            "expected": 0.3704895246773958,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7365750747919083,
+            "feasible_draws": 71,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6176165872434496,
+            "feasible_share": 0.5546875,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.46520147823961455,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.46520147823961455,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7414317417144776,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6078597456864689,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.46520147823961455,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7414317417144776,
+                  "feasible_draws": 92,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6078597456864689,
+                  "feasible_share": 0.71875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6216216439442692,
+                  "expected": 0.44469086099183186,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7730166476964951,
+                  "feasible_draws": 89,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5998030839441867,
+                  "feasible_share": 0.6953125,
+                  "nominal_cost": 0.056502992331793456,
+                  "gap_to_best": 0.020510617247782692
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.62495010819399,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "pearl_millet"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Pearl millet"
+                  ],
+                  "index": 32,
+                  "nominal_score": 0.6459555884630281,
+                  "expected": 0.3452994189481251,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7383049064874649,
+                  "feasible_draws": 66,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.62495010819399,
+                  "feasible_share": 0.515625,
+                  "nominal_cost": 0.032169047813034535,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "pearl_millet"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Pearl millet",
+                    "Soybean"
+                  ],
+                  "index": 39,
+                  "nominal_score": 0.6459555884630281,
+                  "expected": 0.3452994189481251,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7383049064874649,
+                  "feasible_draws": 66,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.62495010819399,
+                  "feasible_share": 0.515625,
+                  "nominal_cost": 0.032169047813034535,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.4169822020432912,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7308604824542999,
+                  "feasible_draws": 80,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622796275690198,
+                  "feasible_share": 0.625,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0021538325037919748
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2691395175457001,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.4169822020432912,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7308604824542999,
+                  "feasible_draws": 80,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622796275690198,
+                  "feasible_share": 0.625,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 46,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.4169822020432912,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7308604824542999,
+                  "feasible_draws": 80,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622796275690198,
+                  "feasible_share": 0.625,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.6781246362760627,
+                  "expected": 0.3704895246773958,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7365750747919083,
+                  "feasible_draws": 71,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6176165872434496,
+                  "feasible_share": 0.5546875,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.005714592337608404
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.6781246362760627,
+              "expected": 0.3704895246773958,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7365750747919083,
+              "feasible_draws": 71,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6176165872434496,
+              "feasible_share": 0.5546875,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "256": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.6781246362760627,
+            "expected": 0.37562758763087917,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7365750747919083,
+            "feasible_draws": 144,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6157676173249881,
+            "feasible_share": 0.5625,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.43318204790353776,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6216216439442692,
+                  "expected": 0.43318204790353776,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7730166476964951,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5998780445257823,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.056502992331793456,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "maize"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Grain maize"
+                  ],
+                  "index": 23,
+                  "nominal_score": 0.6216216439442692,
+                  "expected": 0.43318204790353776,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7730166476964951,
+                  "feasible_draws": 174,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.5998780445257823,
+                  "feasible_share": 0.6796875,
+                  "nominal_cost": 0.056502992331793456,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.4321770548820496,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 171,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6092101287580374,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0010049930214881542
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.6223508447504814,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.6382592936900429,
+                  "expected": 0.4004052951734048,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6223508447504814,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.039865342586019814,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.6382592936900429,
+                  "expected": 0.4004052951734048,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 155,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6223508447504814,
+                  "feasible_share": 0.60546875,
+                  "nominal_cost": 0.039865342586019814,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.3894305649632588,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 150,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6212472946842511,
+                  "feasible_share": 0.5859375,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0011035500662303077
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2634249252080917,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Soybean"
+                  ],
+                  "index": 10,
+                  "nominal_score": 0.6781246362760627,
+                  "expected": 0.37562758763087917,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7365750747919083,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6157676173249881,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sorghum"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Grain sorghum"
+                  ],
+                  "index": 29,
+                  "nominal_score": 0.6781246362760627,
+                  "expected": 0.37562758763087917,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7365750747919083,
+                  "feasible_draws": 144,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6157676173249881,
+                  "feasible_share": 0.5625,
+                  "nominal_cost": 0.0,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sorghum"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain sorghum",
+                    "Common bean"
+                  ],
+                  "index": 9,
+                  "nominal_score": 0.6672841228981525,
+                  "expected": 0.40684801098424944,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 161,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6011230882965259,
+                  "feasible_share": 0.62890625,
+                  "nominal_cost": 0.010840513377910144,
+                  "gap_to_best": 0.013684766292571982
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.6781246362760627,
+              "expected": 0.37562758763087917,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7365750747919083,
+              "feasible_draws": 144,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6157676173249881,
+              "feasible_share": 0.5625,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        },
+        "512": {
+          "nominal": {
+            "crop_ids": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Grain sorghum",
+              "Soybean"
+            ],
+            "index": 10,
+            "nominal_score": 0.6781246362760627,
+            "expected": 0.39685935510438874,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7503812175989151,
+            "feasible_draws": 304,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            },
+            "conditional_cvar": 0.6169515063927363,
+            "feasible_share": 0.59375,
+            "nominal_cost": 0.0
+          },
+          "nominal_ties": 2,
+          "objectives": {
+            "expected": {
+              "maximum_utility": 0.42598097891022924,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.42598097891022924,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6092298969359541,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Common bean"
+                  ],
+                  "index": 45,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.42598097891022924,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6092298969359541,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "maize"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Grain maize",
+                    "Common bean"
+                  ],
+                  "index": 16,
+                  "nominal_score": 0.6216216439442692,
+                  "expected": 0.42580059748433996,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7730166476964951,
+                  "feasible_draws": 342,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6011690245037191,
+                  "feasible_share": 0.66796875,
+                  "nominal_cost": 0.056502992331793456,
+                  "gap_to_best": 0.00018038142588927553
+                }
+              ]
+            },
+            "conditional_cvar": {
+              "maximum_utility": 0.6229971384002498,
+              "ties": 2,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Sunflower"
+                  ],
+                  "index": 33,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.41721447914955206,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 319,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6229971384002498,
+                  "feasible_share": 0.623046875,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "sunflower"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Sunflower",
+                    "Soybean"
+                  ],
+                  "index": 46,
+                  "nominal_score": 0.6420942728021598,
+                  "expected": 0.41721447914955206,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 319,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6229971384002498,
+                  "feasible_share": 0.623046875,
+                  "nominal_cost": 0.03603036347390287,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.6382592936900429,
+                  "expected": 0.4186551138164942,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622235272118339,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.039865342586019814,
+                  "gap_to_best": 0.0007618662819108835
+                }
+              ]
+            },
+            "minimax_regret": {
+              "maximum_utility": 0.2497401589155197,
+              "ties": 8,
+              "runner_up_gap": 0.0,
+              "near_tie": true,
+              "top": [
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "soybean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Soybean"
+                  ],
+                  "index": 24,
+                  "nominal_score": 0.6382592936900429,
+                  "expected": 0.4186551138164942,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622235272118339,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.039865342586019814,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "common_bean"
+                    ],
+                    [
+                      "sunflower"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Common bean",
+                    "Sunflower"
+                  ],
+                  "index": 26,
+                  "nominal_score": 0.6312537594242497,
+                  "expected": 0.42598097891022924,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 335,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.6092298969359541,
+                  "feasible_share": 0.654296875,
+                  "nominal_cost": 0.046870876851813015,
+                  "gap_to_best": 0.0
+                },
+                {
+                  "crop_ids": [
+                    [
+                      "fallow"
+                    ],
+                    [
+                      "soybean"
+                    ],
+                    [
+                      "common_bean"
+                    ]
+                  ],
+                  "crop_names": [
+                    "Bare fallow",
+                    "Soybean",
+                    "Common bean"
+                  ],
+                  "index": 31,
+                  "nominal_score": 0.6382592936900429,
+                  "expected": 0.4186551138164942,
+                  "cvar": 0.0,
+                  "worst_score": 0.0,
+                  "minimax_regret": 0.7502598410844803,
+                  "feasible_draws": 324,
+                  "evidence_label": "low",
+                  "metric_evidence": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  },
+                  "conditional_cvar": 0.622235272118339,
+                  "feasible_share": 0.6328125,
+                  "nominal_cost": 0.039865342586019814,
+                  "gap_to_best": 0.0
+                }
+              ]
+            }
+          },
+          "unconditional_cvar": {
+            "best": {
+              "crop_ids": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "crop_names": [
+                "Bare fallow",
+                "Grain sorghum",
+                "Soybean"
+              ],
+              "index": 10,
+              "nominal_score": 0.6781246362760627,
+              "expected": 0.39685935510438874,
+              "cvar": 0.0,
+              "worst_score": 0.0,
+              "minimax_regret": 0.7503812175989151,
+              "feasible_draws": 304,
+              "evidence_label": "low",
+              "metric_evidence": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              },
+              "conditional_cvar": 0.6169515063927363,
+              "feasible_share": 0.59375,
+              "nominal_cost": 0.0
+            },
+            "maximum": 0.0,
+            "ties": 168
+          },
+          "zero_feasible_candidates": 0
+        }
+      },
+      "stability": {
+        "expected": {
+          "same_pick": false,
+          "finalist_indices": [
+            16,
+            23,
+            26,
+            45
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.129,
+                0.129,
+                0.371,
+                0.371
+              ],
+              "pick_win_share": 0.371
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.237,
+                0.237,
+                0.263,
+                0.263
+              ],
+              "pick_win_share": 0.237
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.25,
+                0.25,
+                0.25,
+                0.25
+              ],
+              "pick_win_share": 0.25
+            }
+          }
+        },
+        "conditional_cvar": {
+          "same_pick": false,
+          "finalist_indices": [
+            24,
+            31,
+            32,
+            33,
+            39,
+            46
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.099,
+                0.099,
+                0.309,
+                0.092,
+                0.309,
+                0.092
+              ],
+              "pick_win_share": 0.309
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.323,
+                0.323,
+                0.008,
+                0.169,
+                0.008,
+                0.169
+              ],
+              "pick_win_share": 0.323
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.158,
+                0.158,
+                0.0,
+                0.342,
+                0.0,
+                0.342
+              ],
+              "pick_win_share": 0.342
+            }
+          }
+        },
+        "minimax_regret": {
+          "same_pick": false,
+          "finalist_indices": [
+            9,
+            10,
+            24,
+            26,
+            29,
+            31,
+            33,
+            46
+          ],
+          "bootstrap": {
+            "128": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.021,
+                0.0875,
+                0.016800000000000002,
+                0.07379999999999999,
+                0.0875,
+                0.016800000000000002,
+                0.34829999999999994,
+                0.34829999999999994
+              ],
+              "pick_win_share": 0.34829999999999994
+            },
+            "256": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.014,
+                0.3535,
+                0.008,
+                0.02,
+                0.3535,
+                0.008,
+                0.1215,
+                0.1215
+              ],
+              "pick_win_share": 0.3535
+            },
+            "512": {
+              "valid_replicates": 500,
+              "win_share": [
+                0.0,
+                0.149,
+                0.1598000000000006,
+                0.08480000000000013,
+                0.149,
+                0.1598000000000006,
+                0.14880000000000063,
+                0.14880000000000063
+              ],
+              "pick_win_share": 0.1598000000000006
+            }
+          }
+        }
+      },
+      "exact_and_bootstrap_seconds": 0.10549195899511687
+    }
+  },
+  "compute": {
+    "draw_preparation_seconds": 3.296470291999867,
+    "cache_seconds": 0.03389183300896548,
+    "oracle_seconds": 0.08383970797876827,
+    "cache_bytes": 2150400,
+    "peak_rss_bytes": 358105088,
+    "total_seconds": 3.813774167007068
+  }
+}

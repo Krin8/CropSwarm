@@ -380,53 +380,86 @@ def edited_results(farm, settings, edits, result, assessment, difference_thresho
 
 
 def robust_pick_panel(farm, preset):
-    data = load(farm["farm_id"], "robust_optimization")
-    current = data["presets"][preset]
-    labels = {"expected": "Expected score", "cvar": "Worst 10% mean (CVaR)", "minimax_regret": "Minimax regret"}
-    nominal = current["nominal"]
+    data = load(farm["farm_id"], "robust_stability")
+    by_preset = data["presets"][preset]
+    labels = {"expected": "Expected score", "conditional_cvar": "Feasible-only worst 10% mean",
+              "minimax_regret": "Minimax regret"}
+
+    def cycle(pick):
+        size = len(pick["crop_ids"][0])
+        crops = pick["crop_names"]
+        years = [" → ".join(crops[i:i+size]) for i in range(0, len(crops), size)]
+        return f"{years[0]} ×{len(years)}" if len(set(years)) == 1 else " / ".join(years)
+
+    def fmt(value):
+        return f"{value:.4f}" if value is not None else "—"
+
     with st.container(key="robust_pick"):
-        st.subheader("Robust pick under assumption changes (P28)")
-        st.caption(f"{farm['name']} · {title(preset)} · {data['draws']} P22 assumption draws · "
-                   f"exact search of {data['candidate_count']:,} nominally feasible rotations")
+        st.subheader("Robust pick under assumption changes (P28b)")
+        st.caption(f"{farm['name']} · {title(preset)} · exact search of {data['candidate_count']:,} nominally feasible rotations")
+        counts = data["design"]["draw_counts"]
+        n = st.selectbox("Assumption draws", counts, index=len(counts) - 1, key="robust_draw_count")
+        current = by_preset["draw_counts"][str(n)]
+        nominal = current["nominal"]
         st.write("Robustness here refers to the assumption ranges we chose. Field validation is still needed.")
 
-        def table_row(name, pick, ties, price):
-            size = len(pick["crop_ids"][0])
-            crops = pick["crop_names"]
-            years = [" → ".join(crops[i:i+size]) for i in range(0, len(crops), size)]
-            cycle = f"{years[0]} ×{len(years)}" if len(set(years)) == 1 else " / ".join(years)
-            return {"Pick": name, "Rotation by year": cycle, "Evidence": pick["evidence_label"].upper(),
-                    "Nominal score": f"{pick['nominal_score']:.3f}",
-                    "Price of robustness": f"{price:.3f}", "Feasible draws": f"{pick['feasible_draws']}/{data['draws']}",
-                    "Worst score": f"{pick['worst_score']:.3f}", "Expected score": f"{pick['expected']:.3f}",
-                    "Worst 10% mean": f"{pick['cvar']:.3f}", "Maximum regret": f"{pick['minimax_regret']:.3f}",
-                    "Tied choices": ties}
+        def table_row(name, pick, status, repeat=None, near_tie=False, objective_value=None):
+            return {"Pick": name, "Rotation by year": cycle(pick), "Evidence": pick["evidence_label"].upper(),
+                    "Feasible draws": f"{pick['feasible_draws']}/{n} ({pick['feasible_share']:.0%})", "Across draw counts": status,
+                    "Near-tie": "Yes" if near_tie else "—",
+                    "Finalist bootstrap wins": f"{repeat:.0%}" if repeat is not None else "—",
+                    "Objective value": fmt(objective_value), "Price of robustness": fmt(pick["nominal_cost"])}
 
-        rows = [table_row("Nominal best", nominal, current["nominal_ties"], 0.)]
-        for key, result in current["picks"].items():
-            rows.append(table_row(labels[key], result["rotation"], result["ties"],
-                                  result["comparison"]["nominal_score_cost"]))
+        rows = [table_row("Nominal best", nominal, "Reference", objective_value=nominal["nominal_score"])]
+        for key, result in current["objectives"].items():
+            if result["top"]:
+                stability = by_preset["stability"][key]
+                status = "Same pick" if stability["same_pick"] else "Pick changes"
+                wins = stability["bootstrap"][str(n)]["pick_win_share"]
+                pick = result["top"][0]
+                rows.append(table_row(labels[key], pick, status, wins, result["near_tie"], pick[key]))
         st.dataframe(pd.DataFrame(rows), hide_index=True)
-        with st.expander("Full rotations and metric evidence"):
-            for row, pick in zip(rows, [nominal, *(item["rotation"] for item in current["picks"].values())], strict=True):
-                st.write(f"{row['Pick']} · {row['Rotation by year']}")
-                st.caption(" · ".join(f"{title(metric)} {level.upper()}"
-                                      for metric, level in pick["metric_evidence"].items()))
-        st.caption("Scores use NASA POWER historical climate and the existing source-tagged score metrics. "
-                   "A rotation that fails a hard rule earns zero in that draw. Regret compares with the best "
-                   "rotation available when the draw's assumptions are known.")
-        minimax = current["picks"]["minimax_regret"]["comparison"]
-        if minimax["max_regret_reduction"] > data["config"]["tie_tolerance"]:
-            st.write(f"The minimax pick lowers maximum regret by {minimax['max_regret_reduction']:.3f} points "
-                     f"at a nominal cost of {minimax['nominal_score_cost']:.3f}.")
-        else:
-            st.write("The minimax pick does not lower maximum regret at the reported precision.")
-        if all(abs(result["comparison"]["worst_score_gain"]) <= data["config"]["tie_tolerance"]
-               for result in current["picks"].values()):
-            st.caption("All three picks have the same worst score as the nominal best.")
-        cvar = current["picks"]["cvar"]
-        if cvar["ties"] == data["candidate_count"] and cvar["ties"] > 1:
-            st.info("Every rotation ties on the worst-10% average. The nominal pick is shown for that objective.")
+        st.caption("Lower maximum regret is better. CVaR averages the worst 10% of feasible draws. A rotation can score well on that tail and be "
+                   "infeasible often. Expected score and regret still use zero when a hard rule fails. "
+                   "Bootstrap win shares compare the union of the top three rotations at each draw count.")
+        with st.expander("Top three by objective and metric evidence"):
+            finalists = []
+            for key, result in current["objectives"].items():
+                for rank, pick in enumerate(result["top"], 1):
+                    finalists.append({"Objective": labels[key], "Rank": rank, "Rotation by year": cycle(pick),
+                                      "Objective value": fmt(pick[key]),
+                                      "Gap to objective best": f"{pick['gap_to_best']:.8f}",
+                                      "Evidence": pick["evidence_label"].upper(),
+                                      "Feasible share": f"{pick['feasible_share']:.0%}"})
+                if result["near_tie"]:
+                    st.info(f"{labels[key]} has a near-tie with its runner-up.")
+            st.dataframe(pd.DataFrame(finalists), hide_index=True)
+            for key, result in current["objectives"].items():
+                if result["top"]:
+                    evidence = result["top"][0]["metric_evidence"]
+                    st.caption(f"{labels[key]} · " + " · ".join(f"{title(metric)} {level.upper()}"
+                                                                for metric, level in evidence.items()))
+            st.caption(f"Near-tie tolerance {data['precision_tolerance']:g} weighted points (P28 design choice).")
+        old = current["unconditional_cvar"]
+        st.caption(f"Original zero-score CVaR rule at {n} draws · best {old['maximum']:.4f} · "
+                   f"candidates at the best score within tolerance: {old['ties']:,}. Climate input · cached NASA POWER.")
+        minimax = current["objectives"]["minimax_regret"]["top"][0]
+        reduction = nominal["minimax_regret"] - minimax["minimax_regret"]
+        st.write(f"The minimax pick lowers maximum regret by {reduction:.4f} points at "
+                 f"a nominal cost of {minimax['nominal_cost']:.4f}." if reduction > data["precision_tolerance"]
+                 else "The minimax pick does not lower maximum regret at the reported precision.")
+        if "aco" in by_preset:
+            aco = by_preset["aco"]
+            original = aco["original_128"]
+            control = aco["conditional_control_512"]
+            explored = aco["conditional_exploration_512"]
+            total = len(explored["trials"])
+            st.info(f"Telangana CVaR swarm check · Original rule: {original['best_of_five_hits']}/"
+                    f"{len(original['trials'])} exact hits. On the held-out 512-draw conditional objective, "
+                    f"the original search reached {control['best_of_five_hits']}/{total} and the longer exploration "
+                    f"search reached {explored['best_of_five_hits']}/{total} in best-of-five trials. "
+                    "The table shows exact-search picks.")
+
 
 
 def app():

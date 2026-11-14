@@ -1,0 +1,13 @@
+{
+  "source": "P28b analysis and compute design choices; assumption, validate locally",
+  "draw_counts": [128, 256, 512],
+  "bootstrap_replicates": 500,
+  "bootstrap_seed": 2028,
+  "shortlist_per_count": 3,
+  "swarm_farm": "telangana_a",
+  "diagnostic_trials": 10,
+  "held_out_trials": 10,
+  "held_out_seed_start": 10000,
+  "exploration_fraction": 0.2,
+  "exploration_iterations": 160
+}
