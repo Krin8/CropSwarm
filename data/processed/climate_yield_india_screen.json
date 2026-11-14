@@ -4642,6 +4642,7 @@
     "Shapefile.rar": "5d0b5805b57af24e1ae697429a0b74c1a644437d2202043be874570e4874de38"
   },
   "map_member": "India_DI_sh_1993_F.dbf",
+  "map_member_sha256": "7eb2f77d300b10be8bc9e0d3503ca1af2d049ea45f05f4135b85c6d6348d5334",
   "source_columns": [
     "Dist.Code",
     "Sh_Dist_code",

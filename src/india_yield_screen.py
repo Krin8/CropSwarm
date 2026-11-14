@@ -1,11 +1,11 @@
 """Apply the preregistered P31 archive screen before any weather retrieval or fitting."""
 
 import argparse
+import gzip
 import hashlib
 import json
 from pathlib import Path
 import struct
-import subprocess
 
 import numpy as np
 import pandas as pd
@@ -14,6 +14,7 @@ from src.precompute_cache import write_json
 
 ROOT = Path(__file__).resolve().parents[1]
 MAP_MEMBER = "India_DI_sh_1993_F.dbf"
+MAP_MEMBER_SHA256 = "7eb2f77d300b10be8bc9e0d3503ca1af2d049ea45f05f4135b85c6d6348d5334"
 MAP_KEYS = ["map_code", "feature_id"]
 IDENTITY = [*MAP_KEYS, "source_code", "state", "district"]
 ARCHIVE_COLUMNS = {
@@ -120,8 +121,9 @@ def build(root=ROOT):
     members = [item["key"] for item in record["files"]]
     if set(members) != set(hashes):
         raise ValueError("The archive inventory changed")
-    attrs = subprocess.run(["bsdtar", "-xOf", str(archive / "Shapefile.rar"), MAP_MEMBER], check=True,
-                           capture_output=True, timeout=30).stdout
+    attrs = gzip.decompress((archive / f"{MAP_MEMBER}.gz").read_bytes())
+    if hashlib.sha256(attrs).hexdigest() != MAP_MEMBER_SHA256:
+        raise ValueError(f"Extracted archive attribute hash mismatch for {MAP_MEMBER}")
     archived_rows = pd.read_csv(archive / "Data.csv", encoding="cp1252")
     raw = archived_rows[list(ARCHIVE_COLUMNS)].rename(columns=ARCHIVE_COLUMNS)
     report = archive_screen(raw, historic_mapping(attrs), first_year=config["first_harvest_year"],
@@ -137,6 +139,7 @@ def build(root=ROOT):
                         "and a different season window.",
             "source": provenance["archive"], "license": record["metadata"]["license"]["id"],
             "archive_members": members, "sha256": hashes, "map_member": MAP_MEMBER,
+            "map_member_sha256": MAP_MEMBER_SHA256,
             "source_columns": list(archived_rows.columns)}
 
 
