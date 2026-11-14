@@ -26,7 +26,7 @@
       ],
       "baseline_source": "USDA NASS CDL 2019-2023 point history in data/raw/p2_evidence/p2_wheat_cdl.json; Kansas State Research and Extension https://bookstore.ksre.ksu.edu/pubs/rotations-and-cultural-practices_MF2908.pdf; not a verified management record",
       "seasons_per_year": 1,
-      "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+      "seasons_basis": "assumption, validate locally",
       "validation_flags": [
         "The 2019 CDL neighborhood is classified as fallow. The MODIS spring peak remains unexplained.",
         "CDL point classes are not a verified farm management record",
@@ -58,7 +58,7 @@
       ],
       "baseline_source": "assumption, validate locally; no point-specific crop history verified",
       "seasons_per_year": 2,
-      "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+      "seasons_basis": "assumption, validate locally",
       "validation_flags": [
         "Repeated paddy violates the same-crop hard rule; retain baseline and show violation",
         "No point-specific crop identity or management record verified",
@@ -89,7 +89,7 @@
       ],
       "baseline_source": "assumption, validate locally; long-rains maize and short-rains beans not verified at point",
       "seasons_per_year": 2,
-      "seasons_basis": "assumption, validate locally; P5 will derive and validate",
+      "seasons_basis": "assumption, validate locally",
       "validation_flags": [
         "MCD12Q1 class 10 (grassland) conflicts with intended cropland use; cropland at exact point unverified",
         "NASA POWER rainfall is regional gridded evidence, not a field rain gauge",
@@ -699,5 +699,552 @@
     "scenario_temperature_change_c": 2,
     "scenario_rainfall_factor": 0.9,
     "supply_fraction_offset": 0.25
+  },
+  "locales": {
+    "label": "draft wording, validate locally",
+    "review_note": "Telugu and Kiswahili wording, local crop names and season names are drafts. Have a local speaker and an extension officer review them before farmers rely on them.",
+    "languages": {
+      "en": "English",
+      "te": "\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41",
+      "sw": "Kiswahili"
+    },
+    "farms": {
+      "us_high_plains_b": {
+        "language": "en",
+        "currency": "US dollars",
+        "units": {
+          "area": "acre",
+          "depth": "in",
+          "nitrogen": "lb/acre"
+        },
+        "season_names": {
+          "cool": {
+            "en": "Fall-planted (winter) season"
+          },
+          "warm": {
+            "en": "Summer season"
+          }
+        },
+        "crop_names": {}
+      },
+      "telangana_a": {
+        "language": "te",
+        "currency": "rupees",
+        "units": {
+          "area": "acre",
+          "depth": "mm",
+          "nitrogen": "kg/acre"
+        },
+        "season_names": {
+          "monsoon": {
+            "en": "Kharif (Vanakalam)",
+            "te": "\u0c35\u0c3e\u0c28\u0c3e\u0c15\u0c3e\u0c32\u0c02 (\u0c16\u0c30\u0c40\u0c2b\u0c4d)"
+          },
+          "post_monsoon": {
+            "en": "Rabi (Yasangi)",
+            "te": "\u0c2f\u0c3e\u0c38\u0c02\u0c17\u0c3f (\u0c30\u0c2c\u0c40)"
+          }
+        },
+        "crop_names": {
+          "fallow": "\u0c2c\u0c40\u0c21\u0c41",
+          "winter_wheat": "\u0c17\u0c4b\u0c27\u0c41\u0c2e",
+          "sorghum": "\u0c1c\u0c4a\u0c28\u0c4d\u0c28",
+          "paddy": "\u0c35\u0c30\u0c3f",
+          "maize": "\u0c2e\u0c4a\u0c15\u0c4d\u0c15\u0c1c\u0c4a\u0c28\u0c4d\u0c28",
+          "common_bean": "\u0c30\u0c3e\u0c1c\u0c4d\u0c2e\u0c3e",
+          "soybean": "\u0c38\u0c4b\u0c2f\u0c3e\u0c2c\u0c40\u0c28\u0c4d",
+          "chickpea": "\u0c36\u0c28\u0c17",
+          "pigeonpea": "\u0c15\u0c02\u0c26\u0c3f",
+          "green_gram": "\u0c2a\u0c46\u0c38\u0c30",
+          "pearl_millet": "\u0c38\u0c1c\u0c4d\u0c1c",
+          "sunflower": "\u0c2a\u0c4a\u0c26\u0c4d\u0c26\u0c41\u0c24\u0c3f\u0c30\u0c41\u0c17\u0c41\u0c21\u0c41",
+          "cowpea": "\u0c2c\u0c4a\u0c2c\u0c4d\u0c2c\u0c30\u0c4d\u0c32\u0c41",
+          "cereal_rye_cover": "\u0c30\u0c48 (\u0c15\u0c2a\u0c4d\u0c2a\u0c41 \u0c2a\u0c02\u0c1f)",
+          "field_pea": "\u0c2c\u0c20\u0c3e\u0c28\u0c40"
+        }
+      },
+      "kenya_makueni_north": {
+        "language": "sw",
+        "currency": "Kenyan shillings",
+        "units": {
+          "area": "acre",
+          "depth": "mm",
+          "nitrogen": "kg/acre"
+        },
+        "season_names": {
+          "long_rains": {
+            "en": "Long rains (Masika)",
+            "sw": "Mvua za masika"
+          },
+          "short_rains": {
+            "en": "Short rains (Vuli)",
+            "sw": "Mvua za vuli"
+          }
+        },
+        "crop_names": {
+          "fallow": "shamba la mapumziko",
+          "winter_wheat": "ngano",
+          "sorghum": "mtama",
+          "paddy": "mpunga",
+          "maize": "mahindi",
+          "common_bean": "maharagwe",
+          "soybean": "soya",
+          "chickpea": "dengu",
+          "pigeonpea": "mbaazi",
+          "green_gram": "ndengu (pojo)",
+          "pearl_millet": "uwele",
+          "sunflower": "alizeti",
+          "cowpea": "kunde",
+          "cereal_rye_cover": "rai (zao la kufunika udongo)",
+          "field_pea": "njegere"
+        }
+      }
+    },
+    "text": {
+      "tagline": {
+        "en": "Compare crop rotations using NASA Earth data, soil maps and your priorities.",
+        "te": "NASA \u0c2d\u0c42 \u0c2a\u0c30\u0c3f\u0c36\u0c40\u0c32\u0c28 \u0c38\u0c2e\u0c3e\u0c1a\u0c3e\u0c30\u0c02, \u0c28\u0c47\u0c32 \u0c2a\u0c1f\u0c3e\u0c32\u0c41 \u0c2e\u0c30\u0c3f\u0c2f\u0c41 \u0c2e\u0c40 \u0c2a\u0c4d\u0c30\u0c3e\u0c27\u0c3e\u0c28\u0c4d\u0c2f\u0c24\u0c32 \u0c06\u0c27\u0c3e\u0c30\u0c02\u0c17\u0c3e \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c3e\u0c32\u0c28\u0c41 \u0c2a\u0c4b\u0c32\u0c4d\u0c1a\u0c02\u0c21\u0c3f.",
+        "sw": "Linganisha mizunguko ya mazao kwa kutumia data za NASA za dunia, ramani za udongo na vipaumbele vyako."
+      },
+      "draft_notice": {
+        "en": "Local crop and season names are drafts. Check them with a local extension officer.",
+        "te": "\u0c2a\u0c4d\u0c30\u0c27\u0c3e\u0c28 \u0c36\u0c40\u0c30\u0c4d\u0c37\u0c3f\u0c15\u0c32\u0c41, \u0c35\u0c3f\u0c35\u0c30\u0c23\u0c32\u0c15\u0c41 \u0c07\u0c26\u0c3f \u0c2e\u0c41\u0c38\u0c3e\u0c2f\u0c3f\u0c26\u0c3e \u0c05\u0c28\u0c41\u0c35\u0c3e\u0c26\u0c02. \u0c2e\u0c3f\u0c17\u0c24\u0c3e \u0c35\u0c3f\u0c35\u0c30\u0c3e\u0c32\u0c41 \u0c07\u0c02\u0c17\u0c4d\u0c32\u0c40\u0c37\u0c41\u0c32\u0c4b\u0c28\u0c47 \u0c09\u0c02\u0c1f\u0c3e\u0c2f\u0c3f. \u0c2a\u0c26\u0c3e\u0c32\u0c28\u0c41 \u0c38\u0c4d\u0c25\u0c3e\u0c28\u0c3f\u0c15 \u0c35\u0c4d\u0c2f\u0c35\u0c38\u0c3e\u0c2f \u0c35\u0c3f\u0c38\u0c4d\u0c24\u0c30\u0c23 \u0c05\u0c27\u0c3f\u0c15\u0c3e\u0c30\u0c3f\u0c24\u0c4b \u0c38\u0c30\u0c3f\u0c1a\u0c42\u0c38\u0c41\u0c15\u0c4b\u0c02\u0c21\u0c3f.",
+        "sw": "Hii ni rasimu ya tafsiri ya vichwa na maelezo makuu. Maelezo mengine yanabaki kwa Kiingereza. Tafadhali hakiki maneno na afisa ugani wa eneo lako."
+      },
+      "language": {
+        "en": "Language",
+        "te": "\u0c2d\u0c3e\u0c37",
+        "sw": "Lugha"
+      },
+      "units": {
+        "en": "Units",
+        "te": "\u0c15\u0c4a\u0c32\u0c2e\u0c3e\u0c28\u0c3e\u0c32\u0c41",
+        "sw": "Vipimo"
+      },
+      "glossary_title": {
+        "en": "What do these words mean?",
+        "te": "\u0c08 \u0c2a\u0c26\u0c3e\u0c32 \u0c05\u0c30\u0c4d\u0c25\u0c02 \u0c0f\u0c2e\u0c3f\u0c1f\u0c3f?",
+        "sw": "Maneno haya yana maana gani?"
+      },
+      "climate_heading": {
+        "en": "Farm Climate Assessment",
+        "te": "\u0c2a\u0c4a\u0c32\u0c02 \u0c35\u0c3e\u0c24\u0c3e\u0c35\u0c30\u0c23 \u0c05\u0c02\u0c1a\u0c28\u0c3e",
+        "sw": "Tathmini ya hali ya hewa ya shamba"
+      },
+      "edit_heading": {
+        "en": "Edit farm assumptions",
+        "te": "\u0c2e\u0c40 \u0c2a\u0c4a\u0c32\u0c02 \u0c35\u0c3f\u0c35\u0c30\u0c3e\u0c32\u0c28\u0c41 \u0c2e\u0c3e\u0c30\u0c4d\u0c1a\u0c02\u0c21\u0c3f",
+        "sw": "Badilisha taarifa za shamba lako"
+      },
+      "priorities_heading": {
+        "en": "Farm priorities",
+        "te": "\u0c2e\u0c40 \u0c2a\u0c4d\u0c30\u0c3e\u0c27\u0c3e\u0c28\u0c4d\u0c2f\u0c24\u0c32\u0c41",
+        "sw": "Vipaumbele vyako"
+      },
+      "compare_heading": {
+        "en": "Compare rotations",
+        "te": "\u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c3e\u0c32 \u0c2a\u0c4b\u0c32\u0c3f\u0c15",
+        "sw": "Linganisha mizunguko ya mazao"
+      },
+      "check_first_heading": {
+        "en": "What to check first",
+        "te": "\u0c2e\u0c41\u0c02\u0c26\u0c41\u0c17\u0c3e \u0c0f\u0c2e\u0c3f \u0c38\u0c30\u0c3f\u0c1a\u0c42\u0c38\u0c41\u0c15\u0c4b\u0c35\u0c3e\u0c32\u0c3f",
+        "sw": "Nini cha kuhakiki kwanza"
+      },
+      "unknown_heading": {
+        "en": "What we cannot know from these data",
+        "te": "\u0c08 \u0c38\u0c2e\u0c3e\u0c1a\u0c3e\u0c30\u0c02\u0c24\u0c4b \u0c2e\u0c28\u0c02 \u0c24\u0c46\u0c32\u0c41\u0c38\u0c41\u0c15\u0c4b\u0c32\u0c47\u0c28\u0c3f \u0c35\u0c3f\u0c37\u0c2f\u0c3e\u0c32\u0c41",
+        "sw": "Mambo ambayo data hizi haziwezi kutuambia"
+      },
+      "farmer_decides": {
+        "en": "The farmer decides. Validate these illustrative comparisons locally before changing a rotation.",
+        "te": "\u0c28\u0c3f\u0c30\u0c4d\u0c23\u0c2f\u0c02 \u0c30\u0c48\u0c24\u0c41\u0c26\u0c47. \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c2e\u0c3e\u0c30\u0c4d\u0c1a\u0c47 \u0c2e\u0c41\u0c02\u0c26\u0c41 \u0c08 \u0c28\u0c2e\u0c42\u0c28\u0c3e \u0c2a\u0c4b\u0c32\u0c3f\u0c15\u0c32\u0c28\u0c41 \u0c38\u0c4d\u0c25\u0c3e\u0c28\u0c3f\u0c15\u0c02\u0c17\u0c3e \u0c28\u0c3f\u0c30\u0c4d\u0c27\u0c3e\u0c30\u0c3f\u0c02\u0c1a\u0c41\u0c15\u0c4b\u0c02\u0c21\u0c3f.",
+        "sw": "Mkulima ndiye anayeamua. Hakiki ulinganisho huu wa mfano katika eneo lako kabla ya kubadilisha mzunguko wa mazao."
+      },
+      "existing_rotation": {
+        "en": "Existing rotation",
+        "te": "\u0c2a\u0c4d\u0c30\u0c38\u0c4d\u0c24\u0c41\u0c24 \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c02",
+        "sw": "Mzunguko wa sasa"
+      },
+      "every_year": {
+        "en": "Every year",
+        "te": "\u0c2a\u0c4d\u0c30\u0c24\u0c3f \u0c38\u0c02\u0c35\u0c24\u0c4d\u0c38\u0c30\u0c02",
+        "sw": "Kila mwaka"
+      },
+      "year": {
+        "en": "Year",
+        "te": "\u0c38\u0c02\u0c35\u0c24\u0c4d\u0c38\u0c30\u0c02",
+        "sw": "Mwaka"
+      },
+      "strategy": {
+        "en": "Strategy",
+        "te": "\u0c0e\u0c02\u0c2a\u0c3f\u0c15",
+        "sw": "Chaguo"
+      },
+      "rotation": {
+        "en": "Rotation",
+        "te": "\u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c02",
+        "sw": "Mzunguko wa mazao"
+      },
+      "score": {
+        "en": "Score for your priorities (0\u20131)",
+        "te": "\u0c2e\u0c40 \u0c2a\u0c4d\u0c30\u0c3e\u0c27\u0c3e\u0c28\u0c4d\u0c2f\u0c24\u0c32 \u0c2a\u0c4d\u0c30\u0c15\u0c3e\u0c30\u0c02 \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 (0\u20131)",
+        "sw": "Alama kwa vipaumbele vyako (0\u20131)"
+      },
+      "best_in_runs": {
+        "en": "Best in test runs",
+        "te": "\u0c2a\u0c30\u0c40\u0c15\u0c4d\u0c37\u0c32\u0c4d\u0c32\u0c4b \u0c2e\u0c41\u0c02\u0c26\u0c02\u0c1c",
+        "sw": "Bora katika majaribio"
+      },
+      "water_shortage": {
+        "en": "Water shortage \u00b7 typical ({unit} per season)",
+        "te": "\u0c28\u0c40\u0c1f\u0c3f \u0c15\u0c4a\u0c30\u0c24 \u00b7 \u0c38\u0c3e\u0c27\u0c3e\u0c30\u0c23 ({unit}, \u0c38\u0c40\u0c1c\u0c28\u0c4d\u200c\u0c15\u0c41)",
+        "sw": "Upungufu wa maji \u00b7 kawaida ({unit} kwa msimu)"
+      },
+      "better_on": {
+        "en": "Better than your existing rotation on",
+        "te": "\u0c2a\u0c4d\u0c30\u0c38\u0c4d\u0c24\u0c41\u0c24 \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c02 \u0c15\u0c02\u0c1f\u0c47 \u0c2e\u0c46\u0c30\u0c41\u0c17\u0c4d\u0c17\u0c3e \u0c09\u0c28\u0c4d\u0c28\u0c35\u0c3f",
+        "sw": "Bora kuliko mzunguko wa sasa katika"
+      },
+      "worse_on": {
+        "en": "Worse than your existing rotation on",
+        "te": "\u0c2a\u0c4d\u0c30\u0c38\u0c4d\u0c24\u0c41\u0c24 \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c02 \u0c15\u0c02\u0c1f\u0c47 \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c28\u0c4d\u0c28\u0c35\u0c3f",
+        "sw": "Dhaifu kuliko mzunguko wa sasa katika"
+      },
+      "nothing": {
+        "en": "nothing",
+        "te": "\u0c0f\u0c35\u0c40 \u0c32\u0c47\u0c35\u0c41",
+        "sw": "hakuna"
+      },
+      "keep_existing_benefit": {
+        "en": "Keeping the existing rotation avoids a change in planting plans.",
+        "te": "\u0c2a\u0c4d\u0c30\u0c38\u0c4d\u0c24\u0c41\u0c24 \u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c15\u0c4a\u0c28\u0c38\u0c3e\u0c17\u0c3f\u0c38\u0c4d\u0c24\u0c47 \u0c38\u0c3e\u0c17\u0c41 \u0c2a\u0c4d\u0c30\u0c23\u0c3e\u0c33\u0c3f\u0c15\u0c32\u0c41 \u0c2e\u0c3e\u0c30\u0c4d\u0c1a\u0c3e\u0c32\u0c4d\u0c38\u0c3f\u0c28 \u0c05\u0c35\u0c38\u0c30\u0c02 \u0c09\u0c02\u0c21\u0c26\u0c41.",
+        "sw": "Kuendelea na mzunguko wa sasa hakuhitaji kubadilisha mipango ya upanzi."
+      },
+      "how_much_vary": {
+        "en": "How much this could vary",
+        "te": "\u0c07\u0c26\u0c3f \u0c0e\u0c02\u0c24\u0c35\u0c30\u0c15\u0c41 \u0c2e\u0c3e\u0c30\u0c35\u0c1a\u0c4d\u0c1a\u0c41",
+        "sw": "Matokeo yanaweza kutofautiana kiasi gani"
+      },
+      "what_it_means": {
+        "en": "What it means",
+        "te": "\u0c26\u0c40\u0c28\u0c3f \u0c05\u0c30\u0c4d\u0c25\u0c02",
+        "sw": "Maana yake"
+      },
+      "slots_affected": {
+        "en": "Planting slots affected: {slots}.",
+        "te": "\u0c2a\u0c4d\u0c30\u0c2d\u0c3e\u0c35\u0c3f\u0c24 \u0c38\u0c3e\u0c17\u0c41 \u0c35\u0c3f\u0c21\u0c24\u0c32\u0c41: {slots}.",
+        "sw": "Vipindi vya upanzi vinavyohusika: {slots}."
+      }
+    },
+    "metrics": {
+      "water": {
+        "name": {
+          "en": "Water",
+          "te": "\u0c28\u0c40\u0c30\u0c41",
+          "sw": "Maji"
+        },
+        "meaning": {
+          "en": "The part of the crop's water need that rain and your irrigation could not meet in past years. A smaller shortage is better.",
+          "te": "\u0c2a\u0c02\u0c1f\u0c15\u0c41 \u0c05\u0c35\u0c38\u0c30\u0c2e\u0c48\u0c28 \u0c28\u0c40\u0c1f\u0c3f\u0c32\u0c4b, \u0c17\u0c24 \u0c38\u0c02\u0c35\u0c24\u0c4d\u0c38\u0c30\u0c3e\u0c32\u0c4d\u0c32\u0c4b \u0c35\u0c30\u0c4d\u0c37\u0c02 \u0c2e\u0c30\u0c3f\u0c2f\u0c41 \u0c2e\u0c40 \u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c30\u0c41 \u0c05\u0c02\u0c26\u0c3f\u0c02\u0c1a\u0c32\u0c47\u0c15\u0c2a\u0c4b\u0c2f\u0c3f\u0c28 \u0c2d\u0c3e\u0c17\u0c02. \u0c15\u0c4a\u0c30\u0c24 \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c2e\u0c02\u0c1a\u0c3f\u0c26\u0c3f.",
+          "sw": "Sehemu ya mahitaji ya maji ya zao ambayo mvua na umwagiliaji wako havikuweza kutosheleza katika miaka iliyopita. Upungufu mdogo ni bora."
+        }
+      },
+      "nitrogen": {
+        "name": {
+          "en": "Nitrogen",
+          "te": "\u0c28\u0c24\u0c4d\u0c30\u0c1c\u0c28\u0c3f",
+          "sw": "Nitrojeni"
+        },
+        "meaning": {
+          "en": "Pulses and beans leave some nitrogen in the soil for the next crop; cereals use it up. A higher score is better for the soil.",
+          "te": "\u0c2a\u0c2a\u0c4d\u0c2a\u0c41\u0c27\u0c3e\u0c28\u0c4d\u0c2f \u0c2a\u0c02\u0c1f\u0c32\u0c41 \u0c24\u0c30\u0c41\u0c35\u0c3e\u0c24\u0c3f \u0c2a\u0c02\u0c1f\u0c15\u0c41 \u0c28\u0c47\u0c32\u0c32\u0c4b \u0c15\u0c4a\u0c02\u0c24 \u0c28\u0c24\u0c4d\u0c30\u0c1c\u0c28\u0c3f\u0c28\u0c3f \u0c2e\u0c3f\u0c17\u0c41\u0c32\u0c41\u0c38\u0c4d\u0c24\u0c3e\u0c2f\u0c3f; \u0c27\u0c3e\u0c28\u0c4d\u0c2f\u0c2a\u0c41 \u0c2a\u0c02\u0c1f\u0c32\u0c41 \u0c26\u0c3e\u0c28\u0c3f\u0c28\u0c3f \u0c35\u0c3e\u0c21\u0c41\u0c15\u0c41\u0c02\u0c1f\u0c3e\u0c2f\u0c3f. \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c28\u0c47\u0c32\u0c15\u0c41 \u0c2e\u0c02\u0c1a\u0c3f\u0c26\u0c3f.",
+          "sw": "Mazao ya jamii ya kunde huacha nitrojeni kidogo udongoni kwa zao linalofuata; nafaka huitumia. Alama ya juu ni bora kwa udongo."
+        }
+      },
+      "erosion": {
+        "name": {
+          "en": "Erosion",
+          "te": "\u0c28\u0c47\u0c32 \u0c15\u0c4b\u0c24",
+          "sw": "Mmomonyoko wa udongo"
+        },
+        "meaning": {
+          "en": "Steeper land, heavier rain and bare soil let more soil wash away. A higher score means the soil is better protected.",
+          "te": "\u0c35\u0c3e\u0c32\u0c41 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c28\u0c4d\u0c28\u0c3e, \u0c2d\u0c3e\u0c30\u0c40 \u0c35\u0c30\u0c4d\u0c37\u0c02 \u0c2a\u0c21\u0c3f\u0c28\u0c3e, \u0c28\u0c47\u0c32 \u0c16\u0c3e\u0c33\u0c40\u0c17\u0c3e \u0c09\u0c28\u0c4d\u0c28\u0c3e \u0c2e\u0c1f\u0c4d\u0c1f\u0c3f \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c15\u0c4a\u0c1f\u0c4d\u0c1f\u0c41\u0c15\u0c41\u0c2a\u0c4b\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c28\u0c47\u0c32\u0c15\u0c41 \u0c30\u0c15\u0c4d\u0c37\u0c23 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35.",
+          "sw": "Mteremko mkali, mvua kubwa na udongo usiofunikwa husababisha udongo mwingi kusombwa. Alama ya juu inamaanisha udongo umelindwa vizuri zaidi."
+        }
+      },
+      "climate_fit": {
+        "name": {
+          "en": "Climate fit",
+          "te": "\u0c35\u0c3e\u0c24\u0c3e\u0c35\u0c30\u0c23 \u0c05\u0c28\u0c41\u0c15\u0c42\u0c32\u0c24",
+          "sw": "Ufaafu wa hali ya hewa"
+        },
+        "meaning": {
+          "en": "In how many past years the season's rain and temperature suited this crop.",
+          "te": "\u0c17\u0c24 \u0c38\u0c02\u0c35\u0c24\u0c4d\u0c38\u0c30\u0c3e\u0c32\u0c4d\u0c32\u0c4b \u0c0e\u0c28\u0c4d\u0c28\u0c3f\u0c38\u0c3e\u0c30\u0c4d\u0c32\u0c41 \u0c06 \u0c38\u0c40\u0c1c\u0c28\u0c4d \u0c35\u0c30\u0c4d\u0c37\u0c2a\u0c3e\u0c24\u0c02, \u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24 \u0c08 \u0c2a\u0c02\u0c1f\u0c15\u0c41 \u0c05\u0c28\u0c41\u0c15\u0c42\u0c32\u0c02\u0c17\u0c3e \u0c09\u0c28\u0c4d\u0c28\u0c3e\u0c2f\u0c4b \u0c1a\u0c42\u0c2a\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+          "sw": "Inaonyesha ni katika miaka mingapi iliyopita mvua na joto la msimu vililifaa zao hili."
+        }
+      },
+      "income": {
+        "name": {
+          "en": "Income",
+          "te": "\u0c06\u0c26\u0c3e\u0c2f\u0c02",
+          "sw": "Mapato"
+        },
+        "meaning": {
+          "en": "A rough 0-to-1 comparison of earning potential between crops. It is not a price or profit in {currency}; check prices at your local market.",
+          "te": "\u0c2a\u0c02\u0c1f\u0c32 \u0c2e\u0c27\u0c4d\u0c2f \u0c06\u0c26\u0c3e\u0c2f \u0c05\u0c35\u0c15\u0c3e\u0c36\u0c3e\u0c28\u0c4d\u0c28\u0c3f 0 \u0c28\u0c41\u0c02\u0c21\u0c3f 1 \u0c35\u0c30\u0c15\u0c41 \u0c38\u0c41\u0c2e\u0c3e\u0c30\u0c41\u0c17\u0c3e \u0c2a\u0c4b\u0c32\u0c4d\u0c1a\u0c47 \u0c38\u0c42\u0c1a\u0c3f\u0c15. \u0c07\u0c26\u0c3f \u0c30\u0c42\u0c2a\u0c3e\u0c2f\u0c32\u0c4d\u0c32\u0c4b \u0c27\u0c30 \u0c32\u0c47\u0c26\u0c3e \u0c32\u0c3e\u0c2d\u0c02 \u0c15\u0c3e\u0c26\u0c41; \u0c2e\u0c40 \u0c38\u0c4d\u0c25\u0c3e\u0c28\u0c3f\u0c15 \u0c2e\u0c3e\u0c30\u0c4d\u0c15\u0c46\u0c1f\u0c4d \u0c27\u0c30\u0c32\u0c28\u0c41 \u0c1a\u0c42\u0c38\u0c41\u0c15\u0c4b\u0c02\u0c21\u0c3f.",
+          "sw": "Ulinganisho wa makadirio wa 0 hadi 1 wa uwezo wa mapato kati ya mazao. Si bei wala faida kwa shilingi; angalia bei za soko lako."
+        }
+      },
+      "risk": {
+        "name": {
+          "en": "Risk",
+          "te": "\u0c1a\u0c40\u0c21\u0c2a\u0c40\u0c21\u0c32 \u0c2e\u0c41\u0c2a\u0c4d\u0c2a\u0c41",
+          "sw": "Hatari ya wadudu na magonjwa"
+        },
+        "meaning": {
+          "en": "Growing related crops back to back, or leaving land bare, raises pest and disease risk. A higher score means lower risk.",
+          "te": "\u0c12\u0c15\u0c47 \u0c15\u0c41\u0c1f\u0c41\u0c02\u0c2c\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c1a\u0c46\u0c02\u0c26\u0c3f\u0c28 \u0c2a\u0c02\u0c1f\u0c32\u0c28\u0c41 \u0c35\u0c30\u0c41\u0c38\u0c17\u0c3e \u0c35\u0c47\u0c2f\u0c21\u0c02 \u0c32\u0c47\u0c26\u0c3e \u0c28\u0c47\u0c32\u0c28\u0c41 \u0c16\u0c3e\u0c33\u0c40\u0c17\u0c3e \u0c35\u0c26\u0c3f\u0c32\u0c47\u0c2f\u0c21\u0c02 \u0c35\u0c32\u0c4d\u0c32 \u0c1a\u0c40\u0c21\u0c2a\u0c40\u0c21\u0c32\u0c41, \u0c24\u0c46\u0c17\u0c41\u0c33\u0c4d\u0c32 \u0c2e\u0c41\u0c2a\u0c4d\u0c2a\u0c41 \u0c2a\u0c46\u0c30\u0c41\u0c17\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c2e\u0c41\u0c2a\u0c4d\u0c2a\u0c41 \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35.",
+          "sw": "Kupanda mazao ya jamii moja mfululizo, au kuacha shamba wazi, huongeza hatari ya wadudu na magonjwa. Alama ya juu inamaanisha hatari ndogo."
+        }
+      }
+    },
+    "presets": {
+      "water_saver": {
+        "en": "Water saver",
+        "te": "\u0c28\u0c40\u0c1f\u0c3f \u0c2a\u0c4a\u0c26\u0c41\u0c2a\u0c41",
+        "sw": "Kuokoa maji"
+      },
+      "soil_builder": {
+        "en": "Soil builder",
+        "te": "\u0c28\u0c47\u0c32 \u0c38\u0c3e\u0c30\u0c02 \u0c2a\u0c46\u0c02\u0c2a\u0c41",
+        "sw": "Kujenga udongo"
+      },
+      "income": {
+        "en": "Income",
+        "te": "\u0c06\u0c26\u0c3e\u0c2f\u0c02",
+        "sw": "Mapato"
+      },
+      "balanced": {
+        "en": "Balanced",
+        "te": "\u0c38\u0c2e\u0c24\u0c41\u0c32\u0c4d\u0c2f\u0c02",
+        "sw": "Uwiano"
+      }
+    },
+    "flags": {
+      "season_feasibility": {
+        "en": "This crop does not fit the season it is planted in.",
+        "te": "\u0c08 \u0c2a\u0c02\u0c1f \u0c35\u0c47\u0c38\u0c3f\u0c28 \u0c38\u0c40\u0c1c\u0c28\u0c4d\u200c\u0c15\u0c41 \u0c38\u0c30\u0c3f\u0c2a\u0c4b\u0c26\u0c41.",
+        "sw": "Zao hili halifai msimu lililopandwa."
+      },
+      "irrigation_shortfall": {
+        "en": "Rain and irrigation together cover too little of this crop's water need.",
+        "te": "\u0c35\u0c30\u0c4d\u0c37\u0c02, \u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c30\u0c41 \u0c15\u0c32\u0c3f\u0c2a\u0c3f\u0c28\u0c3e \u0c08 \u0c2a\u0c02\u0c1f\u0c15\u0c41 \u0c15\u0c3e\u0c35\u0c32\u0c38\u0c3f\u0c28 \u0c28\u0c40\u0c30\u0c41 \u0c1a\u0c3e\u0c32\u0c3e \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c05\u0c02\u0c26\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+        "sw": "Mvua na umwagiliaji kwa pamoja havitoshelezi mahitaji ya maji ya zao hili."
+      },
+      "identical_consecutive_crop": {
+        "en": "The same crop is grown twice in a row, which raises pest and disease risk.",
+        "te": "\u0c12\u0c15\u0c47 \u0c2a\u0c02\u0c1f\u0c28\u0c41 \u0c35\u0c30\u0c41\u0c38\u0c17\u0c3e \u0c30\u0c46\u0c02\u0c21\u0c41\u0c38\u0c3e\u0c30\u0c4d\u0c32\u0c41 \u0c35\u0c47\u0c38\u0c4d\u0c24\u0c41\u0c28\u0c4d\u0c28\u0c3e\u0c30\u0c41; \u0c26\u0c40\u0c28\u0c3f\u0c35\u0c32\u0c4d\u0c32 \u0c1a\u0c40\u0c21\u0c2a\u0c40\u0c21\u0c32\u0c41, \u0c24\u0c46\u0c17\u0c41\u0c33\u0c4d\u0c32 \u0c2e\u0c41\u0c2a\u0c4d\u0c2a\u0c41 \u0c2a\u0c46\u0c30\u0c41\u0c17\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+        "sw": "Zao lilelile linapandwa mara mbili mfululizo, jambo linaloongeza hatari ya wadudu na magonjwa."
+      }
+    },
+    "glossary": [
+      {
+        "term": {
+          "en": "Rotation",
+          "te": "\u0c2a\u0c02\u0c1f \u0c15\u0c4d\u0c30\u0c2e\u0c02 (\u0c2a\u0c02\u0c1f \u0c2e\u0c3e\u0c30\u0c4d\u0c2a\u0c3f\u0c21\u0c3f)",
+          "sw": "Mzunguko wa mazao"
+        },
+        "meaning": {
+          "en": "The order of crops you grow on the same land, season after season.",
+          "te": "\u0c12\u0c15\u0c47 \u0c2a\u0c4a\u0c32\u0c02\u0c32\u0c4b \u0c38\u0c40\u0c1c\u0c28\u0c4d \u0c24\u0c30\u0c41\u0c35\u0c3e\u0c24 \u0c38\u0c40\u0c1c\u0c28\u0c4d \u0c2e\u0c40\u0c30\u0c41 \u0c35\u0c47\u0c38\u0c47 \u0c2a\u0c02\u0c1f\u0c32 \u0c35\u0c30\u0c41\u0c38.",
+          "sw": "Mpangilio wa mazao unayopanda katika shamba moja, msimu baada ya msimu."
+        }
+      },
+      {
+        "term": {
+          "en": "Fallow",
+          "te": "\u0c2c\u0c40\u0c21\u0c41",
+          "sw": "Shamba la mapumziko"
+        },
+        "meaning": {
+          "en": "A season when the land is left unplanted.",
+          "te": "\u0c2a\u0c4a\u0c32\u0c02\u0c32\u0c4b \u0c0f \u0c2a\u0c02\u0c1f\u0c3e \u0c35\u0c47\u0c2f\u0c15\u0c41\u0c02\u0c21\u0c3e \u0c16\u0c3e\u0c33\u0c40\u0c17\u0c3e \u0c35\u0c26\u0c3f\u0c32\u0c47\u0c38\u0c3f\u0c28 \u0c38\u0c40\u0c1c\u0c28\u0c4d.",
+          "sw": "Msimu ambao shamba linaachwa bila kupandwa."
+        }
+      },
+      {
+        "term": {
+          "en": "Score (0\u20131)",
+          "te": "\u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 (0\u20131)",
+          "sw": "Alama (0\u20131)"
+        },
+        "meaning": {
+          "en": "A comparison mark from 0 (worst) to 1 (best). It only ranks the options against each other. It is not a yield or a profit.",
+          "te": "0 (\u0c05\u0c24\u0c3f \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35) \u0c28\u0c41\u0c02\u0c21\u0c3f 1 (\u0c05\u0c24\u0c4d\u0c2f\u0c41\u0c24\u0c4d\u0c24\u0c2e\u0c02) \u0c35\u0c30\u0c15\u0c41 \u0c2a\u0c4b\u0c32\u0c3f\u0c15 \u0c15\u0c4b\u0c38\u0c02 \u0c07\u0c1a\u0c4d\u0c1a\u0c47 \u0c2e\u0c3e\u0c30\u0c4d\u0c15\u0c41. \u0c07\u0c26\u0c3f \u0c0e\u0c02\u0c2a\u0c3f\u0c15\u0c32\u0c28\u0c41 \u0c12\u0c15\u0c26\u0c3e\u0c28\u0c3f\u0c24\u0c4b \u0c12\u0c15\u0c1f\u0c3f \u0c2a\u0c4b\u0c32\u0c4d\u0c1a\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c2e\u0c3e\u0c24\u0c4d\u0c30\u0c2e\u0c47; \u0c07\u0c26\u0c3f \u0c26\u0c3f\u0c17\u0c41\u0c2c\u0c21\u0c3f \u0c15\u0c3e\u0c26\u0c41, \u0c32\u0c3e\u0c2d\u0c02 \u0c15\u0c3e\u0c26\u0c41.",
+          "sw": "Alama ya ulinganisho kuanzia 0 (duni kabisa) hadi 1 (bora kabisa). Inalinganisha machaguo tu; si mavuno wala faida."
+        }
+      },
+      {
+        "term": {
+          "en": "Best in test runs",
+          "te": "\u0c2a\u0c30\u0c40\u0c15\u0c4d\u0c37\u0c32\u0c4d\u0c32\u0c4b \u0c2e\u0c41\u0c02\u0c26\u0c02\u0c1c",
+          "sw": "Bora katika majaribio"
+        },
+        "meaning": {
+          "en": "The comparison was repeated {draws} times with different past weather years and slightly different crop values. This is the share of those runs in which the option scored highest.",
+          "te": "\u0c17\u0c24 \u0c35\u0c3e\u0c24\u0c3e\u0c35\u0c30\u0c23 \u0c38\u0c02\u0c35\u0c24\u0c4d\u0c38\u0c30\u0c3e\u0c32\u0c28\u0c41, \u0c2a\u0c02\u0c1f \u0c35\u0c3f\u0c32\u0c41\u0c35\u0c32\u0c28\u0c41 \u0c15\u0c4a\u0c26\u0c4d\u0c26\u0c3f\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c4d\u0c1a\u0c41\u0c24\u0c42 \u0c08 \u0c2a\u0c4b\u0c32\u0c3f\u0c15\u0c28\u0c41 {draws} \u0c38\u0c3e\u0c30\u0c4d\u0c32\u0c41 \u0c2e\u0c33\u0c4d\u0c32\u0c40 \u0c1a\u0c47\u0c36\u0c3e\u0c02. \u0c05\u0c02\u0c26\u0c41\u0c32\u0c4b \u0c0e\u0c28\u0c4d\u0c28\u0c3f \u0c38\u0c3e\u0c30\u0c4d\u0c32\u0c41 \u0c08 \u0c0e\u0c02\u0c2a\u0c3f\u0c15\u0c15\u0c41 \u0c05\u0c24\u0c4d\u0c2f\u0c27\u0c3f\u0c15 \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c35\u0c1a\u0c4d\u0c1a\u0c3f\u0c02\u0c26\u0c4b \u0c08 \u0c36\u0c3e\u0c24\u0c02 \u0c1a\u0c42\u0c2a\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+          "sw": "Tulirudia ulinganisho mara {draws} tukitumia miaka tofauti ya hali ya hewa iliyopita na kubadilisha kidogo thamani za mazao. Hii ni asilimia ya majaribio ambayo chaguo hili lilipata alama ya juu zaidi."
+        }
+      },
+      {
+        "term": {
+          "en": "Low / typical / high",
+          "te": "\u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35 / \u0c38\u0c3e\u0c27\u0c3e\u0c30\u0c23 / \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35",
+          "sw": "Chini / kawaida / juu"
+        },
+        "meaning": {
+          "en": "Out of 10 test runs, about 1 falls below 'low' and about 1 above 'high'. 'Typical' is the middle value.",
+          "te": "10 \u0c2a\u0c30\u0c40\u0c15\u0c4d\u0c37\u0c32\u0c4d\u0c32\u0c4b \u0c38\u0c41\u0c2e\u0c3e\u0c30\u0c41 1 '\u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35' \u0c15\u0c02\u0c1f\u0c47 \u0c15\u0c3f\u0c02\u0c26\u0c15\u0c41, 1 '\u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35' \u0c15\u0c02\u0c1f\u0c47 \u0c2a\u0c48\u0c15\u0c3f \u0c35\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f; '\u0c38\u0c3e\u0c27\u0c3e\u0c30\u0c23' \u0c05\u0c28\u0c47\u0c26\u0c3f \u0c2e\u0c27\u0c4d\u0c2f \u0c35\u0c3f\u0c32\u0c41\u0c35.",
+          "sw": "Kati ya majaribio 10, takriban 1 huwa chini ya 'chini' na 1 juu ya 'juu'; 'kawaida' ni thamani ya katikati."
+        }
+      },
+      {
+        "term": {
+          "en": "Shortfall from the best option",
+          "te": "\u0c09\u0c24\u0c4d\u0c24\u0c2e \u0c0e\u0c02\u0c2a\u0c3f\u0c15 \u0c15\u0c02\u0c1f\u0c47 \u0c35\u0c46\u0c28\u0c41\u0c15\u0c2c\u0c3e\u0c1f\u0c41",
+          "sw": "Pengo kutoka chaguo bora"
+        },
+        "meaning": {
+          "en": "How far, on average, an option's score fell below the best option in the same test run. Smaller is safer.",
+          "te": "\u0c05\u0c26\u0c47 \u0c2a\u0c30\u0c40\u0c15\u0c4d\u0c37\u0c32\u0c4b \u0c09\u0c24\u0c4d\u0c24\u0c2e \u0c0e\u0c02\u0c2a\u0c3f\u0c15 \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c15\u0c02\u0c1f\u0c47 \u0c08 \u0c0e\u0c02\u0c2a\u0c3f\u0c15 \u0c38\u0c4d\u0c15\u0c4b\u0c30\u0c41 \u0c38\u0c17\u0c1f\u0c41\u0c28 \u0c0e\u0c02\u0c24 \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c26\u0c4b \u0c1a\u0c42\u0c2a\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24\u0c02.",
+          "sw": "Kwa wastani, alama ya chaguo hili ilikuwa chini kiasi gani ya chaguo bora katika jaribio lilelile. Pengo dogo ni salama zaidi."
+        }
+      },
+      {
+        "term": {
+          "en": "Evidence label",
+          "te": "\u0c06\u0c27\u0c3e\u0c30\u0c3e\u0c32 \u0c38\u0c4d\u0c25\u0c3e\u0c2f\u0c3f",
+          "sw": "Kiwango cha ushahidi"
+        },
+        "meaning": {
+          "en": "How much of a number rests on measured data rather than assumptions. LOW means: treat it as a rough guide and check it locally.",
+          "te": "\u0c12\u0c15 \u0c38\u0c02\u0c16\u0c4d\u0c2f \u0c0e\u0c02\u0c24\u0c35\u0c30\u0c15\u0c41 \u0c15\u0c4a\u0c32\u0c3f\u0c1a\u0c3f\u0c28 \u0c38\u0c2e\u0c3e\u0c1a\u0c3e\u0c30\u0c02\u0c2a\u0c48, \u0c0e\u0c02\u0c24\u0c35\u0c30\u0c15\u0c41 \u0c05\u0c02\u0c1a\u0c28\u0c3e\u0c32\u0c2a\u0c48 \u0c06\u0c27\u0c3e\u0c30\u0c2a\u0c21\u0c3f \u0c09\u0c02\u0c26\u0c4b \u0c1a\u0c46\u0c2c\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. LOW (\u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35) \u0c05\u0c02\u0c1f\u0c47: \u0c26\u0c40\u0c28\u0c4d\u0c28\u0c3f \u0c38\u0c41\u0c2e\u0c3e\u0c30\u0c41 \u0c2e\u0c3e\u0c30\u0c4d\u0c17\u0c26\u0c30\u0c4d\u0c36\u0c15\u0c02\u0c17\u0c3e \u0c2e\u0c3e\u0c24\u0c4d\u0c30\u0c2e\u0c47 \u0c24\u0c40\u0c38\u0c41\u0c15\u0c41\u0c28\u0c3f \u0c38\u0c4d\u0c25\u0c3e\u0c28\u0c3f\u0c15\u0c02\u0c17\u0c3e \u0c28\u0c3f\u0c30\u0c4d\u0c27\u0c3e\u0c30\u0c3f\u0c02\u0c1a\u0c41\u0c15\u0c4b\u0c02\u0c21\u0c3f.",
+          "sw": "Kinaonyesha ni kwa kiasi gani namba inategemea data iliyopimwa badala ya makadirio. LOW (chini) inamaanisha: itumie kama mwongozo wa jumla tu na uhakiki katika eneo lako."
+        }
+      },
+      {
+        "term": {
+          "en": "Irrigation share",
+          "te": "\u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c1f\u0c3f \u0c35\u0c3e\u0c1f\u0c3e",
+          "sw": "Sehemu ya umwagiliaji"
+        },
+        "meaning": {
+          "en": "The part of a crop's missing water that you can supply by irrigation: 0% is rain only, 100% is full irrigation.",
+          "te": "\u0c35\u0c30\u0c4d\u0c37\u0c02 \u0c38\u0c30\u0c3f\u0c2a\u0c4b\u0c28\u0c2a\u0c4d\u0c2a\u0c41\u0c21\u0c41 \u0c2a\u0c02\u0c1f\u0c15\u0c41 \u0c15\u0c3e\u0c35\u0c32\u0c38\u0c3f\u0c28 \u0c28\u0c40\u0c1f\u0c3f\u0c32\u0c4b \u0c2e\u0c40\u0c30\u0c41 \u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c1f\u0c3f \u0c26\u0c4d\u0c35\u0c3e\u0c30\u0c3e \u0c05\u0c02\u0c26\u0c3f\u0c02\u0c1a\u0c17\u0c32 \u0c2d\u0c3e\u0c17\u0c02: 0% \u0c05\u0c02\u0c1f\u0c47 \u0c35\u0c30\u0c4d\u0c37\u0c3e\u0c27\u0c3e\u0c30\u0c02 \u0c2e\u0c3e\u0c24\u0c4d\u0c30\u0c2e\u0c47, 100% \u0c05\u0c02\u0c1f\u0c47 \u0c2a\u0c42\u0c30\u0c4d\u0c24\u0c3f \u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c30\u0c41.",
+          "sw": "Sehemu ya maji yanayokosekana kwa zao ambayo unaweza kuitoa kwa umwagiliaji: 0% ni kutegemea mvua pekee, 100% ni umwagiliaji kamili."
+        }
+      },
+      {
+        "term": {
+          "en": "Soil water (top 30 cm)",
+          "te": "\u0c28\u0c47\u0c32\u0c32\u0c4b \u0c28\u0c3f\u0c32\u0c4d\u0c35 \u0c09\u0c02\u0c21\u0c47 \u0c28\u0c40\u0c30\u0c41 (\u0c2a\u0c48 30 \u0c38\u0c46\u0c02.\u0c2e\u0c40.)",
+          "sw": "Maji ya udongo (sentimita 30 za juu)"
+        },
+        "meaning": {
+          "en": "How much water the top layer of your soil can hold for the crop between rains.",
+          "te": "\u0c35\u0c30\u0c4d\u0c37\u0c3e\u0c32 \u0c2e\u0c27\u0c4d\u0c2f \u0c15\u0c3e\u0c32\u0c02\u0c32\u0c4b \u0c2a\u0c02\u0c1f \u0c15\u0c4b\u0c38\u0c02 \u0c2e\u0c40 \u0c28\u0c47\u0c32 \u0c2a\u0c48 \u0c2a\u0c4a\u0c30 \u0c28\u0c3f\u0c32\u0c4d\u0c35 \u0c09\u0c02\u0c1a\u0c17\u0c32 \u0c28\u0c40\u0c1f\u0c3f \u0c2a\u0c30\u0c3f\u0c2e\u0c3e\u0c23\u0c02.",
+          "sw": "Kiasi cha maji ambacho tabaka la juu la udongo wako linaweza kuhifadhi kwa ajili ya zao kati ya mvua."
+        }
+      },
+      {
+        "term": {
+          "en": "Scenario",
+          "te": "\u0c0a\u0c39\u0c3e\u0c24\u0c4d\u0c2e\u0c15 \u0c2a\u0c30\u0c3f\u0c38\u0c4d\u0c25\u0c3f\u0c24\u0c3f",
+          "sw": "Hali ya kudhaniwa"
+        },
+        "meaning": {
+          "en": "A 'what if' case, for example hotter and drier weather, or less irrigation water.",
+          "te": "'\u0c12\u0c15\u0c35\u0c47\u0c33 \u0c07\u0c32\u0c3e \u0c1c\u0c30\u0c3f\u0c17\u0c3f\u0c24\u0c47' \u0c05\u0c28\u0c47 \u0c0a\u0c39\u0c3e\u0c24\u0c4d\u0c2e\u0c15 \u0c2a\u0c30\u0c3f\u0c38\u0c4d\u0c25\u0c3f\u0c24\u0c3f; \u0c09\u0c26\u0c3e\u0c39\u0c30\u0c23\u0c15\u0c41 \u0c2e\u0c30\u0c3f\u0c02\u0c24 \u0c35\u0c47\u0c21\u0c3f, \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35 \u0c35\u0c30\u0c4d\u0c37\u0c02, \u0c32\u0c47\u0c26\u0c3e \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35 \u0c38\u0c3e\u0c17\u0c41\u0c28\u0c40\u0c30\u0c41.",
+          "sw": "Hali ya 'je, ikiwa\u2026', kwa mfano joto zaidi na mvua kidogo, au maji kidogo ya umwagiliaji."
+        }
+      },
+      {
+        "term": {
+          "en": "NASA POWER",
+          "te": "NASA POWER",
+          "sw": "NASA POWER"
+        },
+        "meaning": {
+          "en": "A free NASA weather record: daily rain and temperature estimated for the wider area around the farm (tens of kilometres). It is not measured by a rain gauge on your land.",
+          "te": "NASA \u0c09\u0c1a\u0c3f\u0c24\u0c02\u0c17\u0c3e \u0c05\u0c02\u0c26\u0c3f\u0c02\u0c1a\u0c47 \u0c35\u0c3e\u0c24\u0c3e\u0c35\u0c30\u0c23 \u0c30\u0c3f\u0c15\u0c3e\u0c30\u0c4d\u0c21\u0c41: \u0c2a\u0c4a\u0c32\u0c02 \u0c1a\u0c41\u0c1f\u0c4d\u0c1f\u0c42 \u0c09\u0c28\u0c4d\u0c28 \u0c35\u0c3f\u0c36\u0c3e\u0c32 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c3e\u0c28\u0c3f\u0c15\u0c3f (\u0c2a\u0c26\u0c41\u0c32 \u0c15\u0c3f\u0c32\u0c4b\u0c2e\u0c40\u0c1f\u0c30\u0c4d\u0c32\u0c41) \u0c30\u0c4b\u0c1c\u0c41\u0c35\u0c3e\u0c30\u0c40 \u0c35\u0c30\u0c4d\u0c37\u0c2a\u0c3e\u0c24\u0c02, \u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24 \u0c05\u0c02\u0c1a\u0c28\u0c3e\u0c32\u0c41. \u0c07\u0c35\u0c3f \u0c2e\u0c40 \u0c2a\u0c4a\u0c32\u0c02\u0c32\u0c4b \u0c35\u0c30\u0c4d\u0c37\u0c2e\u0c3e\u0c2a\u0c15\u0c02\u0c24\u0c4b \u0c15\u0c4a\u0c32\u0c3f\u0c1a\u0c3f\u0c28\u0c35\u0c3f \u0c15\u0c3e\u0c35\u0c41.",
+          "sw": "Rekodi ya hali ya hewa ya NASA inayopatikana bure: makadirio ya kila siku ya mvua na joto kwa eneo pana linalozunguka shamba (makumi ya kilomita). Hayajapimwa kwa kipimamvua shambani mwako."
+        }
+      },
+      {
+        "term": {
+          "en": "Satellite greenness (NDVI, from MODIS)",
+          "te": "\u0c09\u0c2a\u0c17\u0c4d\u0c30\u0c39 \u0c2a\u0c1a\u0c4d\u0c1a\u0c26\u0c28\u0c02 \u0c38\u0c42\u0c1a\u0c3f\u0c15 (NDVI, MODIS)",
+          "sw": "Kipimo cha ukijani kwa setilaiti (NDVI, MODIS)"
+        },
+        "meaning": {
+          "en": "A satellite measure of how green the land is. Higher values mean more green plants; bare soil is low. It shows when plants are growing, but it cannot tell which crop it is.",
+          "te": "\u0c2d\u0c42\u0c2e\u0c3f \u0c0e\u0c02\u0c24 \u0c2a\u0c1a\u0c4d\u0c1a\u0c17\u0c3e \u0c09\u0c02\u0c26\u0c4b \u0c09\u0c2a\u0c17\u0c4d\u0c30\u0c39\u0c02 \u0c26\u0c4d\u0c35\u0c3e\u0c30\u0c3e \u0c15\u0c4a\u0c32\u0c3f\u0c1a\u0c47 \u0c38\u0c42\u0c1a\u0c3f\u0c15. \u0c35\u0c3f\u0c32\u0c41\u0c35 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c47 \u0c2a\u0c1a\u0c4d\u0c1a\u0c26\u0c28\u0c02 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35; \u0c16\u0c3e\u0c33\u0c40 \u0c28\u0c47\u0c32\u0c15\u0c41 \u0c35\u0c3f\u0c32\u0c41\u0c35 \u0c24\u0c15\u0c4d\u0c15\u0c41\u0c35. \u0c2e\u0c4a\u0c15\u0c4d\u0c15\u0c32\u0c41 \u0c0e\u0c2a\u0c4d\u0c2a\u0c41\u0c21\u0c41 \u0c2a\u0c46\u0c30\u0c41\u0c17\u0c41\u0c24\u0c41\u0c28\u0c4d\u0c28\u0c3e\u0c2f\u0c4b \u0c07\u0c26\u0c3f \u0c1a\u0c42\u0c2a\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f, \u0c15\u0c3e\u0c28\u0c40 \u0c0f \u0c2a\u0c02\u0c1f\u0c4b \u0c1a\u0c46\u0c2a\u0c4d\u0c2a\u0c32\u0c47\u0c26\u0c41.",
+          "sw": "Kipimo cha setilaiti kinachoonyesha jinsi ardhi ilivyo ya kijani. Thamani ya juu ni mimea mingi ya kijani; udongo mtupu una thamani ya chini. Kinaonyesha mimea inapokua, lakini hakiwezi kutambua ni zao gani."
+        }
+      }
+    ],
+    "technical_glossary": [
+      {
+        "term": "NDVI",
+        "meaning": "Normalized Difference Vegetation Index. A satellite greenness value: higher means more green vegetation in the pixel."
+      },
+      {
+        "term": "MODIS (MOD13Q1)",
+        "meaning": "A NASA satellite instrument. This product gives one NDVI value every 16 days for a 250 m square, so one pixel can mix several fields."
+      },
+      {
+        "term": "QA-valid composite",
+        "meaning": "A 16-day NDVI value that passed the product's quality flags, for example not spoiled by cloud."
+      },
+      {
+        "term": "CDL",
+        "meaning": "USDA Cropland Data Layer: a yearly satellite-based map of which crop was grown where in the United States. It is a classification, not a farm record."
+      },
+      {
+        "term": "Spearman \u03c1",
+        "meaning": "A number from \u22121 to +1 showing whether two things rise and fall together across years. Near 0 means no consistent link."
+      },
+      {
+        "term": "Bootstrap 95% interval",
+        "meaning": "A plausible range for a result, found by recalculating it many times on reshuffled years. If the range includes 0, the link may not be real."
+      },
+      {
+        "term": "RMSE and R\u00b2",
+        "meaning": "RMSE is the typical size of a prediction error, in the unit of the thing predicted. R\u00b2 is the share of year-to-year variation the model explains (1 is perfect, 0 is no better than the average)."
+      },
+      {
+        "term": "Cross-validation / held-out",
+        "meaning": "Testing a model on years or counties it was not trained on."
+      },
+      {
+        "term": "Permutation importance and partial dependence",
+        "meaning": "Two ways to see what a fitted model relies on: how much worse it gets when one input is scrambled, and how its prediction moves as one input changes."
+      },
+      {
+        "term": "Normalized score",
+        "meaning": "A value rescaled to run from 0 (worst) to 1 (best) so different measures can be combined."
+      },
+      {
+        "term": "Near tie",
+        "meaning": "Two rotations whose weighted scores differ by 0.01 or less, so which one is labelled 'top' is not meaningful."
+      },
+      {
+        "term": "Exact search / ant colony",
+        "meaning": "Exact search scores every feasible rotation. The ant colony is a faster trial-and-error search; it is checked against the exact answer."
+      }
+    ]
   }
 }

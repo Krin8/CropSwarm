@@ -41,7 +41,9 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Learned climate-yield check](docs/ml_model.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md) · [Plain wording, local names and units](docs/localization.md)
+
+The page opens on the farmer view: plain wording, local season and crop names, local units, and a glossary. Telangana offers Telugu and Makueni offers Kiswahili as draft translations. The opportunity windows, historical back-tests, weather-shift map and optimizer check appear after turning on **Show technical checks (for reviewers)**.
 
 ## Architecture
 

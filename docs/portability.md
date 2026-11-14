@@ -4,15 +4,15 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 
 | When used | Files |
 |---|---|
-| Initial layout and farm picker | `app_settings.json` and `world_land.json` |
-| Selected farm | `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json`, `stress_test_<farm_id>.json`, `stress_margins_<farm_id>.json`, `tie_diagnosis_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
+| Initial layout, farm picker, wording and units | `app_settings.json` and `world_land.json` |
+| Selected farm | `seasons_<farm_id>.json`, `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json`, `stress_test_<farm_id>.json`, `stress_margins_<farm_id>.json`, `tie_diagnosis_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
 | Long-record NASA validation | `nasa_consistency_<farm_id>.json` |
 | Opportunity windows | `opportunity_windows_<farm_id>.json` |
 | What to check first | `sensitivity_<farm_id>.json` |
 | Learned climate-yield check | `climate_yield_model.json` |
 | Yield validation | `yield_backtest_<farm_id>.json` |
 | Strategy and scenario comparisons | `strategies_<farm_id>.json` and `uncertainty_<farm_id>.json` |
-| Applying edited inputs | `seasons_<farm_id>.json` and `climate_<farm_id>.parquet` |
+| Applying edited inputs | `climate_<farm_id>.parquet` |
 
 The app has no runtime dependency on `data/raw/`, `data/cache/`, `ndvi_*.csv`, `coverage_p4.json`, the source crop CSV or the precompute configuration files. The offline back-test rebuild (`python -m src.backtest`) does read the committed Kansas CDL raw sample, crop CSV, climate and NDVI processed files. Keep the committed archives and fixtures when running the full test suite or rebuilding processed data. Install the pinned requirements in a fresh Python 3.12 virtual environment, then run `python -m pytest -q` and `python -m streamlit run app/main.py` from the checkout.
 

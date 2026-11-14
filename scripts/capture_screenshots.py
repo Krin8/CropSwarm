@@ -18,6 +18,8 @@ from playwright.sync_api import expect, sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 HOST = "127.0.0.1"
 PANELS = ("climate", "comparison", "opportunity", "validation", "robustness", "sensitivity", "uncertainty", "evidence")
+# These panels are hidden until the reviewer switch is turned on.
+TECHNICAL_PANELS = {"opportunity", "validation", "robustness"}
 
 
 def local_port():
@@ -59,6 +61,9 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 page.get_by_role("option", name=name, exact=True).click()
             climate = page.locator(".st-key-climate_assessment")
             expect(climate.get_by_text(name, exact=True)).to_be_visible()
+            if TECHNICAL_PANELS.intersection(panels):
+                page.get_by_text("Show technical checks (for reviewers)", exact=True).click()
+                expect(page.get_by_text("Technical checks", exact=True)).to_be_visible()
             if "opportunity" in panels:
                 opportunity = page.locator(".st-key-opportunity_windows:visible").filter(
                     has=page.get_by_text(name, exact=True))
@@ -88,13 +93,13 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 validation.screenshot(path=destination / f"{farm_id}_validation.png", animations="disabled")
             if "robustness" in panels:
                 robustness = page.locator(".st-key-climate_stress_test")
-                expect(robustness.get_by_text("Robustness check under weather shifts (P16)", exact=True)).to_be_visible()
+                expect(robustness.get_by_text("Robustness check under weather shifts", exact=True)).to_be_visible()
                 expect(robustness.locator(".js-plotly-plot:visible").first).to_be_visible()
                 robustness.screenshot(path=destination / f"{farm_id}_robustness.png", animations="disabled")
             if "uncertainty" in panels or "evidence" in panels:
                 uncertainty = page.locator(".st-key-uncertainty_baseline")
                 expect(uncertainty.get_by_text(f"{name} · Existing rotation · Historical weather", exact=True)).to_be_visible()
-                expect(uncertainty.get_by_text("Wins in", exact=False)).to_be_visible()
+                expect(uncertainty.get_by_text("Comes out best in", exact=False)).to_be_visible()
                 if "uncertainty" in panels:
                     uncertainty.screenshot(path=destination / f"{farm_id}_uncertainty.png", animations="disabled")
                 if "evidence" in panels:
