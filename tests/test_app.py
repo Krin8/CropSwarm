@@ -20,6 +20,9 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert not app.exception
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
+    assert any(row.value == "Opportunity windows" for row in app.subheader)
+    assert any("QA-valid composites · NDVI evidence" in row.value for row in app.caption)
+    assert any("Recurrent windows" in table.value.columns for table in app.dataframe)
     assert any("NASA climate and vegetation check" in row.label for row in app.expander)
     counts = next(table.value for table in app.dataframe if "Intervals excluding zero" in table.value.columns)
     assert list(counts["Comparisons"]) == [24, 36, 10]
@@ -66,3 +69,16 @@ def test_sensitivity_panel_uses_the_selected_named_preset():
     assert not app.exception
     assert any(row.value == f"**Priority {first['rank']} · {first['question']}**" for row in app.markdown)
     assert any("Income" in row.value and "inputs varied" in row.value for row in app.caption)
+
+
+def test_opportunity_alternate_threshold_reports_modeled_changes_without_hiding_caveats():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="opportunity_threshold_us_high_plains_b").set_value(.30).run()
+    assert not app.exception
+    assert any("alternative cutoff" in row.value for row in app.info)
+    assert any("fits the screen in 1 of 15 years" in row.value for row in app.markdown)
+    assert any("cost to the following crop" in row.value for row in app.caption)
+    benefit = next(table.value for table in app.dataframe if "Median change" in table.value.columns)
+    assert len(benefit) == 8 and set(benefit["Evidence"]) == {"LOW"}
+    app.selectbox(key="opportunity_year_us_high_plains_b").set_value(2012).run()
+    assert not app.exception

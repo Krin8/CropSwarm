@@ -10,7 +10,7 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 |---|---|---|
 | NASA | [POWER](data_pipeline.md) corrected precipitation, temperature, radiation, humidity and modeled root-zone wetness | Daily weather was cached. Corrected precipitation and temperature feed seasonal diagnostics, stress indicators and scenario scoring. Modeled root-zone wetness informs the climate assessment. |
 | NASA | [GPM IMERG via POWER](data_pipeline.md) | Used in the climate assessment’s rainfall agreement check against POWER corrected precipitation on matching UTC dates. That diagnostic is its only role in the results. |
-| NASA | [Terra MODIS MOD13Q1 NDVI](data_pipeline.md) | Vegetation seasonality and the P15 and P19 historical comparisons. |
+| NASA | [Terra MODIS MOD13Q1 NDVI](data_pipeline.md) | Vegetation seasonality, low-greenness window screening, and the P15 and P19 historical comparisons. |
 | NASA | [MODIS MCD12Q1 land cover](decisions.md) | Land-cover screening, including the grassland flag at the illustrative Makueni point. |
 | NASA / NGA | [SRTM](data_pipeline.md) through OpenTopoData | Terrain slope proxy in the erosion score. |
 | Non-NASA | [ISRIC SoilGrids](api_status.md) | Gridded soil texture and organic-carbon estimates. |
@@ -24,7 +24,7 @@ CropSwarm is an offline decision-support prototype that helps farmers compare cr
 
 SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. The historical comparisons check NASA input consistency and associations with county or district yields. Rotation recommendations still need field validation.
 
-The [What to check first panel](sensitivity.md) ranks which assumptions move the modeled score and ranking under specified ranges. Its priorities depend on the reference farm and preset.
+The [What to check first panel](sensitivity.md) ranks which assumptions move the modeled score and ranking under specified ranges. Its priorities depend on the reference farm and preset. The [Opportunity windows panel](opportunity_windows.md) screens low-greenness spans against crop length and historical weather. None of the screened crops passed at the reference cutoff.
 
 These are illustrative point estimates, not field boundaries or management records. Kansas irrigation supply is set to 0, the 2019 spring NDVI peak over mapped fallow is unresolved, Telangana's second season is tentative, and Makueni cropland remains unverified. POWER root-zone wetness and SoilGrids properties are modeled estimates. The app does not directly measure soil nitrogen or soil organic carbon. Relative income, rainfall uncertainty, simplified erosion, season windows and crop choices need local validation. Scenario intervals and win percentages reflect the specified model and assumptions, not calibrated forecast probabilities. See [decisions](decisions.md), [methods](scoring.md), and [citation audit](citation_audit.md).
 

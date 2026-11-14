@@ -37,7 +37,7 @@ def wait_for_streamlit(url, process):
     raise RuntimeError("Local Streamlit server did not become ready")
 
 
-def capture(url, destination, channel=None, *, sensitivity_only=False):
+def capture(url, destination, channel=None, *, sensitivity_only=False, opportunity_only=False):
     farms = json.loads((ROOT / "data/processed/app_settings.json").read_text())["farms"]
     destination.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
@@ -58,6 +58,15 @@ def capture(url, destination, channel=None, *, sensitivity_only=False):
                 page.get_by_role("option", name=name, exact=True).click()
             climate = page.locator(".st-key-climate_assessment")
             expect(climate.get_by_text(name, exact=True)).to_be_visible()
+            if not sensitivity_only:
+                opportunity = page.locator(".st-key-opportunity_windows")
+                expect(opportunity.get_by_text(name, exact=True)).to_be_visible()
+                expect(opportunity.locator(".js-plotly-plot:visible").first).to_be_visible()
+                expect(opportunity.get_by_text("Illustrative window screening", exact=False)).to_be_visible()
+                opportunity.screenshot(path=destination / f"{farm_id}_opportunity.png", animations="disabled")
+                if opportunity_only:
+                    page.close()
+                    continue
             sensitivity = page.locator(".st-key-what_to_check_first")
             expect(sensitivity.get_by_text(name, exact=False)).to_be_visible()
             expect(sensitivity.get_by_text("Real-world importance needs local evidence", exact=False)).to_be_visible()
@@ -97,7 +106,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "docs/screenshots")
     parser.add_argument("--channel", choices=["chrome", "msedge"], help="Use an installed browser channel")
-    parser.add_argument("--sensitivity-only", action="store_true", help="Capture only What to check first")
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument("--sensitivity-only", action="store_true", help="Capture only What to check first")
+    selection.add_argument("--opportunity-only", action="store_true", help="Capture only Opportunity windows")
     args = parser.parse_args()
     port = local_port()
     url = f"http://{HOST}:{port}"
@@ -109,7 +120,8 @@ def main():
                                    env={**os.environ, "STREAMLIT_BROWSER_GATHER_USAGE_STATS": "false"})
         try:
             wait_for_streamlit(url, process)
-            capture(url, args.output, args.channel, sensitivity_only=args.sensitivity_only)
+            capture(url, args.output, args.channel, sensitivity_only=args.sensitivity_only,
+                    opportunity_only=args.opportunity_only)
         except Exception:
             log.seek(0)
             print(log.read().decode(errors="replace"), file=sys.stderr)

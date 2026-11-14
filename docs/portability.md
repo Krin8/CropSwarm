@@ -7,6 +7,7 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 | Initial layout and farm picker | `app_settings.json` and `world_land.json` |
 | Selected farm | `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json`, `stress_test_<farm_id>.json`, `stress_margins_<farm_id>.json`, `tie_diagnosis_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
 | Long-record NASA validation | `nasa_consistency_<farm_id>.json` |
+| Opportunity windows | `opportunity_windows_<farm_id>.json` |
 | What to check first | `sensitivity_<farm_id>.json` |
 | Yield validation | `yield_backtest_<farm_id>.json` |
 | Strategy and scenario comparisons | `strategies_<farm_id>.json` and `uncertainty_<farm_id>.json` |
@@ -21,4 +22,4 @@ python -m pip install -r requirements-screenshots.txt
 python scripts/capture_screenshots.py --channel chrome
 ```
 
-Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 21 outputs. Add `--sensitivity-only` to refresh just the three What to check first panels.
+Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 24 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views.

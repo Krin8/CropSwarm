@@ -68,3 +68,7 @@ US B's reference uses a rainfed assumption with zero irrigation supplied. The 20
 ## P22 field-check priorities
 
 Use exact canonical search under each trial so eligibility changes can introduce or remove contenders. The app ranks the effects of one-at-a-time tests and shows joint rank associations separately. Keep the existing 0.01 near-tie tolerance as a design choice. Use cited crop water ranges, one-sided irrigation tests from a zero reference and one-slot substitutions for assumed baseline identities. These choices set the scope of the sensitivity experiment. [Ranges and results](sensitivity.md)
+
+## P17 opportunity window screen
+
+Use strict P19 QA and the existing P5 low-NDVI cutoff of 0.25, with sensitivity at 0.20 and 0.30. Require consecutive valid composites and at least three supporting years with a majority or half of assessable pairs to call a window recurrent. Score the modeled addition only for passing years, using a paired uncovered and planted gap and the existing score engine. The fit screen and crop category, frost exception and wetness proxy are illustrative design choices. Site flags cap confidence. [Methods, results and limits](opportunity_windows.md)

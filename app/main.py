@@ -58,6 +58,121 @@ def correlation_counts(farm_ids):
     return counts
 
 
+def opportunity_panel(farm_id, farm_name):
+    data = load(farm_id, "opportunity_windows")
+    with st.container(key="opportunity_windows"):
+        st.subheader("Opportunity windows")
+        st.caption(farm_name)
+        st.write("Look for recurring low greenness before checking an opening locally. A mixed MODIS pixel can "
+                 "contain crops, weeds or other cover. Clouds and unknown management limit what low NDVI can tell us.")
+        for flag in data["flags"]:
+            st.warning(flag)
+        runs = data["sensitivity"]
+        default = next(i for i, row in enumerate(runs) if row["offset"] == 0)
+        levels = [row["threshold"] for row in runs]
+        selected = st.selectbox("Low-NDVI threshold", levels, index=default, format_func=lambda v: f"{v:.2f}",
+                                key=f"opportunity_threshold_{farm_id}")
+        current = next(row for row in runs if row["threshold"] == selected)
+        st.caption("Threshold evidence · assumption, validate locally · P5 cutoff and sensitivity settings. "
+                   "Site flags lower the evidence grade for the window and climate-fit estimates.")
+        view = st.selectbox("NDVI timeline", ["Typical year", *data["years"]],
+                            key=f"opportunity_year_{farm_id}")
+        series = (data["timeline"] if view == "Typical year" else
+                  [row for row in data["annual_ndvi"] if row["year"] == view])
+        figure = go.Figure(go.Scatter(x=[row["doy"] for row in series], y=[row["ndvi"] for row in series],
+                                      mode="lines+markers", connectgaps=False, name="QA-screened MODIS NDVI",
+                                      marker_color="#32774F"))
+        figure.update_traces(hovertemplate="Day %{x} · NDVI %{y:.3f} · NASA Terra MODIS<extra></extra>")
+        if view == "Typical year":
+            for window in current["windows"]:
+                start = window["start_doy"]
+                stop = start + window["typical_days"]
+                figure.add_vrect(x0=start, x1=min(stop, 366), fillcolor="#C58C40", opacity=.23, line_width=0)
+                if stop > 366:
+                    figure.add_vrect(x0=1, x1=stop - 365, fillcolor="#C58C40", opacity=.23, line_width=0)
+        else:
+            year = pd.Timestamp(view, 1, 1)
+            next_year = pd.Timestamp(view + 1, 1, 1)
+            for run in current["runs"]:
+                start = max(year, pd.Timestamp(run["start"]))
+                stop = min(next_year, pd.Timestamp(run["end_exclusive"]))
+                if start < stop:
+                    figure.add_vrect(x0=(start - year).days + 1, x1=(stop - year).days + 1,
+                                     fillcolor="#C58C40", opacity=.23, line_width=0)
+        figure.add_hline(y=selected, line_dash="dot", line_color="#956027")
+        figure.update_layout(height=300, xaxis_title="Day of year", yaxis_title="NDVI",
+                             margin=dict(t=12, r=18, b=50, l=56))
+        st.plotly_chart(figure, key=f"opportunity_ndvi_{farm_id}", config={"displayModeBar": False})
+        ndvi_grade = data["evidence"]["ndvi"]["label"].upper()
+        window_grade = data["evidence"]["window"]["label"].upper()
+        st.caption(f"NASA Terra MODIS NDVI · {data['years'][0]}–{data['years'][-1]} · "
+                   f"{data['qa_composites']} QA-valid composites · NDVI evidence {ndvi_grade}. "
+                   f"Shading estimates low greenness · window evidence {window_grade}.")
+        st.dataframe(pd.DataFrame([{
+            "NDVI cutoff": f"{row['threshold']:.2f}", "Detected runs": row["run_count"],
+            "Recurrent windows": sum(w["status"] == "recurrent" for w in row["windows"]),
+            "Evidence": window_grade,
+        } for row in runs]), hide_index=True)
+        if not any(w["status"] == "recurrent" for w in current["windows"]):
+            st.info("No reliable recurring low-NDVI window at this cutoff.")
+        for window in current["windows"]:
+            st.markdown(f"**{window['status'].capitalize()} low-NDVI window · evidence {window_grade}**")
+            st.write(f"The low-greenness spans typically start around day {window['start_doy']} and last about "
+                     f"{window['typical_days']} days. {window['supporting_years']} of {window['assessable_years']} "
+                     f"QA-assessable years support this window, with {window['qa_composites']} valid composites "
+                     "in the supporting spans.")
+            if current["offset"] == 0 and not window["threshold_stable"]:
+                st.caption("The same recurring window did not carry through both alternative cutoffs.")
+            interval = window["bootstrap_interval"]
+            if interval:
+                low, high = interval["length_days"]
+                st.caption(f"Median-length bootstrap interval {low:.0f}–{high:.0f} days · evidence {window_grade}.")
+            labels = {"length": "Length", "temperature": "Temperature", "water": "Water", "overall": "Overall fit"}
+            fit_rows = []
+            for item in window["fit"]:
+                row = {"Crop": item["crop"], "Catalog season": (
+                    ", ".join(label.replace("_", " ") for label in item["local_catalog_seasons"]) or "None at this farm")}
+                for check, name in labels.items():
+                    counts = item["checks"][check]
+                    grade = item["evidence"][check]["label"].upper()
+                    ratio = f"{counts['passes']}/{counts['n']}" if counts["n"] else "Unavailable (n=0)"
+                    row[name] = f"{ratio} · {grade}"
+                fit_rows.append(row)
+            st.dataframe(pd.DataFrame(fit_rows), hide_index=True)
+            st.caption("Fit cells give years passing / years assessable and the P18 evidence label. "
+                       "NASA POWER temperature and rainfall inform fit. POWER root-zone wetness is a model product. "
+                       "Temperature and water are only tested in windows long enough for the crop. "
+                       "Catalog seasons provide context. This screen uses the actual dates of the low-NDVI run.")
+            passing = [item for item in window["fit"] if item["checks"]["overall"]["passes"]]
+            if passing:
+                if current["offset"] != 0:
+                    st.info("These passes are from an alternative cutoff. Use the P5 cutoff as the reference.")
+                for item in passing:
+                    overall = item["checks"]["overall"]
+                    grade = item["evidence"]["overall"]["label"].upper()
+                    st.write(f"{item['crop']} fits the screen in {overall['passes']} of {overall['n']} years "
+                             f"with this low-NDVI window · evidence {grade}.")
+                    if not item["local_catalog_seasons"]:
+                        st.caption(f"{item['crop']} has no matching catalog season at this farm.")
+                names = {"nitrogen": "Net nitrogen carryover", "erosion_proxy": "Erosion proxy",
+                         "water_used": "Crop water use", "unmet_water": "Unmet crop water"}
+                st.markdown("**Modeled change from adding the crop to a gap in the baseline**")
+                st.dataframe(pd.DataFrame([{
+                    "Crop": item["crop"], "Metric": names[key], "Median change": f"{metric['median']:+.2f}",
+                    "Range": " to ".join(f"{value:+.2f}" for value in metric["range"]),
+                    "Unit": metric["unit"], "Evidence": item["evidence"][key]["label"].upper(),
+                    "Source": {"nitrogen": "Crop catalog", "erosion_proxy": "NASA SRTM, NASA POWER, crop cover",
+                               "water_used": "NASA POWER, mapped soil, crop catalog",
+                               "unmet_water": "NASA POWER, mapped soil, crop catalog"}[key],
+                } for item in passing for key, metric in item["modeled_addition"].items()]), hide_index=True)
+                st.caption("Cover-crop water use is a cost to the following crop. The estimates give crop demand "
+                           "met and unmet during the added gap crop. They do not quantify the next crop's water loss.")
+            else:
+                st.write("No tested crop passed all checks for this window.")
+        st.caption("Illustrative window screening · validate locally. Check soil moisture, seed availability "
+                   "and costs locally. Farm calendars and yield effects require other evidence.")
+
+
 def stress_map(data, preset):
     selected = data["presets"][preset]
     rain = data["rainfall_changes_pct"]
@@ -218,6 +333,7 @@ def app():
                 chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
                 st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
         st.caption("NASA POWER rainfall and temperature · GPM IMERG for the rainfall agreement check · NASA Terra MODIS vegetation")
+    opportunity_panel(farm_id, farm["name"])
     with st.container(key="historical_validation"):
         st.subheader("Validation · historical back-test")
         counts = correlation_counts(by_id)
