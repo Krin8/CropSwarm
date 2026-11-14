@@ -4,5 +4,22 @@
   "bulk_sha256": "78382f2f6fe4e3a0a1d0feeb44a3b2cbb972b8ab4cef10d4fd223f98ec97bdc3",
   "extract_sha256": "5237e04ab1fda0468be0c82bab053e3944db472a14f1c905d54ffd485c8092ae",
   "extraction": "SURVEY, TOTAL, COUNTY, ANNUAL, YEAR, 1990\u20132024 and the two P25 winter-wheat yield selectors. Nebraska and Oklahoma only. Keep the archive reporting district columns.",
-  "centroid_status": "No verified Nebraska or Oklahoma centroid tables found in the available offline data."
+  "county_centroids": [
+    {
+      "file": "census_31_counties.html",
+      "source": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ne.html",
+      "vintage": "2026-01-01",
+      "county_count": 93,
+      "sha256": "a2dcd83ba390d1c3558a27e33558e14f420c5852cc121ce13902db96b02c7322",
+      "fields": "GEOID, BASENAME, CENTLAT, CENTLON"
+    },
+    {
+      "file": "census_40_counties.html",
+      "source": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_county_ok.html",
+      "vintage": "2026-01-01",
+      "county_count": 77,
+      "sha256": "f737f3615cc4a7bc8e28d679f0fa6a85f17a0bff56f51a91976142f262ec8071",
+      "fields": "GEOID, BASENAME, CENTLAT, CENTLON"
+    }
+  ]
 }
