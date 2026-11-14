@@ -44,7 +44,10 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
         assert list(yield_tables[0]["Paired n"]) == (
             [20, 20, 17, 17, 27, 27, 25, 25] if site == "us_high_plains_b" else [27, 27])
     assert any(len(table.value) == 24 and "Passes QA" in table.value.columns for table in app.dataframe)
-    assert any("Robustness check" in row.value for row in app.subheader)
+    assert any("Robustness check under weather shifts (P16)" in row.value for row in app.subheader)
+    assert any("P22 sweeps broader assumptions jointly" in row.value for row in app.caption)
+    assert any("P10 resamples weather and varies modeled parameters within ±18%" in row.value for row in app.caption)
+    assert any("GPM IMERG via POWER is used only for the rainfall agreement check" in row.value for row in app.caption)
     assert any(row.value == "What to check first" for row in app.subheader)
     assert any("sensitivity inside the model" in row.value for row in app.caption)
     assert sum("Input evidence" in row.value for row in app.caption) == 3
@@ -57,8 +60,12 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert any("What we cannot know" in row.value for row in app.subheader)
     if site == "kenya_makueni_north":
         assert any("cropland unverified" in row.value for row in app.warning)
+        assert any("No reliable recurring low-greenness window" in row.value for row in app.info)
     if site == "telangana_a":
         assert any("Identical consecutive crop" in row.value for row in app.warning)
+        assert any("No reliable recurring low-greenness window" in row.value for row in app.info)
+        fit = next(table.value for table in app.dataframe if "Overall fit" in table.value.columns)
+        assert "Cereal rye cover" not in set(fit["Crop"])
 
 
 def test_sensitivity_panel_uses_the_selected_named_preset():
@@ -79,6 +86,11 @@ def test_opportunity_alternate_threshold_reports_modeled_changes_without_hiding_
     assert any("fits the screen in 1 of 15 years" in row.value for row in app.markdown)
     assert any("cost to the following crop" in row.value for row in app.caption)
     benefit = next(table.value for table in app.dataframe if "Median change" in table.value.columns)
-    assert len(benefit) == 8 and set(benefit["Evidence"]) == {"LOW"}
+    assert len(benefit) == 4 and set(benefit["Evidence"]) == {"LOW"}
+    assert set(benefit["Crop"]) == {"Cereal rye cover"}
+    fit = next(table.value for table in app.dataframe if "Overall fit" in table.value.columns)
+    assert "Green gram (mung bean)" not in set(fit["Crop"])
+    assert any("may be winter-wheat dormancy, not bare soil" in row.value for row in app.warning)
+    assert any("No reliable planting window" in row.value for row in app.info)
     app.selectbox(key="opportunity_year_us_high_plains_b").set_value(2012).run()
     assert not app.exception

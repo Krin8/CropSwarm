@@ -12,7 +12,7 @@ This offline screen looks for periods of recurring low greenness and asks whethe
 
 ## Crops and fit criteria
 
-Cereal rye is the cover entry in the current catalog. Test it alongside catalog legumes with a duration at or below 105 days, a short-season screening choice. This admits green gram (75 days), cowpea (85), field pea (95), common bean (100) and chickpea (105). Rye uses its 100-day cover duration. Duration, rainfall bounds, temperature bounds, daily heat thresholds and water demand come from each existing crop row with its original source or assumption label. The dates are sampled from each detected run, so the fit screen stays separate from the baseline optimizer's season list. The app shows each candidate's local catalog season so a climate-screen pass without a matching season stays visible. [Crop catalog](../data/crops.csv) · [Catalog methods and source limits](crops.md)
+Cereal rye is the cover entry in the current catalog. Test it alongside catalog legumes with a duration at or below 105 days, a short-season screening choice. This admits green gram (75 days), cowpea (85), field pea (95), common bean (100) and chickpea (105). Rye uses its 100-day cover duration. Duration, rainfall bounds, temperature bounds, daily heat thresholds and water demand come from each existing crop row with its original source or assumption label. The dates are sampled from each detected run, so the fit screen stays separate from the baseline optimizer's season list. The app shows only candidates with a matching season in the farm's crop catalog. The original climate-only calculations remain in the archive. [Crop catalog](../data/crops.csv) · [Catalog methods and source limits](crops.md)
 
 For each supporting run, test the crop's complete duration starting on the first nominal low-NDVI day. This fixed timing avoids searching for the warmest or wettest placement within the run. Each of the following reports passes over assessable years.
 
@@ -45,17 +45,26 @@ Figure entries give typical start day-of-year, median length, supporting / asses
 | Telangana | 295 | — | Day 129 · 32 days · 2/17 · 4 composites · tentative | Day 129 · 48 days · 11/17 · 33 composites · recurrent |
 | Makueni | 345 | — | — | Day 273 · 32 days · 3/13 · 7 composites · sporadic |
 
-The Kansas P5 reference window centers on winter, with a median-length bootstrap interval of 80–221 days. It does not survive the stricter cutoff. At 0.25, no crop passes all checks at either farm with a recorded window. Kansas green gram passes temperature in one of nine long-enough years, and rye in two of five. Neither passes Kansas's water check at that cutoff. Telangana's two tentative runs are too short for all tested crops. Makueni has no supported reference window.
+The Kansas P5 reference low-greenness window centers on winter, with a median-length bootstrap interval of 80–221 days. It may be winter-wheat dormancy, not bare soil. The cached CDL and MODIS evidence leaves planting availability unknown. [Kansas evidence check](#kansas-dormancy-check) It does not survive the stricter cutoff. At 0.25, no crop passes all checks at either farm with a recorded window. Cereal rye passes temperature in two of five long-enough Kansas years and passes none of their water checks. Telangana's two tentative runs are too short for all tested crops. Makueni has no supported reference window.
 
-Only the looser 0.30 Kansas sensitivity run yields complete passes. Green gram passes in one of 15 anchor years (2017, run started July 2016), with no matching Kansas catalog season. Cereal rye also passes in one of 15 (2012), with a Kansas cool catalog season. These results are low-evidence and cutoff-sensitive.
+Only the looser 0.30 Kansas sensitivity run shows a complete fit for a catalog-matched crop. Cereal rye passes in one of 15 anchor years (2012). Its Kansas cool catalog season and rare modeled fit leave field availability unresolved. The original archive also records a climate-screen pass for green gram. The app excludes it because it has no Kansas catalog season.
 
 | Kansas crop at 0.30 | Length | Temperature | Water | Overall | Modeled net N change | Erosion-proxy change | Water used / unmet |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Green gram | 11/15 | 1/11 | 1/11 | 1/15 | +5 kg N/ha | −44.80 | 129.24 / 245.76 mm |
 | Cereal rye cover | 10/15 | 4/10 | 4/10 | 1/15 | 0 kg N/ha | −132.69 | 75.04 / 144.96 mm |
 
-There is one passing year per benefit estimate, so its saved range collapses to that single value. Remaining records, denominators and source ledgers are in the [Kansas](../data/processed/opportunity_windows_us_high_plains_b.json), [Telangana](../data/processed/opportunity_windows_telangana_a.json), and [Makueni](../data/processed/opportunity_windows_kenya_makueni_north.json) outputs.
+There is one passing year for the displayed rye benefit estimates, so each saved range collapses to that single value. Remaining records, denominators and source ledgers are in the [Kansas](../data/processed/opportunity_windows_us_high_plains_b.json), [Telangana](../data/processed/opportunity_windows_telangana_a.json), and [Makueni](../data/processed/opportunity_windows_kenya_makueni_north.json) outputs.
+
+## Kansas dormancy check
+
+The cached CDL 3×3 neighborhood classified all nine samples as winter wheat in 2020 and 2023, fallow/idle cropland in 2019 and 2022, and sorghum in 2021. The P5 Kansas cool-season calendar spans October–June, and P15 assigns it to the harvest year. This calendar is illustrative and includes winter dormancy.
+
+- **2020, mapped winter wheat.** Five QA-valid composites were below 0.25 in the January 1–March 21 span (end exclusive). NDVI was 0.207 on February 2 and rose to 0.522 on May 8. This rise is compatible with spring green-up after dormancy.
+- **2022, mapped fallow/idle cropland.** A longer below-cutoff run overlapped the same winter period. The April 7 and May 9 composites stayed near 0.20. Low winter NDVI occurs with different mapped classes.
+- **2019 and 2023.** Neither has a low run supporting the reference window, even though CDL mapped fallow in 2019 and wheat in 2023. The unexplained April 2019 greenness over mapped fallow and the mismatch between the CDL neighborhood and MODIS footprint limit field interpretation.
+
+The comparison supports the cautious low-greenness label. CDL provides annual map classes, NDVI covers a mixed pixel, and the crop window is assumed. Field-level management or ground cover remains unverified. [Saved CDL comparison](../data/processed/validity_us_high_plains_b.json) · [QA-screened NDVI and runs](../data/processed/opportunity_windows_us_high_plains_b.json) · [P15 crop calendar](backtest.md#what-was-compared)
 
 ## Rebuild offline
 
-Run `python -m src.opportunity_windows` from the repository. It uses the processed daily POWER weather and long MODIS series, the cached soil, terrain and season inputs, and the committed farm, crop and evidence settings. It writes the three new opportunity files. The app reads the results from those files. Existing rotation, uncertainty, robustness, sensitivity and back-test results retain their published values.
+Run `python -m src.opportunity_windows` from the repository. It uses the processed daily POWER weather and long MODIS series, the cached soil, terrain and season inputs, and the committed farm, crop and evidence settings. It writes the three new opportunity files. The app reads the results from those files. Existing rotation, uncertainty, P16 weather-shift, P22 assumption-sensitivity and back-test results retain their published values.

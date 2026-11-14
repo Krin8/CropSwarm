@@ -41,7 +41,7 @@ python -m streamlit run app/main.py
 python -m pytest -q
 ```
 
-The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Robustness check](docs/stress_test.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
+The app runs offline from checked-in files in `data/processed/`. The pin map uses bundled Natural Earth land outlines. [Runtime data and screenshot instructions](docs/portability.md) · [Historical back-test](docs/backtest.md) · [Weather-shift robustness check (P16)](docs/stress_test.md) · [Submission summary](docs/submission_summary.md) · [What to check first](docs/sensitivity.md) · [Opportunity windows](docs/opportunity_windows.md)
 
 ## Architecture
 
@@ -94,4 +94,4 @@ Live requests belong in precompute commands. Use `python -m src.data_pipeline --
 
 Use the Dockerfile for a Hugging Face Docker Space or select `app/main.py` in Streamlit Community Cloud. [Deployment checks](docs/deployment.md) · [Demo script and slide outline](docs/demo.md)
 
-The next version would validate more sites and explore SMAP soil moisture, ECOSTRESS thermal observations, GRACE regional water storage and finer Landsat field context. These missions are outside the current pipeline.
+The processed NASA inputs are POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. GPM IMERG via POWER is used only for the rainfall agreement diagnostic on matching UTC days. SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused. [Dataset roles](docs/submission_summary.md#data-actually-used) · [Final consistency audit](docs/p26_audit.md)

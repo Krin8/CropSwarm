@@ -67,6 +67,9 @@ def opportunity_panel(farm_id, farm_name):
                  "contain crops, weeds or other cover. Clouds and unknown management limit what low NDVI can tell us.")
         for flag in data["flags"]:
             st.warning(flag)
+        if farm_id == "us_high_plains_b":
+            st.warning("Kansas low-greenness window: may be winter-wheat dormancy, not bare soil. "
+                       "The cached CDL and MODIS records cannot establish planting availability.")
         runs = data["sensitivity"]
         default = next(i for i, row in enumerate(runs) if row["offset"] == 0)
         levels = [row["threshold"] for row in runs]
@@ -114,7 +117,12 @@ def opportunity_panel(farm_id, farm_name):
             "Evidence": window_grade,
         } for row in runs]), hide_index=True)
         if not any(w["status"] == "recurrent" for w in current["windows"]):
-            st.info("No reliable recurring low-NDVI window at this cutoff.")
+            st.info("No reliable recurring low-greenness window was found at this cutoff.")
+        elif farm_id == "us_high_plains_b" or not any(
+            item["local_catalog_seasons"] and item["checks"]["overall"]["passes"]
+            for window in current["windows"] for item in window["fit"]
+        ):
+            st.info("No reliable planting window was established at this cutoff.")
         for window in current["windows"]:
             st.markdown(f"**{window['status'].capitalize()} low-NDVI window · evidence {window_grade}**")
             st.write(f"The low-greenness spans typically start around day {window['start_doy']} and last about "
@@ -128,22 +136,24 @@ def opportunity_panel(farm_id, farm_name):
                 low, high = interval["length_days"]
                 st.caption(f"Median-length bootstrap interval {low:.0f}–{high:.0f} days · evidence {window_grade}.")
             labels = {"length": "Length", "temperature": "Temperature", "water": "Water", "overall": "Overall fit"}
+            candidates = [item for item in window["fit"] if item["local_catalog_seasons"]]
             fit_rows = []
-            for item in window["fit"]:
-                row = {"Crop": item["crop"], "Catalog season": (
-                    ", ".join(label.replace("_", " ") for label in item["local_catalog_seasons"]) or "None at this farm")}
+            for item in candidates:
+                row = {"Crop": item["crop"], "Catalog season":
+                       ", ".join(label.replace("_", " ") for label in item["local_catalog_seasons"])}
                 for check, name in labels.items():
                     counts = item["checks"][check]
                     grade = item["evidence"][check]["label"].upper()
                     ratio = f"{counts['passes']}/{counts['n']}" if counts["n"] else "Unavailable (n=0)"
                     row[name] = f"{ratio} · {grade}"
                 fit_rows.append(row)
-            st.dataframe(pd.DataFrame(fit_rows), hide_index=True)
-            st.caption("Fit cells give years passing / years assessable and the P18 evidence label. "
-                       "NASA POWER temperature and rainfall inform fit. POWER root-zone wetness is a model product. "
-                       "Temperature and water are only tested in windows long enough for the crop. "
-                       "Catalog seasons provide context. This screen uses the actual dates of the low-NDVI run.")
-            passing = [item for item in window["fit"] if item["checks"]["overall"]["passes"]]
+            if fit_rows:
+                st.dataframe(pd.DataFrame(fit_rows), hide_index=True)
+                st.caption("Fit cells show years passing / years assessable and the P18 evidence label. "
+                           "NASA POWER temperature and rainfall inform fit. POWER root-zone wetness is modeled. "
+                           "Temperature and water are tested in long-enough windows. Crops are shown only "
+                           "when their catalog includes a season at this farm. Fit uses the run's actual dates.")
+            passing = [item for item in candidates if item["checks"]["overall"]["passes"]]
             if passing:
                 if current["offset"] != 0:
                     st.info("These passes are from an alternative cutoff. Use the P5 cutoff as the reference.")
@@ -152,8 +162,6 @@ def opportunity_panel(farm_id, farm_name):
                     grade = item["evidence"]["overall"]["label"].upper()
                     st.write(f"{item['crop']} fits the screen in {overall['passes']} of {overall['n']} years "
                              f"with this low-NDVI window · evidence {grade}.")
-                    if not item["local_catalog_seasons"]:
-                        st.caption(f"{item['crop']} has no matching catalog season at this farm.")
                 names = {"nitrogen": "Net nitrogen carryover", "erosion_proxy": "Erosion proxy",
                          "water_used": "Crop water use", "unmet_water": "Unmet crop water"}
                 st.markdown("**Modeled change from adding the crop to a gap in the baseline**")
@@ -167,8 +175,10 @@ def opportunity_panel(farm_id, farm_name):
                 } for item in passing for key, metric in item["modeled_addition"].items()]), hide_index=True)
                 st.caption("Cover-crop water use is a cost to the following crop. The estimates give crop demand "
                            "met and unmet during the added gap crop. They do not quantify the next crop's water loss.")
+            elif candidates:
+                st.write("No crop with a matching catalog season passed all checks for this window.")
             else:
-                st.write("No tested crop passed all checks for this window.")
+                st.write("No screened crop has a matching catalog season at this farm.")
         st.caption("Illustrative window screening · validate locally. Check soil moisture, seed availability "
                    "and costs locally. Farm calendars and yield effects require other evidence.")
 
@@ -294,7 +304,7 @@ def edited_results(farm, settings, edits, result, assessment, difference_thresho
 def app():
     st.set_page_config(page_title="CropSwarm", page_icon="🌱", layout="wide")
     st.title("CropSwarm")
-    st.write("Compare crop rotations using NASA observations, soil maps and your priorities.")
+    st.write("Compare crop rotations using NASA Earth data, soil maps and your priorities.")
     settings = cached("app_settings.json")
     farms = settings["farms"]
     by_id = {farm["farm_id"]: farm for farm in farms}
@@ -332,7 +342,9 @@ def app():
             with tab:
                 chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
                 st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
-        st.caption("NASA POWER rainfall and temperature · GPM IMERG for the rainfall agreement check · NASA Terra MODIS vegetation")
+        st.caption("Processed NASA inputs include POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. "
+                   "GPM IMERG via POWER is used only for the rainfall agreement check on matching UTC days. "
+                   "SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused.")
     opportunity_panel(farm_id, farm["name"])
     with st.container(key="historical_validation"):
         st.subheader("Validation · historical back-test")
@@ -460,7 +472,7 @@ def app():
     st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
 
     with st.container(key="climate_stress_test"):
-        st.subheader("Robustness check")
+        st.subheader("Robustness check under weather shifts (P16)")
         stress = load(farm_id, "stress_test")
         diagnosis = load(farm_id, "tie_diagnosis")
         figure, legend = stress_map(stress, preset)
@@ -470,7 +482,7 @@ def app():
         st.dataframe(pd.DataFrame(legend), hide_index=True)
         finding = diagnosis["presets"][preset]
         margin = load(farm_id, "stress_margins")["presets"][preset]
-        st.write(f"The robustness map labels a different top rotation in {finding['changed_cells']} of "
+        st.write(f"The weather-shift map labels a different top rotation in {finding['changed_cells']} of "
                  f"{finding['grid_cells']} tested climate cells compared with unchanged weather.")
         if margin["near_tie"]:
             st.info("top choices are close here · the nearest reported change is between options "
@@ -491,6 +503,8 @@ def app():
         joint = priorities_to_check["joint"]
         low, high = joint["top_score_range"]
         st.caption(f"{farm['name']} · {title(preset)} · {sensitivity['input_count']} inputs varied")
+        st.caption("P22 sweeps broader assumptions jointly and reruns the exact search. "
+                   "P10 resamples weather and varies parameters for the displayed rotations.")
         st.write(f"The top rotation changed in {joint['winner_change_fraction']:.0%} of {joint['evaluations']} "
                  f"joint draws. In {joint['material_change_fraction']:.0%}, the earlier leader became "
                  f"ineligible or the winner led by more than {sensitivity['design']['near_tie_gap']:g} points. "
@@ -590,7 +604,10 @@ def app():
             st.write(f"Water risk · Median unmet demand is {stats['metrics']['water']['p50']:.0f} mm per slot "
                      f"in this scenario. NASA POWER rainfall, soil water and crop demand inform this estimate.")
             with st.container(key=f"uncertainty_{key}"):
-                st.markdown("**Scenario uncertainty**")
+                st.markdown("**Scenario uncertainty (P10)**")
+                spread = settings["uncertainty"]["parameter_range_fraction"]
+                st.caption(f"P10 resamples weather and varies modeled parameters within ±{spread:.0%} for the "
+                           "displayed rotations. P22 sweeps broader assumptions jointly and reruns exact search.")
                 st.caption(f"{farm['name']} · {row['Strategy']} · {scenario_names[scenario]}")
                 st.write(f"Wins in {stats['wins_pct'][preset]:.1f}% of draws under the {title(preset).lower()} preset. "
                          f"Mean regret {stats['mean_regret'][preset]:.3f} weighted score units.")

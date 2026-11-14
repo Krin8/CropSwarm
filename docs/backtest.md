@@ -94,7 +94,7 @@ Each cell shows valid NDVI / expected composites, followed by the number passing
 
 - Kansas warm-season heat days and integrated NDVI met the strong-association cutoff (ρ = −0.60, 95% bootstrap interval −0.77 to −0.24, n = 24). They moved in the expected direction in 18 of 24 assessable seasons. The Kansas cool-season relationships were weaker.
 - Makueni short-rains integrated NDVI had a strong association with both rainfall anomaly and deficit (ρ = +0.83 and −0.81, n = 8). Both were directionally consistent in 6 of 8 seasons. They represent the same rainfall signal. The long-rains comparisons were weaker and uncertain.
-- Four Telangana monsoon estimates had the opposite sign, with only three usable seasons. A degenerate bootstrap interval such as [−1, −1] with three ranks offers little information about stability. All tentative post-monsoon intervals included zero (n = 17).
+- Four Telangana monsoon estimates had the opposite sign, with only three usable seasons. A degenerate bootstrap interval such as [−1, −1] with three ranks offers little information about how repeatable the association is across years. All tentative post-monsoon intervals included zero (n = 17).
 
 Each cell shows ρ [95% bootstrap interval], paired n, then the number of directionally consistent years out of assessable years. Bold indicates a strong association in the expected direction. A dagger (†) flags an opposite-sign point estimate. “Unavailable” means there were fewer than three pairs or one series was constant.
 

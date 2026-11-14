@@ -67,7 +67,7 @@ The legacy KALRO manual and ICRISAT Table 10.7 direct links did not re-open thro
 
 ## Rebuild results
 
-Rebuilt the historical scoring inputs, exact search and seeded ACO, Monte Carlo uncertainty, robustness grid and margins, tie diagnostics, vegetation and yield back-tests, app settings and evidence ledgers. All model outputs are illustrative and need local validation. The figures below compare checked-in artifacts with the pre-P23 commit. Wall-clock timings are excluded from numerical comparisons.
+Rebuilt the historical scoring inputs, exact search and seeded ACO, Monte Carlo uncertainty, P16 weather-shift grid and margins, tie diagnostics, vegetation and yield back-tests, app settings and evidence ledgers. All model outputs are illustrative and need local validation. The figures below compare checked-in artifacts with the pre-P23 commit. Wall-clock timings are excluded from numerical comparisons.
 
 ### Displayed strategies, scores and uncertainty
 
@@ -83,7 +83,7 @@ Cowpea’s modeled mean unmet water demand changed in all three farms’ precomp
 | Makueni long rains | 88.70 → 96.03 |
 | Makueni short rains | 88.83 → 96.82 |
 
-### Robustness rankings and near-ties
+### Rankings and near-ties under P16 weather shifts
 
 - At Makueni, water saver, +0 °C / −30% rain, the winning rotation is still fallow then cowpea, repeated across all three years. Its exact weighted score fell from 0.70509145 to 0.70239631.
 - At Makueni, water saver, +0.5 °C / −30% rain, green gram then fallow, repeated across all three years, replaced fallow then cowpea. The exact weighted score at that cell changed from 0.70288557 to 0.70122692. This was the only winner label change among the 420 grid cells across farms and presets. Makueni water saver now changes winner relative to historical weather in 11 of 35 cells, previously 12 of 35.
@@ -128,4 +128,4 @@ The family input in risk changed from assumption to literature for each planted 
 
 - The README and demo talk track now give 30 of 30 exact hits for best of five in every farm and preset. Single-run results still span 21–30 of 30. Update any external optimizer slide that gives the old 29–30 range.
 - The submission summary’s crop catalog row now distinguishes sourced taxonomy and water use from values that need local calibration. Slides that show the Makueni water-saver map or its winner count should use 11 of 35. Slides that show the evidence ledger should use the new risk shares. The report found no slide deck in the repository. The tracked slide outline is in [the demo guide](demo.md).
-- Regenerated all 18 [app screenshots](screenshots/README.md). Nine files differ: comparison, evidence, robustness and validation for Makueni, comparison, evidence and validation for Telangana, and evidence and validation for Kansas. The remaining nine matched the earlier PNGs byte-for-byte.
+- Regenerated all 18 [app screenshots](screenshots/README.md). Nine files differ: comparison, evidence, P16 weather shifts and validation for Makueni, comparison, evidence and validation for Telangana, and evidence and validation for Kansas. The remaining nine matched the earlier PNGs byte-for-byte.

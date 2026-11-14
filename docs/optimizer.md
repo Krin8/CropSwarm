@@ -8,7 +8,7 @@ For each farm and preset, 30 trials paired a first run with the best of five ind
 
 The gap is the exact weighted score minus the ACO score. All trials completed. Best gap was zero to the displayed precision in every row for both modes. Mean and worst gaps are shown below. Raw trial seeds and scores are in the processed strategy files.
 
-The [P16d change log](p16d_changes.md) compares these canonical results with the former raw-rotation results and records the effect on the robustness maps and displayed uncertainty.
+The [P16d change log](p16d_changes.md) compares these canonical results with the former raw-rotation results and records the effect on the P16 maps under weather shifts and displayed uncertainty.
 
 | Farm | Feasible rotations | Preset | Single exact hits | Single mean / worst gap | Best of 5 exact hits | Best of 5 mean / worst gap |
 |---|---:|---|---:|---:|---:|---:|

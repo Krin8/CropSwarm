@@ -22,4 +22,4 @@ python -m pip install -r requirements-screenshots.txt
 python scripts/capture_screenshots.py --channel chrome
 ```
 
-Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 24 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views.
+Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 24 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views. Pass `--panels` followed by panel names to refresh a custom subset.

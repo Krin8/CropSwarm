@@ -1,4 +1,4 @@
-# Robustness check under climate stress
+# Robustness check under weather shifts (P16)
 
 This is a **sensitivity exercise, not a climate projection**. It uniformly adds `0–3 °C` to cached historical NASA POWER daily temperature in `0.5 °C` steps and scales daily precipitation by `−30% to +10%` in `10%` steps. These grid ranges, the lexicographic tie rule, and the normalized-distance definition of “smallest” are **design choices, not empirical estimates**. All results are illustrative and need local validation. No model parameters or crop values were tuned to produce the maps.
 
@@ -46,7 +46,7 @@ The **near-tie tolerance is 0.01 normalized weighted-score points**, a **design 
 
 ## What the ties mean (P16c)
 
-The app's **Robustness check** reports the changed-label counts above. These are label counts, not probabilities of a crop outcome. The nearest reported changes are all between near-equal options. In the previous grid, Kansas soil-builder and income could switch labels within unchanged exact-tied pairs. Canonical year shifts and lexicographic tie-breaking remove those two earlier label artifacts; their new nearest changed cells involve different crop sets, though crop order is still tied within each cell.
+The app's **Robustness check under weather shifts (P16)** reports the changed-label counts above. These are label counts, not probabilities of a crop outcome. The nearest reported changes are all between near-equal options. In the previous grid, Kansas soil-builder and income could switch labels within unchanged exact-tied pairs. Canonical year shifts and lexicographic tie-breaking remove those two earlier label artifacts; their new nearest changed cells involve different crop sets, though crop order is still tied within each cell.
 
 The [metric-by-metric tie diagnosis](tie_diagnosis.md) lists both strategies at the adjacent cells for every near-tie. Kansas's zero gaps arise from crop order having no effect on any of the six modeled metric scores for those compared rotations, even after whole-year shifts are collapsed. In Telangana and Makueni, distinct crop mixes have small weighted trade-offs: some metric scores improve while others decline. Nitrogen, relative income and family/cover risk are **climate-insensitive for a fixed rotation** in this sweep; they can still differ between rotations and are not by themselves the cause of the nonzero ties. Recomputed full-precision gaps agree with the refreshed P16b calculation. P23 refreshed the grid with the sourced cowpea water-use input. The climate grid, scoring definitions and near-tie tolerance were preserved. See the [P23 comparison](p23_changes.md).
 

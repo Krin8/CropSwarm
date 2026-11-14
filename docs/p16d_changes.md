@@ -1,6 +1,6 @@
 # P16d results compared with P16c
 
-All numbers here are **illustrative and need local validation**. The comparison uses only committed cached climate and model inputs. No scoring parameter, crop parameter, or metric definition changed. [Exact verification](optimizer.md), [robustness maps](stress_test.md), and [metric-level diagnosis](tie_diagnosis.md) contain the current results.
+All numbers here are **illustrative and need local validation**. The comparison uses only committed cached climate and model inputs. No scoring parameter, crop parameter, or metric definition changed. [Exact verification](optimizer.md), [P16 weather-shift maps](stress_test.md), and [metric-level diagnosis](tie_diagnosis.md) contain the current results.
 
 ## Equivalence decision
 
@@ -14,7 +14,7 @@ For **every previously enumerated feasible rotation** at all three farms, shifti
 
 The threshold is a **design choice, not empirical**. Every displayed alternative also differs from the baseline by more than 0.05 on at least one of the six normalized metric scores. Previously each farm displayed four named alternatives but only three distinct metric profiles. New candidates were chosen by the existing seeded ACO runs when they cleared the threshold, with exact canonical fallback otherwise. ACO settings were not tuned.
 
-## Robustness map changes
+## Map changes under P16 weather shifts
 
 These counts are grid cells whose top *label* differs from the unchanged-weather label, out of 35; they are not climate probabilities or field outcomes. The grid ranges are design choices. The new exact tie rule is lexicographically first canonical rotation, with baseline precedence on an exact tie.
 

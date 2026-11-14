@@ -12,7 +12,7 @@
 | 1:55–2:15 | Telangana, then Makueni | “Telangana's second season is tentative, and repeated paddy keeps its rotation warning. Makueni's cropland status is unverified.” |
 | 2:15–2:30 | Optimizer check | “We checked ant colony search against exact enumeration. The best of five searches reached the optimum in all 30 trials for each farm and preset. Validate the results locally. The farmer decides.” |
 
-For a longer demo, open [What to check first](sensitivity.md) after choosing a priority preset. Show one of its ranked local checks and its evidence grade. The priority reflects sensitivity under the tested model ranges. Open [Opportunity windows](opportunity_windows.md) to show that Kansas has recurring low greenness at the reference cutoff, with no complete crop fit.
+For a longer demo, open [What to check first](sensitivity.md) after choosing a priority preset. Show one of its ranked local checks and its evidence grade. The priority reflects sensitivity under the tested model ranges. Open [Opportunity windows](opportunity_windows.md) to show that Kansas has recurring low greenness at the reference cutoff. Winter-wheat dormancy is plausible, the field's availability is unknown, and no crop passes the fit screen at that cutoff.
 
 ## Slide outline
 
