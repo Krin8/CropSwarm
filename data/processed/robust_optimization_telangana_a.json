@@ -1,0 +1,2308 @@
+{
+  "farm_id": "telangana_a",
+  "label": "illustrative, validate locally",
+  "draws": 128,
+  "draw_seed": 42,
+  "sample_prefix_sha256": {
+    "128": "bbf704ee64a292c3419238e143c7c28f3459257b105f9f0b4c7f17fdb4577c56"
+  },
+  "config": {
+    "source": "P28 analysis and computing design choices; assumption, validate locally",
+    "draws": 128,
+    "check_draws": 256,
+    "tail_fraction": 0.1,
+    "rotation_chunk": 1024,
+    "aco_trials": 10,
+    "aco_restarts": 5,
+    "tie_tolerance": 1e-06,
+    "practical_difference": 0.01,
+    "exact_seconds_per_preset": 1800
+  },
+  "horizon_years": 3,
+  "reference_space": "full nominal-feasible canonical rotation space",
+  "candidate_count": 211394,
+  "presets": {
+    "water_saver": {
+      "nominal": {
+        "crop_ids": [
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ]
+        ],
+        "crop_names": [
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow"
+        ],
+        "index": 190512,
+        "nominal_score": 0.8015436421206531,
+        "expected": 0.4254969910252839,
+        "cvar": 0.0,
+        "worst_score": 0.0,
+        "minimax_regret": 0.8502280324697493,
+        "feasible_draws": 70,
+        "evidence_label": "low",
+        "metric_evidence": {
+          "water": "low",
+          "nitrogen": "low",
+          "erosion": "low",
+          "climate_fit": "low",
+          "income": "low",
+          "risk": "low"
+        }
+      },
+      "nominal_ties": 1,
+      "picks": {
+        "expected": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7668197726215301,
+            "expected": 0.7012010919163003,
+            "cvar": 0.10065227397717538,
+            "worst_score": 0.0,
+            "minimax_regret": 0.8095910817384719,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.034723869499122983,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.04063695073127738,
+            "expected_score_gain": 0.27570410089101643,
+            "cvar_gain": 0.10065227397717538,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.7012010919163003,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 7,
+            "best_of_five_hits": 9,
+            "single_mean_gap": 0.013243829102721072,
+            "single_worst_gap": 0.0838142682099714,
+            "best_of_five_mean_gap": 0.0018314045597799256,
+            "best_of_five_worst_gap": 0.018314045597799256,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.018314045597799256,
+                "best_gap": 0.018314045597799256
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.030309977219440065,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.0838142682099714,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        },
+        "cvar": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice"
+            ],
+            "index": 0,
+            "nominal_score": 0.6466571015307299,
+            "expected": 0.5992866639397108,
+            "cvar": 0.13603789464104923,
+            "worst_score": 0.0,
+            "minimax_regret": 0.8372392296791076,
+            "feasible_draws": 118,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.15488654058992324,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.01298880279064174,
+            "expected_score_gain": 0.17378967291442687,
+            "cvar_gain": 0.13603789464104923,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.13603789464104923,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 0,
+            "best_of_five_hits": 0,
+            "single_mean_gap": 0.13603789464104923,
+            "single_worst_gap": 0.13603789464104923,
+            "best_of_five_mean_gap": 0.11718995596282186,
+            "best_of_five_worst_gap": 0.13603789464104923,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.048210781835950914
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.03538562066387385
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.13603789464104923,
+                "best_gap": 0.13603789464104923
+              }
+            ]
+          }
+        },
+        "minimax_regret": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7668197726215301,
+            "expected": 0.7012010919163003,
+            "cvar": 0.10065227397717538,
+            "worst_score": 0.0,
+            "minimax_regret": 0.8095910817384719,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.034723869499122983,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.04063695073127738,
+            "expected_score_gain": 0.27570410089101643,
+            "cvar_gain": 0.10065227397717538,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.19040891826152806,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 4,
+            "best_of_five_hits": 10,
+            "single_mean_gap": 0.0073428618907928735,
+            "single_worst_gap": 0.015329933166503995,
+            "best_of_five_mean_gap": 0.0,
+            "best_of_five_worst_gap": 0.0,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.015329933166503995,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.009146273136138916,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.015329933166503995,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.015329933166503995,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.009146273136138916,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.009146273136138916,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        }
+      },
+      "exact_seconds": 0.12546720801037736
+    },
+    "soil_builder": {
+      "nominal": {
+        "crop_ids": [
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ]
+        ],
+        "crop_names": [
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow"
+        ],
+        "index": 190512,
+        "nominal_score": 0.770346322462403,
+        "expected": 0.41249199181329455,
+        "cvar": 0.0,
+        "worst_score": 0.0,
+        "minimax_regret": 0.8136614352464675,
+        "feasible_draws": 70,
+        "evidence_label": "low",
+        "metric_evidence": {
+          "water": "low",
+          "nitrogen": "low",
+          "erosion": "low",
+          "climate_fit": "low",
+          "income": "low",
+          "risk": "low"
+        }
+      },
+      "nominal_ties": 1,
+      "picks": {
+        "expected": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7394420815971153,
+            "expected": 0.6746332968119532,
+            "cvar": 0.09853796265088026,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7726595938205719,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.030904240865287647,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.04100184142589558,
+            "expected_score_gain": 0.2621413049986586,
+            "cvar_gain": 0.09853796265088026,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.6746332968119532,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 9,
+            "best_of_five_hits": 10,
+            "single_mean_gap": 0.003056495292112238,
+            "single_worst_gap": 0.03056495292112238,
+            "best_of_five_mean_gap": 0.0,
+            "best_of_five_worst_gap": 0.0,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.03056495292112238,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        },
+        "cvar": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice"
+            ],
+            "index": 0,
+            "nominal_score": 0.5900657779574259,
+            "expected": 0.544487859774381,
+            "cvar": 0.12392162964679303,
+            "worst_score": 0.0,
+            "minimax_regret": 0.8003715008497239,
+            "feasible_draws": 118,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.1802805445049771,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.013289934396743641,
+            "expected_score_gain": 0.13199586796108642,
+            "cvar_gain": 0.12392162964679303,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.12392162964679303,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 0,
+            "best_of_five_hits": 0,
+            "single_mean_gap": 0.12392162964679303,
+            "single_worst_gap": 0.12392162964679303,
+            "best_of_five_mean_gap": 0.12392162964679303,
+            "best_of_five_worst_gap": 0.12392162964679303,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.12392162964679303,
+                "best_gap": 0.12392162964679303
+              }
+            ]
+          }
+        },
+        "minimax_regret": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7394420815971153,
+            "expected": 0.6746332968119532,
+            "cvar": 0.09853796265088026,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7726595938205719,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.030904240865287647,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.04100184142589558,
+            "expected_score_gain": 0.2621413049986586,
+            "cvar_gain": 0.09853796265088026,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.22734040617942808,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 3,
+            "best_of_five_hits": 9,
+            "single_mean_gap": 0.0026962742209433953,
+            "single_worst_gap": 0.010333853960037165,
+            "best_of_five_mean_gap": 0.00010992318391799261,
+            "best_of_five_worst_gap": 0.001099231839179926,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.001099231839179926,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.010333853960037165,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.0014986693859099232,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.001099231839179926,
+                "best_gap": 0.001099231839179926
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.010333853960037165,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.001099231839179926,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.0014986693859099232,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        }
+      },
+      "exact_seconds": 0.12842962497961707
+    },
+    "income": {
+      "nominal": {
+        "crop_ids": [
+          [
+            "pigeonpea",
+            "maize"
+          ],
+          [
+            "pigeonpea",
+            "maize"
+          ],
+          [
+            "pigeonpea",
+            "maize"
+          ]
+        ],
+        "crop_names": [
+          "Pigeonpea",
+          "Grain maize",
+          "Pigeonpea",
+          "Grain maize",
+          "Pigeonpea",
+          "Grain maize"
+        ],
+        "index": 193684,
+        "nominal_score": 0.67297875858833,
+        "expected": 0.3360698393200437,
+        "cvar": 0.0,
+        "worst_score": 0.0,
+        "minimax_regret": 0.7715114742517472,
+        "feasible_draws": 65,
+        "evidence_label": "low",
+        "metric_evidence": {
+          "water": "low",
+          "nitrogen": "low",
+          "erosion": "low",
+          "climate_fit": "low",
+          "income": "low",
+          "risk": "low"
+        }
+      },
+      "nominal_ties": 1,
+      "picks": {
+        "expected": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "paddy"
+              ],
+              [
+                "green_gram",
+                "paddy"
+              ],
+              [
+                "green_gram",
+                "paddy"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Paddy rice",
+              "Green gram (mung bean)",
+              "Paddy rice",
+              "Green gram (mung bean)",
+              "Paddy rice"
+            ],
+            "index": 202522,
+            "nominal_score": 0.6458177640298056,
+            "expected": 0.5470871699035342,
+            "cvar": 0.0,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7570222765207291,
+            "feasible_draws": 108,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.027160994558524387,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.014489197731018089,
+            "expected_score_gain": 0.21101733058349054,
+            "cvar_gain": 0.0,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.5470871699035342,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 2,
+            "best_of_five_hits": 9,
+            "single_mean_gap": 0.04093027749619068,
+            "single_worst_gap": 0.09716876991951717,
+            "best_of_five_mean_gap": 0.0019083811103700944,
+            "best_of_five_worst_gap": 0.019083811103700943,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.050145929344216744,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.06793234182659935,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.050145929344216744,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.024534134735222368,
+                "best_gap": 0.019083811103700943
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.019083811103700943,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.09716876991951717,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.050145929344216744,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.050145929344216744,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        },
+        "cvar": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice"
+            ],
+            "index": 0,
+            "nominal_score": 0.5226461957482593,
+            "expected": 0.4813765540253371,
+            "cvar": 0.10576868280768398,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7570222765207291,
+            "feasible_draws": 118,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.15033256284007068,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.014489197731018089,
+            "expected_score_gain": 0.14530671470529338,
+            "cvar_gain": 0.10576868280768398,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.10576868280768398,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 0,
+            "best_of_five_hits": 0,
+            "single_mean_gap": 0.10576868280768399,
+            "single_worst_gap": 0.10576868280768398,
+            "best_of_five_mean_gap": 0.10576868280768399,
+            "best_of_five_worst_gap": 0.10576868280768398,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.10576868280768398,
+                "best_gap": 0.10576868280768398
+              }
+            ]
+          }
+        },
+        "minimax_regret": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow",
+                "sunflower"
+              ],
+              [
+                "fallow",
+                "sunflower"
+              ],
+              [
+                "fallow",
+                "sunflower"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Sunflower",
+              "Bare fallow",
+              "Sunflower",
+              "Bare fallow",
+              "Sunflower"
+            ],
+            "index": 30903,
+            "nominal_score": 0.507754478663504,
+            "expected": 0.4685000667930581,
+            "cvar": 0.06538289810996505,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7316084265708924,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.16522427992482602,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.03990304768085473,
+            "expected_score_gain": 0.13243022747301442,
+            "cvar_gain": 0.06538289810996505,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.2683915734291076,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 0,
+            "best_of_five_hits": 0,
+            "single_mean_gap": 0.021868628561496673,
+            "single_worst_gap": 0.02460939288139341,
+            "best_of_five_mean_gap": 0.021491860747337277,
+            "best_of_five_worst_gap": 0.021564099192619257,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.02460939288139341,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.020841714739799455
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.021564099192619257,
+                "best_gap": 0.021564099192619257
+              }
+            ]
+          }
+        }
+      },
+      "exact_seconds": 0.12933345802593976
+    },
+    "balanced": {
+      "nominal": {
+        "crop_ids": [
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ],
+          [
+            "pigeonpea",
+            "fallow"
+          ]
+        ],
+        "crop_names": [
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow",
+          "Pigeonpea",
+          "Bare fallow"
+        ],
+        "index": 190512,
+        "nominal_score": 0.7418562683807485,
+        "expected": 0.3938164139492437,
+        "cvar": 0.0,
+        "worst_score": 0.0,
+        "minimax_regret": 0.8016983163356781,
+        "feasible_draws": 70,
+        "evidence_label": "low",
+        "metric_evidence": {
+          "water": "low",
+          "nitrogen": "low",
+          "erosion": "low",
+          "climate_fit": "low",
+          "income": "low",
+          "risk": "low"
+        }
+      },
+      "nominal_ties": 1,
+      "picks": {
+        "expected": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7058682589977268,
+            "expected": 0.6460033432161436,
+            "cvar": 0.0934677121881396,
+            "worst_score": 0.0,
+            "minimax_regret": 0.750253991484642,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.03598800938302171,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.051444324851036116,
+            "expected_score_gain": 0.2521869292668999,
+            "cvar_gain": 0.0934677121881396,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.6460033432161436,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 7,
+            "best_of_five_hits": 10,
+            "single_mean_gap": 0.023522775305435072,
+            "single_worst_gap": 0.08677990677068015,
+            "best_of_five_mean_gap": 0.0,
+            "best_of_five_worst_gap": 0.0,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.08677990677068015,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.08677990677068015,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.06166793951299043,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        },
+        "cvar": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ],
+              [
+                "fallow",
+                "paddy"
+              ]
+            ],
+            "crop_names": [
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice",
+              "Bare fallow",
+              "Paddy rice"
+            ],
+            "index": 0,
+            "nominal_score": 0.6002127318343132,
+            "expected": 0.5545677738054655,
+            "cvar": 0.12643445328343664,
+            "worst_score": 0.0,
+            "minimax_regret": 0.7863842564821243,
+            "feasible_draws": 118,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.14164353654643524,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.01531405985355383,
+            "expected_score_gain": 0.1607513598562218,
+            "cvar_gain": 0.12643445328343664,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.12643445328343664,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 0,
+            "best_of_five_hits": 0,
+            "single_mean_gap": 0.12643445328343667,
+            "single_worst_gap": 0.12643445328343664,
+            "best_of_five_mean_gap": 0.11832463212311273,
+            "best_of_five_worst_gap": 0.12643445328343664,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.045336241680197426
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.12643445328343664,
+                "best_gap": 0.12643445328343664
+              }
+            ]
+          }
+        },
+        "minimax_regret": {
+          "rotation": {
+            "crop_ids": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "crop_names": [
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow",
+              "Green gram (mung bean)",
+              "Bare fallow"
+            ],
+            "index": 201627,
+            "nominal_score": 0.7058682589977268,
+            "expected": 0.6460033432161436,
+            "cvar": 0.0934677121881396,
+            "worst_score": 0.0,
+            "minimax_regret": 0.750253991484642,
+            "feasible_draws": 117,
+            "evidence_label": "low",
+            "metric_evidence": {
+              "water": "low",
+              "nitrogen": "low",
+              "erosion": "low",
+              "climate_fit": "low",
+              "income": "low",
+              "risk": "low"
+            }
+          },
+          "comparison": {
+            "rotation_changed": true,
+            "nominal_score_cost": 0.03598800938302171,
+            "worst_score_gain": 0.0,
+            "max_regret_reduction": 0.051444324851036116,
+            "expected_score_gain": 0.2521869292668999,
+            "cvar_gain": 0.0934677121881396,
+            "nominal_score_tie": false
+          },
+          "objective_maximum_utility": 0.249746008515358,
+          "ties": 1,
+          "aco": {
+            "trials": 10,
+            "single_hits": 1,
+            "best_of_five_hits": 9,
+            "single_mean_gap": 0.013157763361930974,
+            "single_worst_gap": 0.021813395023346116,
+            "best_of_five_mean_gap": 0.0012336574196815553,
+            "best_of_five_worst_gap": 0.012336574196815553,
+            "runs": [
+              {
+                "seeds": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "single_gap": 0.0,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  1,
+                  11,
+                  21,
+                  31,
+                  41
+                ],
+                "single_gap": 0.010366075038910072,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  2,
+                  12,
+                  22,
+                  32,
+                  42
+                ],
+                "single_gap": 0.012336574196815553,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  3,
+                  13,
+                  23,
+                  33,
+                  43
+                ],
+                "single_gap": 0.012336574196815553,
+                "best_gap": 0.012336574196815553
+              },
+              {
+                "seeds": [
+                  4,
+                  14,
+                  24,
+                  34,
+                  44
+                ],
+                "single_gap": 0.021813395023346116,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "single_gap": 0.021813395023346116,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  6,
+                  16,
+                  26,
+                  36,
+                  46
+                ],
+                "single_gap": 0.021813395023346116,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  7,
+                  17,
+                  27,
+                  37,
+                  47
+                ],
+                "single_gap": 0.010366075038910072,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  8,
+                  18,
+                  28,
+                  38,
+                  48
+                ],
+                "single_gap": 0.010366075038910072,
+                "best_gap": 0.0
+              },
+              {
+                "seeds": [
+                  9,
+                  19,
+                  29,
+                  39,
+                  49
+                ],
+                "single_gap": 0.010366075038910072,
+                "best_gap": 0.0
+              }
+            ]
+          }
+        }
+      },
+      "exact_seconds": 0.1269359170109965
+    }
+  },
+  "check_256": null,
+  "compute": {
+    "cache_bytes": 676460800,
+    "peak_process_rss_bytes": 1332576256,
+    "draw_preparation_seconds": 1.7831779580155853,
+    "oracle_seconds": 5.508838166977512,
+    "metric_cache_seconds": 7.856177374982508,
+    "aco_seconds": 18.199019583000336,
+    "total_seconds": 33.928153667016886
+  }
+}

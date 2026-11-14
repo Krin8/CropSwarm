@@ -327,6 +327,16 @@ def check_first(rows, limit=3):
     return output
 
 
+def joint_samples(inputs, config, count=None):
+    """Generate the P22 sample stream, optionally taking only its first draws."""
+    rng = np.random.default_rng(config["seed"])
+    return [
+        tuple(item.draw(rng, config["categorical_change_probability"]) if item.levels else item.reference
+              for item in inputs)
+        for _ in range(config["joint_draws"] if count is None else count)
+    ]
+
+
 def analyse(model, presets, config, inputs, years, score_model):
     search = ExactSearch(presets, years, len(model.season_labels), config["near_tie_gap"])
     reference = search.evaluate(model)
@@ -340,12 +350,7 @@ def analyse(model, presets, config, inputs, years, score_model):
         return search.evaluate(score_model(inputs, values), reference.winners)
 
     sweeps = [[evaluate([item], [level]) for level in item.levels] for item in inputs]
-    rng = np.random.default_rng(config["seed"])
-    samples = [
-        tuple(item.draw(rng, config["categorical_change_probability"]) if item.levels else item.reference
-              for item in inputs)
-        for _ in range(config["joint_draws"])
-    ]
+    samples = joint_samples(inputs, config)
     active = [i for i, item in enumerate(inputs) if item.levels]
     varying = [inputs[i] for i in active]
     joint = [evaluate(varying, [draw[i] for i in active]) for draw in samples]

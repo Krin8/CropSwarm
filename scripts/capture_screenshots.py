@@ -17,7 +17,7 @@ from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 HOST = "127.0.0.1"
-PANELS = ("climate", "comparison", "opportunity", "validation", "robustness", "sensitivity", "uncertainty", "evidence")
+PANELS = ("climate", "comparison", "opportunity", "validation", "robustness", "robust_pick", "sensitivity", "uncertainty", "evidence")
 
 
 def local_port():
@@ -91,6 +91,12 @@ def capture(url, destination, channel=None, *, panels=PANELS):
                 expect(robustness.get_by_text("Robustness check under weather shifts (P16)", exact=True)).to_be_visible()
                 expect(robustness.locator(".js-plotly-plot:visible").first).to_be_visible()
                 robustness.screenshot(path=destination / f"{farm_id}_robustness.png", animations="disabled")
+            if "robust_pick" in panels:
+                robust = page.locator(".st-key-robust_pick:visible").filter(has=page.get_by_text(name, exact=False))
+                expect(robust).to_have_count(1)
+                expect(robust.get_by_text("Robust pick under assumption changes (P28)", exact=True)).to_be_visible()
+                expect(robust.get_by_text("The minimax pick", exact=False)).to_be_visible()
+                robust.screenshot(path=destination / f"{farm_id}_robust_pick.png", animations="disabled")
             if "uncertainty" in panels or "evidence" in panels:
                 uncertainty = page.locator(".st-key-uncertainty_baseline")
                 expect(uncertainty.get_by_text(f"{name} · Existing rotation · Historical weather", exact=True)).to_be_visible()

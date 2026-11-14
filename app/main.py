@@ -379,6 +379,56 @@ def edited_results(farm, settings, edits, result, assessment, difference_thresho
     return updated, simulate(model, updated, assessment, presets, settings["uncertainty"])
 
 
+def robust_pick_panel(farm, preset):
+    data = load(farm["farm_id"], "robust_optimization")
+    current = data["presets"][preset]
+    labels = {"expected": "Expected score", "cvar": "Worst 10% mean (CVaR)", "minimax_regret": "Minimax regret"}
+    nominal = current["nominal"]
+    with st.container(key="robust_pick"):
+        st.subheader("Robust pick under assumption changes (P28)")
+        st.caption(f"{farm['name']} · {title(preset)} · {data['draws']} P22 assumption draws · "
+                   f"exact search of {data['candidate_count']:,} nominally feasible rotations")
+        st.write("Robustness here refers to the assumption ranges we chose. Field validation is still needed.")
+
+        def table_row(name, pick, ties, price):
+            size = len(pick["crop_ids"][0])
+            crops = pick["crop_names"]
+            years = [" → ".join(crops[i:i+size]) for i in range(0, len(crops), size)]
+            cycle = f"{years[0]} ×{len(years)}" if len(set(years)) == 1 else " / ".join(years)
+            return {"Pick": name, "Rotation by year": cycle, "Evidence": pick["evidence_label"].upper(),
+                    "Nominal score": f"{pick['nominal_score']:.3f}",
+                    "Price of robustness": f"{price:.3f}", "Feasible draws": f"{pick['feasible_draws']}/{data['draws']}",
+                    "Worst score": f"{pick['worst_score']:.3f}", "Expected score": f"{pick['expected']:.3f}",
+                    "Worst 10% mean": f"{pick['cvar']:.3f}", "Maximum regret": f"{pick['minimax_regret']:.3f}",
+                    "Tied choices": ties}
+
+        rows = [table_row("Nominal best", nominal, current["nominal_ties"], 0.)]
+        for key, result in current["picks"].items():
+            rows.append(table_row(labels[key], result["rotation"], result["ties"],
+                                  result["comparison"]["nominal_score_cost"]))
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        with st.expander("Full rotations and metric evidence"):
+            for row, pick in zip(rows, [nominal, *(item["rotation"] for item in current["picks"].values())], strict=True):
+                st.write(f"{row['Pick']} · {row['Rotation by year']}")
+                st.caption(" · ".join(f"{title(metric)} {level.upper()}"
+                                      for metric, level in pick["metric_evidence"].items()))
+        st.caption("Scores use NASA POWER historical climate and the existing source-tagged score metrics. "
+                   "A rotation that fails a hard rule earns zero in that draw. Regret compares with the best "
+                   "rotation available when the draw's assumptions are known.")
+        minimax = current["picks"]["minimax_regret"]["comparison"]
+        if minimax["max_regret_reduction"] > data["config"]["tie_tolerance"]:
+            st.write(f"The minimax pick lowers maximum regret by {minimax['max_regret_reduction']:.3f} points "
+                     f"at a nominal cost of {minimax['nominal_score_cost']:.3f}.")
+        else:
+            st.write("The minimax pick does not lower maximum regret at the reported precision.")
+        if all(abs(result["comparison"]["worst_score_gain"]) <= data["config"]["tie_tolerance"]
+               for result in current["picks"].values()):
+            st.caption("All three picks have the same worst score as the nominal best.")
+        cvar = current["picks"]["cvar"]
+        if cvar["ties"] == data["candidate_count"] and cvar["ties"] > 1:
+            st.info("Every rotation ties on the worst-10% average. The nominal pick is shown for that objective.")
+
+
 def app():
     st.set_page_config(page_title="CropSwarm", page_icon="🌱", layout="wide")
     st.title("CropSwarm")
@@ -607,6 +657,8 @@ def app():
                 "Joint association with top score": row["joint_association"]["top_score"],
                 "Joint association with winner change": row["joint_association"]["winner_changed"],
             } for row in priorities_to_check["ranking"]]), hide_index=True)
+
+    robust_pick_panel(farm, preset)
 
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")

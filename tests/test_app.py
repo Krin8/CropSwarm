@@ -123,3 +123,15 @@ def test_learned_yield_panel_preserves_p25_and_shows_practice_and_spatial_checks
         assert any("holds out one entire USDA reporting district" in row.value for row in app.caption)
         table = next(table.value for table in app.dataframe if "RMSE (bu/acre)" in table.value.columns)
         assert len(table) == 4
+
+
+def test_robust_pick_shows_all_objectives_and_changes_with_preset():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    next(widget for widget in app.selectbox if widget.label == "Start from a priority preset").set_value("income").run()
+    assert not app.exception
+    assert any(row.value == "Robust pick under assumption changes (P28)" for row in app.subheader)
+    rows = next(table.value for table in app.dataframe if "Price of robustness" in table.value.columns)
+    assert list(rows["Pick"]) == ["Nominal best", "Expected score", "Worst 10% mean (CVaR)", "Minimax regret"]
+    assert set(rows["Evidence"]) == {"LOW"}
+    assert any("Income · 128 P22 assumption draws" in row.value for row in app.caption)
+    assert any("Every rotation ties on the worst-10% average" in row.value for row in app.info)

@@ -64,7 +64,7 @@ def enumerate_canonical_rotations(layers, slots_per_year):
     return canonical_rotations(enumerate_rotations(layers), slots_per_year)
 
 
-def ant_colony(model, layers, weights, config, seed):
+def ant_colony(model, layers, weights, config, seed, *, fitness=None):
     rng = np.random.default_rng(seed)
     n = len(model.ids)
     slots = len(layers)
@@ -102,8 +102,11 @@ def ant_colony(model, layers, weights, config, seed):
         batch = batch[live]
         if not len(batch):
             continue
-        _, scores, _ = score_rotations(model, batch)
-        objective = scores @ weights
+        if fitness is None:
+            _, scores, _ = score_rotations(model, batch)
+            objective = scores @ weights
+        else:
+            objective = fitness(batch)
         maximum = objective.max()
         leader_sequence = min(canonical_cycle(batch[index], len(model.season_labels))
                               for index in np.flatnonzero(objective == maximum))

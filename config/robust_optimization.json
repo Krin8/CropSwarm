@@ -1,0 +1,12 @@
+{
+  "source": "P28 analysis and computing design choices; assumption, validate locally",
+  "draws": 128,
+  "check_draws": 256,
+  "tail_fraction": 0.1,
+  "rotation_chunk": 1024,
+  "aco_trials": 10,
+  "aco_restarts": 5,
+  "tie_tolerance": 0.000001,
+  "practical_difference": 0.01,
+  "exact_seconds_per_preset": 1800
+}

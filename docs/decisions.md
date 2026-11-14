@@ -76,3 +76,8 @@ Use strict P19 QA and the existing P5 low-NDVI cutoff of 0.25, with sensitivity 
 ## P25 county climate-yield study
 
 Use the published non-irrigated yield when both practices are available for a county-year and tag every all-practice fallback. Use Census geographic centroids and the existing P20 wheat window with a fixed mapped storage proxy. Fit county trends and select model settings entirely inside training folds. Hold out years and counties separately. [Methods and results](ml_model.md)
+
+
+## P28 risk-aware picks
+
+Use fixed, nominally feasible three-year cycles and the first 128 P22 draws. Assign zero realized score on draw-specific infeasibility and report the count alongside score results. Retain the nominal pick when a risk objective ties. Use exact enumeration for all three reference farms and separately test how often stochastic ACO reaches those objective references. [Methods and results](robust_optimization.md)

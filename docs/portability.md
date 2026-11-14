@@ -8,6 +8,7 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 | Selected farm | `context_<farm_id>.json`, `assessment_<farm_id>.json`, `validity_<farm_id>.json`, `backtest_<farm_id>.json`, `chart_backtest_<farm_id>.json`, `stress_test_<farm_id>.json`, `stress_margins_<farm_id>.json`, `tie_diagnosis_<farm_id>.json` and the four climate `chart_<farm_id>_*.json` files |
 | Long-record NASA validation | `nasa_consistency_<farm_id>.json` |
 | Opportunity windows | `opportunity_windows_<farm_id>.json` |
+| Robust pick under assumption changes | `robust_optimization_<farm_id>.json` |
 | What to check first | `sensitivity_<farm_id>.json` |
 | Learned climate-yield check | `climate_yield_model.json` and `climate_yield_validity_<cohort>.json` |
 | Yield validation | `yield_backtest_<farm_id>.json` |
@@ -23,4 +24,4 @@ python -m pip install -r requirements-screenshots.txt
 python scripts/capture_screenshots.py --channel chrome
 ```
 
-Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 24 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views. Pass `--panels` followed by panel names to refresh a custom subset.
+Alternatively install Playwright Chromium with `python -m playwright install chromium` and omit `--channel`. The [screenshot index](screenshots/README.md) links all 27 outputs. Use `--sensitivity-only` or `--opportunity-only` to refresh just the corresponding three views. Pass `--panels` followed by panel names to refresh a custom subset.
