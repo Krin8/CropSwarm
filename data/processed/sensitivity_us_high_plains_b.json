@@ -2887,7 +2887,7 @@
     {
       "key": "warm.onset_month",
       "question": "Confirm when the warm season starts.",
-      "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
       "grade": "assumption",
       "target": [
         "season",
@@ -2909,7 +2909,7 @@
     {
       "key": "warm.cessation_month",
       "question": "Confirm when the warm season ends.",
-      "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
       "grade": "assumption",
       "target": [
         "season",
@@ -2931,7 +2931,7 @@
     {
       "key": "cool.onset_month",
       "question": "Confirm when the cool season starts.",
-      "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+      "source": "assumption, validate locally | reference calendar: assumption, validate locally",
       "grade": "assumption",
       "target": [
         "season",
@@ -2955,7 +2955,7 @@
     {
       "key": "cool.cessation_month",
       "question": "Confirm when the cool season ends.",
-      "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+      "source": "assumption, validate locally | reference calendar: assumption, validate locally",
       "grade": "assumption",
       "target": [
         "season",
@@ -3546,7 +3546,7 @@
           "key": "warm.onset_month",
           "question": "Confirm when the warm season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -4673,7 +4673,7 @@
           "key": "cool.cessation_month",
           "question": "Confirm when the cool season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -4869,7 +4869,7 @@
           "key": "cool.onset_month",
           "question": "Confirm when the cool season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -8985,7 +8985,7 @@
           "key": "warm.cessation_month",
           "question": "Confirm when the warm season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -10581,7 +10581,7 @@
           "key": "cool.onset_month",
           "question": "Confirm when the cool season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -10791,7 +10791,7 @@
           "key": "warm.onset_month",
           "question": "Confirm when the warm season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -11001,7 +11001,7 @@
           "key": "cool.cessation_month",
           "question": "Confirm when the cool season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -15656,7 +15656,7 @@
           "key": "warm.cessation_month",
           "question": "Confirm when the warm season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -17455,7 +17455,7 @@
           "key": "warm.onset_month",
           "question": "Confirm when the warm season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -20626,7 +20626,7 @@
           "key": "cool.cessation_month",
           "question": "Confirm when the cool season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -20675,7 +20675,7 @@
           "key": "cool.onset_month",
           "question": "Confirm when the cool season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -22880,7 +22880,7 @@
           "key": "warm.cessation_month",
           "question": "Confirm when the warm season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -24119,7 +24119,7 @@
           "key": "warm.onset_month",
           "question": "Confirm when the warm season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [
@@ -25071,7 +25071,7 @@
           "key": "cool.cessation_month",
           "question": "Confirm when the cool season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -25316,7 +25316,7 @@
           "key": "cool.onset_month",
           "question": "Confirm when the cool season starts.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: assumption, validate locally",
+          "source": "assumption, validate locally | reference calendar: assumption, validate locally",
           "one_at_a_time": {
             "evaluations": 4,
             "top_score_range": [
@@ -29530,7 +29530,7 @@
           "key": "warm.cessation_month",
           "question": "Confirm when the warm season ends.",
           "grade": "assumption",
-          "source": "assumption, validate locally; P5 will derive and validate | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+          "source": "assumption, validate locally | reference calendar: NASA POWER | https://power.larc.nasa.gov/docs/services/api/temporal/daily/; NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
           "one_at_a_time": {
             "evaluations": 2,
             "top_score_range": [

@@ -2392,7 +2392,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.14285714285714285
               },
               {
@@ -2704,7 +2704,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.08333333333333333
               },
               {
@@ -2963,7 +2963,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.14285714285714285
               },
               {
@@ -3275,7 +3275,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.08333333333333333
               },
               {
@@ -3535,7 +3535,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.14285714285714285
               },
               {
@@ -3847,7 +3847,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.08333333333333333
               },
               {
@@ -4107,7 +4107,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.14285714285714285
               },
               {
@@ -4419,7 +4419,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.08333333333333333
               },
               {
@@ -4679,7 +4679,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.14285714285714285
               },
               {
@@ -4991,7 +4991,7 @@
               {
                 "input": "season.calendar",
                 "grade": "assumption",
-                "source": "assumption, validate locally; P5 will derive and validate",
+                "source": "assumption, validate locally",
                 "weight": 0.08333333333333333
               },
               {

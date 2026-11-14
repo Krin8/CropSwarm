@@ -1,0 +1,351 @@
+{
+  "label": "draft wording, validate locally",
+  "review_note": "Telugu and Kiswahili wording, local crop names and season names are drafts. Have a local speaker and an extension officer review them before farmers rely on them.",
+  "languages": {"en": "English", "te": "తెలుగు", "sw": "Kiswahili"},
+  "farms": {
+    "us_high_plains_b": {
+      "language": "en",
+      "currency": "US dollars",
+      "units": {"area": "acre", "depth": "in", "nitrogen": "lb/acre"},
+      "season_names": {
+        "cool": {"en": "Fall-planted (winter) season"},
+        "warm": {"en": "Summer season"}
+      },
+      "crop_names": {}
+    },
+    "telangana_a": {
+      "language": "te",
+      "currency": "rupees",
+      "units": {"area": "acre", "depth": "mm", "nitrogen": "kg/acre"},
+      "season_names": {
+        "monsoon": {"en": "Kharif (Vanakalam)", "te": "వానాకాలం (ఖరీఫ్)"},
+        "post_monsoon": {"en": "Rabi (Yasangi)", "te": "యాసంగి (రబీ)"}
+      },
+      "crop_names": {
+        "fallow": "బీడు",
+        "winter_wheat": "గోధుమ",
+        "sorghum": "జొన్న",
+        "paddy": "వరి",
+        "maize": "మొక్కజొన్న",
+        "common_bean": "రాజ్మా",
+        "soybean": "సోయాబీన్",
+        "chickpea": "శనగ",
+        "pigeonpea": "కంది",
+        "green_gram": "పెసర",
+        "pearl_millet": "సజ్జ",
+        "sunflower": "పొద్దుతిరుగుడు",
+        "cowpea": "బొబ్బర్లు",
+        "cereal_rye_cover": "రై (కప్పు పంట)",
+        "field_pea": "బఠానీ"
+      }
+    },
+    "kenya_makueni_north": {
+      "language": "sw",
+      "currency": "Kenyan shillings",
+      "units": {"area": "acre", "depth": "mm", "nitrogen": "kg/acre"},
+      "season_names": {
+        "long_rains": {"en": "Long rains (Masika)", "sw": "Mvua za masika"},
+        "short_rains": {"en": "Short rains (Vuli)", "sw": "Mvua za vuli"}
+      },
+      "crop_names": {
+        "fallow": "shamba la mapumziko",
+        "winter_wheat": "ngano",
+        "sorghum": "mtama",
+        "paddy": "mpunga",
+        "maize": "mahindi",
+        "common_bean": "maharagwe",
+        "soybean": "soya",
+        "chickpea": "dengu",
+        "pigeonpea": "mbaazi",
+        "green_gram": "ndengu (pojo)",
+        "pearl_millet": "uwele",
+        "sunflower": "alizeti",
+        "cowpea": "kunde",
+        "cereal_rye_cover": "rai (zao la kufunika udongo)",
+        "field_pea": "njegere"
+      }
+    }
+  },
+  "text": {
+    "tagline": {
+      "en": "Compare crop rotations using NASA Earth data, soil maps and your priorities.",
+      "te": "NASA భూ పరిశీలన సమాచారం, నేల పటాలు మరియు మీ ప్రాధాన్యతల ఆధారంగా పంట క్రమాలను పోల్చండి.",
+      "sw": "Linganisha mizunguko ya mazao kwa kutumia data za NASA za dunia, ramani za udongo na vipaumbele vyako."
+    },
+    "draft_notice": {
+      "en": "Local crop and season names are drafts. Check them with a local extension officer.",
+      "te": "ప్రధాన శీర్షికలు, వివరణలకు ఇది ముసాయిదా అనువాదం. మిగతా వివరాలు ఇంగ్లీషులోనే ఉంటాయి. పదాలను స్థానిక వ్యవసాయ విస్తరణ అధికారితో సరిచూసుకోండి.",
+      "sw": "Hii ni rasimu ya tafsiri ya vichwa na maelezo makuu. Maelezo mengine yanabaki kwa Kiingereza. Tafadhali hakiki maneno na afisa ugani wa eneo lako."
+    },
+    "language": {"en": "Language", "te": "భాష", "sw": "Lugha"},
+    "units": {"en": "Units", "te": "కొలమానాలు", "sw": "Vipimo"},
+    "glossary_title": {
+      "en": "What do these words mean?",
+      "te": "ఈ పదాల అర్థం ఏమిటి?",
+      "sw": "Maneno haya yana maana gani?"
+    },
+    "climate_heading": {
+      "en": "Farm Climate Assessment",
+      "te": "పొలం వాతావరణ అంచనా",
+      "sw": "Tathmini ya hali ya hewa ya shamba"
+    },
+    "edit_heading": {
+      "en": "Edit farm assumptions",
+      "te": "మీ పొలం వివరాలను మార్చండి",
+      "sw": "Badilisha taarifa za shamba lako"
+    },
+    "priorities_heading": {"en": "Farm priorities", "te": "మీ ప్రాధాన్యతలు", "sw": "Vipaumbele vyako"},
+    "compare_heading": {
+      "en": "Compare rotations",
+      "te": "పంట క్రమాల పోలిక",
+      "sw": "Linganisha mizunguko ya mazao"
+    },
+    "check_first_heading": {
+      "en": "What to check first",
+      "te": "ముందుగా ఏమి సరిచూసుకోవాలి",
+      "sw": "Nini cha kuhakiki kwanza"
+    },
+    "unknown_heading": {
+      "en": "What we cannot know from these data",
+      "te": "ఈ సమాచారంతో మనం తెలుసుకోలేని విషయాలు",
+      "sw": "Mambo ambayo data hizi haziwezi kutuambia"
+    },
+    "farmer_decides": {
+      "en": "The farmer decides. Validate these illustrative comparisons locally before changing a rotation.",
+      "te": "నిర్ణయం రైతుదే. పంట క్రమాన్ని మార్చే ముందు ఈ నమూనా పోలికలను స్థానికంగా నిర్ధారించుకోండి.",
+      "sw": "Mkulima ndiye anayeamua. Hakiki ulinganisho huu wa mfano katika eneo lako kabla ya kubadilisha mzunguko wa mazao."
+    },
+    "existing_rotation": {"en": "Existing rotation", "te": "ప్రస్తుత పంట క్రమం", "sw": "Mzunguko wa sasa"},
+    "every_year": {"en": "Every year", "te": "ప్రతి సంవత్సరం", "sw": "Kila mwaka"},
+    "year": {"en": "Year", "te": "సంవత్సరం", "sw": "Mwaka"},
+    "strategy": {"en": "Strategy", "te": "ఎంపిక", "sw": "Chaguo"},
+    "rotation": {"en": "Rotation", "te": "పంట క్రమం", "sw": "Mzunguko wa mazao"},
+    "score": {
+      "en": "Score for your priorities (0–1)",
+      "te": "మీ ప్రాధాన్యతల ప్రకారం స్కోరు (0–1)",
+      "sw": "Alama kwa vipaumbele vyako (0–1)"
+    },
+    "best_in_runs": {"en": "Best in test runs", "te": "పరీక్షల్లో ముందంజ", "sw": "Bora katika majaribio"},
+    "water_shortage": {
+      "en": "Water shortage · typical ({unit} per season)",
+      "te": "నీటి కొరత · సాధారణ ({unit}, సీజన్‌కు)",
+      "sw": "Upungufu wa maji · kawaida ({unit} kwa msimu)"
+    },
+    "better_on": {
+      "en": "Better than your existing rotation on",
+      "te": "ప్రస్తుత పంట క్రమం కంటే మెరుగ్గా ఉన్నవి",
+      "sw": "Bora kuliko mzunguko wa sasa katika"
+    },
+    "worse_on": {
+      "en": "Worse than your existing rotation on",
+      "te": "ప్రస్తుత పంట క్రమం కంటే తక్కువగా ఉన్నవి",
+      "sw": "Dhaifu kuliko mzunguko wa sasa katika"
+    },
+    "nothing": {"en": "nothing", "te": "ఏవీ లేవు", "sw": "hakuna"},
+    "keep_existing_benefit": {
+      "en": "Keeping the existing rotation avoids a change in planting plans.",
+      "te": "ప్రస్తుత పంట క్రమాన్ని కొనసాగిస్తే సాగు ప్రణాళికలు మార్చాల్సిన అవసరం ఉండదు.",
+      "sw": "Kuendelea na mzunguko wa sasa hakuhitaji kubadilisha mipango ya upanzi."
+    },
+    "how_much_vary": {
+      "en": "How much this could vary",
+      "te": "ఇది ఎంతవరకు మారవచ్చు",
+      "sw": "Matokeo yanaweza kutofautiana kiasi gani"
+    },
+    "what_it_means": {"en": "What it means", "te": "దీని అర్థం", "sw": "Maana yake"},
+    "slots_affected": {
+      "en": "Planting slots affected: {slots}.",
+      "te": "ప్రభావిత సాగు విడతలు: {slots}.",
+      "sw": "Vipindi vya upanzi vinavyohusika: {slots}."
+    }
+  },
+  "metrics": {
+    "water": {
+      "name": {"en": "Water", "te": "నీరు", "sw": "Maji"},
+      "meaning": {
+        "en": "The part of the crop's water need that rain and your irrigation could not meet in past years. A smaller shortage is better.",
+        "te": "పంటకు అవసరమైన నీటిలో, గత సంవత్సరాల్లో వర్షం మరియు మీ సాగునీరు అందించలేకపోయిన భాగం. కొరత తక్కువగా ఉంటే మంచిది.",
+        "sw": "Sehemu ya mahitaji ya maji ya zao ambayo mvua na umwagiliaji wako havikuweza kutosheleza katika miaka iliyopita. Upungufu mdogo ni bora."
+      }
+    },
+    "nitrogen": {
+      "name": {"en": "Nitrogen", "te": "నత్రజని", "sw": "Nitrojeni"},
+      "meaning": {
+        "en": "Pulses and beans leave some nitrogen in the soil for the next crop; cereals use it up. A higher score is better for the soil.",
+        "te": "పప్పుధాన్య పంటలు తరువాతి పంటకు నేలలో కొంత నత్రజనిని మిగులుస్తాయి; ధాన్యపు పంటలు దానిని వాడుకుంటాయి. స్కోరు ఎక్కువగా ఉంటే నేలకు మంచిది.",
+        "sw": "Mazao ya jamii ya kunde huacha nitrojeni kidogo udongoni kwa zao linalofuata; nafaka huitumia. Alama ya juu ni bora kwa udongo."
+      }
+    },
+    "erosion": {
+      "name": {"en": "Erosion", "te": "నేల కోత", "sw": "Mmomonyoko wa udongo"},
+      "meaning": {
+        "en": "Steeper land, heavier rain and bare soil let more soil wash away. A higher score means the soil is better protected.",
+        "te": "వాలు ఎక్కువగా ఉన్నా, భారీ వర్షం పడినా, నేల ఖాళీగా ఉన్నా మట్టి ఎక్కువగా కొట్టుకుపోతుంది. స్కోరు ఎక్కువగా ఉంటే నేలకు రక్షణ ఎక్కువ.",
+        "sw": "Mteremko mkali, mvua kubwa na udongo usiofunikwa husababisha udongo mwingi kusombwa. Alama ya juu inamaanisha udongo umelindwa vizuri zaidi."
+      }
+    },
+    "climate_fit": {
+      "name": {"en": "Climate fit", "te": "వాతావరణ అనుకూలత", "sw": "Ufaafu wa hali ya hewa"},
+      "meaning": {
+        "en": "In how many past years the season's rain and temperature suited this crop.",
+        "te": "గత సంవత్సరాల్లో ఎన్నిసార్లు ఆ సీజన్ వర్షపాతం, ఉష్ణోగ్రత ఈ పంటకు అనుకూలంగా ఉన్నాయో చూపుతుంది.",
+        "sw": "Inaonyesha ni katika miaka mingapi iliyopita mvua na joto la msimu vililifaa zao hili."
+      }
+    },
+    "income": {
+      "name": {"en": "Income", "te": "ఆదాయం", "sw": "Mapato"},
+      "meaning": {
+        "en": "A rough 0-to-1 comparison of earning potential between crops. It is not a price or profit in {currency}; check prices at your local market.",
+        "te": "పంటల మధ్య ఆదాయ అవకాశాన్ని 0 నుండి 1 వరకు సుమారుగా పోల్చే సూచిక. ఇది రూపాయల్లో ధర లేదా లాభం కాదు; మీ స్థానిక మార్కెట్ ధరలను చూసుకోండి.",
+        "sw": "Ulinganisho wa makadirio wa 0 hadi 1 wa uwezo wa mapato kati ya mazao. Si bei wala faida kwa shilingi; angalia bei za soko lako."
+      }
+    },
+    "risk": {
+      "name": {"en": "Risk", "te": "చీడపీడల ముప్పు", "sw": "Hatari ya wadudu na magonjwa"},
+      "meaning": {
+        "en": "Growing related crops back to back, or leaving land bare, raises pest and disease risk. A higher score means lower risk.",
+        "te": "ఒకే కుటుంబానికి చెందిన పంటలను వరుసగా వేయడం లేదా నేలను ఖాళీగా వదిలేయడం వల్ల చీడపీడలు, తెగుళ్ల ముప్పు పెరుగుతుంది. స్కోరు ఎక్కువగా ఉంటే ముప్పు తక్కువ.",
+        "sw": "Kupanda mazao ya jamii moja mfululizo, au kuacha shamba wazi, huongeza hatari ya wadudu na magonjwa. Alama ya juu inamaanisha hatari ndogo."
+      }
+    }
+  },
+  "presets": {
+    "water_saver": {"en": "Water saver", "te": "నీటి పొదుపు", "sw": "Kuokoa maji"},
+    "soil_builder": {"en": "Soil builder", "te": "నేల సారం పెంపు", "sw": "Kujenga udongo"},
+    "income": {"en": "Income", "te": "ఆదాయం", "sw": "Mapato"},
+    "balanced": {"en": "Balanced", "te": "సమతుల్యం", "sw": "Uwiano"}
+  },
+  "flags": {
+    "season_feasibility": {
+      "en": "This crop does not fit the season it is planted in.",
+      "te": "ఈ పంట వేసిన సీజన్‌కు సరిపోదు.",
+      "sw": "Zao hili halifai msimu lililopandwa."
+    },
+    "irrigation_shortfall": {
+      "en": "Rain and irrigation together cover too little of this crop's water need.",
+      "te": "వర్షం, సాగునీరు కలిపినా ఈ పంటకు కావలసిన నీరు చాలా తక్కువగా అందుతుంది.",
+      "sw": "Mvua na umwagiliaji kwa pamoja havitoshelezi mahitaji ya maji ya zao hili."
+    },
+    "identical_consecutive_crop": {
+      "en": "The same crop is grown twice in a row, which raises pest and disease risk.",
+      "te": "ఒకే పంటను వరుసగా రెండుసార్లు వేస్తున్నారు; దీనివల్ల చీడపీడలు, తెగుళ్ల ముప్పు పెరుగుతుంది.",
+      "sw": "Zao lilelile linapandwa mara mbili mfululizo, jambo linaloongeza hatari ya wadudu na magonjwa."
+    }
+  },
+  "glossary": [
+    {
+      "term": {"en": "Rotation", "te": "పంట క్రమం (పంట మార్పిడి)", "sw": "Mzunguko wa mazao"},
+      "meaning": {
+        "en": "The order of crops you grow on the same land, season after season.",
+        "te": "ఒకే పొలంలో సీజన్ తరువాత సీజన్ మీరు వేసే పంటల వరుస.",
+        "sw": "Mpangilio wa mazao unayopanda katika shamba moja, msimu baada ya msimu."
+      }
+    },
+    {
+      "term": {"en": "Fallow", "te": "బీడు", "sw": "Shamba la mapumziko"},
+      "meaning": {
+        "en": "A season when the land is left unplanted.",
+        "te": "పొలంలో ఏ పంటా వేయకుండా ఖాళీగా వదిలేసిన సీజన్.",
+        "sw": "Msimu ambao shamba linaachwa bila kupandwa."
+      }
+    },
+    {
+      "term": {"en": "Score (0–1)", "te": "స్కోరు (0–1)", "sw": "Alama (0–1)"},
+      "meaning": {
+        "en": "A comparison mark from 0 (worst) to 1 (best). It only ranks the options against each other. It is not a yield or a profit.",
+        "te": "0 (అతి తక్కువ) నుండి 1 (అత్యుత్తమం) వరకు పోలిక కోసం ఇచ్చే మార్కు. ఇది ఎంపికలను ఒకదానితో ఒకటి పోల్చడానికి మాత్రమే; ఇది దిగుబడి కాదు, లాభం కాదు.",
+        "sw": "Alama ya ulinganisho kuanzia 0 (duni kabisa) hadi 1 (bora kabisa). Inalinganisha machaguo tu; si mavuno wala faida."
+      }
+    },
+    {
+      "term": {"en": "Best in test runs", "te": "పరీక్షల్లో ముందంజ", "sw": "Bora katika majaribio"},
+      "meaning": {
+        "en": "The comparison was repeated {draws} times with different past weather years and slightly different crop values. This is the share of those runs in which the option scored highest.",
+        "te": "గత వాతావరణ సంవత్సరాలను, పంట విలువలను కొద్దిగా మార్చుతూ ఈ పోలికను {draws} సార్లు మళ్లీ చేశాం. అందులో ఎన్ని సార్లు ఈ ఎంపికకు అత్యధిక స్కోరు వచ్చిందో ఈ శాతం చూపుతుంది.",
+        "sw": "Tulirudia ulinganisho mara {draws} tukitumia miaka tofauti ya hali ya hewa iliyopita na kubadilisha kidogo thamani za mazao. Hii ni asilimia ya majaribio ambayo chaguo hili lilipata alama ya juu zaidi."
+      }
+    },
+    {
+      "term": {"en": "Low / typical / high", "te": "తక్కువ / సాధారణ / ఎక్కువ", "sw": "Chini / kawaida / juu"},
+      "meaning": {
+        "en": "Out of 10 test runs, about 1 falls below 'low' and about 1 above 'high'. 'Typical' is the middle value.",
+        "te": "10 పరీక్షల్లో సుమారు 1 'తక్కువ' కంటే కిందకు, 1 'ఎక్కువ' కంటే పైకి వస్తుంది; 'సాధారణ' అనేది మధ్య విలువ.",
+        "sw": "Kati ya majaribio 10, takriban 1 huwa chini ya 'chini' na 1 juu ya 'juu'; 'kawaida' ni thamani ya katikati."
+      }
+    },
+    {
+      "term": {"en": "Shortfall from the best option", "te": "ఉత్తమ ఎంపిక కంటే వెనుకబాటు", "sw": "Pengo kutoka chaguo bora"},
+      "meaning": {
+        "en": "How far, on average, an option's score fell below the best option in the same test run. Smaller is safer.",
+        "te": "అదే పరీక్షలో ఉత్తమ ఎంపిక స్కోరు కంటే ఈ ఎంపిక స్కోరు సగటున ఎంత తక్కువగా ఉందో చూపుతుంది. తక్కువగా ఉంటే సురక్షితం.",
+        "sw": "Kwa wastani, alama ya chaguo hili ilikuwa chini kiasi gani ya chaguo bora katika jaribio lilelile. Pengo dogo ni salama zaidi."
+      }
+    },
+    {
+      "term": {"en": "Evidence label", "te": "ఆధారాల స్థాయి", "sw": "Kiwango cha ushahidi"},
+      "meaning": {
+        "en": "How much of a number rests on measured data rather than assumptions. LOW means: treat it as a rough guide and check it locally.",
+        "te": "ఒక సంఖ్య ఎంతవరకు కొలిచిన సమాచారంపై, ఎంతవరకు అంచనాలపై ఆధారపడి ఉందో చెబుతుంది. LOW (తక్కువ) అంటే: దీన్ని సుమారు మార్గదర్శకంగా మాత్రమే తీసుకుని స్థానికంగా నిర్ధారించుకోండి.",
+        "sw": "Kinaonyesha ni kwa kiasi gani namba inategemea data iliyopimwa badala ya makadirio. LOW (chini) inamaanisha: itumie kama mwongozo wa jumla tu na uhakiki katika eneo lako."
+      }
+    },
+    {
+      "term": {"en": "Irrigation share", "te": "సాగునీటి వాటా", "sw": "Sehemu ya umwagiliaji"},
+      "meaning": {
+        "en": "The part of a crop's missing water that you can supply by irrigation: 0% is rain only, 100% is full irrigation.",
+        "te": "వర్షం సరిపోనప్పుడు పంటకు కావలసిన నీటిలో మీరు సాగునీటి ద్వారా అందించగల భాగం: 0% అంటే వర్షాధారం మాత్రమే, 100% అంటే పూర్తి సాగునీరు.",
+        "sw": "Sehemu ya maji yanayokosekana kwa zao ambayo unaweza kuitoa kwa umwagiliaji: 0% ni kutegemea mvua pekee, 100% ni umwagiliaji kamili."
+      }
+    },
+    {
+      "term": {"en": "Soil water (top 30 cm)", "te": "నేలలో నిల్వ ఉండే నీరు (పై 30 సెం.మీ.)", "sw": "Maji ya udongo (sentimita 30 za juu)"},
+      "meaning": {
+        "en": "How much water the top layer of your soil can hold for the crop between rains.",
+        "te": "వర్షాల మధ్య కాలంలో పంట కోసం మీ నేల పై పొర నిల్వ ఉంచగల నీటి పరిమాణం.",
+        "sw": "Kiasi cha maji ambacho tabaka la juu la udongo wako linaweza kuhifadhi kwa ajili ya zao kati ya mvua."
+      }
+    },
+    {
+      "term": {"en": "Scenario", "te": "ఊహాత్మక పరిస్థితి", "sw": "Hali ya kudhaniwa"},
+      "meaning": {
+        "en": "A 'what if' case, for example hotter and drier weather, or less irrigation water.",
+        "te": "'ఒకవేళ ఇలా జరిగితే' అనే ఊహాత్మక పరిస్థితి; ఉదాహరణకు మరింత వేడి, తక్కువ వర్షం, లేదా తక్కువ సాగునీరు.",
+        "sw": "Hali ya 'je, ikiwa…', kwa mfano joto zaidi na mvua kidogo, au maji kidogo ya umwagiliaji."
+      }
+    },
+    {
+      "term": {"en": "NASA POWER", "te": "NASA POWER", "sw": "NASA POWER"},
+      "meaning": {
+        "en": "A free NASA weather record: daily rain and temperature estimated for the wider area around the farm (tens of kilometres). It is not measured by a rain gauge on your land.",
+        "te": "NASA ఉచితంగా అందించే వాతావరణ రికార్డు: పొలం చుట్టూ ఉన్న విశాల ప్రాంతానికి (పదుల కిలోమీటర్లు) రోజువారీ వర్షపాతం, ఉష్ణోగ్రత అంచనాలు. ఇవి మీ పొలంలో వర్షమాపకంతో కొలిచినవి కావు.",
+        "sw": "Rekodi ya hali ya hewa ya NASA inayopatikana bure: makadirio ya kila siku ya mvua na joto kwa eneo pana linalozunguka shamba (makumi ya kilomita). Hayajapimwa kwa kipimamvua shambani mwako."
+      }
+    },
+    {
+      "term": {
+        "en": "Satellite greenness (NDVI, from MODIS)",
+        "te": "ఉపగ్రహ పచ్చదనం సూచిక (NDVI, MODIS)",
+        "sw": "Kipimo cha ukijani kwa setilaiti (NDVI, MODIS)"
+      },
+      "meaning": {
+        "en": "A satellite measure of how green the land is. Higher values mean more green plants; bare soil is low. It shows when plants are growing, but it cannot tell which crop it is.",
+        "te": "భూమి ఎంత పచ్చగా ఉందో ఉపగ్రహం ద్వారా కొలిచే సూచిక. విలువ ఎక్కువగా ఉంటే పచ్చదనం ఎక్కువ; ఖాళీ నేలకు విలువ తక్కువ. మొక్కలు ఎప్పుడు పెరుగుతున్నాయో ఇది చూపుతుంది, కానీ ఏ పంటో చెప్పలేదు.",
+        "sw": "Kipimo cha setilaiti kinachoonyesha jinsi ardhi ilivyo ya kijani. Thamani ya juu ni mimea mingi ya kijani; udongo mtupu una thamani ya chini. Kinaonyesha mimea inapokua, lakini hakiwezi kutambua ni zao gani."
+      }
+    }
+  ],
+  "technical_glossary": [
+    {"term": "NDVI", "meaning": "Normalized Difference Vegetation Index. A satellite greenness value: higher means more green vegetation in the pixel."},
+    {"term": "MODIS (MOD13Q1)", "meaning": "A NASA satellite instrument. This product gives one NDVI value every 16 days for a 250 m square, so one pixel can mix several fields."},
+    {"term": "QA-valid composite", "meaning": "A 16-day NDVI value that passed the product's quality flags, for example not spoiled by cloud."},
+    {"term": "CDL", "meaning": "USDA Cropland Data Layer: a yearly satellite-based map of which crop was grown where in the United States. It is a classification, not a farm record."},
+    {"term": "Spearman ρ", "meaning": "A number from −1 to +1 showing whether two things rise and fall together across years. Near 0 means no consistent link."},
+    {"term": "Bootstrap 95% interval", "meaning": "A plausible range for a result, found by recalculating it many times on reshuffled years. If the range includes 0, the link may not be real."},
+    {"term": "RMSE and R²", "meaning": "RMSE is the typical size of a prediction error, in the unit of the thing predicted. R² is the share of year-to-year variation the model explains (1 is perfect, 0 is no better than the average)."},
+    {"term": "Cross-validation / held-out", "meaning": "Testing a model on years or counties it was not trained on."},
+    {"term": "Permutation importance and partial dependence", "meaning": "Two ways to see what a fitted model relies on: how much worse it gets when one input is scrambled, and how its prediction moves as one input changes."},
+    {"term": "Normalized score", "meaning": "A value rescaled to run from 0 (worst) to 1 (best) so different measures can be combined."},
+    {"term": "Near tie", "meaning": "Two rotations whose weighted scores differ by 0.01 or less, so which one is labelled 'top' is not meaningful."},
+    {"term": "Exact search / ant colony", "meaning": "Exact search scores every feasible rotation. The ant colony is a faster trial-and-error search; it is checked against the exact answer."}
+  ]
+}

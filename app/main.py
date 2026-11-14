@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
+from src.localize import Locale
 from src.sensitivity import check_first
 from src.tie_diagnosis import alternative_groups
 from src.uncertainty import simulate
@@ -39,15 +40,15 @@ def title(name):
 
 
 def correlation_counts(farm_ids):
-    studies = {"P15 crop stress and NDVI": [], "P19 NASA weather and NDVI": [],
-               "P20 regional yield": []}
+    studies = {"Crop stress and NDVI, 2019–2023": [], "NASA weather and NDVI, 2001–2024": [],
+               "Regional yield": []}
     for farm_id in farm_ids:
         for season in load(farm_id, "backtest")["seasons"].values():
-            studies["P15 crop stress and NDVI"].extend(season["comparisons"].values())
+            studies["Crop stress and NDVI, 2019–2023"].extend(season["comparisons"].values())
         for season in load(farm_id, "nasa_consistency")["seasons"].values():
-            studies["P19 NASA weather and NDVI"].extend(season["comparisons"])
+            studies["NASA weather and NDVI, 2001–2024"].extend(season["comparisons"])
         for series in load(farm_id, "yield_backtest")["series"]:
-            studies["P20 regional yield"].extend(series["comparisons"])
+            studies["Regional yield"].extend(series["comparisons"])
     counts = []
     for study, comparisons in studies.items():
         intervals = [row["bootstrap_95"] for row in comparisons if row["bootstrap_95"] is not None]
@@ -141,7 +142,7 @@ def opportunity_panel(farm_id, farm_name):
         selected = st.selectbox("Low-NDVI threshold", levels, index=default, format_func=lambda v: f"{v:.2f}",
                                 key=f"opportunity_threshold_{farm_id}")
         current = next(row for row in runs if row["threshold"] == selected)
-        st.caption("Threshold evidence · assumption, validate locally · P5 cutoff and sensitivity settings. "
+        st.caption("Threshold evidence · assumption, validate locally · reference cutoff and sensitivity settings. "
                    "Site flags lower the evidence grade for the window and climate-fit estimates.")
         view = st.selectbox("NDVI timeline", ["Typical year", *data["years"]],
                             key=f"opportunity_year_{farm_id}")
@@ -214,14 +215,14 @@ def opportunity_panel(farm_id, farm_name):
                 fit_rows.append(row)
             if fit_rows:
                 st.dataframe(pd.DataFrame(fit_rows), hide_index=True)
-                st.caption("Fit cells show years passing / years assessable and the P18 evidence label. "
+                st.caption("Fit cells show years passing / years assessable and the evidence label. "
                            "NASA POWER temperature and rainfall inform fit. POWER root-zone wetness is modeled. "
                            "Temperature and water are tested in long-enough windows. Crops are shown only "
                            "when their catalog includes a season at this farm. Fit uses the run's actual dates.")
             passing = [item for item in candidates if item["checks"]["overall"]["passes"]]
             if passing:
                 if current["offset"] != 0:
-                    st.info("These passes are from an alternative cutoff. Use the P5 cutoff as the reference.")
+                    st.info("These passes are from an alternative cutoff. Use the default cutoff as the reference.")
                 for item in passing:
                     overall = item["checks"]["overall"]
                     grade = item["evidence"]["overall"]["label"].upper()
@@ -306,25 +307,137 @@ def farm_map(farms, selected):
     return figure
 
 
-def edit_farm(farm, context, settings):
+def current_locale(settings, farm_id):
+    """Read the language and unit choices before their widgets are drawn."""
+    language = st.session_state.get(f"language_{farm_id}", "en")
+    local_units = st.session_state.get(f"units_{farm_id}", "local") == "local"
+    return Locale(settings["locales"], farm_id, language, local_units)
+
+
+def display_controls(settings, locale, farm_id):
+    languages = settings["locales"]["languages"]
+    left, middle, right = st.columns(3)
+    if len(locale.languages) > 1:
+        left.radio(locale.text("language"), locale.languages, format_func=languages.get,
+                   key=f"language_{farm_id}", horizontal=True)
+    middle.radio(locale.text("units"), ["local", "metric"], key=f"units_{farm_id}", horizontal=True,
+                 format_func=lambda choice: locale.units_summary(choice == "local"))
+    technical = right.toggle("Show technical checks (for reviewers)", key="show_technical",
+                             help="Shows how the data and the model were checked: satellite greenness windows, "
+                                  "historical back-tests, weather-shift maps and the search verification.")
+    if len(locale.languages) > 1:
+        st.caption(locale.text("draft_notice"))
+    return technical
+
+
+def season_names(seasons, locale):
+    """One local season name per planting slot, with the months the model uses."""
+    windows = seasons["season_windows"]
+    return [" / ".join(locale.season(label, windows.get(label)) for label in slot["eligible_labels"])
+            for slot in seasons["slots"]]
+
+
+def crop_rows(entry, locale, crops):
+    return [[locale.crop(crop, crops[crop]["display_name"]) for crop in year] for year in entry["crop_ids"]]
+
+
+def rotation_text(entry, locale, crops):
+    years = crop_rows(entry, locale, crops)
+    if len(years[0]) == 1:
+        return " → ".join(year[0] for year in years)
+    if all(year == years[0] for year in years):
+        return f"{locale.text('every_year')}: " + " → ".join(years[0])
+    return " · ".join(f"{locale.text('year')} {number}: " + " → ".join(year)
+                      for number, year in enumerate(years, 1))
+
+
+def depth_text(locale, millimetres):
+    inches = locale.unit("depth") == "in"
+    return f"{locale.to_local('depth', millimetres):.{1 if inches else 0}f} {'inches' if inches else 'mm'}"
+
+
+def climate_summary(assessment, locale):
+    """Restate the cached climate numbers in everyday words and the farm's units."""
+    metrics = assessment["metrics"]
+    monthly = {int(month): value for month, value in metrics["monthly_precipitation"]["value"].items()}
+    annual = sum(monthly.values())
+    wettest = sorted(sorted(monthly, key=monthly.get, reverse=True)[:3])
+    share = sum(monthly[month] for month in wettest) / annual if annual else 0
+    names = [pd.Timestamp(2001, month, 1).strftime("%B") for month in wettest]
+    regimes = {}
+    for regime in metrics["annual_climate_regimes"]["value"].values():
+        regimes[regime] = regimes.get(regime, 0) + 1
+    counts = ", ".join(f"{count} {name.replace('_', ' and ')}" for name, count in
+                       sorted(regimes.items(), key=lambda item: -item[1]))
+    return (f"In plain words · Rain averages about {depth_text(locale, annual)} a year, and about {share:.0%} of it "
+            f"falls in {', '.join(names[:-1])} and {names[-1]}. From one year to the next the total typically "
+            f"differs from that average by about {metrics['rainfall_cv']['value']:.0%}. Of the {sum(regimes.values())} "
+            f"years on record, the model counts {counts}. The longest stretch without meaningful rain was "
+            f"{metrics['longest_observed_dry_spell']['value']} days.")
+
+
+def climate_panel(farm, locale, validity, assessment):
+    farm_id = farm["farm_id"]
+    with st.container(key="climate_assessment"):
+        st.subheader(locale.text("climate_heading"))
+        st.caption(farm["name"])
+        if farm_id == "us_high_plains_b" and farm["irrigation"]["supply_fraction"] == 0:
+            st.caption("Rainfed reference · 0% of irrigation demand supplied · assumption, validate locally")
+        st.write(climate_summary(assessment, locale))
+        st.caption("Record details · " +
+                   assessment["assessment"].replace("longest observed dry spell", "longest dry spell in the POWER record")
+                   + " The coefficient of variation is the year-to-year spread divided by the average.")
+        for flag in validity["flags"]:
+            st.warning(flag)
+        if farm_id == "us_high_plains_b":
+            st.caption("The 2019 spring MODIS peak over the CDL fallow neighborhood remains unexplained.")
+        elif farm_id == "telangana_a":
+            st.caption("Telangana's second crop season is tentative.")
+        charts = st.tabs(["Monthly rainfall", "Temperature", "Vegetation", "Annual rainfall"])
+        for tab, key in zip(charts, ("monthly_rain", "annual_temperature", "vegetation", "annual_rain"), strict=True):
+            with tab:
+                chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
+                st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
+        if locale.unit("depth") != "mm":
+            st.caption("These charts and the record details use metric units: 25.4 mm of rain is 1 inch, "
+                       "and a change of 1 °C is a change of 1.8 °F.")
+        st.caption("Processed NASA inputs include POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. "
+                   "GPM IMERG via POWER is used only for the rainfall agreement check on matching UTC days. "
+                   "SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused.")
+
+
+def edit_farm(farm, context, settings, locale, names):
     key = farm["farm_id"]
-    with st.expander("Edit farm assumptions"):
+    with st.expander(locale.text("edit_heading")):
         baseline = farm["baseline_rotation_cycle"]
         crops = settings["crops"]
         lookup = list(crops)
+        area, depth = locale.unit("area"), locale.unit("depth")
+        reference = float(context["soil"]["available_water_mm_0_30"]["value"])
+        inches = depth == "in"
+        shown = round(locale.to_local("depth", reference), 2 if inches else 1)
         with st.form(f"edit_{key}"):
-            size = st.number_input("Farm size (ha)", min_value=0.0, value=0.0, step=0.1,
-                                   help="Context for the farmer. Comparisons use per-hectare or relative values.")
-            irrigation = st.slider("Share of irrigation demand you can supply", 0., 1.,
-                                   key=f"supply_{key}", value=float(farm["irrigation"]["supply_fraction"]), step=.05)
-            available = st.number_input("Available soil water in top 30 cm (mm)", min_value=0.,
-                                        value=float(context["soil"]["available_water_mm_0_30"]["value"]), step=1.)
-            rotation = [[st.selectbox(f"Baseline crop · year {year + 1}, season {slot + 1}", lookup,
-                       index=lookup.index(crop), format_func=lambda crop: crops[crop]["display_name"])
+            size = st.number_input(f"Farm size ({area})", min_value=0.0, value=0.0, step=0.1,
+                                   help="For your reference only. Every comparison is per unit of land.")
+            irrigation = st.slider("Share of the crop's missing water you can supply by irrigation (%)", 0, 100,
+                                   key=f"supply_{key}", value=int(round(100 * farm["irrigation"]["supply_fraction"])),
+                                   step=5, help="0% means the crop depends on rain alone. 100% means you can "
+                                                "irrigate whenever rain falls short.")
+            available = st.number_input(
+                f"Water the top {'12 in' if inches else '30 cm'} of your soil can hold ({depth})", min_value=0.,
+                value=shown, step=.05 if inches else 1.,
+                help="Sandy soils hold less and clay or loam soils hold more. A soil test or your extension "
+                     "office can give a local value.")
+            rotation = [[st.selectbox(
+                f"Existing crop · {locale.text('year').lower()} {year + 1}" +
+                (f" · {names[slot]}" if len(row) > 1 else ""), lookup, index=lookup.index(crop),
+                format_func=lambda crop: locale.crop(crop, crops[crop]["display_name"]))
                          for slot, crop in enumerate(row)] for year, row in enumerate(baseline)]
             apply = st.form_submit_button("Apply farm inputs")
         if apply:
-            st.session_state[f"edits_{key}"] = (irrigation, available, rotation, size)
+            # An untouched soil value keeps the exact reference figure despite display rounding.
+            water = reference if available == shown else locale.to_metric("depth", available)
+            st.session_state[f"edits_{key}"] = (irrigation / 100, water, rotation, locale.to_metric("area", size))
         st.caption("Edited values are farmer inputs to validate locally.")
     return st.session_state.get(f"edits_{key}")
 
@@ -366,54 +479,10 @@ def edited_results(farm, settings, edits, result, assessment, difference_thresho
     return updated, simulate(model, updated, assessment, presets, settings["uncertainty"])
 
 
-def app():
-    st.set_page_config(page_title="CropSwarm", page_icon="🌱", layout="wide")
-    st.title("CropSwarm")
-    st.write("Compare crop rotations using NASA Earth data, soil maps and your priorities.")
-    settings = cached("app_settings.json")
-    farms = settings["farms"]
-    by_id = {farm["farm_id"]: farm for farm in farms}
-    st.session_state.setdefault("farm_picker", farms[0]["farm_id"])
-    if selected_map := st.session_state.get("farm_map"):
-        points = selected_map.get("selection", {}).get("points", [])
-        if points and points[0].get("curve_number", points[0].get("curveNumber")) == 1:
-            index = points[0].get("point_index", points[0].get("pointIndex"))
-            if index is not None and index != st.session_state.get("map_handled"):
-                st.session_state["farm_picker"] = farms[index]["farm_id"]
-                st.session_state["map_handled"] = index
-    farm_id = st.selectbox("Choose an illustrative farm", list(by_id), format_func=lambda key: by_id[key]["name"],
-                           key="farm_picker")
-    farm = by_id[farm_id]
-    st.caption(f"{farm['region']} · {farm['label']}")
-    st.plotly_chart(farm_map(farms, farm_id), key="farm_map", on_select="rerun", selection_mode="points",
-                    config={"displayModeBar": False})
-    validity = load(farm_id, "validity")
-    context = load(farm_id, "context")
-    assessment = load(farm_id, "assessment")
-    with st.container(key="climate_assessment"):
-        st.subheader("Farm Climate Assessment")
-        st.caption(farm["name"])
-        if farm["farm_id"] == "us_high_plains_b" and farm["irrigation"]["supply_fraction"] == 0:
-            st.caption("Rainfed reference · 0% of irrigation demand supplied · assumption, validate locally")
-        st.write(assessment["assessment"].replace("longest observed dry spell", "longest dry spell in the POWER record"))
-        for flag in validity["flags"]:
-            st.warning(flag)
-        if farm_id == "us_high_plains_b":
-            st.caption("The 2019 spring MODIS peak over the CDL fallow neighborhood remains unexplained.")
-        elif farm_id == "telangana_a":
-            st.caption("Telangana's second crop season is tentative.")
-        charts = st.tabs(["Monthly rainfall", "Temperature", "Vegetation", "Annual rainfall"])
-        for tab, key in zip(charts, ("monthly_rain", "annual_temperature", "vegetation", "annual_rain"), strict=True):
-            with tab:
-                chart = pio.from_json((DATA / f"chart_{farm_id}_{key}.json").read_text())
-                st.plotly_chart(chart, key=f"chart_{key}", config={"displayModeBar": False})
-        st.caption("Processed NASA inputs include POWER weather, Terra MODIS NDVI, MODIS land cover and SRTM terrain. "
-                   "GPM IMERG via POWER is used only for the rainfall agreement check on matching UTC days. "
-                   "SMAP, ECOSTRESS, GRACE, Landsat and ERA5 were unused.")
-    opportunity_panel(farm_id, farm["name"])
+def validation_panel(farm_id, farm_ids):
     with st.container(key="historical_validation"):
         st.subheader("Validation · historical back-test")
-        counts = correlation_counts(by_id)
+        counts = correlation_counts(farm_ids)
         computed = sum(row["Correlations computed"] for row in counts)
         comparisons = sum(row["Comparisons"] for row in counts)
         excluding_zero = sum(row["Intervals excluding zero"] for row in counts)
@@ -428,7 +497,7 @@ def app():
                        "Intervals are descriptive and unadjusted for multiple comparisons.")
         backtest = load(farm_id, "backtest")
         st.caption("2019–2023 · CDL mapped classes in Kansas; assumed crop identities in Telangana and Makueni. "
-                   "This uses the reference farm inputs, even when you edit the comparison below.")
+                   "This uses the reference farm inputs, even when you edit the comparison above.")
         figure = pio.from_json((DATA / f"chart_backtest_{farm_id}.json").read_text())
         st.plotly_chart(figure, key=f"backtest_{farm_id}", config={"displayModeBar": False})
         results = []
@@ -457,7 +526,7 @@ def app():
                      "This crop-agnostic comparison describes agreement between the NASA data products. "
                      "Crop performance and rotation recommendations are outside its scope.")
             st.caption("Illustrative, validate locally. The 250 m MODIS pixel can mix fields, weeds and other cover. "
-                       "The P5 season windows are approximate. Missing composites are excluded.")
+                       "The derived season windows are approximate. Missing composites are excluded.")
             st.caption("Rainfall anomaly compares seasonal totals with the 1991–2020 mean. "
                        "Deficit is the shortfall below that mean. Heat days exceed the local seasonal "
                        "90th percentile of daily maxima in that period. These thresholds are design choices.")
@@ -523,24 +592,12 @@ def app():
                 st.caption("Sources · NASA POWER daily rainfall and maximum temperature · CropSwarm crop catalog, "
                            "season windows and soil water estimate. Bootstrap intervals are descriptive.")
         learned_yield_panel()
-    edits = edit_farm(farm, context, settings)
 
-    st.subheader("Farm priorities")
-    presets = settings["weights_presets"]["presets"]
-    preset = st.selectbox("Start from a priority preset", list(presets), format_func=title)
-    priorities = st.columns(3)
-    values = [priorities[i % 3].slider(title(metric), 0, 100, int(presets[preset][metric]*100 + .5),
-                                      key=f"{farm_id}_{preset}_{metric}") for i, metric in enumerate(METRICS)]
-    if not sum(values):
-        st.info("All priorities are zero. The selected preset supplies the weights.")
-        values = list(presets[preset].values())
-    weight = np.array(values) / sum(values)
-    st.caption("Adjusted priorities update scores for the displayed strategies. Scenario win percentages follow the selected named preset.")
 
+def robustness_panel(farm_id, preset, diagnosis):
     with st.container(key="climate_stress_test"):
-        st.subheader("Robustness check under weather shifts (P16)")
+        st.subheader("Robustness check under weather shifts")
         stress = load(farm_id, "stress_test")
-        diagnosis = load(farm_id, "tie_diagnosis")
         figure, legend = stress_map(stress, preset)
         st.plotly_chart(figure, key=f"stress_{farm_id}_{preset}", config={"displayModeBar": False})
         st.caption(f"Winner map for {title(preset).lower()} · exact search over feasible rotations at every cell · "
@@ -560,21 +617,23 @@ def app():
                    "cell · design choice, not empirical. Cyclic starting-year labels count as one rotation.")
         st.caption(stress["caveat"])
         st.caption("Grid: +0 to +3 °C by 0.5 °C; rainfall −30% to +10% by 10% · design choice, not empirical. "
-                   "The map uses reference farm inputs even when you edit the comparison below.")
+                   "The map uses reference farm inputs even when you edit the comparison above.")
 
+
+def check_first_panel(farm, preset, locale, technical):
     with st.container(key="what_to_check_first"):
-        st.subheader("What to check first")
-        sensitivity = load(farm_id, "sensitivity")
+        st.subheader(locale.text("check_first_heading"))
+        sensitivity = load(farm["farm_id"], "sensitivity")
         priorities_to_check = sensitivity["presets"][preset]
         joint = priorities_to_check["joint"]
         low, high = joint["top_score_range"]
-        st.caption(f"{farm['name']} · {title(preset)} · {sensitivity['input_count']} inputs varied")
-        st.caption("P22 sweeps broader assumptions jointly and reruns the exact search. "
-                   "P10 resamples weather and varies parameters for the displayed rotations.")
-        st.write(f"The top rotation changed in {joint['winner_change_fraction']:.0%} of {joint['evaluations']} "
-                 f"joint draws. In {joint['material_change_fraction']:.0%}, the earlier leader became "
-                 f"ineligible or the winner led by more than {sensitivity['design']['near_tie_gap']:g} points. "
-                 f"The top score ranged from {low:.3f} to {high:.3f} on the model's 0–1 scale.")
+        st.caption(f"{farm['name']} · {locale.preset(preset)} · {sensitivity['input_count']} inputs varied")
+        st.write(f"The model rests on assumptions about crops, seasons and scoring rules. We changed many of them "
+                 f"together and repeated the full search {joint['evaluations']} times. The top rotation changed in "
+                 f"{joint['winner_change_fraction']:.0%} of those runs. In {joint['material_change_fraction']:.0%} "
+                 f"the change was clear-cut: the earlier leader dropped out, or the new leader was ahead by more than "
+                 f"{sensitivity['design']['near_tie_gap']:g} points. The top score ranged from {low:.3f} to {high:.3f} "
+                 "on the 0–1 scale. These are the inputs that move the result most, so check them locally first.")
         for item in check_first(priorities_to_check["ranking"]):
             st.markdown(f"**Priority {item['rank']} · {item['question']}**")
             st.write(item["reason"])
@@ -582,6 +641,10 @@ def app():
             st.caption(f"Input evidence · {grade} · {item['source']}")
         st.caption("This ranks sensitivity inside the model. Real-world importance needs local evidence. "
                    "The check uses the reference farm, the named preset and illustrative ranges.")
+        st.caption("This check varies many assumptions together and repeats the full search. The test runs under "
+                   "Compare rotations re-use past weather years and vary crop values for the displayed rotations only.")
+        if not technical:
+            return
         with st.expander("All input effects"):
             st.dataframe(pd.DataFrame([{
                 "Rank": row["rank"], "Input": row["question"],
@@ -595,8 +658,72 @@ def app():
                 "Joint association with winner change": row["joint_association"]["winner_changed"],
             } for row in priorities_to_check["ranking"]]), hide_index=True)
 
+
+def optimizer_panel(result):
+    if result["verification"]:
+        with st.expander("How the optimizer was checked"):
+            st.write(f"Exact enumeration checked {result['feasible_count']:,} feasible rotations across "
+                     f"{result['horizon_years']} years.")
+            for name, record in result["verification"].items():
+                single, restarts = record["single_run"], record["best_of_restarts"]
+                st.write(f"{title(name)} · exact hits {single['optimum_hits']}/{single['runs']} with one run, "
+                         f"{restarts['optimum_hits']}/{restarts['runs']} with the best of {record['restart_count']}.")
+
+
+def app():
+    st.set_page_config(page_title="CropSwarm", page_icon="🌱", layout="wide")
+    settings = cached("app_settings.json")
+    farms = settings["farms"]
+    crops = settings["crops"]
+    by_id = {farm["farm_id"]: farm for farm in farms}
+    st.session_state.setdefault("farm_picker", farms[0]["farm_id"])
+    if selected_map := st.session_state.get("farm_map"):
+        points = selected_map.get("selection", {}).get("points", [])
+        if points and points[0].get("curve_number", points[0].get("curveNumber")) == 1:
+            index = points[0].get("point_index", points[0].get("pointIndex"))
+            if index is not None and index != st.session_state.get("map_handled"):
+                st.session_state["farm_picker"] = farms[index]["farm_id"]
+                st.session_state["map_handled"] = index
+    locale = current_locale(settings, st.session_state["farm_picker"])
+    st.title("CropSwarm")
+    st.write(locale.text("tagline"))
+    farm_id = st.selectbox("Choose an illustrative farm", list(by_id), format_func=lambda key: by_id[key]["name"],
+                           key="farm_picker")
+    farm = by_id[farm_id]
+    st.caption(f"{farm['region']} · {farm['label']}")
+    st.plotly_chart(farm_map(farms, farm_id), key="farm_map", on_select="rerun", selection_mode="points",
+                    config={"displayModeBar": False})
+    technical = display_controls(settings, locale, farm_id)
+    validity = load(farm_id, "validity")
+    context = load(farm_id, "context")
+    assessment = load(farm_id, "assessment")
+    diagnosis = load(farm_id, "tie_diagnosis")
     result = load(farm_id, "strategies")
     uncertainty = load(farm_id, "uncertainty")
+    names = season_names(load(farm_id, "seasons"), locale)
+    with st.expander(locale.text("glossary_title")):
+        for term, meaning in locale.glossary(draws=uncertainty["draws"]):
+            st.markdown(f"**{term}** · {meaning}")
+        for metric in METRICS:
+            st.markdown(f"**{locale.metric(metric)}** · {locale.metric_meaning(metric)}")
+    climate_panel(farm, locale, validity, assessment)
+    edits = edit_farm(farm, context, settings, locale, names)
+
+    st.subheader(locale.text("priorities_heading"))
+    presets = settings["weights_presets"]["presets"]
+    preset = st.selectbox("Start from a priority preset", list(presets), format_func=locale.preset)
+    priorities = st.columns(3)
+    values = [priorities[i % 3].slider(locale.metric(metric), 0, 100, int(presets[preset][metric]*100 + .5),
+                                      key=f"{farm_id}_{preset}_{metric}", help=locale.metric_meaning(metric))
+              for i, metric in enumerate(METRICS)]
+    if not sum(values):
+        st.info("All priorities are zero. The selected preset supplies the weights.")
+        values = list(presets[preset].values())
+    weight = np.array(values) / sum(values)
+    st.caption("Move a slider to the right to make that goal count for more. Adjusted priorities update the scores "
+               "of the displayed rotations. The share of test runs each one comes out best in follows the selected "
+               "named preset.")
+
     if edits is not None:
         updated = edited_results(farm, settings, edits, result, assessment,
                                  diagnosis["alternative_difference"]["threshold"])
@@ -604,13 +731,13 @@ def app():
             st.warning("Fewer than three metric-distinct rotations meet those inputs. This table uses the reference farm assumptions.")
         else:
             result, uncertainty = updated
-            st.caption("Showing a new exact comparison and new scenario draws for your edited inputs.")
+            st.caption("Showing a new exact comparison and new test runs for your edited inputs.")
             if edits[3] > 0:
-                st.caption(f"Entered farm area {edits[3]:g} ha · farmer input")
+                st.caption(f"Entered farm area {locale.to_local('area', edits[3]):g} {locale.unit('area')} · farmer input")
     difference_threshold = diagnosis["alternative_difference"]["threshold"]
     alternatives = alternative_groups(result["strategies"][1:], difference_threshold)
     with st.container(key="strategy_comparison"):
-        st.subheader("Compare rotations")
+        st.subheader(locale.text("compare_heading"))
         st.caption(farm["name"])
         st.caption("Evidence labels: high = few assumed score inputs; medium = mixed provenance; "
                    "low = substantial assumptions or unresolved site validation. "
@@ -619,7 +746,8 @@ def app():
                           "less_irrigation": "Less irrigation", "more_irrigation": "More irrigation"}
         scenario = st.selectbox("Scenario", list(scenario_names), format_func=scenario_names.get)
         sims = uncertainty["scenarios"][scenario]
-        st.caption(f"{uncertainty['draws']} simulated draws · NASA POWER climate years · crop assumptions")
+        st.caption(f"{uncertainty['draws']} test runs · each one re-uses past NASA POWER weather years and slightly "
+                   "different crop values")
         if scenario != "historical":
             st.caption(f"Scenario irrigation supply share {sims['supply_fraction']:.0%} · temperature change "
                        f"{sims['temperature_change_c']:+g} °C · rainfall factor {sims['rainfall_factor']:.0%} · illustrative scenario assumptions")
@@ -629,18 +757,24 @@ def app():
             key = entry["strategy_id"]
             stats = sims["strategies"][key]
             rating = np.array([entry["metrics"][m]["score"] for m in METRICS]) @ weight
-            rows.append({"Strategy": "Existing rotation" if key == "baseline" else title(key),
-                         "Rotation": " → ".join(entry["crop_names"]), "Historical priority score": round(float(rating), 3),
-                         "Wins in draws": f"{stats['wins_pct'][preset]:.1f}%",
-                         "Unmet water · median (mm)": round(stats["metrics"]["water"]["p50"], 1)})
-        st.dataframe(pd.DataFrame(rows), hide_index=True)
+            rows.append({"Strategy": locale.text("existing_rotation") if key == "baseline" else locale.preset(key),
+                         "Rotation": rotation_text(entry, locale, crops), "Score": round(float(rating), 3),
+                         "Wins": f"{stats['wins_pct'][preset]:.1f}%",
+                         "Shortage": round(locale.to_local("depth", stats["metrics"]["water"]["p50"]),
+                                           2 if locale.unit("depth") == "in" else 1)})
+        headings = {"Strategy": locale.text("strategy"), "Rotation": locale.text("rotation"),
+                    "Score": locale.text("score"), "Wins": locale.text("best_in_runs"),
+                    "Shortage": locale.text("water_shortage", unit=locale.unit("depth"))}
+        st.dataframe(pd.DataFrame(rows).rename(columns=headings), hide_index=True)
         st.caption(f"{alternatives['displayed_alternatives']} displayed alternatives form "
                    f"{alternatives['meaningfully_different_groups']} "
                    f"distinct metric profiles. Each selected alternative differs from the baseline and every "
                    f"other selected alternative by more than {difference_threshold:g} on at least one normalized "
                    "metric. The threshold is a design choice.")
-        st.caption("Wins use the selected preset and split credit among tied strategies. Water source · NASA POWER rainfall, soil available water and crop demand. Priority scores combine all six sourced metrics.")
-        chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Historical priority score"] for row in rows],
+        st.caption(f"The score runs from 0 (worst) to 1 (best) and combines all six measures using your priorities. "
+                   f"'{locale.text('best_in_runs')}' uses the selected preset and splits credit among tied options. "
+                   "Water shortage source · NASA POWER rainfall, soil available water and crop demand.")
+        chart = go.Figure(go.Bar(x=[row["Strategy"] for row in rows], y=[row["Score"] for row in rows],
                                  marker_color=COLORS[:len(rows)]))
         chart.update_layout(yaxis=dict(range=[0, 1], title="Weighted score"), height=290,
                             margin=dict(t=10, r=16, l=46, b=25))
@@ -652,6 +786,10 @@ def app():
         with st.expander(row["Strategy"], expanded=key == "baseline"):
             st.write(entry["why"])
             st.write(row["Rotation"])
+            if len(names) > 1:
+                st.dataframe(pd.DataFrame([{locale.text("year"): number, **dict(zip(names, year, strict=True))}
+                                           for number, year in enumerate(crop_rows(entry, locale, crops), 1)]),
+                             hide_index=True)
             st.caption(f"Overall evidence: {entry['evidence_label'].upper()} · weakest of the six metric labels")
             for pair in alternatives["pairs"]:
                 if pair["near_duplicate"] and key in (pair["first"], pair["second"]):
@@ -659,44 +797,55 @@ def app():
                     st.info(f"Near-duplicate metric profile with {title(other)} "
                             f"(largest metric-score difference {pair['max_difference']:.3f}).")
             for flag, slots in entry["flags"].items():
-                st.warning(f"{title(flag)} in slots {', '.join(str(slot + 1) for slot in slots)}.")
+                st.warning(f"{locale.flag(flag)} "
+                           f"{locale.text('slots_affected', slots=', '.join(str(slot + 1) for slot in slots))}")
             if key != "baseline":
-                better = [title(m) for m in METRICS if entry["metrics"][m]["score"] > baseline["metrics"][m]["score"]]
-                worse = [title(m) for m in METRICS if entry["metrics"][m]["score"] < baseline["metrics"][m]["score"]]
-                st.write("Benefits compared with the existing rotation · " + (", ".join(better) or "No higher model component"))
-                st.write("Trade-offs · " + (", ".join(worse) or "No lower model component"))
+                better = [locale.metric(m) for m in METRICS
+                          if entry["metrics"][m]["score"] > baseline["metrics"][m]["score"]]
+                worse = [locale.metric(m) for m in METRICS
+                         if entry["metrics"][m]["score"] < baseline["metrics"][m]["score"]]
+                st.write(f"{locale.text('better_on')} · " + (", ".join(better) or locale.text("nothing")))
+                st.write(f"{locale.text('worse_on')} · " + (", ".join(worse) or locale.text("nothing")))
             else:
-                st.write("Benefit · Keeping the existing rotation avoids a change in planting plans.")
-            st.write(f"Water risk · Median unmet demand is {stats['metrics']['water']['p50']:.0f} mm per slot "
-                     f"in this scenario. NASA POWER rainfall, soil water and crop demand inform this estimate.")
+                st.write(locale.text("keep_existing_benefit"))
+            st.write(f"{locale.metric('water')} · In a typical test run this rotation is about "
+                     f"{depth_text(locale, stats['metrics']['water']['p50'])} of water short per season in this "
+                     "scenario. NASA POWER rainfall, soil water and crop water needs inform this estimate.")
             with st.container(key=f"uncertainty_{key}"):
-                st.markdown("**Scenario uncertainty (P10)**")
+                st.markdown(f"**{locale.text('how_much_vary')}**")
                 spread = settings["uncertainty"]["parameter_range_fraction"]
-                st.caption(f"P10 resamples weather and varies modeled parameters within ±{spread:.0%} for the "
-                           "displayed rotations. P22 sweeps broader assumptions jointly and reruns exact search.")
+                st.caption(f"Each test run re-uses randomly chosen past weather years and shifts the crop values by "
+                           f"up to ±{spread:.0%}, for the displayed rotations only. 'What to check first' varies "
+                           "wider assumptions and repeats the full search.")
                 st.caption(f"{farm['name']} · {row['Strategy']} · {scenario_names[scenario]}")
-                st.write(f"Wins in {stats['wins_pct'][preset]:.1f}% of draws under the {title(preset).lower()} preset. "
-                         f"Mean regret {stats['mean_regret'][preset]:.3f} weighted score units.")
+                st.write(f"Comes out best in {stats['wins_pct'][preset]:.1f}% of the {uncertainty['draws']} test runs "
+                         f"under the {locale.preset(preset).lower()} priorities. On average it scores "
+                         f"{stats['mean_regret'][preset]:.3f} below the best option in the same run, on the 0–1 scale.")
                 details = []
                 for metric, info in entry["metrics"].items():
                     interval = stats["metrics"][metric]
                     evidence = info["evidence"]
-                    details.append({"Metric": title(metric), "Evidence": evidence["label"].upper(),
-                                    "Why lower": " ".join(evidence["reasons"]),
-                                    "10th / 50th / 90th percentile":
-                                    f"{interval['p10']:.2f} / {interval['p50']:.2f} / {interval['p90']:.2f}",
-                                    "Unit": info["unit"], "Model score": round(info["score"], 3),
-                                    "Source": info["source"], "How it works": info["explanation"]})
+                    low, typical, high = (locale.metric_value(metric, interval[point])[0]
+                                          for point in ("p10", "p50", "p90"))
+                    details.append({"Measure": locale.metric(metric),
+                                    locale.text("what_it_means"): locale.metric_meaning(metric),
+                                    "Low / typical / high": f"{low:.2f} / {typical:.2f} / {high:.2f}",
+                                    "Unit": locale.metric_value(metric, 0)[1], "Score (0–1)": round(info["score"], 3),
+                                    "Evidence": evidence["label"].upper(),
+                                    "Why the evidence is limited": " ".join(evidence["reasons"]),
+                                    "Source": info["source"], "How it is calculated": info["explanation"]})
                 st.dataframe(pd.DataFrame(details), hide_index=True)
+                st.caption("Low and high leave out the lowest and highest tenth of the test runs. "
+                           "Typical is the middle run.")
                 with st.expander("Evidence grade shares and input sources"):
                     grade_rows = []
                     for metric, info in entry["metrics"].items():
                         evidence = info["evidence"]
-                        grade_rows.append({"Metric": title(metric), "Label": evidence["label"].upper(),
+                        grade_rows.append({"Metric": locale.metric(metric), "Label": evidence["label"].upper(),
                                            **{grade.replace("_", " ").title(): f"{share:.0%}"
                                               for grade, share in evidence["shares"].items()}})
                     st.dataframe(pd.DataFrame(grade_rows), hide_index=True)
-                    selected_metric = st.selectbox("Inspect input sources", METRICS, format_func=title,
+                    selected_metric = st.selectbox("Inspect input sources", METRICS, format_func=locale.metric,
                                                    key=f"evidence_metric_{farm_id}_{key}")
                     source_rows = {}
                     for item in entry["metrics"][selected_metric]["evidence"]["inputs"]:
@@ -708,18 +857,24 @@ def app():
                                  hide_index=True)
             st.caption("Information gap · The soil, crop and farm assumptions below apply to this strategy.")
 
-    if result["verification"]:
-        with st.expander("How the optimizer was checked"):
-            st.write(f"Exact enumeration checked {result['feasible_count']:,} feasible rotations across "
-                     f"{result['horizon_years']} years.")
-            for name, record in result["verification"].items():
-                single, restarts = record["single_run"], record["best_of_restarts"]
-                st.write(f"{title(name)} · exact hits {single['optimum_hits']}/{single['runs']} with one run, "
-                         f"{restarts['optimum_hits']}/{restarts['runs']} with the best of {record['restart_count']}.")
-    st.subheader("What we cannot know from these data")
+    check_first_panel(farm, preset, locale, technical)
+    st.subheader(locale.text("unknown_heading"))
     for item in dict.fromkeys(uncertainty["unknowns"] + [context["groundwater"]["regional_context"]["uncertainty_note"]]):
         st.write(f"• {item}")
-    st.success("The farmer decides. Validate these illustrative comparisons locally before changing a rotation.")
+    st.success(locale.text("farmer_decides"))
+
+    if technical:
+        st.divider()
+        st.header("Technical checks")
+        st.caption("For reviewers · how the data and the model were checked. These panels use the reference farm "
+                   "inputs, English wording and metric units.")
+        with st.expander("Technical terms used below"):
+            for row in settings["locales"]["technical_glossary"]:
+                st.markdown(f"**{row['term']}** · {row['meaning']}")
+        opportunity_panel(farm_id, farm["name"])
+        validation_panel(farm_id, by_id)
+        robustness_panel(farm_id, preset, diagnosis)
+        optimizer_panel(result)
 
 
 app()
