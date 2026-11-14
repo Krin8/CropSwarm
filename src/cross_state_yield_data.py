@@ -55,6 +55,31 @@ def target_districts(source, yields):
     return mapping.rename(columns={"ASD_CODE": "district", "ASD_DESC": "district_name"})
 
 
+def yield_inventory(source, config):
+    """Screen source county identifiers and histories before a geographic join."""
+    inventory = {}
+    for state, name in TARGETS.items():
+        raw = source.loc[source.STATE_ANSI.eq(state)]
+        fips = raw.STATE_ANSI + raw.COUNTY_ANSI
+        county_ids = pd.DataFrame({"fips": fips.loc[fips.str.fullmatch(r"[0-9]{5}")].unique()})
+        yields, selection = select_yields(raw, county_ids, config)
+        districts = target_districts(raw, yields)
+        years = yields.groupby("fips").size()
+        eligible = yields.loc[yields.fips.isin(years[years.ge(config["minimum_yield_years"])].index)]
+        eligible_counties = districts.loc[districts.fips.isin(eligible.fips)]
+        names = raw.assign(fips=fips).drop_duplicates("fips").set_index("fips").COUNTY_NAME
+        excluded = [{"fips": f, "county": names[f], "valid_yield_years": int(n)}
+                    for f, n in years[years.lt(config["minimum_yield_years"])].items()]
+        inventory[state] = {"name": name, "selection": selection, "counties_with_yield": len(years),
+                            "eligible_counties": len(eligible_counties),
+                            "eligible_reporting_districts": int(eligible_counties.district.nunique()),
+                            "eligible_rows": len(eligible), "first_year": int(eligible.year.min()),
+                            "last_year": int(eligible.year.max()),
+                            "practice_counts": eligible.practice.value_counts().to_dict(),
+                            "excluded_low_coverage": excluded}
+    return inventory
+
+
 def load_centroids(path, state):
     centroids = (extract_centroids(path) if path.suffix == ".html"
                  else pd.read_csv(path, dtype={"fips": str}))
@@ -66,6 +91,10 @@ def load_centroids(path, state):
 
 
 def prepare_state(source, centroids, config, window, crop, cache, archive, *, fetch=False, save_archive=False):
+    identifiers = (source.STATE_ANSI + source.COUNTY_ANSI).loc[source.COUNTY_ANSI.str.fullmatch(r"[0-9]{3}")]
+    uncovered = sorted(set(identifiers) - set(centroids.fips))
+    if uncovered:
+        raise ValueError(f"NASS county IDs missing from the verified centroid file: {uncovered}")
     yields, selection = select_yields(source, centroids, config)
     districts = target_districts(source, yields)
     eligible = yields.groupby("fips").size().loc[lambda years: years.ge(config["minimum_yield_years"])].index
@@ -129,9 +158,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--extract-bulk", type=Path, help="The original P20 USDA NASS bulk gzip")
     parser.add_argument("--state", choices=tuple(TARGETS))
+    parser.add_argument("--centroid-file", type=Path, help="Verified local Census table or centroid CSV for --state")
     parser.add_argument("--fetch", action="store_true")
     parser.add_argument("--archive", action="store_true")
+    parser.add_argument("--yield-inventory", action="store_true", help="Report NASS coverage before the geographic join")
     args = parser.parse_args()
+    if args.centroid_file and not args.state:
+        parser.error("--centroid-file requires --state")
     config = json.loads((ROOT / "config/climate_yield.json").read_text())
     source = ARCHIVE / "quickstats_targets.csv"
     ARCHIVE.mkdir(parents=True, exist_ok=True)
@@ -141,9 +174,12 @@ def main():
             if hashlib.file_digest(handle, "sha256").hexdigest() != provenance["bulk_sha256"]:
                 parser.error("The NASS snapshot does not match the registered P20/P25 file")
         atomic_write(source, lambda path: extract_targets(args.extract_bulk, path, config))
-        if not args.state and not args.fetch and not args.archive:
+        if not (args.state or args.fetch or args.archive or args.yield_inventory):
             return
     rows = pd.read_csv(source, dtype=str, keep_default_na=False)
+    if args.yield_inventory:
+        write_json(ROOT / "data/processed/climate_yield_transfer_yield_inventory.json", yield_inventory(rows, config))
+        return
     p20 = json.loads((ROOT / "config/yield_backtest.json").read_text())
     spec = p20["farms"]["us_high_plains_b"]["series"][0]
     calendar = json.loads((ROOT / "data/processed/seasons_us_high_plains_b.json").read_text())
@@ -151,7 +187,10 @@ def main():
     crop = load_crops(ROOT / "data/crops.csv")[spec["crop"]]
     for state in (args.state,) if args.state else TARGETS:
         print(f"Preparing {TARGETS[state]}", flush=True)
-        centroids = load_centroids(ARCHIVE / f"census_{state}_counties.html", state)
+        path = args.centroid_file or ARCHIVE / f"census_{state}_counties.html"
+        if not path.is_file():
+            parser.error(f"Missing verified county centroid table for {TARGETS[state]}: {path.name}")
+        centroids = load_centroids(path, state)
         out, coverage, manifest = prepare_state(rows[rows.STATE_ANSI.eq(state)], centroids, config, window, crop,
                                                ARCHIVE / "power", ARCHIVE / "power_archive",
                                                fetch=args.fetch, save_archive=args.archive)

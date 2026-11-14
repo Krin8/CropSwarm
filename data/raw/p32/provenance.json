@@ -1,0 +1,8 @@
+{
+  "source": "USDA NASS Quick Stats bulk crops file used in P20 and P25",
+  "source_url": "https://www.nass.usda.gov/sites/default/files/datasets/qs.crops_20261113.txt.gz",
+  "bulk_sha256": "78382f2f6fe4e3a0a1d0feeb44a3b2cbb972b8ab4cef10d4fd223f98ec97bdc3",
+  "extract_sha256": "5237e04ab1fda0468be0c82bab053e3944db472a14f1c905d54ffd485c8092ae",
+  "extraction": "SURVEY, TOTAL, COUNTY, ANNUAL, YEAR, 1990\u20132024 and the two P25 winter-wheat yield selectors. Nebraska and Oklahoma only. Keep the archive reporting district columns.",
+  "centroid_status": "No verified Nebraska or Oklahoma centroid tables found in the available offline data."
+}

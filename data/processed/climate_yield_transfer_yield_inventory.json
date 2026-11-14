@@ -1,0 +1,297 @@
+{
+  "31": {
+    "name": "Nebraska",
+    "selection": {
+      "source_rows": 3680,
+      "unmatched_county_rows": 199,
+      "missing_or_invalid_county_values": 0,
+      "unmatched_county_codes": [
+        "998"
+      ],
+      "duplicate_source_rows": 0,
+      "all_practice_rows_superseded": 1420
+    },
+    "counties_with_yield": 91,
+    "eligible_counties": 59,
+    "eligible_reporting_districts": 8,
+    "eligible_rows": 1744,
+    "first_year": 1990,
+    "last_year": 2023,
+    "practice_counts": {
+      "non_irrigated": 1165,
+      "all_practices": 579
+    },
+    "excluded_low_coverage": [
+      {
+        "fips": "31003",
+        "county": "ANTELOPE",
+        "valid_yield_years": 12
+      },
+      {
+        "fips": "31005",
+        "county": "ARTHUR",
+        "valid_yield_years": 5
+      },
+      {
+        "fips": "31009",
+        "county": "BLAINE",
+        "valid_yield_years": 3
+      },
+      {
+        "fips": "31011",
+        "county": "BOONE",
+        "valid_yield_years": 17
+      },
+      {
+        "fips": "31017",
+        "county": "BROWN",
+        "valid_yield_years": 6
+      },
+      {
+        "fips": "31021",
+        "county": "BURT",
+        "valid_yield_years": 8
+      },
+      {
+        "fips": "31027",
+        "county": "CEDAR",
+        "valid_yield_years": 14
+      },
+      {
+        "fips": "31031",
+        "county": "CHERRY",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "31039",
+        "county": "CUMING",
+        "valid_yield_years": 5
+      },
+      {
+        "fips": "31043",
+        "county": "DAKOTA",
+        "valid_yield_years": 4
+      },
+      {
+        "fips": "31051",
+        "county": "DIXON",
+        "valid_yield_years": 3
+      },
+      {
+        "fips": "31053",
+        "county": "DODGE",
+        "valid_yield_years": 11
+      },
+      {
+        "fips": "31055",
+        "county": "DOUGLAS",
+        "valid_yield_years": 17
+      },
+      {
+        "fips": "31071",
+        "county": "GARFIELD",
+        "valid_yield_years": 4
+      },
+      {
+        "fips": "31077",
+        "county": "GREELEY",
+        "valid_yield_years": 15
+      },
+      {
+        "fips": "31079",
+        "county": "HALL",
+        "valid_yield_years": 17
+      },
+      {
+        "fips": "31103",
+        "county": "KEYA PAHA",
+        "valid_yield_years": 12
+      },
+      {
+        "fips": "31115",
+        "county": "LOUP",
+        "valid_yield_years": 4
+      },
+      {
+        "fips": "31117",
+        "county": "MCPHERSON",
+        "valid_yield_years": 5
+      },
+      {
+        "fips": "31119",
+        "county": "MADISON",
+        "valid_yield_years": 9
+      },
+      {
+        "fips": "31139",
+        "county": "PIERCE",
+        "valid_yield_years": 11
+      },
+      {
+        "fips": "31143",
+        "county": "POLK",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "31149",
+        "county": "ROCK",
+        "valid_yield_years": 6
+      },
+      {
+        "fips": "31153",
+        "county": "SARPY",
+        "valid_yield_years": 12
+      },
+      {
+        "fips": "31163",
+        "county": "SHERMAN",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "31167",
+        "county": "STANTON",
+        "valid_yield_years": 9
+      },
+      {
+        "fips": "31171",
+        "county": "THOMAS",
+        "valid_yield_years": 2
+      },
+      {
+        "fips": "31173",
+        "county": "THURSTON",
+        "valid_yield_years": 9
+      },
+      {
+        "fips": "31177",
+        "county": "WASHINGTON",
+        "valid_yield_years": 16
+      },
+      {
+        "fips": "31179",
+        "county": "WAYNE",
+        "valid_yield_years": 4
+      },
+      {
+        "fips": "31183",
+        "county": "WHEELER",
+        "valid_yield_years": 4
+      },
+      {
+        "fips": "31185",
+        "county": "YORK",
+        "valid_yield_years": 16
+      }
+    ]
+  },
+  "40": {
+    "name": "Oklahoma",
+    "selection": {
+      "source_rows": 2741,
+      "unmatched_county_rows": 181,
+      "missing_or_invalid_county_values": 0,
+      "unmatched_county_codes": [
+        "998"
+      ],
+      "duplicate_source_rows": 0,
+      "all_practice_rows_superseded": 473
+    },
+    "counties_with_yield": 75,
+    "eligible_counties": 58,
+    "eligible_reporting_districts": 8,
+    "eligible_rows": 1800,
+    "first_year": 1990,
+    "last_year": 2023,
+    "practice_counts": {
+      "all_practices": 1379,
+      "non_irrigated": 421
+    },
+    "excluded_low_coverage": [
+      {
+        "fips": "40001",
+        "county": "ADAIR",
+        "valid_yield_years": 13
+      },
+      {
+        "fips": "40005",
+        "county": "ATOKA",
+        "valid_yield_years": 13
+      },
+      {
+        "fips": "40021",
+        "county": "CHEROKEE",
+        "valid_yield_years": 14
+      },
+      {
+        "fips": "40023",
+        "county": "CHOCTAW",
+        "valid_yield_years": 18
+      },
+      {
+        "fips": "40029",
+        "county": "COAL",
+        "valid_yield_years": 17
+      },
+      {
+        "fips": "40061",
+        "county": "HASKELL",
+        "valid_yield_years": 13
+      },
+      {
+        "fips": "40063",
+        "county": "HUGHES",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "40069",
+        "county": "JOHNSTON",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "40079",
+        "county": "LEFLORE",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "40089",
+        "county": "MCCURTAIN",
+        "valid_yield_years": 18
+      },
+      {
+        "fips": "40091",
+        "county": "MCINTOSH",
+        "valid_yield_years": 15
+      },
+      {
+        "fips": "40099",
+        "county": "MURRAY",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "40107",
+        "county": "OKFUSKEE",
+        "valid_yield_years": 19
+      },
+      {
+        "fips": "40121",
+        "county": "PITTSBURG",
+        "valid_yield_years": 16
+      },
+      {
+        "fips": "40123",
+        "county": "PONTOTOC",
+        "valid_yield_years": 18
+      },
+      {
+        "fips": "40133",
+        "county": "SEMINOLE",
+        "valid_yield_years": 18
+      },
+      {
+        "fips": "40143",
+        "county": "TULSA",
+        "valid_yield_years": 19
+      }
+    ]
+  }
+}

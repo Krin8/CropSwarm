@@ -95,3 +95,13 @@ def test_data_builder_keeps_yield_eligible_county_and_records_missing_weather(tm
     assert all(row["coverage"] == "incomplete" for row in manifest)
     with pytest.raises(ValueError, match="Unresolved"):
         target_districts(pd.concat([raw, raw.iloc[:1].assign(ASD_CODE="99")]), coords)
+
+
+def test_committed_yield_inventory_reproduces_with_no_geography_or_network():
+    from src.cross_state_yield_data import ARCHIVE, yield_inventory
+
+    source = pd.read_csv(ARCHIVE / "quickstats_targets.csv", dtype=str, keep_default_na=False)
+    expected = json.loads((ROOT / "data/processed/climate_yield_transfer_yield_inventory.json").read_text())
+    assert yield_inventory(source, SETTINGS) == expected
+    assert sum(row["eligible_counties"] for row in expected.values()) == 117
+    assert sum(row["eligible_rows"] for row in expected.values()) == 3544
