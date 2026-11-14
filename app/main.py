@@ -224,6 +224,48 @@ def app():
                    "USDA NASS CDL Kansas classes; illustrative crop catalog and irrigation assumptions.")
         for caveat in backtest["caveats"]:
             st.caption(caveat)
+        with st.expander("2001–2024 NASA climate and vegetation check"):
+            consistency = load(farm_id, "nasa_consistency")
+            st.write("Do NASA POWER rainfall and heat move with Terra MODIS greenness in the same season? "
+                     "This crop-agnostic comparison describes agreement between the NASA data products. "
+                     "Crop performance and rotation recommendations are outside its scope.")
+            st.caption("Illustrative, validate locally. The 250 m MODIS pixel can mix fields, weeds and other cover. "
+                       "The P5 season windows are approximate. Missing composites are excluded.")
+            st.caption("Rainfall anomaly compares seasonal totals with the 1991–2020 mean. "
+                       "Deficit is the shortfall below that mean. Heat days exceed the local seasonal "
+                       "90th percentile of daily maxima in that period. These thresholds are design choices.")
+            long_results = []
+            for season, entry in consistency["seasons"].items():
+                for note in entry["notes"]:
+                    st.caption(f"{title(season)} · {note}")
+                for statistic in entry["comparisons"]:
+                    interval = statistic["bootstrap_95"]
+                    long_results.append({
+                        "Season": title(season), "POWER indicator": statistic["driver"],
+                        "MODIS response": statistic["response"], "n": statistic["n"],
+                        "Spearman ρ": None if statistic["rho"] is None else round(statistic["rho"], 2),
+                        "Bootstrap 95%": "Unavailable" if interval is None else
+                        f"{interval[0]:.2f} to {interval[1]:.2f}",
+                        "Direction": f"Consistent in {statistic['consistent']} of {statistic['assessable']}",
+                        "Finding": statistic["finding"],
+                    })
+            st.dataframe(pd.DataFrame(long_results), hide_index=True)
+            st.caption("Sources · NASA POWER daily precipitation and maximum temperature · "
+                       "NASA Terra MOD13Q1 QA-screened NDVI. Counts exclude median ties. "
+                       "Bootstrap intervals are descriptive and samples below eight are small.")
+            season = st.selectbox("Inspect seasonal values", tuple(consistency["seasons"]),
+                                  format_func=title, key="nasa_consistency_season")
+            st.dataframe(pd.DataFrame([{
+                "Season start year": row["start_year"], "Rain anomaly (mm)": row["rainfall_anomaly_mm"],
+                "Rain deficit (mm)": row["rainfall_deficit_mm"], "Heat days": row["heat_days"],
+                "Integrated NDVI (NDVI × days)": row["integrated_ndvi_days"], "Peak NDVI": row["peak_ndvi"],
+                "Composites passing QA": row["qa_composites"],
+            } for row in consistency["seasons"][season]["rows"]]), hide_index=True)
+            st.markdown("**MODIS coverage by calendar year**")
+            st.dataframe(pd.DataFrame([{
+                "Year": row["year"], "Expected": row["expected"], "Valid NDVI": row["valid_ndvi"],
+                "Passes QA": row["qa_accepted"], "Record": row["status"],
+            } for row in consistency["coverage"]]), hide_index=True)
     edits = edit_farm(farm, context, settings)
 
     st.subheader("Farm priorities")

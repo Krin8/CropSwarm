@@ -14,7 +14,7 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 ## Seven key results
 
 1. Each farm shows its existing baseline and four alternatives with distinct metric profiles, reasons, benefits, risks and information gaps.
-2. NASA POWER supplies 1991–2025 daily weather for all three sites; Terra MODIS supplies 2015–2024 vegetation composites. [Coverage](docs/data_pipeline.md)
+2. NASA POWER supplies 1991–2025 daily weather for all three sites. The long-record validation uses 2001–2024 Terra MODIS composites. [Coverage and results](docs/backtest.md#p19-long-record-nasa-consistency-check)
 3. Six source-tagged metrics cover water, nitrogen, erosion, climate fit, relative income and risk. [Scoring](docs/scoring.md)
 4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
 5. Across 30 seeded trials per farm and preset, a single ant-colony run found the exact optimum 21–30 times; best-of-five found it 29–30 times. [Gaps](docs/optimizer.md)
@@ -77,6 +77,8 @@ python -m src.farm_validity
 python -m src.optimizer
 python -m src.uncertainty
 python -m src.backtest
+python -m src.data_pipeline --long-record
+python -m src.nasa_consistency
 python -m src.stress_test
 python -m src.stress_margins
 python -m src.tie_diagnosis

@@ -21,3 +21,9 @@ Five calendar years per POWER chunk, four default workers, 10-second connection 
 - [Coverage report](../data/processed/coverage_p4.json) lists expected dates and missing dates per daily field and per composite year/field. A MODIS year's status refers to valid-range NDVI coverage, before quality filtering. Other band gaps remain explicit.
 
 These are gridded observations and model outputs for illustrative points. The provider's MOD13Q1 subset responses report nominal 250 m resolution and a projected cell size of about 231.7 m. Separate fields and vegetation can share the same pixel. POWER `GWETROOT` expresses modeled root-zone soil wetness. Use local observations to validate soil or crop claims. Satellite data here supply no soil nitrogen or organic carbon measurements. [NASA POWER hydrology documentation](https://power.larc.nasa.gov/docs/methodology/data/sources_hydrology/)
+
+## P19 MODIS long record
+
+Use `python -m src.data_pipeline --long-record --fetch` to resume the 2001–2024 point subsets for the three configured farms. This mode requests only MOD13Q1, using the existing P4 cache keys, three date chunks per year, bounded retries and atomic writes. Omit `--fetch` to process whatever is in the committed cache offline. This mode writes `data/processed/ndvi_long_<farm_id>.csv` and `data/raw/p4/manifest_p19.json`. The existing climate and vegetation outputs used by P5 and P15 keep their original date ranges.
+
+Then run `python -m src.nasa_consistency` against the saved P5 calendars and cached POWER climate. The resulting `nasa_consistency_<farm_id>.json` files contain annual coverage, season rows and paired statistics. See [methods and results](backtest.md#p19-long-record-nasa-consistency-check).

@@ -18,6 +18,8 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     assert not app.exception
     assert any(len(table.value) == 5 and "Strategy" in table.value.columns for table in app.dataframe)
     assert any("Validation · historical back-test" in row.value for row in app.subheader)
+    assert any("NASA climate and vegetation check" in row.label for row in app.expander)
+    assert any(len(table.value) == 24 and "Passes QA" in table.value.columns for table in app.dataframe)
     assert any("Robustness check" in row.value for row in app.subheader)
     assert any("Evidence labels:" in row.value for row in app.caption)
     assert any("Evidence" in table.value.columns for table in app.dataframe)
