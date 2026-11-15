@@ -35,9 +35,13 @@ This is a conservative classification before deletion. `pre-cleanup` tags the st
 | `docs/briefs/` (3.2 MiB) | ASK | Generated printable briefs may be expected submission artifacts even if no Markdown link names each file. Recommend keep unless the app and test suite prove them disposable and the user accepts removal. |
 | Any orphan draft, duplicate, or temporary document | REMOVE-SAFE candidate | Only after no code or document links to it and quarantine tests pass. |
 
-## Ask items and stop point
+## Resolved ASK items and cleanup outcome
 
-The ASK groups above total hundreds of MiB. They are ambiguous because the network prohibition prevents re-fetching caches during P52 and because briefs may be intended deliverables. Recommendation: keep all ASK groups for the submission and delete only confirmed generated junk. No deletion or quarantine trial has been run. The task's Step 2 requires stopping here until these items are resolved.
+The user directed us to retain `.venv` locally, keep ignored P48/P50 caches, retain raw groups read by rebuilds or linked as provenance, and retain all 12 PDFs plus the 12 HTML briefs linked by the brief index. Thus the earlier ASK labels above are historical inventory labels, now resolved to KEEP-REQUIRED or KEEP-TEST as applicable. The cache directories and `.venv` match `.gitignore`; no app or test code reads `data/cache/`. The cache retrieval scripts themselves use those directories when explicitly run. `data/raw/p11/` is read by `src/app_assets.py`; `data/raw/p13/manifest.json` is linked by `docs/citation_audit.md`.
+
+One unreferenced tracked CSV (0.81 MiB) was moved to `/private/tmp/cropswarm-p52-quarantine/data/processed/` and removed from Git. Its absence passed 306 tests and app checks for all three farms. No briefs or raw witnesses were removed. The largest retained tracked file is 7.56 MiB; no tracked file is over 50 MiB. The external ZIP backup was integrity checked before the removal.
+
+The fresh clone passed a static link check: 60 documents, 472 local links and 30 PNGs. A newly created Python 3.14 venv could not install the pinned requirements in offline mode because no local Jinja2 3.1.6 wheel was available. Therefore fresh-clone tests and app startup are unverified; the branch must remain unmerged under the user’s all-tests gate.
 
 ## Twenty largest tracked files before removal
 
