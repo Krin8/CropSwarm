@@ -68,7 +68,14 @@ def test_rows_disclose_negative_results_and_limits():
         assert "44 to 80 kg N/ha" in rows["P49"].result
     if "P47" in rows:
         assert "EXPLORATORY" in rows["P47"].question
-        assert "shuffled 95% range" in rows["P47"].result
+        p47 = rows["P47"]
+        assert "Kansas 1–2, 1–4, 1–7" in p47.sample
+        assert "Telangana 6–1,516, 12–3,032, 23–6,063" in p47.sample
+        assert "Makueni 1–209, 1–418, 1–835" in p47.sample
+        assert "P44’s top-three sets were empty" in p47.result
+        assert "exceeds an independent-shuffle null (floor 1/1001); the null ignores dependence between cells, so this is not a significance test" in p47.result
+        assert p47.detail == "rank_concentration.md#stable-top-member-shares"
+        assert "p-value" not in p47.result
     if "P48" in rows:
         assert rows["P48"].direction == "mixed"
         assert "1/4" in rows["P48"].result and "2/4" in rows["P48"].result

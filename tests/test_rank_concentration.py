@@ -89,3 +89,42 @@ def test_saved_analysis_has_all_members_and_matches_p44_scope():
                 assert 0 < row["joint_p"] <= min(row["max_share_p"], row["set_size_p"]) <= 1
                 assert len(farm["null"][q]["max_share_95_range"]) == 2
                 previous = allowed
+
+
+
+def test_report_gives_absolute_bands_and_every_member_share():
+    import json
+
+    from src.rank_concentration import OUTPUT, ROOT
+    from src.rank_concentration_report import RECONCILIATION, band_count, null_statement, render, rotation_label
+
+    saved = json.loads((ROOT / "data/processed" / OUTPUT).read_text())
+    document = render(saved)
+    assert RECONCILIATION in document and null_statement(saved) in document
+    assert all(term not in document for term in ("p-value", "empirical p =", "p for both", "unadjusted"))
+    assert band_count([1, 1]) == "1"
+    for farm in saved["farms"].values():
+        bands = [band_count(bounds) for bounds in farm["top_slots_per_cell"].values()]
+        assert f"| {' | '.join(bands)} |" in document
+    members = document.split("## Stable-top member shares", 1)[1].split("## Interpretation", 1)[0]
+    for farm in saved["farms"].values():
+        farm_name = farm["name"]
+        farm_section = members.split(f"### {farm_name}\n", 1)[1].split("\n### ", 1)[0]
+        for preset, rows in farm["presets"].items():
+            name = preset.replace("_", " ").title()
+            if not rows["2"]["members"]:
+                assert f"**{name}.** All three sets were empty." in farm_section
+                continue
+            section = farm_section.split(f"#### {name}\n", 1)[1].split("\n#### ", 1)[0]
+            table = [line.strip("| ").split(" | ") for line in section.splitlines() if line.startswith("| ")][2:]
+            assert len(table) == rows["2"]["size"]
+            rendered = {label: shares for label, *shares in table}
+            for index, row in enumerate(rows.values()):
+                assert row["max_share_p"] == 1 / (saved["design"]["null_replicates"] + 1)
+                reported = {label: shares[index] for label, shares in rendered.items() if shares[index] != "—"}
+                expected = {
+                    rotation_label(member["cycle"]):
+                    f"{member['count']:,}/{farm['cells_per_preset']:,} ({member['share']:.2%})"
+                    for member in row["members"]
+                }
+                assert reported == expected

@@ -23,6 +23,7 @@ from src.evidence_ledger import COLUMNS, NOTE, build_ledger
 from src.literature_check_p45 import METRIC_NAMES, metric_counts
 from src.makueni_cropland import FARM_ID as MAKUENI_ID, REPORT as MAKUENI_CROPLAND_REPORT
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
+from src.rank_concentration_report import RECONCILIATION, band_count, null_statement
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.sensitivity import check_first
 from src.tie_diagnosis import alternative_groups
@@ -88,11 +89,14 @@ def evidence_ledger_panel():
         rows = build_ledger(cached)
         st.caption(NOTE)
         headers = "".join(f'<th scope="col">{escape(name)}</th>' for name in COLUMNS)
-        body = "".join(
-            "<tr>" + f'<th scope="row">{escape(label)}</th>'
-            + "".join(f"<td>{escape(cell)}</td>" for cell in cells) + "</tr>"
-            for label, *cells in (row.cells() for row in rows)
-        )
+        body = []
+        for row in rows:
+            label, *cells = row.cells()
+            label = escape(label)
+            if row.study == "P47":
+                label = f'<a href="#p47-member-shares">{label}</a>'
+            body.append(f'<tr><th scope="row">{label}</th>'
+                        + "".join(f"<td>{escape(cell)}</td>" for cell in cells) + "</tr>")
         st.html(f"""
             <style>
               .evidence-ledger {{ overflow-x: auto; }}
@@ -111,7 +115,7 @@ def evidence_ledger_panel():
             <div class="evidence-ledger">
               <table aria-label="Evidence ledger">
                 <thead><tr>{headers}</tr></thead>
-                <tbody>{body}</tbody>
+                <tbody>{''.join(body)}</tbody>
               </table>
             </div>
         """)
@@ -600,13 +604,15 @@ def expanded_consensus_panel(farm_id):
 
 
 def rank_concentration_panel(farm_id):
+    st.html('<span id="p47-member-shares"></span>')
     report = cached("rank_concentration_p47.json")
     farm = report["farms"][farm_id]
     design = report["design"]
     with st.expander("Chance-adjusted rank concentration (P47 · EXPLORATORY)"):
         st.caption(f"{farm['name']} · {len(farm['variants'])} P44 variants × {farm['draws']} P22 draws · "
                    f"{farm['cells_per_preset']:,} cells per preset. "
-                   "Illustrative, validate locally. " + report["limit"])
+                   "Illustrative, validate locally. Ranking consistency leaves field performance unresolved.")
+        st.caption(RECONCILIATION)
         st.write(f"A rotation enters the set if it places in the selected top fraction in at least "
                  f"{design['min_share']:.0%} of cells. The cutoffs are design choices.")
         columns = st.columns(2)
@@ -619,23 +625,22 @@ def rank_concentration_panel(farm_id):
             reference = farm["null"][q]
             low, high = reference["max_share_95_range"]
             summary.append({
-                "P47 top fraction": f"{q}%", "Set size": row["size"],
+                "P47 top fraction": f"{q}%",
+                "Rotations in band per cell": band_count(farm["top_slots_per_cell"][q]),
+                "Set size": row["size"],
                 "Largest observed share": f"{row['largest_share']:.2%}",
                 "Null mean set size": f"{reference['mean_set_size']:.2f}",
                 "Null mean largest share": f"{reference['mean_max_share']:.2%}",
                 "Shuffled 95% max range": f"{low:.2%} to {high:.2%}",
-                "p, largest share": f"{row['max_share_p']:.4f}",
-                "p, set size": f"{row['set_size_p']:.4f}", "p, both": f"{row['joint_p']:.4f}",
             })
         st.dataframe(pd.DataFrame(summary), hide_index=True)
-        st.caption(f"P44 scoring and eligibility replay · {design['null_replicates']:,} shuffled null replicates. "
-                   "Shuffling keeps each cell's admitted rotations. Tail probabilities are unadjusted.")
+        st.caption("Band counts are absolute per-cell ranges because eligibility varies. " + null_statement(report))
         selected = farm["presets"][preset][cutoff]
 
         def rotation_row(row):
             cycle = " → ".join(" / ".join(title(crop) for crop in year) for year in row["cycle"])
             return {"Rotation": cycle, "Share of all cells": f"{row['share']:.2%}",
-                    "Cells in top fraction": row["count"]}
+                    "Cells in top fraction": f"{row['count']:,}/{farm['cells_per_preset']:,}"}
 
         st.dataframe(pd.DataFrame([
             {"P47 published strategy": title(row["strategy"]), **rotation_row(row),

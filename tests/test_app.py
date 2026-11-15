@@ -333,7 +333,10 @@ def test_evidence_ledger_panel_matches_the_document_generator():
     assert not app.exception
     assert any(row.label == "Evidence ledger" for row in app.expander)
     ledger = next(item.value for item in app.get("html") if 'aria-label="Evidence ledger"' in item.value)
-    actual = [tuple(unescape(cell) for cell in re.findall(r"<(?:th|td)[^>]*>(.*?)</(?:th|td)>", row))
+    assert 'href="#p47-member-shares"' in ledger
+    assert any('id="p47-member-shares"' in item.value for item in app.get("html"))
+    actual = [tuple(unescape(re.sub(r"<[^>]+>", "", cell))
+                    for cell in re.findall(r"<(?:th|td)[^>]*>(.*?)</(?:th|td)>", row))
               for row in re.findall(r"<tr>(.*?)</tr>", ledger)]
     expected = build_ledger(lambda name: json.loads((ROOT / "data/processed" / name).read_text()))
     assert actual == [COLUMNS, *(row.cells() for row in expected)]
@@ -492,11 +495,17 @@ def test_rank_concentration_shows_all_cutoffs_and_published_membership():
     summary = next(table.value for table in app.dataframe if "P47 top fraction" in table.value.columns)
     assert list(summary["P47 top fraction"]) == ["0.5%", "1%", "2%"]
     assert list(summary["Set size"]) == [case["size"] for case in expected.values()]
+    assert list(summary["Rotations in band per cell"]) == ["1–209", "1–418", "1–835"]
+    assert not any(str(name).startswith("p,") for name in summary.columns)
+    assert any("this is not a significance test" in row.value for row in app.caption)
+    assert any("P44’s top-three sets were empty" in row.value for row in app.caption)
     published = next(table.value for table in app.dataframe if "P47 published strategy" in table.value.columns)
     assert list(published["In set"]) == ["Yes" if row["member"] else "No" for row in expected["2"]["published"]]
     if expected["2"]["members"]:
         members = next(table.value for table in app.dataframe if "P47 set member" in table.value.columns)
         assert list(members["P47 set member"]) == [row["rotation_key"] for row in expected["2"]["members"]]
+        assert list(members["Share of all cells"]) == [f"{row['share']:.2%}" for row in expected["2"]["members"]]
+        assert list(members["Cells in top fraction"]) == [f"{row['count']}/512" for row in expected["2"]["members"]]
     else:
         assert any("No rotation enters the P47 top-2% set" in row.value for row in app.info)
 

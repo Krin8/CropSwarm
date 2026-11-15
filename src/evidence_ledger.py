@@ -419,25 +419,29 @@ def expanded_consensus_check(report):
 
 
 def rank_concentration_check(report):
-    farms = list(report["farms"].values())
+    from src.rank_concentration_report import RECONCILIATION, band_count, null_statement
+
+    regions = ("Kansas", "Telangana", "Makueni")
+    farms = [report["farms"][farm_id] for farm_id in FARMS]
     cutoffs = [f"{q:g}" for q in report["design"]["q_pct"]]
     cases = [outcomes for farm in farms for outcomes in farm["presets"].values()]
     sizes = {q: sum(case[q]["size"] > 0 for case in cases) for q in cutoffs}
     nonempty = ", ".join(f"{sizes[q]}/{len(cases)} at {q}%" for q in cutoffs)
-    largest, reference = max(
-        ((case[q], farm["null"][q]) for farm in farms for case in farm["presets"].values() for q in cutoffs),
-        key=lambda pair: pair[0]["largest_share"],
+    bands = " · ".join(
+        f"{region} " + ", ".join(band_count(farm["top_slots_per_cell"][q]) for q in cutoffs)
+        for region, farm in zip(regions, farms, strict=True)
     )
-    low, high = reference["max_share_95_range"]
+    largest = max(case[q]["largest_share"] for case in cases for q in cutoffs)
     return EvidenceRow(
-        "P47", "EXPLORATORY · Do rotations repeatedly place in wider rank bands across P44 settings?",
+        "P47", "EXPLORATORY · Do rotations repeatedly place in wider rank bands across P44 settings? "
+        "Stable-top member shares",
         f"{FARM_REGIONS} · " +
-        ", ".join(f"{farm['cells_per_preset']:,}" for farm in farms) + " cells per preset, respectively",
-        f"Nonempty sets {nonempty}. Highest share {largest['largest_share']:.2%}, with shuffled 95% range "
-        f"{low:.2%} to {high:.2%} and p {largest['max_share_p']:.4f}.",
+        ", ".join(f"{farm['cells_per_preset']:,}" for farm in farms) + " cells per preset, respectively. "
+        f"Rotations per cell at 0.5%, 1%, 2% · {bands}.",
+        f"Nonempty sets {nonempty}. Highest share {largest:.2%}. {RECONCILIATION} {null_statement(report)}",
         direction(any(sizes.values()), any(n < len(cases) for n in sizes.values())),
         "Repeated ranks within the model leave field performance and rotation quality unresolved.",
-        "rank_concentration.md",
+        "rank_concentration.md#stable-top-member-shares",
     )
 
 
