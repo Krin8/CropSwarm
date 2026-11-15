@@ -1,0 +1,23 @@
+{
+  "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_S03E036_Map.tif",
+  "bytes": 135162419,
+  "etag": "\"5912f043128a6370f5d949ffc1d3ce4b-17\"",
+  "last_modified": "Wed, 26 Oct 2022 12:47:55 GMT",
+  "bbox_lonlat": [
+    37.59,
+    -2.0,
+    37.69,
+    -1.9
+  ],
+  "shape": [
+    1200,
+    1200
+  ],
+  "west_north_dx_dy": [
+    37.59,
+    -1.9,
+    8.333333333333333e-05,
+    8.333333333333333e-05
+  ],
+  "tiff_nodata": 0
+}

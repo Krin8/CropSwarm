@@ -1,0 +1,23 @@
+{
+  "url": "https://gladxfer.umd.edu/Potapov/Global_Crop/Data/Global_cropland_SE_2019.tif",
+  "bytes": 684417421,
+  "etag": "\"28cb618d-5b90a1c5c4d9c\"",
+  "last_modified": "Sat, 16 Jan 2021 20:12:40 GMT",
+  "bbox_lonlat": [
+    37.59,
+    -2.0,
+    37.69,
+    -1.9
+  ],
+  "shape": [
+    401,
+    401
+  ],
+  "west_north_dx_dy": [
+    37.58975000000002,
+    -1.8997500000000014,
+    0.00025000000000000017,
+    0.00025000000000000017
+  ],
+  "tiff_nodata": -1
+}

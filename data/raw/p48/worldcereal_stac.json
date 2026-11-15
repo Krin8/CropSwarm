@@ -1,0 +1,113 @@
+{
+  "catalogue_url": "https://explorer.digitalearth.africa/stac/search?collections=esa_worldcereal_temporarycrops&bbox=37.59,-2,37.69,-1.90&limit=25",
+  "id": "c3e5eb58-3789-59a3-a402-fa04ec562f0d",
+  "bbox": [
+    11.716309738842783,
+    -29.016057231547645,
+    43.28997640550948,
+    3.618609435119045
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          43.28997640550948,
+          3.618609435119045
+        ],
+        [
+          43.28997640550948,
+          -29.016057231547645
+        ],
+        [
+          11.716309738842783,
+          -29.016057231547645
+        ],
+        [
+          11.716309738842783,
+          -29.015790564880955
+        ],
+        [
+          11.716309738842783,
+          3.618609435119045
+        ],
+        [
+          43.28990973884279,
+          3.618609435119045
+        ],
+        [
+          43.28997640550948,
+          3.618609435119045
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "created": "2023-04-12T10:17:33Z",
+    "datetime": "2020-11-05T00:00:00Z",
+    "proj:code": "EPSG:4326",
+    "proj:shape": [
+      391616,
+      378884
+    ],
+    "platform": "esa worldcereal project",
+    "odc:product": "esa_worldcereal_temporarycrops",
+    "odc:producer": "https://vito.be/",
+    "proj:transform": [
+      8.333333333333341e-05,
+      0.0,
+      11.716309738842783,
+      0.0,
+      -8.333333333333338e-05,
+      3.618609435119045,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "odc:file_format": "GeoTIFF",
+    "odc:region_code": "12048",
+    "end_datetime": "2021-11-05T23:59:59Z",
+    "start_datetime": "2020-11-05T00:00:00Z",
+    "odc:product_family": "esa_worldcereal",
+    "odc:dataset_version": "v1.0.0",
+    "cubedash:region_code": "12048"
+  },
+  "asset": {
+    "href": "s3://deafrica-input-datasets/esa_worldcereal/temporarycrops/tc-annual/12048/2021/12048_tc-annual_temporarycrops_2020-11-05_2021-11-05_classification.tif",
+    "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+    "title": "classification",
+    "eo:bands": [
+      {
+        "name": "classification"
+      }
+    ],
+    "proj:code": "EPSG:4326",
+    "proj:shape": [
+      391616,
+      378884
+    ],
+    "proj:transform": [
+      8.333333333333341e-05,
+      0.0,
+      11.716309738842783,
+      0.0,
+      -8.333333333333338e-05,
+      3.618609435119045,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "raster:bands": [
+      {
+        "nodata": 255,
+        "data_type": "uint8",
+        "unit": "1",
+        "scale": 1.0,
+        "offset": 0.0
+      }
+    ],
+    "roles": [
+      "data"
+    ]
+  }
+}

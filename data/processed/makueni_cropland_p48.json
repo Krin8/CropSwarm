@@ -1,0 +1,1055 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "label": "illustrative; validate locally",
+  "design": {
+    "radius_m": 5000,
+    "minimum_products": 2,
+    "source": "docs/p48_plan.md"
+  },
+  "original": {
+    "lat": -1.95,
+    "lon": 37.64,
+    "crop_votes": 1,
+    "meets_rule": false
+  },
+  "alternate": {
+    "lat": -1.950125,
+    "lon": 37.639875,
+    "distance_m": 19.651002703545696,
+    "candidate_grid": "glad",
+    "eligible_centers": 19736,
+    "supporting_products": [
+      "worldcover",
+      "glad"
+    ]
+  },
+  "products": {
+    "worldcover": {
+      "name": "ESA WorldCover v200",
+      "period": "2021",
+      "resolution": "10 m nominal",
+      "source": "https://esa-worldcover.org/en/data-access",
+      "crop": 40,
+      "legend": {
+        "10": "Tree cover",
+        "20": "Shrubland",
+        "30": "Grassland",
+        "40": "Cropland",
+        "50": "Built-up",
+        "60": "Bare/sparse vegetation",
+        "70": "Snow and ice",
+        "80": "Permanent water bodies",
+        "90": "Herbaceous wetland",
+        "95": "Mangroves",
+        "100": "Moss and lichen"
+      },
+      "class_code": 30,
+      "touching_class_codes": [
+        30,
+        40
+      ],
+      "crop_pixels": 223957,
+      "disk_pixels": 915282,
+      "unresolved_pixels": 0,
+      "pixel_counts": {
+        "10": 23938,
+        "20": 424699,
+        "30": 239458,
+        "40": 223957,
+        "50": 2375,
+        "60": 846,
+        "80": 9
+      },
+      "cropland_share": 0.24468634300053685,
+      "classified_share": 1.0,
+      "point_class": "Grassland",
+      "access": "Public TIFF, cached",
+      "asset": {
+        "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_S03E036_Map.tif",
+        "bytes": 135162419,
+        "etag": "\"5912f043128a6370f5d949ffc1d3ce4b-17\"",
+        "last_modified": "Wed, 26 Oct 2022 12:47:55 GMT",
+        "bbox_lonlat": [
+          37.59,
+          -2.0,
+          37.69,
+          -1.9
+        ],
+        "shape": [
+          1200,
+          1200
+        ],
+        "west_north_dx_dy": [
+          37.59,
+          -1.9,
+          8.333333333333333e-05,
+          8.333333333333333e-05
+        ],
+        "tiff_nodata": 0
+      },
+      "alternate_class_code": 40,
+      "alternate_class": "Cropland"
+    },
+    "glad": {
+      "name": "UMD GLAD cropland extent",
+      "period": "2016\u20132019",
+      "resolution": "0.00025\u00b0 (~30 m nominal)",
+      "source": "https://glad.umd.edu/dataset/croplands",
+      "crop": 1,
+      "legend": {
+        "0": "No cropland or no data",
+        "1": "Cropland"
+      },
+      "class_code": 1,
+      "touching_class_codes": [
+        1
+      ],
+      "crop_pixels": 61981,
+      "disk_pixels": 101706,
+      "unresolved_pixels": 39725,
+      "pixel_counts": {
+        "0": 39725,
+        "1": 61981
+      },
+      "cropland_share": 0.6094117137101512,
+      "classified_share": 0.6094117137101512,
+      "point_class": "Cropland",
+      "access": "Public TIFF, cached",
+      "asset": {
+        "url": "https://gladxfer.umd.edu/Potapov/Global_Crop/Data/Global_cropland_SE_2019.tif",
+        "bytes": 684417421,
+        "etag": "\"28cb618d-5b90a1c5c4d9c\"",
+        "last_modified": "Sat, 16 Jan 2021 20:12:40 GMT",
+        "bbox_lonlat": [
+          37.59,
+          -2.0,
+          37.69,
+          -1.9
+        ],
+        "shape": [
+          401,
+          401
+        ],
+        "west_north_dx_dy": [
+          37.58975000000002,
+          -1.8997500000000014,
+          0.00025000000000000017,
+          0.00025000000000000017
+        ],
+        "tiff_nodata": -1
+      },
+      "alternate_class_code": 1,
+      "alternate_class": "Cropland"
+    },
+    "worldcereal": {
+      "name": "ESA WorldCereal v100",
+      "period": "2021 product (zone 12048, Nov 2020\u2013Nov 2021)",
+      "resolution": "10 m nominal",
+      "source": "https://docs.digitalearthafrica.org/en/latest/data_specs/ESA_World_Cereal_specs.html",
+      "crop": 100,
+      "legend": {
+        "0": "Outside temporary cropland",
+        "100": "Temporary cropland"
+      },
+      "class_code": 0,
+      "touching_class_codes": [
+        0
+      ],
+      "crop_pixels": 29303,
+      "disk_pixels": 915238,
+      "unresolved_pixels": 0,
+      "pixel_counts": {
+        "0": 885935,
+        "100": 29303
+      },
+      "cropland_share": 0.03201678335597827,
+      "classified_share": 1.0,
+      "point_class": "Outside temporary cropland",
+      "access": "Public TIFF, cached",
+      "asset": {
+        "url": "https://deafrica-input-datasets.s3.af-south-1.amazonaws.com/esa_worldcereal/temporarycrops/tc-annual/12048/2021/12048_tc-annual_temporarycrops_2020-11-05_2021-11-05_classification.tif",
+        "bytes": 943089412,
+        "etag": "\"c7988cd556818620010a5557da412b3c-113\"",
+        "last_modified": "Fri, 09 May 2025 08:08:22 GMT",
+        "bbox_lonlat": [
+          37.59,
+          -2.0,
+          37.69,
+          -1.9
+        ],
+        "shape": [
+          1201,
+          1201
+        ],
+        "west_north_dx_dy": [
+          37.589976405509475,
+          -1.8999738982142915,
+          8.333333333333341e-05,
+          8.333333333333338e-05
+        ],
+        "tiff_nodata": 255
+      },
+      "alternate_class_code": 0,
+      "alternate_class": "Outside temporary cropland"
+    },
+    "mcd12q1": {
+      "name": "NASA MODIS MCD12Q1 IGBP",
+      "period": "2023",
+      "resolution": "500 m nominal",
+      "source": "https://lpdaac.usgs.gov/documents/1409/MCD12_User_Guide_V61.pdf",
+      "access": "Existing ORNL cache; partial disk",
+      "point_class": "Grassland",
+      "class_code": 10,
+      "alternate_class_code": 10,
+      "crop_pixels": 0,
+      "mosaic_pixels": 0,
+      "sample_pixels": 25,
+      "classified_share": 0.0683279778653899,
+      "cropland_share": null,
+      "evidence_ref": "data/raw/p7/land_cover/mcd12q1_kenya_makueni_north_2023_1km.1.json",
+      "alternate_class": "Grassland"
+    },
+    "gfsad": {
+      "granule": "GFSAD30AFCE_2015_S10E30_001_2017261090100",
+      "url": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/GFSAD30AFCE.001/GFSAD30AFCE_2015_S10E30_001_2017261090100/GFSAD30AFCE_2015_S10E30_001_2017261090100.tif",
+      "status": 303,
+      "redirect_host": "d1nklfio7vscoe.cloudfront.net",
+      "access": "Documented Earthdata Login; skipped after unauthenticated header check",
+      "name": "NASA MEaSUREs GFSAD30AFCE v001",
+      "source": "https://www.usgs.gov/apps/croplands/downloadLPDAAC",
+      "period": "Nominal 2015",
+      "resolution": "30 m nominal",
+      "point_class": "Unavailable",
+      "alternate_class": "Unavailable",
+      "cropland_share": null,
+      "classified_share": null
+    }
+  },
+  "limit": "Products differ in year, class definition and accuracy. Map agreement describes their observation periods. Current field use, crop identity and management remain unverified.",
+  "weather": {
+    "native_grids": {
+      "MERRA-2": {
+        "parameters": [
+          "T2M",
+          "T2M_MAX",
+          "T2M_MIN",
+          "PRECTOTCORR",
+          "PRECTOTCORR_UTC",
+          "GWETROOT",
+          "RH2M"
+        ],
+        "step": [
+          0.5,
+          0.625
+        ],
+        "first_center": [
+          -90.0,
+          -180.0
+        ],
+        "sources": [
+          "https://power.larc.nasa.gov/docs/methodology/",
+          "https://gmao.gsfc.nasa.gov/media/publications/zbly36ziNFDQeVqPhUoFbmYmvh/MERRA-2_GIO_File_Specification-Office_Note_v1.0__2Xts4xu.pdf"
+        ],
+        "original_center": [
+          -2.0,
+          37.5
+        ],
+        "original_bounds": [
+          [
+            -2.25,
+            -1.75
+          ],
+          [
+            37.1875,
+            37.8125
+          ]
+        ],
+        "nearest_cell_edge_m": 19170.03866949188,
+        "full_disk_shares_cell": true,
+        "alternate_same_cell": true
+      },
+      "Solar (SRB/CERES)": {
+        "parameters": [
+          "ALLSKY_SFC_SW_DWN"
+        ],
+        "step": [
+          1.0,
+          1.0
+        ],
+        "first_center": [
+          -89.5,
+          -179.5
+        ],
+        "sources": [
+          "https://power.larc.nasa.gov/docs/methodology/",
+          "https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_SYN1deg_Ed1A_DQS.pdf",
+          "https://asdc.larc.nasa.gov/documents/srb/SRB_Rel4-IP_Public_Release_Announcement.pdf"
+        ],
+        "original_center": [
+          -1.5,
+          37.5
+        ],
+        "original_bounds": [
+          [
+            -2.0,
+            -1.0
+          ],
+          [
+            37.0,
+            38.0
+          ]
+        ],
+        "nearest_cell_edge_m": 5559.752598832623,
+        "full_disk_shares_cell": true,
+        "alternate_same_cell": true
+      },
+      "GPM IMERG": {
+        "parameters": [
+          "IMERG_PRECTOT"
+        ],
+        "step": [
+          0.1,
+          0.1
+        ],
+        "first_center": [
+          -89.95,
+          -179.95
+        ],
+        "sources": [
+          "https://power.larc.nasa.gov/docs/methodology/",
+          "https://gpm.nasa.gov/sites/default/files/document_files/IMERG_doc.pdf"
+        ],
+        "original_center": [
+          -1.95,
+          37.65
+        ],
+        "original_bounds": [
+          [
+            -2.0,
+            -1.9
+          ],
+          [
+            37.6,
+            37.7
+          ]
+        ],
+        "nearest_cell_edge_m": 4445.226365500213,
+        "full_disk_shares_cell": false,
+        "alternate_same_cell": true
+      }
+    },
+    "data_ref": "data/processed/climate_kenya_makueni_north.parquet",
+    "source": "https://power.larc.nasa.gov/docs/methodology/",
+    "qualification": "Same cells inferred from source grids. Daily point API equivalence was not queried."
+  },
+  "vegetation": {
+    "original": {
+      "source": "NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "period": [
+        2001,
+        2024
+      ],
+      "qa_composites": 345,
+      "received_composites": 552,
+      "annual_p7": {
+        "2019": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23
+        },
+        "2020": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23
+        },
+        "2021": {
+          "peaks": 1,
+          "peak_dates": [
+            "2021-12-19"
+          ],
+          "qa": 16,
+          "received": 23
+        },
+        "2022": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23
+        },
+        "2023": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23
+        }
+      },
+      "two_rain_aligned_years": 0,
+      "greenness_peak_months": [
+        12
+      ],
+      "rain_windows": {
+        "long_rains": [
+          3,
+          5
+        ],
+        "short_rains": [
+          11,
+          12
+        ]
+      },
+      "low_greenness": [
+        {
+          "threshold": 0.2,
+          "runs": 0,
+          "windows": []
+        },
+        {
+          "threshold": 0.25,
+          "runs": 0,
+          "windows": []
+        },
+        {
+          "threshold": 0.3,
+          "runs": 11,
+          "windows": [
+            {
+              "start_doy": 273,
+              "typical_days": 32,
+              "supporting_years": 3,
+              "assessable_years": 13,
+              "qa_composites": 7,
+              "status": "sporadic"
+            }
+          ]
+        }
+      ],
+      "reference_threshold": 0.25,
+      "threshold_source": "docs/decisions.md P5; assumption, validate locally",
+      "evidence_refs": [
+        "data/processed/ndvi_long_kenya_makueni_north.csv",
+        "data/processed/validity_kenya_makueni_north.json",
+        "data/processed/seasons_kenya_makueni_north.json",
+        "data/processed/opportunity_windows_kenya_makueni_north.json"
+      ]
+    },
+    "alternate": {
+      "source": "NASA Terra MOD13Q1 | https://ladsweb.modaps.eosdis.nasa.gov/filespec/MODIS/61/MOD13Q1",
+      "period": [
+        2001,
+        2024
+      ],
+      "qa_composites": 345,
+      "received_composites": 552,
+      "annual_p7": {
+        "2019": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23
+        },
+        "2020": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23
+        },
+        "2021": {
+          "peaks": 1,
+          "peak_dates": [
+            "2021-12-19"
+          ],
+          "qa": 16,
+          "received": 23
+        },
+        "2022": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23
+        },
+        "2023": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23
+        }
+      },
+      "two_rain_aligned_years": 0,
+      "greenness_peak_months": [
+        12
+      ],
+      "rain_windows": {
+        "long_rains": [
+          3,
+          5
+        ],
+        "short_rains": [
+          11,
+          12
+        ]
+      },
+      "low_greenness": [
+        {
+          "threshold": 0.2,
+          "runs": 0,
+          "windows": []
+        },
+        {
+          "threshold": 0.25,
+          "runs": 0,
+          "windows": []
+        },
+        {
+          "threshold": 0.3,
+          "runs": 11,
+          "windows": [
+            {
+              "start_doy": 273,
+              "typical_days": 32,
+              "supporting_years": 3,
+              "assessable_years": 13,
+              "qa_composites": 7,
+              "status": "sporadic"
+            }
+          ]
+        }
+      ],
+      "reference_threshold": 0.25,
+      "threshold_source": "docs/decisions.md P5; assumption, validate locally",
+      "evidence_refs": [
+        "data/processed/ndvi_long_kenya_makueni_north.csv",
+        "data/processed/validity_kenya_makueni_north.json",
+        "data/processed/seasons_kenya_makueni_north.json",
+        "data/processed/opportunity_windows_kenya_makueni_north.json"
+      ]
+    },
+    "shared_native_pixel": true,
+    "georeferencing": {
+      "xllcorner": "4182787.25",
+      "yllcorner": "-217061.97",
+      "cellsize": 231.656358264,
+      "nrows": 1,
+      "ncols": 1
+    },
+    "successful_chunks": 72,
+    "geometry_source": "https://ladsweb.modaps.eosdis.nasa.gov/archive/Document%20Archive/Science%20Data%20Product%20Documentation/VIIRS_C2_BA_User_Guide_1.1.pdf"
+  },
+  "terrain": {
+    "original": {
+      "elevation_m": {
+        "value": 1025.0,
+        "unit": "m",
+        "source": "https://www.opentopodata.org/datasets/srtm/",
+        "resolution": "3 arc-seconds (~90 m)",
+        "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+        "evidence_refs": [
+          "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+          "data/raw/p3/manifest.json#kenya_makueni_north_srtm"
+        ]
+      },
+      "mean_slope_pct": {
+        "value": 4.581,
+        "unit": "% rise",
+        "source": "https://www.opentopodata.org/datasets/srtm/",
+        "resolution": "5-point cross on ~90 m grid",
+        "uncertainty_note": "Coarse elevation. SRTM mission absolute vertical accuracy specification is 16 m at 90% confidence. This is not an error bound for the derived slope.",
+        "evidence_refs": [
+          "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-srtm-mission-summary",
+          "data/raw/p3/manifest.json#kenya_makueni_north_srtm"
+        ]
+      },
+      "slope_class": {
+        "value": "moderate",
+        "unit": "class",
+        "source": "assumption, validate locally",
+        "resolution": "5-point cross on ~90 m grid",
+        "uncertainty_note": "Illustrative classes: gentle <2%, moderate 2\u2013<5%, steep \u22655%.",
+        "evidence_refs": [
+          "https://www.opentopodata.org/datasets/srtm/",
+          "data/raw/p3/manifest.json#kenya_makueni_north_srtm"
+        ]
+      }
+    },
+    "alternate": {
+      "slope_pct": 7.631,
+      "interpolated_elevation_m": 1025.0,
+      "support": [
+        {
+          "dataset": "srtm90m",
+          "elevation": 1025.0,
+          "location": {
+            "lat": -1.95,
+            "lng": 37.64
+          }
+        },
+        {
+          "dataset": "srtm90m",
+          "elevation": 1020.0,
+          "location": {
+            "lat": -1.95083333,
+            "lng": 37.64
+          }
+        },
+        {
+          "dataset": "srtm90m",
+          "elevation": 1030.0,
+          "location": {
+            "lat": -1.95,
+            "lng": 37.63916618
+          }
+        }
+      ],
+      "source": "https://www.opentopodata.org/datasets/srtm/",
+      "method": "Piecewise planar gradient in the containing triangle of the original SRTM90m cross"
+    },
+    "evidence_ref": "data/raw/p3/kenya_makueni_north_srtm.1.json"
+  },
+  "soil": {
+    "original": {
+      "depths": {
+        "0-5cm": {
+          "clay": {
+            "value": 29.8,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_0-5cm.1.tif"
+          },
+          "sand": {
+            "value": 48.3,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_0-5cm.1.tif"
+          },
+          "silt": {
+            "value": 14.6,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_0-5cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 12.5,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_0-5cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.4,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_0-5cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 31.1,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_0-5cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_0-5cm.1.tif"
+          }
+        },
+        "5-15cm": {
+          "clay": {
+            "value": 31.9,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_5-15cm.1.tif"
+          },
+          "sand": {
+            "value": 48.4,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_5-15cm.1.tif"
+          },
+          "silt": {
+            "value": 14.6,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_5-15cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 10.0,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_5-15cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.4,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_5-15cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 28.6,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_5-15cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_5-15cm.1.tif"
+          }
+        },
+        "15-30cm": {
+          "clay": {
+            "value": 36.7,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_15-30cm.1.tif"
+          },
+          "sand": {
+            "value": 44.9,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_15-30cm.1.tif"
+          },
+          "silt": {
+            "value": 13.4,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_15-30cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 7.9,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_15-30cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.3,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_15-30cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 30.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_15-30cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              1,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_15-30cm.1.tif"
+          }
+        }
+      },
+      "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+      "available_water_mm_0_30": 44.15
+    },
+    "alternate": {
+      "depths": {
+        "0-5cm": {
+          "clay": {
+            "value": 32.2,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_0-5cm.1.tif"
+          },
+          "sand": {
+            "value": 46.6,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_0-5cm.1.tif"
+          },
+          "silt": {
+            "value": 14.3,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_0-5cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 12.0,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_0-5cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.4,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_0-5cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 31.7,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_0-5cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_0-5cm.1.tif"
+          }
+        },
+        "5-15cm": {
+          "clay": {
+            "value": 34.8,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_5-15cm.1.tif"
+          },
+          "sand": {
+            "value": 46.4,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_5-15cm.1.tif"
+          },
+          "silt": {
+            "value": 14.2,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_5-15cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 8.6,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_5-15cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.3,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_5-15cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 30.6,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_5-15cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_5-15cm.1.tif"
+          }
+        },
+        "15-30cm": {
+          "clay": {
+            "value": 38.8,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_clay_15-30cm.1.tif"
+          },
+          "sand": {
+            "value": 43.0,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_sand_15-30cm.1.tif"
+          },
+          "silt": {
+            "value": 12.7,
+            "unit": "% by mass",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_silt_15-30cm.1.tif"
+          },
+          "soil_organic_carbon": {
+            "value": 6.7,
+            "unit": "g/kg",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_soc_15-30cm.1.tif"
+          },
+          "ph_water": {
+            "value": 6.2,
+            "unit": "pH",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_phh2o_15-30cm.1.tif"
+          },
+          "water_at_33_kpa": {
+            "value": 30.5,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv0033_15-30cm.1.tif"
+          },
+          "water_at_1500_kpa": {
+            "value": 15.0,
+            "unit": "vol %",
+            "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+            "pixel_col_row": [
+              0,
+              1
+            ],
+            "evidence_ref": "data/raw/p3/kenya_makueni_north_wv1500_15-30cm.1.tif"
+          }
+        }
+      },
+      "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html",
+      "available_water_mm_0_30": 47.2
+    }
+  }
+}

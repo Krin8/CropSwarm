@@ -1,0 +1,23 @@
+{
+  "url": "https://deafrica-input-datasets.s3.af-south-1.amazonaws.com/esa_worldcereal/temporarycrops/tc-annual/12048/2021/12048_tc-annual_temporarycrops_2020-11-05_2021-11-05_classification.tif",
+  "bytes": 943089412,
+  "etag": "\"c7988cd556818620010a5557da412b3c-113\"",
+  "last_modified": "Fri, 09 May 2025 08:08:22 GMT",
+  "bbox_lonlat": [
+    37.59,
+    -2.0,
+    37.69,
+    -1.9
+  ],
+  "shape": [
+    1201,
+    1201
+  ],
+  "west_north_dx_dy": [
+    37.589976405509475,
+    -1.8999738982142915,
+    8.333333333333341e-05,
+    8.333333333333338e-05
+  ],
+  "tiff_nodata": 255
+}

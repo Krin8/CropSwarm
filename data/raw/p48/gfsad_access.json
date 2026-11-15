@@ -1,0 +1,7 @@
+{
+  "granule": "GFSAD30AFCE_2015_S10E30_001_2017261090100",
+  "url": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/GFSAD30AFCE.001/GFSAD30AFCE_2015_S10E30_001_2017261090100/GFSAD30AFCE_2015_S10E30_001_2017261090100.tif",
+  "status": 303,
+  "redirect_host": "d1nklfio7vscoe.cloudfront.net",
+  "access": "Documented Earthdata Login; skipped after unauthenticated header check"
+}

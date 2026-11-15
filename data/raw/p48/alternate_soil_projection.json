@@ -1,0 +1,12 @@
+{
+  "latlon": [
+    -1.950125,
+    37.639875
+  ],
+  "projected_xy_m": [
+    4188914.42,
+    -217086.922
+  ],
+  "projection": "+proj=igh +datum=WGS84",
+  "source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html"
+}

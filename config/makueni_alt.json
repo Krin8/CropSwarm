@@ -1,0 +1,25 @@
+{
+  "farm_id": "makueni_alt",
+  "name": "Makueni parallel cropland-map point",
+  "parent_farm_id": "kenya_makueni_north",
+  "lat": -1.950125,
+  "lon": 37.639875,
+  "region": "Semi-arid eastern Kenya",
+  "tier": 1,
+  "label": "illustrative representative farm",
+  "coordinate_source": "P48 nearest agreeing native pixel center; validate locally",
+  "status": "parallel context only",
+  "baseline_source": "assumption, validate locally; no point-specific rotation assigned",
+  "weather_ref": "data/processed/climate_kenya_makueni_north.parquet",
+  "context_ref": "data/processed/makueni_cropland_p48.json",
+  "validation_flags": [
+    "Two map products classify the point as cropland. Current field use and crop history are unverified.",
+    "Shares the original MODIS NDVI pixel. Seasonal greenness is a mixed-pixel observation.",
+    "Slope is a gradient within the original cached SRTM triangle. A separate point-centered cross is unavailable.",
+    "SoilGrids values are model predictions sampled from a cached WCS raster."
+  ],
+  "evidence_refs": [
+    "docs/p48_plan.md",
+    "data/processed/makueni_cropland_p48.json"
+  ]
+}
