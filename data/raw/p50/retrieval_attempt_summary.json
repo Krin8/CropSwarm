@@ -1,0 +1,17 @@
+{
+  "scope": "Sentinel-2 public COG retrieval only",
+  "initial_restricted_attempt": {
+    "observed_scene_cache_records_at_interruption": 66,
+    "successful_records_at_interruption": 2,
+    "failed_records_at_interruption": 64,
+    "failure": "DNS resolution failed for sentinel-cogs.s3.us-west-2.amazonaws.com",
+    "action": "Stopped the restricted-shell run and resumed the cached retrieval in the user-authorized network context"
+  },
+  "final_resumed_attempt": {
+    "unique_sensing_dates": 359,
+    "successful_scene_records": 359,
+    "failed_scene_records": 0
+  },
+  "source": "P50 retrieval log snapshot and data/raw/p50/sentinel2_observations.json",
+  "label": "illustrative source-access audit"
+}

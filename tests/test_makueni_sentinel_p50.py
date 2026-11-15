@@ -188,3 +188,33 @@ def test_stac_next_page_merge_retains_collection_and_time_filters(tmp_path):
     assert session.bodies[1]["collections"] == ["s2_l2a"]
     assert session.bodies[1]["bbox"] == [37.59, -2.0, 37.69, -1.9]
     assert session.bodies[1]["_o"] == 100
+
+
+def test_gate_failure_is_saved_without_running_peak_or_group_comparison():
+    raw = ROOT / "data/raw/p50/sentinel2_observations.json"
+    if not raw.is_file():
+        pytest.skip("P50 scene witness has not been fetched")
+    report = summarize(json.loads(raw.read_text()))
+    assert not report["gate"]["passed"]
+    assert report["point_year_gate_failures"] == 6
+    assert report["failed_scene_count"] == 0
+    assert len(report["gate"]["counts"]) == 60
+    assert {row["point_id"] for row in report["gate"]["counts"] if not row["passes"]} == {
+        "original", "crop_ref_4", "noncrop_ref_4"}
+    assert not report["points"]
+    assert not report.get("groups")
+    assert all(row["ndvi_source"] and row["mask_source"] for row in report["gate"]["counts"])
+
+
+def test_saved_report_and_markdown_render_from_cached_witness():
+    from src.makueni_sentinel_p50 import OUTPUT, build
+    from src.makueni_sentinel_report import DOCUMENT, render
+
+    output = ROOT / "data/processed" / OUTPUT
+    report = build(output=output)
+    doc = ROOT / "docs" / DOCUMENT
+    assert render(report) == doc.read_text()
+    assert "6 of 60 point-years" in doc.read_text()
+    assert "seasonality does not identify crop type, management or irrigation" in doc.read_text()
+    assert "ReadTimeout after 30 seconds on the second STAC page" in doc.read_text()
+    assert "No fallback scenes were used in the analysis" in doc.read_text()

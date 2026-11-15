@@ -42,6 +42,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
         studies.append("P49")
     if (DATA / "bean_credit_breakpoints_p51.json").exists():
         studies.append("P51")
+    if (DATA / "makueni_sentinel_p50.json").exists():
+        studies.append("P50")
     assert [row.study for row in rows] == studies
     assert all(len(row.cells()) == len(COLUMNS) for row in rows)
     assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
@@ -74,6 +76,13 @@ def test_rows_disclose_negative_results_and_limits():
         assert "4/4 flips were near-ties" in rows["P51"].result
         assert "30–44, 68–80 kg N/ha" in rows["P51"].result
         assert "cropland is unverified" in rows["P51"].limit
+    if "P50" in rows:
+        assert rows["P50"].direction == "mixed"
+        assert "359/359 scene records extracted" in rows["P50"].result
+        assert "6/60 point-years" in rows["P50"].result
+        assert "original 2020" in rows["P50"].result
+        assert "fallback page 2 timed out" in rows["P50"].result
+        assert "NDVI does not identify crop type" in rows["P50"].limit
     if "P47" in rows:
         assert "EXPLORATORY" in rows["P47"].question
         p47 = rows["P47"]
@@ -115,7 +124,7 @@ def test_p39_is_optional_but_bad_inputs_still_fail():
                     "literature_variant_p43.json", "consensus_shortlist_p44.json",
                     "literature_check_p45.json", "smooth_climate_fit_p42.json", "regional_scoring_variants_p46.json",
                     "consensus_shortlist_p44b.json", "makueni_cropland_p48.json", "rank_concentration_p47.json",
-                    "literature_check_p49.json", "bean_credit_breakpoints_p51.json"}:
+                    "literature_check_p49.json", "bean_credit_breakpoints_p51.json", "makueni_sentinel_p50.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

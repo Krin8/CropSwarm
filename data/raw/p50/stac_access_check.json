@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "url": "https://earth-search.aws.element84.com/v1/search",
+  "request_parameters": {
+    "collections": [
+      "sentinel-2-l2a"
+    ],
+    "bbox": [
+      37.59,
+      -2.0,
+      37.69,
+      -1.9
+    ],
+    "datetime": "2019-01-01T00:00:00Z/2023-12-31T23:59:59Z",
+    "limit": 100
+  },
+  "http_status": 200,
+  "content_type": "application/geo+json; charset=utf-8",
+  "features_in_access_check": 100,
+  "next_page_available": true,
+  "scope": "access check; saved item inventory from the resumable query cache"
+}

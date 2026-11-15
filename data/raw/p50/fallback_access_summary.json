@@ -1,0 +1,33 @@
+{
+  "catalog": "Digital Earth Africa STAC",
+  "search_url": "https://explorer.digitalearth.africa/stac/search",
+  "collection": "s2_l2a",
+  "point_access_check": {
+    "http_status": 200,
+    "request_datetime": "2019-01-01/2019-01-31",
+    "items_returned": 1,
+    "asset_names": ["B04", "B08", "SCL"],
+    "asset_urls": {
+      "B04": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B04.tif",
+      "B08": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B08.tif",
+      "SCL": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/SCL.tif"
+    },
+    "range_checks": {
+      "B04": {"http_status": 206, "content_range": "bytes 0-65535/221768324", "etag": "\"f7efcc61db753af4da188f46b1cf1472\""},
+      "B08": {"http_status": 206, "content_range": "bytes 0-65535/215283496", "etag": "\"e94c2b0a38af3717c8d0a72b76b5ed78\""},
+      "SCL": {"http_status": 206, "content_range": "bytes 0-65535/5062003", "etag": "\"8f13710f1621c1ec3d40299dea51a40d\""}
+    }
+  },
+  "full_period_attempt": {
+    "http_status": "no response",
+    "failure": "ReadTimeout after 30 seconds on the second STAC page",
+    "page_one_http_status": 200,
+    "page_one_feature_count": 100,
+    "next_page_method": "POST",
+    "next_page_merge": true,
+    "client_correction": "Preserve the initial collection, bbox, datetime and limit filters when applying the next-page offset",
+    "full_period_retrieval_completed": false
+  },
+  "selection": "Fallback was not used for the final scene witness after Earth Search STAC and COG access passed in the resumed run.",
+  "label": "illustrative source-access audit"
+}

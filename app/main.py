@@ -24,6 +24,7 @@ from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_
 from src.evidence_ledger import COLUMNS, NOTE, build_ledger
 from src.literature_check_p45 import METRIC_NAMES, metric_counts
 from src.makueni_cropland import FARM_ID as MAKUENI_ID, REPORT as MAKUENI_CROPLAND_REPORT
+from src.makueni_sentinel_p50 import OUTPUT as MAKUENI_SENTINEL_REPORT
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.rank_concentration_report import RECONCILIATION, band_count, null_statement
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
@@ -94,7 +95,7 @@ def evidence_ledger_panel(farm_id):
         body = []
         anchors = {"P47": "p47-member-shares"}
         if farm_id == MAKUENI_ID:
-            anchors["P51"] = "p51-bean-credit"
+            anchors.update({"P50": "p50-sentinel2", "P51": "p51-bean-credit"})
         for row in rows:
             label, *cells = row.cells()
             label = escape(label)
@@ -406,6 +407,56 @@ def transfer_diagnosis_panel():
         st.caption(f"NASS non-irrigated reporting · Kansas {practice['kansas']['non_irrigated']['share']:.1%}, "
                    f"Oklahoma {practice['oklahoma']['non_irrigated']['share']:.1%}. Reporting and weather shifts "
                    "are hypotheses for the gap. County-average results do not validate rotation recommendations.")
+
+
+def makueni_sentinel_panel(farm_id):
+    if farm_id != MAKUENI_ID:
+        return
+    report = cached(MAKUENI_SENTINEL_REPORT)
+    access = report.get("stac_access_check", {})
+    st.html('<span id="p50-sentinel2"></span>')
+    with st.expander("Sentinel-2 seasonality coverage (P50)"):
+        failed = report["point_year_gate_failures"]
+        total = len(report["gate"]["counts"])
+        st.caption("NASA Sentinel-2 L2A · 10 m NDVI · Scene Classification Layer mask at 20 m.")
+        st.warning(f"The preregistered observation gate failed in {failed} of {total} point-years. "
+                   "Seasonality peaks and reference-group comparisons were not run. "
+                   "Makueni cropland remains unverified.")
+        st.write("NDVI seasonality does not identify crop type, management or irrigation.")
+        st.caption(f"Earth Search STAC access check · HTTP {access.get('http_status', 'unrecorded')} · "
+                   f"{access.get('features_in_access_check', 'unrecorded')} first-page items. "
+                   f"The cached search contained {report['raw_item_count']} items and "
+                   f"{report['unique_scene_dates']} unique scene dates after "
+                   f"{report['duplicate_items_removed']} duplicate-date items were removed. "
+                   f"All {report['unique_scene_dates']} scene records were extracted successfully. "
+                   "The three red, near-infrared and SCL byte-range preflight checks returned HTTP 206. "
+                   "An earlier restricted run had 64 transient DNS failures in 66 cached records. "
+                   "The resumed fetch completed all scene records. The Digital Earth Africa fallback's "
+                   "full-period request timed out on page 2 after 30 seconds; no fallback scenes were used.")
+        st.caption("Gate design choice · at least 10 valid scenes and at least 8 of 23 valid 16-day windows "
+                   "at every point in every year from 2019 through 2023.")
+        st.dataframe(pd.DataFrame([
+            {"Point": row["point_id"], "Map group": row["map_group"], "Map class": row["map_class"],
+             "Year": row["year"], "NASA S2 scenes seen": row["scenes_seen"],
+             "Valid NDVI scenes (min 10)": row["valid_scenes"],
+             "Valid NDVI windows (min 8/23)": f"{row['valid_composites']}/23",
+             "Masked SCL counts (NASA S2)": ", ".join(f"{key}={value}" for key, value in row["masked_scl_counts"].items()) or "none",
+             "Reflectance/NDVI rejects (NASA S2)": ", ".join(
+                 f"{key}={value}" for key, value in row["rejected_band_or_ndvi_counts"].items()) or "none",
+             "Failed scenes": row["failed_scenes"], "Gate": "pass" if row["passes"] else "fail"}
+            for row in report["gate"]["counts"]
+        ]), hide_index=True)
+        if report["scene_failures"]:
+            st.dataframe(pd.DataFrame([
+                {"NASA Sentinel scene": row.get("id"), "Date": row.get("date"), "Failure": row.get("error")}
+                for row in report["scene_failures"]
+            ]), hide_index=True)
+        if report["gate"]["passed"]:
+            st.info("The coverage gate passed. Point seasonality and reference summaries are available below.")
+            st.dataframe(pd.DataFrame([
+                {"NASA Sentinel point": point_id, **record["summary"]}
+                for point_id, record in report["points"].items()
+            ]), hide_index=True)
 
 
 def literature_check_panel():
@@ -1619,6 +1670,7 @@ def app():
                    "Rotation recommendations still need field validation.")
         evidence_ledger_panel(farm_id)
         makueni_cropland_panel(farm_id)
+        makueni_sentinel_panel(farm_id)
         literature_check_panel()
         regional_literature_panel(farm_id)
         bean_nitrogen_panel(farm_id)

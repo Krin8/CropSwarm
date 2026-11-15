@@ -260,13 +260,18 @@ def summarize(payload: dict, min_scenes=MIN_SCENES_PER_YEAR,
             key = str(year)
             valid_composites = int(frame[(frame.date.dt.year == year) & frame.pixel_reliability.eq(0)].shape[0])
             point_year[key] = {**annual_counts[point_id][key], "valid_composites": valid_composites}
-            gate_rows.append({"point_id": point_id, "year": year,
-                              "valid_scenes": annual_counts[point_id][key]["valid_scene_count"],
-                              "minimum_scenes": min_scenes,
-                              "valid_composites": valid_composites,
-                              "minimum_composites": min_composites,
-                              "passes": annual_counts[point_id][key]["valid_scene_count"] >= min_scenes
-                                        and valid_composites >= min_composites})
+            counts = annual_counts[point_id][key]
+            passes = counts["valid_scene_count"] >= min_scenes and valid_composites >= min_composites
+            gate_rows.append({"point_id": point_id, "point_label": point.get("label", point_id),
+                              "map_group": point.get("group", "unknown"),
+                              "map_class": point.get("worldcover_class", "unknown"),
+                              "year": year, "valid_scenes": counts["valid_scene_count"], "minimum_scenes": min_scenes,
+                              "valid_composites": valid_composites, "minimum_composites": min_composites,
+                              "scenes_seen": counts["scenes_seen"], "failed_scenes": counts["failed_scene_count"],
+                              "scl_counts": counts["scl_counts"], "masked_scl_counts": counts["masked_scl_counts"],
+                              "rejected_band_or_ndvi_counts": counts["rejected_band_or_ndvi_counts"],
+                              "ndvi_source": SOURCE, "mask_source": SCL_SOURCE,
+                              "passes": passes})
         annual_counts[point_id] = point_year
         failures = [scene for scene in payload["scenes"] if scene.get("status") != "ok"
                     and scene.get("date", "")[:4] in {str(year) for year in YEARS}]
@@ -286,6 +291,8 @@ def summarize(payload: dict, min_scenes=MIN_SCENES_PER_YEAR,
                                  "source": "design choice, docs/p50_plan.md"},
         "gate": {"passed": gate_pass, "counts": gate_rows},
         "scene_failures": [scene for scene in payload["scenes"] if scene.get("status") != "ok"],
+        "failed_scene_count": sum(scene.get("status") != "ok" for scene in payload["scenes"]),
+        "point_year_gate_failures": sum(not row["passes"] for row in gate_rows),
         "points": {},
         "interpretation_limit": "NDVI seasonality does not identify crop type, management or irrigation.",
     }
@@ -316,6 +323,15 @@ def build(root=ROOT, output=None):
     payload_path = root / "data/raw/p50" / OBSERVATIONS
     payload = json.loads(payload_path.read_text())
     report = summarize(payload)
+    access_path = root / "data/raw/p50/stac_access_check.json"
+    if access_path.is_file():
+        report["stac_access_check"] = json.loads(access_path.read_text())
+    retry_path = root / "data/raw/p50/retrieval_attempt_summary.json"
+    if retry_path.is_file():
+        report["retrieval_attempt_summary"] = json.loads(retry_path.read_text())
+    fallback_path = root / "data/raw/p50/fallback_access_summary.json"
+    if fallback_path.is_file():
+        report["fallback_access_summary"] = json.loads(fallback_path.read_text())
     report_path = output if output is not None else root / "data/processed" / OUTPUT
     write_json(report_path, report)
     return report

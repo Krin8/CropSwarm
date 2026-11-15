@@ -1,0 +1,2217 @@
+{
+  "farm_id": "kenya_makueni_north",
+  "label": "illustrative, validate locally",
+  "source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+  "cloud_mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+  "catalog_attempts": [
+    {
+      "id": "earth_search_v1",
+      "name": "Element 84 Earth Search v1 (AWS Open Data Sentinel-2 COGs)",
+      "search_url": "https://earth-search.aws.element84.com/v1/search",
+      "collection": "sentinel-2-l2a",
+      "doc_url": "https://registry.opendata.aws/sentinel-2-l2a-cogs/",
+      "status": "ok",
+      "items_returned": 571,
+      "error": null,
+      "asset_preflight": [
+        {
+          "band": "scl",
+          "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/SCL.tif",
+          "http_status": 206,
+          "content_range": "bytes 0-65535/5062003",
+          "etag": "\"8f13710f1621c1ec3d40299dea51a40d\""
+        },
+        {
+          "band": "red",
+          "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B04.tif",
+          "http_status": 206,
+          "content_range": "bytes 0-65535/221768324",
+          "etag": "\"8a49b1e3fc8bfd80d507ecf576d57736-27\""
+        },
+        {
+          "band": "nir",
+          "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B08.tif",
+          "http_status": 206,
+          "content_range": "bytes 0-65535/215283496",
+          "etag": "\"282cb6aaf69df2a8b9acee0cc3cce99d-26\""
+        }
+      ],
+      "stac_page_statuses": []
+    }
+  ],
+  "chosen_catalog": {
+    "id": "earth_search_v1",
+    "name": "Element 84 Earth Search v1 (AWS Open Data Sentinel-2 COGs)",
+    "search_url": "https://earth-search.aws.element84.com/v1/search",
+    "collection": "sentinel-2-l2a",
+    "doc_url": "https://registry.opendata.aws/sentinel-2-l2a-cogs/"
+  },
+  "years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "raw_item_count": 571,
+  "unique_scene_dates": 359,
+  "duplicate_items_removed": 212,
+  "minimum_observations": {
+    "valid_scenes_per_year": 10,
+    "valid_16_day_composites_per_year": 8,
+    "source": "design choice, docs/p50_plan.md"
+  },
+  "gate": {
+    "passed": false,
+    "counts": [
+      {
+        "point_id": "original",
+        "point_label": "Original Makueni point",
+        "map_group": "study",
+        "map_class": "Grassland",
+        "year": 2019,
+        "valid_scenes": 20,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 10,
+          "5": 20,
+          "7": 4,
+          "8": 5,
+          "9": 27,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "7": 4,
+          "8": 5,
+          "9": 27,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "original",
+        "point_label": "Original Makueni point",
+        "map_group": "study",
+        "map_class": "Grassland",
+        "year": 2020,
+        "valid_scenes": 6,
+        "minimum_scenes": 10,
+        "valid_composites": 5,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 13,
+          "5": 11,
+          "8": 11,
+          "9": 28,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "8": 11,
+          "9": 28,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 18
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "original",
+        "point_label": "Original Makueni point",
+        "map_group": "study",
+        "map_class": "Grassland",
+        "year": 2021,
+        "valid_scenes": 15,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 5,
+          "5": 20,
+          "8": 8,
+          "9": 35,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "8": 8,
+          "9": 35,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "original",
+        "point_label": "Original Makueni point",
+        "map_group": "study",
+        "map_class": "Grassland",
+        "year": 2022,
+        "valid_scenes": 22,
+        "minimum_scenes": 10,
+        "valid_composites": 13,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 1,
+          "4": 9,
+          "5": 19,
+          "7": 1,
+          "8": 10,
+          "9": 26,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 1,
+          "7": 1,
+          "8": 10,
+          "9": 26,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "original",
+        "point_label": "Original Makueni point",
+        "map_group": "study",
+        "map_class": "Grassland",
+        "year": 2023,
+        "valid_scenes": 17,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 12,
+          "5": 20,
+          "7": 1,
+          "8": 6,
+          "9": 28,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 1,
+          "8": 6,
+          "9": 28,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 15
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "makueni_alt",
+        "point_label": "Parallel cropland-map point (makueni_alt)",
+        "map_group": "study",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 25,
+        "minimum_scenes": 10,
+        "valid_composites": 15,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 12,
+          "5": 18,
+          "7": 3,
+          "8": 7,
+          "9": 26,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "7": 3,
+          "8": 7,
+          "9": 26,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "makueni_alt",
+        "point_label": "Parallel cropland-map point (makueni_alt)",
+        "map_group": "study",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 13,
+        "minimum_scenes": 10,
+        "valid_composites": 9,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 14,
+          "5": 10,
+          "8": 12,
+          "9": 27,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "8": 12,
+          "9": 27,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "makueni_alt",
+        "point_label": "Parallel cropland-map point (makueni_alt)",
+        "map_group": "study",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 13,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 9,
+          "5": 16,
+          "8": 7,
+          "9": 35,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 7,
+          "9": 35,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "makueni_alt",
+        "point_label": "Parallel cropland-map point (makueni_alt)",
+        "map_group": "study",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 23,
+        "minimum_scenes": 10,
+        "valid_composites": 13,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 1,
+          "4": 11,
+          "5": 16,
+          "7": 1,
+          "8": 12,
+          "9": 25,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 1,
+          "7": 1,
+          "8": 12,
+          "9": 25,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 4
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "makueni_alt",
+        "point_label": "Parallel cropland-map point (makueni_alt)",
+        "map_group": "study",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 21,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 12,
+          "5": 20,
+          "7": 1,
+          "8": 6,
+          "9": 28,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 1,
+          "8": 6,
+          "9": 28,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_1",
+        "point_label": "Cropland reference 1",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 25,
+        "minimum_scenes": 10,
+        "valid_composites": 16,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 1,
+          "5": 26,
+          "8": 10,
+          "9": 26,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 10,
+          "9": 26,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 2
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_1",
+        "point_label": "Cropland reference 1",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 16,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 6,
+          "5": 16,
+          "7": 1,
+          "8": 17,
+          "9": 21,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "7": 1,
+          "8": 17,
+          "9": 21,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_1",
+        "point_label": "Cropland reference 1",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 17,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 10,
+          "5": 17,
+          "8": 6,
+          "9": 36,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "8": 6,
+          "9": 36,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_1",
+        "point_label": "Cropland reference 1",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 17,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 14,
+          "5": 12,
+          "7": 1,
+          "8": 11,
+          "9": 28,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "7": 1,
+          "8": 11,
+          "9": 28,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 9
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_1",
+        "point_label": "Cropland reference 1",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 12,
+        "minimum_scenes": 10,
+        "valid_composites": 8,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 20,
+          "5": 7,
+          "7": 1,
+          "8": 12,
+          "9": 28,
+          "10": 1
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 1,
+          "8": 12,
+          "9": 28,
+          "10": 1
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 15
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_2",
+        "point_label": "Cropland reference 2",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 21,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "2": 1,
+          "3": 3,
+          "4": 7,
+          "5": 20,
+          "7": 3,
+          "8": 10,
+          "9": 24,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "2": 1,
+          "3": 3,
+          "7": 3,
+          "8": 10,
+          "9": 24,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_2",
+        "point_label": "Cropland reference 2",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 14,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 13,
+          "5": 12,
+          "8": 10,
+          "9": 29,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 10,
+          "9": 29,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_2",
+        "point_label": "Cropland reference 2",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 15,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 6,
+          "5": 19,
+          "8": 6,
+          "9": 36,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 6,
+          "9": 36,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_2",
+        "point_label": "Cropland reference 2",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 23,
+        "minimum_scenes": 10,
+        "valid_composites": 13,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 1,
+          "4": 10,
+          "5": 17,
+          "7": 1,
+          "8": 10,
+          "9": 30,
+          "10": 1
+        },
+        "masked_scl_counts": {
+          "3": 1,
+          "7": 1,
+          "8": 10,
+          "9": 30,
+          "10": 1
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 4
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_2",
+        "point_label": "Cropland reference 2",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 14,
+          "5": 20,
+          "7": 3,
+          "8": 6,
+          "9": 24,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 3,
+          "8": 6,
+          "9": 24,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_3",
+        "point_label": "Cropland reference 3",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "4": 7,
+          "5": 23,
+          "7": 2,
+          "8": 12,
+          "9": 24,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "7": 2,
+          "8": 12,
+          "9": 24,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_3",
+        "point_label": "Cropland reference 3",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 15,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 8,
+          "5": 14,
+          "8": 17,
+          "9": 27,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 17,
+          "9": 27,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_3",
+        "point_label": "Cropland reference 3",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 15,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 4,
+          "5": 17,
+          "8": 7,
+          "9": 36,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "8": 7,
+          "9": 36,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_3",
+        "point_label": "Cropland reference 3",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 13,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 9,
+          "5": 19,
+          "7": 1,
+          "8": 12,
+          "9": 23,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 1,
+          "8": 12,
+          "9": 23,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 4
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_3",
+        "point_label": "Cropland reference 3",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 17,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 11,
+          "5": 17,
+          "8": 10,
+          "9": 27,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "8": 10,
+          "9": 27,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_4",
+        "point_label": "Cropland reference 4",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 23,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 1,
+          "4": 8,
+          "5": 20,
+          "7": 1,
+          "8": 13,
+          "9": 24,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 1,
+          "7": 1,
+          "8": 13,
+          "9": 24,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_4",
+        "point_label": "Cropland reference 4",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 11,
+        "minimum_scenes": 10,
+        "valid_composites": 7,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 7,
+          "4": 14,
+          "5": 10,
+          "8": 13,
+          "9": 23,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 7,
+          "8": 13,
+          "9": 23,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 13
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "crop_ref_4",
+        "point_label": "Cropland reference 4",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 14,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 5,
+          "5": 18,
+          "7": 1,
+          "8": 6,
+          "9": 35,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "7": 1,
+          "8": 6,
+          "9": 35,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 9
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_4",
+        "point_label": "Cropland reference 4",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 19,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 8,
+          "5": 16,
+          "8": 11,
+          "9": 29,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "8": 11,
+          "9": 29,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_4",
+        "point_label": "Cropland reference 4",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 22,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 11,
+          "5": 22,
+          "8": 7,
+          "9": 26,
+          "10": 1
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "8": 7,
+          "9": 26,
+          "10": 1
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_5",
+        "point_label": "Cropland reference 5",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2019,
+        "valid_scenes": 22,
+        "minimum_scenes": 10,
+        "valid_composites": 15,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "2": 2,
+          "3": 1,
+          "4": 15,
+          "5": 15,
+          "7": 1,
+          "8": 6,
+          "9": 27,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "2": 2,
+          "3": 1,
+          "7": 1,
+          "8": 6,
+          "9": 27,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 8
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_5",
+        "point_label": "Cropland reference 5",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2020,
+        "valid_scenes": 12,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 15,
+          "5": 7,
+          "7": 1,
+          "8": 16,
+          "9": 26,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "7": 1,
+          "8": 16,
+          "9": 26,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_5",
+        "point_label": "Cropland reference 5",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2021,
+        "valid_scenes": 15,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 8,
+          "5": 15,
+          "7": 1,
+          "8": 5,
+          "9": 37,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 1,
+          "8": 5,
+          "9": 37,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 8
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_5",
+        "point_label": "Cropland reference 5",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2022,
+        "valid_scenes": 21,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 11,
+          "5": 15,
+          "7": 2,
+          "8": 9,
+          "9": 29,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "7": 2,
+          "8": 9,
+          "9": 29,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "crop_ref_5",
+        "point_label": "Cropland reference 5",
+        "map_group": "cropland_ref",
+        "map_class": "Cropland",
+        "year": 2023,
+        "valid_scenes": 19,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 13,
+          "5": 19,
+          "7": 3,
+          "8": 7,
+          "9": 25,
+          "10": 1
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 3,
+          "8": 7,
+          "9": 25,
+          "10": 1
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 13
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_1",
+        "point_label": "Non-cropland reference 1 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2019,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 15,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 8,
+          "5": 21,
+          "7": 2,
+          "8": 6,
+          "9": 28,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 2,
+          "8": 6,
+          "9": 28,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_1",
+        "point_label": "Non-cropland reference 1 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2020,
+        "valid_scenes": 14,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 13,
+          "5": 12,
+          "7": 1,
+          "8": 13,
+          "9": 26,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 1,
+          "8": 13,
+          "9": 26,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_1",
+        "point_label": "Non-cropland reference 1 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2021,
+        "valid_scenes": 20,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 5,
+          "5": 21,
+          "8": 8,
+          "9": 34,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "8": 8,
+          "9": 34,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 6
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_1",
+        "point_label": "Non-cropland reference 1 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2022,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 9,
+          "5": 20,
+          "7": 2,
+          "8": 8,
+          "9": 25,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 2,
+          "8": 8,
+          "9": 25,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 5
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_1",
+        "point_label": "Non-cropland reference 1 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2023,
+        "valid_scenes": 21,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 6,
+          "4": 9,
+          "5": 19,
+          "7": 2,
+          "8": 5,
+          "9": 29,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 6,
+          "7": 2,
+          "8": 5,
+          "9": 29,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_2",
+        "point_label": "Non-cropland reference 2 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2019,
+        "valid_scenes": 22,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "2": 1,
+          "3": 4,
+          "4": 2,
+          "5": 23,
+          "8": 7,
+          "9": 28,
+          "10": 7
+        },
+        "masked_scl_counts": {
+          "2": 1,
+          "3": 4,
+          "8": 7,
+          "9": 28,
+          "10": 7
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 3
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_2",
+        "point_label": "Non-cropland reference 2 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2020,
+        "valid_scenes": 13,
+        "minimum_scenes": 10,
+        "valid_composites": 9,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 7,
+          "4": 9,
+          "5": 15,
+          "8": 12,
+          "9": 24,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 7,
+          "8": 12,
+          "9": 24,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_2",
+        "point_label": "Non-cropland reference 2 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2021,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 3,
+          "5": 22,
+          "8": 3,
+          "9": 37,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "8": 3,
+          "9": 37,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_2",
+        "point_label": "Non-cropland reference 2 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2022,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 5,
+          "5": 17,
+          "8": 13,
+          "9": 28,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "8": 13,
+          "9": 28,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 4
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_2",
+        "point_label": "Non-cropland reference 2 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2023,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 12,
+          "5": 24,
+          "8": 3,
+          "9": 30,
+          "10": 1
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "8": 3,
+          "9": 30,
+          "10": 1
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 12
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_3",
+        "point_label": "Non-cropland reference 3 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2019,
+        "valid_scenes": 27,
+        "minimum_scenes": 10,
+        "valid_composites": 17,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "2": 1,
+          "3": 3,
+          "4": 2,
+          "5": 26,
+          "7": 2,
+          "8": 10,
+          "9": 23,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "2": 1,
+          "3": 3,
+          "7": 2,
+          "8": 10,
+          "9": 23,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 1
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_3",
+        "point_label": "Non-cropland reference 3 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2020,
+        "valid_scenes": 22,
+        "minimum_scenes": 10,
+        "valid_composites": 16,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 5,
+          "5": 19,
+          "7": 1,
+          "8": 12,
+          "9": 30,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 1,
+          "8": 12,
+          "9": 30,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 2
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_3",
+        "point_label": "Non-cropland reference 3 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2021,
+        "valid_scenes": 20,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 1,
+          "5": 21,
+          "8": 8,
+          "9": 36,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 8,
+          "9": 36,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 2
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_3",
+        "point_label": "Non-cropland reference 3 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2022,
+        "valid_scenes": 28,
+        "minimum_scenes": 10,
+        "valid_composites": 16,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 1,
+          "4": 3,
+          "5": 27,
+          "7": 3,
+          "8": 7,
+          "9": 27,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 1,
+          "7": 3,
+          "8": 7,
+          "9": 27,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 2
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_3",
+        "point_label": "Non-cropland reference 3 (grassland)",
+        "map_group": "noncropland_ref",
+        "map_class": "Grassland",
+        "year": 2023,
+        "valid_scenes": 30,
+        "minimum_scenes": 10,
+        "valid_composites": 17,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 3,
+          "4": 4,
+          "5": 26,
+          "7": 3,
+          "8": 4,
+          "9": 30,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 3,
+          "7": 3,
+          "8": 4,
+          "9": 30,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {},
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_4",
+        "point_label": "Non-cropland reference 4 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2019,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 17,
+          "5": 11,
+          "7": 1,
+          "8": 12,
+          "9": 25,
+          "10": 4
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "7": 1,
+          "8": 12,
+          "9": 25,
+          "10": 4
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_4",
+        "point_label": "Non-cropland reference 4 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2020,
+        "valid_scenes": 4,
+        "minimum_scenes": 10,
+        "valid_composites": 4,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 8,
+          "4": 14,
+          "5": 11,
+          "7": 1,
+          "8": 17,
+          "9": 19,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 8,
+          "7": 1,
+          "8": 17,
+          "9": 19,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 21
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "noncrop_ref_4",
+        "point_label": "Non-cropland reference 4 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2021,
+        "valid_scenes": 3,
+        "minimum_scenes": 10,
+        "valid_composites": 2,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 12,
+          "5": 11,
+          "7": 1,
+          "8": 5,
+          "9": 37,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 1,
+          "8": 5,
+          "9": 37,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 20
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "noncrop_ref_4",
+        "point_label": "Non-cropland reference 4 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2022,
+        "valid_scenes": 11,
+        "minimum_scenes": 10,
+        "valid_composites": 7,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 11,
+          "5": 12,
+          "7": 2,
+          "8": 6,
+          "9": 32,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 2,
+          "8": 6,
+          "9": 32,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 12
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "noncrop_ref_4",
+        "point_label": "Non-cropland reference 4 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2023,
+        "valid_scenes": 9,
+        "minimum_scenes": 10,
+        "valid_composites": 7,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 15,
+          "5": 15,
+          "7": 2,
+          "8": 7,
+          "9": 27,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "7": 2,
+          "8": 7,
+          "9": 27,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 21
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": false
+      },
+      {
+        "point_id": "noncrop_ref_5",
+        "point_label": "Non-cropland reference 5 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2019,
+        "valid_scenes": 24,
+        "minimum_scenes": 10,
+        "valid_composites": 14,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 21,
+          "5": 10,
+          "8": 8,
+          "9": 23,
+          "10": 5
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "8": 8,
+          "9": 23,
+          "10": 5
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 7
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_5",
+        "point_label": "Non-cropland reference 5 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2020,
+        "valid_scenes": 12,
+        "minimum_scenes": 10,
+        "valid_composites": 10,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 17,
+          "5": 8,
+          "7": 1,
+          "8": 9,
+          "9": 30,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "7": 1,
+          "8": 9,
+          "9": 30,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 13
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_5",
+        "point_label": "Non-cropland reference 5 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2021,
+        "valid_scenes": 19,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 73,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 4,
+          "4": 11,
+          "5": 18,
+          "8": 6,
+          "9": 31,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 4,
+          "8": 6,
+          "9": 31,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 10
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_5",
+        "point_label": "Non-cropland reference 5 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2022,
+        "valid_scenes": 18,
+        "minimum_scenes": 10,
+        "valid_composites": 11,
+        "minimum_composites": 8,
+        "scenes_seen": 70,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 5,
+          "4": 17,
+          "5": 12,
+          "8": 8,
+          "9": 26,
+          "10": 2
+        },
+        "masked_scl_counts": {
+          "3": 5,
+          "8": 8,
+          "9": 26,
+          "10": 2
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      },
+      {
+        "point_id": "noncrop_ref_5",
+        "point_label": "Non-cropland reference 5 (tree cover)",
+        "map_group": "noncropland_ref",
+        "map_class": "Tree cover",
+        "year": 2023,
+        "valid_scenes": 17,
+        "minimum_scenes": 10,
+        "valid_composites": 12,
+        "minimum_composites": 8,
+        "scenes_seen": 72,
+        "failed_scenes": 0,
+        "scl_counts": {
+          "3": 2,
+          "4": 13,
+          "5": 15,
+          "8": 4,
+          "9": 35,
+          "10": 3
+        },
+        "masked_scl_counts": {
+          "3": 2,
+          "8": 4,
+          "9": 35,
+          "10": 3
+        },
+        "rejected_band_or_ndvi_counts": {
+          "nonpositive_reflectance": 11
+        },
+        "ndvi_source": "Copernicus Sentinel-2 MSI Level-2A surface reflectance \u00b7 Earth Search AWS Open Data STAC \u00b7 10 m NDVI",
+        "mask_source": "Copernicus Sentinel-2 L2A Scene Classification Layer \u00b7 20 m \u00b7 codes 4 vegetation and 5 not-vegetated accepted",
+        "passes": true
+      }
+    ]
+  },
+  "scene_failures": [],
+  "failed_scene_count": 0,
+  "point_year_gate_failures": 6,
+  "points": {},
+  "interpretation_limit": "NDVI seasonality does not identify crop type, management or irrigation.",
+  "status": "observation gate failed; do not interpret seasonality",
+  "stac_access_check": {
+    "method": "POST",
+    "url": "https://earth-search.aws.element84.com/v1/search",
+    "request_parameters": {
+      "collections": [
+        "sentinel-2-l2a"
+      ],
+      "bbox": [
+        37.59,
+        -2.0,
+        37.69,
+        -1.9
+      ],
+      "datetime": "2019-01-01T00:00:00Z/2023-12-31T23:59:59Z",
+      "limit": 100
+    },
+    "http_status": 200,
+    "content_type": "application/geo+json; charset=utf-8",
+    "features_in_access_check": 100,
+    "next_page_available": true,
+    "scope": "access check; saved item inventory from the resumable query cache"
+  },
+  "retrieval_attempt_summary": {
+    "scope": "Sentinel-2 public COG retrieval only",
+    "initial_restricted_attempt": {
+      "observed_scene_cache_records_at_interruption": 66,
+      "successful_records_at_interruption": 2,
+      "failed_records_at_interruption": 64,
+      "failure": "DNS resolution failed for sentinel-cogs.s3.us-west-2.amazonaws.com",
+      "action": "Stopped the restricted-shell run and resumed the cached retrieval in the user-authorized network context"
+    },
+    "final_resumed_attempt": {
+      "unique_sensing_dates": 359,
+      "successful_scene_records": 359,
+      "failed_scene_records": 0
+    },
+    "source": "P50 retrieval log snapshot and data/raw/p50/sentinel2_observations.json",
+    "label": "illustrative source-access audit"
+  },
+  "fallback_access_summary": {
+    "catalog": "Digital Earth Africa STAC",
+    "search_url": "https://explorer.digitalearth.africa/stac/search",
+    "collection": "s2_l2a",
+    "point_access_check": {
+      "http_status": 200,
+      "request_datetime": "2019-01-01/2019-01-31",
+      "items_returned": 1,
+      "asset_names": [
+        "B04",
+        "B08",
+        "SCL"
+      ],
+      "asset_urls": {
+        "B04": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B04.tif",
+        "B08": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/B08.tif",
+        "SCL": "https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/sentinel-s2-l2a-cogs/37/M/CT/2019/1/S2B_37MCT_20190104_0_L2A/SCL.tif"
+      },
+      "range_checks": {
+        "B04": {
+          "http_status": 206,
+          "content_range": "bytes 0-65535/221768324",
+          "etag": "\"f7efcc61db753af4da188f46b1cf1472\""
+        },
+        "B08": {
+          "http_status": 206,
+          "content_range": "bytes 0-65535/215283496",
+          "etag": "\"e94c2b0a38af3717c8d0a72b76b5ed78\""
+        },
+        "SCL": {
+          "http_status": 206,
+          "content_range": "bytes 0-65535/5062003",
+          "etag": "\"8f13710f1621c1ec3d40299dea51a40d\""
+        }
+      }
+    },
+    "full_period_attempt": {
+      "http_status": "no response",
+      "failure": "ReadTimeout after 30 seconds on the second STAC page",
+      "page_one_http_status": 200,
+      "page_one_feature_count": 100,
+      "next_page_method": "POST",
+      "next_page_merge": true,
+      "client_correction": "Preserve the initial collection, bbox, datetime and limit filters when applying the next-page offset",
+      "full_period_retrieval_completed": false
+    },
+    "selection": "Fallback was not used for the final scene witness after Earth Search STAC and COG access passed in the resumed run.",
+    "label": "illustrative source-access audit"
+  }
+}

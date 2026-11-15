@@ -502,6 +502,26 @@ def bean_credit_check(report):
     )
 
 
+def makueni_sentinel_check(report):
+    failures = [row for row in report["gate"]["counts"] if not row["passes"]]
+    failed_names = ", ".join(f"{row['point_id']} {row['year']}" for row in failures)
+    access = report.get("stac_access_check", {})
+    result = (f"Earth Search access check HTTP {access.get('http_status', 'unrecorded')}; "
+              f"{report['unique_scene_dates']}/{report['unique_scene_dates'] + report['failed_scene_count']} "
+              f"scene records extracted. Coverage gate failed in {len(failures)}/{len(report['gate']['counts'])} "
+              f"point-years ({failed_names}). Seasonality and reference-group comparisons were not run. "
+              "Digital Earth Africa fallback page 2 timed out; no fallback scenes were used.")
+    return EvidenceRow(
+        "P50", "Can the Sentinel-2 record support the registered Makueni seasonality comparison?",
+        f"Makueni · {len(report['gate']['counts'])} point-years · {report['unique_scene_dates']} "
+        "unique sensing dates · 12 points",
+        result, "mixed",
+        "Insufficient scene coverage leaves the seasonality comparison inconclusive. "
+        "NDVI does not identify crop type, management or irrigation. Cropland remains unverified.",
+        "p50_sentinel2.md",
+    )
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -528,7 +548,8 @@ def build_ledger(load):
                                ("makueni_cropland_p48.json", makueni_cropland_check),
                                ("rank_concentration_p47.json", rank_concentration_check),
                                ("literature_check_p49.json", bean_nitrogen_check),
-                               ("bean_credit_breakpoints_p51.json", bean_credit_check)):
+                               ("bean_credit_breakpoints_p51.json", bean_credit_check),
+                               ("makueni_sentinel_p50.json", makueni_sentinel_check)):
         try:
             report = load(filename)
         except FileNotFoundError:
