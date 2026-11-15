@@ -1,11 +1,14 @@
 """P51 exact ranking, endpoints and matched-draw tests."""
 
 from dataclasses import dataclass
+import json
 
 import numpy as np
 import pytest
 
-from src.bean_credit_breakpoints import leader_runs, replay, top_two
+from src.bean_credit_breakpoints import CATALOG, DRAW_CREDITS, GRID_SOURCES, OUTPUT, build, leader_runs, replay, top_two
+from src.bean_credit_report import DOCUMENT, render
+from src.scoring import ROOT
 from src.sensitivity import Outcome
 
 
@@ -66,3 +69,45 @@ def test_replay_fixes_credit_for_each_paired_draw_without_mutating_inputs():
     assert result[1]["winner_change_fraction"] == pytest.approx(2 / 3)
     assert [draw.credits[0] for draw in draws] == [19, 23, 24]
     assert replay(original, Search(), ["balanced"], draws)["balanced"] == result
+
+
+def test_committed_p51_rebuilds_byte_for_byte(tmp_path):
+    saved = ROOT / "data/processed" / OUTPUT
+    output = tmp_path / OUTPUT
+    report = build(output=output)
+    assert output.read_bytes() == saved.read_bytes()
+    assert render(report) == (ROOT / "docs" / DOCUMENT).read_text()
+
+
+def test_saved_results_show_all_grid_settings_draw_counts_and_fixed_metrics():
+    report = json.loads((ROOT / "data/processed" / OUTPUT).read_text())
+    assert [row["credit"] for row in report["credit_grid"]] == list(GRID_SOURCES)
+    assert report["canonical_count"] == 16914
+    expected = {"water_saver": (68, 80), "soil_builder": (30, 44), "income": (68, 80), "balanced": (68, 80)}
+    for preset, result in report["presets"].items():
+        assert [row["credit"] for row in result["grid"]] == list(GRID_SOURCES)
+        edge, = result["breakpoints"]
+        assert (edge["before"]["credit"], edge["after"]["credit"]) == expected[preset]
+        assert edge["before"]["near_tie"] and edge["after"]["near_tie"] and edge["near_tie"]
+        assert [row["credit"] for row in result["matched_draws"]] == list(DRAW_CREDITS)
+        for row in result["matched_draws"]:
+            assert sum(winner["count"] for winner in row["winners"]) == row["evaluations"] == 512
+        assert result["matched_draws"][0]["paired_disagreement_count"] == 0
+
+    options = report["published_strategies"]
+    reference = next(row["strategies"] for row in options if row["credit"] == CATALOG)
+    for row in options:
+        for i, strategy in enumerate(row["strategies"]):
+            assert strategy["flags"] == reference[i]["flags"]
+            assert strategy["rotation"] == reference[i]["rotation"]
+            for name, metric in strategy["metrics"].items():
+                assert metric["source"] and metric["evidence_label"]
+                assert metric["delta"] == pytest.approx(metric["value"] - reference[i]["metrics"][name]["value"])
+                assert metric["score_delta"] == pytest.approx(
+                    metric["score"] - reference[i]["metrics"][name]["score"])
+                if name != "nitrogen":
+                    assert metric["delta"] == metric["score_delta"] == 0
+    baseline, water_saver, *_ = options[-1]["strategies"]
+    assert baseline["metrics"]["nitrogen"]["delta"] == 29
+    assert water_saver["metrics"]["nitrogen"]["delta"] == 0
+    assert water_saver["metrics"]["nitrogen"]["score_delta"] < 0

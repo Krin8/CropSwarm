@@ -18,6 +18,8 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from src.bean_credit_breakpoints import OUTPUT as BEAN_CREDIT_REPORT
+from src.bean_credit_report import credit_interval, rotation_text
 from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_inputs, render_brief, repository_version
 from src.evidence_ledger import COLUMNS, NOTE, build_ledger
 from src.literature_check_p45 import METRIC_NAMES, metric_counts
@@ -84,17 +86,20 @@ def correlation_counts(farm_ids):
     return counts
 
 
-def evidence_ledger_panel():
+def evidence_ledger_panel(farm_id):
     with st.expander("Evidence ledger"):
         rows = build_ledger(cached)
         st.caption(NOTE)
         headers = "".join(f'<th scope="col">{escape(name)}</th>' for name in COLUMNS)
         body = []
+        anchors = {"P47": "p47-member-shares"}
+        if farm_id == MAKUENI_ID:
+            anchors["P51"] = "p51-bean-credit"
         for row in rows:
             label, *cells = row.cells()
             label = escape(label)
-            if row.study == "P47":
-                label = f'<a href="#p47-member-shares">{label}</a>'
+            if row.study in anchors:
+                label = f'<a href="#{anchors[row.study]}">{label}</a>'
             body.append(f'<tr><th scope="row">{label}</th>'
                         + "".join(f"<td>{escape(cell)}</td>" for cell in cells) + "</tr>")
         st.html(f"""
@@ -484,6 +489,92 @@ def bean_nitrogen_panel(farm_id):
         st.dataframe(pd.DataFrame(rows), hide_index=True,
                      column_config={"Source": st.column_config.LinkColumn("Source", display_text="Open study")})
         st.caption(report["label"] + ". " + report["limit"])
+
+
+def bean_credit_breakpoint_panel(farm_id):
+    if farm_id != MAKUENI_ID:
+        return
+    report = cached(BEAN_CREDIT_REPORT)
+    presets = report["presets"]
+    unit = report["credit_unit"]
+    design = report["draw_design"]
+    catalog = report["catalog_credit"]
+    st.html('<span id="p51-bean-credit"></span>')
+    with st.expander("Bean-credit breakpoints (P51)"):
+        st.caption(f"{report['caveat']} {report['credit_evidence']}")
+        st.caption(f"{report['canonical_count']:,} feasible canonical rotations at each tested credit. "
+                   f"Adjacent test settings bracket leader changes. "
+                   f"A flip is a near-tie when either endpoint gap is at most {design['near_tie_gap']:g} "
+                   "weighted-score points (design choice).")
+        preset = st.selectbox("P51 preset", tuple(presets), format_func=title, key="p51_preset")
+        study = presets[preset]
+        st.dataframe(pd.DataFrame([
+            {f"P51 tested interval ({unit})": credit_interval(row), "Exact leader": rotation_text(row["rotation"]),
+             f"Leader at catalog {catalog:g}": "Yes" if row["catalog_leader"] else "No"}
+            for row in study["leader_intervals"]
+        ]), hide_index=True)
+        if study["breakpoints"]:
+            st.dataframe(pd.DataFrame([
+                {f"P51 flip bracket ({unit})": f"{row['before']['credit']:g}–{row['after']['credit']:g}",
+                 "Before gap": f"{row['before']['gap']:.6f}", "After gap": f"{row['after']['gap']:.6f}",
+                 "Before near-tie": row["before"]["near_tie"], "After near-tie": row["after"]["near_tie"],
+                 "Flip flag": "Top choices are close here" if row["near_tie"] else ""}
+                for row in study["breakpoints"]
+            ]), hide_index=True)
+        else:
+            st.info("The same rotation leads at every tested credit for this preset.")
+        st.dataframe(pd.DataFrame([
+            {f"P51 sweep ({unit})": row["credit"], "Leader": rotation_text(row["leader"]["rotation"]),
+             "Leader score": f"{row['leader']['score']:.6f}", "Runner-up": rotation_text(row["runner_up"]["rotation"]),
+             "Runner-up score": f"{row['runner_up']['score']:.6f}", "Gap": f"{row['gap']:.6f}"}
+            for row in study["grid"]
+        ]), hide_index=True)
+
+        published = {row["credit"]: row for row in report["published_strategies"]}
+        credit = st.selectbox("Bean credit for published options", tuple(published), index=tuple(published).index(catalog),
+                              format_func=lambda value: f"{value:g} {unit}", key="p51_credit")
+        source = next(row["source"] for row in report["credit_grid"] if row["credit"] == credit)
+        st.caption(f"Credit source · {source}. Baseline source · {report['baseline_source']}. "
+                   f"Metric changes are relative to {catalog:g} {unit}. "
+                   "The nitrogen score also uses a shared catalog normalization.")
+        strategies = {row["strategy"]: row for row in published[credit]["strategies"]}
+        st.dataframe(pd.DataFrame([
+            {"P51 published option": title(name), "Rotation": rotation_text(row["rotation"]),
+             "Weighted score": f"{row['presets'][preset]['score']:.6f}",
+             "Score change": f"{row['presets'][preset]['score_delta']:+.6f}",
+             "Rank among published options": row["presets"][preset]["rank_among_published"],
+             "Hard-rule flags": ", ".join(title(flag) for flag, slots in row["flags"].items() if slots) or "None"}
+            for name, row in strategies.items()
+        ]), hide_index=True)
+        selected = st.selectbox("P51 published option", tuple(strategies), format_func=title, key="p51_strategy")
+        st.dataframe(pd.DataFrame([
+            {"P51 metric": title(metric), "Value": row["value"], "Unit": row["unit"], "Change": row["delta"],
+             "Normalized score": row["score"], "Score change": row["score_delta"], "Evidence": row["evidence_label"],
+             "Source": row["source"] + (f" · {source} · assumption, validate locally" if metric == "nitrogen" else "")}
+            for metric, row in strategies[selected]["metrics"].items()
+        ]), hide_index=True)
+
+        outcomes = {row["credit"]: row for row in study["matched_draws"]}
+        st.caption(f"The {design['joint_draws']} matched P22 draws use the same other assumptions at each fixed credit. "
+                   "The draw baseline can vary. Win frequencies describe the model under these assumptions.")
+        st.dataframe(pd.DataFrame([
+            {f"P51 fixed draw credit ({unit})": row["credit"],
+             "Own nominal P22 reference": rotation_text(row["reference_winner"]),
+             "Changes vs own reference": f"{row['winner_change_fraction']:.2%}",
+             "Material changes": f"{row['material_change_fraction']:.2%}",
+             f"Paired differences vs {catalog:g}": f"{row['paired_disagreement_count']}/{row['evaluations']} "
+                                                     f"({row['paired_disagreement_fraction']:.2%})",
+             "Draw top-score range": f"{row['top_score_range'][0]:.3f}–{row['top_score_range'][1]:.3f}"}
+            for row in outcomes.values()
+        ]), hide_index=True)
+        case = st.selectbox("Fixed-credit win frequencies", tuple(outcomes),
+                            format_func=lambda value: f"{value:g} {unit}", key="p51_draw_credit")
+        outcome = outcomes[case]
+        st.dataframe(pd.DataFrame([
+            {"P51 draw winner": rotation_text(row["cycle"]), "Draws won": row["count"],
+             "Wins in scenarios": f"{row['count'] / outcome['evaluations']:.2%}"}
+            for row in outcome["winners"]
+        ]), hide_index=True)
 
 
 def consensus_shortlist_panel(farm_id):
@@ -1526,11 +1617,12 @@ def app():
         st.caption("These checks compare NASA weather and vegetation data and examine consistency with county or "
                    "district yields. "
                    "Rotation recommendations still need field validation.")
-        evidence_ledger_panel()
+        evidence_ledger_panel(farm_id)
         makueni_cropland_panel(farm_id)
         literature_check_panel()
         regional_literature_panel(farm_id)
         bean_nitrogen_panel(farm_id)
+        bean_credit_breakpoint_panel(farm_id)
         regional_scoring_panel(farm_id)
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)

@@ -40,6 +40,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
         studies.append("P47")
     if (DATA / "literature_check_p49.json").exists():
         studies.append("P49")
+    if (DATA / "bean_credit_breakpoints_p51.json").exists():
+        studies.append("P51")
     assert [row.study for row in rows] == studies
     assert all(len(row.cells()) == len(COLUMNS) for row in rows)
     assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
@@ -66,6 +68,12 @@ def test_rows_disclose_negative_results_and_limits():
         assert rows["P49"].direction == "mixed"
         assert "0.7 to 56 kg N/ha" in rows["P49"].result
         assert "44 to 80 kg N/ha" in rows["P49"].result
+    if "P51" in rows:
+        assert rows["P51"].direction == "does not support"
+        assert "0/4 presets" in rows["P51"].result
+        assert "4/4 flips were near-ties" in rows["P51"].result
+        assert "30–44, 68–80 kg N/ha" in rows["P51"].result
+        assert "cropland is unverified" in rows["P51"].limit
     if "P47" in rows:
         assert "EXPLORATORY" in rows["P47"].question
         p47 = rows["P47"]
@@ -107,7 +115,7 @@ def test_p39_is_optional_but_bad_inputs_still_fail():
                     "literature_variant_p43.json", "consensus_shortlist_p44.json",
                     "literature_check_p45.json", "smooth_climate_fit_p42.json", "regional_scoring_variants_p46.json",
                     "consensus_shortlist_p44b.json", "makueni_cropland_p48.json", "rank_concentration_p47.json",
-                    "literature_check_p49.json"}:
+                    "literature_check_p49.json", "bean_credit_breakpoints_p51.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

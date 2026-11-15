@@ -522,3 +522,31 @@ def test_bean_nitrogen_panel_displays_reported_estimates_and_soil_context():
     assert len(table) == len(report["rows"])
     assert set(table["Soil"]) == {row["soil"] for row in report["rows"]}
     assert table.iloc[1]["Reported or calculated estimates"] == "16.4, 13.5 kg N/ha"
+
+
+def test_bean_credit_breakpoint_panel_uses_saved_grid_and_replay(monkeypatch):
+    def no_network(*args, **kwargs):
+        pytest.fail("P51 attempted to contact the network")
+
+    monkeypatch.setattr("requests.sessions.Session.request", no_network)
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not any(row.label == "Bean-credit breakpoints (P51)" for row in app.expander)
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    app.selectbox(key="p51_preset").set_value("soil_builder")
+    app.selectbox(key="p51_credit").set_value(80).run()
+    assert not app.exception
+    assert any(row.label == "Bean-credit breakpoints (P51)" for row in app.expander)
+    assert any("Makueni cropland is unverified" in row.value and "roughly 1–80 kg N/ha" in row.value
+               for row in app.caption)
+    brackets = next(table.value for table in app.dataframe if "P51 flip bracket (kg N/ha)" in table.value.columns)
+    assert brackets.iloc[0]["P51 flip bracket (kg N/ha)"] == "30–44"
+    assert brackets.iloc[0]["Before gap"] == "0.000785"
+    assert brackets.iloc[0]["After gap"] == "0.002401"
+    metrics = next(table.value for table in app.dataframe if "P51 metric" in table.value.columns)
+    assert len(metrics) == 6
+    assert metrics.set_index("P51 metric").loc["Nitrogen", "Change"] == 29
+    draws = next(table.value for table in app.dataframe if "P51 fixed draw credit (kg N/ha)" in table.value.columns)
+    assert list(draws["Paired differences vs 22"]) == ["0/512 (0.00%)", "178/512 (34.77%)", "355/512 (69.34%)"]
+    ledger = next(item.value for item in app.get("html") if 'aria-label="Evidence ledger"' in item.value)
+    assert 'href="#p51-bean-credit"' in ledger
+    assert "4/4 flips were near-ties" in ledger

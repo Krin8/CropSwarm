@@ -478,6 +478,30 @@ def bean_nitrogen_check(report):
     )
 
 
+def bean_credit_check(report):
+    presets = report["presets"]
+    retained = sum(row["retains_catalog_leader"] for row in presets.values())
+    edges = [edge for row in presets.values() for edge in row["breakpoints"]]
+    near = sum(edge["near_tie"] for edge in edges)
+    grid = report["credit_grid"]
+    brackets = ", ".join(f"{low:g}–{high:g}" for low, high in
+                         sorted({(edge["before"]["credit"], edge["after"]["credit"]) for edge in edges}))
+    result = f"The catalog leader held across the full grid in {retained}/{len(presets)} presets."
+    if edges:
+        result += f" {near}/{len(edges)} flips were near-ties. Flip brackets: {brackets} {report['credit_unit']}."
+    else:
+        result += " No sampled leader changes."
+    return EvidenceRow(
+        "P51", "Do exact leaders stay the same across common-bean nitrogen credits?",
+        f"Makueni · {report['canonical_count']:,} canonical cycles × {len(grid)} tested credits · "
+        f"{report['draw_design']['joint_draws']} matched P22 draws per fixed-credit replay",
+        result, direction(retained > 0, retained < len(presets)),
+        "Makueni cropland is unverified. The assumed baseline and trial-to-farm transfer limit field interpretation. "
+        "The grid brackets flips and leaves exact crossing credits unresolved.",
+        "bean_credit_breakpoints.md",
+    )
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -503,7 +527,8 @@ def build_ledger(load):
                                ("consensus_shortlist_p44b.json", expanded_consensus_check),
                                ("makueni_cropland_p48.json", makueni_cropland_check),
                                ("rank_concentration_p47.json", rank_concentration_check),
-                               ("literature_check_p49.json", bean_nitrogen_check)):
+                               ("literature_check_p49.json", bean_nitrogen_check),
+                               ("bean_credit_breakpoints_p51.json", bean_credit_check)):
         try:
             report = load(filename)
         except FileNotFoundError:
