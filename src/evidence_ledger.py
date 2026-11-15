@@ -313,6 +313,22 @@ def scoring_response_check(report):
                        "ml_model.md#p41-scoring-versus-county-yield-response")
 
 
+def literature_variant_check(report):
+    farm, = (data for data in report["farms"].values() if data["benchmark"])
+    comparisons = [row for key, result in farm["nominal"].items() if key != "original"
+                   for row in result["presets"].values()]
+    changed = sum(not row["original_still_optimal"] for row in comparisons)
+    near = sum(row["near_tie_disappeared"] for row in comparisons)
+    ranks = [row["rank_spearman"] for row in comparisons]
+    return EvidenceRow("P43", "Do Kansas winners survive literature-based scoring changes?",
+                       f"Kansas · {len(comparisons)} variant–preset comparisons, {report['design']['draws']} paired draws",
+                       f"The original winner lost optimality in {changed}/{len(comparisons)} comparisons. "
+                       f"Ranking ρ {min(ranks):.5f}–{max(ranks):.5f}. {near} top-two near-ties disappeared.",
+                       direction(changed < len(comparisons), changed > 0),
+                       "The Kansas what-if leaves field effects and applicability to other farms unresolved.",
+                       "literature_variant.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -329,7 +345,8 @@ def build_ledger(load):
     rows = [*farm_checks(load), *kansas_checks(load), transfer_check(load), *interval_checks(load),
             *recalibration_checks(load), overlap_check(load)]
     for filename, describe in (("climate_yield_state_associations.json", state_check),
-                               ("scoring_response_check.json", scoring_response_check)):
+                               ("scoring_response_check.json", scoring_response_check),
+                               ("literature_variant_p43.json", literature_variant_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

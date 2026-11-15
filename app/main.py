@@ -349,6 +349,72 @@ def literature_check_panel():
                    "Local nitrogen, water, soil loss and disease outcomes still need field evidence.")
 
 
+def literature_variant_panel(farm_id):
+    report = cached("literature_variant_p43.json")
+    farm = report["farms"][farm_id]
+    original = farm["p22"]["original"]
+    labels = {}
+    for variant in report["variants"]:
+        active = [
+            label for label, enabled in (("Nitrogen", variant["nitrogen"]),
+                                         (f"Water {variant['water_mm']} mm", variant["water_mm"]),
+                                         ("Disease", variant["disease"])) if enabled
+        ]
+        labels[variant["id"]] = " + ".join(active) or "Original comparison"
+    units = ("mm unmet per slot", "kg N/ha per slot", "erosion proxy",
+             "historical share", "relative index", "relative penalty")
+    with st.expander("Literature-informed variant (P43)"):
+        st.caption(f"{farm['name']} · {farm['benchmark_label']}. Illustrative what-if, validate locally. "
+                   "These changes describe how the score responds to Kansas literature inputs. "
+                   "Field response and rotation quality remain untested.")
+        if farm["benchmark"]:
+            rows = []
+            for item in report["evidence"]:
+                source = item["source"]
+                rows.append({"Corrected input": item["input"], "Literature value": item["value"],
+                             "Evidence": item["grade"], "Application grade": item["application_grade"],
+                             "Locator": source["locator"], "Source": source["url"]})
+            st.dataframe(pd.DataFrame(rows), hide_index=True,
+                         column_config={"Source": st.column_config.LinkColumn("Publication", display_text="Open source")})
+        else:
+            st.info("No benchmark for nitrogen, soil-water carryover, or tan spot at this farm. "
+                    "All configurations use its original score and P22 rates.")
+        choice = st.selectbox("Scoring configuration", tuple(labels),
+                              index=tuple(labels).index("N_W70_D") if farm["benchmark"] else 0,
+                              format_func=labels.get, key="literature_variant_case")
+        case = farm["nominal"][choice]
+        rates = farm["p22"][choice]
+        st.caption(f"Exact canonical rankings, unchanged preset weights · "
+                   f"{report['design']['draws']} matched P22 assumption draws · "
+                   f"Near-tie tolerance {report['design']['near_tie']:.2f} score points (design choice).")
+
+        def rotation(values):
+            return " → ".join(" / ".join(crop.replace("_", " ") for crop in year) for year in values)
+
+        st.dataframe(pd.DataFrame([
+            {"Preset": title(name), "Original top rotation": rotation(row["original_rotation"]),
+             "Variant top rotation": rotation(row["variant_rotation"]), "Rank Spearman ρ": row["rank_spearman"],
+             "Common alternatives": row["common_count"],
+             "Top-two gap": f"{row['original_top_two_gap']:.4f} → {row['variant_top_two_gap']:.4f}",
+             "Near-top rotations": f"{row['original_near_top']} → {row['variant_near_top']}",
+             "P22 label change": f"{original[name]['winner_change_fraction']:.2%} → {rates[name]['winner_change_fraction']:.2%}",
+             "P22 material change": f"{original[name]['material_change_fraction']:.2%} → {rates[name]['material_change_fraction']:.2%}",
+             "Different winner on same draw": f"{rates[name]['paired_disagreement_fraction']:.2%}"}
+            for name, row in case["presets"].items()
+        ]), hide_index=True)
+        strategies = {item["strategy"]: item for item in case["shortlist"]}
+        selected = st.selectbox("Published strategy", tuple(strategies), format_func=title,
+                                key="literature_variant_shortlist")
+        st.dataframe(pd.DataFrame([
+            {"Metric": title(key), "Δ raw": strategies[selected]["raw"][key], "Unit": unit,
+             "Δ normalized score": strategies[selected]["normalized"][key]}
+            for key, unit in zip(METRICS, units, strict=True)
+        ]), hide_index=True)
+        st.caption("Metric differences use variant minus original. The P22 rates use each configuration’s own "
+                   "reference winner. Those rates describe the assumption draws, and the paired column shows "
+                   "how often the two configurations selected different rotations on the same draw.")
+
+
 def state_weather_yield_panel():
     report = cached("climate_yield_state_associations.json")
     states = report["states"]
@@ -1029,6 +1095,7 @@ def app():
                    "Rotation recommendations still need field validation.")
         evidence_ledger_panel()
         literature_check_panel()
+        literature_variant_panel(farm_id)
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "

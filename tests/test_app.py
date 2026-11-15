@@ -357,3 +357,23 @@ def test_scoring_literature_table_lists_conditional_and_broad_references():
     assert len(rows) == 15
     assert set(rows["Finding"]) == {"no usable source", "inside range"}
     assert "Chapter 3, Table 14" in rows["Table or section"].values
+
+
+def test_literature_variant_panel_shows_sourced_kansas_and_no_benchmark_elsewhere():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(item.label == "Literature-informed variant (P43)" for item in app.expander)
+    evidence = next(item.value for item in app.dataframe if "Corrected input" in item.value)
+    assert len(evidence) == 3 and evidence["Evidence"].eq("literature").all()
+    compare = next(item.value for item in app.dataframe if "Different winner on same draw" in item.value)
+    assert len(compare) == 4 and compare["Common alternatives"].eq(168).all()
+    assert compare.loc[compare.Preset.eq("Income"), "P22 label change"].item() == "92.58% → 96.48%"
+    app.selectbox(key="literature_variant_shortlist").set_value("income").run()
+    metrics = next(item.value for item in app.dataframe if "Δ raw" in item.value)
+    assert len(metrics) == 6 and metrics.loc[metrics.Metric.eq("Nitrogen"), "Δ raw"].item() == pytest.approx(11 / 3)
+    app.selectbox(key="farm_picker").set_value("telangana_a").run()
+    assert not app.exception
+    assert any("No benchmark for nitrogen" in item.value for item in app.info)
+    compare = next(item.value for item in app.dataframe if "Different winner on same draw" in item.value)
+    assert compare["Different winner on same draw"].eq("0.00%").all()
+    assert compare["Common alternatives"].eq(211394).all()
