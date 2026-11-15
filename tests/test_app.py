@@ -377,3 +377,21 @@ def test_literature_variant_panel_shows_sourced_kansas_and_no_benchmark_elsewher
     compare = next(item.value for item in app.dataframe if "Different winner on same draw" in item.value)
     assert compare["Different winner on same draw"].eq("0.00%").all()
     assert compare["Common alternatives"].eq(211394).all()
+
+
+def test_consensus_shortlist_panel_shows_empty_set_and_variant_scope():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(item.label == "Consensus shortlist (P44)" for item in app.expander)
+    assert any("16 scoring configurations × 512 matched P22 draws" in item.value for item in app.caption)
+    chart = next(item.value for item in app.dataframe if "Consensus size" in item.value)
+    assert chart["Consensus size"].tolist() == [0, 0, 0]
+    assert any("No rotation meets the 50% threshold" in item.value for item in app.info)
+    app.selectbox(key="farm_picker").set_value("telangana_a").run()
+    app.selectbox(key="consensus_preset").set_value("soil_builder").run()
+    app.selectbox(key="consensus_threshold").set_value(40).run()
+    assert not app.exception
+    assert any("only the original scoring specification" in item.value for item in app.info)
+    assert any("No rotation meets the 40% threshold for Soil builder" in item.value for item in app.info)
+    chart = next(item.value for item in app.dataframe if "P18 evidence" in item.value)
+    assert chart["P18 evidence"].eq("Low").all() and "39.84%" in chart["Top three"].values

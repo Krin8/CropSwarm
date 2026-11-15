@@ -329,6 +329,21 @@ def literature_variant_check(report):
                        "literature_variant.md")
 
 
+def consensus_shortlist_check(report):
+    cutoff = report["design"]["primary_threshold"]
+    farms = report["farms"].values()
+    results = [preset["thresholds"][str(cutoff)] for farm in farms for preset in farm["presets"].values()]
+    nonempty = sum(row["size"] > 0 for row in results)
+    overlap = sum(row["shortlist_overlap"] > 0 for row in results)
+    decisions = f"{nonempty}/{len(results)} farm–preset sets are nonempty at {cutoff}%; {overlap} overlap the published shortlist."
+    cells = sorted({farm["cells_per_preset"] for farm in farms})
+    return EvidenceRow("P44", "Do rotations repeatedly place in the top three across assumption draws?",
+                       f"Kansas, Telangana, Makueni · {cells[0]:,}–{cells[-1]:,} cells per preset",
+                       decisions, direction(nonempty, nonempty < len(results)),
+                       "Agreement within the tested configurations leaves field quality unresolved.",
+                       "consensus_shortlist.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -346,7 +361,8 @@ def build_ledger(load):
             *recalibration_checks(load), overlap_check(load)]
     for filename, describe in (("climate_yield_state_associations.json", state_check),
                                ("scoring_response_check.json", scoring_response_check),
-                               ("literature_variant_p43.json", literature_variant_check)):
+                               ("literature_variant_p43.json", literature_variant_check),
+                               ("consensus_shortlist_p44.json", consensus_shortlist_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

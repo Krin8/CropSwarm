@@ -189,7 +189,7 @@ def dominance_counts(replay, candidates):
 
 def write_rotations(path, replay, keys, top1, top3, cells):
     def output(temp):
-        with temp.open("wb") as raw, gzip.GzipFile(fileobj=raw, filename="", mtime=0) as archive:
+        with temp.open("wb") as raw, gzip.GzipFile(fileobj=raw, mode="wb", filename="", mtime=0) as archive:
             with io.TextIOWrapper(archive, encoding="utf-8", newline="") as stream:
                 writer = csv.writer(stream, lineterminator="\n")
                 slot_cols = [f"year_{year + 1}_slot_{slot + 1}" for year in range(replay.horizon)

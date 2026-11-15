@@ -349,6 +349,70 @@ def literature_check_panel():
                    "Local nitrogen, water, soil loss and disease outcomes still need field evidence.")
 
 
+def consensus_shortlist_panel(farm_id):
+    report = cached("consensus_shortlist_p44.json")
+    farm = report["farms"][farm_id]
+    design = report["design"]
+    variants, draws, cells = len(farm["variants"]), farm["draws"], farm["cells_per_preset"]
+    with st.expander("Consensus shortlist (P44)"):
+        st.caption(f"{farm['name']} · {variants} scoring configuration{'s' if variants != 1 else ''} × "
+                   f"{draws} matched P22 draws · {cells:,} cells per preset. "
+                   "Scoring and assumption frequencies are illustrative and need local validation.")
+        if variants == 1:
+            st.info("This farm has only the original scoring specification. P43 has no local benchmark, "
+                    "and P42 was absent from the merged history.")
+        else:
+            items = report["literature_evidence"]
+            st.dataframe(pd.DataFrame([{"P43 input": row["input"], "Source grade": row["grade"],
+                                        "Application grade": row["application_grade"], "Source": row["source"]["url"]}
+                                       for row in items]), hide_index=True,
+                         column_config={"Source": st.column_config.LinkColumn("Publication", display_text="Open source")})
+        first, second = st.columns(2)
+        preset = first.selectbox("Consensus priority preset", tuple(farm["presets"]), format_func=title,
+                                 key="consensus_preset")
+        threshold = second.selectbox("Minimum share of cells in top three", design["thresholds"],
+                                     index=design["thresholds"].index(design["primary_threshold"]),
+                                     format_func=lambda value: f"{value}%", key="consensus_threshold")
+        entry = farm["presets"][preset]
+        result = entry["thresholds"][str(threshold)]
+        st.dataframe(pd.DataFrame([
+            {"Minimum top-three share": f"{value}%", "Consensus size": details["size"],
+             "Published alternatives in set": details["shortlist_overlap"],
+             "Original nominal winner in set": "Yes" if details["original_nominal_member"] else "No",
+             "Original draw winners in set": f"{details['original_draw_winners_share']:.2%}"}
+            for value, details in entry["thresholds"].items()
+        ]), hide_index=True)
+
+        if not result["members"]:
+            st.info(f"No rotation meets the {threshold}% threshold for {title(preset)}.")
+        else:
+            st.write(f"{result['size']} consensus rotations at {threshold}%. "
+                     f"Strict dominance occurred in {result['strictly_dominated_member_cells']:,} of "
+                     f"{result['admitted_member_cells']:,} admitted rotation–cell pairs.")
+        st.caption(f"The published baseline and four alternatives stay in place. The current draw baseline "
+                   f"ranked first in {entry['draw_baseline']['top1_share']:.2%} of cells and in the top three "
+                   f"in {entry['draw_baseline']['top3_share']:.2%}. The table shows the fixed published baseline.")
+
+        def describe(row, membership):
+            cycle = " → ".join(" / ".join(crop.replace("_", " ") for crop in year) for year in row["cycle"])
+            return {"Rotation": cycle, "Shortlist membership": membership, "Top one": f"{row['top1_share']:.2%}",
+                    "Top three": f"{row['top3_share']:.2%}", "P18 evidence": title(row["evidence"]["overall"])}
+
+        records = [describe(entry["fixed_baseline"], "Published baseline" +
+                            (" · in consensus" if result["baseline_member"] else ""))]
+        for field, membership in (("both", "Consensus and published shortlist"),
+                                  ("consensus_only", "Consensus only"),
+                                  ("shortlist_only", "Published shortlist only")):
+            records.extend(describe(row, membership) for row in result[field])
+        present = {row["rotation_key"] for row in [entry["fixed_baseline"], *result["members"], *result["shortlist_only"]]}
+        if not result["members"]:
+            records.extend(describe(row, "Highest top-three share") for row in entry["leaders"]
+                           if row["rotation_key"] not in present)
+        st.dataframe(pd.DataFrame(records), hide_index=True)
+        st.caption("P18 labels describe the original input evidence. The threshold is a design choice. "
+                   "Agreement among CropSwarm configurations leaves field outcomes and rotation quality unresolved.")
+
+
 def literature_variant_panel(farm_id):
     report = cached("literature_variant_p43.json")
     farm = report["farms"][farm_id]
@@ -1096,6 +1160,7 @@ def app():
         evidence_ledger_panel()
         literature_check_panel()
         literature_variant_panel(farm_id)
+        consensus_shortlist_panel(farm_id)
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "
