@@ -1,0 +1,539 @@
+{
+  "label": "Illustrative, validate locally",
+  "catalog": {
+    "value": 22.0,
+    "name": "University of Minnesota Extension",
+    "url": "https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology",
+    "locator": "Soil biology, Table 1",
+    "note": "The catalog converts the 20 lb N/acre edible-bean first-year corn credit to a rounded value. The transfer to Makueni is an assumption, validate locally.",
+    "crop_catalog_source": "assumption, validate locally; illustrative transfer of University of Minnesota Extension Table 1 first-year corn credit (edible bean 20 lb N/acre, converted and rounded to kg N/ha) https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology"
+  },
+  "p45": {
+    "soil": "Sandy clay, Oxic Paleustalf (Chromic Luvisol).",
+    "residues": "Bean residue return or removal for these particular comparisons remains unverified.",
+    "method": "Yield-matched fertilizer equivalent from a fitted continuous sole-maize response curve.",
+    "seasons": [
+      "1982/83 short rains",
+      "1982 long rains"
+    ],
+    "name": "Nadar and Faught (1984), East African Agricultural and Forestry Journal",
+    "url": "https://pdf.usaid.gov/pdf_docs/PNAAX822.pdf",
+    "locator": "Figure 2, Tables II\u2013VI and pp. 130, 135\u2013136",
+    "design": "Katumani trials with sole-crop rotations and intercrops. Fertilizer equivalence was inferred from a continuous-maize fertilizer response curve.",
+    "bounds": [
+      44,
+      80
+    ]
+  },
+  "machakos": {
+    "bounds": [
+      0.7,
+      56
+    ],
+    "catalog_finding": "inside range",
+    "p45_overlap": [
+      44,
+      56
+    ],
+    "recomputed": [
+      {
+        "label": "Bean residue removed (RotNR)",
+        "value": 16.4
+      },
+      {
+        "label": "Bean residue returned (RotRR)",
+        "value": 13.5
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "chui_reported",
+      "source": "chui",
+      "crop": "Common bean (Mwezi moja bush bean)",
+      "site": "Kimutwa and Masii, Machakos, Kenya",
+      "season": "Kimutwa following maize short rains 1988/89 and 1989/90. Masii following maize long rains 1988 and 1989.",
+      "soil": "Kimutwa sandy clay loam (dystric Nitisol). Masii sand (Acrisol).",
+      "residues": "Returned and removed bean-residue treatments. The assignment below follows p. 156, with inconsistent treatment labels elsewhere in the thesis.",
+      "measure": "bean_equivalence",
+      "method": "Fitted fertilizer-equivalent estimates from measured field grain yields.",
+      "locator": "p. 156 and Table 37a; abstract rounds the full spread to 1\u201356",
+      "estimates": [
+        {
+          "label": "Kimutwa short rains 1988/89, returned",
+          "value": 16
+        },
+        {
+          "label": "Kimutwa short rains 1988/89, removed",
+          "value": 56
+        },
+        {
+          "label": "Kimutwa short rains 1989/90, returned",
+          "value": 14
+        },
+        {
+          "label": "Kimutwa short rains 1989/90, removed",
+          "value": 24
+        },
+        {
+          "label": "Masii long rains 1988, returned",
+          "value": 9
+        },
+        {
+          "label": "Masii long rains 1988, removed",
+          "value": 3
+        },
+        {
+          "label": "Masii long rains 1989, returned",
+          "value": 0.7
+        },
+        {
+          "label": "Masii long rains 1989, removed",
+          "value": 6
+        }
+      ],
+      "caveat": "Treat the full spread as reported, with low confidence in the residue-by-season mapping. Page 147 assigns Kimutwa ranges of 14\u201324 to returned and 16\u201356 to removed residue and gives one Masii pair. The printed 1989/90 fits also conflict with part of p. 156.",
+      "bounds": [
+        0.7,
+        56
+      ],
+      "measure_label": "Common bean \u00b7 maize grain-yield fertilizer equivalent",
+      "unit": "kg N/ha",
+      "catalog_finding": "inside range",
+      "p45_overlap": [
+        44,
+        56
+      ]
+    },
+    {
+      "id": "chui_recomputed",
+      "source": "chui",
+      "crop": "Common bean (Mwezi moja bush bean)",
+      "site": "Kimutwa, Machakos, Kenya",
+      "season": "Following maize in short rains 1989/90.",
+      "soil": "Sandy clay loam, dystric Nitisol.",
+      "residues": "RotNR removed bean residue. RotRR returned bean residue. Treatment codes from pp. 54\u201355.",
+      "measure": "bean_equivalence",
+      "method": "P49 calculation from the printed quadratic field-yield fits using the smaller nonnegative N root.",
+      "locator": "Table 37b, p. 151, and Appendix Table 21",
+      "response_curve": {
+        "intercept": 2159,
+        "linear": 60.95,
+        "quadratic": -0.4
+      },
+      "targets": [
+        {
+          "label": "Bean residue removed (RotNR)",
+          "yield_kg_ha": 3053
+        },
+        {
+          "label": "Bean residue returned (RotRR)",
+          "yield_kg_ha": 2907
+        }
+      ],
+      "caveat": "Overlaps the same Chui field trial. This cross-check uses the printed intercepts and avoids counting the result as a second study. It cannot adjudicate every residue-by-season claim.",
+      "estimates": [
+        {
+          "label": "Bean residue removed (RotNR)",
+          "value": 16.4
+        },
+        {
+          "label": "Bean residue returned (RotRR)",
+          "value": 13.5
+        }
+      ],
+      "bounds": [
+        13.5,
+        16.4
+      ],
+      "measure_label": "Common bean \u00b7 maize grain-yield fertilizer equivalent",
+      "unit": "kg N/ha",
+      "catalog_finding": "outside range",
+      "p45_overlap": null
+    },
+    {
+      "id": "lunze_climbing",
+      "source": "lunze",
+      "crop": "Climbing common bean",
+      "site": "Mulungu and South Kivu farms, DR Congo",
+      "season": "First rotation season. Table 13 covers maize seasons 2002A, 2002B and 2003A.",
+      "soil": "Volcanic-derived highland soils in the original trial preview. Plot-specific soil classes unavailable.",
+      "residues": "Residue handling unreported in the accessible author summary and table.",
+      "measure": "bean_equivalence",
+      "method": "Fertilizer replacement estimated from field yield response, reported by the original trial authors.",
+      "locator": "p. 254 and Table 13",
+      "estimates": [
+        {
+          "label": "Reported lower endpoint",
+          "value": 15
+        },
+        {
+          "label": "Reported upper endpoint",
+          "value": 42
+        }
+      ],
+      "caveat": "Climbing-bean system in a highland environment. The full 2011 chapter remains unavailable and the endpoints cannot be assigned to individual residue treatments.",
+      "bounds": [
+        15,
+        42
+      ],
+      "measure_label": "Common bean \u00b7 maize grain-yield fertilizer equivalent",
+      "unit": "kg N/ha",
+      "catalog_finding": "inside range",
+      "p45_overlap": null
+    },
+    {
+      "id": "marandu_grain_legumes",
+      "source": "marandu",
+      "crop": "Cowpea, pigeonpea and green gram",
+      "site": "Mlingano, Muheza, Tanga, Tanzania",
+      "season": "Two cycles of short-rains legumes followed by long-rains maize. Calendar years unreported.",
+      "soil": "Sandy clay Rhodic Ferralsol, pH 5.6 and low total N and available P.",
+      "residues": "Grain harvested and aboveground residues returned, including pigeonpea litter. Rotation plots got P and no mineral N.",
+      "measure": "other_equivalence",
+      "method": "Fitted fertilizer equivalents from measured maize grain yields and the continuous-maize urea response.",
+      "locator": "Figure 1, p. 27",
+      "estimates": [
+        {
+          "label": "Cowpea",
+          "value": 25
+        },
+        {
+          "label": "Pigeonpea",
+          "value": 19
+        },
+        {
+          "label": "Green gram",
+          "value": 16
+        }
+      ],
+      "caveat": "Different grain legumes. Moisture stress around tasselling limited maize yield. The study reported no significant maize grain yield differences among the three legume rotations.",
+      "bounds": [
+        16,
+        25
+      ],
+      "measure_label": "Other legumes \u00b7 maize grain-yield fertilizer equivalent",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "kumar_rao_dry_matter",
+      "source": "kumar_rao",
+      "crop": "Sole pigeonpea",
+      "site": "ICRISAT station, Hyderabad, India",
+      "season": "Rainy-season pigeonpea in 1979, harvested January 1980. Following maize in 1980 rains.",
+      "soil": "Black Vertisol, topsoil pH 8.3 and 0.03% total N.",
+      "residues": "Intact aboveground plant parts were removed at harvest. The authors discuss fallen leaves as a possible contribution.",
+      "measure": "biomass_equivalence",
+      "method": "Estimated fertilizer N needed after each comparator to match the measured dry matter response of zero-N maize after sole pigeonpea.",
+      "locator": "Table 7 and results p. 137; Figure 3 p. 140",
+      "estimates": [
+        {
+          "label": "After fallow",
+          "value": 38
+        },
+        {
+          "label": "After sorghum without N",
+          "value": 49
+        },
+        {
+          "label": "After sorghum with N",
+          "value": 45
+        },
+        {
+          "label": "After sorghum/pigeonpea without N",
+          "value": 45
+        },
+        {
+          "label": "After sorghum/pigeonpea with N",
+          "value": 39
+        }
+      ],
+      "caveat": "Uses total aboveground dry matter as the matched response. The comparison is outside East Africa and uses a different legume.",
+      "bounds": [
+        38,
+        49
+      ],
+      "measure_label": "Maize dry matter fertilizer equivalent",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "ojiem_residue",
+      "source": "ojiem",
+      "crop": "Common bean",
+      "site": "Three western Kenya agroecological zones",
+      "season": "Beans in 2003 short rains, maize in 2004 long rains.",
+      "soil": "Fields stratified by high, medium and low fertility. Table 3 reports texture and 0\u201320 cm soil chemistry by zone and fertility group.",
+      "residues": "Harvested grain and returned remaining bean residues, incorporated about 15 cm deep. Maize planted 35\u201345 days later.",
+      "measure": "residue",
+      "method": "Field residue N calculated from measured biomass and N concentration.",
+      "locator": "Table 5, p. 80",
+      "estimates": [
+        {
+          "label": "Agroecological zone 1",
+          "value": 28
+        },
+        {
+          "label": "Agroecological zone 2",
+          "value": 26
+        },
+        {
+          "label": "Agroecological zone 3",
+          "value": 12
+        }
+      ],
+      "caveat": "Residue N is a mass applied before maize, including N that may remain unavailable to the maize.",
+      "bounds": [
+        12,
+        28
+      ],
+      "measure_label": "N in returned bean residues",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "ojiem_soil",
+      "source": "ojiem",
+      "crop": "Common bean",
+      "site": "Two western Kenya agroecological zones",
+      "season": "2004 long-rains maize sowing after 2003 short-rains beans.",
+      "soil": "Top 0\u201315 cm, across the trial's fertility classes.",
+      "residues": "Sampled about 45 days after incorporating bean residues.",
+      "measure": "mineral_soil",
+      "method": "Measured extractable mineral N, scaled with soil bulk density.",
+      "locator": "Table 5, p. 80, and \u00a72.2, p. 77",
+      "estimates": [
+        {
+          "label": "Agroecological zone 1",
+          "value": 57
+        },
+        {
+          "label": "Agroecological zone 2",
+          "value": 60
+        }
+      ],
+      "caveat": "These are soil N stocks at sowing. An attributable bean credit would require a matched change or control.",
+      "bounds": [
+        57,
+        60
+      ],
+      "measure_label": "Soil mineral N stock at maize sowing",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "rurangwa_uptake",
+      "source": "rurangwa",
+      "crop": "Common bean and soybean",
+      "site": "Bugesera and Kamonyi, Rwanda",
+      "season": "2014 short-rains legumes followed by 2014 long-rains maize, as labeled by the study.",
+      "soil": "Mean pH 6.2 in both districts, with mean topsoil clay of 500 and 390 g/kg, respectively.",
+      "residues": "Residues remained in the field. Maize received no direct nutrient addition. P, inoculum and manure were applied to the preceding legumes only.",
+      "measure": "uptake",
+      "method": "Field-measured differences in maize aboveground N uptake versus maize after the same unamended legumes. Published means across sites.",
+      "locator": "Table 6 and Nutrient uptake and production in maize",
+      "estimates": [
+        {
+          "label": "Bean with inoculant and 30 kg P/ha",
+          "value": 27
+        },
+        {
+          "label": "Bean with inoculant, 30 kg P/ha and 10 t manure/ha",
+          "value": 64
+        },
+        {
+          "label": "Soybean with inoculant and 30 kg P/ha",
+          "value": 16
+        },
+        {
+          "label": "Soybean with inoculant, 30 kg P/ha and 10 t manure/ha",
+          "value": 52
+        }
+      ],
+      "caveat": "The comparator is unamended bean or soybean, so the increases include residual effects of added inputs. Maize after soybean produced no grain at Bugesera, where its reported N uptake was stover only.",
+      "bounds": [
+        16,
+        64
+      ],
+      "measure_label": "Additional aboveground maize N uptake",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "mugi_grain_n",
+      "source": "mugi",
+      "crop": "Pigeonpea and lablab, sole and with maize",
+      "site": "Riroda, Arri and Dareda, Babati, Tanzania",
+      "season": "2017/18 and 2018/19 preceding systems, then unfertilized maize in 2019/20.",
+      "soil": "Three agroecological zones. Plot soil classes or textures are unreported in the sections checked.",
+      "residues": "Aboveground residues removed except fallen legume leaves.",
+      "measure": "grain_n",
+      "method": "Differences from measured grain N means for continuous maize, using the control and P-only contrast in Table 6.",
+      "locator": "Table 6, p. 8, and \u00a73.5, p. 9",
+      "estimates": [
+        {
+          "label": "Sole long-duration pigeonpea",
+          "value": 10
+        },
+        {
+          "label": "Sole medium-duration pigeonpea",
+          "value": 9
+        },
+        {
+          "label": "Sole lablab",
+          "value": 23
+        },
+        {
+          "label": "Maize with long-duration pigeonpea",
+          "value": 12
+        },
+        {
+          "label": "Maize with medium-duration pigeonpea",
+          "value": 9
+        },
+        {
+          "label": "Maize with lablab",
+          "value": 7
+        }
+      ],
+      "caveat": "Grain N uptake measures part of the successor's N demand. Two previous growing seasons and different legume species limit transfer to one bean season.",
+      "bounds": [
+        7,
+        23
+      ],
+      "measure_label": "Additional maize grain N uptake",
+      "unit": "kg N/ha"
+    },
+    {
+      "id": "rao_litter",
+      "source": "rao",
+      "crop": "Cowpea and cowpea/pigeonpea",
+      "site": "ICRAF Machakos station, Kenya",
+      "season": "Bimodal trial, November 1989\u2013February 1996. Litter sampled from 1992 to 1994 long-rains seasons.",
+      "soil": "Sandy clay loam Kandic Rhodustalf (Alfisol).",
+      "residues": "Cowpea haulms and pigeonpea stalks removed. Fallen foliage incorporated.",
+      "measure": "litter",
+      "method": "Estimated annual nutrient return from measured fallen litter and nutrient concentration.",
+      "locator": "\u00a73.3 and Table 4, p. 130",
+      "estimates": [
+        {
+          "label": "Cowpea\u2013maize rotation",
+          "value": 13
+        },
+        {
+          "label": "Cowpea/pigeonpea followed by maize, annualized",
+          "value": 15
+        }
+      ],
+      "caveat": "The study reports 30 kg N/ha in the year of cowpea/pigeonpea cultivation, which recurred every second year. This is annual litter return into the soil, with subsequent availability unresolved.",
+      "bounds": [
+        13,
+        15
+      ],
+      "measure_label": "Annual N returned through fallen litter",
+      "unit": "kg N/ha/year"
+    },
+    {
+      "id": "niyuhire_maize",
+      "source": "niyuhire",
+      "crop": "Climbing versus bush common bean",
+      "site": "Mutaho, Gitega, Burundi",
+      "season": "Beans February\u2013June 2012, maize October 2012\u2013January 2013.",
+      "soil": "Dominant Ferralsols, mean pH 5.8 and mean clay 36.9%.",
+      "residues": "Aboveground biomass left to farmers. Retention was unmeasured.",
+      "measure": "grain_yield",
+      "method": "Difference in measured maize grain yield after climbing versus bush bean within each DAP treatment.",
+      "locator": "Table 2, p. 55, and methods p. 54",
+      "estimates": [
+        {
+          "label": "Without DAP",
+          "value": 45
+        },
+        {
+          "label": "With DAP",
+          "value": 587
+        }
+      ],
+      "caveat": "The no-DAP contrast was nonsignificant. Both maize treatments received 46 kg N/ha as urea, with added N and P in DAP plots. Grain yield differences cannot resolve a fertilizer N credit.",
+      "bounds": [
+        45,
+        587
+      ],
+      "measure_label": "Difference in maize grain yield",
+      "unit": "kg grain/ha"
+    }
+  ],
+  "sources": {
+    "chui": {
+      "name": "Chui (1994), University of Nairobi",
+      "url": "https://erepository.uonbi.ac.ke/server/api/core/bitstreams/e03bc575-0a4d-40d0-8d40-3bb49f9fd7e7/content",
+      "publication": "PhD thesis, full text. Split-plot field experiments in semi-arid Machakos.",
+      "locator": "Abstract pp. xiii\u2013xiv, methods pp. 51\u201357, pp. 147 and 156, Tables 37a\u2013b and Appendix Table 21"
+    },
+    "lunze": {
+      "name": "Lunze et al. (2012), IntechOpen",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=aec31773a0a940328eccbb37f67deb0e77006952&repid=rep1&type=pdf",
+      "publication": "The original South Kivu trial authors' companion chapter, DOI 10.5772/29151. The chapter summarizes their 2011 trial and reproduces the Mulungu field data. The original chapter's public preview describes volcanic-derived highland soils.",
+      "locator": "\u00a74.4, p. 254, Table 13"
+    },
+    "marandu": {
+      "name": "Marandu et al. (2013), Tanzania Journal of Agricultural Sciences",
+      "url": "https://www.suaire.sua.ac.tz/server/api/core/bitstreams/e6c86a1b-836c-4b8d-a274-773d7bdbd895/content",
+      "publication": "Full journal article, on-station trial of crops and seasons used by smallholders in Muheza.",
+      "locator": "Methods and Table 1, pp. 24\u201325, and Figure 1, p. 27"
+    },
+    "ojiem": {
+      "name": "Ojiem et al. (2014), Field Crops Research",
+      "url": "https://biblio.iita.org/documents/S14OjiemBenefitsInthomDev.pdf-fc5c6e4854d3bed84c73b17b659a8107.pdf",
+      "publication": "Full journal article, on-farm rotations across three western Kenya agroecological zones.",
+      "locator": "Methods \u00a72.2, pp. 76\u201377, and Tables 3 and 5, pp. 79\u201380"
+    },
+    "rurangwa": {
+      "name": "Rurangwa, Vanlauwe and Giller (2018), Agriculture, Ecosystems & Environment",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5946694/",
+      "publication": "Full journal article, residue and input treatments on farms in Rwanda. Two of the trial districts had a following maize crop.",
+      "locator": "\u00a7\u00a72.1\u20132.4, Tables 1a and 6, and Nutrient uptake and production in maize"
+    },
+    "mugi": {
+      "name": "Mugi-Ngenga et al. (2022), European Journal of Agronomy",
+      "url": "https://edepot.wur.nl/578099",
+      "publication": "Full journal article, eight farms in three northern Tanzania sites.",
+      "locator": "\u00a7\u00a72.1\u20132.2, p. 3, Table 6, p. 8, and \u00a73.5, p. 9"
+    },
+    "rao": {
+      "name": "Rao and Mathuva (2000), Agriculture, Ecosystems & Environment",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=800c226e23a993e99a3f1d47589547b1b3fc6042&repid=rep1&type=pdf",
+      "publication": "Full journal article, long-running ICRAF research-station trial in semi-arid Machakos.",
+      "locator": "\u00a7\u00a72.1 and 2.4, pp. 125\u2013127, and \u00a73.3 and Table 4, p. 130"
+    },
+    "niyuhire": {
+      "name": "Niyuhire et al. (2017), Field Crops Research",
+      "url": "https://cgspace.cgiar.org/bitstreams/2e6988dc-29ac-415e-9107-9f4b9ca38818/download",
+      "publication": "Full journal article, trial on 59 smallholder fields in humid-tropical central Burundi.",
+      "locator": "Methods \u00a72.1 and Table 1, pp. 53\u201354, and Table 2, p. 55"
+    },
+    "kumar_rao": {
+      "name": "Kumar Rao, Dart and Sastry (1983), Experimental Agriculture",
+      "url": "https://oar.icrisat.org/7864/1/Expl%20Agric._19_131-141_1983.pdf",
+      "publication": "Full journal article from ICRISAT. Rainfed semi-arid station comparison with a dry-matter endpoint.",
+      "locator": "Methods pp. 132\u2013133, Table 7 p. 137 and Figure 3 p. 140"
+    }
+  },
+  "access_limits": [
+    {
+      "name": "Lunze and Ngongo (2011), South Kivu trial chapter, pp. 677\u2013681",
+      "url": "https://link.springer.com/chapter/10.1007/978-90-481-2543-2_68",
+      "status": "Publisher abstract and preview accessible on retry. Full chapter unavailable. The PDF route returns the preview page.",
+      "fallback": "Lunze et al. (2012), p. 254 and Table 13, verified in the full author chapter archived by CiteSeerX."
+    },
+    {
+      "name": "Pilbeam, Wood and Mugane (1995), semi-arid Kenya",
+      "url": "https://link.springer.com/article/10.1007/BF00307842",
+      "status": "Publisher abstract opened. Full article behind subscription.",
+      "fallback": "The publisher abstract covers uptake and fixation in the tested cropping systems. No quantitative estimate of N equivalence for following maize was used."
+    },
+    {
+      "name": "Nitrogen use in maize-pigeonpea intercrop in semi-arid conditions of Kenya",
+      "url": "https://repository.seku.ac.ke/handle/123456789/512",
+      "status": "The indexed institutional record identifies an abstract only. Quantitative full text was unavailable.",
+      "fallback": "The Tanzanian journal study and the Machakos ICRAF author PDF provide accessible other-legume evidence."
+    }
+  ],
+  "limit": "Fertilizer equivalence depends on the crop, soil, weather, residue management and maize response. It can include rotational effects unrelated to nitrogen. Field-level credit and rotation suitability at the Makueni coordinate remain unverified."
+}
