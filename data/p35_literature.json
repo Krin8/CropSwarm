@@ -1,0 +1,491 @@
+{
+  "label": "illustrative, validate locally",
+  "source_access": "Opened and read during P35. Units and case-specific interpretation are recorded in the report.",
+  "conversion": {
+    "lb_ac_to_kg_ha": 1.120851156,
+    "inch_to_mm": 25.4,
+    "source": "Exact unit definitions applied as arithmetic (lb = 0.45359237 kg, acre = 4046.8564224 m², inch = 25.4 mm)."
+  },
+  "sources": {
+    "fao_water": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 3, Table 14",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm"
+    },
+    "fao_duration": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 3, Table 6",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm"
+    },
+    "fao_kenya": {
+      "title": "FAO Kenya agro-ecological assessment",
+      "locator": "Technical Annex 2, Table 4.11",
+      "url": "https://www.fao.org/4/t0733e/T0733E05.htm"
+    },
+    "fao_cover": {
+      "title": "FAO Kenya agro-ecological assessment",
+      "locator": "Technical Annex 2, §4.4.3, Tables 4.11–4.15",
+      "url": "https://www.fao.org/4/t0733e/T0733E05.htm"
+    },
+    "fao56": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 6, Eq. 58, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm"
+    },
+    "fao56_wheat": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 6, Table 11, winter wheat and footnote 2",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm"
+    },
+    "fao56_balance": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 8, Eq. 85–88 and Initial depletion",
+      "url": "https://www.fao.org/4/x0490e/x0490e0e.htm"
+    },
+    "fao_rice": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 4, §4.4, steps 4–6",
+      "url": "https://www.fao.org/4/s2022e/s2022e08.htm"
+    },
+    "wani": {
+      "title": "Wani et al., Scaling Up Food Legume Production",
+      "locator": "Chapter 10, Table 10.7",
+      "url": "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+    },
+    "patil": {
+      "title": "Patil (2010), MAUSAM",
+      "locator": "p. 567, Table 1",
+      "url": "https://mausamjournal.imd.gov.in/index.php/MAUSAM/article/download/914/760/3269"
+    },
+    "texas": {
+      "title": "Texas A&M Extension, Irrigated and Dryland Grain Sorghum Production",
+      "locator": "Table 9, early maturity row",
+      "url": "https://ccag.tamu.edu/wp-content/uploads/sites/10/2020/12/PUB_Irrigated-and-Dryland-Grain-Sorghum-Production.pdf"
+    },
+    "qi": {
+      "title": "Qi and Helmers (2010), Vadose Zone Journal",
+      "locator": "Table 3, May rye and bare-soil lysimeters",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2008.0163"
+    },
+    "sare": {
+      "title": "SARE, Managing Cover Crops Profitably",
+      "locator": "Cereal Rye, Killing & Controlling Cereal Rye Cover Crops",
+      "url": "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"
+    },
+    "holman": {
+      "title": "Holman et al. (2018), Crop Science",
+      "locator": "Table 5, Garden City trial, 0–1.8 m",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/10.2135/cropsci2017.05.0324"
+    },
+    "umn_credit": {
+      "title": "University of Minnesota Extension, Soil Biology",
+      "locator": "Table 1, first-year corn",
+      "url": "https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology"
+    },
+    "umn_corn": {
+      "title": "University of Minnesota Extension, Fertilizing corn",
+      "locator": "Tables 1–3 and profile nitrate section",
+      "url": "https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/fertilizing-corn-in-minnesota"
+    },
+    "msu_n": {
+      "title": "Montana State Extension, Fertilizer Guidelines",
+      "locator": "Tables 6, 9 and 14, corn, pulses and soybean",
+      "url": "https://www.montana.edu/extension/Full_HTML_Pubs/eb161-fertilizerguidelines/EB0161-FertilizerGuidelinesForMontanaCrops.html"
+    },
+    "dalal": {
+      "title": "Dalal et al., chickpea–wheat at Warra, Queensland",
+      "locator": "Table 6 and Experiment 2 results",
+      "url": "https://era.dpi.qld.gov.au/id/eprint/11227/1/Sustaining%20productivity%20of%20a%20Vertisol%20at%20Warra%2C%20Queensland%2C%20with%20fertilisers%2C%20no-tillage%2C%20or%20legumes.%205.%20Wheat%20yields%2C%20nitrogen%20benefits%20and%20water-use%20efficiency%20of%20chickpea-wheat%20rotation.pdf"
+    },
+    "rao": {
+      "title": "Kumar Rao, Dart and Sastry (1983), Experimental Agriculture",
+      "locator": "pp. 137–140, Figure 3 and fertilizer-equivalence results",
+      "url": "https://oar.icrisat.org/7864/1/Expl%20Agric._19_131-141_1983.pdf"
+    },
+    "lengwati": {
+      "title": "Lengwati, Mathews and Dakora (2020), Frontiers",
+      "locator": "p. 6, Figure 2 and fixed-N benefit text",
+      "url": "https://public-pages-files-2025.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2020.00094/pdf"
+    },
+    "kstate": {
+      "title": "K-State Research and Extension, MF2586",
+      "locator": "Previous Crop Adjustment tables, cool- and warm-season crops",
+      "url": "https://www.brown.k-state.edu/crops-livestock/documents/Soiltestinterpretationsandfertilizerrecommenations.pdf"
+    },
+    "rusle": {
+      "title": "USDA NRCS, RUSLE handbook",
+      "locator": "Chapter 4, opening definition and prior land use section",
+      "url": "https://efotg.sc.egov.usda.gov/references/Agency/OK/RUSLE_Chap4_C_Factors.pdf"
+    },
+    "langdale": {
+      "title": "Langdale et al., Cover Crop Effects on Soil Erosion by Wind and Water",
+      "locator": "Tables 1 and 8, and Eq. 5",
+      "url": "https://www.ars.usda.gov/ARSUserFiles/30200525/91--%20Cover%20Crop%20Effects%20on%20Soil%20Erosion.pdf"
+    },
+    "clement": {
+      "title": "Clément, Bielders and Degré (2024), Soil Use and Management",
+      "locator": "§3.1, Figures 2 and 3b",
+      "url": "https://orbi.uliege.be/bitstream/2268/316282/1/Soil%20Use%20and%20Management%20-%202024%20-%20Clement%20-%20How%20much%20do%20conservation%20cropping%20practices%20mitigate%20runoff%20and%20soil%20erosion.pdf"
+    },
+    "bockus": {
+      "title": "Bockus and Claassen (1992), Plant Disease",
+      "locator": "Tables 2–3 and discussion, pp. 634–635",
+      "url": "https://www.apsnet.org/publications/PlantDisease/BackIssues/Documents/1992Articles/PlantDisease76n06_633.PDF"
+    },
+    "carignano": {
+      "title": "Carignano, Staggenborg and Shroyer (2008), Agronomy Journal",
+      "locator": "Abstract, continuous-wheat residue trial",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/10.2134/agronj2007.0092"
+    },
+    "sask": {
+      "title": "Saskatchewan, Principles and Practices of Crop Rotation",
+      "locator": "Table 9, disease-specific break intervals",
+      "url": "https://publications.saskatchewan.ca/api/v1/products/76296/formats/85517/download"
+    },
+    "umn_family": {
+      "title": "University of Minnesota Extension, Promote healthy soil",
+      "locator": "Rotation guidelines, Plant families",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
+    },
+    "rice_family": {
+      "title": "USDA ARS GRIN taxonomy, Oryza sativa",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525"
+    },
+    "soy_family": {
+      "title": "USDA ARS GRIN taxonomy, Glycine max",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024"
+    },
+    "rye_family": {
+      "title": "USDA ARS GRIN taxonomy, Secale cereale",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=317600"
+    },
+    "chickpea_family": {
+      "title": "Kew Plants of the World Online, Cicer arietinum",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:486336-1/general-information"
+    },
+    "pigeonpea_family": {
+      "title": "Kew Plants of the World Online, Cajanus cajan",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information"
+    },
+    "mung_family": {
+      "title": "Kew Plants of the World Online, Vigna radiata",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information"
+    },
+    "millet_family": {
+      "title": "Kew Plants of the World Online, Cenchrus americanus",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information"
+    }
+  },
+  "parameter_ranges": {
+    "water_need_mm": {
+      "winter_wheat": [
+        450,
+        650,
+        "fao_water"
+      ],
+      "sorghum": [
+        450,
+        650,
+        "fao_water"
+      ],
+      "paddy": [
+        450,
+        700,
+        "fao_water"
+      ],
+      "maize": [
+        500,
+        800,
+        "fao_water"
+      ],
+      "common_bean": [
+        300,
+        500,
+        "fao_water"
+      ],
+      "soybean": [
+        450,
+        700,
+        "fao_water"
+      ],
+      "pearl_millet": [
+        450,
+        650,
+        "fao_water"
+      ],
+      "sunflower": [
+        600,
+        1000,
+        "fao_water"
+      ],
+      "field_pea": [
+        350,
+        500,
+        "fao_water"
+      ],
+      "chickpea": [
+        300,
+        500,
+        "wani"
+      ],
+      "pigeonpea": [
+        500,
+        800,
+        "wani"
+      ],
+      "green_gram": [
+        350,
+        400,
+        "wani"
+      ],
+      "cowpea": [
+        281.6,
+        288.0,
+        "patil"
+      ]
+    },
+    "season_length_days": {
+      "winter_wheat": [
+        180,
+        335,
+        "fao56_wheat"
+      ],
+      "sorghum": [
+        70,
+        130,
+        "fao_kenya"
+      ],
+      "paddy": [
+        90,
+        150,
+        "fao_duration"
+      ],
+      "maize": [
+        70,
+        130,
+        "fao_kenya"
+      ],
+      "common_bean": [
+        95,
+        110,
+        "fao_duration"
+      ],
+      "soybean": [
+        135,
+        150,
+        "fao_duration"
+      ],
+      "chickpea": [
+        85,
+        130,
+        "wani"
+      ],
+      "pigeonpea": [
+        140,
+        180,
+        "wani"
+      ],
+      "green_gram": [
+        65,
+        80,
+        "wani"
+      ],
+      "pearl_millet": [
+        60,
+        100,
+        "fao_kenya"
+      ],
+      "sunflower": [
+        125,
+        130,
+        "fao_duration"
+      ],
+      "cowpea": [
+        80,
+        140,
+        "fao_kenya"
+      ],
+      "field_pea": [
+        90,
+        100,
+        "fao_duration"
+      ]
+    },
+    "n_credit_kg_ha": {
+      "soybean": [
+        30,
+        30,
+        "umn_credit"
+      ],
+      "common_bean": [
+        20,
+        20,
+        "umn_credit"
+      ],
+      "field_pea": [
+        20,
+        20,
+        "umn_credit"
+      ],
+      "pigeonpea": [
+        38,
+        49,
+        "rao"
+      ],
+      "chickpea": [
+        40,
+        114.6,
+        "dalal"
+      ]
+    }
+  },
+  "families": {
+    "winter_wheat": [
+      "poaceae",
+      "umn_family"
+    ],
+    "sorghum": [
+      "poaceae",
+      "umn_family"
+    ],
+    "maize": [
+      "poaceae",
+      "umn_family"
+    ],
+    "common_bean": [
+      "fabaceae",
+      "umn_family"
+    ],
+    "field_pea": [
+      "fabaceae",
+      "umn_family"
+    ],
+    "cowpea": [
+      "fabaceae",
+      "umn_family"
+    ],
+    "sunflower": [
+      "asteraceae",
+      "umn_family"
+    ],
+    "soybean": [
+      "fabaceae",
+      "soy_family"
+    ],
+    "paddy": [
+      "poaceae",
+      "rice_family"
+    ],
+    "cereal_rye_cover": [
+      "poaceae",
+      "rye_family"
+    ],
+    "chickpea": [
+      "fabaceae",
+      "chickpea_family"
+    ],
+    "pigeonpea": [
+      "fabaceae",
+      "pigeonpea_family"
+    ],
+    "green_gram": [
+      "fabaceae",
+      "mung_family"
+    ],
+    "pearl_millet": [
+      "poaceae",
+      "millet_family"
+    ]
+  },
+  "effects": {
+    "sorghum_early_water": {
+      "inch": [
+        10,
+        15
+      ],
+      "days": [
+        90,
+        105
+      ],
+      "source": "texas"
+    },
+    "ks_soy_wheat": {
+      "lb_ac": [
+        0,
+        0
+      ],
+      "source": "kstate"
+    },
+    "ks_soy_warm_cereal": {
+      "lb_ac": [
+        40,
+        40
+      ],
+      "source": "kstate"
+    },
+    "ks_fallow_wheat_no_profile": {
+      "lb_ac": [
+        20,
+        20
+      ],
+      "source": "kstate"
+    },
+    "ks_sorghum_wheat": {
+      "lb_ac": [
+        -30,
+        -30
+      ],
+      "source": "kstate"
+    },
+    "ks_sunflower_wheat": {
+      "lb_ac": [
+        -30,
+        -30
+      ],
+      "source": "kstate"
+    },
+    "legume_pa_water": {
+      "fallow_mm": 201,
+      "legume_mm": [
+        104,
+        158
+      ],
+      "source": "holman"
+    },
+    "cover_erosion": {
+      "mean_pct": 72,
+      "by_control_tillage_pct": [
+        8,
+        89
+      ],
+      "source": "clement"
+    },
+    "palouse_scf": {
+      "fallow_wheat": 0.57,
+      "pea_wheat_no_till": 0.073,
+      "source": "langdale"
+    },
+    "tan_spot": {
+      "continuous_no_till_pct": [
+        18.05,
+        39.0,
+        46.55,
+        17.6
+      ],
+      "rotation_no_till_pct": [
+        4.42,
+        9.77,
+        4.1,
+        2.99
+      ],
+      "source": "bockus"
+    }
+  }
+}
