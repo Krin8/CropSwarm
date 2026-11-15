@@ -499,3 +499,17 @@ def test_rank_concentration_shows_all_cutoffs_and_published_membership():
         assert list(members["P47 set member"]) == [row["rotation_key"] for row in expected["2"]["members"]]
     else:
         assert any("No rotation enters the P47 top-2% set" in row.value for row in app.info)
+
+
+def test_bean_nitrogen_panel_displays_reported_estimates_and_soil_context():
+    report = json.loads((ROOT / "data/processed/literature_check_p49.json").read_text())
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not any(row.label == "Bean nitrogen benchmarks (P49)" for row in app.expander)
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    assert not app.exception
+    assert any(row.label == "Bean nitrogen benchmarks (P49)" for row in app.expander)
+    assert any("0.7–56 kg N/ha" in row.value and "44–80 kg N/ha" in row.value for row in app.markdown)
+    table = next(item.value for item in app.dataframe if "P49 benchmark" in item.value.columns)
+    assert len(table) == len(report["rows"])
+    assert set(table["Soil"]) == {row["soil"] for row in report["rows"]}
+    assert table.iloc[1]["Reported or calculated estimates"] == "16.4, 13.5 kg N/ha"

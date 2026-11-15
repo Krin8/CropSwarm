@@ -457,6 +457,23 @@ def makueni_cropland_check(report):
                        "makueni_cropland.md")
 
 
+def bean_nitrogen_check(report):
+    from src.literature_check import show_span
+
+    catalog, p45, machakos = (report[key] for key in ("catalog", "p45", "machakos"))
+    place = "within" if machakos["catalog_finding"] == "inside range" else "outside"
+    return EvidenceRow(
+        "P49", "How variable is fertilizer equivalence for maize after common bean?",
+        f"Machakos and comparison sites · {len(report['sources'])} additional sources read",
+        f"Machakos {show_span(machakos['bounds'])} kg N/ha and Katumani "
+        f"{show_span(p45['bounds'])} kg N/ha. The catalog's {catalog['value']:g} kg N/ha falls "
+        f"{place} the Machakos span. The thesis gives conflicting residue assignments.",
+        "mixed",
+        "Field-specific N credit and rotation quality remain unresolved.",
+        "literature_check_p49.md",
+    )
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -481,7 +498,8 @@ def build_ledger(load):
                                ("regional_scoring_variants_p46.json", regional_scoring_check),
                                ("consensus_shortlist_p44b.json", expanded_consensus_check),
                                ("makueni_cropland_p48.json", makueni_cropland_check),
-                               ("rank_concentration_p47.json", rank_concentration_check)):
+                               ("rank_concentration_p47.json", rank_concentration_check),
+                               ("literature_check_p49.json", bean_nitrogen_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

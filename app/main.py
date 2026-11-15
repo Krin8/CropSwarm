@@ -447,6 +447,41 @@ def regional_literature_panel(farm_id):
                    "Climate-fit comparisons cover crop duration. These benchmarks cannot establish rotation quality.")
 
 
+def bean_nitrogen_panel(farm_id):
+    if farm_id != MAKUENI_ID:
+        return
+    report = cached("literature_check_p49.json")
+    catalog, p45, machakos = (report[key] for key in ("catalog", "p45", "machakos"))
+
+    def estimate_span(bounds):
+        low, high = bounds
+        return f"{low:g}–{high:g}" if low != high else f"{low:g}"
+
+    with st.expander("Bean nitrogen benchmarks (P49)"):
+        place = "within" if machakos["catalog_finding"] == "inside range" else "outside"
+        st.markdown(f"The catalog's **{catalog['value']:g} kg N/ha** is {place} the "
+                    f"**{estimate_span(machakos['bounds'])} kg N/ha** reported from Machakos. "
+                    f"P45 reported **{estimate_span(p45['bounds'])} kg N/ha** at Katumani. "
+                    f"[Catalog source]({catalog['url']}) · [Machakos thesis]({report['sources']['chui']['url']}) "
+                    f"· [Katumani trial]({p45['url']})")
+        st.caption("The Machakos thesis gives conflicting residue assignments. The table shows the "
+                   "published spread and the separate recalculation from its printed equations.")
+        rows = []
+        for row in report["rows"]:
+            source = report["sources"][row["source"]]
+            rows.append({
+                "P49 benchmark": row["crop"], "Site": row["site"], "Quantity": row["measure_label"],
+                "Reported or calculated estimates": ", ".join(
+                    f"{item['value']:g}" for item in row["estimates"]) + f" {row['unit']}",
+                "Treatments in estimate order": " · ".join(item["label"] for item in row["estimates"]),
+                "Trial period": row["season"], "Soil": row["soil"], "Residue handling": row["residues"],
+                "Method": row["method"], "Locator": row["locator"], "Source": source["url"],
+            })
+        st.dataframe(pd.DataFrame(rows), hide_index=True,
+                     column_config={"Source": st.column_config.LinkColumn("Source", display_text="Open study")})
+        st.caption(report["label"] + ". " + report["limit"])
+
+
 def consensus_shortlist_panel(farm_id):
     report = cached("consensus_shortlist_p44.json")
     farm = report["farms"][farm_id]
@@ -1490,6 +1525,7 @@ def app():
         makueni_cropland_panel(farm_id)
         literature_check_panel()
         regional_literature_panel(farm_id)
+        bean_nitrogen_panel(farm_id)
         regional_scoring_panel(farm_id)
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)
