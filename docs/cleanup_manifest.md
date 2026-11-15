@@ -38,3 +38,30 @@ This is a conservative classification before deletion. `pre-cleanup` tags the st
 ## Ask items and stop point
 
 The ASK groups above total hundreds of MiB. They are ambiguous because the network prohibition prevents re-fetching caches during P52 and because briefs may be intended deliverables. Recommendation: keep all ASK groups for the submission and delete only confirmed generated junk. No deletion or quarantine trial has been run. The task's Step 2 requires stopping here until these items are resolved.
+
+## Twenty largest tracked files before removal
+
+| File | MiB | Reader or link examples | Classification |
+| --- | ---: | --- | --- |
+| data/processed/climate_yield_interval_predictions.csv | 7.56 | src/yield_intervals.py, src/interval_diagnosis.py, tests/test_interval_diagnosis.py | KEEP-REQUIRED |
+| data/raw/p31/Shapefile.rar | 3.18 | src/india_yield_screen.py, docs/ml_model.md | KEEP-TEST |
+| data/processed/climate_yield_transfer_predictions.csv | 3.10 | src/cross_state_yield.py, src/yield_intervals.py, src/scoring_response_check.py | KEEP-REQUIRED |
+| data/processed/consensus_shortlist_p44b_telangana_a.csv.gz | 1.70 | docs/consensus_shortlist_p44b.md | KEEP-REQUIRED |
+| data/processed/consensus_shortlist_p44_telangana_a.csv.gz | 1.70 | docs/consensus_shortlist.md | KEEP-REQUIRED |
+| data/raw/p31/Data.csv | 1.30 | src/india_yield_screen.py, docs/ml_model.md | KEEP-TEST |
+| data/raw/p2_evidence/p2_evidence.json | 1.28 | src/data_pipeline.py, src/farm_validity.py, docs/public_readiness.md | KEEP-TEST |
+| data/processed/sensitivity_telangana_a.json | 1.02 | docs/sensitivity.md | KEEP-REQUIRED |
+| data/processed/climate_yield_interval_diagnosis_rows.csv.gz | 0.81 | src/interval_diagnosis.py, tests/test_interval_diagnosis.py, docs/ml_model.md | KEEP-REQUIRED |
+| data/processed/sensitivity_us_high_plains_b.json | 0.80 | tests/test_app.py, docs/sensitivity.md | KEEP-REQUIRED |
+| data/processed/climate_yield_predictions.csv | 0.75 | src/climate_yield.py, docs/ml_model.md | KEEP-REQUIRED |
+| data/processed/sensitivity_kenya_makueni_north.json | 0.75 | docs/sensitivity.md | KEEP-REQUIRED |
+| data/processed/opportunity_windows_us_high_plains_b.json | 0.69 | docs/opportunity_windows.md | KEEP-REQUIRED |
+| data/raw/p25/quickstats_kansas.csv | 0.68 | src/county_yield_data.py | KEEP-TEST |
+| data/processed/climate_yield_intervals.json | 0.63 | app/main.py, src/yield_intervals.py, src/evidence_ledger.py | KEEP-REQUIRED |
+| data/raw/p32/quickstats_targets.csv | 0.57 | src/cross_state_yield_data.py, tests/test_cross_state_yield.py, docs/ml_model.md | KEEP-TEST |
+| data/processed/literature_variant_p43.json | 0.54 | app/main.py, src/consensus_shortlist.py, src/evidence_ledger.py | KEEP-REQUIRED |
+| data/processed/climate_yield_interval_diagnosis.json | 0.52 | app/main.py, src/evidence_ledger.py, src/interval_diagnosis.py | KEEP-REQUIRED |
+| data/processed/rank_concentration_p47.json | 0.51 | app/main.py, src/evidence_ledger.py, src/rank_concentration.py | KEEP-REQUIRED |
+| data/processed/climate_yield_validity_all_practices_predictions.csv | 0.48 | No textual reader found | KEEP-REQUIRED |
+
+`data/processed/climate_yield_validity_non_irrigated_predictions.csv` was 0.81 MiB before quarantine. It had no textual reader or link, and the full 306-test suite and three farm app smoke checks passed with it absent. Its copy is at `/private/tmp/cropswarm-p52-quarantine/data/processed/`. All other listed large files are retained because they are read or linked, or because the processed result is part of the saved audit record.
