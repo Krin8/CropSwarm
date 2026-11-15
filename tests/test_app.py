@@ -434,3 +434,21 @@ def test_smooth_climate_what_if_reads_all_preset_comparisons():
     shortlist = next(item.value for item in app.dataframe if "Climate-fit change" in item.value)
     assert len(shortlist) == farm["published_shortlist"]["total"]
     assert any("**Smooth**" in item.value for item in app.markdown)
+
+
+def test_regional_scoring_panel_keeps_the_two_farm_inputs_independent():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Regional literature-informed variants (P46)" for row in app.expander)
+    assert any("Kansas uses its original inputs" in row.value for row in app.info)
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    app.selectbox(key="p46_kenya_makueni_north").set_value("high").run()
+    assert not app.exception
+    assert any("Makueni cropland is unverified" in row.value for row in app.caption)
+    results = next(table.value for table in app.dataframe if "P46 leader" in table.value.columns)
+    assert (results["Original leader"] != results["P46 leader"]).all()
+    metric = next(table.value for table in app.dataframe if "P46 metric" in table.value.columns)
+    assert metric.set_index("P46 metric").loc["Nitrogen", "Raw change"] == pytest.approx(29)
+    app.selectbox(key="p46_telangana_a").set_value("low").run()
+    paired = next(table.value for table in app.dataframe if "P46 leader" in table.value.columns)
+    assert paired.equals(results)

@@ -30,6 +30,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
         studies.append("P44")
     if (DATA / "literature_check_p45.json").exists():
         studies.append("P45")
+    if (DATA / "regional_scoring_variants_p46.json").exists():
+        studies.append("P46")
     assert [row.study for row in rows] == studies
     assert all(len(row.cells()) == len(COLUMNS) for row in rows)
     assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
@@ -78,7 +80,7 @@ def test_p39_is_optional_but_bad_inputs_still_fail():
     def before_p39(name):
         if name in {"climate_yield_state_associations.json", "scoring_response_check.json",
                     "literature_variant_p43.json", "consensus_shortlist_p44.json",
-                    "literature_check_p45.json", "smooth_climate_fit_p42.json"}:
+                    "literature_check_p45.json", "smooth_climate_fit_p42.json", "regional_scoring_variants_p46.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

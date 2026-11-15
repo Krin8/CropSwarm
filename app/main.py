@@ -505,6 +505,80 @@ def literature_variant_panel(farm_id):
                    "how often the two configurations selected different rotations on the same draw.")
 
 
+
+def regional_scoring_panel(farm_id):
+    report = cached("regional_scoring_variants_p46.json")
+    farm = report["farms"][farm_id]
+    with st.expander("Regional literature-informed variants (P46)"):
+        st.caption("Illustrative what-if using regional study estimates. Field application is an assumption. "
+                   "Validate locally. Makueni cropland is unverified, and Telangana's second season is tentative.")
+        selected = {}
+        columns = st.columns(2)
+        for column, (target, label) in zip(columns, (("kenya_makueni_north", "Makueni bean nitrogen"),
+                                                      ("telangana_a", "Telangana rice water demand")), strict=True):
+            correction = report["corrections"][target]
+            values = correction["values"]
+            labels = {name: f"{title(name)} · {value:g} {correction['unit']}" for name, value in values.items()}
+            selected[target] = column.selectbox(label, tuple(values), index=2, format_func=labels.get,
+                                                key=f"p46_{target}")
+            source = correction["source"]
+            column.caption(f"Endpoints from [{source['name']}]({source['url']}). {source['locator']}. "
+                           "The midpoint is a design choice.")
+        level = selected.get(farm_id, "original")
+        case = farm["levels"][level]
+        original = farm["levels"]["original"]["p22"]
+        st.caption(f"{farm['name']} · {title(level)} in this configuration. "
+                   f"{report['design']['joint_draws']} matched P22 draws per farm. "
+                   "Each change rate uses its own nominal reference. Rotation suitability still needs field evidence.")
+        if farm_id not in selected:
+            st.info("Kansas uses its original inputs in every P46 configuration.")
+
+        def display_rotation(rotation):
+            return " → ".join(" / ".join(title(crop) for crop in year) for year in rotation)
+
+        def gap(value):
+            return "Unavailable" if value is None else f"{value:.5f}"
+
+        ranks = []
+        for preset, row in case["nominal"].items():
+            rates = case["p22"][preset]
+            ranks.append({"Preset": title(preset), "Original leader": display_rotation(row["original_rotation"]),
+                          "P46 leader": display_rotation(row["variant_rotation"]),
+                          "Rank Spearman ρ": row["rank_spearman"],
+                          "Feasible original → P46": f"{row['original_count']:,} → {row['variant_count']:,}",
+                          "Top-two gap original → P46": f"{gap(row['original_top_two_gap'])} → {gap(row['variant_top_two_gap'])}",
+                          "Top-two near-tie": "Created" if row["near_tie_appeared"] else
+                          "Resolved" if row["near_tie_disappeared"] else "No change",
+                          "P22 winner change": f"{original[preset]['winner_change_fraction']:.2%} → "
+                                               f"{rates['winner_change_fraction']:.2%}",
+                          "Paired winners differ": f"{rates['paired_disagreement_count']}/{rates['draws']}"})
+        st.dataframe(pd.DataFrame(ranks), hide_index=True,
+                     column_config={"Rank Spearman ρ": st.column_config.NumberColumn(format="%.4f")})
+        st.caption(f"Near-tie tolerance {report['design']['near_tie_gap']:g} weighted points, a design choice.")
+        published = {item["strategy"]: item for item in case["shortlist"]}
+        choice = st.selectbox("Published strategy", tuple(published), format_func=title, key="p46_strategy")
+        strategy = published[choice]
+        correction = report["corrections"].get(farm_id)
+        affected = {"water_need_mm": "water", "n_credit_kg_ha": "nitrogen"}
+        changed_metric = affected[correction["field"]] if correction and level != "original" else None
+        st.dataframe(pd.DataFrame([
+            {"P46 metric": title(metric), "Raw change": strategy["raw_delta"][metric],
+             "Score change": strategy["score_delta"][metric],
+             "Source": strategy["sources"][metric] +
+                       (f" · P46 regional assumption from {correction['source']['name']}" if metric == changed_metric else "")}
+            for metric in METRICS
+        ]), hide_index=True)
+        for flag, old_slots in strategy["original_flags"].items():
+            new_slots = strategy["variant_flags"][flag]
+            if old_slots != new_slots:
+                before = ", ".join(str(i + 1) for i in old_slots) or "none"
+                after = ", ".join(str(i + 1) for i in new_slots) or "none"
+                st.caption(f"{title(flag)} slots · {before} → {after}")
+        if farm_id == "kenya_makueni_north" and level != "original":
+            st.caption("The scorer recomputes nitrogen normalization when the credit changes. "
+                       "This can move the nitrogen score even without a change in raw nitrogen.")
+
+
 def state_weather_yield_panel():
     report = cached("climate_yield_state_associations.json")
     states = report["states"]
@@ -1238,6 +1312,7 @@ def app():
         evidence_ledger_panel()
         literature_check_panel()
         regional_literature_panel(farm_id)
+        regional_scoring_panel(farm_id)
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)
         with st.expander("Correlation counts across all farms"):

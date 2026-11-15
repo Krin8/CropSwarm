@@ -386,6 +386,22 @@ def regional_literature_check(report):
                        "literature_check_p45.md")
 
 
+def regional_scoring_check(report):
+    farms = report["farms"]
+    cases = [row for farm in farms.values() for level, result in farm["levels"].items()
+             if level != "original" for row in result["nominal"].values()]
+    changed = sum(row["label_changed"] for row in cases)
+    created = sum(row["near_tie_appeared"] for row in cases)
+    resolved = sum(row["near_tie_disappeared"] for row in cases)
+    return EvidenceRow("P46", "Do nominal leaders hold under regional water and nitrogen inputs?",
+                       f"Telangana and Makueni · {len(cases)} active level–preset comparisons · "
+                       f"{report['design']['joint_draws']} paired draws per farm",
+                       f"{changed}/{len(cases)} leaders changed. Top-two near-ties created {created}, resolved {resolved}.",
+                       direction(changed < len(cases), changed > 0),
+                       "Trial estimates leave field response and rotation suitability unresolved. Makueni cropland is unverified.",
+                       "regional_scoring_variants.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -406,7 +422,8 @@ def build_ledger(load):
                                ("smooth_climate_fit_p42.json", smooth_climate_check),
                                ("literature_variant_p43.json", literature_variant_check),
                                ("consensus_shortlist_p44.json", consensus_shortlist_check),
-                               ("literature_check_p45.json", regional_literature_check)):
+                               ("literature_check_p45.json", regional_literature_check),
+                               ("regional_scoring_variants_p46.json", regional_scoring_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

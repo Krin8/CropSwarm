@@ -62,3 +62,56 @@ def test_nominal_ranks_separate_pool_membership_and_top_two_changes():
     assert result["near_tie_disappeared"] and not result["near_tie_appeared"]
     assert result["added_count"] == result["excluded_count"] == 1
     assert result["common_count"] == 2 and result["rank_spearman"] == pytest.approx(1)
+
+
+def test_saved_report_covers_all_combinations_and_matches_p22():
+    from src.regional_scoring_report import DOCUMENT, render
+    from src.regional_scoring_variants import OUTPUT
+
+    report = read(f"data/processed/{OUTPUT}")
+    assert (ROOT / "docs" / DOCUMENT).read_text() == render(report)
+    for case in report["configurations"]:
+        assert set(case["local_levels"]) == set(report["farms"])
+        for farm, level in case["local_levels"].items():
+            assert level in report["farms"][farm]["levels"]
+
+    changed = []
+    for farm, record in report["farms"].items():
+        published = read(f"data/processed/sensitivity_{farm}.json")
+        for level, result in record["levels"].items():
+            assert len(result["shortlist"]) == 5
+            assert all(set(row["raw_delta"]) == set(row["score_delta"]) and len(row["score_delta"]) == 6
+                       for row in result["shortlist"])
+            for preset, nominal in result["nominal"].items():
+                assert nominal["original_count"] == nominal["common_count"] + nominal["excluded_count"]
+                assert nominal["variant_count"] == nominal["common_count"] + nominal["added_count"]
+                if nominal["label_changed"]:
+                    changed.append((farm, level, preset))
+                rate = result["p22"][preset]
+                assert rate["draws"] == report["design"]["joint_draws"]
+                original_rate = published["presets"][preset]["joint"]["winner_change_fraction"]
+                assert rate["winner_change_delta"] == rate["winner_change_fraction"] - original_rate
+    assert all(farm == MAKUENI for farm, _, _ in changed)
+    assert [(level, preset) for _, level, preset in changed] == [
+        ("low", "soil_builder"), ("mid", "soil_builder"), ("high", "water_saver"),
+        ("high", "soil_builder"), ("high", "income"), ("high", "balanced")]
+
+
+def test_full_seeded_rebuild_leaves_prior_data_and_engine_byte_identical(tmp_path):
+    import hashlib
+
+    from src.regional_scoring_variants import OUTPUT, build
+
+    paths = [*ROOT.glob("data/processed/**/*"), *ROOT.glob("config/**/*"),
+             *(ROOT / name for name in ("data/crops.csv", "data/p45_literature.json", "src/scoring.py",
+                                        "src/optimizer.py", "src/sensitivity.py"))]
+    frozen = [path for path in paths if path.is_file() and path.name != OUTPUT]
+
+    def hashes():
+        return {path: hashlib.sha256(path.read_bytes()).digest() for path in frozen}
+
+    before = hashes()
+    output = tmp_path / OUTPUT
+    build(output=output)
+    assert hashes() == before
+    assert output.read_bytes() == (ROOT / "data/processed" / OUTPUT).read_bytes()

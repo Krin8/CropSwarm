@@ -1,0 +1,5251 @@
+{
+  "label": "illustrative, validate locally",
+  "plan": "docs/p46_plan.md",
+  "design": {
+    "seed": 42,
+    "joint_draws": 512,
+    "near_tie_gap": 0.01,
+    "source": "design choice, not empirical; assumption, validate locally"
+  },
+  "corrections": {
+    "kenya_makueni_north": {
+      "crop": "common_bean",
+      "field": "n_credit_kg_ha",
+      "unit": "kg N/ha",
+      "values": {
+        "original": 22,
+        "low": 44,
+        "mid": 62,
+        "high": 80
+      },
+      "source": {
+        "name": "Nadar and Faught (1984), East African Agricultural and Forestry Journal",
+        "url": "https://pdf.usaid.gov/pdf_docs/PNAAX822.pdf",
+        "locator": "Figure 2, Tables II\u2013VI and pp. 130, 135\u2013136",
+        "design": "Katumani trials with sole-crop rotations and intercrops. Fertilizer equivalence was inferred from a continuous-maize fertilizer response curve."
+      },
+      "endpoint_grade": "literature",
+      "midpoint_grade": "design choice",
+      "transfer_grade": "assumption, validate locally"
+    },
+    "telangana_a": {
+      "crop": "paddy",
+      "field": "water_need_mm",
+      "unit": "mm ET",
+      "values": {
+        "original": 575,
+        "low": 473.9,
+        "mid": 565.85,
+        "high": 657.8
+      },
+      "source": {
+        "name": "Mote et al. (2018), Journal of Agrometeorology",
+        "url": "https://pdfs.semanticscholar.org/e027/a990fd565193f4a02e017cf66d4086fcdd89.pdf",
+        "locator": "Table 2, p. 119 (seasonal ET); p. 118 (variety duration and irrigation regimes)",
+        "design": "Replicated lowland rice irrigation trial, Rajendranagar, 2013\u20132014."
+      },
+      "endpoint_grade": "literature",
+      "midpoint_grade": "design choice",
+      "transfer_grade": "assumption, validate locally"
+    }
+  },
+  "configurations": [
+    {
+      "makueni": "original",
+      "telangana": "original",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "original",
+        "kenya_makueni_north": "original"
+      }
+    },
+    {
+      "makueni": "original",
+      "telangana": "low",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "low",
+        "kenya_makueni_north": "original"
+      }
+    },
+    {
+      "makueni": "original",
+      "telangana": "mid",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "mid",
+        "kenya_makueni_north": "original"
+      }
+    },
+    {
+      "makueni": "original",
+      "telangana": "high",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "high",
+        "kenya_makueni_north": "original"
+      }
+    },
+    {
+      "makueni": "low",
+      "telangana": "original",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "original",
+        "kenya_makueni_north": "low"
+      }
+    },
+    {
+      "makueni": "low",
+      "telangana": "low",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "low",
+        "kenya_makueni_north": "low"
+      }
+    },
+    {
+      "makueni": "low",
+      "telangana": "mid",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "mid",
+        "kenya_makueni_north": "low"
+      }
+    },
+    {
+      "makueni": "low",
+      "telangana": "high",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "high",
+        "kenya_makueni_north": "low"
+      }
+    },
+    {
+      "makueni": "mid",
+      "telangana": "original",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "original",
+        "kenya_makueni_north": "mid"
+      }
+    },
+    {
+      "makueni": "mid",
+      "telangana": "low",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "low",
+        "kenya_makueni_north": "mid"
+      }
+    },
+    {
+      "makueni": "mid",
+      "telangana": "mid",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "mid",
+        "kenya_makueni_north": "mid"
+      }
+    },
+    {
+      "makueni": "mid",
+      "telangana": "high",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "high",
+        "kenya_makueni_north": "mid"
+      }
+    },
+    {
+      "makueni": "high",
+      "telangana": "original",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "original",
+        "kenya_makueni_north": "high"
+      }
+    },
+    {
+      "makueni": "high",
+      "telangana": "low",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "low",
+        "kenya_makueni_north": "high"
+      }
+    },
+    {
+      "makueni": "high",
+      "telangana": "mid",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "mid",
+        "kenya_makueni_north": "high"
+      }
+    },
+    {
+      "makueni": "high",
+      "telangana": "high",
+      "local_levels": {
+        "us_high_plains_b": "original",
+        "telangana_a": "high",
+        "kenya_makueni_north": "high"
+      }
+    }
+  ],
+  "farms": {
+    "us_high_plains_b": {
+      "name": "US High Plains B",
+      "levels": {
+        "original": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "original_score": 0.683723229418286,
+              "variant_score": 0.683723229418286,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 168,
+              "variant_count": 168,
+              "common_count": 168,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0,
+              "variant_top_two_gap": 0.0,
+              "original_exact_ties": 2,
+              "variant_exact_ties": 2,
+              "original_near_top": 4,
+              "variant_near_top": 4,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "original_score": 0.7157552327704902,
+              "variant_score": 0.7157552327704902,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 168,
+              "variant_count": 168,
+              "common_count": 168,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0,
+              "variant_top_two_gap": 0.0,
+              "original_exact_ties": 2,
+              "variant_exact_ties": 2,
+              "original_near_top": 4,
+              "variant_near_top": 4,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "original_score": 0.6413635397298838,
+              "variant_score": 0.6413635397298838,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 168,
+              "variant_count": 168,
+              "common_count": 168,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0,
+              "variant_top_two_gap": 0.0,
+              "original_exact_ties": 2,
+              "variant_exact_ties": 2,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "original_score": 0.6781246362760627,
+              "variant_score": 0.6781246362760627,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 168,
+              "variant_count": 168,
+              "common_count": 168,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0,
+              "variant_top_two_gap": 0.0,
+              "original_exact_ties": 2,
+              "variant_exact_ties": 2,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "winner_change_fraction": 0.859375,
+              "material_change_fraction": 0.77734375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "winner_change_fraction": 0.763671875,
+              "material_change_fraction": 0.58984375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "winner_change_fraction": 0.92578125,
+              "material_change_fraction": 0.865234375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "winner_change_fraction": 0.87109375,
+              "material_change_fraction": 0.791015625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "telangana_a": {
+      "name": "Telangana A",
+      "levels": {
+        "original": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.8015436421206531,
+              "variant_score": 0.8015436421206531,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999999999999999,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.00822200130143691,
+              "variant_top_two_gap": 0.00822200130143691,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.770346322462403,
+              "variant_score": 0.770346322462403,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.004285539881266676,
+              "variant_top_two_gap": 0.004285539881266676,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "original_score": 0.67297875858833,
+              "variant_score": 0.67297875858833,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0005727916156762491,
+              "variant_top_two_gap": 0.0005727916156762491,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 56,
+              "variant_near_top": 56,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7418562683807485,
+              "variant_score": 0.7418562683807485,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.008114787680516655,
+              "variant_top_two_gap": 0.008114787680516655,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.7890625,
+              "material_change_fraction": 0.7109375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.77734375,
+              "material_change_fraction": 0.6640625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "winner_change_fraction": 0.96484375,
+              "material_change_fraction": 0.927734375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.81640625,
+              "material_change_fraction": 0.75390625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            }
+          }
+        },
+        "low": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.8015436421206531,
+              "variant_score": 0.8015436421206531,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.999627409340857,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.00822200130143691,
+              "variant_top_two_gap": 0.00822200130143691,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.770346322462403,
+              "variant_score": 0.770346322462403,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999801261978741,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.004285539881266676,
+              "variant_top_two_gap": 0.004285539881266676,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "original_score": 0.67297875858833,
+              "variant_score": 0.67297875858833,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999680011780329,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0005727916156762491,
+              "variant_top_two_gap": 0.00048260116790899144,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 56,
+              "variant_near_top": 57,
+              "entered_near_top": 1,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7418562683807485,
+              "variant_score": 0.7418562683807485,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9998798344271684,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.008114787680516655,
+              "variant_top_two_gap": 0.008114787680516655,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "raw_delta": {
+                "water": -29.404720868347596,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.013963275171067102,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.7890625,
+              "material_change_fraction": 0.7109375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 2,
+              "paired_disagreement_fraction": 0.00390625
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.77734375,
+              "material_change_fraction": 0.6640625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "winner_change_fraction": 0.96484375,
+              "material_change_fraction": 0.927734375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 7,
+              "paired_disagreement_fraction": 0.013671875
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.818359375,
+              "material_change_fraction": 0.75390625,
+              "winner_change_delta": 0.001953125,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 3,
+              "paired_disagreement_fraction": 0.005859375
+            }
+          }
+        },
+        "mid": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.8015436421206531,
+              "variant_score": 0.8015436421206531,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999966018549074,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.00822200130143691,
+              "variant_top_two_gap": 0.00822200130143691,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.770346322462403,
+              "variant_score": 0.770346322462403,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999997999207272,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.004285539881266676,
+              "variant_top_two_gap": 0.004285539881266676,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "original_score": 0.67297875858833,
+              "variant_score": 0.67297875858833,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999996921576246,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0005727916156762491,
+              "variant_top_two_gap": 0.000565955398202922,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 56,
+              "variant_near_top": 56,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7418562683807485,
+              "variant_score": 0.7418562683807485,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.999998889218931,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.008114787680516655,
+              "variant_top_two_gap": 0.008114787680516655,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "raw_delta": {
+                "water": -2.783306092437016,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0012740720563272356,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.7890625,
+              "material_change_fraction": 0.708984375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": -0.001953125,
+              "paired_disagreement_count": 3,
+              "paired_disagreement_fraction": 0.005859375
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.77734375,
+              "material_change_fraction": 0.6640625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "winner_change_fraction": 0.96484375,
+              "material_change_fraction": 0.927734375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 5,
+              "paired_disagreement_fraction": 0.009765625
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.81640625,
+              "material_change_fraction": 0.751953125,
+              "winner_change_delta": 0.0,
+              "material_change_delta": -0.001953125,
+              "paired_disagreement_count": 3,
+              "paired_disagreement_fraction": 0.005859375
+            }
+          }
+        },
+        "high": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.8015436421206531,
+              "variant_score": 0.8015436421206531,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9997381640690282,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.00822200130143691,
+              "variant_top_two_gap": 0.00822200130143691,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.770346322462403,
+              "variant_score": 0.770346322462403,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999859074773689,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.004285539881266676,
+              "variant_top_two_gap": 0.004285539881266676,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "original_score": 0.67297875858833,
+              "variant_score": 0.67297875858833,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999768067370124,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0005727916156762491,
+              "variant_top_two_gap": 0.0006260725064252126,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 56,
+              "variant_near_top": 56,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7418562683807485,
+              "variant_score": 0.7418562683807485,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9999152085460183,
+              "original_count": 211394,
+              "variant_count": 211394,
+              "common_count": 211394,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.008114787680516655,
+              "variant_top_two_gap": 0.008114787680516655,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 2,
+              "variant_near_top": 2,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "raw_delta": {
+                "water": 25.961622128851587,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": -0.011095837948922327,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.7890625,
+              "material_change_fraction": 0.70703125,
+              "winner_change_delta": 0.0,
+              "material_change_delta": -0.00390625,
+              "paired_disagreement_count": 5,
+              "paired_disagreement_fraction": 0.009765625
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.77734375,
+              "material_change_fraction": 0.6640625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "winner_change_fraction": 0.96484375,
+              "material_change_fraction": 0.927734375,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 2,
+              "paired_disagreement_fraction": 0.00390625
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.81640625,
+              "material_change_fraction": 0.751953125,
+              "winner_change_delta": 0.0,
+              "material_change_delta": -0.001953125,
+              "paired_disagreement_count": 2,
+              "paired_disagreement_fraction": 0.00390625
+            }
+          }
+        }
+      }
+    },
+    "kenya_makueni_north": {
+      "name": "Makueni North Candidate",
+      "levels": {
+        "original": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7467280962622784,
+              "variant_score": 0.7467280962622784,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.005711087236792367,
+              "variant_top_two_gap": 0.005711087236792367,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 3,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "original_score": 0.7558022369316822,
+              "variant_score": 0.7558022369316822,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0007852100140733898,
+              "variant_top_two_gap": 0.0007852100140733898,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 29,
+              "variant_near_top": 29,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "original_score": 0.7073988152969009,
+              "variant_score": 0.7073988152969009,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0010224297535660343,
+              "variant_top_two_gap": 0.0010224297535660343,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 42,
+              "variant_near_top": 42,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "original_score": 0.7394869643689552,
+              "variant_score": 0.7394869643689552,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 1.0,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0035658084963274828,
+              "variant_top_two_gap": 0.0035658084963274828,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 12,
+              "variant_near_top": 12,
+              "entered_near_top": 0,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.744140625,
+              "material_change_fraction": 0.650390625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "winner_change_fraction": 0.94140625,
+              "material_change_fraction": 0.76953125,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "winner_change_fraction": 0.8828125,
+              "material_change_fraction": 0.837890625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "winner_change_fraction": 0.927734375,
+              "material_change_fraction": 0.822265625,
+              "winner_change_delta": 0.0,
+              "material_change_delta": 0.0,
+              "paired_disagreement_count": 0,
+              "paired_disagreement_fraction": 0.0
+            }
+          }
+        },
+        "low": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7467280962622784,
+              "variant_score": 0.7394525973709258,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9955922012406415,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.005711087236792367,
+              "variant_top_two_gap": 0.004446539304187036,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 6,
+              "entered_near_top": 3,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7558022369316822,
+              "variant_score": 0.7486816402407593,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.9771634690837996,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0007852100140733898,
+              "variant_top_two_gap": 0.0024006599011372476,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 29,
+              "variant_near_top": 60,
+              "entered_near_top": 39,
+              "left_near_top": 8,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "original_score": 0.7073988152969009,
+              "variant_score": 0.7049241558100463,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9986708874656671,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0010224297535660343,
+              "variant_top_two_gap": 0.00138537981163811,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 42,
+              "variant_near_top": 69,
+              "entered_near_top": 28,
+              "left_near_top": 1,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "original_score": 0.7394869643689552,
+              "variant_score": 0.7327558905647107,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.988882009652506,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0035658084963274828,
+              "variant_top_two_gap": 0.003229254806115356,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 12,
+              "variant_near_top": 21,
+              "entered_near_top": 9,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 11.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.042920494140006316,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.048503325942350295,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.03959455178967375,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.02474659486854608,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.04256414317389923,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.78125,
+              "material_change_fraction": 0.70703125,
+              "winner_change_delta": 0.037109375,
+              "material_change_delta": 0.056640625,
+              "paired_disagreement_count": 50,
+              "paired_disagreement_fraction": 0.09765625
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.89453125,
+              "material_change_fraction": 0.783203125,
+              "winner_change_delta": -0.046875,
+              "material_change_delta": 0.013671875,
+              "paired_disagreement_count": 178,
+              "paired_disagreement_fraction": 0.34765625
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "winner_change_fraction": 0.89453125,
+              "material_change_fraction": 0.84375,
+              "winner_change_delta": 0.01171875,
+              "material_change_delta": 0.005859375,
+              "paired_disagreement_count": 39,
+              "paired_disagreement_fraction": 0.076171875
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "winner_change_fraction": 0.939453125,
+              "material_change_fraction": 0.84765625,
+              "winner_change_delta": 0.01171875,
+              "material_change_delta": 0.025390625,
+              "paired_disagreement_count": 83,
+              "paired_disagreement_fraction": 0.162109375
+            }
+          }
+        },
+        "mid": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "original_score": 0.7467280962622784,
+              "variant_score": 0.7283714529056351,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9876508100911549,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.005711087236792367,
+              "variant_top_two_gap": 0.002260463185184136,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 8,
+              "entered_near_top": 5,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7558022369316822,
+              "variant_score": 0.743706432521649,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.9351160128180793,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0007852100140733898,
+              "variant_top_two_gap": 0.0026384972510746785,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 29,
+              "variant_near_top": 13,
+              "entered_near_top": 13,
+              "left_near_top": 29,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "original_score": 0.7073988152969009,
+              "variant_score": 0.7011550590531446,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.996448908254798,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0010224297535660343,
+              "variant_top_two_gap": 0.0005627242560755086,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 42,
+              "variant_near_top": 81,
+              "entered_near_top": 45,
+              "left_near_top": 6,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "original_score": 0.7394869643689552,
+              "variant_score": 0.7225039473859383,
+              "label_changed": false,
+              "original_still_feasible": true,
+              "original_still_optimal": true,
+              "rank_spearman": 0.9681952502076586,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0035658084963274828,
+              "variant_top_two_gap": 0.002716657647176768,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 12,
+              "variant_near_top": 51,
+              "entered_near_top": 40,
+              "left_near_top": 1,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 20.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0489510489510489,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.12237762237762229,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.09990009990009985,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.06243756243756243,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.10739260739260736,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "winner_change_fraction": 0.796875,
+              "material_change_fraction": 0.7421875,
+              "winner_change_delta": 0.052734375,
+              "material_change_delta": 0.091796875,
+              "paired_disagreement_count": 83,
+              "paired_disagreement_fraction": 0.162109375
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.845703125,
+              "material_change_fraction": 0.701171875,
+              "winner_change_delta": -0.095703125,
+              "material_change_delta": -0.068359375,
+              "paired_disagreement_count": 285,
+              "paired_disagreement_fraction": 0.556640625
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "winner_change_fraction": 0.90234375,
+              "material_change_fraction": 0.84375,
+              "winner_change_delta": 0.01953125,
+              "material_change_delta": 0.005859375,
+              "paired_disagreement_count": 60,
+              "paired_disagreement_fraction": 0.1171875
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "winner_change_fraction": 0.951171875,
+              "material_change_fraction": 0.869140625,
+              "winner_change_delta": 0.0234375,
+              "material_change_delta": 0.046875,
+              "paired_disagreement_count": 135,
+              "paired_disagreement_fraction": 0.263671875
+            }
+          }
+        },
+        "high": {
+          "nominal": {
+            "water_saver": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "fallow",
+                  "common_bean"
+                ],
+                [
+                  "fallow",
+                  "common_bean"
+                ],
+                [
+                  "fallow",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7467280962622784,
+              "variant_score": 0.7201046679588265,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.9774661832362661,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.005711087236792367,
+              "variant_top_two_gap": 0.0008197535147299595,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 3,
+              "variant_near_top": 9,
+              "entered_near_top": 6,
+              "left_near_top": 0,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "soil_builder": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7558022369316822,
+              "variant_score": 0.7396267621919786,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.88564293362834,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0007852100140733898,
+              "variant_top_two_gap": 0.0026384972510746785,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 29,
+              "variant_near_top": 8,
+              "entered_near_top": 8,
+              "left_near_top": 29,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "income": {
+              "original_rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7073988152969009,
+              "variant_score": 0.699961391779423,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.9937215027774381,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0010224297535660343,
+              "variant_top_two_gap": 0.0006323306889791658,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 42,
+              "variant_near_top": 59,
+              "entered_near_top": 27,
+              "left_near_top": 10,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            },
+            "balanced": {
+              "original_rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "variant_rotation": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "original_score": 0.7394869643689552,
+              "variant_score": 0.7150973379334028,
+              "label_changed": true,
+              "original_still_feasible": true,
+              "original_still_optimal": false,
+              "rank_spearman": 0.9431476220120077,
+              "original_count": 16914,
+              "variant_count": 16914,
+              "common_count": 16914,
+              "added_count": 0,
+              "excluded_count": 0,
+              "original_top_two_gap": 0.0035658084963274828,
+              "variant_top_two_gap": 0.0009999839540579814,
+              "original_exact_ties": 1,
+              "variant_exact_ties": 1,
+              "original_near_top": 12,
+              "variant_near_top": 104,
+              "entered_near_top": 94,
+              "left_near_top": 2,
+              "near_tie_appeared": false,
+              "near_tie_disappeared": false
+            }
+          },
+          "shortlist": [
+            {
+              "strategy": "baseline",
+              "rotation": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 29.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": 0.053896103896103886,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "water_saver",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.18295454545454537,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "soil_builder",
+              "rotation": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.14935064935064934,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "income",
+              "rotation": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.09334415584415584,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            },
+            {
+              "strategy": "balanced",
+              "rotation": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "raw_delta": {
+                "water": 0.0,
+                "nitrogen": 0.0,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "score_delta": {
+                "water": 0.0,
+                "nitrogen": -0.16055194805194806,
+                "erosion": 0.0,
+                "climate_fit": 0.0,
+                "income": 0.0,
+                "risk": 0.0
+              },
+              "original_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "variant_flags": {
+                "season_feasibility": [],
+                "irrigation_shortfall": [],
+                "identical_consecutive_crop": []
+              },
+              "sources": {
+                "water": "NASA POWER \u00b7 https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html \u00b7 crop catalog and irrigation assumption",
+                "nitrogen": "Crop catalog \u00b7 local assumptions",
+                "erosion": "NASA SRTM \u00b7 NASA POWER \u00b7 crop cover assumptions",
+                "climate_fit": "NASA POWER \u00b7 crop catalog",
+                "income": "Crop catalog \u00b7 illustrative economic assumptions",
+                "risk": "Crop catalog \u00b7 disease family and cover assumptions"
+              }
+            }
+          ],
+          "p22": {
+            "water_saver": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "fallow",
+                  "common_bean"
+                ],
+                [
+                  "fallow",
+                  "common_bean"
+                ],
+                [
+                  "fallow",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.79296875,
+              "material_change_fraction": 0.662109375,
+              "winner_change_delta": 0.048828125,
+              "material_change_delta": 0.01171875,
+              "paired_disagreement_count": 116,
+              "paired_disagreement_fraction": 0.2265625
+            },
+            "soil_builder": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.796875,
+              "material_change_fraction": 0.646484375,
+              "winner_change_delta": -0.14453125,
+              "material_change_delta": -0.123046875,
+              "paired_disagreement_count": 356,
+              "paired_disagreement_fraction": 0.6953125
+            },
+            "income": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.6171875,
+              "material_change_fraction": 0.517578125,
+              "winner_change_delta": -0.265625,
+              "material_change_delta": -0.3203125,
+              "paired_disagreement_count": 72,
+              "paired_disagreement_fraction": 0.140625
+            },
+            "balanced": {
+              "draws": 512,
+              "reference_winner": [
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ],
+                [
+                  "pearl_millet",
+                  "common_bean"
+                ]
+              ],
+              "winner_change_fraction": 0.9140625,
+              "material_change_fraction": 0.82421875,
+              "winner_change_delta": -0.013671875,
+              "material_change_delta": 0.001953125,
+              "paired_disagreement_count": 175,
+              "paired_disagreement_fraction": 0.341796875
+            }
+          }
+        }
+      }
+    }
+  }
+}
