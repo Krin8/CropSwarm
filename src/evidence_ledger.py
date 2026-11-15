@@ -297,6 +297,22 @@ def state_check(report):
                        "ml_model.md#p39-weatheryield-associations-by-state")
 
 
+def scoring_response_check(report):
+    summary = report["summary"]
+    states = report["states"]
+    total = sum(row["county_years"] for row in states.values())
+    districts = sum(row["districts"] for row in states.values())
+    heat = states["40"]["weather"]["heat_days"]["learners"]["random_forest"]["comparisons"]["climate_fit"]
+    return EvidenceRow("P41", "Do wheat score responses agree with county-yield associations?",
+                       f"KS, NE, OK · {total:,} county-years, {districts} held-out districts",
+                       f"{summary['with_same_direction']}/{summary['linked_comparisons']} linked pairs move together "
+                       f"somewhere in range; {summary['with_opposite_direction']} reverse somewhere. "
+                       f"OK heat, forest vs climate-fit ρ {delta(heat['rho_supported'], '+.3f')}.",
+                       summary["direction"],
+                       "County associations leave field response and rotation quality unresolved.",
+                       "ml_model.md#p41-scoring-versus-county-yield-response")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -312,12 +328,13 @@ def check_rows(rows):
 def build_ledger(load):
     rows = [*farm_checks(load), *kansas_checks(load), transfer_check(load), *interval_checks(load),
             *recalibration_checks(load), overlap_check(load)]
-    try:
-        p39 = load("climate_yield_state_associations.json")
-    except FileNotFoundError:
-        pass
-    else:
-        rows.append(state_check(p39))
+    for filename, describe in (("climate_yield_state_associations.json", state_check),
+                               ("scoring_response_check.json", scoring_response_check)):
+        try:
+            report = load(filename)
+        except FileNotFoundError:
+            continue
+        rows.append(describe(report))
     check_rows(rows)
     return rows
 

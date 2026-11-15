@@ -20,6 +20,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
     studies = ["P15", "P19", "P20", "P25", "P27", "P32", "P33", "P33b", "P37", "P37b", "P38"]
     if (DATA / "climate_yield_state_associations.json").exists():
         studies.append("P39")
+    if (DATA / "scoring_response_check.json").exists():
+        studies.append("P41")
     assert [row.study for row in rows] == studies
     assert all(len(row.cells()) == len(COLUMNS) for row in rows)
     assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
@@ -36,6 +38,8 @@ def test_rows_disclose_negative_results_and_limits():
     assert rows["P38"].direction == "does not support"
     if "P39" in rows:
         assert rows["P39"].direction == "mixed"
+    if "P41" in rows:
+        assert rows["P41"].direction == "mixed" and "11/12 linked pairs" in rows["P41"].result
 
 
 def test_source_change_changes_generated_sample_headline_and_direction():
@@ -56,7 +60,7 @@ def test_source_change_changes_generated_sample_headline_and_direction():
 
 def test_p39_is_optional_but_bad_inputs_still_fail():
     def before_p39(name):
-        if name == "climate_yield_state_associations.json":
+        if name in {"climate_yield_state_associations.json", "scoring_response_check.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

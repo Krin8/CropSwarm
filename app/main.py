@@ -12,6 +12,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
+from plotly.subplots import make_subplots
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -96,7 +97,7 @@ def evidence_ledger_panel():
               .evidence-ledger table {{ width: 100%; min-width: 850px; table-layout: fixed;
                                        border-collapse: collapse; font-size: 0.79rem; line-height: 1.3; }}
               .evidence-ledger :is(th, td) {{ text-align: left; vertical-align: top;
-                                             padding: 4px 8px; overflow-wrap: break-word;
+                                             padding: 2px 8px; overflow-wrap: break-word;
                                              border-bottom: 1px solid var(--st-border-color, currentColor); }}
               .evidence-ledger thead th {{ background: var(--st-secondary-background-color, transparent); }}
               .evidence-ledger th:nth-child(1) {{ width: 17%; }}
@@ -366,6 +367,73 @@ def state_weather_yield_panel():
         st.caption("Differences can reflect management, varieties, irrigation or differences in weather variation. "
                    "The analysis describes county-average associations. Weather physiology and rotation quality "
                    "are outside its scope.")
+
+
+def scoring_response_panel():
+    report = cached("scoring_response_check.json")
+    states, features = report["state_names"], report["feature_labels"]
+    names = {"ridge": "Ridge", "random_forest": "Random forest",
+             "water": "Water-use score", "climate_fit": "Climate-fit score"}
+    with st.expander("Scoring versus county-yield response (P41)"):
+        first, second = st.columns(2)
+        state = first.selectbox("State", tuple(states), format_func=states.get, key="scoring_response_state")
+        feature = second.selectbox("Weather variable", tuple(features), format_func=features.get,
+                                   key="scoring_response_variable")
+        sample = report["states"][state]
+        weather = sample["weather"][feature]
+        grid = report["design"]["grid"][feature]
+        lo, hi = weather["observed_range"]
+        unit = "mm" if feature == "water_deficit_mm" else "days"
+        st.caption(f"{states[state]} · {sample['county_years']:,} held-out county-years, "
+                   f"{sample['districts']} USDA districts. Observed range {lo:.1f}–{hi:.1f} {unit}. "
+                   "Shading marks grid regions outside this range. Sources · NASA POWER, USDA NASS and "
+                   "the CropSwarm winter-wheat scoring inputs. Results are illustrative.")
+        figure = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=.09)
+        for score, values in report["scoring"][feature].items():
+            figure.add_trace(go.Scatter(x=grid, y=values, name=names[score], mode="lines+markers"), row=1, col=1)
+        for learner, record in weather["learners"].items():
+            figure.add_trace(go.Scatter(x=grid, y=record["partial_dependence_bu_ac"],
+                                        name=names[learner], mode="lines+markers"), row=2, col=1)
+        for a, b in ((grid[0], lo), (hi, grid[-1])):
+            if a < b:
+                figure.add_vrect(x0=a, x1=b, fillcolor="#747474", opacity=.16, line_width=0, layer="below")
+        figure.update_yaxes(title_text="Scoring sub-score", range=[-.05, 1.05], row=1, col=1)
+        figure.update_yaxes(title_text="Yield-residual change (bu/acre)", row=2, col=1)
+        figure.update_xaxes(title_text=features[feature] if unit == "mm" else "Heat days (count)", row=2, col=1)
+        figure.update_layout(height=460, margin=dict(t=20, b=45), legend=dict(orientation="h", y=1.12))
+        st.plotly_chart(figure, key="scoring_response_curves", config={"displayModeBar": False})
+
+        def rho(entry):
+            if entry["value"] is None:
+                return "Unavailable (flat curve)"
+            lo, hi = entry["bootstrap_95"]
+            return f"{entry['value']:+.3f} [{lo:+.3f}, {hi:+.3f}]"
+
+        st.dataframe(pd.DataFrame([
+            {"Score": names[score], "Scoring shape": result["score_shape"], "Learner": names[learner],
+             "County-yield shape": result["data_shape"], "ρ (full grid)": rho(result["rho"]),
+             "ρ (observed range)": rho(result["rho_supported"])}
+            for learner, record in weather["learners"].items()
+            for score, result in record["comparisons"].items()
+        ]), hide_index=True)
+
+        linked = report["design"]["linked_scores"][feature]
+        for learner, record in weather["learners"].items():
+            ranges = record["comparisons"][linked]["spans"]
+            opposite = [f"{v['start']}–{v['end']} {unit}" for v in ranges
+                        if v["supported"] and v["signs"][0] * v["signs"][1] < 0]
+            flat_score = [f"{v['start']}–{v['end']} {unit}" for v in ranges
+                          if v["supported"] and v["signs"][0] == 0 and v["signs"][1] != 0]
+            flat_data = [f"{v['start']}–{v['end']} {unit}" for v in ranges
+                         if v["supported"] and v["signs"][0] != 0 and v["signs"][1] == 0]
+            st.write(f"**{names[learner]} vs {names[linked].lower()}** · Opposite movement "
+                     f"{', '.join(opposite) or 'none within the observed range'}. "
+                     + (f"Only the yield curve moves at {', '.join(flat_score)}. " if flat_score else "")
+                     + (f"Only the score moves at {', '.join(flat_data)}." if flat_data else ""))
+        st.caption("Brackets show descriptive 95% district bootstrap intervals. The score uses a fixed Kansas "
+                   "profile. County curves average over observed backgrounds and can evaluate uncommon weather "
+                   "combinations. This compares scoring assumptions with county-average associations. "
+                   "Field-level effects and rotation quality remain untested.")
 
 
 def local_recalibration_panel():
@@ -1045,6 +1113,7 @@ def app():
         cross_state_yield_panel()
         transfer_diagnosis_panel()
         state_weather_yield_panel()
+        scoring_response_panel()
         local_recalibration_panel()
         yield_interval_panel()
         interval_diagnosis_panel()

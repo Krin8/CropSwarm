@@ -330,3 +330,16 @@ def test_evidence_ledger_panel_matches_the_document_generator():
               for row in re.findall(r"<tr>(.*?)</tr>", ledger)]
     expected = build_ledger(lambda name: json.loads((ROOT / "data/processed" / name).read_text()))
     assert actual == [COLUMNS, *(row.cells() for row in expected)]
+
+
+def test_scoring_response_panel_loads_state_curves_and_direction_disagreement():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(row.label == "Scoring versus county-yield response (P41)" for row in app.expander)
+    app.selectbox(key="scoring_response_state").set_value("40").run()
+    app.selectbox(key="scoring_response_variable").set_value("heat_days").run()
+    assert not app.exception
+    assert any("Oklahoma · 1,800 held-out county-years" in item.value for item in app.caption)
+    ranks = next(row.value for row in app.dataframe if "ρ (observed range)" in row.value)
+    assert len(ranks) == 4 and ranks["ρ (observed range)"].str.startswith("Unavailable").sum() == 2
+    assert any("Opposite movement 26–27 days" in row.value for row in app.markdown)

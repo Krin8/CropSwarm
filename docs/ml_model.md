@@ -2861,3 +2861,90 @@ The pooled point RMSE fell by 0.126 bu/acre, with a 95% difference interval of [
 </details>
 
 The study compared 15 fitted slopes and 15 pairwise differences. It used 5 model specifications (three standalone state ridges and two pooled ridges), 15 specification–alpha configurations, 477 inner fits, 53 final fits and 3,000 coefficient bootstrap refits. The intervals are descriptive, use few district blocks and have no multiple-comparison adjustment. The coefficient differences describe county-average associations and may reflect management, varieties, irrigation, reporting mix or differences in feature distributions. The study does not establish weather physiology or the quality of rotation recommendations.
+
+## P41 Scoring versus county-yield response
+
+The [preregistration](p41_plan.md) was committed as `e8554f8` before evaluation. The [saved response curves](../data/processed/scoring_response_check.json) include each grid value, both sub-scores, the county-model partial dependence with 95% intervals, every direction comparison, and the fold audit. The same curves are available in the app's Validation section. Rebuild offline with `python -m src.scoring_response_check`.
+
+| State | County-years | Counties | USDA districts | Observed deficit (mm) | Observed heat days |
+| --- | --- | --- | --- | --- | --- |
+| Kansas | 3,215 | 103 | 9 | 3.34–454.14 | 0.00–48.00 |
+| Nebraska | 1,733 | 59 | 8 | 29.60–428.32 | 0.00–32.00 |
+| Oklahoma | 1,800 | 58 | 8 | 0.52–476.83 | 0.00–63.00 |
+
+The cached P25/P32 rows matched the scoring engine's October 1 start and 260-day winter-wheat window. All 25 district folds matched the previously saved ridge and random forest predictions when reconstructed with their saved settings. No tuning ran. The cohorts include the previously published all-practice fallback where no non-irrigated record was used.
+
+### Interpreting the curves
+
+The comparison uses design grids of 0–500 mm unmet water in 25 mm steps and 0–60 heat days in five-day steps, with 26 and 27 added to show the scoring cutoff. A heat day exceeds the crop catalog's 30 °C daily maximum threshold. The scoring curve uses the Kansas county-year medians (449.14 mm rainfall, 8.33 °C mean temperature, 218.22 mm unmet water and 14 hot days). It sweeps one driver at a time and sets deficit downstream of the bucket. This holds seasonal rainfall fixed even where the resulting combination would be uncommon or physically inconsistent. For the county curves, the held-out districts keep their observed background features. The P27 recipe replaces one feature at a time and pools the fold averages by their test-row counts. County curves are in bu/acre of predicted yield residual relative to the first grid point. A positive slope means a higher fitted residual as the feature rises. Scoring values and the crop thresholds are illustrative and need local validation.
+
+- **Water deficit.** The water score declines throughout the grid, and ridge declines in all three states. Kansas forest also declines across every fully supported step. Its rise from 0 to 25 mm begins outside the Kansas range. Nebraska forest rises while the score declines at **75–125, 200–250 and 375–400 mm**. Oklahoma forest does the same at **50–75 and 425–450 mm**. Forest flattens at **400–425 mm** in Nebraska and **450–475 mm** in Oklahoma while the score keeps falling.
+- **Heat days.** Climate fit drops from 1 to 0 at **26–27 hot days** in the fixed Kansas scoring profile. Ridge declines both at that step and over the rest of each observed range. Kansas and Nebraska forest decline at that step. Oklahoma forest rises by **0.0015 bu/acre** at **26–27 days** while the score falls. This is a numerical direction mismatch with a negligible fitted yield change. All three forests change direction within the observed range, even where the score stays flat.
+- **Cross-checks.** With the other inputs fixed, climate fit is flat across the deficit sweep and water use is flat across the heat sweep. The county models still move. Spearman is unavailable for all 12 of these flat-score comparisons. Across the 12 linked comparisons, 11 move together in at least one fully supported step and three move in opposite directions at one or more such steps. A pair can do both.
+
+### All rank correlations and shapes
+
+The intervals are descriptive 95% percentiles from 1,000 whole-district resamples of already fitted curves. An interval at a single rank correlation can result from identical ordering across draws, especially for a linear ridge. It gives no evidence about the magnitude of a yield response. Full-grid results can include extrapolated points. The observed-range columns use only grid points between each state's marginal minimum and maximum.
+
+| State | Weather feature | Learner | Score | Score shape | Yield curve shape | Full-grid Spearman ρ [95%] | Observed-range Spearman ρ [95%] |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Kansas | Modeled water deficit (mm) | Ridge | Water-use | non-increasing | non-increasing | +1.000 [+1.000, +1.000] | +1.000 [+1.000, +1.000] |
+| Kansas | Modeled water deficit (mm) | Ridge | Climate-fit | flat | non-increasing | Unavailable | Unavailable |
+| Kansas | Modeled water deficit (mm) | Forest | Water-use | non-increasing | non-monotone | +0.997 [+0.991, +0.998] | +1.000 [+0.992, +1.000] |
+| Kansas | Modeled water deficit (mm) | Forest | Climate-fit | flat | non-monotone | Unavailable | Unavailable |
+| Kansas | Heat days | Ridge | Water-use | flat | non-increasing | Unavailable | Unavailable |
+| Kansas | Heat days | Ridge | Climate-fit | non-increasing | non-increasing | +0.866 [+0.866, +0.866] | +0.857 [+0.857, +0.857] |
+| Kansas | Heat days | Forest | Water-use | flat | non-monotone | Unavailable | Unavailable |
+| Kansas | Heat days | Forest | Climate-fit | non-increasing | non-monotone | +0.874 [+0.874, +0.882] | +0.857 [+0.857, +0.858] |
+| Nebraska | Modeled water deficit (mm) | Ridge | Water-use | non-increasing | non-increasing | +1.000 [+1.000, +1.000] | +1.000 [+1.000, +1.000] |
+| Nebraska | Modeled water deficit (mm) | Ridge | Climate-fit | flat | non-increasing | Unavailable | Unavailable |
+| Nebraska | Modeled water deficit (mm) | Forest | Water-use | non-increasing | non-monotone | +0.860 [+0.759, +0.919] | +0.840 [+0.713, +0.917] |
+| Nebraska | Modeled water deficit (mm) | Forest | Climate-fit | flat | non-monotone | Unavailable | Unavailable |
+| Nebraska | Heat days | Ridge | Water-use | flat | non-increasing | Unavailable | Unavailable |
+| Nebraska | Heat days | Ridge | Climate-fit | non-increasing | non-increasing | +0.866 [+0.866, +0.866] | +0.725 [+0.725, +0.725] |
+| Nebraska | Heat days | Forest | Water-use | flat | non-monotone | Unavailable | Unavailable |
+| Nebraska | Heat days | Forest | Climate-fit | non-increasing | non-monotone | +0.913 [+0.837, +0.913] | +0.725 [+0.632, +0.725] |
+| Oklahoma | Modeled water deficit (mm) | Ridge | Water-use | non-increasing | non-increasing | +1.000 [+1.000, +1.000] | +1.000 [+1.000, +1.000] |
+| Oklahoma | Modeled water deficit (mm) | Ridge | Climate-fit | flat | non-increasing | Unavailable | Unavailable |
+| Oklahoma | Modeled water deficit (mm) | Forest | Water-use | non-increasing | non-monotone | +0.990 [+0.990, +0.993] | +0.993 [+0.993, +0.996] |
+| Oklahoma | Modeled water deficit (mm) | Forest | Climate-fit | flat | non-monotone | Unavailable | Unavailable |
+| Oklahoma | Heat days | Ridge | Water-use | flat | non-increasing | Unavailable | Unavailable |
+| Oklahoma | Heat days | Ridge | Climate-fit | non-increasing | non-increasing | +0.866 [+0.866, +0.866] | +0.866 [+0.866, +0.866] |
+| Oklahoma | Heat days | Forest | Water-use | flat | non-monotone | Unavailable | Unavailable |
+| Oklahoma | Heat days | Forest | Climate-fit | non-increasing | non-monotone | +0.619 [+0.062, +0.745] | +0.619 [+0.062, +0.745] |
+
+<details>
+<summary>Direction of movement over every grid span</summary>
+
+The first arrow is the score and the second is the fitted yield residual. ↓ and ↑ indicate declines and increases. → indicates flat. The 'extends outside' column includes steps with at least one endpoint outside the observed range. An in-range pair of endpoints still can represent an unusual combination with the other features. Adjacent segments are grouped only when both signs and range status match.
+
+| State | Weather feature | Learner | Score | Within observed range | Extends outside observed range |
+| --- | --- | --- | --- | --- | --- |
+| Kansas | Modeled water deficit (mm) | Ridge | Water-use | 25–450 ↓↓ | 0–25 ↓↓, 450–500 ↓↓ |
+| Kansas | Modeled water deficit (mm) | Ridge | Climate-fit | 25–450 →↓ | 0–25 →↓, 450–500 →↓ |
+| Kansas | Modeled water deficit (mm) | Forest | Water-use | 25–450 ↓↓ | 0–25 ↓↑, 450–500 ↓→ |
+| Kansas | Modeled water deficit (mm) | Forest | Climate-fit | 25–450 →↓ | 0–25 →↑, 450–500 →→ |
+| Kansas | Heat days | Ridge | Water-use | 0–45 →↓ | 45–60 →↓ |
+| Kansas | Heat days | Ridge | Climate-fit | 0–26 →↓, 26–27 ↓↓, 27–45 →↓ | 45–60 →↓ |
+| Kansas | Heat days | Forest | Water-use | 0–5 →↑, 5–45 →↓ | 45–60 →→ |
+| Kansas | Heat days | Forest | Climate-fit | 0–5 →↑, 5–26 →↓, 26–27 ↓↓, 27–45 →↓ | 45–60 →→ |
+| Nebraska | Modeled water deficit (mm) | Ridge | Water-use | 50–425 ↓↓ | 0–50 ↓↓, 425–500 ↓↓ |
+| Nebraska | Modeled water deficit (mm) | Ridge | Climate-fit | 50–425 →↓ | 0–50 →↓, 425–500 →↓ |
+| Nebraska | Modeled water deficit (mm) | Forest | Water-use | 50–75 ↓↓, 75–125 ↓↑, 125–200 ↓↓, 200–250 ↓↑, 250–375 ↓↓, 375–400 ↓↑, 400–425 ↓→ | 0–50 ↓→, 425–500 ↓→ |
+| Nebraska | Modeled water deficit (mm) | Forest | Climate-fit | 50–75 →↓, 75–125 →↑, 125–200 →↓, 200–250 →↑, 250–375 →↓, 375–400 →↑, 400–425 →→ | 0–50 →→, 425–500 →→ |
+| Nebraska | Heat days | Ridge | Water-use | 0–30 →↓ | 30–60 →↓ |
+| Nebraska | Heat days | Ridge | Climate-fit | 0–26 →↓, 26–27 ↓↓, 27–30 →↓ | 30–60 →↓ |
+| Nebraska | Heat days | Forest | Water-use | 0–5 →↑, 5–30 →↓ | 30–60 →→ |
+| Nebraska | Heat days | Forest | Climate-fit | 0–5 →↑, 5–26 →↓, 26–27 ↓↓, 27–30 →↓ | 30–60 →→ |
+| Oklahoma | Modeled water deficit (mm) | Ridge | Water-use | 25–475 ↓↓ | 0–25 ↓↓, 475–500 ↓↓ |
+| Oklahoma | Modeled water deficit (mm) | Ridge | Climate-fit | 25–475 →↓ | 0–25 →↓, 475–500 →↓ |
+| Oklahoma | Modeled water deficit (mm) | Forest | Water-use | 25–50 ↓↓, 50–75 ↓↑, 75–425 ↓↓, 425–450 ↓↑, 450–475 ↓→ | 0–25 ↓↓, 475–500 ↓→ |
+| Oklahoma | Modeled water deficit (mm) | Forest | Climate-fit | 25–50 →↓, 50–75 →↑, 75–425 →↓, 425–450 →↑, 450–475 →→ | 0–25 →↓, 475–500 →→ |
+| Oklahoma | Heat days | Ridge | Water-use | 0–60 →↓ | — |
+| Oklahoma | Heat days | Ridge | Climate-fit | 0–26 →↓, 26–27 ↓↓, 27–60 →↓ | — |
+| Oklahoma | Heat days | Forest | Water-use | 0–10 →↓, 10–20 →↑, 20–26 →↓, 26–27 →↑, 27–50 →↓, 50–55 →↑, 55–60 →→ | — |
+| Oklahoma | Heat days | Forest | Climate-fit | 0–10 →↓, 10–20 →↑, 20–26 →↓, 26–27 ↓↑, 27–50 →↓, 50–55 →↑, 55–60 →→ | — |
+
+</details>
+
+These comparisons describe how the illustrative score responds and how weather is associated with county-average yields. Partial dependence can combine values rarely seen together, especially rainfall and water deficit. Management, varieties and irrigation are mixed in the county averages. The comparison cannot identify causal crop physiology, expected field yield or rotation quality.

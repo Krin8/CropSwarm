@@ -107,3 +107,22 @@ def test_cached_dates_must_match_scoring_window():
     verify_windows(rows, 10, 260)
     with pytest.raises(ValueError, match="do not match"):
         verify_windows(rows, 10, 261)
+
+
+def test_saved_response_covers_all_states_folds_and_score_comparisons():
+    import json
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[1] / "data/processed/scoring_response_check.json"
+    report = json.loads(path.read_text())
+    states = report["states"]
+    assert sum(row["county_years"] for row in states.values()) == 6748
+    assert sum(row["districts"] for row in states.values()) == 25
+    for row in states.values():
+        for fold in row["fold_audit"]:
+            assert max(fold["max_prediction_difference_bu_ac"].values()) < 1e-9
+        for weather in row["weather"].values():
+            assert len(weather["learners"]) == 2
+            assert all(len(model["comparisons"]) == 2 for model in weather["learners"].values())
+    assert report["summary"] == {"linked_comparisons": 12, "with_same_direction": 11,
+                                 "with_opposite_direction": 3, "direction": "mixed"}

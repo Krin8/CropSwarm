@@ -1,0 +1,3427 @@
+{
+  "label": "illustrative, validate locally",
+  "design": {
+    "source": "docs/p41_plan.md",
+    "grid": {
+      "water_deficit_mm": [
+        0,
+        25,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        200,
+        225,
+        250,
+        275,
+        300,
+        325,
+        350,
+        375,
+        400,
+        425,
+        450,
+        475,
+        500
+      ],
+      "heat_days": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        26,
+        27,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60
+      ]
+    },
+    "seed": 42,
+    "bootstrap_draws": 1000,
+    "bootstrap_quantiles": [
+      0.025,
+      0.975
+    ],
+    "numeric_tolerance": 1e-09,
+    "linked_scores": {
+      "water_deficit_mm": "water",
+      "heat_days": "climate_fit"
+    }
+  },
+  "window": {
+    "onset_month": 10,
+    "duration_days": 260,
+    "heat_tolerance_c": 30.0,
+    "max_hot_day_fraction": 0.1,
+    "sources": {
+      "onset": "data/processed/seasons_us_high_plains_b.json",
+      "duration_and_heat": "data/crops.csv",
+      "hot_fraction": "config/scoring.json"
+    }
+  },
+  "scoring_reference": {
+    "kansas_medians": {
+      "rainfall_mm": 449.14,
+      "water_deficit_mm": 218.2207692307691,
+      "heat_days": 14.0,
+      "radiation_mj_m2_day": 14.267923076923077,
+      "mean_temp_c": 8.328384615384616
+    },
+    "source": "data/processed/climate_yield_features.csv",
+    "crop_water_demand_mm": 550.0,
+    "storage_mm": 60.2,
+    "irrigation_supply_fraction": 0.0,
+    "sources": {
+      "water_demand": "data/crops.csv",
+      "storage": "data/processed/context_us_high_plains_b.json",
+      "irrigation": "config/farms.json"
+    }
+  },
+  "feature_labels": {
+    "water_deficit_mm": "Modeled water deficit (mm)",
+    "heat_days": "Heat days"
+  },
+  "state_names": {
+    "20": "Kansas",
+    "31": "Nebraska",
+    "40": "Oklahoma"
+  },
+  "states": {
+    "20": {
+      "county_years": 3215,
+      "counties": 103,
+      "districts": 9,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 2005,
+        "all_practices": 1210
+      },
+      "fold_audit": [
+        {
+          "district": "10",
+          "n": 237,
+          "n_train": 2978,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "20",
+          "n": 275,
+          "n_train": 2940,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "30",
+          "n": 424,
+          "n_train": 2791,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "40",
+          "n": 349,
+          "n_train": 2866,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "50",
+          "n": 352,
+          "n_train": 2863,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "60",
+          "n": 418,
+          "n_train": 2797,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "70",
+          "n": 277,
+          "n_train": 2938,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "80",
+          "n": 442,
+          "n_train": 2773,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "90",
+          "n": 441,
+          "n_train": 2774,
+          "settings": {
+            "ridge": {
+              "alpha": 0.1
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        }
+      ],
+      "weather": {
+        "water_deficit_mm": {
+          "observed_range": [
+            3.3407692307692307,
+            454.14000000000146
+          ],
+          "grid_supported": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -2.6471681551383455,
+                -5.294336310276691,
+                -7.941504465415035,
+                -10.588672620553384,
+                -13.235840775691726,
+                -15.883008930830075,
+                -18.53017708596842,
+                -21.177345241106764,
+                -23.824513396245106,
+                -26.47168155138345,
+                -29.1188497065218,
+                -31.76601786166014,
+                -34.413186016798484,
+                -37.06035417193684,
+                -39.70752232707518,
+                -42.35469048221353,
+                -45.00185863735188,
+                -47.64902679249021,
+                -50.29619494762856,
+                -52.9433631027669
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -2.716176784346378,
+                  -2.568899667872227
+                ],
+                [
+                  -5.4323535686927595,
+                  -5.137799335744449
+                ],
+                [
+                  -8.148530353039135,
+                  -7.706699003616674
+                ],
+                [
+                  -10.864707137385517,
+                  -10.275598671488902
+                ],
+                [
+                  -13.580883921731894,
+                  -12.844498339361124
+                ],
+                [
+                  -16.297060706078273,
+                  -15.41339800723335
+                ],
+                [
+                  -19.013237490424654,
+                  -17.982297675105578
+                ],
+                [
+                  -21.729414274771035,
+                  -20.551197342977797
+                ],
+                [
+                  -24.445591059117408,
+                  -23.120097010850024
+                ],
+                [
+                  -27.16176784346379,
+                  -25.688996678722248
+                ],
+                [
+                  -29.877944627810162,
+                  -28.257896346594478
+                ],
+                [
+                  -32.59412141215655,
+                  -30.8267960144667
+                ],
+                [
+                  -35.31029819650293,
+                  -33.39569568233892
+                ],
+                [
+                  -38.02647498084931,
+                  -35.964595350211155
+                ],
+                [
+                  -40.742651765195674,
+                  -38.53349501808337
+                ],
+                [
+                  -43.45882854954207,
+                  -41.102394685955595
+                ],
+                [
+                  -46.17500533388845,
+                  -43.671294353827825
+                ],
+                [
+                  -48.891182118234816,
+                  -46.24019402170005
+                ],
+                [
+                  -51.6073589025812,
+                  -48.809093689572265
+                ],
+                [
+                  -54.32353568692758,
+                  -51.377993357444495
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 450,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 17,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 450,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                0.001387218831525014,
+                -0.0803299310414849,
+                -0.11337723867067338,
+                -0.3479751577540755,
+                -0.6113589004408072,
+                -1.5261442165774703,
+                -2.752432786478175,
+                -3.097649675519815,
+                -3.944412260413883,
+                -4.788308490102391,
+                -5.860566944902622,
+                -9.301405366589885,
+                -9.98127729487895,
+                -12.089276977141825,
+                -12.608520031748482,
+                -12.885301126783766,
+                -13.044796443937074,
+                -13.081128444391362,
+                -13.081128444391362,
+                -13.081128444391362
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.00457220357927626
+                ],
+                [
+                  -0.18717952320146206,
+                  -0.010187731143389792
+                ],
+                [
+                  -0.22488978076632704,
+                  0.00042532067719418997
+                ],
+                [
+                  -0.7768709966660182,
+                  -0.022645835653394637
+                ],
+                [
+                  -1.134925874540644,
+                  -0.16800127957242778
+                ],
+                [
+                  -2.2205491482462945,
+                  -0.8593141650268118
+                ],
+                [
+                  -3.8868122258496336,
+                  -1.6398464255720149
+                ],
+                [
+                  -4.197979710342533,
+                  -1.9661278103565676
+                ],
+                [
+                  -5.017660593406699,
+                  -2.8519874973731496
+                ],
+                [
+                  -5.651097969432746,
+                  -3.9197873681360194
+                ],
+                [
+                  -6.712540155587971,
+                  -5.037366841426195
+                ],
+                [
+                  -10.403502515942876,
+                  -8.407481900164345
+                ],
+                [
+                  -11.49705741033122,
+                  -8.714535071259888
+                ],
+                [
+                  -14.74368863900506,
+                  -9.71545363969373
+                ],
+                [
+                  -15.295785617624517,
+                  -10.136509225014182
+                ],
+                [
+                  -15.778081533942276,
+                  -10.288958984771925
+                ],
+                [
+                  -16.021610443656442,
+                  -10.379685583237174
+                ],
+                [
+                  -16.080844763730912,
+                  -10.383684162702483
+                ],
+                [
+                  -16.080844763730912,
+                  -10.383684162702483
+                ],
+                [
+                  -16.080844763730912,
+                  -10.383684162702483
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 450,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.997400063075249,
+                    "bootstrap_95": [
+                      0.9905704151907859,
+                      0.998375303557358
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      0.9917440660474718,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 17,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 450,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            }
+          }
+        },
+        "heat_days": {
+          "observed_range": [
+            0.0,
+            48.0
+          ],
+          "grid_supported": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -2.2496049150085566,
+                -4.499209830017114,
+                -6.748814745025672,
+                -8.998419660034228,
+                -11.248024575042784,
+                -11.697945558044497,
+                -12.147866541046207,
+                -13.497629490051343,
+                -15.747234405059897,
+                -17.996839320068453,
+                -20.24644423507701,
+                -22.49604915008557,
+                -24.745654065094122,
+                -26.99525898010268
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -2.3004615815018328,
+                  -2.203752630351176
+                ],
+                [
+                  -4.600923163003665,
+                  -4.407505260702352
+                ],
+                [
+                  -6.901384744505498,
+                  -6.611257891053528
+                ],
+                [
+                  -9.20184632600733,
+                  -8.815010521404703
+                ],
+                [
+                  -11.502307907509163,
+                  -11.01876315175588
+                ],
+                [
+                  -11.962400223809531,
+                  -11.459513677826116
+                ],
+                [
+                  -12.422492540109895,
+                  -11.900264203896347
+                ],
+                [
+                  -13.802769489010997,
+                  -13.222515782107054
+                ],
+                [
+                  -16.10323107051283,
+                  -15.426268412458228
+                ],
+                [
+                  -18.40369265201466,
+                  -17.630021042809403
+                ],
+                [
+                  -20.70415423351649,
+                  -19.833773673160586
+                ],
+                [
+                  -23.004615815018326,
+                  -22.03752630351176
+                ],
+                [
+                  -25.305077396520158,
+                  -24.241278933862937
+                ],
+                [
+                  -27.605538978021993,
+                  -26.44503156421411
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 45,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 45,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 45,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 45,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.8660254037844385,
+                    "bootstrap_95": [
+                      0.8660254037844385,
+                      0.8660254037844385
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.8568930704969754,
+                    "bootstrap_95": [
+                      0.8568930704969754,
+                      0.8568930704969754
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 1,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                0.06398153306591214,
+                0.03484648441189714,
+                -0.5666956910996312,
+                -1.1783160209219086,
+                -1.6005955802826377,
+                -1.9035334694368458,
+                -2.0055464135580343,
+                -2.48535747721981,
+                -3.4797344285064424,
+                -3.6099888884190614,
+                -3.612413268967802,
+                -3.612413268967802,
+                -3.612413268967802,
+                -3.612413268967802
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.20283647037877295,
+                  0.3073257620515245
+                ],
+                [
+                  -0.8086976403213201,
+                  1.0114423038826195
+                ],
+                [
+                  -1.7008964742077863,
+                  0.5983643518271576
+                ],
+                [
+                  -2.6414773581789097,
+                  0.23836190279961447
+                ],
+                [
+                  -3.2761568726368533,
+                  -0.03348839482040513
+                ],
+                [
+                  -3.8151755906750116,
+                  -0.16666600870620724
+                ],
+                [
+                  -4.012552074530908,
+                  -0.21126174020988975
+                ],
+                [
+                  -4.95511850989854,
+                  -0.46212242623254435
+                ],
+                [
+                  -6.04665053048644,
+                  -1.1818495086197023
+                ],
+                [
+                  -6.191271874888271,
+                  -1.2682569799676064
+                ],
+                [
+                  -6.195819394847718,
+                  -1.2682569799676064
+                ],
+                [
+                  -6.195819394847718,
+                  -1.2682569799676064
+                ],
+                [
+                  -6.195819394847718,
+                  -1.2682569799676064
+                ],
+                [
+                  -6.195819394847718,
+                  -1.2682569799676064
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 5,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 5,
+                      "end": 45,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 45,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 5,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 5,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 45,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 45,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.873862897505303,
+                    "bootstrap_95": [
+                      0.873862897505303,
+                      0.8819171036881969
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.8568930704969754,
+                    "bootstrap_95": [
+                      0.8568930704969754,
+                      0.8583950752789522
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 1,
+                  "supported_opposite_direction": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "31": {
+      "county_years": 1733,
+      "counties": 59,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "non_irrigated": 1154,
+        "all_practices": 579
+      },
+      "fold_audit": [
+        {
+          "district": "10",
+          "n": 335,
+          "n_train": 1398,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "20",
+          "n": 67,
+          "n_train": 1666,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "30",
+          "n": 20,
+          "n_train": 1713,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "50",
+          "n": 134,
+          "n_train": 1599,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "60",
+          "n": 261,
+          "n_train": 1472,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "70",
+          "n": 290,
+          "n_train": 1443,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "80",
+          "n": 245,
+          "n_train": 1488,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "90",
+          "n": 381,
+          "n_train": 1352,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        }
+      ],
+      "weather": {
+        "water_deficit_mm": {
+          "observed_range": [
+            29.60230769230762,
+            428.31999999999977
+          ],
+          "grid_supported": [
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -1.147263200453752,
+                -2.2945264009075066,
+                -3.44178960136126,
+                -4.589052801815014,
+                -5.736316002268767,
+                -6.88357920272252,
+                -8.030842403176274,
+                -9.178105603630028,
+                -10.32536880408378,
+                -11.472632004537534,
+                -12.619895204991291,
+                -13.767158405445041,
+                -14.914421605898793,
+                -16.061684806352552,
+                -17.208948006806303,
+                -18.356211207260056,
+                -19.50347440771381,
+                -20.650737608167564,
+                -21.798000808621318,
+                -22.94526400907507
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -1.2427016837367952,
+                  -1.0484262831389835
+                ],
+                [
+                  -2.485403367473596,
+                  -2.096852566277969
+                ],
+                [
+                  -3.728105051210394,
+                  -3.1452788494169517
+                ],
+                [
+                  -4.970806734947192,
+                  -4.193705132555937
+                ],
+                [
+                  -6.213508418683991,
+                  -5.242131415694921
+                ],
+                [
+                  -7.45621010242079,
+                  -6.290557698833905
+                ],
+                [
+                  -8.698911786157586,
+                  -7.3389839819728895
+                ],
+                [
+                  -9.941613469894387,
+                  -8.387410265111876
+                ],
+                [
+                  -11.184315153631184,
+                  -9.435836548250856
+                ],
+                [
+                  -12.427016837367983,
+                  -10.484262831389842
+                ],
+                [
+                  -13.669718521104782,
+                  -11.532689114528829
+                ],
+                [
+                  -14.912420204841581,
+                  -12.58111539766781
+                ],
+                [
+                  -16.155121888578375,
+                  -13.629541680806796
+                ],
+                [
+                  -17.39782357231518,
+                  -14.67796796394578
+                ],
+                [
+                  -18.640525256051976,
+                  -15.726394247084766
+                ],
+                [
+                  -19.883226939788774,
+                  -16.774820530223753
+                ],
+                [
+                  -21.12592862352557,
+                  -17.823246813362736
+                ],
+                [
+                  -22.368630307262375,
+                  -18.87167309650172
+                ],
+                [
+                  -23.611331990999165,
+                  -19.9200993796407
+                ],
+                [
+                  -24.85403367473597,
+                  -20.96852566277969
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 50,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 50,
+                      "end": 425,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 15,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 50,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 50,
+                      "end": 425,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                0.0,
+                0.0,
+                -0.0007560022654418746,
+                0.012080481380929105,
+                0.06849123922501944,
+                -0.14230938557291514,
+                -0.19870768353409446,
+                -0.2534120759752679,
+                -0.025006187061196266,
+                0.12818338261086903,
+                -1.1705753035549977,
+                -2.403039577376084,
+                -4.166071395431373,
+                -5.475688376930701,
+                -5.816847627052821,
+                -5.71347926397206,
+                -5.71347926397206,
+                -5.71347926397206,
+                -5.71347926397206,
+                -5.71347926397206
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.002483439789136662,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.03943422528218228
+                ],
+                [
+                  -0.0035324907130223774,
+                  0.21779211284106534
+                ],
+                [
+                  -0.2676729864470312,
+                  -0.03548180460329641
+                ],
+                [
+                  -0.3923537953679311,
+                  -0.03838303635568655
+                ],
+                [
+                  -0.5330641172032564,
+                  0.08720497492150373
+                ],
+                [
+                  -0.2011245844973937,
+                  0.22802354208155629
+                ],
+                [
+                  -0.06294283537677454,
+                  0.36639011304212343
+                ],
+                [
+                  -1.5240041703053955,
+                  -0.7103969025872382
+                ],
+                [
+                  -3.25691958852851,
+                  -1.5251759949298647
+                ],
+                [
+                  -5.347543219119832,
+                  -2.7723321673529835
+                ],
+                [
+                  -7.0381782535561985,
+                  -3.766005847826438
+                ],
+                [
+                  -7.21500154251067,
+                  -4.205890704426617
+                ],
+                [
+                  -7.2061874628689395,
+                  -4.032194094358738
+                ],
+                [
+                  -7.2061874628689395,
+                  -4.032194094358738
+                ],
+                [
+                  -7.2061874628689395,
+                  -4.032194094358738
+                ],
+                [
+                  -7.2061874628689395,
+                  -4.032194094358738
+                ],
+                [
+                  -7.2061874628689395,
+                  -4.032194094358738
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 50,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 50,
+                      "end": 75,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 75,
+                      "end": 125,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 125,
+                      "end": 200,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 200,
+                      "end": 250,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 250,
+                      "end": 375,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 375,
+                      "end": 400,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 400,
+                      "end": 425,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.8599741642458446,
+                    "bootstrap_95": [
+                      0.7593809975506081,
+                      0.9188765042626832
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.8403239949742589,
+                    "bootstrap_95": [
+                      0.7128137332841545,
+                      0.9168508736759426
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 9,
+                  "supported_opposite_direction": 5
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 50,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 50,
+                      "end": 75,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 75,
+                      "end": 125,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 125,
+                      "end": 200,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 200,
+                      "end": 250,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 250,
+                      "end": 375,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 375,
+                      "end": 400,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 400,
+                      "end": 425,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            }
+          }
+        },
+        "heat_days": {
+          "observed_range": [
+            0.0,
+            32.0
+          ],
+          "grid_supported": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -1.633518792290212,
+                -3.267037584580424,
+                -4.900556376870636,
+                -6.534075169160848,
+                -8.167593961451061,
+                -8.494297719909103,
+                -8.821001478367146,
+                -9.801112753741272,
+                -11.434631546031483,
+                -13.068150338321697,
+                -14.70166913061191,
+                -16.335187922902122,
+                -17.968706715192333,
+                -19.602225507482544
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -1.7956077354560676,
+                  -1.4598508078217964
+                ],
+                [
+                  -3.591215470912135,
+                  -2.919701615643593
+                ],
+                [
+                  -5.386823206368202,
+                  -4.379552423465389
+                ],
+                [
+                  -7.182430941824273,
+                  -5.839403231287184
+                ],
+                [
+                  -8.978038677280338,
+                  -7.299254039108982
+                ],
+                [
+                  -9.337160224371553,
+                  -7.591224200673341
+                ],
+                [
+                  -9.696281771462765,
+                  -7.883194362237699
+                ],
+                [
+                  -10.773646412736406,
+                  -8.75910484693078
+                ],
+                [
+                  -12.569254148192478,
+                  -10.218955654752573
+                ],
+                [
+                  -14.364861883648544,
+                  -11.678806462574371
+                ],
+                [
+                  -16.160469619104603,
+                  -13.138657270396166
+                ],
+                [
+                  -17.956077354560676,
+                  -14.598508078217964
+                ],
+                [
+                  -19.751685090016746,
+                  -16.05835888603976
+                ],
+                [
+                  -21.54729282547281,
+                  -17.518209693861557
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 30,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 30,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 30,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 30,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.8660254037844385,
+                    "bootstrap_95": [
+                      0.8660254037844385,
+                      0.8660254037844385
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.7245688373094719,
+                    "bootstrap_95": [
+                      0.7245688373094719,
+                      0.7245688373094719
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 1,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                1.2128150014618788,
+                0.42764382526898503,
+                0.1066099702961809,
+                -1.7042863946141795,
+                -4.1599725194548105,
+                -4.356820513907611,
+                -4.400276642763503,
+                -4.44113633682765,
+                -4.44113633682765,
+                -4.44113633682765,
+                -4.44113633682765,
+                -4.44113633682765,
+                -4.44113633682765,
+                -4.44113633682765
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.8729108027013068,
+                  1.5118101450661012
+                ],
+                [
+                  -0.2949382102850151,
+                  0.9832007636189326
+                ],
+                [
+                  -0.5794172601247233,
+                  0.8166866088698156
+                ],
+                [
+                  -2.904342241674572,
+                  -0.6527635997247315
+                ],
+                [
+                  -4.719731046951482,
+                  -3.554398408514342
+                ],
+                [
+                  -5.167873014641236,
+                  -3.58301701368544
+                ],
+                [
+                  -5.270786001191449,
+                  -3.588895812396874
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ],
+                [
+                  -5.3728720929187075,
+                  -3.5989132759012192
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 5,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 5,
+                      "end": 30,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 30,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 5,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 5,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 30,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 30,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.9128709291752769,
+                    "bootstrap_95": [
+                      0.8374357893586236,
+                      0.9128709291752769
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.7245688373094719,
+                    "bootstrap_95": [
+                      0.6316761657092368,
+                      0.7245688373094719
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 1,
+                  "supported_opposite_direction": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "40": {
+      "county_years": 1800,
+      "counties": 58,
+      "districts": 8,
+      "first_year": 1990,
+      "last_year": 2023,
+      "practice_counts": {
+        "all_practices": 1379,
+        "non_irrigated": 421
+      },
+      "fold_audit": [
+        {
+          "district": "10",
+          "n": 154,
+          "n_train": 1646,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "20",
+          "n": 201,
+          "n_train": 1599,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "30",
+          "n": 255,
+          "n_train": 1545,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "40",
+          "n": 264,
+          "n_train": 1536,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "50",
+          "n": 358,
+          "n_train": 1442,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "60",
+          "n": 185,
+          "n_train": 1615,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 5
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "70",
+          "n": 309,
+          "n_train": 1491,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        },
+        {
+          "district": "80",
+          "n": 74,
+          "n_train": 1726,
+          "settings": {
+            "ridge": {
+              "alpha": 10.0
+            },
+            "random_forest": {
+              "min_samples_leaf": 20
+            }
+          },
+          "max_prediction_difference_bu_ac": {
+            "ridge": 0.0,
+            "random_forest": 0.0
+          }
+        }
+      ],
+      "weather": {
+        "water_deficit_mm": {
+          "observed_range": [
+            0.5230769230768602,
+            476.83000000000175
+          ],
+          "grid_supported": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -1.9249777437153104,
+                -3.8499554874306203,
+                -5.774933231145931,
+                -7.69991097486124,
+                -9.624888718576551,
+                -11.549866462291861,
+                -13.474844206007173,
+                -15.39982194972248,
+                -17.324799693437793,
+                -19.249777437153103,
+                -21.17475518086841,
+                -23.099732924583723,
+                -25.024710668299036,
+                -26.949688412014346,
+                -28.874666155729656,
+                -30.79964389944496,
+                -32.724621643160276,
+                -34.649599386875586,
+                -36.57457713059089,
+                -38.499554874306206
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -1.970185974980001,
+                  -1.8826792339154033
+                ],
+                [
+                  -3.940371949960002,
+                  -3.7653584678308056
+                ],
+                [
+                  -5.9105579249400035,
+                  -5.648037701746209
+                ],
+                [
+                  -7.880743899920005,
+                  -7.530716935661611
+                ],
+                [
+                  -9.850929874900007,
+                  -9.413396169577014
+                ],
+                [
+                  -11.821115849880007,
+                  -11.296075403492418
+                ],
+                [
+                  -13.79130182486001,
+                  -13.178754637407822
+                ],
+                [
+                  -15.761487799840012,
+                  -15.061433871323223
+                ],
+                [
+                  -17.731673774820013,
+                  -16.944113105238625
+                ],
+                [
+                  -19.701859749800015,
+                  -18.82679233915403
+                ],
+                [
+                  -21.672045724780016,
+                  -20.70947157306943
+                ],
+                [
+                  -23.642231699760014,
+                  -22.592150806984836
+                ],
+                [
+                  -25.612417674740016,
+                  -24.474830040900233
+                ],
+                [
+                  -27.58260364972002,
+                  -26.35750927481564
+                ],
+                [
+                  -29.552789624700022,
+                  -28.240188508731045
+                ],
+                [
+                  -31.522975599680024,
+                  -30.122867742646445
+                ],
+                [
+                  -33.49316157466003,
+                  -32.005546976561845
+                ],
+                [
+                  -35.46334754964003,
+                  -33.88822621047725
+                ],
+                [
+                  -37.43353352462004,
+                  -35.77090544439265
+                ],
+                [
+                  -39.40371949960002,
+                  -37.65358467830806
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 475,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 475,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 1.0,
+                    "bootstrap_95": [
+                      1.0,
+                      1.0
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 18,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 475,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 475,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -0.04385127486506604,
+                -0.30763308405948186,
+                -0.27975849036732947,
+                -0.8472037148326927,
+                -1.402418881352927,
+                -1.8948478474302728,
+                -2.4349960266764104,
+                -4.987531508236322,
+                -7.186051302752104,
+                -8.636830503668154,
+                -9.169809445934966,
+                -9.895512298826958,
+                -10.450265447798657,
+                -10.586150225384849,
+                -10.659500862606153,
+                -10.673511591332202,
+                -10.675625435769588,
+                -10.675555731975063,
+                -10.675555731975063,
+                -10.675555731975063
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.12150200450619651,
+                  -0.004225519465871311
+                ],
+                [
+                  -0.47640086363117856,
+                  -0.18317530152784917
+                ],
+                [
+                  -0.47949635809740715,
+                  -0.13591091023569463
+                ],
+                [
+                  -1.1650344247852278,
+                  -0.5652242278015838
+                ],
+                [
+                  -1.8013095530662402,
+                  -1.0784006414727134
+                ],
+                [
+                  -2.406280746253849,
+                  -1.4360090941765018
+                ],
+                [
+                  -2.911880143823759,
+                  -2.000918392603424
+                ],
+                [
+                  -5.9039746666240545,
+                  -4.121584867342724
+                ],
+                [
+                  -8.789852380081664,
+                  -5.558849167631457
+                ],
+                [
+                  -10.84920151195992,
+                  -6.6771548657603885
+                ],
+                [
+                  -11.608261190358833,
+                  -7.058470394280315
+                ],
+                [
+                  -12.577435311065551,
+                  -7.689047227029067
+                ],
+                [
+                  -13.303796268463033,
+                  -8.120318685845076
+                ],
+                [
+                  -13.478791942803213,
+                  -8.247630597788227
+                ],
+                [
+                  -13.574281291600997,
+                  -8.334538485320675
+                ],
+                [
+                  -13.583527781321127,
+                  -8.344835093462118
+                ],
+                [
+                  -13.584193372165181,
+                  -8.344901752887264
+                ],
+                [
+                  -13.58411815352519,
+                  -8.34489955479984
+                ],
+                [
+                  -13.58411815352519,
+                  -8.34489955479984
+                ],
+                [
+                  -13.58411815352519,
+                  -8.34489955479984
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 50,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 50,
+                      "end": 75,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 75,
+                      "end": 425,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 450,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 475,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 475,
+                      "end": 500,
+                      "signs": [
+                        -1,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.9895977157760946,
+                    "bootstrap_95": [
+                      0.9895977157760946,
+                      0.993485272670404
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.9925406835269631,
+                    "bootstrap_95": [
+                      0.9925406835269631,
+                      0.9956043743251828
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 15,
+                  "supported_opposite_direction": 2
+                },
+                "climate_fit": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 25,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": false
+                    },
+                    {
+                      "start": 25,
+                      "end": 50,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 50,
+                      "end": 75,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 75,
+                      "end": 425,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 425,
+                      "end": 450,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 450,
+                      "end": 475,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 475,
+                      "end": 500,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": false
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                }
+              }
+            }
+          }
+        },
+        "heat_days": {
+          "observed_range": [
+            0.0,
+            63.0
+          ],
+          "grid_supported": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "learners": {
+            "ridge": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -0.38293676211600974,
+                -0.7658735242320193,
+                -1.1488102863480294,
+                -1.531747048464039,
+                -1.914683810580049,
+                -1.9912711630032507,
+                -2.0678585154264533,
+                -2.2976205726960583,
+                -2.680557334812068,
+                -3.0634940969280775,
+                -3.446430859044088,
+                -3.829367621160098,
+                -4.212304383276107,
+                -4.595241145392117
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.45387711913464207,
+                  -0.3056084803128088
+                ],
+                [
+                  -0.9077542382692839,
+                  -0.6112169606256175
+                ],
+                [
+                  -1.3616313574039267,
+                  -0.9168254409384262
+                ],
+                [
+                  -1.8155084765385678,
+                  -1.2224339212512352
+                ],
+                [
+                  -2.26938559567321,
+                  -1.528042401564044
+                ],
+                [
+                  -2.360161019500139,
+                  -1.5891640976266055
+                ],
+                [
+                  -2.4509364433270675,
+                  -1.6502857936891675
+                ],
+                [
+                  -2.723262714807853,
+                  -1.8336508818768529
+                ],
+                [
+                  -3.177139833942495,
+                  -2.1392593621896614
+                ],
+                [
+                  -3.6310169530771366,
+                  -2.4448678425024704
+                ],
+                [
+                  -4.084894072211779,
+                  -2.7504763228152793
+                ],
+                [
+                  -4.53877119134642,
+                  -3.0560848031280883
+                ],
+                [
+                  -4.992648310481063,
+                  -3.3616932834408964
+                ],
+                [
+                  -5.446525429615706,
+                  -3.6673017637537053
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-increasing",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.8660254037844385,
+                    "bootstrap_95": [
+                      0.8660254037844385,
+                      0.8660254037844385
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.8660254037844385,
+                    "bootstrap_95": [
+                      0.8660254037844385,
+                      0.8660254037844385
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 1,
+                  "supported_opposite_direction": 0
+                }
+              }
+            },
+            "random_forest": {
+              "partial_dependence_bu_ac": [
+                0.0,
+                -0.044145741700985064,
+                -0.04557756545094694,
+                0.41751047640927014,
+                0.6260751706267634,
+                0.4706507904503757,
+                0.444600586342695,
+                0.44608669678589075,
+                0.17839530001760753,
+                -0.10670431461485956,
+                -0.13335083688571825,
+                -0.14671549335622142,
+                -0.1761676464005914,
+                -0.17586259076904684,
+                -0.17586259076904684
+              ],
+              "bootstrap_95": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.10735851638476189,
+                  -0.0010138951565394534
+                ],
+                [
+                  -0.11805308200335655,
+                  0.013221111426668208
+                ],
+                [
+                  0.25097994415097985,
+                  0.6033601568509476
+                ],
+                [
+                  0.3888091012818023,
+                  0.8696387425150173
+                ],
+                [
+                  0.2442791201826769,
+                  0.692334461387687
+                ],
+                [
+                  0.2048788388048757,
+                  0.6753491273431848
+                ],
+                [
+                  0.2046847277589244,
+                  0.6691749786518626
+                ],
+                [
+                  -0.10347016533877755,
+                  0.4595537564334973
+                ],
+                [
+                  -0.5536251119182497,
+                  0.3117887072482089
+                ],
+                [
+                  -0.5934169681961952,
+                  0.3075794057058228
+                ],
+                [
+                  -0.6218111047858664,
+                  0.3040183437458463
+                ],
+                [
+                  -0.6633432364383244,
+                  0.2901623995272349
+                ],
+                [
+                  -0.6633432364383244,
+                  0.2901851774643247
+                ],
+                [
+                  -0.6633432364383244,
+                  0.2901851774643247
+                ]
+              ],
+              "comparisons": {
+                "water": {
+                  "score_shape": "flat",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 10,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 10,
+                      "end": 20,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 20,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 50,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 50,
+                      "end": 55,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 55,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": true
+                    }
+                  ],
+                  "rho": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "rho_supported": {
+                    "value": null,
+                    "bootstrap_95": null,
+                    "bootstrap_n": 0
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 0
+                },
+                "climate_fit": {
+                  "score_shape": "non-increasing",
+                  "data_shape": "non-monotone",
+                  "spans": [
+                    {
+                      "start": 0,
+                      "end": 10,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 10,
+                      "end": 20,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 20,
+                      "end": 26,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 26,
+                      "end": 27,
+                      "signs": [
+                        -1,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 27,
+                      "end": 50,
+                      "signs": [
+                        0,
+                        -1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 50,
+                      "end": 55,
+                      "signs": [
+                        0,
+                        1
+                      ],
+                      "supported": true
+                    },
+                    {
+                      "start": 55,
+                      "end": 60,
+                      "signs": [
+                        0,
+                        0
+                      ],
+                      "supported": true
+                    }
+                  ],
+                  "rho": {
+                    "value": 0.6191426270577064,
+                    "bootstrap_95": [
+                      0.06191426270577064,
+                      0.7449728745139396
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "rho_supported": {
+                    "value": 0.6191426270577064,
+                    "bootstrap_95": [
+                      0.06191426270577064,
+                      0.7449728745139396
+                    ],
+                    "bootstrap_n": 1000
+                  },
+                  "supported_same_direction": 0,
+                  "supported_opposite_direction": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "scoring": {
+    "water_deficit_mm": {
+      "water": [
+        1.0,
+        0.9545454545454546,
+        0.9090909090909091,
+        0.8636363636363636,
+        0.8181818181818181,
+        0.7727272727272727,
+        0.7272727272727273,
+        0.6818181818181819,
+        0.6363636363636364,
+        0.5909090909090908,
+        0.5454545454545454,
+        0.5,
+        0.4545454545454546,
+        0.40909090909090906,
+        0.36363636363636365,
+        0.31818181818181823,
+        0.2727272727272727,
+        0.2272727272727273,
+        0.18181818181818177,
+        0.13636363636363635,
+        0.09090909090909094
+      ],
+      "climate_fit": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "heat_days": {
+      "water": [
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653,
+        0.6032349650349653
+      ],
+      "climate_fit": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "summary": {
+    "linked_comparisons": 12,
+    "with_same_direction": 11,
+    "with_opposite_direction": 3,
+    "direction": "mixed"
+  }
+}
