@@ -19,7 +19,7 @@ CropSwarm is an offline decision-support demo for comparing crop rotations at th
 4. Exact enumeration evaluated 168 canonical rotations in Kansas, 211,394 in Telangana and 16,914 in Makueni over three modeled years. Whole-year cyclic shifts count once. [Verification](docs/optimizer.md)
 5. For the nominal scoring benchmark, single-run ant colony search matched the exact optimum in 21–30 of 30 trials per farm and preset. Taking the highest score from five independent runs matched in all 360 trials. [Gaps](docs/optimizer.md)
 6. Seeded scenario draws show score ranges, win percentages, regret and sensitivity; these ranges describe model assumptions. [Method](docs/scoring.md)
-7. The baseline flags remain visible: the spring NDVI peak over Kansas CDL-mapped fallow remains unexplained, Telangana repeats paddy and its second season is tentative, and Makueni cropland is unverified. [Site caveats](docs/decisions.md)
+7. The baseline flags remain visible: the spring NDVI peak over Kansas CDL-mapped fallow remains unexplained, Telangana repeats paddy and its second season is tentative, and cropland at the original Makueni point is unverified. [Site caveats](docs/decisions.md) · [Makueni parallel-point check](docs/makueni_cropland.md)
 
 Evidence grades expose how each modeled metric depends on NASA, external, literature and assumed inputs. All displayed strategies currently have a **low overall evidence label** because key crop and management inputs remain assumptions. [Method and limits](docs/evidence_grades.md)
 

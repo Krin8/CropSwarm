@@ -80,7 +80,12 @@ def test_checked_in_study_rebuilds_offline(monkeypatch):
     assert study["alternate"]["supporting_products"] == ["worldcover", "glad"]
     assert study["products"]["worldcover"]["touching_class_codes"] == [30, 40]
     assert study["products"]["mcd12q1"]["cropland_share"] is None
-    assert study["vegetation"]["shared_native_pixel"]
+    vegetation = study["vegetation"]
+    assert vegetation["shared_native_pixel"]
+    years = vegetation["original"]["annual_p5_long_record"]
+    assert len(years) == 24 and sum(row["peaks"] for row in years.values()) == 6
+    assert vegetation["alternate"]["annual_p5_long_record"] == years
+    assert study["products"]["gfsad"]["range_get_checks"][-1]["redirect_host"] == "urs.earthdata.nasa.gov"
     assert all(grid["alternate_same_cell"] for grid in study["weather"]["native_grids"].values())
     assert study["soil"]["original"]["depths"]["0-5cm"]["clay"]["pixel_col_row"] != (
         study["soil"]["alternate"]["depths"]["0-5cm"]["clay"]["pixel_col_row"])

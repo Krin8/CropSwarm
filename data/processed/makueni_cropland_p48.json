@@ -15,7 +15,7 @@
   "alternate": {
     "lat": -1.950125,
     "lon": 37.639875,
-    "distance_m": 19.651002703545696,
+    "distance_m": 19.651003,
     "candidate_grid": "glad",
     "eligible_centers": 19736,
     "supporting_products": [
@@ -60,7 +60,7 @@
         "60": 846,
         "80": 9
       },
-      "cropland_share": 0.24468634300053685,
+      "cropland_share": 0.244686343,
       "classified_share": 1.0,
       "point_class": "Grassland",
       "access": "Public TIFF, cached",
@@ -111,8 +111,8 @@
         "0": 39725,
         "1": 61981
       },
-      "cropland_share": 0.6094117137101512,
-      "classified_share": 0.6094117137101512,
+      "cropland_share": 0.6094117137,
+      "classified_share": 0.6094117137,
       "point_class": "Cropland",
       "access": "Public TIFF, cached",
       "asset": {
@@ -162,7 +162,7 @@
         "0": 885935,
         "100": 29303
       },
-      "cropland_share": 0.03201678335597827,
+      "cropland_share": 0.0320167834,
       "classified_share": 1.0,
       "point_class": "Outside temporary cropland",
       "access": "Public TIFF, cached",
@@ -204,7 +204,7 @@
       "crop_pixels": 0,
       "mosaic_pixels": 0,
       "sample_pixels": 25,
-      "classified_share": 0.0683279778653899,
+      "classified_share": 0.0683279779,
       "cropland_share": null,
       "evidence_ref": "data/raw/p7/land_cover/mcd12q1_kenya_makueni_north_2023_1km.1.json",
       "alternate_class": "Grassland"
@@ -214,7 +214,15 @@
       "url": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/GFSAD30AFCE.001/GFSAD30AFCE_2015_S10E30_001_2017261090100/GFSAD30AFCE_2015_S10E30_001_2017261090100.tif",
       "status": 303,
       "redirect_host": "d1nklfio7vscoe.cloudfront.net",
-      "access": "Documented Earthdata Login; skipped after unauthenticated header check",
+      "access": "Redirected to Earthdata Login; skipped",
+      "range_get_checks": [
+        {
+          "host": "data.lpdaac.earthdatacloud.nasa.gov",
+          "status": 302,
+          "redirect_host": "urs.earthdata.nasa.gov",
+          "content_type": "application/json"
+        }
+      ],
       "name": "NASA MEaSUREs GFSAD30AFCE v001",
       "source": "https://www.usgs.gov/apps/croplands/downloadLPDAAC",
       "period": "Nominal 2015",
@@ -264,7 +272,7 @@
             37.8125
           ]
         ],
-        "nearest_cell_edge_m": 19170.03866949188,
+        "nearest_cell_edge_m": 19170.038669,
         "full_disk_shares_cell": true,
         "alternate_same_cell": true
       },
@@ -299,7 +307,7 @@
             38.0
           ]
         ],
-        "nearest_cell_edge_m": 5559.752598832623,
+        "nearest_cell_edge_m": 5559.752599,
         "full_disk_shares_cell": true,
         "alternate_same_cell": true
       },
@@ -333,7 +341,7 @@
             37.7
           ]
         ],
-        "nearest_cell_edge_m": 4445.226365500213,
+        "nearest_cell_edge_m": 4445.226366,
         "full_disk_shares_cell": false,
         "alternate_same_cell": true
       }
@@ -383,6 +391,191 @@
           "peak_dates": [],
           "qa": 17,
           "received": 23
+        }
+      },
+      "annual_p5_long_record": {
+        "2001": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 12,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2002": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2003": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2004": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 18,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2005": {
+          "peaks": 2,
+          "peak_dates": [
+            "2005-01-01",
+            "2005-12-03"
+          ],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2006": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 15,
+          "received": 23,
+          "low_composite_dates": [
+            "2006-02-18"
+          ]
+        },
+        "2007": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2008": {
+          "peaks": 1,
+          "peak_dates": [
+            "2008-12-02"
+          ],
+          "qa": 18,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2009": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": [
+            "2009-09-30"
+          ]
+        },
+        "2010": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2011": {
+          "peaks": 1,
+          "peak_dates": [
+            "2011-12-19"
+          ],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2012": {
+          "peaks": 1,
+          "peak_dates": [
+            "2012-12-18"
+          ],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2013": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 9,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2014": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2015": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2016": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2017": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2018": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2019": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2020": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2021": {
+          "peaks": 1,
+          "peak_dates": [
+            "2021-12-19"
+          ],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2022": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2023": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2024": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 15,
+          "received": 23,
+          "low_composite_dates": []
         }
       },
       "two_rain_aligned_years": 0,
@@ -474,6 +667,191 @@
           "peak_dates": [],
           "qa": 17,
           "received": 23
+        }
+      },
+      "annual_p5_long_record": {
+        "2001": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 12,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2002": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2003": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2004": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 18,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2005": {
+          "peaks": 2,
+          "peak_dates": [
+            "2005-01-01",
+            "2005-12-03"
+          ],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2006": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 15,
+          "received": 23,
+          "low_composite_dates": [
+            "2006-02-18"
+          ]
+        },
+        "2007": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2008": {
+          "peaks": 1,
+          "peak_dates": [
+            "2008-12-02"
+          ],
+          "qa": 18,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2009": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": [
+            "2009-09-30"
+          ]
+        },
+        "2010": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2011": {
+          "peaks": 1,
+          "peak_dates": [
+            "2011-12-19"
+          ],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2012": {
+          "peaks": 1,
+          "peak_dates": [
+            "2012-12-18"
+          ],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2013": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 9,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2014": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2015": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2016": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2017": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2018": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 11,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2019": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2020": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 13,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2021": {
+          "peaks": 1,
+          "peak_dates": [
+            "2021-12-19"
+          ],
+          "qa": 16,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2022": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 14,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2023": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 17,
+          "received": 23,
+          "low_composite_dates": []
+        },
+        "2024": {
+          "peaks": 0,
+          "peak_dates": [],
+          "qa": 15,
+          "received": 23,
+          "low_composite_dates": []
         }
       },
       "two_rain_aligned_years": 0,

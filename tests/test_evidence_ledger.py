@@ -34,6 +34,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
         studies.append("P46")
     if (DATA / "consensus_shortlist_p44b.json").exists():
         studies.append("P44b")
+    if (DATA / "makueni_cropland_p48.json").exists():
+        studies.append("P48")
     assert [row.study for row in rows] == studies
     assert all(len(row.cells()) == len(COLUMNS) for row in rows)
     assert {row.direction for row in rows} == {"supports", "mixed", "does not support"}
@@ -56,6 +58,9 @@ def test_rows_disclose_negative_results_and_limits():
         assert rows["P43"].direction == "mixed" and "24/60" in rows["P43"].result
     if "P44" in rows:
         assert rows["P44"].direction == "does not support" and "0/12" in rows["P44"].result
+    if "P48" in rows:
+        assert rows["P48"].direction == "mixed"
+        assert "1/4" in rows["P48"].result and "2/4" in rows["P48"].result
     if "P45" in rows:
         assert rows["P45"].direction == "mixed"
         assert "Telangana 6, Makueni 6" in rows["P45"].sample
@@ -82,7 +87,8 @@ def test_p39_is_optional_but_bad_inputs_still_fail():
     def before_p39(name):
         if name in {"climate_yield_state_associations.json", "scoring_response_check.json",
                     "literature_variant_p43.json", "consensus_shortlist_p44.json",
-                    "literature_check_p45.json", "smooth_climate_fit_p42.json", "regional_scoring_variants_p46.json", "consensus_shortlist_p44b.json"}:
+                    "literature_check_p45.json", "smooth_climate_fit_p42.json", "regional_scoring_variants_p46.json",
+                    "consensus_shortlist_p44b.json", "makueni_cropland_p48.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

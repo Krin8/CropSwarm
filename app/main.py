@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT))
 from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_inputs, render_brief, repository_version
 from src.evidence_ledger import COLUMNS, NOTE, build_ledger
 from src.literature_check_p45 import METRIC_NAMES, metric_counts
+from src.makueni_cropland import FARM_ID as MAKUENI_ID, REPORT as MAKUENI_CROPLAND_REPORT
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.sensitivity import check_first
@@ -114,6 +115,78 @@ def evidence_ledger_panel():
               </table>
             </div>
         """)
+
+
+
+def makueni_cropland_panel(farm_id):
+    if farm_id != MAKUENI_ID:
+        return
+    report = cached(MAKUENI_CROPLAND_REPORT)
+    with st.expander("Makueni cropland map check (P48)"):
+        products = report["products"]
+        classified = sum("class_code" in row for row in products.values())
+        original, alt = report["original"], report["alternate"]
+        required = report["design"]["minimum_products"]
+        point_label = ("The original point meets the map agreement rule."
+                       if original["meets_rule"] else "Cropland at the original point remains unverified.")
+        st.write(f"Original point at {original['lat']:.3f}, {original['lon']:.3f} · "
+                 f"{original['crop_votes']} of {classified} maps classify it as cropland. "
+                 f"{point_label} The design rule requires {required} separately produced maps.")
+        radius_km = report["design"]["radius_m"] / 1000
+        rows = []
+        for product_id, product in products.items():
+            share = product["cropland_share"]
+            prefix = "≥" if product_id == "glad" else ""
+            rows.append({"Land-cover product": product["name"], "Period": product["period"],
+                         "Resolution": product["resolution"], "Original pixel": product["point_class"],
+                         "Parallel pixel": product["alternate_class"],
+                         f"Mapped cropland within {radius_km:g} km": "Unavailable" if share is None else f"{prefix}{share:.1%}",
+                         "Access": product["access"], "Source": product["source"]})
+        links = {"Source": st.column_config.LinkColumn("Source", display_text="Open source")}
+        st.dataframe(pd.DataFrame(rows), hide_index=True, column_config=links)
+        st.caption("GLAD combines no cropland and missing data in one code. "
+                   "The cached NASA MCD12Q1 subset covers part of the study disk. " + report["limit"])
+        if alt is None:
+            st.info("No parallel point met the map agreement and weather grid rules.")
+            return
+        st.write(f"Parallel point at {alt['lat']:.6f}, {alt['lon']:.6f} is {alt['distance_m']:.1f} m away. "
+                 f"{len(alt['supporting_products'])} of {classified} maps classify it as cropland.")
+        grids = report["weather"]["native_grids"]
+        st.dataframe(pd.DataFrame([
+            {"NASA POWER source grid": name, "Variables": ", ".join(grid["parameters"]),
+             "Native lat × lon": " × ".join(f"{step:g}°" for step in grid["step"]),
+             "Parallel point shares cell": grid["alternate_same_cell"],
+             "Entire disk shares cell": grid["full_disk_shares_cell"], "Source": grid["sources"][0]}
+            for name, grid in grids.items()
+        ]), hide_index=True, column_config=links)
+        st.caption(report["weather"]["qualification"])
+        veg = report["vegetation"]
+        if veg["shared_native_pixel"]:
+            ndvi = veg["original"]
+            original_peaks = ", ".join(f"{year}: {row['peaks']}" for year, row in ndvi["annual_p7"].items())
+            reference = next(row for row in ndvi["low_greenness"] if row["threshold"] == ndvi["reference_threshold"])
+            st.markdown(f"Both points share one nominal 250 m MODIS NDVI pixel. "
+                        f"The {ndvi['period'][0]}–{ndvi['period'][1]} record has {ndvi['qa_composites']} of "
+                        f"{ndvi['received_composites']} composites that passed QA. P7 annual peaks were "
+                        f"{original_peaks}. P5's {reference['threshold']:.2f} threshold gives "
+                        f"{reference['runs']} adjacent low-greenness runs. The threshold needs local validation. "
+                        "Mixed pixels and low greenness leave soil cover unresolved. "
+                        f"[NASA MOD13Q1]({ndvi['source'].split(' | ')[-1]})")
+        else:
+            st.caption("The parallel point has no coordinate-matched cached MODIS NDVI.")
+        terrain, soils = report["terrain"], report["soil"]
+        origin_slope = terrain["original"]["mean_slope_pct"]
+        alt_slope = terrain["alternate"]
+        st.dataframe(pd.DataFrame([
+            {"Context": "Slope (% rise) · original cross / parallel triangle",
+             "Original": origin_slope["value"], "Parallel": alt_slope["slope_pct"] if alt_slope else None,
+             "Source": origin_slope["source"]},
+            {"Context": "Modeled soil water capacity (mm, 0–30 cm)",
+             "Original": soils["original"]["available_water_mm_0_30"],
+             "Parallel": soils["alternate"]["available_water_mm_0_30"], "Source": soils["original"]["source"]},
+        ]), hide_index=True, column_config=links)
+        st.caption("Parallel slope is a gradient within the cached SRTM cross. SoilGrids values are modeled. "
+                   "All point estimates are illustrative and need local validation.")
 
 
 def learned_yield_panel():
@@ -1363,6 +1436,7 @@ def app():
                    "district yields. "
                    "Rotation recommendations still need field validation.")
         evidence_ledger_panel()
+        makueni_cropland_panel(farm_id)
         literature_check_panel()
         regional_literature_panel(farm_id)
         regional_scoring_panel(farm_id)

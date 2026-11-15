@@ -12,7 +12,7 @@ from PIL import Image
 from scipy.ndimage import convolve
 
 from src.context import DEPTHS, SOILGRIDS, SOIL_LAYERS, SRTM, geo_tiff_value
-from src.diagnostics import BARE_NDVI, MODIS
+from src.diagnostics import BARE_NDVI, MODIS, vegetation
 from src.precompute_cache import write_json
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -114,8 +114,8 @@ def map_summary(raster, crop, declared_nodata, point, ambiguous=()):
         "crop_pixels": int(crops.sum()), "disk_pixels": int(in_disk.sum()),
         "unresolved_pixels": int((in_disk & ~classified).sum()),
         "pixel_counts": dict(zip(map(int, codes), map(int, counts), strict=True)),
-        "cropland_share": cropped / total if total else None,
-        "classified_share": known / total if total else None,
+        "cropland_share": round(cropped / total, 10) if total else None,
+        "classified_share": round(known / total, 10) if total else None,
     }
 
 
@@ -159,7 +159,7 @@ def power_grid_detail(original, candidate):
         nearest_lon = min(abs(math.sin(lam - math.radians(edge))) for edge in bounds[1])
         edge_distance = EARTH_M * min(nearest_lat, math.asin(math.cos(phi) * nearest_lon))
         output[name] = grid | {"original_center": center, "original_bounds": bounds,
-                               "nearest_cell_edge_m": edge_distance,
+                               "nearest_cell_edge_m": round(edge_distance, 6),
                                "full_disk_shares_cell": edge_distance > RADIUS_M,
                                "alternate_same_cell": None if candidate is None else
                                bool(same_weather_grid(*candidate, original, grid))}
@@ -185,7 +185,8 @@ def nearest_candidate(rasters, crop_codes, origin):
     order = np.lexsort((lon[0, cols], lat[rows, 0], distance[rows, cols]))
     row, col = rows[order[0]], cols[order[0]]
     point = (float(lat[row, 0]), float(lon[0, col]))
-    return {"lat": round(point[0], 9), "lon": round(point[1], 9), "distance_m": float(distance[row, col]),
+    return {"lat": round(point[0], 9), "lon": round(point[1], 9),
+            "distance_m": round(float(distance[row, col]), 6),
             "candidate_grid": coarsest, "eligible_centers": len(rows),
             "supporting_products": [name for name, raster in rasters.items()
                                     if raster.sample(*point) == crop_codes[name]]}
@@ -228,7 +229,7 @@ def modis_land_cover(root, original, candidate):
         "alternate_class_code": None if alt_index is None else int(classes[alt_index]),
         "crop_pixels": int((valid == 12).sum()), "mosaic_pixels": int((valid == 14).sum()),
         "sample_pixels": int(valid.size),
-        "classified_share": float(valid.size * cell**2 / (math.pi * RADIUS_M**2)),
+        "classified_share": round(float(valid.size * cell**2 / (math.pi * RADIUS_M**2)), 10),
         "cropland_share": None, "evidence_ref": MCD_CACHE,
     }
 
@@ -328,13 +329,20 @@ def vegetation_context(root, original, candidate):
     validity = read_json(data / f"validity_{FARM_ID}.json")["current"]
     seasons = read_json(data / f"seasons_{FARM_ID}.json")
     windows = read_json(data / f"opportunity_windows_{FARM_ID}.json")
-    long = pd.read_csv(data / f"ndvi_long_{FARM_ID}.csv", usecols=["ndvi"])
+    long = pd.read_csv(data / f"ndvi_long_{FARM_ID}.csv", parse_dates=["date"])
+    annual_long, _ = vegetation(long)
     results = {
         "source": MODIS, "period": [windows["years"][0], windows["years"][-1]],
         "qa_composites": windows["qa_composites"], "received_composites": int(long.ndvi.count()),
         "annual_p7": {year: {"peaks": row["peak_count"], "peak_dates": row["peaks"]["0.12"],
                             "qa": row["good_composites"], "received": row["received_composites"]}
                       for year, row in validity["annual"].items()},
+        "annual_p5_long_record": {
+            year: {"peaks": row["peak_count"], "peak_dates": row["peaks"]["0.12"],
+                   "qa": row["good_composites"], "received": row["received_composites"],
+                   "low_composite_dates": row["bare_composites"]}
+            for year, row in annual_long.items()
+        },
         "two_rain_aligned_years": validity["qualifying_years"],
         "greenness_peak_months": seasons["ndvi_peak_months"],
         "rain_windows": {name: [v["onset_month"], v["cessation_month"]]

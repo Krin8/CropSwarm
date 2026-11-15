@@ -418,6 +418,22 @@ def expanded_consensus_check(report):
                        "consensus_shortlist_p44b.md")
 
 
+def makueni_cropland_check(report):
+    products = sum("class_code" in row for row in report["products"].values())
+    original, alternate = report["original"], report["alternate"]
+    result = f"Original point: {original['crop_votes']}/{products} products mapped cropland."
+    if alternate:
+        result += (f" Parallel point {alternate['distance_m']:.1f} m away: "
+                   f"{len(alternate['supporting_products'])}/{products}.")
+    else:
+        result += " No same-cell candidate met the map agreement rule."
+    return EvidenceRow("P48", "Do independent maps classify the Makueni points as cropland?",
+                       f"Makueni · {products} classifying maps · {report['design']['radius_m'] / 1000:g} km disk",
+                       result, direction(original["meets_rule"] or bool(alternate), not original["meets_rule"]),
+                       "Map labels leave current field use, crop identity and the rotation unresolved.",
+                       "makueni_cropland.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -440,7 +456,8 @@ def build_ledger(load):
                                ("consensus_shortlist_p44.json", consensus_shortlist_check),
                                ("literature_check_p45.json", regional_literature_check),
                                ("regional_scoring_variants_p46.json", regional_scoring_check),
-                               ("consensus_shortlist_p44b.json", expanded_consensus_check)):
+                               ("consensus_shortlist_p44b.json", expanded_consensus_check),
+                               ("makueni_cropland_p48.json", makueni_cropland_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

@@ -58,8 +58,15 @@ def test_offline_farm_scenario_clickthrough(site, monkeypatch):
     if site != "telangana_a":
         assert any("top choices are close here" in row.value for row in app.info)
     assert any("What we cannot know" in row.value for row in app.subheader)
+    assert any(row.label == "Makueni cropland map check (P48)" for row in app.expander) == (
+        site == "kenya_makueni_north")
     if site == "kenya_makueni_north":
         assert any("cropland unverified" in row.value for row in app.warning)
+        land = next(table.value for table in app.dataframe if "Land-cover product" in table.value.columns)
+        assert list(land["Mapped cropland within 5 km"]) == ["24.5%", "≥60.9%", "3.2%", "Unavailable", "Unavailable"]
+        assert list(land["Parallel pixel"][:2]) == ["Cropland", "Cropland"]
+        assert any("Both points share one nominal 250 m MODIS NDVI pixel" in row.value for row in app.markdown)
+        assert "makueni_alt" not in app.selectbox(key="farm_picker").options
         assert any("No reliable recurring low-greenness window" in row.value for row in app.info)
     if site == "telangana_a":
         assert any("Identical consecutive crop" in row.value for row in app.warning)
