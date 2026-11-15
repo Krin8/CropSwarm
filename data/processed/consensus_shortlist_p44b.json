@@ -1,0 +1,6287 @@
+{
+  "label": "illustrative, validate locally",
+  "plan": "docs/p44b_plan.md",
+  "design": {
+    "thresholds": [
+      40,
+      50,
+      60
+    ],
+    "primary_threshold": 50,
+    "top_k": 3,
+    "seed": 42
+  },
+  "p43_evidence": [
+    {
+      "input": "Soybean N credit by successor",
+      "value": "0 before wheat, 45 kg N/ha before maize, sorghum or sunflower",
+      "grade": "literature",
+      "application_grade": "assumption, validate locally",
+      "source": {
+        "title": "K-State Research and Extension, MF2586",
+        "locator": "Previous Crop Adjustment tables, cool- and warm-season crops",
+        "url": "https://www.brown.k-state.edu/crops-livestock/documents/Soiltestinterpretationsandfertilizerrecommenations.pdf"
+      },
+      "limitation": "Kansas extension fertilizer-equivalent credit."
+    },
+    {
+      "input": "Loss of starting water after legumes",
+      "value": "43, 70, 97 mm after legumes",
+      "grade": "literature",
+      "application_grade": "assumption, validate locally",
+      "source": {
+        "title": "Holman et al. (2018), Crop Science",
+        "locator": "Table 5, Garden City trial, 0\u20131.8 m",
+        "url": "https://acsess.onlinelibrary.wiley.com/doi/10.2135/cropsci2017.05.0324"
+      },
+      "limitation": "Deep profile observations, translated by a reserve calculation."
+    },
+    {
+      "input": "Sorghum break for wheat tan spot",
+      "value": "79.3% proportional penalty reduction",
+      "grade": "literature",
+      "application_grade": "assumption, validate locally",
+      "source": {
+        "title": "Bockus and Claassen (1992), Plant Disease",
+        "locator": "Tables 2\u20133 and discussion, pp. 634\u2013635",
+        "url": "https://www.apsnet.org/publications/PlantDisease/BackIssues/Documents/1992Articles/PlantDisease76n06_633.PDF"
+      },
+      "limitation": "Date-median relative severity reduction mapped onto a score index."
+    }
+  ],
+  "p46_evidence": {
+    "kenya_makueni_north": {
+      "crop": "common_bean",
+      "field": "n_credit_kg_ha",
+      "unit": "kg N/ha",
+      "values": {
+        "original": 22,
+        "low": 44,
+        "mid": 62,
+        "high": 80
+      },
+      "source": {
+        "name": "Nadar and Faught (1984), East African Agricultural and Forestry Journal",
+        "url": "https://pdf.usaid.gov/pdf_docs/PNAAX822.pdf",
+        "locator": "Figure 2, Tables II\u2013VI and pp. 130, 135\u2013136",
+        "design": "Katumani trials with sole-crop rotations and intercrops. Fertilizer equivalence was inferred from a continuous-maize fertilizer response curve."
+      },
+      "endpoint_grade": "literature",
+      "midpoint_grade": "design choice",
+      "transfer_grade": "assumption, validate locally"
+    },
+    "telangana_a": {
+      "crop": "paddy",
+      "field": "water_need_mm",
+      "unit": "mm ET",
+      "values": {
+        "original": 575,
+        "low": 473.9,
+        "mid": 565.85,
+        "high": 657.8
+      },
+      "source": {
+        "name": "Mote et al. (2018), Journal of Agrometeorology",
+        "url": "https://pdfs.semanticscholar.org/e027/a990fd565193f4a02e017cf66d4086fcdd89.pdf",
+        "locator": "Table 2, p. 119 (seasonal ET); p. 118 (variety duration and irrigation regimes)",
+        "design": "Replicated lowland rice irrigation trial, Rajendranagar, 2013\u20132014."
+      },
+      "endpoint_grade": "literature",
+      "midpoint_grade": "design choice",
+      "transfer_grade": "assumption, validate locally"
+    }
+  },
+  "p42_design": {
+    "half_band_hot_days": 5,
+    "shortlist_cutoff": 0.1,
+    "near_tie_gap": 0.01,
+    "draws": 512,
+    "seed": 42,
+    "source": "design choice, not empirical; assumption, validate locally"
+  },
+  "p46_global_to_local": [
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "original",
+      "kenya_makueni_north": "original"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_low",
+      "kenya_makueni_north": "original"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_mid",
+      "kenya_makueni_north": "original"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_high",
+      "kenya_makueni_north": "original"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "original",
+      "kenya_makueni_north": "p46_low"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_low",
+      "kenya_makueni_north": "p46_low"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_mid",
+      "kenya_makueni_north": "p46_low"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_high",
+      "kenya_makueni_north": "p46_low"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "original",
+      "kenya_makueni_north": "p46_mid"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_low",
+      "kenya_makueni_north": "p46_mid"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_mid",
+      "kenya_makueni_north": "p46_mid"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_high",
+      "kenya_makueni_north": "p46_mid"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "original",
+      "kenya_makueni_north": "p46_high"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_low",
+      "kenya_makueni_north": "p46_high"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_mid",
+      "kenya_makueni_north": "p46_high"
+    },
+    {
+      "us_high_plains_b": "original",
+      "telangana_a": "p46_high",
+      "kenya_makueni_north": "p46_high"
+    }
+  ],
+  "farms": {
+    "us_high_plains_b": {
+      "name": "US High Plains B",
+      "variants": [
+        "original",
+        "D",
+        "N",
+        "N_D",
+        "W43",
+        "W43_D",
+        "N_W43",
+        "N_W43_D",
+        "W70",
+        "W70_D",
+        "N_W70",
+        "N_W70_D",
+        "W97",
+        "W97_D",
+        "N_W97",
+        "N_W97_D",
+        "p42_smooth"
+      ],
+      "draws": 512,
+      "cells_per_preset": 8704,
+      "counts_file": "consensus_shortlist_p44b_us_high_plains_b.csv.gz",
+      "rotation_count": 330,
+      "p44_cells_per_preset": 8192,
+      "p44_rotation_count": 330,
+      "cells_with_fewer_than_three": 0,
+      "flagged_baseline_cells": 4352,
+      "legacy_counts_reproduced": true,
+      "saved_variant_winner_rates_reproduced": true,
+      "presets": {
+        "water_saver": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 17,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 59,
+            "top1_share": 0.0,
+            "top3_share": 0.006778492647058824,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 36,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "top1_count": 646,
+            "top3_count": 1662,
+            "top1_share": 0.07421875,
+            "top3_share": 0.1909466911764706,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 101,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 1393,
+              "top3_count": 2029,
+              "top1_share": 0.16004136029411764,
+              "top3_share": 0.23311121323529413,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 81,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "common_bean"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 666,
+              "top3_count": 1705,
+              "top1_share": 0.07651654411764706,
+              "top3_share": 0.19588694852941177,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 92,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 648,
+              "top3_count": 1701,
+              "top1_share": 0.0744485294117647,
+              "top3_share": 0.19542738970588236,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 646,
+              "top3_count": 1662,
+              "top1_share": 0.07421875,
+              "top3_share": 0.1909466911764706,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 562,
+              "top3_count": 1110,
+              "top1_share": 0.06456801470588236,
+              "top3_share": 0.12752757352941177,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 551,
+              "cycle": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 21,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 528,
+              "top3_count": 1017,
+              "top1_share": 0.06066176470588235,
+              "top3_share": 0.11684283088235294,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.006778492647058824
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 17,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 56,
+              "top1_share": 0.0,
+              "top3_share": 0.0068359375,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 576,
+              "top3_count": 1544,
+              "top1_share": 0.0703125,
+              "top3_share": 0.1884765625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 101,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "sunflower"
+                  ]
+                ],
+                "top1_count": 1320,
+                "top3_count": 1914,
+                "top1_share": 0.1611328125,
+                "top3_share": 0.233642578125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 92,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "sorghum"
+                  ]
+                ],
+                "top1_count": 648,
+                "top3_count": 1630,
+                "top1_share": 0.0791015625,
+                "top3_share": 0.198974609375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 81,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "common_bean"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 624,
+                "top3_count": 1602,
+                "top1_share": 0.076171875,
+                "top3_share": 0.195556640625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.0068359375
+            }
+          }
+        },
+        "soil_builder": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 17,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 34,
+            "top1_share": 0.0,
+            "top3_share": 0.00390625,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 103,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "top1_count": 1891,
+            "top3_count": 2791,
+            "top1_share": 0.2172564338235294,
+            "top3_share": 0.3206571691176471,
+            "published_strategy": "soil_builder",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 1891,
+              "top3_count": 2791,
+              "top1_share": 0.2172564338235294,
+              "top3_share": 0.3206571691176471,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 201,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "cereal_rye_cover"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 2057,
+              "top1_share": 0.0,
+              "top3_share": 0.236328125,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 81,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "common_bean"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 1044,
+              "top3_count": 2027,
+              "top1_share": 0.11994485294117647,
+              "top3_share": 0.2328814338235294,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 216,
+              "top3_count": 644,
+              "top1_share": 0.024816176470588234,
+              "top3_share": 0.0739889705882353,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 1891,
+              "top3_count": 2791,
+              "top1_share": 0.2172564338235294,
+              "top3_share": 0.3206571691176471,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 551,
+              "cycle": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 34,
+              "top3_count": 134,
+              "top1_share": 0.00390625,
+              "top3_share": 0.015395220588235295,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 21,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 34,
+              "top3_count": 105,
+              "top1_share": 0.00390625,
+              "top3_share": 0.01206341911764706,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.00390625
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 17,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 32,
+              "top1_share": 0.0,
+              "top3_share": 0.00390625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 1768,
+              "top3_count": 2616,
+              "top1_share": 0.2158203125,
+              "top3_share": 0.3193359375,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "soil_builder"
+            },
+            "leaders": [
+              {
+                "rotation_key": 103,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "cereal_rye_cover"
+                  ]
+                ],
+                "top1_count": 1768,
+                "top3_count": 2616,
+                "top1_share": 0.2158203125,
+                "top3_share": 0.3193359375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "soil_builder"
+              },
+              {
+                "rotation_key": 201,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "cereal_rye_cover"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 0,
+                "top3_count": 1934,
+                "top1_share": 0.0,
+                "top3_share": 0.236083984375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 81,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "common_bean"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 976,
+                "top3_count": 1904,
+                "top1_share": 0.119140625,
+                "top3_share": 0.232421875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.00390625
+            }
+          }
+        },
+        "income": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 17,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 34,
+            "top1_share": 0.0,
+            "top3_share": 0.00390625,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 551,
+            "cycle": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "top1_count": 622,
+            "top3_count": 1183,
+            "top1_share": 0.07146139705882353,
+            "top3_share": 0.13591452205882354,
+            "published_strategy": "income",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 1001,
+              "cycle": [
+                [
+                  "maize"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 1208,
+              "top3_count": 2272,
+              "top1_share": 0.13878676470588236,
+              "top3_share": 0.2610294117647059,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 1071,
+              "cycle": [
+                [
+                  "maize"
+                ],
+                [
+                  "sunflower"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 121,
+              "top3_count": 1464,
+              "top1_share": 0.013901654411764705,
+              "top3_share": 0.16819852941176472,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 981,
+              "cycle": [
+                [
+                  "maize"
+                ],
+                [
+                  "common_bean"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 966,
+              "top3_count": 1409,
+              "top1_share": 0.11098345588235294,
+              "top3_share": 0.16187959558823528,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 9,
+              "top3_count": 26,
+              "top1_share": 0.0010340073529411765,
+              "top3_share": 0.0029871323529411763,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 551,
+              "cycle": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 622,
+              "top3_count": 1183,
+              "top1_share": 0.07146139705882353,
+              "top3_share": 0.13591452205882354,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 21,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 12,
+              "top1_share": 0.0,
+              "top3_share": 0.0013786764705882354,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.00390625
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 17,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 32,
+              "top1_share": 0.0,
+              "top3_share": 0.00390625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 551,
+              "cycle": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 584,
+              "top3_count": 1118,
+              "top1_share": 0.0712890625,
+              "top3_share": 0.136474609375,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "income"
+            },
+            "leaders": [
+              {
+                "rotation_key": 1001,
+                "cycle": [
+                  [
+                    "maize"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "sunflower"
+                  ]
+                ],
+                "top1_count": 1136,
+                "top3_count": 2142,
+                "top1_share": 0.138671875,
+                "top3_share": 0.261474609375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 1071,
+                "cycle": [
+                  [
+                    "maize"
+                  ],
+                  [
+                    "sunflower"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 112,
+                "top3_count": 1380,
+                "top1_share": 0.013671875,
+                "top3_share": 0.16845703125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 981,
+                "cycle": [
+                  [
+                    "maize"
+                  ],
+                  [
+                    "common_bean"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 914,
+                "top3_count": 1328,
+                "top1_share": 0.111572265625,
+                "top3_share": 0.162109375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.00390625
+            }
+          }
+        },
+        "balanced": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 17,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 34,
+            "top1_share": 0.0,
+            "top3_share": 0.00390625,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 36,
+            "cycle": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "top1_count": 591,
+            "top3_count": 1418,
+            "top1_share": 0.06789981617647059,
+            "top3_share": 0.16291360294117646,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 101,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 1359,
+              "top3_count": 1944,
+              "top1_share": 0.15613511029411764,
+              "top3_share": 0.22334558823529413,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 92,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 636,
+              "top3_count": 1503,
+              "top1_share": 0.07306985294117647,
+              "top3_share": 0.17267922794117646,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 591,
+              "top3_count": 1418,
+              "top1_share": 0.06789981617647059,
+              "top3_share": 0.16291360294117646,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 591,
+              "top3_count": 1418,
+              "top1_share": 0.06789981617647059,
+              "top3_share": 0.16291360294117646,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 103,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "cereal_rye_cover"
+                ]
+              ],
+              "top1_count": 145,
+              "top3_count": 469,
+              "top1_share": 0.016659007352941176,
+              "top3_share": 0.05388327205882353,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 551,
+              "cycle": [
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ],
+                [
+                  "sunflower"
+                ]
+              ],
+              "top1_count": 254,
+              "top3_count": 475,
+              "top1_share": 0.029181985294117647,
+              "top3_share": 0.05457261029411765,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 21,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 410,
+              "top3_count": 768,
+              "top1_share": 0.047104779411764705,
+              "top3_share": 0.08823529411764706,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.00390625
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 17,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "winter_wheat"
+                ],
+                [
+                  "sorghum"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 32,
+              "top1_share": 0.0,
+              "top3_share": 0.00390625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 36,
+              "cycle": [
+                [
+                  "fallow"
+                ],
+                [
+                  "sorghum"
+                ],
+                [
+                  "soybean"
+                ]
+              ],
+              "top1_count": 524,
+              "top3_count": 1320,
+              "top1_share": 0.06396484375,
+              "top3_share": 0.1611328125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 101,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "sunflower"
+                  ]
+                ],
+                "top1_count": 1280,
+                "top3_count": 1840,
+                "top1_share": 0.15625,
+                "top3_share": 0.224609375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 92,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "soybean"
+                  ],
+                  [
+                    "sorghum"
+                  ]
+                ],
+                "top1_count": 636,
+                "top3_count": 1436,
+                "top1_share": 0.07763671875,
+                "top3_share": 0.17529296875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 36,
+                "cycle": [
+                  [
+                    "fallow"
+                  ],
+                  [
+                    "sorghum"
+                  ],
+                  [
+                    "soybean"
+                  ]
+                ],
+                "top1_count": 524,
+                "top3_count": 1320,
+                "top1_share": 0.06396484375,
+                "top3_share": 0.1611328125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.00390625
+            }
+          }
+        }
+      }
+    },
+    "telangana_a": {
+      "name": "Telangana A",
+      "variants": [
+        "original",
+        "p42_smooth",
+        "p46_low",
+        "p46_mid",
+        "p46_high"
+      ],
+      "draws": 512,
+      "cells_per_preset": 2560,
+      "counts_file": "consensus_shortlist_p44b_telangana_a.csv.gz",
+      "rotation_count": 303132,
+      "p44_cells_per_preset": 512,
+      "p44_rotation_count": 303132,
+      "cells_with_fewer_than_three": 0,
+      "flagged_baseline_cells": 2145,
+      "legacy_counts_reproduced": true,
+      "saved_variant_winner_rates_reproduced": true,
+      "presets": {
+        "water_saver": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 2440848,
+            "cycle": [
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 0,
+            "top1_share": 0.0,
+            "top3_share": 0.0,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 6102120,
+            "cycle": [
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ]
+            ],
+            "top1_count": 538,
+            "top3_count": 543,
+            "top1_share": 0.21015625,
+            "top3_share": 0.212109375,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 4576590,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 834,
+              "top3_count": 839,
+              "top1_share": 0.32578125,
+              "top3_share": 0.327734375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 635,
+              "top3_count": 635,
+              "top1_share": 0.248046875,
+              "top3_share": 0.248046875,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 538,
+              "top3_count": 543,
+              "top1_share": 0.21015625,
+              "top3_share": 0.212109375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 538,
+              "top3_count": 543,
+              "top1_share": 0.21015625,
+              "top3_share": 0.212109375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4583370,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 420,
+              "top1_share": 0.0,
+              "top3_share": 0.1640625,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6305524,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102150,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 83,
+              "top1_share": 0.0,
+              "top3_share": 0.032421875,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.0
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 2440848,
+              "cycle": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 108,
+              "top3_count": 109,
+              "top1_share": 0.2109375,
+              "top3_share": 0.212890625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 4576590,
+                "cycle": [
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 166,
+                "top3_count": 167,
+                "top1_share": 0.32421875,
+                "top3_share": 0.326171875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6864885,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 127,
+                "top3_count": 127,
+                "top1_share": 0.248046875,
+                "top3_share": 0.248046875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6102120,
+                "cycle": [
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 108,
+                "top3_count": 109,
+                "top1_share": 0.2109375,
+                "top3_share": 0.212890625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.0
+            }
+          }
+        },
+        "soil_builder": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 2440848,
+            "cycle": [
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 0,
+            "top1_share": 0.0,
+            "top3_share": 0.0,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 6102120,
+            "cycle": [
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ]
+            ],
+            "top1_count": 571,
+            "top3_count": 571,
+            "top1_share": 0.223046875,
+            "top3_share": 0.223046875,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 4576590,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 1004,
+              "top3_count": 1020,
+              "top1_share": 0.3921875,
+              "top3_share": 0.3984375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4576620,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 581,
+              "top1_share": 0.0,
+              "top3_share": 0.226953125,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 571,
+              "top3_count": 571,
+              "top1_share": 0.223046875,
+              "top3_share": 0.223046875,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 571,
+              "top3_count": 571,
+              "top1_share": 0.223046875,
+              "top3_share": 0.223046875,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4583370,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 515,
+              "top1_share": 0.0,
+              "top3_share": 0.201171875,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6305524,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102150,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 5,
+              "top1_share": 0.0,
+              "top3_share": 0.001953125,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.0
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 2440848,
+              "cycle": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 114,
+              "top3_count": 114,
+              "top1_share": 0.22265625,
+              "top3_share": 0.22265625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 4576590,
+                "cycle": [
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 201,
+                "top3_count": 204,
+                "top1_share": 0.392578125,
+                "top3_share": 0.3984375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 4576620,
+                "cycle": [
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 0,
+                "top3_count": 116,
+                "top1_share": 0.0,
+                "top3_share": 0.2265625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6102120,
+                "cycle": [
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 114,
+                "top3_count": 114,
+                "top1_share": 0.22265625,
+                "top3_share": 0.22265625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.0
+            }
+          }
+        },
+        "income": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 2440848,
+            "cycle": [
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ]
+            ],
+            "top1_count": 5,
+            "top3_count": 5,
+            "top1_share": 0.001953125,
+            "top3_share": 0.001953125,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 6305524,
+            "cycle": [
+              [
+                "pigeonpea",
+                "maize"
+              ],
+              [
+                "pigeonpea",
+                "maize"
+              ],
+              [
+                "pigeonpea",
+                "maize"
+              ]
+            ],
+            "top1_count": 91,
+            "top3_count": 102,
+            "top1_share": 0.035546875,
+            "top3_share": 0.03984375,
+            "published_strategy": "income",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 4779994,
+              "cycle": [
+                [
+                  "soybean",
+                  "maize"
+                ],
+                [
+                  "soybean",
+                  "maize"
+                ],
+                [
+                  "soybean",
+                  "maize"
+                ]
+              ],
+              "top1_count": 317,
+              "top3_count": 382,
+              "top1_share": 0.123828125,
+              "top3_share": 0.14921875,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 2644252,
+              "cycle": [
+                [
+                  "paddy",
+                  "chickpea"
+                ],
+                [
+                  "paddy",
+                  "chickpea"
+                ],
+                [
+                  "paddy",
+                  "chickpea"
+                ]
+              ],
+              "top1_count": 248,
+              "top3_count": 267,
+              "top1_share": 0.096875,
+              "top3_share": 0.104296875,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4729143,
+              "cycle": [
+                [
+                  "soybean",
+                  "paddy"
+                ],
+                [
+                  "soybean",
+                  "paddy"
+                ],
+                [
+                  "soybean",
+                  "paddy"
+                ]
+              ],
+              "top1_count": 228,
+              "top3_count": 251,
+              "top1_share": 0.0890625,
+              "top3_share": 0.098046875,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4583370,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6305524,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "top1_count": 91,
+              "top3_count": 102,
+              "top1_share": 0.035546875,
+              "top3_share": 0.03984375,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102150,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.009765625,
+            "top3_share": 0.009765625
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 2440848,
+              "cycle": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "top1_count": 1,
+              "top3_count": 1,
+              "top1_share": 0.001953125,
+              "top3_share": 0.001953125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 6305524,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "top1_count": 18,
+              "top3_count": 20,
+              "top1_share": 0.03515625,
+              "top3_share": 0.0390625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "income"
+            },
+            "leaders": [
+              {
+                "rotation_key": 4779994,
+                "cycle": [
+                  [
+                    "soybean",
+                    "maize"
+                  ],
+                  [
+                    "soybean",
+                    "maize"
+                  ],
+                  [
+                    "soybean",
+                    "maize"
+                  ]
+                ],
+                "top1_count": 64,
+                "top3_count": 77,
+                "top1_share": 0.125,
+                "top3_share": 0.150390625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 2644252,
+                "cycle": [
+                  [
+                    "paddy",
+                    "chickpea"
+                  ],
+                  [
+                    "paddy",
+                    "chickpea"
+                  ],
+                  [
+                    "paddy",
+                    "chickpea"
+                  ]
+                ],
+                "top1_count": 49,
+                "top3_count": 53,
+                "top1_share": 0.095703125,
+                "top3_share": 0.103515625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 4729143,
+                "cycle": [
+                  [
+                    "soybean",
+                    "paddy"
+                  ],
+                  [
+                    "soybean",
+                    "paddy"
+                  ],
+                  [
+                    "soybean",
+                    "paddy"
+                  ]
+                ],
+                "top1_count": 46,
+                "top3_count": 50,
+                "top1_share": 0.08984375,
+                "top3_share": 0.09765625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.009765625,
+              "top3_share": 0.009765625
+            }
+          }
+        },
+        "balanced": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 2440848,
+            "cycle": [
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ]
+            ],
+            "top1_count": 0,
+            "top3_count": 0,
+            "top1_share": 0.0,
+            "top3_share": 0.0,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 6102120,
+            "cycle": [
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ]
+            ],
+            "top1_count": 470,
+            "top3_count": 476,
+            "top1_share": 0.18359375,
+            "top3_share": 0.1859375,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 4576590,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "soybean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 759,
+              "top3_count": 783,
+              "top1_share": 0.296484375,
+              "top3_share": 0.305859375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 596,
+              "top3_count": 607,
+              "top1_share": 0.2328125,
+              "top3_share": 0.237109375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 470,
+              "top3_count": 476,
+              "top1_share": 0.18359375,
+              "top3_share": 0.1859375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 470,
+              "top3_count": 476,
+              "top1_share": 0.18359375,
+              "top3_share": 0.1859375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4583370,
+              "cycle": [
+                [
+                  "soybean",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 334,
+              "top1_share": 0.0,
+              "top3_share": 0.13046875,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6305524,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ],
+                [
+                  "pigeonpea",
+                  "maize"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6102150,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pearl_millet",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 61,
+              "top1_share": 0.0,
+              "top3_share": 0.023828125,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.0,
+            "top3_share": 0.0
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 2440848,
+              "cycle": [
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ],
+                [
+                  "paddy",
+                  "paddy"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 6102120,
+              "cycle": [
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ],
+                [
+                  "pigeonpea",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 94,
+              "top3_count": 95,
+              "top1_share": 0.18359375,
+              "top3_share": 0.185546875,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 4576590,
+                "cycle": [
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ],
+                  [
+                    "soybean",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 152,
+                "top3_count": 157,
+                "top1_share": 0.296875,
+                "top3_share": 0.306640625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6864885,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 119,
+                "top3_count": 121,
+                "top1_share": 0.232421875,
+                "top3_share": 0.236328125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6102120,
+                "cycle": [
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 94,
+                "top3_count": 95,
+                "top1_share": 0.18359375,
+                "top3_share": 0.185546875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.0,
+              "top3_share": 0.0
+            }
+          }
+        }
+      }
+    },
+    "kenya_makueni_north": {
+      "name": "Makueni North Candidate",
+      "variants": [
+        "original",
+        "p42_smooth",
+        "p46_low",
+        "p46_mid",
+        "p46_high"
+      ],
+      "draws": 512,
+      "cells_per_preset": 2560,
+      "counts_file": "consensus_shortlist_p44b_kenya_makueni_north.csv.gz",
+      "rotation_count": 41707,
+      "p44_cells_per_preset": 512,
+      "p44_rotation_count": 41707,
+      "cells_with_fewer_than_three": 45,
+      "flagged_baseline_cells": 1615,
+      "legacy_counts_reproduced": true,
+      "saved_variant_winner_rates_reproduced": true,
+      "presets": {
+        "water_saver": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 3305315,
+            "cycle": [
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ]
+            ],
+            "top1_count": 25,
+            "top3_count": 50,
+            "top1_share": 0.009765625,
+            "top3_share": 0.01953125,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 6864885,
+            "cycle": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "top1_count": 569,
+            "top3_count": 663,
+            "top1_share": 0.222265625,
+            "top3_share": 0.258984375,
+            "published_strategy": "water_saver",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 3813825,
+              "cycle": [
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 555,
+              "top3_count": 681,
+              "top1_share": 0.216796875,
+              "top3_share": 0.266015625,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 457659,
+              "cycle": [
+                [
+                  "fallow",
+                  "green_gram"
+                ],
+                [
+                  "fallow",
+                  "green_gram"
+                ],
+                [
+                  "fallow",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 430,
+              "top3_count": 665,
+              "top1_share": 0.16796875,
+              "top3_share": 0.259765625,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 569,
+              "top3_count": 663,
+              "top1_share": 0.222265625,
+              "top3_share": 0.258984375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 569,
+              "top3_count": 663,
+              "top1_share": 0.222265625,
+              "top3_share": 0.258984375,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6867145,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.012890625,
+            "top3_share": 0.026171875
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 3305315,
+              "cycle": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "top1_count": 5,
+              "top3_count": 10,
+              "top1_share": 0.009765625,
+              "top3_share": 0.01953125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 131,
+              "top3_count": 154,
+              "top1_share": 0.255859375,
+              "top3_share": 0.30078125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "water_saver"
+            },
+            "leaders": [
+              {
+                "rotation_key": 457659,
+                "cycle": [
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ]
+                ],
+                "top1_count": 98,
+                "top3_count": 155,
+                "top1_share": 0.19140625,
+                "top3_share": 0.302734375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 6864885,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 131,
+                "top3_count": 154,
+                "top1_share": 0.255859375,
+                "top3_share": 0.30078125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              },
+              {
+                "rotation_key": 3813825,
+                "cycle": [
+                  [
+                    "common_bean",
+                    "fallow"
+                  ],
+                  [
+                    "common_bean",
+                    "fallow"
+                  ],
+                  [
+                    "common_bean",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 82,
+                "top3_count": 100,
+                "top1_share": 0.16015625,
+                "top3_share": 0.1953125,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.01171875,
+              "top3_share": 0.0234375
+            }
+          }
+        },
+        "soil_builder": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 3305315,
+            "cycle": [
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ]
+            ],
+            "top1_count": 29,
+            "top3_count": 55,
+            "top1_share": 0.011328125,
+            "top3_share": 0.021484375,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 7373395,
+            "cycle": [
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ]
+            ],
+            "top1_count": 105,
+            "top3_count": 139,
+            "top1_share": 0.041015625,
+            "top3_share": 0.054296875,
+            "published_strategy": "soil_builder",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 3813825,
+              "cycle": [
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 449,
+              "top3_count": 479,
+              "top1_share": 0.175390625,
+              "top3_share": 0.187109375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 4322335,
+              "cycle": [
+                [
+                  "common_bean",
+                  "pearl_millet"
+                ],
+                [
+                  "common_bean",
+                  "pearl_millet"
+                ],
+                [
+                  "common_bean",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 239,
+              "top3_count": 362,
+              "top1_share": 0.093359375,
+              "top3_share": 0.14140625,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 309,
+              "top3_count": 346,
+              "top1_share": 0.120703125,
+              "top3_share": 0.13515625,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 309,
+              "top3_count": 346,
+              "top1_share": 0.120703125,
+              "top3_share": 0.13515625,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 105,
+              "top3_count": 139,
+              "top1_share": 0.041015625,
+              "top3_share": 0.054296875,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 0,
+              "top1_share": 0.0,
+              "top3_share": 0.0,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6867145,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 126,
+              "top1_share": 0.0,
+              "top3_share": 0.04921875,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.01640625,
+            "top3_share": 0.03125
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 3305315,
+              "cycle": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "top1_count": 5,
+              "top3_count": 10,
+              "top1_share": 0.009765625,
+              "top3_share": 0.01953125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 30,
+              "top3_count": 41,
+              "top1_share": 0.05859375,
+              "top3_share": 0.080078125,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "soil_builder"
+            },
+            "leaders": [
+              {
+                "rotation_key": 6864885,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 100,
+                "top3_count": 112,
+                "top1_share": 0.1953125,
+                "top3_share": 0.21875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              },
+              {
+                "rotation_key": 6102120,
+                "cycle": [
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ],
+                  [
+                    "pigeonpea",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 71,
+                "top3_count": 72,
+                "top1_share": 0.138671875,
+                "top3_share": 0.140625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 457659,
+                "cycle": [
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ]
+                ],
+                "top1_count": 50,
+                "top3_count": 67,
+                "top1_share": 0.09765625,
+                "top3_share": 0.130859375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.01171875,
+              "top3_share": 0.0234375
+            }
+          }
+        },
+        "income": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 3305315,
+            "cycle": [
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ]
+            ],
+            "top1_count": 880,
+            "top3_count": 1021,
+            "top1_share": 0.34375,
+            "top3_share": 0.398828125,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 3508719,
+            "cycle": [
+              [
+                "maize",
+                "green_gram"
+              ],
+              [
+                "maize",
+                "green_gram"
+              ],
+              [
+                "maize",
+                "green_gram"
+              ]
+            ],
+            "top1_count": 274,
+            "top3_count": 367,
+            "top1_share": 0.10703125,
+            "top3_share": 0.143359375,
+            "published_strategy": "income",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 3305315,
+              "cycle": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "top1_count": 880,
+              "top3_count": 1021,
+              "top1_share": 0.34375,
+              "top3_share": 0.398828125,
+              "published_strategy": "baseline",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 274,
+              "top3_count": 367,
+              "top1_share": 0.10703125,
+              "top3_share": 0.143359375,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 116,
+              "top3_count": 201,
+              "top1_share": 0.0453125,
+              "top3_share": 0.078515625,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 15,
+              "top3_count": 140,
+              "top1_share": 0.005859375,
+              "top3_share": 0.0546875,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 116,
+              "top3_count": 201,
+              "top1_share": 0.0453125,
+              "top3_share": 0.078515625,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 274,
+              "top3_count": 367,
+              "top1_share": 0.10703125,
+              "top3_share": 0.143359375,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6867145,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 12,
+              "top1_share": 0.0,
+              "top3_share": 0.0046875,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.357421875,
+            "top3_share": 0.41796875
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 3305315,
+              "cycle": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "top1_count": 159,
+              "top3_count": 188,
+              "top1_share": 0.310546875,
+              "top3_share": 0.3671875,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 60,
+              "top3_count": 76,
+              "top1_share": 0.1171875,
+              "top3_share": 0.1484375,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "income"
+            },
+            "leaders": [
+              {
+                "rotation_key": 3305315,
+                "cycle": [
+                  [
+                    "maize",
+                    "common_bean"
+                  ],
+                  [
+                    "maize",
+                    "common_bean"
+                  ],
+                  [
+                    "maize",
+                    "common_bean"
+                  ]
+                ],
+                "top1_count": 159,
+                "top3_count": 188,
+                "top1_share": 0.310546875,
+                "top3_share": 0.3671875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "baseline"
+              },
+              {
+                "rotation_key": 3508719,
+                "cycle": [
+                  [
+                    "maize",
+                    "green_gram"
+                  ],
+                  [
+                    "maize",
+                    "green_gram"
+                  ],
+                  [
+                    "maize",
+                    "green_gram"
+                  ]
+                ],
+                "top1_count": 60,
+                "top3_count": 76,
+                "top1_share": 0.1171875,
+                "top3_share": 0.1484375,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "income"
+              },
+              {
+                "rotation_key": 7373395,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "pearl_millet"
+                  ],
+                  [
+                    "green_gram",
+                    "pearl_millet"
+                  ],
+                  [
+                    "green_gram",
+                    "pearl_millet"
+                  ]
+                ],
+                "top1_count": 28,
+                "top3_count": 45,
+                "top1_share": 0.0546875,
+                "top3_share": 0.087890625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "soil_builder"
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.32421875,
+              "top3_share": 0.38671875
+            }
+          }
+        },
+        "balanced": {
+          "thresholds": {
+            "40": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "50": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            },
+            "60": {
+              "size": 0,
+              "p44_size": 0,
+              "members": [],
+              "baseline_member": false,
+              "original_nominal_member": false,
+              "shortlist_overlap": 0,
+              "admitted_member_cells": 0,
+              "dominated_member_cells": 0,
+              "strictly_dominated_share": null,
+              "members_ever_dominated": 0
+            }
+          },
+          "fixed_baseline": {
+            "rotation_key": 3305315,
+            "cycle": [
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ]
+            ],
+            "top1_count": 48,
+            "top3_count": 88,
+            "top1_share": 0.01875,
+            "top3_share": 0.034375,
+            "published_strategy": "baseline",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "original_nominal": {
+            "rotation_key": 7373395,
+            "cycle": [
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ]
+            ],
+            "top1_count": 153,
+            "top3_count": 200,
+            "top1_share": 0.059765625,
+            "top3_share": 0.078125,
+            "published_strategy": "soil_builder",
+            "evidence": {
+              "overall": "low",
+              "metrics": {
+                "water": "low",
+                "nitrogen": "low",
+                "erosion": "low",
+                "climate_fit": "low",
+                "income": "low",
+                "risk": "low"
+              }
+            }
+          },
+          "leaders": [
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 332,
+              "top3_count": 353,
+              "top1_share": 0.1296875,
+              "top3_share": 0.137890625,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3813825,
+              "cycle": [
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ],
+                [
+                  "common_bean",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 268,
+              "top3_count": 285,
+              "top1_share": 0.1046875,
+              "top3_share": 0.111328125,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 8085309,
+              "cycle": [
+                [
+                  "pearl_millet",
+                  "green_gram"
+                ],
+                [
+                  "pearl_millet",
+                  "green_gram"
+                ],
+                [
+                  "pearl_millet",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 191,
+              "top3_count": 247,
+              "top1_share": 0.074609375,
+              "top3_share": 0.096484375,
+              "published_strategy": null,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "displayed_alternatives": [
+            {
+              "rotation_key": 6864885,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "fallow"
+                ]
+              ],
+              "top1_count": 332,
+              "top3_count": 353,
+              "top1_share": 0.1296875,
+              "top3_share": 0.137890625,
+              "published_strategy": "water_saver",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 153,
+              "top3_count": 200,
+              "top1_share": 0.059765625,
+              "top3_share": 0.078125,
+              "published_strategy": "soil_builder",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 3508719,
+              "cycle": [
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ],
+                [
+                  "maize",
+                  "green_gram"
+                ]
+              ],
+              "top1_count": 16,
+              "top3_count": 16,
+              "top1_share": 0.00625,
+              "top3_share": 0.00625,
+              "published_strategy": "income",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            },
+            {
+              "rotation_key": 6867145,
+              "cycle": [
+                [
+                  "green_gram",
+                  "fallow"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 0,
+              "top3_count": 141,
+              "top1_share": 0.0,
+              "top3_share": 0.055078125,
+              "published_strategy": "balanced",
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              }
+            }
+          ],
+          "draw_baseline": {
+            "top1_share": 0.020703125,
+            "top3_share": 0.03828125
+          },
+          "p44": {
+            "fixed_baseline": {
+              "rotation_key": 3305315,
+              "cycle": [
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ],
+                [
+                  "maize",
+                  "common_bean"
+                ]
+              ],
+              "top1_count": 6,
+              "top3_count": 14,
+              "top1_share": 0.01171875,
+              "top3_share": 0.02734375,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "baseline"
+            },
+            "original_nominal": {
+              "rotation_key": 7373395,
+              "cycle": [
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ],
+                [
+                  "green_gram",
+                  "pearl_millet"
+                ]
+              ],
+              "top1_count": 37,
+              "top3_count": 50,
+              "top1_share": 0.072265625,
+              "top3_share": 0.09765625,
+              "evidence": {
+                "overall": "low",
+                "metrics": {
+                  "water": "low",
+                  "nitrogen": "low",
+                  "erosion": "low",
+                  "climate_fit": "low",
+                  "income": "low",
+                  "risk": "low"
+                }
+              },
+              "published_strategy": "soil_builder"
+            },
+            "leaders": [
+              {
+                "rotation_key": 6864885,
+                "cycle": [
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ],
+                  [
+                    "green_gram",
+                    "fallow"
+                  ]
+                ],
+                "top1_count": 81,
+                "top3_count": 86,
+                "top1_share": 0.158203125,
+                "top3_share": 0.16796875,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                },
+                "published_strategy": "water_saver"
+              },
+              {
+                "rotation_key": 8085309,
+                "cycle": [
+                  [
+                    "pearl_millet",
+                    "green_gram"
+                  ],
+                  [
+                    "pearl_millet",
+                    "green_gram"
+                  ],
+                  [
+                    "pearl_millet",
+                    "green_gram"
+                  ]
+                ],
+                "top1_count": 43,
+                "top3_count": 53,
+                "top1_share": 0.083984375,
+                "top3_share": 0.103515625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              },
+              {
+                "rotation_key": 457659,
+                "cycle": [
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ],
+                  [
+                    "fallow",
+                    "green_gram"
+                  ]
+                ],
+                "top1_count": 44,
+                "top3_count": 50,
+                "top1_share": 0.0859375,
+                "top3_share": 0.09765625,
+                "evidence": {
+                  "overall": "low",
+                  "metrics": {
+                    "water": "low",
+                    "nitrogen": "low",
+                    "erosion": "low",
+                    "climate_fit": "low",
+                    "income": "low",
+                    "risk": "low"
+                  }
+                }
+              }
+            ],
+            "draw_baseline": {
+              "top1_share": 0.013671875,
+              "top3_share": 0.03125
+            }
+          }
+        }
+      }
+    }
+  }
+}

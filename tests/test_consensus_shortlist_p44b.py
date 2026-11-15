@@ -50,3 +50,61 @@ def test_p44_reproduction_rejects_a_missing_count(tmp_path):
     with pytest.raises(ValueError, match="top3 counts"):
         verify_legacy(path, {"rotation_count": 1, "cells_per_preset": 1}, np.array([True]),
                       {"x": {0: 1}}, {"x": {0: 0}})
+
+
+def test_saved_expanded_counts_reconcile_with_denominators_and_earlier_results():
+    import json
+
+    from src.consensus_report_p44b import DOCUMENT, render
+    from src.consensus_shortlist_p44b import OUTPUT, ROOT
+
+    data = ROOT / "data/processed"
+    report = json.loads((data / OUTPUT).read_text())
+    assert (ROOT / "docs" / DOCUMENT).read_text() == render(report)
+    assert [len(farm["variants"]) for farm in report["farms"].values()] == [17, 5, 5]
+    assert len(report["p46_global_to_local"]) == 16
+    prior = json.loads((data / "consensus_shortlist_p44.json").read_text())
+    for farm_id, farm in report["farms"].items():
+        assert farm["legacy_counts_reproduced"] and farm["saved_variant_winner_rates_reproduced"]
+        assert {row[farm_id] for row in report["p46_global_to_local"]}.issubset(farm["variants"])
+        assert farm["cells_per_preset"] == farm["draws"] * len(farm["variants"])
+        cells = farm["cells_per_preset"]
+        counts = pd.read_csv(data / farm["counts_file"])
+        assert len(counts) == farm["rotation_count"] and counts["rotation_key"].is_unique
+        assert (counts["cells_per_preset"] == cells).all()
+        indexed = counts.set_index("rotation_key")
+        for preset, item in farm["presets"].items():
+            first, third = counts[f"{preset}_top1_count"], counts[f"{preset}_top3_count"]
+            assert first.sum() == cells and (first <= third).all() and (third <= cells).all()
+            assert 0 <= 3 * cells - third.sum() <= 2 * farm["cells_with_fewer_than_three"]
+            for level, outcome in item["thresholds"].items():
+                actual = set(counts.loc[third * 100 >= int(level) * cells, "rotation_key"])
+                assert actual == {member["rotation_key"] for member in outcome["members"]}
+                assert outcome["size"] == 0
+                assert outcome["p44_size"] == prior["farms"][farm_id]["presets"][preset]["thresholds"][level]["size"]
+            for row in (item["original_nominal"], item["fixed_baseline"], item["leaders"][0]):
+                assert indexed.loc[row["rotation_key"], f"{preset}_top1_count"] == row["top1_count"]
+                assert indexed.loc[row["rotation_key"], f"{preset}_top3_count"] == row["top3_count"]
+                assert row["evidence"]["overall"] == "low"
+    makueni = report["farms"]["kenya_makueni_north"]["presets"]["income"]["leaders"][0]
+    assert makueni["top3_count"] == 1021
+
+
+def test_full_seeded_replay_rebuilds_outputs_without_changing_prior_artifacts(tmp_path):
+    import hashlib
+
+    from src.consensus_shortlist_p44b import OUTPUT, ROOT, build
+
+    data = ROOT / "data/processed"
+    frozen = [path for path in [*data.glob("**/*"), *ROOT.glob("config/**/*"), ROOT / "data/crops.csv",
+                               ROOT / "src/scoring.py", ROOT / "src/consensus_shortlist.py"]
+              if path.is_file() and not path.name.startswith("consensus_shortlist_p44b")]
+
+    def hashes():
+        return {path: hashlib.sha256(path.read_bytes()).digest() for path in frozen}
+
+    before = hashes()
+    report = build(output_dir=tmp_path)
+    assert hashes() == before
+    for name in (OUTPUT, *(farm["counts_file"] for farm in report["farms"].values())):
+        assert (tmp_path / name).read_bytes() == (data / name).read_bytes()

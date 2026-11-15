@@ -438,6 +438,59 @@ def consensus_shortlist_panel(farm_id):
                    "Agreement among CropSwarm configurations leaves field outcomes and rotation quality unresolved.")
 
 
+def expanded_consensus_panel(farm_id):
+    report = cached("consensus_shortlist_p44b.json")
+    farm = report["farms"][farm_id]
+    design = report["design"]
+    with st.expander("Consensus shortlist with expanded variants (P44b)"):
+        st.caption(f"{farm['name']} · {len(farm['variants'])} distinct scoring variants × {farm['draws']} "
+                   f"matched P22 draws · {farm['cells_per_preset']:,} cells per preset. "
+                   "Regional settings appear once per farm, including when a setting is paired with another farm.")
+        st.caption("Illustrative, validate locally. Consensus across these variants cannot establish real-world "
+                   "rotation quality. Makueni cropland is unverified.")
+        columns = st.columns(2)
+        preset = columns[0].selectbox("Priority preset", tuple(farm["presets"]), format_func=title,
+                                      key="expanded_consensus_preset")
+        cutoffs = design["thresholds"]
+        threshold = columns[1].selectbox("Minimum top-three share", cutoffs, index=cutoffs.index(design["primary_threshold"]),
+                                         format_func=lambda value: f"{value}%", key="expanded_consensus_threshold")
+        entry = farm["presets"][preset]
+        selected = entry["thresholds"][str(threshold)]
+        st.dataframe(pd.DataFrame([
+            {"P44b cutoff": f"{value}%", "Earlier P44 size": result["p44_size"], "P44b size": result["size"],
+             "Published alternatives in set": result["shortlist_overlap"],
+             "Original winner in set": "Yes" if result["original_nominal_member"] else "No"}
+            for value, result in entry["thresholds"].items()
+        ]), hide_index=True)
+        if not selected["members"]:
+            st.info(f"No rotation meets the {threshold}% P44b cutoff for {title(preset)}.")
+        else:
+            st.write(f"{selected['size']} rotations meet the {threshold}% cutoff.")
+
+        def describe(role, row, previous=None):
+            cycle = " → ".join(" / ".join(title(crop) for crop in year) for year in row["cycle"])
+            return {"P44b role": role, "Rotation": cycle, "Top one": f"{row['top1_share']:.2%}",
+                    "Top three": f"{row['top3_share']:.2%}",
+                    "P44 top one": f"{previous['top1_share']:.2%}" if previous else None,
+                    "P44 top three": f"{previous['top3_share']:.2%}" if previous else None,
+                    "P18 evidence": title(row["evidence"]["overall"])}
+
+        rows = [describe(label, entry[key], entry["p44"][key])
+                for key, label in (("fixed_baseline", "Fixed published baseline"), ("original_nominal", "Original P22 winner"))]
+        member_ids = {item["rotation_key"] for item in selected["members"]}
+        rows += [describe("Consensus member", row) for row in selected["members"]]
+        rows += [describe("Published alternative", row) for row in entry["displayed_alternatives"]
+                 if row["rotation_key"] not in member_ids]
+        if not selected["members"]:
+            rows.append(describe("Highest top-three share", entry["leaders"][0]))
+        st.dataframe(pd.DataFrame(rows), hide_index=True)
+        baseline = entry["draw_baseline"]
+        st.caption(f"The draw's current baseline ranked first in {baseline['top1_share']:.2%} of cells and "
+                   f"in the top three in {baseline['top3_share']:.2%}. Its crop sequence can vary by draw.")
+        st.caption("P18 labels describe original input evidence. The P42 smoothing rule is a design choice. "
+                   "P43 and P46 literature inputs require assumptions to apply locally.")
+
+
 def literature_variant_panel(farm_id):
     report = cached("literature_variant_p43.json")
     farm = report["farms"][farm_id]
@@ -1315,6 +1368,7 @@ def app():
         regional_scoring_panel(farm_id)
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)
+        expanded_consensus_panel(farm_id)
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "

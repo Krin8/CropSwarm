@@ -402,6 +402,22 @@ def regional_scoring_check(report):
                        "regional_scoring_variants.md")
 
 
+def expanded_consensus_check(report):
+    farms = list(report["farms"].values())
+    cutoff = report["design"]["primary_threshold"]
+    presets = [preset for farm in farms for preset in farm["presets"].values()]
+    counts = {str(level): sum(row["thresholds"][str(level)]["size"] > 0 for row in presets)
+              for level in report["design"]["thresholds"]}
+    counts_text = ", ".join(f"{count}/{len(presets)} at {level}%" for level, count in counts.items())
+    sizes = ", ".join(str(len(farm["variants"])) for farm in farms)
+    return EvidenceRow("P44b", "Do rotations repeatedly place in the top three across the expanded variants?",
+                       f"Kansas, Telangana, Makueni · {sizes} variants respectively · {farms[0]['draws']} draws each",
+                       f"Nonempty farm–preset sets {counts_text}.",
+                       direction(counts[str(cutoff)] > 0, counts[str(cutoff)] < len(presets)),
+                       "Agreement within the evaluated settings leaves field performance and rotation quality unresolved.",
+                       "consensus_shortlist_p44b.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -423,7 +439,8 @@ def build_ledger(load):
                                ("literature_variant_p43.json", literature_variant_check),
                                ("consensus_shortlist_p44.json", consensus_shortlist_check),
                                ("literature_check_p45.json", regional_literature_check),
-                               ("regional_scoring_variants_p46.json", regional_scoring_check)):
+                               ("regional_scoring_variants_p46.json", regional_scoring_check),
+                               ("consensus_shortlist_p44b.json", expanded_consensus_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

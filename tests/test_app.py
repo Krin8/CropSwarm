@@ -452,3 +452,21 @@ def test_regional_scoring_panel_keeps_the_two_farm_inputs_independent():
     app.selectbox(key="p46_telangana_a").set_value("low").run()
     paired = next(table.value for table in app.dataframe if "P46 leader" in table.value.columns)
     assert paired.equals(results)
+
+
+def test_expanded_consensus_panel_displays_empty_set_and_fixed_baseline_shares():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    app.selectbox(key="expanded_consensus_preset").set_value("income").run()
+    app.selectbox(key="expanded_consensus_threshold").set_value(40).run()
+    assert not app.exception
+    assert any("5 distinct scoring variants" in row.value for row in app.caption)
+    assert any("No rotation meets the 40% P44b cutoff for Income" in row.value for row in app.info)
+    summary = next(table.value for table in app.dataframe if "P44b cutoff" in table.value.columns)
+    assert summary["P44b size"].tolist() == [0, 0, 0]
+    table = next(table.value for table in app.dataframe if "P44b role" in table.value.columns)
+    baseline = table.set_index("P44b role").loc["Fixed published baseline"]
+    assert baseline["Top three"] == "39.88%" and baseline["P44 top three"] == "36.72%"
+    assert baseline["P18 evidence"] == "Low"
+    assert any("41.80%" in row.value and "current baseline" in row.value for row in app.caption)
