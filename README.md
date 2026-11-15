@@ -73,7 +73,9 @@ In the pooled USDA district holdout for Kansas winter wheat, RMSE was 11.202 bu/
 
 The local recalibration study compares each method with both the local trend and the local county mean. A trend fitted to only a few years is a weak baseline. At three years, no method beat the county mean with a paired interval excluding zero. Local ridge first did so at five years in Oklahoma and twelve in Nebraska. [P37 and P37b results](docs/ml_model.md#p37-local-yield-recalibration)
 
-## Rebuild from cached evidence
+## Offline rebuild entry points
+
+These commands use checked-in raw witnesses and processed inputs where available. P52b verified the app and tests from a fresh clone; it did not rerun this complete sequence or compare regenerated outputs byte for byte. [Size and trim analysis](docs/cleanup_options.md) lists the archives needed for the larger rebuilds.
 
 ```sh
 python -m src.context --offline
