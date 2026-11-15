@@ -414,3 +414,23 @@ def test_regional_literature_panel_shows_both_regions_offline():
     counts = next(table.value for table in app.dataframe if "Context only" in table.value.columns)
     assert counts.set_index("Metric").loc["Nitrogen", "Usable"] == 0
     assert any("second season is tentative" in row.value for row in app.caption)
+
+
+def test_smooth_climate_what_if_reads_all_preset_comparisons():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    picker = app.selectbox(key="farm_picker")
+    picker.set_value("telangana_a").run()
+    assert not app.exception
+    assert any(item.label == "Smooth climate-fit what-if (P42)" for item in app.expander)
+    assert any("±5 hot days" in item.value and "NASA POWER" in item.value for item in app.caption)
+    report = json.loads((ROOT / "data/processed/smooth_climate_fit_p42.json").read_text())
+    farm = report["farms"]["telangana_a"]
+    summary = next(item.value for item in app.dataframe if "Near-top in / out" in item.value)
+    assert summary["Preset"].tolist() == ["Water saver", "Soil builder", "Income", "Balanced"]
+    for shown, calculated in zip(summary["P22 change (pp)"], farm["p22"].values(), strict=True):
+        assert shown == pytest.approx(calculated["change_delta"] * 100)
+    app.selectbox(key="smooth_climate_preset").set_value("income").run()
+    assert not app.exception
+    shortlist = next(item.value for item in app.dataframe if "Climate-fit change" in item.value)
+    assert len(shortlist) == farm["published_shortlist"]["total"]
+    assert any("**Smooth**" in item.value for item in app.markdown)

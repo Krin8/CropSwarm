@@ -22,6 +22,8 @@ def test_committed_ledger_rebuilds_exactly_from_processed_results():
         studies.append("P39")
     if (DATA / "scoring_response_check.json").exists():
         studies.append("P41")
+    if (DATA / "smooth_climate_fit_p42.json").exists():
+        studies.append("P42")
     if (DATA / "literature_variant_p43.json").exists():
         studies.append("P43")
     if (DATA / "consensus_shortlist_p44.json").exists():
@@ -76,7 +78,7 @@ def test_p39_is_optional_but_bad_inputs_still_fail():
     def before_p39(name):
         if name in {"climate_yield_state_associations.json", "scoring_response_check.json",
                     "literature_variant_p43.json", "consensus_shortlist_p44.json",
-                    "literature_check_p45.json"}:
+                    "literature_check_p45.json", "smooth_climate_fit_p42.json"}:
             raise FileNotFoundError(name)
         return load(name)
 

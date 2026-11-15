@@ -1,0 +1,1435 @@
+{
+  "label": "illustrative; validate locally",
+  "plan": "docs/p42_plan.md",
+  "source": "NASA POWER \u00b7 crop catalog \u00b7 smooth heat rule is a design choice",
+  "design": {
+    "half_band_hot_days": 5,
+    "shortlist_cutoff": 0.1,
+    "near_tie_gap": 0.01,
+    "draws": 512,
+    "seed": 42,
+    "source": "design choice, not empirical; assumption, validate locally"
+  },
+  "farms": {
+    "us_high_plains_b": {
+      "name": "US High Plains B",
+      "horizon_years": 3,
+      "nominal": {
+        "water_saver": {
+          "original_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "original_score": 0.683723229418286,
+          "variant_score": 0.6826121579897146,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.999669689660948,
+          "common_count": 168,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 2,
+          "variant_exact_ties": 2,
+          "original_top_two_gap": 0.0,
+          "variant_top_two_gap": 0.0,
+          "original_near_top": 4,
+          "variant_near_top": 4,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "soil_builder": {
+          "original_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "cereal_rye_cover"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "cereal_rye_cover"
+            ]
+          ],
+          "original_score": 0.7157552327704902,
+          "variant_score": 0.7155326137228712,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.999469097892177,
+          "common_count": 168,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 2,
+          "variant_exact_ties": 2,
+          "original_top_two_gap": 0.0,
+          "variant_top_two_gap": 0.0,
+          "original_near_top": 4,
+          "variant_near_top": 4,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "income": {
+          "original_rotation": [
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "sunflower"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "sunflower"
+            ]
+          ],
+          "original_score": 0.6413635397298838,
+          "variant_score": 0.640101754015598,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9997734658958602,
+          "common_count": 168,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 2,
+          "variant_exact_ties": 2,
+          "original_top_two_gap": 0.0,
+          "variant_top_two_gap": 0.0,
+          "original_near_top": 2,
+          "variant_near_top": 2,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "balanced": {
+          "original_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "original_score": 0.6781246362760627,
+          "variant_score": 0.6768654219903485,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9992887552465468,
+          "common_count": 168,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 2,
+          "variant_exact_ties": 2,
+          "original_top_two_gap": 0.0,
+          "variant_top_two_gap": 0.0,
+          "original_near_top": 2,
+          "variant_near_top": 2,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        }
+      },
+      "published_shortlist": {
+        "strategies": [
+          {
+            "strategy_id": "baseline",
+            "rotation": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "sorghum"
+              ]
+            ],
+            "original": 0.7663865546218488,
+            "smooth": 0.7424997198879552,
+            "delta": -0.023886834733893636,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "rotation": [
+              [
+                "fallow"
+              ],
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "original": 0.6190476190476191,
+            "smooth": 0.6116404761904762,
+            "delta": -0.007407142857142834,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "rotation": [
+              [
+                "fallow"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "cereal_rye_cover"
+              ]
+            ],
+            "original": 0.45070028011204477,
+            "smooth": 0.44847408963585433,
+            "delta": -0.002226190476190437,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "income",
+            "rotation": [
+              [
+                "sorghum"
+              ],
+              [
+                "soybean"
+              ],
+              [
+                "sunflower"
+              ]
+            ],
+            "original": 0.3333333333333333,
+            "smooth": 0.3249214285714286,
+            "delta": -0.008411904761904732,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "rotation": [
+              [
+                "fallow"
+              ],
+              [
+                "winter_wheat"
+              ],
+              [
+                "soybean"
+              ]
+            ],
+            "original": 0.4997198879551821,
+            "smooth": 0.48678781512605046,
+            "delta": -0.012932072829131613,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          }
+        ],
+        "above_cutoff": 0,
+        "total": 5
+      },
+      "p22": {
+        "water_saver": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "original_change_fraction": 0.859375,
+          "smooth_change_fraction": 0.86328125,
+          "change_delta": 0.00390625,
+          "original_material_fraction": 0.77734375,
+          "smooth_material_fraction": 0.76953125,
+          "material_delta": -0.0078125,
+          "paired_disagreement_count": 14,
+          "paired_disagreement_fraction": 0.02734375
+        },
+        "soil_builder": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "cereal_rye_cover"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "cereal_rye_cover"
+            ]
+          ],
+          "original_change_fraction": 0.763671875,
+          "smooth_change_fraction": 0.759765625,
+          "change_delta": -0.00390625,
+          "original_material_fraction": 0.58984375,
+          "smooth_material_fraction": 0.59375,
+          "material_delta": 0.00390625,
+          "paired_disagreement_count": 19,
+          "paired_disagreement_fraction": 0.037109375
+        },
+        "income": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "sunflower"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ],
+            [
+              "sunflower"
+            ]
+          ],
+          "original_change_fraction": 0.92578125,
+          "smooth_change_fraction": 0.92578125,
+          "change_delta": 0.0,
+          "original_material_fraction": 0.865234375,
+          "smooth_material_fraction": 0.865234375,
+          "material_delta": 0.0,
+          "paired_disagreement_count": 36,
+          "paired_disagreement_fraction": 0.0703125
+        },
+        "balanced": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "fallow"
+            ],
+            [
+              "sorghum"
+            ],
+            [
+              "soybean"
+            ]
+          ],
+          "original_change_fraction": 0.87109375,
+          "smooth_change_fraction": 0.869140625,
+          "change_delta": -0.001953125,
+          "original_material_fraction": 0.791015625,
+          "smooth_material_fraction": 0.7890625,
+          "material_delta": -0.001953125,
+          "paired_disagreement_count": 19,
+          "paired_disagreement_fraction": 0.037109375
+        }
+      }
+    },
+    "telangana_a": {
+      "name": "Telangana A",
+      "horizon_years": 3,
+      "nominal": {
+        "water_saver": {
+          "original_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_score": 0.8015436421206531,
+          "variant_score": 0.8000875706920816,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.998370565567121,
+          "common_count": 211394,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.00822200130143691,
+          "variant_top_two_gap": 0.005958965587151033,
+          "original_near_top": 3,
+          "variant_near_top": 2,
+          "entered_near_top": 0,
+          "left_near_top": 1,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "soil_builder": {
+          "original_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_score": 0.770346322462403,
+          "variant_score": 0.7693756081766887,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9994606176552386,
+          "common_count": 211394,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.004285539881266676,
+          "variant_top_two_gap": 0.002776849405076165,
+          "original_near_top": 3,
+          "variant_near_top": 5,
+          "entered_near_top": 2,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "income": {
+          "original_rotation": [
+            [
+              "pigeonpea",
+              "maize"
+            ],
+            [
+              "pigeonpea",
+              "maize"
+            ],
+            [
+              "pigeonpea",
+              "maize"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "soybean",
+              "maize"
+            ],
+            [
+              "soybean",
+              "maize"
+            ],
+            [
+              "soybean",
+              "maize"
+            ]
+          ],
+          "original_score": 0.67297875858833,
+          "variant_score": 0.6729759595549103,
+          "label_changed": true,
+          "original_still_optimal": false,
+          "rank_spearman": 0.9981499337484415,
+          "common_count": 211394,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.0005727916156762491,
+          "variant_top_two_gap": 0.00048442413171723153,
+          "original_near_top": 56,
+          "variant_near_top": 87,
+          "entered_near_top": 31,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "balanced": {
+          "original_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_score": 0.7418562683807485,
+          "variant_score": 0.7402060540950341,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9971574953797318,
+          "common_count": 211394,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.008114787680516655,
+          "variant_top_two_gap": 0.005550013870992743,
+          "original_near_top": 2,
+          "variant_near_top": 2,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        }
+      },
+      "published_shortlist": {
+        "strategies": [
+          {
+            "strategy_id": "baseline",
+            "rotation": [
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ],
+              [
+                "paddy",
+                "paddy"
+              ]
+            ],
+            "original": 0.0857142857142857,
+            "smooth": 0.0968,
+            "delta": 0.011085714285714296,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "rotation": [
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ]
+            ],
+            "original": 0.7285714285714286,
+            "smooth": 0.7188642857142856,
+            "delta": -0.009707142857143025,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "rotation": [
+              [
+                "soybean",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ]
+            ],
+            "original": 0.6666666666666666,
+            "smooth": 0.6720464285714286,
+            "delta": 0.0053797619047619705,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "income",
+            "rotation": [
+              [
+                "pigeonpea",
+                "maize"
+              ],
+              [
+                "pigeonpea",
+                "maize"
+              ],
+              [
+                "pigeonpea",
+                "maize"
+              ]
+            ],
+            "original": 0.22857142857142856,
+            "smooth": 0.21886428571428573,
+            "delta": -0.009707142857142831,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "rotation": [
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pigeonpea",
+                "fallow"
+              ],
+              [
+                "pearl_millet",
+                "fallow"
+              ]
+            ],
+            "original": 0.7619047619047619,
+            "smooth": 0.7474904761904763,
+            "delta": -0.014414285714285602,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          }
+        ],
+        "above_cutoff": 0,
+        "total": 5
+      },
+      "p22": {
+        "water_saver": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_change_fraction": 0.7890625,
+          "smooth_change_fraction": 0.79296875,
+          "change_delta": 0.00390625,
+          "original_material_fraction": 0.7109375,
+          "smooth_material_fraction": 0.708984375,
+          "material_delta": -0.001953125,
+          "paired_disagreement_count": 14,
+          "paired_disagreement_fraction": 0.02734375
+        },
+        "soil_builder": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_change_fraction": 0.77734375,
+          "smooth_change_fraction": 0.775390625,
+          "change_delta": -0.001953125,
+          "original_material_fraction": 0.6640625,
+          "smooth_material_fraction": 0.6640625,
+          "material_delta": 0.0,
+          "paired_disagreement_count": 3,
+          "paired_disagreement_fraction": 0.005859375
+        },
+        "income": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "pigeonpea",
+              "maize"
+            ],
+            [
+              "pigeonpea",
+              "maize"
+            ],
+            [
+              "pigeonpea",
+              "maize"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "soybean",
+              "maize"
+            ],
+            [
+              "soybean",
+              "maize"
+            ],
+            [
+              "soybean",
+              "maize"
+            ]
+          ],
+          "original_change_fraction": 0.96484375,
+          "smooth_change_fraction": 0.87890625,
+          "change_delta": -0.0859375,
+          "original_material_fraction": 0.927734375,
+          "smooth_material_fraction": 0.794921875,
+          "material_delta": -0.1328125,
+          "paired_disagreement_count": 16,
+          "paired_disagreement_fraction": 0.03125
+        },
+        "balanced": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ],
+            [
+              "pigeonpea",
+              "fallow"
+            ]
+          ],
+          "original_change_fraction": 0.81640625,
+          "smooth_change_fraction": 0.814453125,
+          "change_delta": -0.001953125,
+          "original_material_fraction": 0.75390625,
+          "smooth_material_fraction": 0.75390625,
+          "material_delta": 0.0,
+          "paired_disagreement_count": 9,
+          "paired_disagreement_fraction": 0.017578125
+        }
+      }
+    },
+    "kenya_makueni_north": {
+      "name": "Makueni North Candidate",
+      "horizon_years": 3,
+      "nominal": {
+        "water_saver": {
+          "original_rotation": [
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ]
+          ],
+          "original_score": 0.7467280962622784,
+          "variant_score": 0.7467280962622784,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9994408701415882,
+          "common_count": 16914,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.005711087236792367,
+          "variant_top_two_gap": 0.005711087236792367,
+          "original_near_top": 3,
+          "variant_near_top": 3,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "soil_builder": {
+          "original_rotation": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "original_score": 0.7558022369316822,
+          "variant_score": 0.7558022369316822,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9996428025465859,
+          "common_count": 16914,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.0007852100140733898,
+          "variant_top_two_gap": 0.0007852100140733898,
+          "original_near_top": 29,
+          "variant_near_top": 29,
+          "entered_near_top": 0,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "income": {
+          "original_rotation": [
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ]
+          ],
+          "original_score": 0.7073988152969009,
+          "variant_score": 0.7073988152969009,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9995620536453765,
+          "common_count": 16914,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.0010224297535660343,
+          "variant_top_two_gap": 0.0010224297535660343,
+          "original_near_top": 42,
+          "variant_near_top": 45,
+          "entered_near_top": 3,
+          "left_near_top": 0,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        },
+        "balanced": {
+          "original_rotation": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "variant_rotation": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "original_score": 0.7394869643689552,
+          "variant_score": 0.7394869643689552,
+          "label_changed": false,
+          "original_still_optimal": true,
+          "rank_spearman": 0.9985897290754009,
+          "common_count": 16914,
+          "excluded_count": 0,
+          "added_count": 0,
+          "original_exact_ties": 1,
+          "variant_exact_ties": 1,
+          "original_top_two_gap": 0.0035658084963274828,
+          "variant_top_two_gap": 0.0035658084963274828,
+          "original_near_top": 12,
+          "variant_near_top": 11,
+          "entered_near_top": 0,
+          "left_near_top": 1,
+          "near_tie_appeared": false,
+          "near_tie_disappeared": false
+        }
+      },
+      "published_shortlist": {
+        "strategies": [
+          {
+            "strategy_id": "baseline",
+            "rotation": [
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ],
+              [
+                "maize",
+                "common_bean"
+              ]
+            ],
+            "original": 0.5357142857142857,
+            "smooth": 0.5404789915966385,
+            "delta": 0.004764705882352782,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "rotation": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "fallow"
+              ]
+            ],
+            "original": 0.9142857142857143,
+            "smooth": 0.9142857142857143,
+            "delta": 0.0,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "rotation": [
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ]
+            ],
+            "original": 0.8554621848739495,
+            "smooth": 0.8554621848739495,
+            "delta": 0.0,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "income",
+            "rotation": [
+              [
+                "maize",
+                "green_gram"
+              ],
+              [
+                "maize",
+                "green_gram"
+              ],
+              [
+                "maize",
+                "green_gram"
+              ]
+            ],
+            "original": 0.6680672268907563,
+            "smooth": 0.6680672268907563,
+            "delta": 0.0,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "rotation": [
+              [
+                "green_gram",
+                "fallow"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ],
+              [
+                "green_gram",
+                "pearl_millet"
+              ]
+            ],
+            "original": 0.8750700280112046,
+            "smooth": 0.8750700280112046,
+            "delta": 0.0,
+            "over_cutoff": false,
+            "flags": {
+              "season_feasibility": [],
+              "irrigation_shortfall": [],
+              "identical_consecutive_crop": []
+            }
+          }
+        ],
+        "above_cutoff": 0,
+        "total": 5
+      },
+      "p22": {
+        "water_saver": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ],
+            [
+              "green_gram",
+              "fallow"
+            ]
+          ],
+          "original_change_fraction": 0.744140625,
+          "smooth_change_fraction": 0.74609375,
+          "change_delta": 0.001953125,
+          "original_material_fraction": 0.650390625,
+          "smooth_material_fraction": 0.658203125,
+          "material_delta": 0.0078125,
+          "paired_disagreement_count": 7,
+          "paired_disagreement_fraction": 0.013671875
+        },
+        "soil_builder": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "original_change_fraction": 0.94140625,
+          "smooth_change_fraction": 0.9375,
+          "change_delta": -0.00390625,
+          "original_material_fraction": 0.76953125,
+          "smooth_material_fraction": 0.771484375,
+          "material_delta": 0.001953125,
+          "paired_disagreement_count": 10,
+          "paired_disagreement_fraction": 0.01953125
+        },
+        "income": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ],
+            [
+              "maize",
+              "green_gram"
+            ]
+          ],
+          "original_change_fraction": 0.8828125,
+          "smooth_change_fraction": 0.8828125,
+          "change_delta": 0.0,
+          "original_material_fraction": 0.837890625,
+          "smooth_material_fraction": 0.83984375,
+          "material_delta": 0.001953125,
+          "paired_disagreement_count": 7,
+          "paired_disagreement_fraction": 0.013671875
+        },
+        "balanced": {
+          "draws": 512,
+          "original_reference": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "smooth_reference": [
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ],
+            [
+              "green_gram",
+              "pearl_millet"
+            ]
+          ],
+          "original_change_fraction": 0.927734375,
+          "smooth_change_fraction": 0.927734375,
+          "change_delta": 0.0,
+          "original_material_fraction": 0.822265625,
+          "smooth_material_fraction": 0.818359375,
+          "material_delta": -0.00390625,
+          "paired_disagreement_count": 5,
+          "paired_disagreement_fraction": 0.009765625
+        }
+      }
+    }
+  }
+}

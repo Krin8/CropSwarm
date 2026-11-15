@@ -197,5 +197,105 @@ def build(root=ROOT, output=None):
     return report
 
 
+def render_markdown(report):
+    design = report["design"]
+    farms = list(report["farms"].values())
+    comparisons = [row for farm in farms for row in farm["nominal"].values()]
+    correlations = [r["rank_spearman"] for r in comparisons if r["rank_spearman"] is not None]
+    correlation_summary = (f"Rank Spearman ρ ranged from **{min(correlations):.4f} to "
+                           f"{max(correlations):.4f}** across estimable cases."
+                           if correlations else "Rank correlations were unavailable.")
+    shortlist_changed = sum(farm["published_shortlist"]["above_cutoff"] for farm in farms)
+    shortlist_total = sum(farm["published_shortlist"]["total"] for farm in farms)
+    threshold = design["shortlist_cutoff"]
+    changed = sum(r["label_changed"] for r in comparisons)
+    tie_appeared = sum(r["near_tie_appeared"] for r in comparisons)
+    tie_disappeared = sum(r["near_tie_disappeared"] for r in comparisons)
+    entered = sum(r["entered_near_top"] for r in comparisons)
+    left = sum(r["left_near_top"] for r in comparisons)
+    lines = [
+        "# Smooth climate-fit what-if (P42)", "",
+        "[Preregistration](p42_plan.md) was finalized in `be32ce5` before evaluation. "
+        "[Saved comparison](../data/processed/smooth_climate_fit_p42.json).", "",
+        f"The heat score declines smoothly within **±{design['half_band_hot_days']} hot days** of "
+        "the original cutoff. The band and its shape are design choices inspired by gradual heat responses "
+        "in P41's ridge curves, with no fitting to those curves. Rainfall and mean-temperature gates still "
+        "apply. Inputs come from NASA POWER and the crop catalog. [P41 response curves]"
+        "(ml_model.md#p41-scoring-versus-county-yield-response)", "",
+        f"**{changed} of {len(comparisons)}** nominal leaders changed. "
+        f"{correlation_summary} "
+        f"The top-two near-tie was created in **{tie_appeared}** cases and resolved in **{tie_disappeared}**. "
+        f"There were **{entered} entries and {left} exits** from near-top sets across farm–preset cases. "
+        f"**{shortlist_changed} of {shortlist_total}** published options moved by more than {threshold:g} "
+        f"climate-fit points (**{shortlist_changed / shortlist_total:.1%}**).", "",
+        f"Near-top sets count all feasible canonical rotations within {design['near_tie_gap']:g} "
+        "weighted points of first, including the winner. The original and smooth rankings use "
+        "identical canonical pools. Exact top ties use the existing numerical tolerance. All results "
+        "are illustrative and need local validation.", "",
+        f"P22 replay uses {design['draws']} paired draws per farm and seed {design['seed']}. "
+        "Each change rate compares a draw's winner with its own specification's nominal P22 winner. "
+        "The paired-difference column compares the two winners directly on identical draws. A winner change "
+        "counts as material if the reference is ineligible or its weighted gap exceeds the near-tie tolerance. "
+        "A flagged baseline remains visible and eligible for comparison under P22's original convention. "
+        "The replay reproduced the saved original winner histograms, change rates and material-change rates. "
+        "These frequencies describe the chosen assumption ranges. [P22 assumptions](sensitivity.md)", "",
+    ]
+
+    def table(headers, rows):
+        def line(cells):
+            return "| " + " | ".join(map(str, cells)) + " |"
+        lines.extend([line(headers), line(["---"] * len(headers)), *(line(row) for row in rows), ""])
+
+    def cycle(rows):
+        return " → ".join(" / ".join(crop.replace("_", " ") for crop in year) for year in rows)
+
+    def number(value, spec):
+        return "Unavailable" if value is None else format(value, spec)
+
+    for farm in farms:
+        exact = farm["nominal"]
+        count = next(iter(exact.values()))["common_count"]
+        lines.extend([f"## {farm['name']}", "", f"{count:,} feasible canonical rotations over "
+                      f"{farm['horizon_years']} years for each preset.", ""])
+        table(["Preset", "Original leader (score)", "Smooth leader (score)", "Leader changed",
+               "Old leader still optimal", "Rank Spearman ρ"], [
+            (name.replace("_", " "), f"{cycle(r['original_rotation'])} ({r['original_score']:.6f})",
+             f"{cycle(r['variant_rotation'])} ({r['variant_score']:.6f})",
+             "yes" if r["label_changed"] else "no", "yes" if r["original_still_optimal"] else "no",
+             number(r["rank_spearman"], ".6f")) for name, r in exact.items()
+        ])
+        table(["Preset", "Top-two gap original → smooth", "Exact top ties original → smooth",
+               "Near-top count original → smooth", "Entered", "Left", "Top-two near-tie change"], [
+            (name.replace("_", " "),
+             f"{number(r['original_top_two_gap'], '.6f')} → {number(r['variant_top_two_gap'], '.6f')}",
+             f"{r['original_exact_ties']} → {r['variant_exact_ties']}",
+             f"{r['original_near_top']} → {r['variant_near_top']}", r["entered_near_top"], r["left_near_top"],
+             "created" if r["near_tie_appeared"] else "resolved" if r["near_tie_disappeared"] else "none")
+            for name, r in exact.items()
+        ])
+        table(["Preset", "P22 change original → smooth", "Change (pp)", "P22 material original → smooth",
+               "Material change (pp)", "Different winners on matched draws"], [
+            (name.replace("_", " "), f"{r['original_change_fraction']:.2%} → {r['smooth_change_fraction']:.2%}",
+             f"{100 * r['change_delta']:+.2f}", f"{r['original_material_fraction']:.2%} → {r['smooth_material_fraction']:.2%}",
+             f"{100 * r['material_delta']:+.2f}", f"{r['paired_disagreement_count']}/{r['draws']} ({r['paired_disagreement_fraction']:.2%})")
+            for name, r in farm["p22"].items()
+        ])
+        shortlist = farm["published_shortlist"]
+        lines.extend([f"Published baseline and shortlist · **{shortlist['above_cutoff']} of "
+                      f"{shortlist['total']} ({shortlist['above_cutoff'] / shortlist['total']:.1%})** "
+                      f"changed by more than {threshold:g} climate-fit points.", ""])
+        table(["Published strategy", "Original climate fit", "Smooth climate fit", "Change"], [
+            (r["strategy_id"].replace("_", " "), f"{r['original']:.6f}", f"{r['smooth']:.6f}", f"{r['delta']:+.6f}")
+            for r in shortlist["strategies"]
+        ])
+    lines.extend([
+        "The swap measures how the score responds to one modeling choice. Field heat responses and "
+        "rotation suitability remain untested. The [published P44 consensus](consensus_shortlist.md) "
+        "describes the configurations tested at the time.", "",
+        "Rebuild the separate audit offline with `python -m src.smooth_climate_fit`.", "",
+    ])
+    return "\n".join(lines)
+
+
 if __name__ == "__main__":
-    build()
+    (ROOT / "docs/smooth_climate_fit.md").write_text(render_markdown(build()), encoding="utf-8")

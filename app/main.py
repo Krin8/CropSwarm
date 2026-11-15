@@ -385,7 +385,7 @@ def consensus_shortlist_panel(farm_id):
                    "Scoring and assumption frequencies are illustrative and need local validation.")
         if variants == 1:
             st.info("This farm has only the original scoring specification. P43 tested corrections in Kansas only, "
-                    "and P42 was absent from the merged history.")
+                    "and P42 was unavailable when P44 ran.")
         else:
             items = report["literature_evidence"]
             st.dataframe(pd.DataFrame([{"P43 input": row["input"], "Source grade": row["grade"],
@@ -547,6 +547,58 @@ def state_weather_yield_panel():
         st.caption("Differences can reflect management, varieties, irrigation or differences in weather variation. "
                    "The analysis describes county-average associations. Weather physiology and rotation quality "
                    "are outside its scope.")
+
+
+def smooth_climate_fit_panel(farm_id):
+    report = cached("smooth_climate_fit_p42.json")
+    farm = report["farms"][farm_id]
+    design = report["design"]
+    band = design["half_band_hot_days"]
+
+    def cycle_label(cycle):
+        return " → ".join(" / ".join(title(crop) for crop in year) for year in cycle)
+
+    with st.expander("Smooth climate-fit what-if (P42)"):
+        st.caption(f"{report['source']} · The heat score falls gradually within ±{band} hot days around "
+                   "the original cutoff. The P41 ridge curves informed the idea. The band and shape "
+                   "were chosen in advance without fitting to the curves. Illustrative, validate locally.")
+        rows = []
+        for name, rank in farm["nominal"].items():
+            rates = farm["p22"][name]
+            rows.append({"Preset": title(name), "Top rotation changed": "Yes" if rank["label_changed"] else "No",
+                         "Rank Spearman ρ": rank["rank_spearman"],
+                         "Near-top in / out": f"{rank['entered_near_top']} / {rank['left_near_top']}",
+                         "P22 original → smooth": f"{rates['original_change_fraction']:.1%} → "
+                                                  f"{rates['smooth_change_fraction']:.1%}",
+                         "P22 change (pp)": 100 * rates["change_delta"]})
+        st.dataframe(pd.DataFrame(rows), hide_index=True,
+                     column_config={"Rank Spearman ρ": st.column_config.NumberColumn(format="%.4f"),
+                                    "P22 change (pp)": st.column_config.NumberColumn(format="%+.1f")})
+        st.caption(f"Near-top means within {design['near_tie_gap']:g} weighted points of first place. "
+                   f"The P22 rates use {design['draws']} matched draws and each scoring rule's own "
+                   "reference winner. These are model comparisons. Field responses and rotation suitability "
+                   "still need local evidence.")
+        preset = st.selectbox("Heat what-if preset", tuple(farm["nominal"]), format_func=title,
+                              key="smooth_climate_preset")
+        rank = farm["nominal"][preset]
+        st.write(f"**Original** · {cycle_label(rank['original_rotation'])} ({rank['original_score']:.4f})")
+        st.write(f"**Smooth** · {cycle_label(rank['variant_rotation'])} ({rank['variant_score']:.4f})")
+        if rank["label_changed"] and rank["original_still_optimal"]:
+            st.caption("The original rotation still ties for first within the numerical tolerance.")
+        old_gap, new_gap = rank["original_top_two_gap"], rank["variant_top_two_gap"]
+        rates = farm["p22"][preset]
+        if old_gap is not None and new_gap is not None:
+            st.caption(f"Top-two gap {old_gap:.5f} → {new_gap:.5f} weighted points. "
+                       f"Different winners on {rates['paired_disagreement_count']} of "
+                       f"{rates['draws']} matched draws.")
+        shortlist = farm["published_shortlist"]
+        st.write(f"**{shortlist['above_cutoff']} of {shortlist['total']}** published options, including the "
+                 f"baseline, changed by more than {design['shortlist_cutoff']:g} climate-fit points.")
+        st.dataframe(pd.DataFrame([
+            {"Published strategy": title(row["strategy_id"]), "Original": row["original"],
+             "Smooth": row["smooth"], "Climate-fit change": row["delta"]}
+            for row in shortlist["strategies"]
+        ]), hide_index=True)
 
 
 def scoring_response_panel():
@@ -1298,6 +1350,7 @@ def app():
         transfer_diagnosis_panel()
         state_weather_yield_panel()
         scoring_response_panel()
+        smooth_climate_fit_panel(farm_id)
         local_recalibration_panel()
         yield_interval_panel()
         interval_diagnosis_panel()

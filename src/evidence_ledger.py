@@ -313,6 +313,28 @@ def scoring_response_check(report):
                        "ml_model.md#p41-scoring-versus-county-yield-response")
 
 
+def smooth_climate_check(report):
+    farms = list(report["farms"].values())
+    comparisons = [row for farm in farms for row in farm["nominal"].values()]
+    changed = sum(row["label_changed"] for row in comparisons)
+    shortlist_changed = sum(farm["published_shortlist"]["above_cutoff"] for farm in farms)
+    shortlist_total = sum(farm["published_shortlist"]["total"] for farm in farms)
+    correlations = [row["rank_spearman"] for row in comparisons if row["rank_spearman"] is not None]
+    rank = (f"Rank ρ {min(correlations):.4f}–{max(correlations):.4f}."
+            if correlations else "Rank correlations unavailable.")
+    tolerates_smoothing = changed == 0 and shortlist_changed == 0
+    changes_throughout = changed == len(comparisons) and shortlist_changed == shortlist_total
+    design = report["design"]
+    return EvidenceRow("P42", "Do rotation ranks agree after smoothing the heat screen?",
+                       f"{len(comparisons)} farm–preset cases · {design['draws']} matched draws per farm",
+                       f"{changed}/{len(comparisons)} nominal leaders changed. "
+                       f"{shortlist_changed}/{shortlist_total} published options moved more than "
+                       f"{design['shortlist_cutoff']:g} climate-fit points. {rank}",
+                       direction(tolerates_smoothing, changes_throughout),
+                       "Changing the heat screen measures model sensitivity. Field response remains untested.",
+                       "smooth_climate_fit.md")
+
+
 def literature_variant_check(report):
     farm, = (data for data in report["farms"].values() if data["benchmark"])
     comparisons = [row for key, result in farm["nominal"].items() if key != "original"
@@ -381,6 +403,7 @@ def build_ledger(load):
             *recalibration_checks(load), overlap_check(load)]
     for filename, describe in (("climate_yield_state_associations.json", state_check),
                                ("scoring_response_check.json", scoring_response_check),
+                               ("smooth_climate_fit_p42.json", smooth_climate_check),
                                ("literature_variant_p43.json", literature_variant_check),
                                ("consensus_shortlist_p44.json", consensus_shortlist_check),
                                ("literature_check_p45.json", regional_literature_check)):

@@ -85,3 +85,40 @@ def test_matched_draw_comparison_replays_a_fixed_seed():
     assert row["draws"] == config["joint_draws"]
     assert row["original_change_fraction"] == saved["presets"]["balanced"]["joint"]["winner_change_fraction"]
     assert row["paired_disagreement_fraction"] == row["paired_disagreement_count"] / row["draws"]
+
+
+def test_saved_comparison_matches_the_published_pools_and_p22_references():
+    from src.smooth_climate_fit import OUTPUT, render_markdown
+
+    report = read(f"data/processed/{OUTPUT}")
+    assert (ROOT / "docs/smooth_climate_fit.md").read_text() == render_markdown(report)
+    assert sum(farm["published_shortlist"]["total"] for farm in report["farms"].values()) == 15
+    assert sum(farm["published_shortlist"]["above_cutoff"] for farm in report["farms"].values()) == 0
+    changed = []
+    for farm_id, farm in report["farms"].items():
+        published = read(f"data/processed/strategies_{farm_id}.json")
+        sensitivity = read(f"data/processed/sensitivity_{farm_id}.json")
+        assert set(farm["nominal"]) == set(farm["p22"]) == set(published["verification"])
+        for preset, scores in farm["nominal"].items():
+            assert scores["common_count"] == published["feasible_count"]
+            assert scores["added_count"] == scores["excluded_count"] == 0
+            if scores["label_changed"]:
+                changed.append((farm_id, preset))
+            assert (scores["variant_near_top"] - scores["original_near_top"]
+                    == scores["entered_near_top"] - scores["left_near_top"])
+            p22 = sensitivity["presets"][preset]["joint"]
+            rates = farm["p22"][preset]
+            assert rates["draws"] == p22["evaluations"] == 512
+            assert rates["original_change_fraction"] == p22["winner_change_fraction"]
+            assert rates["change_delta"] == rates["smooth_change_fraction"] - rates["original_change_fraction"]
+    assert changed == [("telangana_a", "income")]
+
+
+def test_report_handles_unavailable_rank_correlations():
+    from src.smooth_climate_fit import OUTPUT, render_markdown
+
+    report = read(f"data/processed/{OUTPUT}")
+    for farm in report["farms"].values():
+        for comparison in farm["nominal"].values():
+            comparison["rank_spearman"] = None
+    assert "Rank correlations were unavailable." in render_markdown(report)
