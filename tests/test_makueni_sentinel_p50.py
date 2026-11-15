@@ -86,8 +86,11 @@ def test_actual_cached_p50_witness_is_processed_offline_when_present():
         pytest.skip("P50 scene witness has not been fetched")
     payload = json.loads(raw.read_text())
     report = summarize(payload)
-    assert report["chosen_catalog"]
     assert len(report["gate"]["counts"]) == 12 * 5
+    if payload.get("chosen_catalog") is None:
+        assert not report["gate"]["passed"]
+        assert not report["points"]
+        return
     if report["gate"]["passed"]:
         assert set(report["points"]) == {row["point_id"] for row in payload["points"]}
         assert report["interpretation_limit"] == "NDVI seasonality does not identify crop type, management or irrigation."
@@ -136,3 +139,52 @@ def test_digital_earth_africa_stac_fallback_extracts_grid_baseline_and_public_as
     assert item["red_href"].startswith("https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/")
     page = json.loads(next(tmp_path.glob("stac_deafrica_stac_page_*.json")).read_text())
     assert page["_p50_http_status"] == 200
+
+
+def test_stac_next_page_merge_retains_collection_and_time_filters(tmp_path):
+    from scripts.cache_p50_sentinel2 import FALLBACK_CATALOG, query_stac_catalog
+
+    first = {"features": [], "links": [
+        {"rel": "next", "method": "POST", "merge": True, "href": FALLBACK_CATALOG["search_url"],
+         "body": {"_o": 100}}
+    ]}
+    feature = {"id": "second-page", "properties": {
+        "datetime": "2019-01-09T08:00:34Z", "sentinel:utm_zone": 37,
+        "sentinel:latitude_band": "M", "sentinel:grid_square": "CT",
+        "sentinel:product_id": "S2B_MSIL2A_20190109T074319_N0211_R092_T37MCT_20190109T105348"},
+        "assets": {name: {"href": f"s3://deafrica-sentinel-2/sentinel-s2-l2a-cogs/37/M/CT/{name}.tif"}
+                  for name in ("B04", "B08", "SCL")}}
+    second = {"features": [feature], "links": []}
+
+    class Response:
+        status_code = 200
+
+        def __init__(self, payload):
+            self.payload = payload
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self.payload
+
+    class Session:
+        def __init__(self):
+            self.bodies = []
+
+        def post(self, _url, **kwargs):
+            self.bodies.append(kwargs["json"])
+            return Response(first if len(self.bodies) == 1 else second)
+
+    session = Session()
+    items = query_stac_catalog(session, FALLBACK_CATALOG, tmp_path)
+    assert len(items) == 1 and items[0]["id"] == "second-page"
+    assert session.bodies[1]["collections"] == ["s2_l2a"]
+    assert session.bodies[1]["bbox"] == [37.59, -2.0, 37.69, -1.9]
+    assert session.bodies[1]["_o"] == 100

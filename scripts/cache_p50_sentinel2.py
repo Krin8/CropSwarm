@@ -234,7 +234,9 @@ def fetch_range(session: requests.Session, url: str, start: int, end: int, cache
     expected_len = end - start + 1
     if block_path.is_file() and meta_path.is_file():
         meta = json.loads(meta_path.read_text())
-        if meta.get("url") == url and (expected_etag is None or meta.get("etag") == expected_etag):
+        if (meta.get("url") == url and meta.get("http_status") == 206
+                and meta.get("content_range", "").startswith(f"bytes {start}-")
+                and (expected_etag is None or meta.get("etag") == expected_etag)):
             data = block_path.read_bytes()
             if len(data) == meta.get("length"):
                 return data, meta
@@ -471,11 +473,11 @@ def query_stac_catalog(session: requests.Session, catalog: dict, cache_dir: Path
             (link for link in payload.get("links", []) if link.get("rel") == "next"),
             None,
         )
-        if next_link and features:
+        if next_link:
             url = next_link.get("href", url)
             method = str(next_link.get("method", "POST" if "body" in next_link else "GET")).upper()
             if "body" in next_link:
-                body = next_link["body"]
+                body = ({**body, **next_link["body"]} if next_link.get("merge") else next_link["body"])
         else:
             break
 
