@@ -1,0 +1,7455 @@
+{
+  "label": "Illustrative sensitivity only, validate locally",
+  "design": {
+    "reference": "data/p35_literature.json",
+    "tolerance": 1e-10,
+    "tie_break": "first canonical rotation within tolerance",
+    "method": "One change at a time, exact search and frozen displayed shortlist. See docs/literature_check.md.",
+    "note": "Regional catalog endpoints are transfer sensitivity cases. Kansas predecessor cases apply only in Kansas."
+  },
+  "scenarios": [
+    {
+      "id": "chickpea_credit_40",
+      "kind": "catalog",
+      "crop": "chickpea",
+      "field": "n_credit_kg_ha",
+      "value": 40,
+      "source": "dalal"
+    },
+    {
+      "id": "chickpea_credit_114.6",
+      "kind": "catalog",
+      "crop": "chickpea",
+      "field": "n_credit_kg_ha",
+      "value": 114.6,
+      "source": "dalal"
+    },
+    {
+      "id": "pigeonpea_credit_38",
+      "kind": "catalog",
+      "crop": "pigeonpea",
+      "field": "n_credit_kg_ha",
+      "value": 38,
+      "source": "rao"
+    },
+    {
+      "id": "pigeonpea_credit_49",
+      "kind": "catalog",
+      "crop": "pigeonpea",
+      "field": "n_credit_kg_ha",
+      "value": 49,
+      "source": "rao"
+    },
+    {
+      "id": "sorghum_water_254",
+      "kind": "catalog",
+      "crop": "sorghum",
+      "field": "water_need_mm",
+      "value": 254.0,
+      "source": "texas"
+    },
+    {
+      "id": "sorghum_water_381",
+      "kind": "catalog",
+      "crop": "sorghum",
+      "field": "water_need_mm",
+      "value": 381.0,
+      "source": "texas"
+    },
+    {
+      "id": "ks_soy_wheat",
+      "kind": "transition_credit",
+      "crop": "soybean",
+      "successors": [
+        "winter_wheat"
+      ],
+      "value": 0,
+      "source": "kstate",
+      "farm": "us_high_plains_b"
+    },
+    {
+      "id": "ks_soy_warm_cereal",
+      "kind": "transition_credit",
+      "crop": "soybean",
+      "successors": [
+        "maize",
+        "sorghum"
+      ],
+      "value": 45,
+      "source": "kstate",
+      "farm": "us_high_plains_b"
+    },
+    {
+      "id": "ks_fallow_wheat_no_profile",
+      "kind": "transition_credit",
+      "crop": "fallow",
+      "successors": [
+        "winter_wheat"
+      ],
+      "value": 22,
+      "source": "kstate",
+      "farm": "us_high_plains_b"
+    },
+    {
+      "id": "ks_sorghum_wheat",
+      "kind": "transition_credit",
+      "crop": "sorghum",
+      "successors": [
+        "winter_wheat"
+      ],
+      "value": -34,
+      "source": "kstate",
+      "farm": "us_high_plains_b"
+    },
+    {
+      "id": "ks_sunflower_wheat",
+      "kind": "transition_credit",
+      "crop": "sunflower",
+      "successors": [
+        "winter_wheat"
+      ],
+      "value": -34,
+      "source": "kstate",
+      "farm": "us_high_plains_b"
+    },
+    {
+      "id": "ks_sorghum_wheat_tan_spot_direction",
+      "kind": "transition_risk",
+      "crop": "sorghum",
+      "successors": [
+        "winter_wheat"
+      ],
+      "value": 0,
+      "source": "bockus",
+      "farm": "us_high_plains_b"
+    }
+  ],
+  "farms": {
+    "us_high_plains_b": {
+      "chickpea_credit_40": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.015827922077922052,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.024675324675324628,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.030762987012986964,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.019399350649350666,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.023457792207792205,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6275543987023112,
+              0.6800219307169872,
+              0.6403932979951281,
+              0.6086033321403744,
+              0.6503305296977469
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6132972749227561,
+              0.6966241525891316,
+              0.7065263366665941,
+              0.6700183624968057,
+              0.6740445892057407
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5467482148853413,
+              0.5878886420484933,
+              0.48641444977356185,
+              0.6394236046649486,
+              0.5745799672771406
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6239710896305055,
+              0.6739298310812576,
+              0.6344178903541177,
+              0.6433666500089521,
+              0.6469825158336511
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.6800219307169872,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7065263366665941,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6394236046649486,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6739298310812576,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "chickpea_credit_114.6": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.14501057339932016,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.22606776570970938,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.28184106317098634,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.17773090790993606,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.21491310621745402,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6081770010041015,
+              0.6498130645618296,
+              0.6027315865714282,
+              0.5848535985512866,
+              0.6216122325962976
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              0,
+              2,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.5745424795263367,
+              0.6362064202788161,
+              0.6312029138191944,
+              0.6225188953186301,
+              0.6166079950028422
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              3,
+              4,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5338299497532014,
+              0.5677493979450549,
+              0.4613066421577619,
+              0.6235904489388902,
+              0.5554344358761742
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6020100389058678,
+              0.6396931161054121,
+              0.5917346174072577,
+              0.6164502852746526,
+              0.6144351124520087
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              3,
+              4,
+              0,
+              2
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.6498130645618296,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.6362064202788161,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6235904489388902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6396931161054121,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "pigeonpea_credit_38": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.010685517014630885,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.016658447038193858,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.020768261274590305,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.013096608033316914,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.015836484190914546,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6283257594618049,
+              0.681224462362557,
+              0.6418925068558876,
+              0.6095487435327795,
+              0.6514737259002785
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6148399964417435,
+              0.6990292158802708,
+              0.7095247543881131,
+              0.6719091852816158,
+              0.6763309816108041
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5472624553916703,
+              0.5886903298122064,
+              0.4874139223474015,
+              0.6400538789265521,
+              0.5753420980788282
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6248452984912649,
+              0.6752927002795698,
+              0.6361169937296451,
+              0.6444381162536779,
+              0.6482781381965204
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.681224462362557,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7095247543881131,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6400538789265521,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6752927002795698,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "pigeonpea_credit_49": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.037462537462537415,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.05840313532621222,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.07281180358103434,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.045915622838699766,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.05552140167524777,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.624309206394619,
+              0.6749627591193541,
+              0.6340859755099211,
+              0.6046258913119721,
+              0.6455209882776285
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6068068903073716,
+              0.6865058093938652,
+              0.6939116916961799,
+              0.662063480840001,
+              0.6644255063655042
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5445847533468797,
+              0.5845158609834046,
+              0.4822095681167571,
+              0.6367719774460138,
+              0.5713736063303949
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6202932050151209,
+              0.6681961032706067,
+              0.6272695915375496,
+              0.6388588837367628,
+              0.6415317022241838
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.6749627591193541,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.6939116916961799,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6367719774460138,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6681961032706067,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "sorghum_water_254": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": -49.6776916099773,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.07005271412502023,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": -49.677691609977316,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.07005271412502001,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": -49.6776916099773,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.07005271412502001,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6544470369577566,
+              0.708241679362043,
+              0.6450077460470762,
+              0.636031684681534,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              0,
+              4,
+              2,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6250509229586347,
+              0.7110320214042309,
+              0.7157552327704902,
+              0.6828434391041129,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              3,
+              4,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5553362785056355,
+              0.5973614459285278,
+              0.4894907484748605,
+              0.6483688111423858,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6385707977850056,
+              0.6900335976773162,
+              0.6396475981463254,
+              0.6585735010205951,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              3,
+              4,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.708241679362043,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6483688111423858,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6900335976773162,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "sorghum_water_381": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": -20.086843537414893,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.023260545288981804,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": -20.08684353741492,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.023260545288981693,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": -20.08684353741492,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.023260545288981582,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6380697778651432,
+              0.6918644202694295,
+              0.6450077460470762,
+              0.6196544255889206,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6203717060750309,
+              0.7063528045206271,
+              0.7157552327704902,
+              0.6781642222205091,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5506570616220317,
+              0.592682229044924,
+              0.4894907484748605,
+              0.6436895942587819,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6306161290828791,
+              0.6820789289751896,
+              0.6396475981463254,
+              0.6506188323184686,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.6918644202694295,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6436895942587819,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6820789289751896,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "ks_soy_wheat": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.683723229418286,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6413635397298838,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6781246362760627,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "ks_soy_warm_cereal": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.6872946579897146,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "sorghum"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6437444921108362,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "sunflower",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6821722553236818,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "sorghum"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "ks_fallow_wheat_no_profile": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 7.333333333333336,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.04761904761904773,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 7.333333333333332,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.04761904761904756,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6370714441568568,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6609920556717728
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.632331365831847,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6953676411537928
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5530929118550383,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5816876512598245
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6347570744789903,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6590655786042139
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.683723229418286,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6413635397298838,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6781246362760627,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "ks_sorghum_wheat": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.683723229418286,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6413635397298838,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6781246362760627,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "ks_sunflower_wheat": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.683723229418286,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6413635397298838,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6781246362760627,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      },
+      "ks_sorghum_wheat_tan_spot_direction": {
+        "nominal_count": 168,
+        "scenario_count": 168,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "scenario": [
+              0.6299285870139996,
+              0.683723229418286,
+              0.6450077460470762,
+              0.6115132347377771,
+              0.6538491985289157
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              0,
+              3
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "scenario": [
+              0.6180456515461328,
+              0.704026749991729,
+              0.7157552327704902,
+              0.675838167691611,
+              0.6810819268680786
+            ],
+            "old_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              1,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "scenario": [
+              0.5483310070931335,
+              0.5903561745160257,
+              0.4894907484748605,
+              0.6413635397298838,
+              0.5769257464979197
+            ],
+            "old_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ],
+            "scenario_order": [
+              3,
+              1,
+              4,
+              0,
+              2
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "scenario": [
+              0.6266618363837522,
+              0.6781246362760627,
+              0.6396475981463254,
+              0.6466645396193418,
+              0.6509703405089757
+            ],
+            "old_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              3,
+              2,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.683723229418286,
+            "scenario_score": 0.683723229418286,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "soil_builder": {
+            "old_score": 0.7157552327704902,
+            "scenario_score": 0.7157552327704902,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "soybean",
+              "cereal_rye_cover"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          },
+          "income": {
+            "old_score": 0.6413635397298838,
+            "scenario_score": 0.6513638467519698,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "sorghum",
+              "soybean",
+              "sunflower"
+            ],
+            "scenario_sequence": [
+              "winter_wheat",
+              "soybean",
+              "sorghum"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.6781246362760627,
+            "scenario_score": 0.6781246362760627,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "scenario_sequence": [
+              "fallow",
+              "sorghum",
+              "soybean"
+            ],
+            "old_ties": 2,
+            "scenario_ties": 2
+          }
+        }
+      }
+    },
+    "telangana_a": {
+      "chickpea_credit_40": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.002435064935064929,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.031047077922077948,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.03120941558441559,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.01643668831168832,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.02861201298701299,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5324962984925582,
+              0.7968865804323413,
+              0.7886402284815539,
+              0.6836856182306361,
+              0.7874120592929514
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.4731636346006565,
+              0.7610321990857796,
+              0.7566979579058116,
+              0.6707592788756344,
+              0.7421536438600013
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5656439126368529,
+              0.5821875561521312,
+              0.5803927108033291,
+              0.671335089757161,
+              0.5716870668577511
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5081387476029806,
+              0.7365782651339952,
+              0.7284358800508812,
+              0.6693753793910965,
+              0.7267188386460379
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.7968865804323414,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.7610321990857797,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.671335089757161,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.7365782651339953,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "chickpea_credit_114.6": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.022309318984510794,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.28444381705251276,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.28593110498481344,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.1505879031454479,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.26213449806800193,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5295151603851413,
+              0.7588770695627761,
+              0.7504319750714942,
+              0.6635629360055723,
+              0.7523836865308031
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.4672013583858228,
+              0.6850131773466491,
+              0.6802814510856923,
+              0.6305139144255065,
+              0.6720968983357045
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5636564872319083,
+              0.5568478822390879,
+              0.5549205418632892,
+              0.6579199682737852,
+              0.5483348183496521
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              0,
+              1,
+              2,
+              4
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5047601244145749,
+              0.6935008194818213,
+              0.6851331928528135,
+              0.6465696728693573,
+              0.6870200161822697
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.7588770695627761,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.7258619688968,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pearl_millet",
+              "chickpea",
+              "pearl_millet",
+              "chickpea",
+              "pearl_millet",
+              "chickpea"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.6611255329241409,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "chickpea",
+              "maize",
+              "chickpea",
+              "maize",
+              "chickpea"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.6991825857152484,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pearl_millet",
+              "chickpea",
+              "pearl_millet",
+              "chickpea",
+              "pearl_millet",
+              "chickpea"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "pigeonpea_credit_38": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.0016439256945585956,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 4.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.004356403090580274,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 2.666666666666668,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.00419201052112439,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 4.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.014219957257931959,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 2.6666666666666665,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.0024384897802619543,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5326149693786342,
+              0.80219710258424,
+              0.7926928392410475,
+              0.6882841150660792,
+              0.7913380877739641
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.4734009763728084,
+              0.7716532433895771,
+              0.7648031794247989,
+              0.6799562725465205,
+              0.7500057008220267
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5657230265609036,
+              0.5857279042533972,
+              0.5830944513096581,
+              0.6744007543141232,
+              0.5743044191784261
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5082732412738666,
+              0.7425968569061472,
+              0.7330288389116406,
+              0.6745870091379319,
+              0.7311683375911855
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.8021971025842402,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.7716532433895771,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.674400754314123,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.7425968569061472,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "pigeonpea_credit_49": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.005763467301928837,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 9.5,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.01727119034811342,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 6.333333333333334,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.03639309408540181,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 9.5,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.017309613463459605,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 6.333333333333334,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.03024539563001105,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5319970381375285,
+              0.798952963568436,
+              0.787862676706406,
+              0.6887475634969084,
+              0.7871670518965017
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.47216511389059734,
+              0.7651649653579689,
+              0.7551428543555158,
+              0.6808831694081787,
+              0.7416636290671019
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5653110724001665,
+              0.5835651449095278,
+              0.5798743429532305,
+              0.6747097199346759,
+              0.5715237285934512
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5075729192006138,
+              0.7389201660215692,
+              0.7275546547057135,
+              0.6751122506928716,
+              0.7264411635967283
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.798952963568436,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.765164965357969,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.6747097199346759,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.7389201660215693,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "sorghum_water_254": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.8015436421206531,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.770346322462403,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.67297875858833,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.7418562683807485,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "sorghum_water_381": {
+        "nominal_count": 211394,
+        "scenario_count": 211394,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "scenario": [
+              0.5328615582328179,
+              0.801543642120653,
+              0.7933216408192162,
+              0.6861511214773894,
+              0.7917038612410034
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "scenario": [
+              0.473894154081176,
+              0.770346322462403,
+              0.7660607825811363,
+              0.6756902853691409,
+              0.7507372477561052
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "scenario": [
+              0.5658874191303593,
+              0.5852922639443392,
+              0.5835136523617706,
+              0.67297875858833,
+              0.5745482681564523
+            ],
+            "old_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ],
+            "scenario_order": [
+              3,
+              1,
+              2,
+              4,
+              0
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "scenario": [
+              0.5085527086419417,
+              0.7418562683807485,
+              0.7337414807002318,
+              0.6721696164040835,
+              0.73158288085383
+            ],
+            "old_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              2,
+              4,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.8015436421206531,
+            "scenario_score": 0.8015436421206531,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.770346322462403,
+            "scenario_score": 0.770346322462403,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.67297875858833,
+            "scenario_score": 0.67297875858833,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize",
+              "pigeonpea",
+              "maize"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7418562683807485,
+            "scenario_score": 0.7418562683807485,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow",
+              "pigeonpea",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      }
+    },
+    "kenya_makueni_north": {
+      "chickpea_credit_40": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.014853896103896147,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.029829545454545414,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.024350649350649345,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.01521915584415584,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.026176948051948035,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.6225096788319551,
+              0.7422536644440966,
+              0.6859779803986809,
+              0.6380100880804327,
+              0.7047365417471527
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.6640335715021564,
+              0.7444977432530986,
+              0.7484970421264875,
+              0.6770221405792329,
+              0.7471639425020246
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.693086391779423,
+              0.5864241143649055,
+              0.6937426081265112,
+              0.7058768997124854,
+              0.6579697768726427
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.668997631692895,
+              0.723488447412107,
+              0.7353473539793448,
+              0.688435046165307,
+              0.7313943851235989
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.7422536644440966,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.7484970421264875,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.7058768997124852,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7353473539793448,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "chickpea_credit_114.6": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.1360868458055159,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.2732891575602573,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.223093189845108,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.13943324365319248,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.2398251790834911,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.604324736376712,
+              0.7057347226282398,
+              0.656166599324512,
+              0.6193779749090772,
+              0.6726893070924214
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.6276636865916705,
+              0.671459859621385,
+              0.6888742799781499,
+              0.639757914236522,
+              0.6830694731925616
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.680963096809261,
+              0.5620781531543343,
+              0.6738683540770654,
+              0.6934554909315817,
+              0.6366049537694883
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              0,
+              2,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.6483880302436196,
+              0.6821003133541361,
+              0.7015611220952869,
+              0.6673186512377707,
+              0.6950741858482367
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.7057347226282398,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.6888742799781499,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.6934554909315815,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7015611220952869,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "pigeonpea_credit_38": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.010027946736807514,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.02013808975834286,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.01643925694558601,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.010274535590991285,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.017672201216505035,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.6232335712370183,
+              0.743707382798527,
+              0.6871646892594403,
+              0.6387517811184074,
+              0.7060122537724691
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.665481356312283,
+              0.7474051799619594,
+              0.7508704598480065,
+              0.6785055266551823,
+              0.7497153665526574
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.6935689867161319,
+              0.5873932599345257,
+              0.6945337473670177,
+              0.7063713617378018,
+              0.658820251556187
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.6698180430853,
+              0.7251359948804615,
+              0.7366922906882055,
+              0.689275631608345,
+              0.7328401920856242
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.743707382798527,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.7508704598480065,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.7063713617378018,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7366922906882056,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "pigeonpea_credit_49": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.035157150541765936,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.07060247444862822,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.057634673019288374,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.03602167063705525,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": -0.06195727349573499,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.6194641906662746,
+              0.7361377250949841,
+              0.680985376848385,
+              0.6348897108614977,
+              0.6993694929305847
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.6579425951707955,
+              0.7322658645548737,
+              0.7385118350258957,
+              0.6707813861413631,
+              0.7364298448688884
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.6910560663356361,
+              0.5823468214654972,
+              0.6904142057596474,
+              0.7037966482331954,
+              0.654391744328264
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              0,
+              2,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.6655460784384571,
+              0.716557049483113,
+              0.7296890699556762,
+              0.6848986186505142,
+              0.7253117297981552
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.7361377250949842,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.7385118350258957,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.7037966482331953,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7296890699556762,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "sorghum_water_254": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.7505446929654934,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "sorghum",
+              "fallow",
+              "sorghum",
+              "fallow",
+              "sorghum",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.7558022369316822,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.7105605074776256,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "sorghum",
+              "green_gram",
+              "sorghum",
+              "green_gram",
+              "sorghum"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7493216877363655,
+            "old_winner_still_optimal": false,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "sorghum",
+              "green_gram",
+              "sorghum",
+              "green_gram",
+              "sorghum"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      },
+      "sorghum_water_381": {
+        "nominal_count": 16914,
+        "scenario_count": 16914,
+        "shortlist_metric_deltas": [
+          {
+            "strategy_id": "baseline",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "water_saver",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "soil_builder",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "income",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          },
+          {
+            "strategy_id": "balanced",
+            "raw": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            },
+            "score": {
+              "water": 0.0,
+              "nitrogen": 0.0,
+              "erosion": 0.0,
+              "climate_fit": 0.0,
+              "income": 0.0,
+              "risk": 0.0
+            }
+          }
+        ],
+        "fixed_shortlist_order": {
+          "water_saver": {
+            "old": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "scenario": [
+              0.6247377632475395,
+              0.7467280962622784,
+              0.6896305778012783,
+              0.640292961457056,
+              0.708663083954945
+            ],
+            "old_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ],
+            "scenario_order": [
+              1,
+              4,
+              2,
+              3,
+              0
+            ]
+          },
+          "soil_builder": {
+            "old": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "scenario": [
+              0.6684897403333252,
+              0.7534466068894623,
+              0.7558022369316822,
+              0.6815878873324797,
+              0.755017026917609
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          },
+          "income": {
+            "old": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "scenario": [
+              0.6945717813898127,
+              0.58940706891036,
+              0.6961776730615763,
+              0.7073988152969009,
+              0.6605874716778375
+            ],
+            "old_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ],
+            "scenario_order": [
+              3,
+              2,
+              0,
+              4,
+              1
+            ]
+          },
+          "balanced": {
+            "old": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "scenario": [
+              0.6715227940305573,
+              0.7285594701393798,
+              0.7394869643689552,
+              0.6910223026588135,
+              0.7358444662924302
+            ],
+            "old_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ],
+            "scenario_order": [
+              2,
+              4,
+              1,
+              3,
+              0
+            ]
+          }
+        },
+        "exact": {
+          "water_saver": {
+            "old_score": 0.7467280962622784,
+            "scenario_score": 0.7467280962622784,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow",
+              "green_gram",
+              "fallow"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "soil_builder": {
+            "old_score": 0.7558022369316822,
+            "scenario_score": 0.7558022369316822,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "income": {
+            "old_score": 0.7073988152969009,
+            "scenario_score": 0.7073988152969009,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "scenario_sequence": [
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram",
+              "maize",
+              "green_gram"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          },
+          "balanced": {
+            "old_score": 0.7394869643689552,
+            "scenario_score": 0.7394869643689552,
+            "old_winner_still_optimal": true,
+            "old_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "scenario_sequence": [
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet",
+              "green_gram",
+              "pearl_millet"
+            ],
+            "old_ties": 1,
+            "scenario_ties": 1
+          }
+        }
+      }
+    }
+  }
+}

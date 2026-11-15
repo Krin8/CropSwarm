@@ -11,6 +11,7 @@ The tracked Python, Markdown, configuration and build files use repository-relat
 | Robust pick under assumption changes | `robust_stability_<farm_id>.json` |
 | What to check first | `sensitivity_<farm_id>.json` |
 | Learned climate-yield check | `climate_yield_model.json` and `climate_yield_validity_<cohort>.json` |
+| Scoring literature cross-check | `literature_check_p35.json` |
 | Yield validation | `yield_backtest_<farm_id>.json` |
 | Strategy and scenario comparisons | `strategies_<farm_id>.json` and `uncertainty_<farm_id>.json` |
 | Applying edited inputs | `seasons_<farm_id>.json` and `climate_<farm_id>.parquet` |

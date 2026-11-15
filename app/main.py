@@ -325,6 +325,30 @@ def transfer_diagnosis_panel():
                    "are hypotheses for the gap. County-average results do not validate rotation recommendations.")
 
 
+def literature_check_panel():
+    audit = cached("literature_check_p35.json")
+    with st.expander("Literature cross-check of scoring (P35)"):
+        st.caption("Illustrative, validate locally. A range applies to the published crop, treatment and location. "
+                   "The erosion and disease scores are comparison indices.")
+        rows = audit["rows"]
+        topics = list(dict.fromkeys(row["Check"] for row in rows))
+        choice = st.selectbox("Comparison", topics, index=topics.index("Predecessor N effect"),
+                              key="literature_check_topic")
+        table = []
+        for row in rows:
+            if row["Check"] != choice:
+                continue
+            source = audit["sources"].get(row["source"], {})
+            table.append({key: row[key] for key in ("Crop or contrast", "Model", "Published reference",
+                                                   "Finding", "Interpretation")} |
+                         {"Source": source.get("url"),
+                          "Table or section": source.get("locator")})
+        st.dataframe(pd.DataFrame(table), hide_index=True,
+                     column_config={"Source": st.column_config.LinkColumn("Publication", display_text="Open source")})
+        st.caption("The report includes a separate read-only ranking check for alternate source values. "
+                   "Local nitrogen, water, soil loss and disease outcomes still need field evidence.")
+
+
 def state_weather_yield_panel():
     report = cached("climate_yield_state_associations.json")
     states = report["states"]
@@ -1004,6 +1028,7 @@ def app():
                    "district yields. "
                    "Rotation recommendations still need field validation.")
         evidence_ledger_panel()
+        literature_check_panel()
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "

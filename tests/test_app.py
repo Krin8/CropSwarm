@@ -343,3 +343,17 @@ def test_scoring_response_panel_loads_state_curves_and_direction_disagreement():
     ranks = next(row.value for row in app.dataframe if "ρ (observed range)" in row.value)
     assert len(ranks) == 4 and ranks["ρ (observed range)"].str.startswith("Unavailable").sum() == 2
     assert any("Opposite movement 26–27 days" in row.value for row in app.markdown)
+
+
+def test_scoring_literature_table_lists_conditional_and_broad_references():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    assert not app.exception
+    assert any(item.label == "Literature cross-check of scoring (P35)" for item in app.expander)
+    rows = next(table.value for table in app.dataframe if "Published reference" in table.value.columns)
+    assert len(rows) == 5 and rows["Finding"].eq("outside range").all()
+    app.selectbox(key="literature_check_topic").set_value("Seasonal crop water demand").run()
+    assert not app.exception
+    rows = next(table.value for table in app.dataframe if "Published reference" in table.value.columns)
+    assert len(rows) == 15
+    assert set(rows["Finding"]) == {"no usable source", "inside range"}
+    assert "Chapter 3, Table 14" in rows["Table or section"].values

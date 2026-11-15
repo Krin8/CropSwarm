@@ -1,0 +1,1091 @@
+{
+  "label": "illustrative, validate locally",
+  "rows": [
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Bare fallow",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Bare fallow",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Bare fallow",
+      "Model": "0 mm",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Bare fallow",
+      "Model": "0 days",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Bare fallow",
+      "Model": "0 index",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Bare fallow",
+      "Model": "none",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "Unplanted model slot. The zeros describe the scoring convention, which omits actual soil evaporation, cover and residual N.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Winter wheat",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Winter wheat",
+      "Model": "90 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Winter wheat",
+      "Model": "550 mm",
+      "Published reference": "450 to 650 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Winter wheat",
+      "Model": "260 days",
+      "Published reference": "180 to 335 days",
+      "Finding": "inside range",
+      "Interpretation": "Span of three regional winter-wheat examples under different dormancy conditions.",
+      "source": "fao56_wheat"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Winter wheat",
+      "Model": "0.65 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Winter wheat",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "75 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "450 mm",
+      "Published reference": "450 to 650 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "105 days",
+      "Published reference": "70 to 130 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_kenya"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "0.65 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Grain sorghum",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Paddy rice",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Paddy rice",
+      "Model": "110 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Paddy rice",
+      "Model": "575 mm",
+      "Published reference": "450 to 700 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Paddy rice",
+      "Model": "120 days",
+      "Published reference": "90 to 150 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_duration"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Paddy rice",
+      "Model": "0.55 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Paddy rice",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "rice_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Grain maize",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Grain maize",
+      "Model": "120 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Grain maize",
+      "Model": "500 mm",
+      "Published reference": "500 to 800 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Grain maize",
+      "Model": "120 days",
+      "Published reference": "70 to 130 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_kenya"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Grain maize",
+      "Model": "0.65 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Grain maize",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Common bean",
+      "Model": "22 kg N/ha",
+      "Published reference": "22 kg N/ha (20 lb N/acre, rounded conversion)",
+      "Finding": "inside range",
+      "Interpretation": "First-year corn reference only. It does not quantify benefits for other successors.",
+      "source": "umn_credit"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Common bean",
+      "Model": "20 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Common bean",
+      "Model": "400 mm",
+      "Published reference": "300 to 500 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Common bean",
+      "Model": "100 days",
+      "Published reference": "95 to 110 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_duration"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Common bean",
+      "Model": "0.5 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Common bean",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Soybean",
+      "Model": "34 kg N/ha",
+      "Published reference": "34 kg N/ha (30 lb N/acre, rounded conversion)",
+      "Finding": "inside range",
+      "Interpretation": "First-year corn reference only. It does not quantify benefits for other successors.",
+      "source": "umn_credit"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Soybean",
+      "Model": "15 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Soybean",
+      "Model": "575 mm",
+      "Published reference": "450 to 700 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Soybean",
+      "Model": "135 days",
+      "Published reference": "135 to 150 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_duration"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Soybean",
+      "Model": "0.58 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Soybean",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "soy_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Chickpea",
+      "Model": "25 kg N/ha",
+      "Published reference": "40 to 114.6 kg N/ha",
+      "Finding": "outside range",
+      "Interpretation": "Queensland chickpea before wheat. Six estimable years, two unavailable. Largest value followed frost damage.",
+      "source": "dalal"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Chickpea",
+      "Model": "15 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Chickpea",
+      "Model": "400 mm",
+      "Published reference": "300 to 500 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Chickpea",
+      "Model": "105 days",
+      "Published reference": "85 to 130 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Chickpea",
+      "Model": "0.45 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Chickpea",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "chickpea_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "30 kg N/ha",
+      "Published reference": "38 to 49 kg N/ha",
+      "Finding": "outside range",
+      "Interpretation": "Sole pigeonpea before maize in one Hyderabad cycle. Equivalence used maize total dry matter.",
+      "source": "rao"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "15 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "500 mm",
+      "Published reference": "500 to 800 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "145 days",
+      "Published reference": "140 to 180 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "0.62 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Pigeonpea",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "pigeonpea_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "20 kg N/ha",
+      "Published reference": "About 20 kg N/ha per crop before maize",
+      "Finding": "no usable source",
+      "Interpretation": "Positive direction agrees. The trial provides an approximate treatment magnitude without species-specific bounds suitable for classifying the catalog value.",
+      "source": "lengwati"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "15 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "375 mm",
+      "Published reference": "350 to 400 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "75 days",
+      "Published reference": "65 to 80 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "wani"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "0.48 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Green gram (mung bean)",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "mung_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Pearl millet",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Pearl millet",
+      "Model": "45 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Pearl millet",
+      "Model": "450 mm",
+      "Published reference": "450 to 650 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Pearl millet",
+      "Model": "80 days",
+      "Published reference": "60 to 100 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_kenya"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Pearl millet",
+      "Model": "0.55 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Pearl millet",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "millet_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Sunflower",
+      "Model": "0 kg N/ha",
+      "Published reference": "\u2014",
+      "Finding": "no usable source",
+      "Interpretation": "No comparable crop-specific numeric benchmark was identified.",
+      "source": null
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Sunflower",
+      "Model": "65 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Sunflower",
+      "Model": "600 mm",
+      "Published reference": "600 to 1000 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Sunflower",
+      "Model": "125 days",
+      "Published reference": "125 to 130 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_duration"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Sunflower",
+      "Model": "0.48 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Sunflower",
+      "Model": "asteraceae",
+      "Published reference": "asteraceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Cowpea",
+      "Model": "22 kg N/ha",
+      "Published reference": "About 20 kg N/ha per crop before maize",
+      "Finding": "no usable source",
+      "Interpretation": "Positive direction agrees. The trial provides an approximate treatment magnitude without species-specific bounds suitable for classifying the catalog value.",
+      "source": "lengwati"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Cowpea",
+      "Model": "12 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Cowpea",
+      "Model": "284.8 mm",
+      "Published reference": "281.6 to 288 mm",
+      "Finding": "inside range",
+      "Interpretation": "Two Bangalore seasons of measured actual ET. Potential local demand remains uncertain.",
+      "source": "patil"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Cowpea",
+      "Model": "85 days",
+      "Published reference": "80 to 140 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_kenya"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Cowpea",
+      "Model": "0.58 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Cowpea",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "0 kg N/ha",
+      "Published reference": "N immobilization after mature rye reported",
+      "Finding": "no usable source",
+      "Interpretation": "The model sets carryover to zero. The source gives no single numeric carryover value.",
+      "source": "sare"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "0 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "220 mm",
+      "Published reference": "May ET 1.9 to 3.1 mm/day",
+      "Finding": "no usable source",
+      "Interpretation": "The study does not give a comparable total for the catalog's cover window.",
+      "source": "qi"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "100 days",
+      "Published reference": "Timing varies with termination",
+      "Finding": "no usable source",
+      "Interpretation": "The study does not give a comparable total for the catalog's cover window.",
+      "source": "sare"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "0.85 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Cereal rye cover",
+      "Model": "poaceae",
+      "Published reference": "poaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "rye_family"
+    },
+    {
+      "Check": "Nitrogen credit",
+      "Crop or contrast": "Field pea",
+      "Model": "22 kg N/ha",
+      "Published reference": "22 kg N/ha (20 lb N/acre, rounded conversion)",
+      "Finding": "inside range",
+      "Interpretation": "First-year corn reference only. It does not quantify benefits for other successors.",
+      "source": "umn_credit"
+    },
+    {
+      "Check": "Nitrogen demand proxy",
+      "Crop or contrast": "Field pea",
+      "Model": "15 kg N/ha",
+      "Published reference": "Site- and yield-dependent soil/fertilizer guidance",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed demand proxy cannot be calibrated with applied fertilizer rates or soil-test targets.",
+      "source": "msu_n"
+    },
+    {
+      "Check": "Seasonal crop water demand",
+      "Crop or contrast": "Field pea",
+      "Model": "425 mm",
+      "Published reference": "350 to 500 mm",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_water"
+    },
+    {
+      "Check": "Duration of crop water window",
+      "Crop or contrast": "Field pea",
+      "Model": "95 days",
+      "Published reference": "90 to 100 days",
+      "Finding": "inside range",
+      "Interpretation": "Reference comparison. Local variety, season and management can change the value.",
+      "source": "fao_duration"
+    },
+    {
+      "Check": "Erosion protection index",
+      "Crop or contrast": "Field pea",
+      "Model": "0.53 index",
+      "Published reference": "Crop-stage and management dependent",
+      "Finding": "no usable source",
+      "Interpretation": "A fixed species index has no calibrated mapping to canopy cover, residue cover or RUSLE C.",
+      "source": "rusle"
+    },
+    {
+      "Check": "Disease family label",
+      "Crop or contrast": "Field pea",
+      "Model": "fabaceae",
+      "Published reference": "fabaceae",
+      "Finding": "inside range",
+      "Interpretation": "Categorical taxonomic match. Host range and risk magnitude remain separate.",
+      "source": "umn_family"
+    },
+    {
+      "Check": "Predecessor N effect",
+      "Crop or contrast": "K-State soybean \u2192 winter wheat",
+      "Model": "+34 kg N/ha",
+      "Published reference": "0 kg N/ha (0 lb N/acre)",
+      "Finding": "outside range",
+      "Interpretation": "Signed change in N credit. Positive means less fertilizer N in this Kansas guidance. The example is conditional on the named transition.",
+      "source": "kstate"
+    },
+    {
+      "Check": "Predecessor N effect",
+      "Crop or contrast": "K-State soybean \u2192 maize or sorghum",
+      "Model": "+34 kg N/ha",
+      "Published reference": "45 kg N/ha (40 lb N/acre)",
+      "Finding": "outside range",
+      "Interpretation": "Signed change in N credit. Positive means less fertilizer N in this Kansas guidance. The example is conditional on the named transition.",
+      "source": "kstate"
+    },
+    {
+      "Check": "Predecessor N effect",
+      "Crop or contrast": "K-State fallow \u2192 winter wheat without profile N test",
+      "Model": "+0 kg N/ha",
+      "Published reference": "22 kg N/ha (20 lb N/acre)",
+      "Finding": "outside range",
+      "Interpretation": "Signed change in N credit. Positive means less fertilizer N in this Kansas guidance. The example is conditional on the named transition.",
+      "source": "kstate"
+    },
+    {
+      "Check": "Predecessor N effect",
+      "Crop or contrast": "K-State sorghum \u2192 winter wheat",
+      "Model": "+0 kg N/ha",
+      "Published reference": "-34 kg N/ha (-30 lb N/acre)",
+      "Finding": "outside range",
+      "Interpretation": "Signed change in N credit. Positive means less fertilizer N in this Kansas guidance. The example is conditional on the named transition.",
+      "source": "kstate"
+    },
+    {
+      "Check": "Predecessor N effect",
+      "Crop or contrast": "K-State sunflower \u2192 winter wheat",
+      "Model": "+0 kg N/ha",
+      "Published reference": "-34 kg N/ha (-30 lb N/acre)",
+      "Finding": "outside range",
+      "Interpretation": "Signed change in N credit. Positive means less fertilizer N in this Kansas guidance. The example is conditional on the named transition.",
+      "source": "kstate"
+    },
+    {
+      "Check": "Water demand, early grain sorghum",
+      "Crop or contrast": "Texas, 90\u2013105 day group",
+      "Model": "450 mm",
+      "Published reference": "254 to 381 mm (10\u201315 inches)",
+      "Finding": "outside range",
+      "Interpretation": "The catalogue is at the FAO lower bound but above this maturity-specific Texas range.",
+      "source": "texas"
+    },
+    {
+      "Check": "Following-crop initial soil water",
+      "Crop or contrast": "Legume before winter wheat vs fallow, Garden City",
+      "Model": "0 mm change at each window reset",
+      "Published reference": "-97 to -43 mm in 0\u20131.8 m",
+      "Finding": "outside range",
+      "Interpretation": "Plant-available water at wheat planting was lower after sole legume crops. The model resets its shallower bucket and cannot represent this carryover.",
+      "source": "holman"
+    },
+    {
+      "Check": "Erosion direction and relative effect",
+      "Crop or contrast": "Rye cover versus bare at equal slope and rain",
+      "Model": "85% lower erosion index",
+      "Published reference": "72% mean soil-loss reduction, 8 to 89% across control tillage",
+      "Finding": "inside range",
+      "Interpretation": "Magnitude is within the broad winter-cover benchmark. The study pooled cover types and sites. Its percentages do not calibrate the rye index or estimate site soil loss.",
+      "source": "clement"
+    },
+    {
+      "Check": "Predecessor protection after planting",
+      "Crop or contrast": "Same winter-wheat slot after pea or fallow",
+      "Model": "0% change in wheat erosion index at equal weather",
+      "Published reference": "RUSLE surface-cover subfactor 0.57 \u2192 0.073 (-87.2%)",
+      "Finding": "no usable source",
+      "Interpretation": "The treatments also change tillage. This demonstrates a missing residue mechanism. It cannot isolate a pea-only effect or set a numeric scoring parameter.",
+      "source": "langdale"
+    },
+    {
+      "Check": "Disease direction and magnitude",
+      "Crop or contrast": "Sorghum \u2192 wheat versus wheat \u2192 wheat",
+      "Model": "0 improvement in per-transition risk index",
+      "Published reference": "13.63 to 42.45 percentage points less tan spot",
+      "Finding": "no usable source",
+      "Interpretation": "The model charges the same immediately preceding Poaceae penalty in both cases. The no-till field comparison shows a reduction. Index points cannot be converted to severity.",
+      "source": "bockus"
+    },
+    {
+      "Check": "Policy penalties",
+      "Crop or contrast": "Same-family transition and bare slot",
+      "Model": "0.5 and 0.5 index points per unit share",
+      "Published reference": "Different diseases require different break lengths, e.g. 1 to 5 years or longer",
+      "Finding": "no usable source",
+      "Interpretation": "The equal coefficients are a design choice. The bare penalty mixes protection with disease risk, and disease breaks cannot be calibrated by family alone.",
+      "source": "sask"
+    }
+  ],
+  "sources": {
+    "fao_water": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 3, Table 14",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm"
+    },
+    "fao_duration": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 3, Table 6",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm"
+    },
+    "fao_kenya": {
+      "title": "FAO Kenya agro-ecological assessment",
+      "locator": "Technical Annex 2, Table 4.11",
+      "url": "https://www.fao.org/4/t0733e/T0733E05.htm"
+    },
+    "fao_cover": {
+      "title": "FAO Kenya agro-ecological assessment",
+      "locator": "Technical Annex 2, \u00a74.4.3, Tables 4.11\u20134.15",
+      "url": "https://www.fao.org/4/t0733e/T0733E05.htm"
+    },
+    "fao56": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 6, Eq. 58, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm"
+    },
+    "fao56_wheat": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 6, Table 11, winter wheat and footnote 2",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm"
+    },
+    "fao56_balance": {
+      "title": "Allen et al., FAO-56",
+      "locator": "Chapter 8, Eq. 85\u201388 and Initial depletion",
+      "url": "https://www.fao.org/4/x0490e/x0490e0e.htm"
+    },
+    "fao_rice": {
+      "title": "FAO Irrigation Water Management training manual",
+      "locator": "Chapter 4, \u00a74.4, steps 4\u20136",
+      "url": "https://www.fao.org/4/s2022e/s2022e08.htm"
+    },
+    "wani": {
+      "title": "Wani et al., Scaling Up Food Legume Production",
+      "locator": "Chapter 10, Table 10.7",
+      "url": "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+    },
+    "patil": {
+      "title": "Patil (2010), MAUSAM",
+      "locator": "p. 567, Table 1",
+      "url": "https://mausamjournal.imd.gov.in/index.php/MAUSAM/article/download/914/760/3269"
+    },
+    "texas": {
+      "title": "Texas A&M Extension, Irrigated and Dryland Grain Sorghum Production",
+      "locator": "Table 9, early maturity row",
+      "url": "https://ccag.tamu.edu/wp-content/uploads/sites/10/2020/12/PUB_Irrigated-and-Dryland-Grain-Sorghum-Production.pdf"
+    },
+    "qi": {
+      "title": "Qi and Helmers (2010), Vadose Zone Journal",
+      "locator": "Table 3, May rye and bare-soil lysimeters",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2008.0163"
+    },
+    "sare": {
+      "title": "SARE, Managing Cover Crops Profitably",
+      "locator": "Cereal Rye, Killing & Controlling Cereal Rye Cover Crops",
+      "url": "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"
+    },
+    "holman": {
+      "title": "Holman et al. (2018), Crop Science",
+      "locator": "Table 5, Garden City trial, 0\u20131.8 m",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/10.2135/cropsci2017.05.0324"
+    },
+    "umn_credit": {
+      "title": "University of Minnesota Extension, Soil Biology",
+      "locator": "Table 1, first-year corn",
+      "url": "https://extension.umn.edu/natural-resources/conservation/agricultural-soil-and-water/soil-biology"
+    },
+    "umn_corn": {
+      "title": "University of Minnesota Extension, Fertilizing corn",
+      "locator": "Tables 1\u20133 and profile nitrate section",
+      "url": "https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/fertilizing-corn-in-minnesota"
+    },
+    "msu_n": {
+      "title": "Montana State Extension, Fertilizer Guidelines",
+      "locator": "Tables 6, 9 and 14, corn, pulses and soybean",
+      "url": "https://www.montana.edu/extension/Full_HTML_Pubs/eb161-fertilizerguidelines/EB0161-FertilizerGuidelinesForMontanaCrops.html"
+    },
+    "dalal": {
+      "title": "Dalal et al., chickpea\u2013wheat at Warra, Queensland",
+      "locator": "Table 6 and Experiment 2 results",
+      "url": "https://era.dpi.qld.gov.au/id/eprint/11227/1/Sustaining%20productivity%20of%20a%20Vertisol%20at%20Warra%2C%20Queensland%2C%20with%20fertilisers%2C%20no-tillage%2C%20or%20legumes.%205.%20Wheat%20yields%2C%20nitrogen%20benefits%20and%20water-use%20efficiency%20of%20chickpea-wheat%20rotation.pdf"
+    },
+    "rao": {
+      "title": "Kumar Rao, Dart and Sastry (1983), Experimental Agriculture",
+      "locator": "pp. 137\u2013140, Figure 3 and fertilizer-equivalence results",
+      "url": "https://oar.icrisat.org/7864/1/Expl%20Agric._19_131-141_1983.pdf"
+    },
+    "lengwati": {
+      "title": "Lengwati, Mathews and Dakora (2020), Frontiers",
+      "locator": "p. 6, Figure 2 and fixed-N benefit text",
+      "url": "https://public-pages-files-2025.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2020.00094/pdf"
+    },
+    "kstate": {
+      "title": "K-State Research and Extension, MF2586",
+      "locator": "Previous Crop Adjustment tables, cool- and warm-season crops",
+      "url": "https://www.brown.k-state.edu/crops-livestock/documents/Soiltestinterpretationsandfertilizerrecommenations.pdf"
+    },
+    "rusle": {
+      "title": "USDA NRCS, RUSLE handbook",
+      "locator": "Chapter 4, opening definition and prior land use section",
+      "url": "https://efotg.sc.egov.usda.gov/references/Agency/OK/RUSLE_Chap4_C_Factors.pdf"
+    },
+    "langdale": {
+      "title": "Langdale et al., Cover Crop Effects on Soil Erosion by Wind and Water",
+      "locator": "Tables 1 and 8, and Eq. 5",
+      "url": "https://www.ars.usda.gov/ARSUserFiles/30200525/91--%20Cover%20Crop%20Effects%20on%20Soil%20Erosion.pdf"
+    },
+    "clement": {
+      "title": "Cl\u00e9ment, Bielders and Degr\u00e9 (2024), Soil Use and Management",
+      "locator": "\u00a73.1, Figures 2 and 3b",
+      "url": "https://orbi.uliege.be/bitstream/2268/316282/1/Soil%20Use%20and%20Management%20-%202024%20-%20Clement%20-%20How%20much%20do%20conservation%20cropping%20practices%20mitigate%20runoff%20and%20soil%20erosion.pdf"
+    },
+    "bockus": {
+      "title": "Bockus and Claassen (1992), Plant Disease",
+      "locator": "Tables 2\u20133 and discussion, pp. 634\u2013635",
+      "url": "https://www.apsnet.org/publications/PlantDisease/BackIssues/Documents/1992Articles/PlantDisease76n06_633.PDF"
+    },
+    "carignano": {
+      "title": "Carignano, Staggenborg and Shroyer (2008), Agronomy Journal",
+      "locator": "Abstract, continuous-wheat residue trial",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/10.2134/agronj2007.0092"
+    },
+    "sask": {
+      "title": "Saskatchewan, Principles and Practices of Crop Rotation",
+      "locator": "Table 9, disease-specific break intervals",
+      "url": "https://publications.saskatchewan.ca/api/v1/products/76296/formats/85517/download"
+    },
+    "umn_family": {
+      "title": "University of Minnesota Extension, Promote healthy soil",
+      "locator": "Rotation guidelines, Plant families",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/living-soil-healthy-garden"
+    },
+    "rice_family": {
+      "title": "USDA ARS GRIN taxonomy, Oryza sativa",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=484525"
+    },
+    "soy_family": {
+      "title": "USDA ARS GRIN taxonomy, Glycine max",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=487024"
+    },
+    "rye_family": {
+      "title": "USDA ARS GRIN taxonomy, Secale cereale",
+      "locator": "Summary, Family",
+      "url": "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=317600"
+    },
+    "chickpea_family": {
+      "title": "Kew Plants of the World Online, Cicer arietinum",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:486336-1/general-information"
+    },
+    "pigeonpea_family": {
+      "title": "Kew Plants of the World Online, Cajanus cajan",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1152177-2/general-information"
+    },
+    "mung_family": {
+      "title": "Kew Plants of the World Online, Vigna radiata",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information"
+    },
+    "millet_family": {
+      "title": "Kew Plants of the World Online, Cenchrus americanus",
+      "locator": "Family heading",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77105978-1/general-information"
+    }
+  }
+}

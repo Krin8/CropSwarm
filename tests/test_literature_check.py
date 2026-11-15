@@ -59,3 +59,23 @@ def test_in_memory_credit_edits_leave_source_and_other_score_columns_untouched()
     nitrogen = METRICS.index("nitrogen")
     np.testing.assert_allclose(new_raw[:, nitrogen] - old_raw[:, nitrogen], [-34/3, 0])
     np.testing.assert_array_equal(np.delete(new_scores, nitrogen, axis=1), np.delete(old_scores, nitrogen, axis=1))
+
+
+def test_app_artifact_and_document_match_generated_comparison_table():
+    rows, sources = build_rows()
+    audit = json.loads((ROOT / "data/processed/literature_check_p35.json").read_text())
+    assert audit["rows"] == rows and audit["sources"] == sources
+    assert table_markdown(rows, sources) in (ROOT / "docs/literature_check.md").read_text()
+
+
+def test_saved_what_if_covers_every_preset_and_preserves_nominal_space():
+    from src.literature_what_if import OUTPUT
+
+    report = json.loads((ROOT / "data/processed" / OUTPUT).read_text())
+    studies = list(report["farms"].values())
+    assert [len(farm) for farm in studies] == [12, 6, 6]
+    assert all(len(outcome["exact"]) == 4 and outcome["nominal_count"] == outcome["scenario_count"]
+               for farm in studies for outcome in farm.values())
+    assert not studies[0]["ks_soy_warm_cereal"]["exact"]["income"]["old_winner_still_optimal"]
+    assert all(studies[1]["pigeonpea_credit_38"]["exact"][preset]["old_winner_still_optimal"]
+               for preset in studies[1]["pigeonpea_credit_38"]["exact"])
