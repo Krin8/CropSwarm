@@ -31,9 +31,9 @@ The saved witness contains the scene ID, date, processing baseline, per-point SC
 
 ## Coverage and masking by point and year
 
-A valid observation passed the registered SCL classes 4 or 5, nonzero DN, positive scaled reflectance, and the NDVI domain. SCL codes in the masked column were excluded by the cloud and quality mask. Reflectance rejections are listed separately. Counts and scene measurements carry the NASA Sentinel-2 source tag. Minimums are labeled as design choices.
+A valid observation passed the registered SCL classes 4 or 5, nonzero DN, positive scaled reflectance, and the NDVI domain. SCL codes in the masked column were excluded by the cloud and quality mask. Reflectance rejections are listed separately. Counts and scene measurements carry the Copernicus Sentinel-2 source tag. Minimums are labeled as design choices.
 
-| Point | Map group | Year | Scenes seen (NASA S2) | Valid NDVI scenes (NASA S2; min 10) | Valid 16-day windows (NASA S2; min 8/23) | Masked SCL codes and counts (NASA S2) | Reflectance/NDVI rejects (NASA S2) | Failed scenes | Gate |
+| Point | Map group (WorldCover + GLAD, P48) | Year | Scenes seen (Copernicus S2) | Valid NDVI scenes (Copernicus S2; min 10) | Valid 16-day windows (Copernicus S2; min 8/23) | Masked SCL codes and counts (Copernicus S2) | Reflectance/NDVI rejects (Copernicus S2) | Failed Copernicus S2 scenes | Gate |
 | --- | --- | ---: | ---: | ---: | ---: | --- | --- | ---: | --- |
 | original | study · Grassland | 2019 | 72 | 20 | 12/23 | 3=2, 7=4, 8=5, 9=27, 10=4 | nonpositive_reflectance=10 | 0 | pass |
 | original | study · Grassland | 2020 | 72 | 6 | 5/23 | 3=6, 8=11, 9=28, 10=3 | nonpositive_reflectance=18 | 0 | fail |

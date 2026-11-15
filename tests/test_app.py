@@ -560,13 +560,15 @@ def test_makueni_sentinel2_panel_reports_gate_failure_and_not_seasonality():
     assert any("failed in 6 of 60 point-years" in row.value and
                "Seasonality peaks and reference-group comparisons were not run" in row.value
                for row in app.warning)
-    table = next(table.value for table in app.dataframe if "Valid NDVI scenes (min 10)" in table.value.columns)
+    table = next(table.value for table in app.dataframe
+                 if "Valid NDVI scenes (Copernicus S2; min 10)" in table.value.columns)
     assert len(table) == 60
     assert table["Gate"].value_counts().to_dict() == {"pass": 54, "fail": 6}
     assert table.loc[table["Point"] == "noncrop_ref_4", "Year"].tolist() == [2019, 2020, 2021, 2022, 2023]
     assert any("NDVI seasonality does not identify crop type, management or irrigation" in row.value
                for row in app.get("markdown") + app.get("write"))
     assert any("fallback's full-period request timed out on page 2" in row.value for row in app.caption)
+    assert any("Copernicus Sentinel-2 L2A" in row.value for row in app.caption)
     ledger = next(item.value for item in app.get("html") if 'aria-label="Evidence ledger"' in item.value)
     assert 'href="#p50-sentinel2"' in ledger
     assert "359/359 scene records extracted" in ledger

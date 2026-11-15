@@ -98,9 +98,10 @@ def render(report):
         "## Coverage and masking by point and year", "",
         "A valid observation passed the registered SCL classes 4 or 5, nonzero DN, positive scaled reflectance, "
         "and the NDVI domain. SCL codes in the masked column were excluded by the cloud and quality mask. "
-        "Reflectance rejections are listed separately. Counts and scene measurements carry the NASA Sentinel-2 "
+        "Reflectance rejections are listed separately. Counts and scene measurements carry the "
+        "Copernicus Sentinel-2 "
         "source tag. Minimums are labeled as design choices.", "",
-        "| Point | Map group | Year | Scenes seen (NASA S2) | Valid NDVI scenes (NASA S2; min 10) | Valid 16-day windows (NASA S2; min 8/23) | Masked SCL codes and counts (NASA S2) | Reflectance/NDVI rejects (NASA S2) | Failed scenes | Gate |",
+        "| Point | Map group (WorldCover + GLAD, P48) | Year | Scenes seen (Copernicus S2) | Valid NDVI scenes (Copernicus S2; min 10) | Valid 16-day windows (Copernicus S2; min 8/23) | Masked SCL codes and counts (Copernicus S2) | Reflectance/NDVI rejects (Copernicus S2) | Failed Copernicus S2 scenes | Gate |",
         "| --- | --- | ---: | ---: | ---: | ---: | --- | --- | ---: | --- |",
     ]
     for row in report["gate"]["counts"]:

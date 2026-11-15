@@ -218,3 +218,5 @@ def test_saved_report_and_markdown_render_from_cached_witness():
     assert "seasonality does not identify crop type, management or irrigation" in doc.read_text()
     assert "ReadTimeout after 30 seconds on the second STAC page" in doc.read_text()
     assert "No fallback scenes were used in the analysis" in doc.read_text()
+    assert "Copernicus Sentinel-2 source tag" in doc.read_text()
+    assert "NASA Sentinel-2 source tag" not in doc.read_text()

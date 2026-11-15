@@ -418,7 +418,7 @@ def makueni_sentinel_panel(farm_id):
     with st.expander("Sentinel-2 seasonality coverage (P50)"):
         failed = report["point_year_gate_failures"]
         total = len(report["gate"]["counts"])
-        st.caption("NASA Sentinel-2 L2A · 10 m NDVI · Scene Classification Layer mask at 20 m.")
+        st.caption("Copernicus Sentinel-2 L2A · 10 m NDVI · Scene Classification Layer mask at 20 m.")
         st.warning(f"The preregistered observation gate failed in {failed} of {total} point-years. "
                    "Seasonality peaks and reference-group comparisons were not run. "
                    "Makueni cropland remains unverified.")
@@ -436,25 +436,26 @@ def makueni_sentinel_panel(farm_id):
         st.caption("Gate design choice · at least 10 valid scenes and at least 8 of 23 valid 16-day windows "
                    "at every point in every year from 2019 through 2023.")
         st.dataframe(pd.DataFrame([
-            {"Point": row["point_id"], "Map group": row["map_group"], "Map class": row["map_class"],
-             "Year": row["year"], "NASA S2 scenes seen": row["scenes_seen"],
-             "Valid NDVI scenes (min 10)": row["valid_scenes"],
-             "Valid NDVI windows (min 8/23)": f"{row['valid_composites']}/23",
-             "Masked SCL counts (NASA S2)": ", ".join(f"{key}={value}" for key, value in row["masked_scl_counts"].items()) or "none",
-             "Reflectance/NDVI rejects (NASA S2)": ", ".join(
+            {"Point": row["point_id"], "Map group (WorldCover + GLAD, P48)": row["map_group"],
+             "Map class (WorldCover + GLAD, P48)": row["map_class"],
+             "Year": row["year"], "Copernicus S2 scenes seen": row["scenes_seen"],
+             "Valid NDVI scenes (Copernicus S2; min 10)": row["valid_scenes"],
+             "Valid NDVI windows (Copernicus S2; min 8/23)": f"{row['valid_composites']}/23",
+             "Masked SCL counts (Copernicus S2)": ", ".join(f"{key}={value}" for key, value in row["masked_scl_counts"].items()) or "none",
+             "Reflectance/NDVI rejects (Copernicus S2)": ", ".join(
                  f"{key}={value}" for key, value in row["rejected_band_or_ndvi_counts"].items()) or "none",
-             "Failed scenes": row["failed_scenes"], "Gate": "pass" if row["passes"] else "fail"}
+             "Failed Copernicus S2 scenes": row["failed_scenes"], "Gate": "pass" if row["passes"] else "fail"}
             for row in report["gate"]["counts"]
         ]), hide_index=True)
         if report["scene_failures"]:
             st.dataframe(pd.DataFrame([
-                {"NASA Sentinel scene": row.get("id"), "Date": row.get("date"), "Failure": row.get("error")}
+                {"Copernicus Sentinel scene": row.get("id"), "Date": row.get("date"), "Failure": row.get("error")}
                 for row in report["scene_failures"]
             ]), hide_index=True)
         if report["gate"]["passed"]:
             st.info("The coverage gate passed. Point seasonality and reference summaries are available below.")
             st.dataframe(pd.DataFrame([
-                {"NASA Sentinel point": point_id, **record["summary"]}
+                {"Copernicus Sentinel point": point_id, **record["summary"]}
                 for point_id, record in report["points"].items()
             ]), hide_index=True)
 
