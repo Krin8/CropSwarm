@@ -1,6 +1,6 @@
 # P43 literature-informed variant
 
-The [preregistration](p43_plan.md) was committed before any evaluation as `e1d966e`. This is an illustrative Kansas what-if that needs local validation. In Telangana and Makueni the original scorer applies. Their input rows show **no benchmark**. The [saved P43 results](../data/processed/literature_variant_p43.json) are a separate output. They contain every configuration, farm, preset, raw and normalized metric delta, feasibility flag and matched-draw comparison.
+The [preregistration](p43_plan.md) was committed before any evaluation as `e1d966e`. This is an illustrative Kansas what-if that needs local validation. In Telangana and Makueni the original scorer applies. Their input rows show **no benchmark** for the Kansas corrections in this study. A later audit compared other regional benchmarks. [P45 regional audit](literature_check_p45.md) The [saved P43 results](../data/processed/literature_variant_p43.json) are a separate output. They contain every configuration, farm, preset, raw and normalized metric delta, feasibility flag and matched-draw comparison.
 
 ## Inputs and evidence
 

@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.decision_brief import BRIEFS, brief_filename, brief_release, reference_inputs, render_brief, repository_version
 from src.evidence_ledger import COLUMNS, NOTE, build_ledger
+from src.literature_check_p45 import METRIC_NAMES, metric_counts
 from src.optimizer import allowed_layers, count_rotations, enumerate_canonical_rotations, strategy
 from src.scoring import METRICS, baseline_indices, preload, score_rotations
 from src.sensitivity import check_first
@@ -349,6 +350,30 @@ def literature_check_panel():
                    "Local nitrogen, water, soil loss and disease outcomes still need field evidence.")
 
 
+def regional_literature_panel(farm_id):
+    audit = cached("literature_check_p45.json")
+    regions = audit["regions"]
+    choices = tuple(regions)
+    with st.expander("Regional literature benchmarks (P45)"):
+        st.caption("Illustrative regional comparisons. Validate locally. The catalog and scores use their original values.")
+        region_id = st.selectbox("Literature region", choices, index=choices.index(farm_id) if farm_id in regions else 0,
+                                 format_func=lambda key: regions[key]["name"], key=f"regional_literature_{farm_id}")
+        region = regions[region_id]
+        st.caption(region["scope"])
+        st.dataframe(pd.DataFrame(metric_counts(region)), hide_index=True)
+        rows = []
+        for row in region["rows"]:
+            source = audit["sources"][row["source"]]
+            rows.append({"Metric": METRIC_NAMES[row["metric"]], "Regional comparison": row["check"],
+                         "Catalog": row["model"], "Published reference": row["reference"],
+                         "Finding": row["finding"], "Interpretation": row["interpretation"],
+                         "Table or page": row["locator"], "Source": source.get("full_text", source["url"])})
+        st.dataframe(pd.DataFrame(rows), hide_index=True,
+                     column_config={"Source": st.column_config.LinkColumn("Publication", display_text="Open source")})
+        st.caption("Published spans describe the study conditions. Single estimates have equal bounds. "
+                   "Climate-fit comparisons cover crop duration. These benchmarks cannot establish rotation quality.")
+
+
 def consensus_shortlist_panel(farm_id):
     report = cached("consensus_shortlist_p44.json")
     farm = report["farms"][farm_id]
@@ -359,7 +384,7 @@ def consensus_shortlist_panel(farm_id):
                    f"{draws} matched P22 draws · {cells:,} cells per preset. "
                    "Scoring and assumption frequencies are illustrative and need local validation.")
         if variants == 1:
-            st.info("This farm has only the original scoring specification. P43 has no local benchmark, "
+            st.info("This farm has only the original scoring specification. P43 tested corrections in Kansas only, "
                     "and P42 was absent from the merged history.")
         else:
             items = report["literature_evidence"]
@@ -428,7 +453,8 @@ def literature_variant_panel(farm_id):
     units = ("mm unmet per slot", "kg N/ha per slot", "erosion proxy",
              "historical share", "relative index", "relative penalty")
     with st.expander("Literature-informed variant (P43)"):
-        st.caption(f"{farm['name']} · {farm['benchmark_label']}. Illustrative what-if, validate locally. "
+        st.caption(f"{farm['name']} · {farm['benchmark_label']} for the P43 corrections. "
+                   "Illustrative what-if, validate locally. "
                    "These changes describe how the score responds to Kansas literature inputs. "
                    "Field response and rotation quality remain untested.")
         if farm["benchmark"]:
@@ -441,7 +467,7 @@ def literature_variant_panel(farm_id):
             st.dataframe(pd.DataFrame(rows), hide_index=True,
                          column_config={"Source": st.column_config.LinkColumn("Publication", display_text="Open source")})
         else:
-            st.info("No benchmark for nitrogen, soil-water carryover, or tan spot at this farm. "
+            st.info("P43 did not test these corrections at this farm. "
                     "All configurations use its original score and P22 rates.")
         choice = st.selectbox("Scoring configuration", tuple(labels),
                               index=tuple(labels).index("N_W70_D") if farm["benchmark"] else 0,
@@ -1159,6 +1185,7 @@ def app():
                    "Rotation recommendations still need field validation.")
         evidence_ledger_panel()
         literature_check_panel()
+        regional_literature_panel(farm_id)
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)
         with st.expander("Correlation counts across all farms"):

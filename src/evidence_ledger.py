@@ -344,6 +344,26 @@ def consensus_shortlist_check(report):
                        "consensus_shortlist.md")
 
 
+def regional_literature_check(report):
+    from src.literature_check_p45 import metric_counts
+
+    regions = report["regions"]
+    regional_counts = {region["name"]: metric_counts(region) for region in regions.values()}
+    totals = {name: sum(row["Usable"] for row in counts) for name, counts in regional_counts.items()}
+    inside = sum(row["Inside range"] for counts in regional_counts.values() for row in counts)
+    outside = sum(totals.values()) - inside
+    sample = ", ".join(f"{name} {count}" for name, count in totals.items())
+    bean, = (row for row in regions["kenya_makueni_north"]["rows"]
+             if row["check"] == "Common bean before sole maize · N credit")
+    return EvidenceRow("P45", "How do crop inputs compare with regional literature?",
+                       f"{sample} usable comparisons · {len(report['sources'])} sources read",
+                       f"{inside} inside the published bounds, {outside} outside. "
+                       f"Katumani bean-to-maize N: {bean['model']} versus {bean['reference']}.",
+                       direction(inside, outside),
+                       "Published treatment spans do not establish local crop response or rotation quality.",
+                       "literature_check_p45.md")
+
+
 def check_rows(rows):
     ids = [row.study for row in rows]
     if len(ids) != len(set(ids)):
@@ -362,7 +382,8 @@ def build_ledger(load):
     for filename, describe in (("climate_yield_state_associations.json", state_check),
                                ("scoring_response_check.json", scoring_response_check),
                                ("literature_variant_p43.json", literature_variant_check),
-                               ("consensus_shortlist_p44.json", consensus_shortlist_check)):
+                               ("consensus_shortlist_p44.json", consensus_shortlist_check),
+                               ("literature_check_p45.json", regional_literature_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

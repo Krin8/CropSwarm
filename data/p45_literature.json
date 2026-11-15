@@ -1,0 +1,428 @@
+{
+  "regions": {
+    "telangana_a": {
+      "name": "Telangana",
+      "scope": "Irrigated rice-based systems in Telangana and peninsular India. The reference farm's second season is tentative."
+    },
+    "kenya_makueni_north": {
+      "name": "Makueni",
+      "scope": "Maize–bean systems in semi-arid eastern Kenya, including Machakos and Makueni. Cropland at the demo coordinate is unverified."
+    }
+  },
+  "sources": {
+    "mote": {
+      "name": "Mote et al. (2018), Journal of Agrometeorology",
+      "url": "https://pdfs.semanticscholar.org/e027/a990fd565193f4a02e017cf66d4086fcdd89.pdf",
+      "locator": "Table 2, p. 119 (seasonal ET); p. 118 (variety duration and irrigation regimes)",
+      "design": "Replicated lowland rice irrigation trial, Rajendranagar, 2013–2014."
+    },
+    "kumar": {
+      "name": "Kumar et al. (2022), International Journal of Environment and Climate Change",
+      "url": "https://journalijecc.com/index.php/IJECC/article/view/1124",
+      "full_text": "https://sdiopr.s3.ap-south-1.amazonaws.com/doc/Revised-ms_IJECC_90274_v1.pdf",
+      "locator": "Section 3.3, Table 3 in the manuscript; totals agree with the journal abstract, pp. 1047–1052",
+      "design": "CROPWAT crop ET estimates for Sangareddy. Published modeled point values give no trial spread."
+    },
+    "surekha": {
+      "name": "Surekha et al. (2013), The Andhra Agricultural Journal",
+      "url": "https://aaj.net.in/wp-content/uploads/2024/05/2013_artilcle_602-19.pdf",
+      "locator": "Tables 1–3, pp. 343–345",
+      "design": "Five crop years on a Hyderabad Vertisol. Pre-kharif legumes and incorporation were compared with fallow."
+    },
+    "pjtau": {
+      "name": "PJTSAU, Agro Technologies 2020–21",
+      "url": "https://pjtau.edu.in/files/publications/2024/Agro-Technilogies-2020-21.pdf",
+      "locator": "Entries 17–18, Performance sections",
+      "design": "University extension water budgeting in Northern Telangana, with crop ET and deep percolation recorded separately."
+    },
+    "vineela": {
+      "name": "Vineela et al. (2026), Legume Research",
+      "url": "https://arccjournals.com/journal/legume-research-an-international-journal/LR-5457",
+      "locator": "Figure 1 and Table 5, pp. 1236–1242",
+      "design": "Tirupati field trial on how rice establishment and organic nutrient management affect the following green gram."
+    },
+    "nadar": {
+      "name": "Nadar and Faught (1984), East African Agricultural and Forestry Journal",
+      "url": "https://pdf.usaid.gov/pdf_docs/PNAAX822.pdf",
+      "locator": "Figure 2, Tables II–VI and pp. 130, 135–136",
+      "design": "Katumani trials with sole-crop rotations and intercrops. Fertilizer equivalence was inferred from a continuous-maize fertilizer response curve."
+    },
+    "musingi": {
+      "name": "J. B. Kioko Musingi (1990), University of Nairobi MSc thesis",
+      "url": "https://erepository.uonbi.ac.ke/server/api/core/bitstreams/15355520-df23-42dd-85ed-17aafcb452c7/content",
+      "locator": "§4.2 and Table 4.1, pp. 46–47; §5.2, p. 89",
+      "design": "Katumani 1988/89 short rains. Pan evaporation and crop coefficients from one field-season calculation for two dry bean varieties."
+    },
+    "recha": {
+      "name": "Recha et al. (2016), Arid Land Research and Management",
+      "url": "https://www.tandfonline.com/doi/pdf/10.1080/15324982.2015.1091398",
+      "locator": "Table 1, p. 235",
+      "design": "Seasonal rainfed maize water budgets for Katumani and Makindu using assumed cultivar median ET and station rainfall."
+    },
+    "sennhenn": {
+      "name": "Sennhenn et al. (2017), Frontiers in Plant Science",
+      "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2017.00699/full",
+      "locator": "Tables 2 and 6 and Agronomic trials",
+      "design": "Katumani short-rains field trials in 2012/13 and 2013/14 with rainfed and irrigation treatments."
+    },
+    "wafula": {
+      "name": "Wafula et al. (2022), Tropical and Subtropical Agroecosystems",
+      "url": "https://pdfs.semanticscholar.org/16e4/274e23f73c6ffe140d431e425b25df57385f.pdf",
+      "locator": "Tables 4–5 and Figure 4, pp. 8–11",
+      "design": "Katumani plots in the 2019 short and 2020 long rains, with tillage, fertilizer and crop arrangement treatments."
+    },
+    "ndegwa": {
+      "name": "Ndegwa et al. (2022), Weather, Climate, and Society",
+      "url": "https://gala.gre.ac.uk/id/eprint/33893/13/33893_SHEE_Sequenced_crop_evapotranspiration_and_water.pdf",
+      "locator": "§2b and Table 1 (variety and growth-stage lengths)",
+      "design": "Machakos county weather-index study with a description of early and extra-early maize varieties. Duration only here."
+    },
+    "kenya_abstract": {
+      "name": "Kenya Soil Health Consortium, Soil Fertility Management Book of Abstracts",
+      "url": "https://www.apni.net/wp-content/uploads/2020/04/Compiled-Book-of-abstracts-Kenya-1.pdf",
+      "locator": "Abstract of the Kimutwa and Masii maize–bean field study, pp. 172–173",
+      "design": "Accessible reprint of the study abstract. Underlying treatment tables could not be read."
+    },
+    "palaniappan": {
+      "name": "Palaniappan and Siddeswaran (1994), SARP Research Proceedings",
+      "url": "https://edepot.wur.nl/342845",
+      "locator": "Tables 1–2 and Conclusions, pp. 141–148",
+      "design": "Two Coimbatore cycles with grain harvest followed by haulm incorporation. The lowland rice trial crossed crop sequences with fertilizer rates."
+    },
+    "adarsh": {
+      "name": "Adarsh (2019), Kerala Agricultural University MSc thesis",
+      "url": "https://krishikosh.egranth.ac.in/server/api/core/bitstreams/65189b92-b687-405c-b48f-6dff911d7819/content",
+      "locator": "Materials and Methods §3 and Table 18, pp. 13–15, 54–55",
+      "design": "Pilicode trial with four summer pulses and a fallow control in double-cropped lowland rice. The design varies N for the summer pulse."
+    }
+  },
+  "comparisons": [
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Paddy rice seasonal ET · Hyderabad trial",
+      "crop": "paddy",
+      "field": "water_need_mm",
+      "bounds": [
+        473.9,
+        657.8
+      ],
+      "source": "mote",
+      "interpretation": "Span of eight irrigation treatments, from alternate wetting and drying to continuous flooding. Published ET covers 100 days after transplanting, a different basis from the catalog's full crop window. Inclusion describes the trial span."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Paddy rice seasonal ET · Sangareddy estimate",
+      "crop": "paddy",
+      "field": "water_need_mm",
+      "bounds": [
+        595.5,
+        595.5
+      ],
+      "source": "kumar",
+      "interpretation": "District-scale CROPWAT crop demand. A point comparison gives the difference from this estimate without a dispersion measure."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Green gram seasonal ET · Sangareddy estimate",
+      "crop": "green_gram",
+      "field": "water_need_mm",
+      "bounds": [
+        342.7,
+        342.7
+      ],
+      "source": "kumar",
+      "interpretation": "Regional potential crop demand. The paper does not measure a green gram crop after paddy on the demo farm."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Chickpea (Bengal gram) seasonal ET · Sangareddy estimate",
+      "crop": "chickpea",
+      "field": "water_need_mm",
+      "bounds": [
+        344.9,
+        344.9
+      ],
+      "source": "kumar",
+      "interpretation": "Regional potential crop demand for the study's Bengal gram season. Crop durations, rainfall and irrigation can vary."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Difference in seasonal ET · paddy minus green gram",
+      "crop": "paddy",
+      "minus_crop": "green_gram",
+      "field": "water_need_mm",
+      "bounds": [
+        252.8,
+        252.8
+      ],
+      "source": "kumar",
+      "reference": "252.8 mm (595.5 − 342.7)",
+      "interpretation": "Both put crop ET higher for paddy. This contrast reuses the two Sangareddy crop estimates and says nothing about farm irrigation savings."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "water",
+      "check": "Field water applied and percolation · Jagtial",
+      "crop": "paddy",
+      "field": "water_need_mm",
+      "source": "pjtau",
+      "reference": "1,276.5 mm applied, 402.86 mm crop ET, 452.13 mm percolation",
+      "interpretation": "The technology note provides component observations but gives no cultivar or crop-window details. These show how gross water applied can diverge from crop ET. They cannot constrain the rotation's water withdrawal or supply fraction."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "climate_fit",
+      "check": "Paddy rice variety duration · Hyderabad",
+      "crop": "paddy",
+      "field": "season_length_days",
+      "bounds": [
+        120,
+        125
+      ],
+      "source": "mote",
+      "interpretation": "Reported duration of MTU-1010. The field ET calculation covers only the post-transplant part. This comparison informs the crop window input."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "nitrogen",
+      "check": "Green gram before paddy · N credit",
+      "crop": "green_gram",
+      "field": "n_credit_kg_ha",
+      "source": "surekha",
+      "reference": "29–36 kg N/ha in material used as green manure. Rice mean 6.39 t/ha versus 4.70 after fallow.",
+      "interpretation": "Rice yield moved in the direction expected from a benefit. Incorporated biomass N is a different quantity from N fertilizer replaced. The trial does not isolate a successor fertilizer-equivalent response for the model's harvested grain legume."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "nitrogen",
+      "check": "Cowpea before paddy · N credit",
+      "crop": "cowpea",
+      "field": "n_credit_kg_ha",
+      "source": "surekha",
+      "reference": "38–50 kg N/ha in material used as green manure. Rice mean 6.34 t/ha versus 4.70 after fallow.",
+      "interpretation": "Positive rice yield response under incorporation. The mass of N returned includes N taken up from soil and gives no estimate of crop-available or fertilizer-equivalent N."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "nitrogen",
+      "check": "Paddy before green gram · residual nutrient effect",
+      "crop": "paddy",
+      "field": "n_credit_kg_ha",
+      "source": "vineela",
+      "reference": "Green gram seed yield 8.56% lower following normal transplanting than after dry direct-seeded rice. Uptake varied with rice establishment and manure form.",
+      "interpretation": "The study contrasts paddy management and manure treatments. The scorer has one paddy credit and no management-specific nutrient carryover."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "nitrogen",
+      "check": "Harvested cowpea with haulms incorporated before rice · Coimbatore",
+      "crop": "cowpea",
+      "field": "n_credit_kg_ha",
+      "source": "palaniappan",
+      "reference": "49–52 kg N/ha in the haulms. First rice yielded 4.80 and 4.45 t/ha versus 4.35 and 4.28 in the control sequence.",
+      "interpretation": "The table reports sequence means pooled across N rates separately from fertilizer means. The trial shows first-crop response with incorporation, but the table lacks the paired rate-specific yields required to infer a fertilizer-equivalent credit."
+    },
+    {
+      "region": "telangana_a",
+      "metric": "nitrogen",
+      "check": "Summer green gram before rice · Pilicode",
+      "crop": "green_gram",
+      "field": "n_credit_kg_ha",
+      "source": "adarsh",
+      "reference": "Following-rice yields 4.48–4.67 t/ha across green gram treatments versus 4.46 t/ha after summer fallow. Treatment yield differences were not statistically significant.",
+      "interpretation": "The N rates varied for the preceding pulse. The following rice yields do not provide a fertilizer response curve for the successor. A nonsignificant yield result does not establish a zero credit."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "nitrogen",
+      "check": "Common bean before sole maize · N credit",
+      "crop": "common_bean",
+      "field": "n_credit_kg_ha",
+      "bounds": [
+        44,
+        80
+      ],
+      "source": "nadar",
+      "interpretation": "Fertilizer equivalents of 80 in the 1982 long rains and 44 in 1982/83 short rains. The 80 comparison follows the season order assumed at the demo farm. Both agree with a positive credit. Yield response can include effects besides N and two seasons do not establish a modern field credit."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "nitrogen",
+      "check": "Cowpea before sole maize · N credit",
+      "crop": "cowpea",
+      "field": "n_credit_kg_ha",
+      "bounds": [
+        12.5,
+        24
+      ],
+      "source": "nadar",
+      "interpretation": "Fertilizer equivalents of 12.5 in long rains and 24 in short rains. The catalog lies within this two-season span, above the long-rains estimate. This is a crop-specific comparison."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "nitrogen",
+      "check": "Maize–bean rotation and bean residues · residual mineral N",
+      "crop": "common_bean",
+      "field": "n_credit_kg_ha",
+      "source": "kenya_abstract",
+      "reference": "Rotation plots had higher residual mineral N than continuous maize at Masii and lower at Kimutwa.",
+      "interpretation": "The reprinted abstract shows site-dependent residual effects. It does not expose the treatment tables needed to attribute a fertilizer-equivalent range to one residue regime and crop sequence."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "water",
+      "check": "Maize seasonal ET · Katumani and Makindu budgets",
+      "crop": "maize",
+      "field": "water_need_mm",
+      "bounds": [
+        335,
+        355
+      ],
+      "source": "recha",
+      "interpretation": "Table 1 uses cultivar medians of 335 mm for Makindu and 355 mm for Katumani in both rainy seasons. The comparison uses published water-budget inputs. Maximum crop demand was not measured in this study."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "water",
+      "check": "Common bean seasonal ET · Katumani short rains",
+      "crop": "common_bean",
+      "field": "water_need_mm",
+      "bounds": [
+        281.3,
+        281.3
+      ],
+      "source": "musingi",
+      "interpretation": "Coefficient-based seasonal requirement for an approximately 80-day dry bean crop. This endpoint is distinct from measured water use under rainfall stress."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "water",
+      "check": "Common bean actual water use · rainfed and irrigated",
+      "crop": "common_bean",
+      "field": "water_need_mm",
+      "source": "sennhenn",
+      "reference": "187–245 mm rainfed and 481–503 mm fully irrigated",
+      "interpretation": "Treatment water use reflects soil storage, rainfall, supplemental water and a short-season cultivar. Pooling irrigation regimes would give a misleading reference range for one nominal ET input."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "water",
+      "check": "Soil-water carryover and simultaneous crop competition",
+      "model_text": "Seasonal bucket starts empty. One crop per slot.",
+      "source": "wafula",
+      "reference": "Sole crops had higher near-surface moisture than the intercrop at 4 and 8 weeks after planting in 2019 short rains.",
+      "interpretation": "Observations are within a season in the top 20 cm. The trial does not estimate planting-time water carryover between the model's two crop slots."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "climate_fit",
+      "check": "Common bean maturity · Katumani short rains",
+      "crop": "common_bean",
+      "field": "season_length_days",
+      "bounds": [
+        69,
+        78
+      ],
+      "source": "sennhenn",
+      "interpretation": "Short-season KAT X56 physiological maturity. The catalog window is longer and may include time from maturity to harvest."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "climate_fit",
+      "check": "Early maize maturity · Machakos",
+      "crop": "maize",
+      "field": "season_length_days",
+      "bounds": [
+        100,
+        125
+      ],
+      "source": "ndegwa",
+      "interpretation": "Study's locally grown early-maturity group. The extra-early group is reported at 90–110 days and is distinct from the main comparison."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "climate_fit",
+      "check": "Seasonal grain yields and intercropping · Katumani",
+      "model_text": "Binary thermal and rainfall suitability per crop window. One crop per slot.",
+      "source": "wafula",
+      "reference": "Maize sole vs intercrop 2.88 vs 3.21 t/ha in 2019 short rains and 0.97 vs 1.08 in 2020 long rains. Beans 0.44–1.64 t/ha in contrasting 2019 treatments, with crop failure in 2020 long rains.",
+      "interpretation": "Cropping system effect on maize grain yield was significant in the short-rains trial and not significant in the long-rains trial. Bean treatment extremes also differ in tillage and fertilizer. These trials provide neither a climate cut-off nor a yield comparison for the demo rotation."
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "climate_fit",
+      "check": "Rainfed bean grain yield across short rains",
+      "source": "sennhenn",
+      "reference": "1,107 and 978 kg/ha in 2012/13 and 2013/14 at 156 and 259 mm in-crop rainfall, respectively.",
+      "interpretation": "Both trials produced grain. Grain was observed under a relatively dry crop window, which cautions against reading the model threshold as a crop failure boundary. The study supplies no comparable minimum-rainfall curve.",
+      "crop": "common_bean",
+      "field": "min_rain_mm"
+    },
+    {
+      "region": "kenya_makueni_north",
+      "metric": "income",
+      "check": "Sequential versus simultaneous maize–bean systems · Katumani",
+      "model_text": "Unitless per-crop income index. No within-slot mixed crops.",
+      "source": "nadar",
+      "reference": "Three-season production value 10,500 KSh/ha for sole-crop rotation, 6,585 for continuous intercrop and 5,198 for continuous sole maize.",
+      "interpretation": "Table VI values output at historical prices. The model's income index has no calibrated conversion to trial gross or net returns."
+    }
+  ],
+  "unreachable": [
+    {
+      "name": "Barron and Okwach (2005), Mwala runoff water harvesting experiment",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0378377404003178",
+      "reason": "Publisher full and abstract views returned HTTP 403. The Stockholm University thesis overview was accessible, but it did not provide the paper's complete treatment reference. Excluded from counts."
+    },
+    {
+      "name": "University of Nairobi thesis on nitrogen fertilizer, bean residue and maize–bean systems at Kimutwa and Masii",
+      "url": "https://erepository.uonbi.ac.ke/items/974ed894-5cc2-43e5-81f8-681be03dbce4",
+      "reason": "Repository timed out. The reprinted abstract was read for context. The original results tables and an isolated seasonal N equivalence range remain unverified."
+    },
+    {
+      "name": "Kumar et al. (2022), journal PDF",
+      "url": "https://journalijecc.com/index.php/IJECC/article/view/1124/2249",
+      "reason": "Publisher viewer returned an empty document and the download could not be read. The author manuscript was opened and checked against the published abstract."
+    },
+    {
+      "name": "Wafula et al. (2022), university journal page",
+      "url": "https://www.filey.uady.mx/ojs/index.php/TSA/article/view/4247",
+      "reason": "Publisher returned HTTP 502. Tables and figures were read in the full article copy."
+    },
+    {
+      "name": "Recha et al. (2016), journal HTML",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/15324982.2015.1091398",
+      "reason": "HTML returned HTTP 403. The publisher PDF opened and Table 1 was read there."
+    },
+    {
+      "name": "Ndegwa et al. (2022), journal HTML",
+      "url": "https://journals.ametsoc.org/view/journals/wcas/14/1/WCAS-D-21-0071.1.xml",
+      "reason": "Publisher returned HTTP 403. The University of Greenwich copy opened."
+    },
+    {
+      "name": "Telangana frontline demonstrations on green gram preceding rice",
+      "url": "https://www.researchgate.net/publication/378334062_Impact_of_technological_interventions_on_green_gram_preceding_rice_for_sustainable_soil_health_management",
+      "reason": "Direct opening failed. Search snippets suggested bundled variety and management treatments, so they were not used as N-credit evidence."
+    },
+    {
+      "name": "Wafula, University of Nairobi thesis landing page",
+      "url": "https://erepository.uonbi.ac.ke/items/f240d3c0-b14b-45c7-b254-6bfc8a160a52",
+      "reason": "Repository timed out. The separate full-text 2022 journal paper was used."
+    },
+    {
+      "name": "Rice-fallow black gram lifesaving irrigation, Aduthurai",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10988059/",
+      "reason": "Bot challenge blocked the full text. The candidate reports black gram, a species absent from the catalog."
+    },
+    {
+      "name": "Pratibha et al. (1997), ICAR rice–pulse crop sequence study",
+      "url": "https://epubs.icar.org.in/index.php/IJAgS/article/view/29850",
+      "reason": "Publisher opening failed. No values were taken from the search listing."
+    }
+  ]
+}

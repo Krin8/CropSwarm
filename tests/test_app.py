@@ -373,7 +373,7 @@ def test_literature_variant_panel_shows_sourced_kansas_and_no_benchmark_elsewher
     assert len(metrics) == 6 and metrics.loc[metrics.Metric.eq("Nitrogen"), "Δ raw"].item() == pytest.approx(11 / 3)
     app.selectbox(key="farm_picker").set_value("telangana_a").run()
     assert not app.exception
-    assert any("No benchmark for nitrogen" in item.value for item in app.info)
+    assert any("P43 did not test these corrections at this farm" in item.value for item in app.info)
     compare = next(item.value for item in app.dataframe if "Different winner on same draw" in item.value)
     assert compare["Different winner on same draw"].eq("0.00%").all()
     assert compare["Common alternatives"].eq(211394).all()
@@ -395,3 +395,22 @@ def test_consensus_shortlist_panel_shows_empty_set_and_variant_scope():
     assert any("No rotation meets the 40% threshold for Soil builder" in item.value for item in app.info)
     chart = next(item.value for item in app.dataframe if "P18 evidence" in item.value)
     assert chart["P18 evidence"].eq("Low").all() and "39.84%" in chart["Top three"].values
+
+
+def test_regional_literature_panel_shows_both_regions_offline():
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="farm_picker").set_value("kenya_makueni_north").run()
+    assert not app.exception
+    assert any(row.label == "Regional literature benchmarks (P45)" for row in app.expander)
+    picker = app.selectbox(key="regional_literature_kenya_makueni_north")
+    assert picker.value == "kenya_makueni_north"
+    counts = next(table.value for table in app.dataframe if "Context only" in table.value.columns)
+    assert counts.set_index("Metric").loc["Nitrogen", "Usable"] == 2
+    comparisons = next(table.value for table in app.dataframe if "Regional comparison" in table.value.columns)
+    assert "44 to 80 kg N/ha" in set(comparisons["Published reference"])
+    assert all(comparisons["Source"].str.startswith("https://"))
+    picker.set_value("telangana_a").run()
+    assert not app.exception
+    counts = next(table.value for table in app.dataframe if "Context only" in table.value.columns)
+    assert counts.set_index("Metric").loc["Nitrogen", "Usable"] == 0
+    assert any("second season is tentative" in row.value for row in app.caption)
