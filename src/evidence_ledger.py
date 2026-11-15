@@ -418,6 +418,29 @@ def expanded_consensus_check(report):
                        "consensus_shortlist_p44b.md")
 
 
+def rank_concentration_check(report):
+    farms = list(report["farms"].values())
+    cutoffs = [f"{q:g}" for q in report["design"]["q_pct"]]
+    cases = [outcomes for farm in farms for outcomes in farm["presets"].values()]
+    sizes = {q: sum(case[q]["size"] > 0 for case in cases) for q in cutoffs}
+    nonempty = ", ".join(f"{sizes[q]}/{len(cases)} at {q}%" for q in cutoffs)
+    largest, reference = max(
+        ((case[q], farm["null"][q]) for farm in farms for case in farm["presets"].values() for q in cutoffs),
+        key=lambda pair: pair[0]["largest_share"],
+    )
+    low, high = reference["max_share_95_range"]
+    return EvidenceRow(
+        "P47", "EXPLORATORY · Do rotations repeatedly place in wider rank bands across P44 settings?",
+        f"{FARM_REGIONS} · " +
+        ", ".join(f"{farm['cells_per_preset']:,}" for farm in farms) + " cells per preset, respectively",
+        f"Nonempty sets {nonempty}. Highest share {largest['largest_share']:.2%}, with shuffled 95% range "
+        f"{low:.2%} to {high:.2%} and p {largest['max_share_p']:.4f}.",
+        direction(any(sizes.values()), any(n < len(cases) for n in sizes.values())),
+        "Repeated ranks within the model leave field performance and rotation quality unresolved.",
+        "rank_concentration.md",
+    )
+
+
 def makueni_cropland_check(report):
     products = sum("class_code" in row for row in report["products"].values())
     original, alternate = report["original"], report["alternate"]
@@ -457,7 +480,8 @@ def build_ledger(load):
                                ("literature_check_p45.json", regional_literature_check),
                                ("regional_scoring_variants_p46.json", regional_scoring_check),
                                ("consensus_shortlist_p44b.json", expanded_consensus_check),
-                               ("makueni_cropland_p48.json", makueni_cropland_check)):
+                               ("makueni_cropland_p48.json", makueni_cropland_check),
+                               ("rank_concentration_p47.json", rank_concentration_check)):
         try:
             report = load(filename)
         except FileNotFoundError:

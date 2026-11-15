@@ -477,3 +477,25 @@ def test_expanded_consensus_panel_displays_empty_set_and_fixed_baseline_shares()
     assert baseline["Top three"] == "39.88%" and baseline["P44 top three"] == "36.72%"
     assert baseline["P18 evidence"] == "Low"
     assert any("41.80%" in row.value and "current baseline" in row.value for row in app.caption)
+
+
+def test_rank_concentration_shows_all_cutoffs_and_published_membership():
+    farm_id = "kenya_makueni_north"
+    study = json.loads((ROOT / "data/processed/rank_concentration_p47.json").read_text())
+    expected = study["farms"][farm_id]["presets"]["income"]
+    app = AppTest.from_file(str(ROOT / "app/main.py")).run()
+    app.selectbox(key="farm_picker").set_value(farm_id).run()
+    app.selectbox(key="rank_concentration_preset").set_value("income").run()
+    app.selectbox(key="rank_concentration_cutoff").set_value("2").run()
+    assert not app.exception
+    assert any("P47 · EXPLORATORY" in item.label for item in app.expander)
+    summary = next(table.value for table in app.dataframe if "P47 top fraction" in table.value.columns)
+    assert list(summary["P47 top fraction"]) == ["0.5%", "1%", "2%"]
+    assert list(summary["Set size"]) == [case["size"] for case in expected.values()]
+    published = next(table.value for table in app.dataframe if "P47 published strategy" in table.value.columns)
+    assert list(published["In set"]) == ["Yes" if row["member"] else "No" for row in expected["2"]["published"]]
+    if expected["2"]["members"]:
+        members = next(table.value for table in app.dataframe if "P47 set member" in table.value.columns)
+        assert list(members["P47 set member"]) == [row["rotation_key"] for row in expected["2"]["members"]]
+    else:
+        assert any("No rotation enters the P47 top-2% set" in row.value for row in app.info)

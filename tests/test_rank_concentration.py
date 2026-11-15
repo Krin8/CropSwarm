@@ -49,3 +49,43 @@ def test_monte_carlo_tails_include_ties_and_plus_one():
     assert tails(3, 2, np.array([2, 3, 4, 2]), np.array([1, 2, 1, 3])) == {
         "max_share_p": 3/5, "set_size_p": 3/5, "joint_p": 2/5,
     }
+
+
+def test_saved_analysis_has_all_members_and_matches_p44_scope():
+    import json
+
+    from src.rank_concentration import OUTPUT, ROOT
+    from src.rank_concentration_report import DOCUMENT, render
+
+    data = ROOT / "data/processed"
+    report = json.loads((data / OUTPUT).read_text())
+    p44 = json.loads((data / "consensus_shortlist_p44.json").read_text())
+    cutoffs = [f"{q:g}" for q in report["design"]["q_pct"]]
+    assert cutoffs == ["0.5", "1", "2"]
+    assert report["design"]["null_replicates"] >= 1000
+    assert "EXPLORATORY" in report["label"]
+    assert (ROOT / "docs" / DOCUMENT).read_text() == render(report)
+    assert report["farms"].keys() == p44["farms"].keys()
+    for farm_id, farm in report["farms"].items():
+        old = p44["farms"][farm_id]
+        assert farm["p44_counts_reproduced"]
+        assert all(farm[key] == old[key] for key in ("variants", "draws", "cells_per_preset", "rotation_count"))
+        assert farm["presets"].keys() == old["presets"].keys()
+        cells = farm["cells_per_preset"]
+        published = json.loads((data / f"strategies_{farm_id}.json").read_text())
+        for outcomes in farm["presets"].values():
+            assert list(outcomes) == cutoffs
+            previous = set()
+            for q, row in outcomes.items():
+                assert row["size"] == len(row["members"])
+                assert all(item["share"] >= .5 for item in row["members"])
+                allowed = {item["rotation_key"] for item in row["members"]}
+                assert previous <= allowed
+                assert all(item["member"] == (item["rotation_key"] in allowed) for item in row["published"])
+                assert all(item["share"] == item["count"] / cells for item in row["published"] + row["members"])
+                assert [item["strategy"] for item in row["published"]] == [
+                    item["strategy_id"] for item in published["strategies"]]
+                assert (row["largest_share"] >= .5) == bool(allowed)
+                assert 0 < row["joint_p"] <= min(row["max_share_p"], row["set_size_p"]) <= 1
+                assert len(farm["null"][q]["max_share_95_range"]) == 2
+                previous = allowed

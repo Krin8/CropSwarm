@@ -564,6 +564,57 @@ def expanded_consensus_panel(farm_id):
                    "P43 and P46 literature inputs require assumptions to apply locally.")
 
 
+def rank_concentration_panel(farm_id):
+    report = cached("rank_concentration_p47.json")
+    farm = report["farms"][farm_id]
+    design = report["design"]
+    with st.expander("Chance-adjusted rank concentration (P47 · EXPLORATORY)"):
+        st.caption(f"{farm['name']} · {len(farm['variants'])} P44 variants × {farm['draws']} P22 draws · "
+                   f"{farm['cells_per_preset']:,} cells per preset. "
+                   "Illustrative, validate locally. " + report["limit"])
+        st.write(f"A rotation enters the set if it places in the selected top fraction in at least "
+                 f"{design['min_share']:.0%} of cells. The cutoffs are design choices.")
+        columns = st.columns(2)
+        preset = columns[0].selectbox("Priority preset", tuple(farm["presets"]), format_func=title,
+                                      key="rank_concentration_preset")
+        cutoff = columns[1].selectbox("Top rank fraction", tuple(farm["null"]),
+                                      format_func=lambda value: f"{value}%", key="rank_concentration_cutoff")
+        summary = []
+        for q, row in farm["presets"][preset].items():
+            reference = farm["null"][q]
+            low, high = reference["max_share_95_range"]
+            summary.append({
+                "P47 top fraction": f"{q}%", "Set size": row["size"],
+                "Largest observed share": f"{row['largest_share']:.2%}",
+                "Null mean set size": f"{reference['mean_set_size']:.2f}",
+                "Null mean largest share": f"{reference['mean_max_share']:.2%}",
+                "Shuffled 95% max range": f"{low:.2%} to {high:.2%}",
+                "p, largest share": f"{row['max_share_p']:.4f}",
+                "p, set size": f"{row['set_size_p']:.4f}", "p, both": f"{row['joint_p']:.4f}",
+            })
+        st.dataframe(pd.DataFrame(summary), hide_index=True)
+        st.caption(f"P44 scoring and eligibility replay · {design['null_replicates']:,} shuffled null replicates. "
+                   "Shuffling keeps each cell's admitted rotations. Tail probabilities are unadjusted.")
+        selected = farm["presets"][preset][cutoff]
+
+        def rotation_row(row):
+            cycle = " → ".join(" / ".join(title(crop) for crop in year) for year in row["cycle"])
+            return {"Rotation": cycle, "Share of all cells": f"{row['share']:.2%}",
+                    "Cells in top fraction": row["count"]}
+
+        st.dataframe(pd.DataFrame([
+            {"P47 published strategy": title(row["strategy"]), **rotation_row(row),
+             "In set": "Yes" if row["member"] else "No", "P18 evidence": title(row["evidence_label"])}
+            for row in selected["published"]
+        ]), hide_index=True)
+        if selected["members"]:
+            st.dataframe(pd.DataFrame([
+                {"P47 set member": row["rotation_key"], **rotation_row(row)} for row in selected["members"]
+            ]), hide_index=True)
+        else:
+            st.info(f"No rotation enters the P47 top-{cutoff}% set for {title(preset)}.")
+
+
 def literature_variant_panel(farm_id):
     report = cached("literature_variant_p43.json")
     farm = report["farms"][farm_id]
@@ -1443,6 +1494,7 @@ def app():
         literature_variant_panel(farm_id)
         consensus_shortlist_panel(farm_id)
         expanded_consensus_panel(farm_id)
+        rank_concentration_panel(farm_id)
         with st.expander("Correlation counts across all farms"):
             st.dataframe(pd.DataFrame(counts), hide_index=True)
             st.caption("Counts use full-precision endpoints. Intervals that touch zero include zero. "
