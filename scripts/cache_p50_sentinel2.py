@@ -14,6 +14,7 @@ import io
 import json
 import math
 from pathlib import Path
+import re
 import time
 
 import numpy as np
@@ -380,34 +381,44 @@ def query_stac_catalog(session: requests.Session, catalog: dict, cache_dir: Path
         "limit": 100,
     }
     url = catalog["search_url"]
+    method = "POST"
     page = 0
     while url:
         page += 1
-        last_err = None
-        for attempt in range(3):
-            try:
-                with session.post(url, json=body, timeout=30, allow_redirects=False) as response:
-                    if response.status_code in (301, 302, 303, 307, 308, 401, 403):
-                        raise PermissionError(f"STAC search returned HTTP {response.status_code} for {url}")
-                    response.raise_for_status()
-                    payload = response.json()
-                    break
-            except (requests.RequestException, ValueError) as exc:
-                last_err = exc
-                if attempt == 2:
-                    raise
-                time.sleep(2**attempt)
+        page_cache = cache_dir / f"stac_{catalog['id']}_page_{page:03d}.json"
+        if page_cache.is_file():
+            payload = json.loads(page_cache.read_text())
         else:
-            raise RuntimeError(str(last_err))
+            last_err = None
+            for attempt in range(3):
+                try:
+                    request = session.post if method == "POST" else session.get
+                    request_args = {"json": body} if method == "POST" else {}
+                    with request(url, timeout=30, allow_redirects=False, **request_args) as response:
+                        if response.status_code in (301, 302, 303, 307, 308, 401, 403):
+                            raise PermissionError(f"STAC search returned HTTP {response.status_code} for {url}")
+                        response.raise_for_status()
+                        payload = response.json()
+                        payload["_p50_http_status"] = response.status_code
+                        payload["_p50_request_url"] = url
+                        payload["_p50_request_method"] = method
+                        write_json(page_cache, payload)
+                        break
+                except (requests.RequestException, ValueError) as exc:
+                    last_err = exc
+                    if attempt == 2:
+                        raise
+                    time.sleep(2**attempt)
+            else:
+                raise RuntimeError(str(last_err))
 
         features = payload.get("features", [])
         for feat in features:
             props = feat.get("properties", {})
-            tile = (
-                props.get("s2:mgrs_tile")
-                or props.get("mgrs:latitude_band", "")
-                + props.get("mgrs:grid_square", "")
-            )
+            tile = (props.get("s2:mgrs_tile")
+                    or props.get("mgrs:latitude_band", "") + props.get("mgrs:grid_square", "")
+                    or str(props.get("sentinel:utm_zone", "")) + props.get("sentinel:latitude_band", "")
+                    + props.get("sentinel:grid_square", ""))
             grid_code = props.get("grid:code", "")
             if tile != MGRS_TILE and grid_code != f"MGRS-{MGRS_TILE}" and MGRS_TILE not in feat.get("id", ""):
                 continue
@@ -426,7 +437,15 @@ def query_stac_catalog(session: requests.Session, catalog: dict, cache_dir: Path
                     return scale, offset
                 return (0.0001, -0.1 if baseline >= "04.00" else 0.0)
 
-            baseline = str(props.get("s2:processing_baseline") or "00.00")
+            baseline = props.get("s2:processing_baseline") or props.get("sentinel:processing_baseline")
+            if baseline is None:
+                product = str(props.get("sentinel:product_id", ""))
+                match = re.search(r"_N(\d{2})(\d{2})_", product)
+                if match:
+                    baseline = f"{match.group(1)}.{match.group(2)}"
+                else:
+                    raise ValueError(f"Missing processing baseline metadata for Sentinel item {feat['id']}")
+            baseline = str(baseline)
             red_scale, red_offset = band_scale_offset(red_asset, baseline)
             nir_scale, nir_offset = band_scale_offset(nir_asset, baseline)
             dt = str(props.get("datetime", ""))
@@ -454,10 +473,9 @@ def query_stac_catalog(session: requests.Session, catalog: dict, cache_dir: Path
         )
         if next_link and features:
             url = next_link.get("href", url)
+            method = str(next_link.get("method", "POST" if "body" in next_link else "GET")).upper()
             if "body" in next_link:
                 body = next_link["body"]
-            else:
-                break
         else:
             break
 
@@ -563,36 +581,36 @@ def main() -> None:
 
     with requests.Session() as session:
         for catalog in (PRIMARY_CATALOG, FALLBACK_CATALOG):
+            attempt = {
+                "id": catalog["id"], "name": catalog["name"],
+                "search_url": catalog["search_url"], "collection": catalog["collection"],
+                "doc_url": catalog["doc_url"], "status": "failed",
+                "items_returned": 0, "error": None, "asset_preflight": [],
+            }
             try:
                 raw_items = query_stac_catalog(session, catalog, CACHE)
-                catalog_attempts.append(
-                    {
-                        "id": catalog["id"],
-                        "name": catalog["name"],
-                        "search_url": catalog["search_url"],
-                        "collection": catalog["collection"],
-                        "doc_url": catalog["doc_url"],
-                        "status": "ok",
-                        "items_returned": len(raw_items),
-                        "error": None,
-                    }
-                )
-                if raw_items:
-                    chosen_catalog = catalog
-                    break
+                attempt["items_returned"] = len(raw_items)
+                attempt["stac_page_statuses"] = [
+                    json.loads(path.read_text()).get("_p50_http_status")
+                    for path in sorted(CACHE.glob(f"stac_{catalog['id']}_page_*.json"))
+                ]
+                deduped, _ = deduplicate_items(raw_items)
+                if not deduped:
+                    raise ValueError("STAC search returned no usable scenes for the registered tile and dates")
+                test_item = deduped[0]
+                for band, key in (("scl", "scl_href"), ("red", "red_href"), ("nir", "nir_href")):
+                    _, meta = fetch_range(session, test_item[key], 0, HEADER_BYTES - 1, CACHE / "blocks")
+                    attempt["asset_preflight"].append({
+                        "band": band, "url": test_item[key], "http_status": meta["http_status"],
+                        "content_range": meta["content_range"], "etag": meta["etag"],
+                    })
+                chosen_catalog = catalog
+                attempt["status"] = "ok"
+                catalog_attempts.append(attempt)
+                break
             except Exception as exc:
-                catalog_attempts.append(
-                    {
-                        "id": catalog["id"],
-                        "name": catalog["name"],
-                        "search_url": catalog["search_url"],
-                        "collection": catalog["collection"],
-                        "doc_url": catalog["doc_url"],
-                        "status": "failed",
-                        "items_returned": 0,
-                        "error": f"{type(exc).__name__}: {exc}",
-                    }
-                )
+                attempt["error"] = f"{type(exc).__name__}: {exc}"
+                catalog_attempts.append(attempt)
 
     if chosen_catalog is None:
         RAW.mkdir(parents=True, exist_ok=True)

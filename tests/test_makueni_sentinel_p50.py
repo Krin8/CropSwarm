@@ -91,3 +91,48 @@ def test_actual_cached_p50_witness_is_processed_offline_when_present():
     if report["gate"]["passed"]:
         assert set(report["points"]) == {row["point_id"] for row in payload["points"]}
         assert report["interpretation_limit"] == "NDVI seasonality does not identify crop type, management or irrigation."
+
+
+def test_digital_earth_africa_stac_fallback_extracts_grid_baseline_and_public_assets(tmp_path):
+    from scripts.cache_p50_sentinel2 import FALLBACK_CATALOG, query_stac_catalog
+
+    properties = {"datetime": "2019-01-04T08:00:34Z",
+                  "sentinel:utm_zone": 37, "sentinel:latitude_band": "M", "sentinel:grid_square": "CT",
+                  "sentinel:product_id": "S2B_MSIL2A_20190104T074319_N0211_R092_T37MCT_20190104T105348",
+                  "created": "2019-01-04T10:53:48Z"}
+    assets = {name: {"href": f"s3://deafrica-sentinel-2/sentinel-s2-l2a-cogs/37/M/CT/x/{name}.tif",
+                     "raster:bands": [{"nodata": 0, "data_type": "uint16"}]}
+              for name in ("B04", "B08", "SCL")}
+
+    class Response:
+        status_code = 200
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"features": [{"id": "public-stac-id", "properties": properties, "assets": assets}],
+                    "links": []}
+
+    class Session:
+        def post(self, url, **kwargs):
+            assert url == FALLBACK_CATALOG["search_url"]
+            assert kwargs["json"]["collections"] == ["s2_l2a"]
+            return Response()
+
+    items = query_stac_catalog(Session(), FALLBACK_CATALOG, tmp_path)
+    assert len(items) == 1
+    item = items[0]
+    assert item["processing_baseline"] == "02.11"
+    assert item["red_offset"] == 0
+    assert item["nir_offset"] == 0
+    assert item["date"] == "2019-01-04"
+    assert item["red_href"].startswith("https://deafrica-sentinel-2.s3.af-south-1.amazonaws.com/")
+    page = json.loads(next(tmp_path.glob("stac_deafrica_stac_page_*.json")).read_text())
+    assert page["_p50_http_status"] == 200
